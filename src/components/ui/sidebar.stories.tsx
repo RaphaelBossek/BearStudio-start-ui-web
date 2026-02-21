@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react-vite';
+import type { Meta } from '@storybook/react-vite';
 import { Calendar, Home, Inbox, Search, Settings } from 'lucide-react';
 
 import { Logo } from '@/components/brand/logo';
@@ -63,11 +63,7 @@ export function AppSidebar() {
               <SidebarMenuButton
                 className="h-auto"
                 render={
-                  <a
-                    href="https://start-ui.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <a href="https://start-ui.com/" target="_blank" rel="noopener noreferrer">
                     <span>
                       <Logo className="w-24" />
                     </span>
@@ -86,11 +82,7 @@ export function AppSidebar() {
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton
                       render={
-                        <a
-                          href={item.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
+                        <a href={item.url} target="_blank" rel="noopener noreferrer">
                           <item.icon />
                           <span>{item.title}</span>
                         </a>

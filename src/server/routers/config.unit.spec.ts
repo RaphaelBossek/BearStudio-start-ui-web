@@ -2,10 +2,7 @@ import { call } from '@orpc/server';
 import { describe, expect, it, vi } from 'vitest';
 
 import configRouter from '@/server/routers/config';
-import {
-  mockGetSession,
-  mockUserHasPermission,
-} from '@/server/routers/test-utils';
+import { mockGetSession, mockUserHasPermission } from '@/server/routers/test-utils';
 
 vi.mock('@/env/client', () => ({
   envClient: {

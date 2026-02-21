@@ -4,15 +4,11 @@ import { z } from 'zod';
 
 const envMetaOrProcess: Record<string, string> = import.meta.env ?? process.env;
 
-const isDev = process.env.NODE_ENV
-  ? process.env.NODE_ENV === 'development'
-  : import.meta.env?.DEV;
+const isDev = process.env.NODE_ENV ? process.env.NODE_ENV === 'development' : import.meta.env?.DEV;
 
 const getBaseUrl = () => {
   const vercelUrlPreviewUrl =
-    envMetaOrProcess.VITE_VERCEL_ENV === 'preview'
-      ? envMetaOrProcess.VITE_VERCEL_BRANCH_URL
-      : null;
+    envMetaOrProcess.VITE_VERCEL_ENV === 'preview' ? envMetaOrProcess.VITE_VERCEL_BRANCH_URL : null;
 
   if (vercelUrlPreviewUrl) {
     return `https://${vercelUrlPreviewUrl}`;

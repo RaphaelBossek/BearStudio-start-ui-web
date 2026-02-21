@@ -1,10 +1,8 @@
 import { getUiState } from '@bearstudio/ui-state';
 import { useQuery } from '@tanstack/react-query';
-
-import { orpc } from '@/lib/orpc/client';
-
 import { PageError } from '@/components/errors/page-error';
 import { Spinner } from '@/components/ui/spinner';
+import { orpc } from '@/lib/orpc/client';
 
 export function MailDevDevtoolPanel() {
   const devtoolsQuery = useQuery(orpc.config.devtools.queryOptions());

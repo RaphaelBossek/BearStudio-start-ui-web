@@ -1,16 +1,11 @@
 import { CircleAlertIcon, LucideRefreshCw, XIcon } from 'lucide-react';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import { cn } from '@/lib/tailwind/utils';
-
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
+import { cn } from '@/lib/tailwind/utils';
 
-export const DataList = ({
-  className = '',
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => {
+export const DataList = ({ className = '', ...props }: React.HTMLAttributes<HTMLDivElement>) => {
   return (
     <div
       className={cn(
@@ -39,10 +34,7 @@ export const DataListRow = ({
   );
 };
 
-export const DataListCell = ({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => {
+export const DataListCell = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
   return (
     <div
       className={cn(
@@ -58,21 +50,14 @@ export const DataListTextHeader = ({
   className = '',
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => {
-  return (
-    <div
-      className={cn('text-xs font-medium text-muted-foreground', className)}
-      {...props}
-    />
-  );
+  return <div className={cn('text-xs font-medium text-muted-foreground', className)} {...props} />;
 };
 
 export const DataListText = ({
   className = '',
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => {
-  return (
-    <div className={cn('max-w-full truncate text-sm', className)} {...props} />
-  );
+  return <div className={cn('max-w-full truncate text-sm', className)} {...props} />;
 };
 
 export const DataListLoadingState = () => {

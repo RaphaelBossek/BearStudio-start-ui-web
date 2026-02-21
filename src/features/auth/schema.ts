@@ -17,24 +17,18 @@ export const zFormFieldsLogin = () =>
     email: zu.fieldText.required().pipe(
       z.email({
         error: (issue) =>
-          issue.input
-            ? t('auth:common.email.invalid')
-            : t('auth:common.email.required'),
+          issue.input ? t('auth:common.email.invalid') : t('auth:common.email.required'),
       })
     ),
   });
 
-export type FormFieldsLoginVerify = z.infer<
-  ReturnType<typeof zFormFieldsLoginVerify>
->;
+export type FormFieldsLoginVerify = z.infer<ReturnType<typeof zFormFieldsLoginVerify>>;
 export const zFormFieldsLoginVerify = () =>
   z.object({
     otp: zOtp(),
   });
 
-export type FormFieldsOnboarding = z.infer<
-  ReturnType<typeof zFormFieldsOnboarding>
->;
+export type FormFieldsOnboarding = z.infer<ReturnType<typeof zFormFieldsOnboarding>>;
 export const zFormFieldsOnboarding = () =>
   z.object({
     name: zu.fieldText.required(),

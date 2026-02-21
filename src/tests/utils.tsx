@@ -1,6 +1,6 @@
-import { ReactElement } from 'react';
+import type { ReactElement } from 'react';
 import { userEvent } from 'vitest/browser';
-import { ComponentRenderOptions, render } from 'vitest-browser-react';
+import { type ComponentRenderOptions, render } from 'vitest-browser-react';
 
 import { Providers } from '@/providers';
 
@@ -8,10 +8,7 @@ const WithProviders = ({ children }: { children: React.ReactNode }) => {
   return <Providers>{children}</Providers>;
 };
 
-const customRender = (
-  ui: ReactElement,
-  options?: Omit<ComponentRenderOptions, 'wrapper'>
-) => {
+const customRender = (ui: ReactElement, options?: Omit<ComponentRenderOptions, 'wrapper'>) => {
   return render(ui, { wrapper: WithProviders, ...options });
 };
 

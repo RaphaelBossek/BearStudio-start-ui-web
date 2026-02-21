@@ -1,12 +1,9 @@
-import {
-  createAccessControl,
-  Role as BetterAuthRole,
-} from 'better-auth/plugins/access';
+import { type Role as BetterAuthRole, createAccessControl } from 'better-auth/plugins/access';
 import { adminAc, defaultStatements } from 'better-auth/plugins/admin/access';
 import { z } from 'zod';
 
-import { authClient } from '@/features/auth/client';
-import { UserRole } from '@/server/db/generated/client';
+import type { authClient } from '@/features/auth/client';
+import type { UserRole } from '@/server/db/generated/client';
 
 const statement = {
   ...defaultStatements,

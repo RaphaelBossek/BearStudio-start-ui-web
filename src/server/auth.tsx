@@ -3,9 +3,6 @@ import { betterAuth } from 'better-auth';
 import { prismaAdapter } from 'better-auth/adapters/prisma';
 import { admin, emailOTP, openAPI } from 'better-auth/plugins';
 import { match } from 'ts-pattern';
-
-import i18n from '@/lib/i18n';
-
 import TemplateLoginCode from '@/emails/templates/login-code';
 import { envClient } from '@/env/client';
 import { envServer } from '@/env/server';
@@ -15,6 +12,7 @@ import {
   AUTH_SIGNUP_ENABLED,
 } from '@/features/auth/config';
 import { permissions } from '@/features/auth/permissions';
+import i18n from '@/lib/i18n';
 import { db } from '@/server/db';
 import { sendEmail } from '@/server/email';
 import { getUserLanguage } from '@/server/utils';
@@ -72,9 +70,7 @@ export const auth = betterAuth({
               subject: i18n.t('emails:loginCode.subject', {
                 lng: getUserLanguage(),
               }),
-              template: (
-                <TemplateLoginCode language={getUserLanguage()} code={otp} />
-              ),
+              template: <TemplateLoginCode language={getUserLanguage()} code={otp} />,
             });
           })
           .with('email-verification', async () => {

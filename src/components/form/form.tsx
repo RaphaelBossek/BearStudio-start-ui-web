@@ -1,8 +1,8 @@
 import {
-  FieldValues,
+  type FieldValues,
   FormProvider,
-  FormProviderProps,
-  SubmitHandler,
+  type FormProviderProps,
+  type SubmitHandler,
 } from 'react-hook-form';
 
 import { cn } from '@/lib/tailwind/utils';

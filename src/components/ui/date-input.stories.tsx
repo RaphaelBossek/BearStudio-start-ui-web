@@ -7,11 +7,7 @@ import { onSubmit } from '@/components/form/docs.utils';
 import { Calendar } from '@/components/ui/calendar';
 import { DateInput } from '@/components/ui/date-input';
 import { InputGroupButton } from '@/components/ui/input-group';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 
 export default {
   title: 'DateInput',
@@ -44,10 +40,7 @@ export const WithPicker = () => {
       onChange={(date) => setDate(date)}
       value={date}
       endAddon={
-        <Popover
-          open={datePicker.isOpen}
-          onOpenChange={(open) => datePicker.toggle(open)}
-        >
+        <Popover open={datePicker.isOpen} onOpenChange={(open) => datePicker.toggle(open)}>
           <PopoverTrigger render={<InputGroupButton size="icon-xs" />}>
             <CalendarIcon />
           </PopoverTrigger>

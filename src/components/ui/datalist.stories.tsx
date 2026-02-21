@@ -1,9 +1,4 @@
-import {
-  EllipsisIcon,
-  PencilLineIcon,
-  PlusIcon,
-  Trash2Icon,
-} from 'lucide-react';
+import { EllipsisIcon, PencilLineIcon, PlusIcon, Trash2Icon } from 'lucide-react';
 
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
@@ -85,29 +80,19 @@ export const Default = () => (
           </DataListCell>
           <DataListCell>
             <DataListText className="font-medium">
-              <a
-                href="https://start-ui.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="https://start-ui.com/" target="_blank" rel="noopener noreferrer">
                 {user.name}
                 {/* Row hitzone for link */}
                 <span className="absolute inset-0" />
               </a>
             </DataListText>
-            <DataListText className="text-muted-foreground">
-              {user.email}
-            </DataListText>
+            <DataListText className="text-muted-foreground">{user.email}</DataListText>
           </DataListCell>
           <DataListCell className="max-sm:hidden">
-            <DataListText className="text-muted-foreground">
-              {user.job}
-            </DataListText>
+            <DataListText className="text-muted-foreground">{user.job}</DataListText>
           </DataListCell>
           <DataListCell className="max-md:hidden">
-            <DataListText className="text-muted-foreground">
-              {user.role}
-            </DataListText>
+            <DataListText className="text-muted-foreground">{user.role}</DataListText>
           </DataListCell>
           <DataListCell className="flex-none items-end">
             <ExampleMenu />
@@ -143,29 +128,19 @@ export const WithHeader = () => (
           </DataListCell>
           <DataListCell>
             <DataListText className="font-medium">
-              <a
-                href="https://start-ui.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="https://start-ui.com/" target="_blank" rel="noopener noreferrer">
                 {user.name}
                 {/* Row hitzone for link */}
                 <span className="absolute inset-0" />
               </a>
             </DataListText>
-            <DataListText className="text-muted-foreground">
-              {user.email}
-            </DataListText>
+            <DataListText className="text-muted-foreground">{user.email}</DataListText>
           </DataListCell>
           <DataListCell className="max-sm:hidden">
-            <DataListText className="text-muted-foreground">
-              {user.job}
-            </DataListText>
+            <DataListText className="text-muted-foreground">{user.job}</DataListText>
           </DataListCell>
           <DataListCell className="max-md:hidden">
-            <DataListText className="text-muted-foreground">
-              {user.role}
-            </DataListText>
+            <DataListText className="text-muted-foreground">{user.role}</DataListText>
           </DataListCell>
           <DataListCell className="w-12 flex-none items-end">
             <ExampleMenu />
@@ -218,10 +193,7 @@ export const ErrorState = () => {
         <DataListErrorState retry={() => alert('Retry')} />
       </DataList>
       <DataList>
-        <DataListErrorState
-          title="Failed to load the users"
-          retry={() => alert('Retry')}
-        >
+        <DataListErrorState title="Failed to load the users" retry={() => alert('Retry')}>
           Retry or contact the administator
         </DataListErrorState>
       </DataList>
@@ -244,29 +216,19 @@ export const RowResults = () => (
           </DataListCell>
           <DataListCell>
             <DataListText className="font-medium">
-              <a
-                href="https://start-ui.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="https://start-ui.com/" target="_blank" rel="noopener noreferrer">
                 {user.name}
                 {/* Row hitzone for link */}
                 <span className="absolute inset-0" />
               </a>
             </DataListText>
-            <DataListText className="text-muted-foreground">
-              {user.email}
-            </DataListText>
+            <DataListText className="text-muted-foreground">{user.email}</DataListText>
           </DataListCell>
           <DataListCell className="max-sm:hidden">
-            <DataListText className="text-muted-foreground">
-              {user.job}
-            </DataListText>
+            <DataListText className="text-muted-foreground">{user.job}</DataListText>
           </DataListCell>
           <DataListCell className="max-md:hidden">
-            <DataListText className="text-muted-foreground">
-              {user.role}
-            </DataListText>
+            <DataListText className="text-muted-foreground">{user.role}</DataListText>
           </DataListCell>
           <DataListCell className="flex-none items-end">
             <ExampleMenu />
@@ -280,9 +242,7 @@ export const RowResults = () => (
 const ExampleMenu = () => {
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger
-        render={<Button size="icon-sm" variant="ghost" className="-m-1" />}
-      >
+      <DropdownMenuTrigger render={<Button size="icon-sm" variant="ghost" className="-m-1" />}>
         <EllipsisIcon />
       </DropdownMenuTrigger>
       <DropdownMenuContent side="left" className="min-w-24">

@@ -1,9 +1,6 @@
 import { Link, useMatchRoute } from '@tanstack/react-router';
 import { ArrowRightIcon } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-
-import { cn } from '@/lib/tailwind/utils';
-
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import {
@@ -14,18 +11,16 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-
 import { authClient } from '@/features/auth/client';
-import { Role } from '@/features/auth/permissions';
+import type { Role } from '@/features/auth/permissions';
+import { cn } from '@/lib/tailwind/utils';
 
 export const DemoAppSwitch = () => {
   const { t } = useTranslation(['demo']);
   const session = authClient.useSession();
   const userRole = session.data?.user.role;
   const matchRoute = useMatchRoute();
-  const currentApp = matchRoute({ to: '/manager', fuzzy: true })
-    ? 'manager'
-    : 'app';
+  const currentApp = matchRoute({ to: '/manager', fuzzy: true }) ? 'manager' : 'app';
 
   const hasAppAccess = authClient.admin.checkRolePermission({
     role: userRole as Role,
@@ -47,17 +42,14 @@ export const DemoAppSwitch = () => {
         <Card
           className={cn(
             'flex-1',
-            currentApp === 'app' &&
-              'ring-2 ring-offset-2 ring-offset-background',
+            currentApp === 'app' && 'ring-2 ring-offset-2 ring-offset-background',
             !hasAppAccess && 'cursor-not-allowed'
           )}
         >
           <CardHeader>
             <div className="flex items-center gap-2">
               <CardTitle>{t('demo:appSwitch.app.title')}</CardTitle>
-              {currentApp === 'app' && (
-                <Badge size="sm">{t('demo:appSwitch.youAreHere')}</Badge>
-              )}
+              {currentApp === 'app' && <Badge size="sm">{t('demo:appSwitch.youAreHere')}</Badge>}
               {!hasAppAccess && (
                 <Badge size="sm" variant="secondary">
                   {t('demo:appSwitch.noAccess')}
@@ -66,12 +58,7 @@ export const DemoAppSwitch = () => {
             </div>
             {currentApp !== 'app' && hasAppAccess && (
               <CardAction className="-m-2">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  render={<div />}
-                  nativeButton={false}
-                >
+                <Button variant="ghost" size="sm" render={<div />} nativeButton={false}>
                   {t('demo:appSwitch.app.goTo')}
                   <ArrowRightIcon />
                 </Button>
@@ -79,22 +66,15 @@ export const DemoAppSwitch = () => {
             )}
           </CardHeader>
           <CardContent>
-            <CardDescription>
-              {t('demo:appSwitch.app.description')}
-            </CardDescription>
+            <CardDescription>{t('demo:appSwitch.app.description')}</CardDescription>
           </CardContent>
         </Card>
       </Link>
-      <Link
-        to="/manager"
-        className="flex flex-1 flex-col"
-        disabled={!hasManagerAccess}
-      >
+      <Link to="/manager" className="flex flex-1 flex-col" disabled={!hasManagerAccess}>
         <Card
           className={cn(
             'flex-1',
-            currentApp === 'manager' &&
-              'ring-2 ring-offset-2 ring-offset-background',
+            currentApp === 'manager' && 'ring-2 ring-offset-2 ring-offset-background',
             !hasManagerAccess && 'cursor-not-allowed'
           )}
         >
@@ -113,12 +93,7 @@ export const DemoAppSwitch = () => {
 
             {currentApp !== 'manager' && hasManagerAccess && (
               <CardAction className="-m-2">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  render={<div />}
-                  nativeButton={false}
-                >
+                <Button variant="ghost" size="sm" render={<div />} nativeButton={false}>
                   {t('demo:appSwitch.manager.goTo')}
                   <ArrowRightIcon />
                 </Button>
@@ -126,9 +101,7 @@ export const DemoAppSwitch = () => {
             )}
           </CardHeader>
           <CardContent>
-            <CardDescription>
-              {t('demo:appSwitch.manager.description')}
-            </CardDescription>
+            <CardDescription>{t('demo:appSwitch.manager.description')}</CardDescription>
           </CardContent>
         </Card>
       </Link>

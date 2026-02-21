@@ -4,34 +4,29 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
-
-import { orpc } from '@/lib/orpc/client';
-import { useNavigateBack } from '@/hooks/use-navigate-back';
-
 import { BackButton } from '@/components/back-button';
 import { Form } from '@/components/form';
 import { PreventNavigation } from '@/components/prevent-navigation';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { useIsUploadingFiles } from '@/components/upload/utils';
-
 import { FormBook } from '@/features/book/manager/form-book';
 import { FormBookCover } from '@/features/book/manager/form-book-cover';
 import { zFormFieldsBook } from '@/features/book/schema';
+import { useNavigateBack } from '@/hooks/use-navigate-back';
 import {
   PageLayout,
   PageLayoutContent,
   PageLayoutTopBar,
   PageLayoutTopBarTitle,
 } from '@/layout/manager/page-layout';
+import { orpc } from '@/lib/orpc/client';
 
 export const PageBookUpdate = (props: { params: { id: string } }) => {
   const { t } = useTranslation(['book']);
   const { navigateBack } = useNavigateBack();
   const queryClient = useQueryClient();
-  const bookQuery = useQuery(
-    orpc.book.getById.queryOptions({ input: { id: props.params.id } })
-  );
+  const bookQuery = useQuery(orpc.book.getById.queryOptions({ input: { id: props.params.id } }));
   const form = useForm({
     resolver: zodResolver(zFormFieldsBook()),
     values: {
@@ -98,9 +93,7 @@ export const PageBookUpdate = (props: { params: { id: string } }) => {
               </Button>
             }
           >
-            <PageLayoutTopBarTitle>
-              {t('book:manager.update.title')}
-            </PageLayoutTopBarTitle>
+            <PageLayoutTopBarTitle>{t('book:manager.update.title')}</PageLayoutTopBarTitle>
           </PageLayoutTopBar>
           <PageLayoutContent>
             <div className="flex flex-col gap-4 xs:flex-row">
@@ -111,10 +104,7 @@ export const PageBookUpdate = (props: { params: { id: string } }) => {
                   </CardContent>
                 </Card>
               </div>
-              <div
-                aria-hidden
-                className="mx-auto w-full max-w-64 min-w-48 flex-1"
-              >
+              <div aria-hidden className="mx-auto w-full max-w-64 min-w-48 flex-1">
                 <FormBookCover />
               </div>
             </div>

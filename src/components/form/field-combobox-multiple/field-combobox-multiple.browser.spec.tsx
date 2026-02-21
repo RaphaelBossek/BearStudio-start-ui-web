@@ -1,12 +1,7 @@
 import { expect, test, vi } from 'vitest';
 import { z } from 'zod';
 
-import {
-  FAILED_CLICK_TIMEOUT_MS,
-  page,
-  render,
-  setupUser,
-} from '@/tests/utils';
+import { FAILED_CLICK_TIMEOUT_MS, page, render, setupUser } from '@/tests/utils';
 
 import { FormField, FormFieldController, FormFieldLabel } from '..';
 import { FormMocked } from '../form-test-utils';

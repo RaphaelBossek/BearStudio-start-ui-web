@@ -4,24 +4,21 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
-
-import { orpc } from '@/lib/orpc/client';
-import { useNavigateBack } from '@/hooks/use-navigate-back';
-
 import { BackButton } from '@/components/back-button';
 import { Form } from '@/components/form';
 import { PreventNavigation } from '@/components/prevent-navigation';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-
 import { FormUser } from '@/features/user/manager/form-user';
 import { zFormFieldsUser } from '@/features/user/schema';
+import { useNavigateBack } from '@/hooks/use-navigate-back';
 import {
   PageLayout,
   PageLayoutContent,
   PageLayoutTopBar,
   PageLayoutTopBarTitle,
 } from '@/layout/manager/page-layout';
+import { orpc } from '@/lib/orpc/client';
 
 export const PageUserNew = () => {
   const { t } = useTranslation(['user']);
@@ -78,19 +75,12 @@ export const PageUserNew = () => {
           <PageLayoutTopBar
             startActions={<BackButton />}
             endActions={
-              <Button
-                size="sm"
-                type="submit"
-                className="min-w-20"
-                loading={userCreate.isPending}
-              >
+              <Button size="sm" type="submit" className="min-w-20" loading={userCreate.isPending}>
                 {t('user:manager.new.createButton.label')}
               </Button>
             }
           >
-            <PageLayoutTopBarTitle>
-              {t('user:manager.new.title')}
-            </PageLayoutTopBarTitle>
+            <PageLayoutTopBarTitle>{t('user:manager.new.title')}</PageLayoutTopBarTitle>
           </PageLayoutTopBar>
           <PageLayoutContent>
             <Card>

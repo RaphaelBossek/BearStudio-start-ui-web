@@ -2,14 +2,12 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { CheckIcon } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
-
-import { cn } from '@/lib/tailwind/utils';
-import { zu } from '@/lib/zod/zod-utils';
-
 import { FormFieldController } from '@/components/form';
 import { onSubmit } from '@/components/form/docs.utils';
 import { Button } from '@/components/ui/button';
 import { Radio } from '@/components/ui/radio-group';
+import { cn } from '@/lib/tailwind/utils';
+import { zu } from '@/lib/zod/zod-utils';
 
 import { Form, FormField, FormFieldHelper, FormFieldLabel } from '../';
 
@@ -207,12 +205,9 @@ export const WithCustomRadio = () => {
                       >
                         <span className="font-medium">{label}</span>
                         <span
-                          className={cn(
-                            'rounded-full bg-primary-foreground p-1 opacity-0',
-                            {
-                              'opacity-100': checked,
-                            }
-                          )}
+                          className={cn('rounded-full bg-primary-foreground p-1 opacity-0', {
+                            'opacity-100': checked,
+                          })}
                         >
                           <CheckIcon className="size-4 text-primary" />
                         </span>

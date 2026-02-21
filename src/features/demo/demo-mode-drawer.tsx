@@ -42,13 +42,10 @@ export const DemoModeDrawer = () => {
         </ResponsiveDrawerHeader>
         <ResponsiveDrawerBody className="flex flex-col gap-4">
           <p className="text-sm text-muted-foreground">
-            You can test the full app starter on your own with the following
-            command:
+            You can test the full app starter on your own with the following command:
           </p>
           <pre className="rounded-md bg-neutral-800 px-4 py-3 font-mono text-sm text-white">
-            <code className="whitespace-break-spaces">
-              npx create-start-ui@latest --web myApp
-            </code>
+            <code className="whitespace-break-spaces">npx create-start-ui@latest --web myApp</code>
           </pre>
           <p className="text-sm text-muted-foreground">
             You can also check the{' '}

@@ -1,19 +1,13 @@
 import { NumberField } from '@base-ui/react/number-field';
 import { ChevronDown, ChevronUp, Minus, Plus } from 'lucide-react';
-import { ComponentProps, useRef } from 'react';
+import { type ComponentProps, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { mergeRefs } from 'react-merge-refs';
 import { match } from 'ts-pattern';
-
-import { cn } from '@/lib/tailwind/utils';
-
 import { Button } from '@/components/ui/button';
 import type { Input } from '@/components/ui/input';
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupInput,
-} from '@/components/ui/input-group';
+import { InputGroup, InputGroupAddon, InputGroupInput } from '@/components/ui/input-group';
+import { cn } from '@/lib/tailwind/utils';
 
 type InputProps = ComponentProps<typeof Input>;
 type InputPropsRoot = Pick<InputProps, 'placeholder' | 'size' | 'aria-invalid'>;
@@ -91,12 +85,7 @@ export const NumberInput = ({
           />
           {buttons === 'classic' && (
             <NumberField.Group
-              render={
-                <InputGroupAddon
-                  align="inline-end"
-                  className="flex flex-col gap-0 py-0"
-                />
-              }
+              render={<InputGroupAddon align="inline-end" className="flex flex-col gap-0 py-0" />}
             >
               <NumberField.Increment>
                 <ChevronUp />

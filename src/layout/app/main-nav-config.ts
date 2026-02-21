@@ -31,7 +31,6 @@ export const MAIN_NAV_LINKS = linkOptions([
   },
 ]);
 
-export type NavLinkItem = Omit<
-  (typeof MAIN_NAV_LINKS)[number],
-  'labelTranslationKey'
-> & { children?: React.ReactNode };
+export type NavLinkItem = Omit<(typeof MAIN_NAV_LINKS)[number], 'labelTranslationKey'> & {
+  children?: React.ReactNode;
+};

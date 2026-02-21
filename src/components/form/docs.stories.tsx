@@ -1,10 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Meta } from '@storybook/react-vite';
+import type { Meta } from '@storybook/react-vite';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
-
-import { zu } from '@/lib/zod/zod-utils';
-
 import {
   Form,
   FormField,
@@ -21,6 +18,7 @@ import {
   InputGroupInput,
   InputGroupText,
 } from '@/components/ui/input-group';
+import { zu } from '@/lib/zod/zod-utils';
 
 export default {
   title: 'Form/Form',
@@ -97,11 +95,7 @@ export const NoHtmlForm = () => {
         <div className="flex flex-col gap-4">
           <FormField size="lg">
             <FormFieldLabel>Name</FormFieldLabel>
-            <FormFieldController
-              control={form.control}
-              type="text"
-              name="name"
-            />
+            <FormFieldController control={form.control} type="text" name="name" />
             <FormFieldHelper>This is an helper text</FormFieldHelper>
           </FormField>
           <FormField>

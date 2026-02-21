@@ -1,22 +1,13 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
-import { DateRange } from 'react-day-picker';
+import type { DateRange } from 'react-day-picker';
 import { useDisclosure } from 'react-use-disclosure';
 import { isNullish } from 'remeda';
 
 import { Calendar } from '@/components/ui/calendar';
 import { DatePickerButton } from '@/components/ui/date-picker-button';
-import {
-  Dialog,
-  DialogBody,
-  DialogContent,
-  DialogTrigger,
-} from '@/components/ui/dialog';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover';
+import { Dialog, DialogBody, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 
 export default {
   title: 'DatePickerButton',
@@ -43,10 +34,7 @@ export const UsageWithPopover = () => {
   const datePicker = useDisclosure();
 
   return (
-    <Popover
-      open={datePicker.isOpen}
-      onOpenChange={(open) => datePicker.toggle(open)}
-    >
+    <Popover open={datePicker.isOpen} onOpenChange={(open) => datePicker.toggle(open)}>
       <PopoverTrigger render={<DatePickerButton />}>
         {date ? dayjs(date).format('DD/MM/YYYY') : null}
       </PopoverTrigger>
@@ -77,16 +65,12 @@ export const UsageWithPopoverRange = () => {
       return dayjs(date.from).format('DD/MM/YYYY');
     }
 
-    return `${dayjs(date.from).format(
-      'DD/MM/YYYY'
-    )} - ${dayjs(date.to).format('DD/MM/YYYY')}`;
+    return `${dayjs(date.from).format('DD/MM/YYYY')} - ${dayjs(date.to).format('DD/MM/YYYY')}`;
   };
 
   return (
     <Popover>
-      <PopoverTrigger render={<DatePickerButton className="max-w-75" />}>
-        {format()}
-      </PopoverTrigger>
+      <PopoverTrigger render={<DatePickerButton className="max-w-75" />}>{format()}</PopoverTrigger>
       <PopoverContent className="w-auto p-0" align="start">
         <Calendar
           autoFocus
@@ -106,10 +90,7 @@ export const UsageWithDialog = () => {
   const datePicker = useDisclosure();
 
   return (
-    <Dialog
-      open={datePicker.isOpen}
-      onOpenChange={(open) => datePicker.toggle(open)}
-    >
+    <Dialog open={datePicker.isOpen} onOpenChange={(open) => datePicker.toggle(open)}>
       <DialogTrigger render={<DatePickerButton />}>
         {date ? dayjs(date).format('DD/MM/YYYY') : null}
       </DialogTrigger>

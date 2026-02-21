@@ -41,12 +41,7 @@ const radioVariants = cva(
 export type RadioGroupProps = RadioGroupPrimitive.Props;
 
 export function RadioGroup({ className, ...rest }: RadioGroupProps) {
-  return (
-    <RadioGroupPrimitive
-      className={cn('flex flex-col gap-2', className)}
-      {...rest}
-    />
-  );
+  return <RadioGroupPrimitive className={cn('flex flex-col gap-2', className)} {...rest} />;
 }
 
 export type RadioProps = RadioPrimitive.Root.Props & {
@@ -58,14 +53,7 @@ export type RadioProps = RadioPrimitive.Root.Props & {
   size?: 'default' | 'sm' | 'lg';
 };
 
-export function Radio({
-  children,
-  className,
-  noLabel,
-  labelProps,
-  size,
-  ...rest
-}: RadioProps) {
+export function Radio({ children, className, noLabel, labelProps, size, ...rest }: RadioProps) {
   const Comp = noLabel ? Fragment : 'label';
   const _compId = useId();
   const id = labelProps?.id ?? _compId;

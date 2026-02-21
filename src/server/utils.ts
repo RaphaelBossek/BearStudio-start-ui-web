@@ -1,13 +1,6 @@
-import {
-  getCookie,
-  getRequestHeaders,
-  setCookie,
-} from '@tanstack/react-start/server';
+import { getCookie, getRequestHeaders, setCookie } from '@tanstack/react-start/server';
 
-import {
-  AVAILABLE_LANGUAGES,
-  DEFAULT_LANGUAGE_KEY,
-} from '@/lib/i18n/constants';
+import { AVAILABLE_LANGUAGES, DEFAULT_LANGUAGE_KEY } from '@/lib/i18n/constants';
 
 /**
  * Retrieves the user's language preference.
@@ -24,9 +17,7 @@ export const getUserLanguage = (input?: string) => {
       ?.split(',')?.[0] // Get the first language ar,en-US -> ar
       ?.split('-')?.[0]; // Get the first part en-US -> en
 
-  const language = AVAILABLE_LANGUAGES.some((l) => l.key === value)
-    ? value!
-    : DEFAULT_LANGUAGE_KEY;
+  const language = AVAILABLE_LANGUAGES.some((l) => l.key === value) ? value! : DEFAULT_LANGUAGE_KEY;
 
   setCookie('i18next', language);
 

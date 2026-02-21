@@ -1,4 +1,4 @@
-import { InitOptions } from 'i18next';
+import type { InitOptions } from 'i18next';
 import { keys } from 'remeda';
 
 import { DEFAULT_LANGUAGE_KEY, DEFAULT_NAMESPACE } from '@/lib/i18n/constants';

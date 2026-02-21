@@ -1,10 +1,8 @@
-import { Link, LinkProps } from '@tanstack/react-router';
-import { VariantProps } from 'class-variance-authority';
-import { ComponentProps } from 'react';
-
-import { cn } from '@/lib/tailwind/utils';
-
+import { Link, type LinkProps } from '@tanstack/react-router';
+import type { VariantProps } from 'class-variance-authority';
+import type { ComponentProps } from 'react';
 import { buttonVariants } from '@/components/ui/button';
+import { cn } from '@/lib/tailwind/utils';
 
 function ButtonLink({
   className,
@@ -12,17 +10,10 @@ function ButtonLink({
   variant,
   size,
   ...props
-}: VariantProps<typeof buttonVariants> &
-  ComponentProps<'a'> &
-  LinkProps & { className?: string }) {
+}: VariantProps<typeof buttonVariants> & ComponentProps<'a'> & LinkProps & { className?: string }) {
   return (
-    <Link
-      {...props}
-      className={cn(buttonVariants({ variant, size, className }))}
-    >
-      <span className={'flex min-w-0 flex-1 items-center justify-center'}>
-        {children}
-      </span>
+    <Link {...props} className={cn(buttonVariants({ variant, size, className }))}>
+      <span className={'flex min-w-0 flex-1 items-center justify-center'}>{children}</span>
     </Link>
   );
 }

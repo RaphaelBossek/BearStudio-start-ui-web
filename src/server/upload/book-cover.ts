@@ -1,8 +1,6 @@
 import { RejectUpload, route } from '@better-upload/server';
-
-import i18n from '@/lib/i18n';
-
 import { bookCoverAcceptedFileTypes } from '@/features/book/schema';
+import i18n from '@/lib/i18n';
 import { auth } from '@/server/auth';
 
 export const bookCover = route({
@@ -11,9 +9,7 @@ export const bookCover = route({
   onBeforeUpload: async ({ req, file }) => {
     const session = await auth.api.getSession(req);
     if (!session?.user) {
-      throw new RejectUpload(
-        i18n.t('book:manager.uploadErrors.NOT_AUTHENTICATED')
-      );
+      throw new RejectUpload(i18n.t('book:manager.uploadErrors.NOT_AUTHENTICATED'));
     }
 
     // Only admins should be able to update book covers

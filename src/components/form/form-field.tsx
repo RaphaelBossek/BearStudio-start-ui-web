@@ -1,8 +1,6 @@
-import { createContext, ReactNode, use, useId, useMemo } from 'react';
-
+import { createContext, type ReactNode, use, useId, useMemo } from 'react';
+import type { FormFieldSize } from '@/components/form/types';
 import { cn } from '@/lib/tailwind/utils';
-
-import { FormFieldSize } from '@/components/form/types';
 
 type FormFieldProps = {
   id?: string;
@@ -28,9 +26,7 @@ export const FormField = (props: FormFieldProps) => {
 
   return (
     <FormFieldContext value={contextValue}>
-      <div className={cn('flex flex-col gap-1.5', props.className)}>
-        {props.children}
-      </div>
+      <div className={cn('flex flex-col gap-1.5', props.className)}>{props.children}</div>
     </FormFieldContext>
   );
 };
@@ -43,9 +39,7 @@ type FormFieldContextValue = {
   size?: FormFieldSize;
 };
 
-export const FormFieldContext = createContext<FormFieldContextValue | null>(
-  null
-);
+export const FormFieldContext = createContext<FormFieldContextValue | null>(null);
 
 export const useFormField = () => {
   const fieldContext = use(FormFieldContext);

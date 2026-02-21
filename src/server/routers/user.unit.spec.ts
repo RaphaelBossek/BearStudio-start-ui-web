@@ -11,12 +11,11 @@ import {
 } from '@/server/routers/test-utils';
 import userRouter from '@/server/routers/user';
 
-const { mockRemoveUser, mockRevokeUserSessions, mockRevokeUserSession } =
-  vi.hoisted(() => ({
-    mockRemoveUser: vi.fn(),
-    mockRevokeUserSessions: vi.fn(),
-    mockRevokeUserSession: vi.fn(),
-  }));
+const { mockRemoveUser, mockRevokeUserSessions, mockRevokeUserSession } = vi.hoisted(() => ({
+  mockRemoveUser: vi.fn(),
+  mockRevokeUserSessions: vi.fn(),
+  mockRevokeUserSession: vi.fn(),
+}));
 
 vi.mock('@/server/auth', () => ({
   auth: {
@@ -24,8 +23,7 @@ vi.mock('@/server/auth', () => ({
       getSession: (...args: unknown[]) => mockGetSession(...args),
       userHasPermission: (...args: unknown[]) => mockUserHasPermission(...args),
       removeUser: (...args: unknown[]) => mockRemoveUser(...args),
-      revokeUserSessions: (...args: unknown[]) =>
-        mockRevokeUserSessions(...args),
+      revokeUserSessions: (...args: unknown[]) => mockRevokeUserSessions(...args),
       revokeUserSession: (...args: unknown[]) => mockRevokeUserSession(...args),
     },
   },
@@ -138,9 +136,7 @@ describe('user router', () => {
     it('should throw NOT_FOUND when user does not exist', async () => {
       mockDb.user.findUnique.mockResolvedValue(null);
 
-      await expect(
-        call(userRouter.getById, { id: 'nonexistent' })
-      ).rejects.toMatchObject({
+      await expect(call(userRouter.getById, { id: 'nonexistent' })).rejects.toMatchObject({
         code: 'NOT_FOUND',
       });
     });
@@ -148,9 +144,7 @@ describe('user router', () => {
     it('should throw UNAUTHORIZED when user is not authenticated', async () => {
       mockGetSession.mockResolvedValue(null);
 
-      await expect(
-        call(userRouter.getById, { id: 'target-user-1' })
-      ).rejects.toMatchObject({
+      await expect(call(userRouter.getById, { id: 'target-user-1' })).rejects.toMatchObject({
         code: 'UNAUTHORIZED',
       });
     });
@@ -174,9 +168,7 @@ describe('user router', () => {
         error: false,
       });
 
-      await expect(
-        call(userRouter.getById, { id: 'target-user-1' })
-      ).rejects.toMatchObject({
+      await expect(call(userRouter.getById, { id: 'target-user-1' })).rejects.toMatchObject({
         code: 'FORBIDDEN',
       });
     });
@@ -304,9 +296,7 @@ describe('user router', () => {
     it('should throw NOT_FOUND when target user does not exist', async () => {
       mockDb.user.findUnique.mockResolvedValue(null);
 
-      await expect(
-        call(userRouter.updateById, updateInput)
-      ).rejects.toMatchObject({
+      await expect(call(userRouter.updateById, updateInput)).rejects.toMatchObject({
         code: 'NOT_FOUND',
       });
     });
@@ -323,9 +313,7 @@ describe('user router', () => {
         })
       );
 
-      await expect(
-        call(userRouter.updateById, updateInput)
-      ).rejects.toMatchObject({
+      await expect(call(userRouter.updateById, updateInput)).rejects.toMatchObject({
         code: 'CONFLICT',
         data: { target: ['email'] },
       });
@@ -337,9 +325,7 @@ describe('user router', () => {
       });
       mockDb.user.update.mockRejectedValue(new Error('DB connection lost'));
 
-      await expect(
-        call(userRouter.updateById, updateInput)
-      ).rejects.toMatchObject({
+      await expect(call(userRouter.updateById, updateInput)).rejects.toMatchObject({
         code: 'INTERNAL_SERVER_ERROR',
       });
     });
@@ -347,9 +333,7 @@ describe('user router', () => {
     it('should throw UNAUTHORIZED when user is not authenticated', async () => {
       mockGetSession.mockResolvedValue(null);
 
-      await expect(
-        call(userRouter.updateById, updateInput)
-      ).rejects.toMatchObject({
+      await expect(call(userRouter.updateById, updateInput)).rejects.toMatchObject({
         code: 'UNAUTHORIZED',
       });
     });
@@ -379,9 +363,7 @@ describe('user router', () => {
         error: false,
       });
 
-      await expect(
-        call(userRouter.updateById, updateInput)
-      ).rejects.toMatchObject({
+      await expect(call(userRouter.updateById, updateInput)).rejects.toMatchObject({
         code: 'FORBIDDEN',
       });
     });
@@ -391,15 +373,11 @@ describe('user router', () => {
     it('should delete a user', async () => {
       mockRemoveUser.mockResolvedValue({ success: true });
 
-      await expect(
-        call(userRouter.deleteById, { id: 'target-user-1' })
-      ).resolves.toBeUndefined();
+      await expect(call(userRouter.deleteById, { id: 'target-user-1' })).resolves.toBeUndefined();
     });
 
     it('should prevent deleting yourself', async () => {
-      await expect(
-        call(userRouter.deleteById, { id: mockUser.id })
-      ).rejects.toMatchObject({
+      await expect(call(userRouter.deleteById, { id: mockUser.id })).rejects.toMatchObject({
         code: 'BAD_REQUEST',
       });
     });
@@ -407,9 +385,7 @@ describe('user router', () => {
     it('should throw INTERNAL_SERVER_ERROR when removeUser fails', async () => {
       mockRemoveUser.mockResolvedValue({ success: false });
 
-      await expect(
-        call(userRouter.deleteById, { id: 'target-user-1' })
-      ).rejects.toMatchObject({
+      await expect(call(userRouter.deleteById, { id: 'target-user-1' })).rejects.toMatchObject({
         code: 'INTERNAL_SERVER_ERROR',
       });
     });
@@ -417,9 +393,7 @@ describe('user router', () => {
     it('should throw UNAUTHORIZED when user is not authenticated', async () => {
       mockGetSession.mockResolvedValue(null);
 
-      await expect(
-        call(userRouter.deleteById, { id: 'target-user-1' })
-      ).rejects.toMatchObject({
+      await expect(call(userRouter.deleteById, { id: 'target-user-1' })).rejects.toMatchObject({
         code: 'UNAUTHORIZED',
       });
     });
@@ -443,9 +417,7 @@ describe('user router', () => {
         error: false,
       });
 
-      await expect(
-        call(userRouter.deleteById, { id: 'target-user-1' })
-      ).rejects.toMatchObject({
+      await expect(call(userRouter.deleteById, { id: 'target-user-1' })).rejects.toMatchObject({
         code: 'FORBIDDEN',
       });
     });
@@ -533,9 +505,7 @@ describe('user router', () => {
     });
 
     it('should prevent revoking own sessions', async () => {
-      await expect(
-        call(userRouter.revokeUserSessions, { id: mockUser.id })
-      ).rejects.toMatchObject({
+      await expect(call(userRouter.revokeUserSessions, { id: mockUser.id })).rejects.toMatchObject({
         code: 'BAD_REQUEST',
       });
     });

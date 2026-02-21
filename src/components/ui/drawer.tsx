@@ -1,5 +1,5 @@
 import { DrawerPreview as DrawerPrimitive } from '@base-ui/react/drawer';
-import * as React from 'react';
+import type * as React from 'react';
 
 import { cn } from '@/lib/tailwind/utils';
 
@@ -19,10 +19,7 @@ function DrawerClose({ ...props }: DrawerPrimitive.Close.Props) {
   return <DrawerPrimitive.Close data-slot="drawer-close" {...props} />;
 }
 
-function DrawerOverlay({
-  className,
-  ...props
-}: DrawerPrimitive.Backdrop.Props) {
+function DrawerOverlay({ className, ...props }: DrawerPrimitive.Backdrop.Props) {
   return (
     <DrawerPrimitive.Backdrop
       data-slot="drawer-overlay"
@@ -52,10 +49,7 @@ function DrawerContent({
   return (
     <DrawerPortal data-slot="drawer-portal" keepMounted={keepMounted}>
       <DrawerOverlay forceRender={forceRenderOverlay} />
-      <DrawerPrimitive.Viewport
-        data-slot="drawer-viewport"
-        className="fixed inset-0 z-50"
-      >
+      <DrawerPrimitive.Viewport data-slot="drawer-viewport" className="fixed inset-0 z-50">
         <DrawerPrimitive.Popup
           data-slot="drawer-content"
           className={cn(
@@ -112,13 +106,7 @@ function DrawerHeader({ className, ...props }: React.ComponentProps<'div'>) {
 }
 
 function DrawerBody({ className, ...props }: React.ComponentProps<'div'>) {
-  return (
-    <div
-      data-slot="drawer-body"
-      className={cn('flex flex-col px-4', className)}
-      {...props}
-    />
-  );
+  return <div data-slot="drawer-body" className={cn('flex flex-col px-4', className)} {...props} />;
 }
 
 function DrawerFooter({ className, ...props }: React.ComponentProps<'div'>) {
@@ -141,10 +129,7 @@ function DrawerTitle({ className, ...props }: DrawerPrimitive.Title.Props) {
   );
 }
 
-function DrawerDescription({
-  className,
-  ...props
-}: DrawerPrimitive.Description.Props) {
+function DrawerDescription({ className, ...props }: DrawerPrimitive.Description.Props) {
   return (
     <DrawerPrimitive.Description
       data-slot="drawer-description"

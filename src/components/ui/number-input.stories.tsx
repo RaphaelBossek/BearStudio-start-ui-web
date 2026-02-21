@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react-vite';
+import type { Meta } from '@storybook/react-vite';
 import { useState } from 'react';
 
 import { NumberInput } from '@/components/ui/number-input';
@@ -96,9 +96,8 @@ export const Locale = () => {
   return (
     <div className="flex flex-col gap-2">
       <p>
-        The default locale is the one provided by the i18next provider. Take a
-        look at the "Currency" story and change the language in the Storybook
-        addon.
+        The default locale is the one provided by the i18next provider. Take a look at the
+        "Currency" story and change the language in the Storybook addon.
       </p>
       <NumberInput
         locale="fr"

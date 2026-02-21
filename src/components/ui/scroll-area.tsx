@@ -8,8 +8,7 @@ function ScrollArea({
   children,
   orientation,
   ...props
-}: ScrollAreaPrimitive.Root.Props &
-  Pick<ScrollAreaPrimitive.Scrollbar.Props, 'orientation'>) {
+}: ScrollAreaPrimitive.Root.Props & Pick<ScrollAreaPrimitive.Scrollbar.Props, 'orientation'>) {
   const { i18n } = useTranslation();
   return (
     <ScrollAreaPrimitive.Root
@@ -41,10 +40,8 @@ function ScrollBar({
       orientation={orientation}
       className={cn(
         'flex touch-none p-px transition-colors select-none',
-        orientation === 'vertical' &&
-          'h-full w-2.5 border-l border-l-transparent',
-        orientation === 'horizontal' &&
-          'h-2.5 flex-col border-t border-t-transparent',
+        orientation === 'vertical' && 'h-full w-2.5 border-l border-l-transparent',
+        orientation === 'horizontal' && 'h-2.5 flex-col border-t border-t-transparent',
         className
       )}
       {...props}

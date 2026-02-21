@@ -1,12 +1,12 @@
 import { useRouter } from '@tanstack/react-router';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 import { PageError } from '@/components/errors/page-error';
 import { Spinner } from '@/components/ui/spinner';
 
 import { authClient } from '@/features/auth/client';
 import { PageOnboarding } from '@/features/auth/page-onboarding';
-import { Permission, Role } from '@/features/auth/permissions';
+import type { Permission, Role } from '@/features/auth/permissions';
 
 export const GuardAuthenticated = ({
   children,

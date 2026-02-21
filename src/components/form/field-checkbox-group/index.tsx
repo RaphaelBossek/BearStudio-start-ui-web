@@ -2,8 +2,8 @@ import { FormFieldError } from '@/components/form';
 import { useFormField } from '@/components/form/form-field';
 import { FormFieldContainer } from '@/components/form/form-field-container';
 import { useFormFieldController } from '@/components/form/form-field-controller/context';
-import { FieldProps } from '@/components/form/types';
-import { Checkbox, CheckboxProps } from '@/components/ui/checkbox';
+import type { FieldProps } from '@/components/form/types';
+import { Checkbox, type CheckboxProps } from '@/components/ui/checkbox';
 import { CheckboxGroup } from '@/components/ui/checkbox-group';
 
 type CheckboxOption = Omit<CheckboxProps, 'children' | 'value' | 'render'> & {

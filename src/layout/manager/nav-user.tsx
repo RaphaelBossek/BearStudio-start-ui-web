@@ -89,9 +89,7 @@ export function NavUser() {
                   </Avatar>
                   <div className="grid flex-1 text-left text-sm leading-tight">
                     <span className="truncate font-semibold">{user.name}</span>
-                    <span className="truncate text-xs text-muted-foreground">
-                      {user.email}
-                    </span>
+                    <span className="truncate text-xs text-muted-foreground">{user.email}</span>
                   </div>
                 </div>
               </DropdownMenuLabel>
@@ -99,12 +97,7 @@ export function NavUser() {
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem
-                render={
-                  <Link
-                    to="/manager/account"
-                    onClick={() => setOpenMobile(false)}
-                  />
-                }
+                render={<Link to="/manager/account" onClick={() => setOpenMobile(false)} />}
               >
                 <CircleUserIcon />
                 {t('layout:nav.account')}
@@ -117,15 +110,9 @@ export function NavUser() {
                   key={item}
                   value={item}
                   icon={match(theme as (typeof themes)[number])
-                    .with('system', () => (
-                      <SunMoonIcon className="text-muted-foreground" />
-                    ))
-                    .with('light', () => (
-                      <SunIcon className="text-muted-foreground" />
-                    ))
-                    .with('dark', () => (
-                      <MoonIcon className="text-muted-foreground" />
-                    ))
+                    .with('system', () => <SunMoonIcon className="text-muted-foreground" />)
+                    .with('light', () => <SunIcon className="text-muted-foreground" />)
+                    .with('dark', () => <MoonIcon className="text-muted-foreground" />)
                     .exhaustive()}
                 >
                   {t(`common:themes.values.${item}`)}
@@ -147,13 +134,7 @@ export function NavUser() {
                 </DropdownMenuItem>
               </WithPermissions>
               <DropdownMenuItem
-                render={
-                  <a
-                    href="/api/openapi/app"
-                    target="_blank"
-                    rel="noreferrer noopener"
-                  />
-                }
+                render={<a href="/api/openapi/app" target="_blank" rel="noreferrer noopener" />}
               >
                 <BookOpenIcon />
                 {t('layout:nav.apiDocumentation')}
@@ -168,10 +149,7 @@ export function NavUser() {
             </ConfirmSignOut>
             <DropdownMenuSeparator />
             <BuildInfoDrawer nativeButtonTrigger={false}>
-              <DropdownMenuItem
-                closeOnClick={false}
-                className="py-1 text-xs text-muted-foreground"
-              >
+              <DropdownMenuItem closeOnClick={false} className="py-1 text-xs text-muted-foreground">
                 <BuildInfoVersion />
               </DropdownMenuItem>
             </BuildInfoDrawer>

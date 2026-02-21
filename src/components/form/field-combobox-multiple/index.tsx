@@ -1,9 +1,4 @@
-import {
-  type ComponentProps,
-  Fragment,
-  type ReactElement,
-  type ReactNode,
-} from 'react';
+import { type ComponentProps, Fragment, type ReactElement, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { useFormField } from '@/components/form/form-field';
@@ -103,20 +98,14 @@ export const FieldComboboxMultiple = <TItem extends Item>(
           </ComboboxValue>
         </ComboboxChips>
         <ComboboxContent anchor={anchor}>
-          <ComboboxEmpty>
-            {emptyContent ?? t('components:combobox.noItemsFound')}
-          </ComboboxEmpty>
+          <ComboboxEmpty>{emptyContent ?? t('components:combobox.noItemsFound')}</ComboboxEmpty>
 
           {children ? (
             <ComboboxList>{children}</ComboboxList>
           ) : (
             <ComboboxList>
               {(item: TItem) => (
-                <ComboboxItem
-                  value={item}
-                  key={item.value}
-                  disabled={item.disabled}
-                >
+                <ComboboxItem value={item} key={item.value} disabled={item.disabled}>
                   {item.label}
                 </ComboboxItem>
               )}

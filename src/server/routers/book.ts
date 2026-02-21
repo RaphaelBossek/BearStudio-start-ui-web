@@ -2,7 +2,7 @@ import { ORPCError } from '@orpc/client';
 import { z } from 'zod';
 
 import { zBook, zFormFieldsBook } from '@/features/book/schema';
-import { Prisma } from '@/server/db/generated/client';
+import type { Prisma } from '@/server/db/generated/client';
 import { protectedProcedure } from '@/server/orpc';
 
 const tags = ['books'];
@@ -70,7 +70,7 @@ export default {
         }),
       ]);
 
-      let nextCursor: typeof input.cursor | undefined = undefined;
+      let nextCursor: typeof input.cursor | undefined;
       if (items.length > input.limit) {
         const nextItem = items.pop();
         nextCursor = nextItem?.id;

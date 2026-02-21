@@ -6,7 +6,7 @@ import {
   RouterProvider,
 } from '@tanstack/react-router';
 import { MailIcon } from 'lucide-react';
-import { ReactNode, useMemo } from 'react';
+import { type ReactNode, useMemo } from 'react';
 
 import { ButtonLink } from '@/components/ui/button-link';
 
@@ -125,18 +125,14 @@ export const FixedWidth = () => {
       </ButtonLink>
       <ButtonLink to="/" className="w-32">
         <MailIcon />
-        <span className="flex-1 truncate text-left">
-          Button with a long label
-        </span>
+        <span className="flex-1 truncate text-left">Button with a long label</span>
       </ButtonLink>
       <ButtonLink to="/" className="w-32">
         <span className="flex-1 truncate text-left">Button</span>
         <MailIcon />
       </ButtonLink>
       <ButtonLink to="/" className="w-32">
-        <span className="flex-1 truncate text-left">
-          Button with a long label
-        </span>
+        <span className="flex-1 truncate text-left">Button with a long label</span>
         <MailIcon />
       </ButtonLink>
     </div>

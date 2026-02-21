@@ -1,4 +1,4 @@
-import { ReactNode, useLayoutEffect } from 'react';
+import { type ReactNode, useLayoutEffect } from 'react';
 import { create } from 'zustand';
 
 import { MainNavDesktop } from '@/layout/app/main-nav-desktop';

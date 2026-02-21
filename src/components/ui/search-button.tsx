@@ -1,5 +1,5 @@
 import { SearchIcon } from 'lucide-react';
-import { ComponentProps, ReactNode, useState } from 'react';
+import { type ComponentProps, type ReactNode, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Button } from '@/components/ui/button';
@@ -44,15 +44,11 @@ const SearchButtonComponent = ({
     >
       <DrawerTrigger render={<Button size="icon" variant="ghost" {...props} />}>
         {loading ? <Spinner /> : <SearchIcon />}
-        <span className="sr-only">
-          {label || t('components:searchButton.label')}
-        </span>
+        <span className="sr-only">{label || t('components:searchButton.label')}</span>
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader className="sr-only">
-          <DrawerTitle>
-            {label || t('components:searchButton.label')}
-          </DrawerTitle>
+          <DrawerTitle>{label || t('components:searchButton.label')}</DrawerTitle>
           <DrawerDescription></DrawerDescription>
         </DrawerHeader>
         <DrawerBody className="py-4">

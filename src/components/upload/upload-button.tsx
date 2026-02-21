@@ -1,22 +1,14 @@
 import {
   type ClientUploadError,
   type FileUploadInfo,
-  uploadFile,
   type UploadStatus,
+  uploadFile,
 } from '@better-upload/client';
 import { useMutation } from '@tanstack/react-query';
 import { UploadIcon } from 'lucide-react';
-import {
-  type ChangeEvent,
-  type ComponentProps,
-  type ReactElement,
-  useId,
-  useRef,
-} from 'react';
-
-import { cn } from '@/lib/tailwind/utils';
-
+import { type ChangeEvent, type ComponentProps, type ReactElement, useId, useRef } from 'react';
 import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/tailwind/utils';
 
 import type { UploadRoutes } from '@/routes/api/upload';
 
@@ -26,15 +18,11 @@ export type UploadButtonProps = {
    * Called only if the file was uploaded successfully.
    */
   onSuccess?: (file: FileUploadInfo<'complete'>) => void;
-  onUploadStateChange?: <T extends UploadStatus>(
-    file: FileUploadInfo<T>
-  ) => void;
+  onUploadStateChange?: <T extends UploadStatus>(file: FileUploadInfo<T>) => void;
   onError?: (error: Error | ClientUploadError) => void;
   inputProps?: ComponentProps<'input'>;
   icon?: ReactElement;
-  getMetadata?: (
-    file: File
-  ) => NonNullable<Parameters<typeof uploadFile>[0]['metadata']>;
+  getMetadata?: (file: File) => NonNullable<Parameters<typeof uploadFile>[0]['metadata']>;
 } & Omit<ComponentProps<typeof Button>, 'onChange'>;
 
 export const UploadButton = ({

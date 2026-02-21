@@ -1,9 +1,7 @@
 import { t } from 'i18next';
 import { z } from 'zod';
-
-import { zu } from '@/lib/zod/zod-utils';
-
 import { zGenre } from '@/features/genre/schema';
+import { zu } from '@/lib/zod/zod-utils';
 
 export type Book = z.infer<ReturnType<typeof zBook>>;
 
@@ -25,9 +23,4 @@ export const zFormFieldsBook = () =>
     .pick({ title: true, author: true, publisher: true, coverId: true })
     .extend({ genreId: zu.fieldText.required() });
 
-export const bookCoverAcceptedFileTypes = [
-  'image/png',
-  'image/jpeg',
-  'image/webp',
-  'image/gif',
-];
+export const bookCoverAcceptedFileTypes = ['image/png', 'image/jpeg', 'image/webp', 'image/gif'];

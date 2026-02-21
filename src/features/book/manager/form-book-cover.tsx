@@ -4,24 +4,14 @@ import { useFormContext, useWatch } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { join } from 'remeda';
 import { toast } from 'sonner';
-
-import { orpc } from '@/lib/orpc/client';
-
-import {
-  FormField,
-  FormFieldController,
-  FormFieldError,
-} from '@/components/form';
+import { FormField, FormFieldController, FormFieldError } from '@/components/form';
 import { Button } from '@/components/ui/button';
 import { UploadButton } from '@/components/upload/upload-button';
-
 import { envClient } from '@/env/client';
 import { BookCover } from '@/features/book/book-cover';
-import {
-  bookCoverAcceptedFileTypes,
-  FormFieldsBook,
-} from '@/features/book/schema';
+import { bookCoverAcceptedFileTypes, type FormFieldsBook } from '@/features/book/schema';
 import { openDemoModeDrawer } from '@/features/demo/demo-mode-drawer';
+import { orpc } from '@/lib/orpc/client';
 
 export const FormBookCover = () => {
   const { t } = useTranslation(['book']);

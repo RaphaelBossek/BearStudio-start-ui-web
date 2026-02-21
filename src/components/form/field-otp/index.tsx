@@ -5,12 +5,8 @@ import { useFormField } from '@/components/form/form-field';
 import { FormFieldContainer } from '@/components/form/form-field-container';
 import { useFormFieldController } from '@/components/form/form-field-controller/context';
 import { FormFieldError } from '@/components/form/form-field-error';
-import { FieldProps } from '@/components/form/types';
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSlot,
-} from '@/components/ui/input-otp';
+import type { FieldProps } from '@/components/form/types';
+import { InputOTP, InputOTPGroup, InputOTPSlot } from '@/components/ui/input-otp';
 
 export const FieldOtp = (
   props: FieldProps<

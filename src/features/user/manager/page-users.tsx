@@ -4,10 +4,6 @@ import { Link, useRouter } from '@tanstack/react-router';
 import dayjs from 'dayjs';
 import { PlusIcon } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-
-import { orpc } from '@/lib/orpc/client';
-import { cn } from '@/lib/tailwind/utils';
-
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -24,13 +20,14 @@ import {
 import { ResponsiveIconButtonLink } from '@/components/ui/responsive-icon-button-link';
 import { SearchButton } from '@/components/ui/search-button';
 import { SearchInput } from '@/components/ui/search-input';
-
 import {
   PageLayout,
   PageLayoutContent,
   PageLayoutTopBar,
   PageLayoutTopBarTitle,
 } from '@/layout/manager/page-layout';
+import { orpc } from '@/lib/orpc/client';
+import { cn } from '@/lib/tailwind/utils';
 
 export const PageUsers = (props: { search: { searchTerm?: string } }) => {
   const { t } = useTranslation(['user']);
@@ -88,27 +85,15 @@ export const PageUsers = (props: { search: { searchTerm?: string } }) => {
           </ResponsiveIconButtonLink>
         }
       >
-        <PageLayoutTopBarTitle>
-          {t('user:manager.list.title')}
-        </PageLayoutTopBarTitle>
-        <SearchButton
-          {...searchInputProps}
-          className="-mx-2 md:hidden"
-          size="icon-sm"
-        />
-        <SearchInput
-          {...searchInputProps}
-          size="sm"
-          className="max-w-2xs max-md:hidden"
-        />
+        <PageLayoutTopBarTitle>{t('user:manager.list.title')}</PageLayoutTopBarTitle>
+        <SearchButton {...searchInputProps} className="-mx-2 md:hidden" size="icon-sm" />
+        <SearchInput {...searchInputProps} size="sm" className="max-w-2xs max-md:hidden" />
       </PageLayoutTopBar>
       <PageLayoutContent className="pb-20">
         <DataList>
           {ui
             .match('pending', () => <DataListLoadingState />)
-            .match('error', () => (
-              <DataListErrorState retry={() => usersQuery.refetch()} />
-            ))
+            .match('error', () => <DataListErrorState retry={() => usersQuery.refetch()} />)
             .match('empty', () => <DataListEmptyState />)
             .match('empty-search', ({ searchTerm }) => (
               <DataListEmptyState searchTerm={searchTerm} />
@@ -136,14 +121,8 @@ export const PageUsers = (props: { search: { searchTerm?: string } }) => {
                   <DataListRow key={item.id} withHover>
                     <DataListCell className="flex-none">
                       <Avatar>
-                        <AvatarImage
-                          src={item.image ?? undefined}
-                          alt={item.name ?? ''}
-                        />
-                        <AvatarFallback
-                          variant="boring"
-                          name={item.name ?? ''}
-                        />
+                        <AvatarImage src={item.image ?? undefined} alt={item.name ?? ''} />
+                        <AvatarFallback variant="boring" name={item.name ?? ''} />
                       </Avatar>
                     </DataListCell>
                     <DataListCell>
@@ -158,11 +137,7 @@ export const PageUsers = (props: { search: { searchTerm?: string } }) => {
                       </DataListText>
                     </DataListCell>
                     <DataListCell className="flex-[0.5] max-sm:hidden">
-                      <Badge
-                        variant={
-                          item.role === 'admin' ? 'default' : 'secondary'
-                        }
-                      >
+                      <Badge variant={item.role === 'admin' ? 'default' : 'secondary'}>
                         {item.role ?? '-'}
                       </Badge>
                     </DataListCell>

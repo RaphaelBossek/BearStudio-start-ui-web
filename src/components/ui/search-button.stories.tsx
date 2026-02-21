@@ -12,10 +12,7 @@ export function Default() {
   const [searchTerm, setSearchTerm] = useState('');
   return (
     <div className="flex flex-col gap-4">
-      <SearchButton
-        value={searchTerm}
-        onChange={(value) => setSearchTerm(value ?? '')}
-      />
+      <SearchButton value={searchTerm} onChange={(value) => setSearchTerm(value ?? '')} />
       <p className="text-sm text-muted-foreground">
         {searchTerm ? `Search term is ${searchTerm}` : 'No search term'}
       </p>

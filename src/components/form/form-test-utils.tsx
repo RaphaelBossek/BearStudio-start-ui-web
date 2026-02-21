@@ -1,13 +1,13 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import {
-  FieldValues,
-  SubmitHandler,
+  type FieldValues,
+  type SubmitHandler,
+  type UseFormProps,
+  type UseFormReturn,
   useForm,
-  UseFormProps,
-  UseFormReturn,
 } from 'react-hook-form';
-import { z, ZodType } from 'zod';
+import type { ZodType, z } from 'zod';
 
 import { Form } from '@/components/form';
 
@@ -30,9 +30,7 @@ export const FormMocked = <T extends ZodType<FieldValues>>({
   return (
     <Form
       {...form}
-      onSubmit={
-        onSubmit ? form.handleSubmit((values) => onSubmit(values)) : undefined
-      }
+      onSubmit={onSubmit ? form.handleSubmit((values) => onSubmit(values)) : undefined}
     >
       {children({ form })}
       <button type="submit">Submit</button>

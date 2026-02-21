@@ -1,13 +1,7 @@
 import { CheckIcon, CircleAlertIcon, CopyIcon } from 'lucide-react';
-import { PropsWithChildren, useState } from 'react';
-import {
-  ErrorBoundary as ReactErrorBoundary,
-  FallbackProps,
-} from 'react-error-boundary';
+import { type PropsWithChildren, useState } from 'react';
+import { type FallbackProps, ErrorBoundary as ReactErrorBoundary } from 'react-error-boundary';
 import { useTranslation } from 'react-i18next';
-
-import { useClipboard } from '@/hooks/use-clipboard';
-
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import {
@@ -20,6 +14,7 @@ import {
   ResponsiveDrawerTitle,
   ResponsiveDrawerTrigger,
 } from '@/components/ui/responsive-drawer';
+import { useClipboard } from '@/hooks/use-clipboard';
 
 const ErrorFallback = (props: FallbackProps) => {
   const { t } = useTranslation(['common', 'components']);
@@ -43,12 +38,8 @@ const ErrorFallback = (props: FallbackProps) => {
       >
         <CircleAlertIcon className="size-4 @max-2xs:absolute @max-2xs:top-1/2 @max-2xs:left-1/2 @max-2xs:-translate-x-1/2 @max-2xs:-translate-y-1/2!" />
         <AlertTitle className="flex flex-wrap items-center gap-2 @max-2xs:opacity-0">
-          <span className="line-clamp-1 flex-1">
-            {t('components:errorBoundary.title')}
-          </span>
-          <ResponsiveDrawerTrigger
-            render={<Button variant="secondary" size="xs" />}
-          >
+          <span className="line-clamp-1 flex-1">{t('components:errorBoundary.title')}</span>
+          <ResponsiveDrawerTrigger render={<Button variant="secondary" size="xs" />}>
             {t('components:errorBoundary.details')}
           </ResponsiveDrawerTrigger>
         </AlertTitle>
@@ -58,9 +49,7 @@ const ErrorFallback = (props: FallbackProps) => {
       </Alert>
       <ResponsiveDrawerContent>
         <ResponsiveDrawerHeader>
-          <ResponsiveDrawerTitle>
-            {t('components:errorBoundary.title')}
-          </ResponsiveDrawerTitle>
+          <ResponsiveDrawerTitle>{t('components:errorBoundary.title')}</ResponsiveDrawerTitle>
           <ResponsiveDrawerDescription className="text-xs">
             {t('components:errorBoundary.description')}
           </ResponsiveDrawerDescription>
@@ -73,11 +62,7 @@ const ErrorFallback = (props: FallbackProps) => {
         <ResponsiveDrawerFooter>
           <Button
             variant="secondary"
-            onClick={() =>
-              copyToClipboard(
-                errorMessage || t('components:errorBoundary.unknown')
-              )
-            }
+            onClick={() => copyToClipboard(errorMessage || t('components:errorBoundary.unknown'))}
           >
             {isCopied ? <CheckIcon /> : <CopyIcon />}
             {isCopied

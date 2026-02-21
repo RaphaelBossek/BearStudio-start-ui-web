@@ -1,18 +1,9 @@
 import { SearchIcon, XIcon } from 'lucide-react';
-import React, {
-  ComponentProps,
-  useEffect,
-  useEffectEvent,
-  useRef,
-  useState,
-} from 'react';
+import type React from 'react';
+import { type ComponentProps, useEffect, useEffectEvent, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { mergeRefs } from 'react-merge-refs';
-
-import { cn } from '@/lib/tailwind/utils';
-import { useValueHasChanged } from '@/hooks/use-value-has-changed';
-
-import { Input } from '@/components/ui/input';
+import type { Input } from '@/components/ui/input';
 import {
   InputGroup,
   InputGroupAddon,
@@ -20,6 +11,8 @@ import {
   InputGroupInput,
 } from '@/components/ui/input-group';
 import { Spinner } from '@/components/ui/spinner';
+import { useValueHasChanged } from '@/hooks/use-value-has-changed';
+import { cn } from '@/lib/tailwind/utils';
 
 type CustomProps = {
   value?: string;
@@ -89,15 +82,8 @@ export const SearchInput = ({
     if (loading) return <Spinner />;
     if (!disabled && search)
       return (
-        <InputGroupButton
-          onClick={handleClear}
-          variant="ghost"
-          size="icon-xs"
-          className="mr-0.5"
-        >
-          <span className="sr-only">
-            {clearLabel ?? t('components:searchInput.clear')}
-          </span>
+        <InputGroupButton onClick={handleClear} variant="ghost" size="icon-xs" className="mr-0.5">
+          <span className="sr-only">{clearLabel ?? t('components:searchInput.clear')}</span>
           <XIcon />
         </InputGroupButton>
       );

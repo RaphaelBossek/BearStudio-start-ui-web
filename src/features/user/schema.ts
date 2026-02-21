@@ -1,9 +1,7 @@
 import { t } from 'i18next';
 import { z } from 'zod';
-
-import { zu } from '@/lib/zod/zod-utils';
-
 import { zRole } from '@/features/auth/permissions';
+import { zu } from '@/lib/zod/zod-utils';
 
 export type User = z.infer<ReturnType<typeof zUser>>;
 export const zUser = () =>
@@ -13,9 +11,7 @@ export const zUser = () =>
     email: zu.fieldText.required().pipe(
       z.email({
         error: (issue) =>
-          issue.input
-            ? t('user:common.email.invalid')
-            : t('user:common.email.required'),
+          issue.input ? t('user:common.email.invalid') : t('user:common.email.required'),
       })
     ),
     emailVerified: z.boolean(),

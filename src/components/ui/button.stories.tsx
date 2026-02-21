@@ -38,13 +38,7 @@ export const Sizes = () => {
 export const Render = () => {
   return (
     <Button
-      render={
-        <a
-          href="https://start-ui.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-        />
-      }
+      render={<a href="https://start-ui.com/" target="_blank" rel="noopener noreferrer" />}
       nativeButton={false}
     >
       Render as Anchor
@@ -103,18 +97,14 @@ export const FixedWidth = () => {
       </Button>
       <Button className="w-32">
         <MailIcon />
-        <span className="flex-1 truncate text-left">
-          Button with a long label
-        </span>
+        <span className="flex-1 truncate text-left">Button with a long label</span>
       </Button>
       <Button className="w-32">
         <span className="flex-1 truncate text-left">Button</span>
         <MailIcon />
       </Button>
       <Button className="w-32">
-        <span className="flex-1 truncate text-left">
-          Button with a long label
-        </span>
+        <span className="flex-1 truncate text-left">Button with a long label</span>
         <MailIcon />
       </Button>
     </div>

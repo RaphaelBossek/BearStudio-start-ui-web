@@ -20,11 +20,7 @@ test('update value', async () => {
       {({ form }) => (
         <FormField>
           <FormFieldLabel>Name</FormFieldLabel>
-          <FormFieldController
-            type="textarea"
-            control={form.control}
-            name="name"
-          />
+          <FormFieldController type="textarea" control={form.control} name="name" />
         </FormField>
       )}
     </FormMocked>
@@ -53,11 +49,7 @@ test('default value', async () => {
       {({ form }) => (
         <FormField>
           <FormFieldLabel>Name</FormFieldLabel>
-          <FormFieldController
-            type="textarea"
-            control={form.control}
-            name="name"
-          />
+          <FormFieldController type="textarea" control={form.control} name="name" />
         </FormField>
       )}
     </FormMocked>
@@ -81,12 +73,7 @@ test('disabled', async () => {
       {({ form }) => (
         <FormField>
           <FormFieldLabel>Name</FormFieldLabel>
-          <FormFieldController
-            type="textarea"
-            control={form.control}
-            name="name"
-            disabled
-          />
+          <FormFieldController type="textarea" control={form.control} name="name" disabled />
         </FormField>
       )}
     </FormMocked>
@@ -114,12 +101,7 @@ test('readOnly', async () => {
       {({ form }) => (
         <FormField>
           <FormFieldLabel>Name</FormFieldLabel>
-          <FormFieldController
-            type="textarea"
-            control={form.control}
-            name="name"
-            readOnly
-          />
+          <FormFieldController type="textarea" control={form.control} name="name" readOnly />
         </FormField>
       )}
     </FormMocked>

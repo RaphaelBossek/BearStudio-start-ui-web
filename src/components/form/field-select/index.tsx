@@ -58,11 +58,7 @@ export const FieldSelect = <TItem extends Item>(
           {children ?? (
             <SelectGroup>
               {rest.items.map((item) => (
-                <SelectItem
-                  value={item.value}
-                  key={item.value}
-                  disabled={item.disabled}
-                >
+                <SelectItem value={item.value} key={item.value} disabled={item.disabled}>
                   {item.label}
                 </SelectItem>
               ))}

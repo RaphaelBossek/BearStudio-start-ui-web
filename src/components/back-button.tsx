@@ -1,10 +1,8 @@
 import { ArrowLeftIcon } from 'lucide-react';
-import { ComponentProps } from 'react';
+import type { ComponentProps } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import { useNavigateBack } from '@/hooks/use-navigate-back';
-
 import { ButtonLink } from '@/components/ui/button-link';
+import { useNavigateBack } from '@/hooks/use-navigate-back';
 
 export const BackButton = ({
   children,

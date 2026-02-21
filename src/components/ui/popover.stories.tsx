@@ -3,9 +3,6 @@ import type { Meta } from '@storybook/react-vite';
 import { useForm } from 'react-hook-form';
 import { useDisclosure } from 'react-use-disclosure';
 import { z } from 'zod';
-
-import { zu } from '@/lib/zod/zod-utils';
-
 import {
   Form,
   FormField,
@@ -25,6 +22,7 @@ import {
   PopoverTitle,
   PopoverTrigger,
 } from '@/components/ui/popover';
+import { zu } from '@/lib/zod/zod-utils';
 
 export default {
   title: 'Popover',
@@ -44,10 +42,7 @@ export const Controlled = () => {
 
   return (
     <div className="flex gap-8">
-      <Popover
-        open={popover.isOpen}
-        onOpenChange={(open) => popover.toggle(open)}
-      >
+      <Popover open={popover.isOpen} onOpenChange={(open) => popover.toggle(open)}>
         <PopoverTrigger>The popover will mount here</PopoverTrigger>
         <PopoverContent>The content</PopoverContent>
       </Popover>
@@ -123,15 +118,11 @@ export const WithForm = () => {
 export const WithHeaderAndDescription = () => {
   return (
     <Popover>
-      <PopoverTrigger render={<Button variant="secondary" />}>
-        Open popover
-      </PopoverTrigger>
+      <PopoverTrigger render={<Button variant="secondary" />}>Open popover</PopoverTrigger>
       <PopoverContent className="w-80">
         <PopoverHeader>
           <PopoverTitle>Dimensions</PopoverTitle>
-          <PopoverDescription>
-            Set the dimensions for the layer.
-          </PopoverDescription>
+          <PopoverDescription>Set the dimensions for the layer.</PopoverDescription>
         </PopoverHeader>
         <div className="grid gap-2">
           <div className="grid grid-cols-3 items-center gap-4">
@@ -140,11 +131,7 @@ export const WithHeaderAndDescription = () => {
           </div>
           <div className="grid grid-cols-3 items-center gap-4">
             <Label htmlFor="maxWidth">Max. width</Label>
-            <Input
-              id="maxWidth"
-              defaultValue="300px"
-              className="col-span-2 h-8"
-            />
+            <Input id="maxWidth" defaultValue="300px" className="col-span-2 h-8" />
           </div>
           <div className="grid grid-cols-3 items-center gap-4">
             <Label htmlFor="height">Height</Label>
@@ -152,11 +139,7 @@ export const WithHeaderAndDescription = () => {
           </div>
           <div className="grid grid-cols-3 items-center gap-4">
             <Label htmlFor="maxHeight">Max. height</Label>
-            <Input
-              id="maxHeight"
-              defaultValue="none"
-              className="col-span-2 h-8"
-            />
+            <Input id="maxHeight" defaultValue="none" className="col-span-2 h-8" />
           </div>
         </div>
       </PopoverContent>
@@ -168,27 +151,19 @@ export const Placements = () => {
   return (
     <div className="flex min-h-[300px] items-center justify-center gap-4">
       <Popover>
-        <PopoverTrigger render={<Button variant="secondary" />}>
-          Top
-        </PopoverTrigger>
+        <PopoverTrigger render={<Button variant="secondary" />}>Top</PopoverTrigger>
         <PopoverContent side="top">Popover on top</PopoverContent>
       </Popover>
       <Popover>
-        <PopoverTrigger render={<Button variant="secondary" />}>
-          Right
-        </PopoverTrigger>
+        <PopoverTrigger render={<Button variant="secondary" />}>Right</PopoverTrigger>
         <PopoverContent side="right">Popover on right</PopoverContent>
       </Popover>
       <Popover>
-        <PopoverTrigger render={<Button variant="secondary" />}>
-          Bottom
-        </PopoverTrigger>
+        <PopoverTrigger render={<Button variant="secondary" />}>Bottom</PopoverTrigger>
         <PopoverContent side="bottom">Popover on bottom</PopoverContent>
       </Popover>
       <Popover>
-        <PopoverTrigger render={<Button variant="secondary" />}>
-          Left
-        </PopoverTrigger>
+        <PopoverTrigger render={<Button variant="secondary" />}>Left</PopoverTrigger>
         <PopoverContent side="left">Popover on left</PopoverContent>
       </Popover>
     </div>

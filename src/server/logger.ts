@@ -11,8 +11,7 @@ export const logger = envServer.LOGGER_PRETTY
   ? pino(
       options,
       pretty({
-        ignore:
-          'scope,type,path,pid,hostname,requestId,durationMs,userId,errorCode,errorMessage',
+        ignore: 'scope,type,path,pid,hostname,requestId,durationMs,userId,errorCode,errorMessage',
         messageFormat: (log, messageKey) => {
           const {
             requestId,
@@ -35,9 +34,7 @@ export const logger = envServer.LOGGER_PRETTY
                 .string()
                 .optional()
                 .catch(undefined)
-                .transform((v) =>
-                  v ? `👤 ${cyan(v)} - ` : magenta('🕶️  Anonymous ')
-                ),
+                .transform((v) => (v ? `👤 ${cyan(v)} - ` : magenta('🕶️  Anonymous '))),
               scope: z
                 .string()
                 .optional()
@@ -47,9 +44,7 @@ export const logger = envServer.LOGGER_PRETTY
                 .string()
                 .optional()
                 .catch(undefined)
-                .transform((v) =>
-                  v ? `${green(v.toLocaleUpperCase())} on ` : ''
-                ),
+                .transform((v) => (v ? `${green(v.toLocaleUpperCase())} on ` : '')),
               path: z
                 .string()
                 .optional()
@@ -78,8 +73,7 @@ export const logger = envServer.LOGGER_PRETTY
             })
             .parse({ ...log, message: log[messageKey] });
 
-          const error =
-            errorCode || errorMessage ? `· ${errorCode}${errorMessage}` : '';
+          const error = errorCode || errorMessage ? `· ${errorCode}${errorMessage}` : '';
 
           return black(
             `${userId}${requestId}${type}${path}· ${message}${error}${scope}${durationMs}`

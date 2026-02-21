@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
 import * as icons from './generated';
 
@@ -16,19 +16,9 @@ export const AllIcons = () => (
   </div>
 );
 
-const CustomIcon = ({
-  children,
-  name,
-}: {
-  children: ReactElement;
-  name: string;
-}) => {
+const CustomIcon = ({ children, name }: { children: ReactElement; name: string }) => {
   return (
-    <button
-      type="button"
-      title={name}
-      className="text-4xl text-neutral-600 dark:text-neutral-300"
-    >
+    <button type="button" title={name} className="text-4xl text-neutral-600 dark:text-neutral-300">
       {children}
     </button>
   );

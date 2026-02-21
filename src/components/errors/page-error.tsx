@@ -1,5 +1,5 @@
 import { HomeIcon, Undo2Icon } from 'lucide-react';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Button } from '@/components/ui/button';
@@ -26,14 +26,12 @@ export const PageError = (props: {
     <div className="flex min-w-0 flex-1 flex-col items-center justify-center gap-6 p-4">
       <div className="flex flex-col items-center justify-center gap-x-4 gap-y-1 text-center md:flex-row">
         <h1 className="text-2xl leading-tight font-bold md:text-right md:text-lg">
-          {props.title ??
-            t(`components:pageError.${props.type}.title` as const)}
+          {props.title ?? t(`components:pageError.${props.type}.title` as const)}
         </h1>
         <Separator orientation="vertical" className="hidden h-8 md:block" />
 
         <p className="text-sm text-muted-foreground md:text-left">
-          {props.message ??
-            t(`components:pageError.${props.type}.message` as const)}
+          {props.message ?? t(`components:pageError.${props.type}.message` as const)}
         </p>
       </div>
 

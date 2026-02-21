@@ -1,27 +1,18 @@
-import { ReactNode } from 'react';
-
+import type { ReactNode } from 'react';
+import { ScrollArea } from '@/components/ui/scroll-area';
 import { cn } from '@/lib/tailwind/utils';
 
-import { ScrollArea } from '@/components/ui/scroll-area';
-
-export const PageLayoutContainer = (props: {
-  children?: ReactNode;
-  className?: string;
-}) => {
+export const PageLayoutContainer = (props: { children?: ReactNode; className?: string }) => {
   return (
     <div
-      className={cn(
-        'mx-auto flex w-full max-w-4xl min-w-0 flex-1 flex-col px-4',
-        props.className
-      )}
+      className={cn('mx-auto flex w-full max-w-4xl min-w-0 flex-1 flex-col px-4', props.className)}
     >
       {props.children}
     </div>
   );
 };
 
-const TOPBAT_HEIGHT =
-  'calc(var(--page-layout-topbar-height, 56px) + env(safe-area-inset-top))';
+const TOPBAT_HEIGHT = 'calc(var(--page-layout-topbar-height, 56px) + env(safe-area-inset-top))';
 
 export const PageLayoutTopBar = (props: {
   children?: ReactNode;
@@ -40,34 +31,22 @@ export const PageLayoutTopBar = (props: {
         height: TOPBAT_HEIGHT,
       }}
     >
-      <PageLayoutContainer
-        className={cn('justify-end py-2', props.containerClassName)}
-      >
+      <PageLayoutContainer className={cn('justify-end py-2', props.containerClassName)}>
         <div className="flex h-10 w-full min-w-0 items-center justify-center gap-4 pt-2">
           {!!props.startActions && (
             <div className="flex items-center gap-2">{props.startActions}</div>
           )}
           <div className="min-w-0 flex-1">{props.children}</div>
-          {!!props.endActions && (
-            <div className="flex items-center gap-2">{props.endActions}</div>
-          )}
+          {!!props.endActions && <div className="flex items-center gap-2">{props.endActions}</div>}
         </div>
       </PageLayoutContainer>
     </div>
   );
 };
 
-export const PageLayoutTopBarTitle = (props: {
-  children?: ReactNode;
-  className?: string;
-}) => {
+export const PageLayoutTopBarTitle = (props: { children?: ReactNode; className?: string }) => {
   return (
-    <h1
-      className={cn(
-        'min-w-0 truncate text-base font-medium md:text-sm',
-        props.className
-      )}
-    >
+    <h1 className={cn('min-w-0 truncate text-base font-medium md:text-sm', props.className)}>
       {props.children}
     </h1>
   );
@@ -87,9 +66,7 @@ export const PageLayoutContent = (props: {
             {props.noContainer ? (
               props.children
             ) : (
-              <PageLayoutContainer
-                className={cn('py-4', props.containerClassName)}
-              >
+              <PageLayoutContainer className={cn('py-4', props.containerClassName)}>
                 {props.children}
               </PageLayoutContainer>
             )}
@@ -101,13 +78,6 @@ export const PageLayoutContent = (props: {
   );
 };
 
-export const PageLayout = (props: {
-  children?: ReactNode;
-  className?: string;
-}) => {
-  return (
-    <div className={cn('flex flex-1 flex-col', props.className)}>
-      {props.children}
-    </div>
-  );
+export const PageLayout = (props: { children?: ReactNode; className?: string }) => {
+  return <div className={cn('flex flex-1 flex-col', props.className)}>{props.children}</div>;
 };

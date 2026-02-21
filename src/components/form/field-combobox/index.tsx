@@ -26,17 +26,11 @@ export const FieldCombobox = <TItem extends Item>(
     {
       containerProps?: ComponentProps<typeof FormFieldContainer>;
       inputProps?: ComponentProps<typeof ComboboxInput>;
-    } & Omit<
-      ComponentProps<typeof Combobox>,
-      'items' | 'value' | 'multiple' | 'children'
-    > & {
+    } & Omit<ComponentProps<typeof Combobox>, 'items' | 'value' | 'multiple' | 'children'> & {
         items: TItem[];
         emptyContent?: ReactNode;
         children?: (item: TItem) => ReactElement;
-      } & Pick<
-        ComponentProps<typeof ComboboxInput>,
-        'placeholder' | 'showClear'
-      >
+      } & Pick<ComponentProps<typeof ComboboxInput>, 'placeholder' | 'showClear'>
   >
 ) => {
   const {
@@ -83,19 +77,13 @@ export const FieldCombobox = <TItem extends Item>(
           showClear={showClear}
         />
         <ComboboxContent>
-          <ComboboxEmpty>
-            {emptyContent ?? t('components:combobox.noItemsFound')}
-          </ComboboxEmpty>
+          <ComboboxEmpty>{emptyContent ?? t('components:combobox.noItemsFound')}</ComboboxEmpty>
           {children ? (
             <ComboboxList>{children}</ComboboxList>
           ) : (
             <ComboboxList>
               {(item: TItem) => (
-                <ComboboxItem
-                  value={item}
-                  key={item.value}
-                  disabled={item.disabled}
-                >
+                <ComboboxItem value={item} key={item.value} disabled={item.disabled}>
                   {item.label}
                 </ComboboxItem>
               )}

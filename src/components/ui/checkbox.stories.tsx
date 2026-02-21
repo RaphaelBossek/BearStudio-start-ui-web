@@ -1,9 +1,7 @@
 import type { Meta } from '@storybook/react-vite';
 import { CheckIcon } from 'lucide-react';
-
-import { cn } from '@/lib/tailwind/utils';
-
 import { Checkbox } from '@/components/ui/checkbox';
+import { cn } from '@/lib/tailwind/utils';
 
 export default {
   title: 'Checkbox',
@@ -51,12 +49,9 @@ export const CustomCheckbox = () => {
           >
             <span className="font-medium">I love bears</span>
             <span
-              className={cn(
-                'rounded-full bg-primary-foreground p-1 opacity-0',
-                {
-                  'opacity-100': checked,
-                }
-              )}
+              className={cn('rounded-full bg-primary-foreground p-1 opacity-0', {
+                'opacity-100': checked,
+              })}
             >
               <CheckIcon className="size-4 text-primary" />
             </span>

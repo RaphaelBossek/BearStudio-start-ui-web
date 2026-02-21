@@ -35,17 +35,10 @@ export function EnabledProps() {
   return (
     <div className="flex flex-col gap-4">
       <label className="flex gap-2">
-        <input
-          type="checkbox"
-          checked={enabled}
-          onChange={(e) => setEnabled(e.target.checked)}
-        />
+        <input type="checkbox" checked={enabled} onChange={(e) => setEnabled(e.target.checked)} />
         Enabled
       </label>
-      <ConfirmResponsiveDrawer
-        onConfirm={() => alert('Custom Action')}
-        enabled={enabled}
-      >
+      <ConfirmResponsiveDrawer onConfirm={() => alert('Custom Action')} enabled={enabled}>
         <Button>{enabled ? 'Confirm' : 'Without confirm'}</Button>
       </ConfirmResponsiveDrawer>
     </div>
@@ -54,9 +47,7 @@ export function EnabledProps() {
 
 export function WithPromise() {
   return (
-    <ConfirmResponsiveDrawer
-      onConfirm={async () => new Promise((r) => setTimeout(r, 2000))}
-    >
+    <ConfirmResponsiveDrawer onConfirm={async () => new Promise((r) => setTimeout(r, 2000))}>
       <Button>Confirm</Button>
     </ConfirmResponsiveDrawer>
   );

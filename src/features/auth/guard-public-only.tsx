@@ -1,4 +1,4 @@
-import { Activity, ReactNode } from 'react';
+import { Activity, type ReactNode } from 'react';
 
 import { PageError } from '@/components/errors/page-error';
 import { Spinner } from '@/components/ui/spinner';
@@ -17,9 +17,7 @@ export const GuardPublicOnly = ({ children }: { children?: ReactNode }) => {
   return (
     <>
       {session.isPending && <Spinner full />}
-      <Activity mode={session.isPending ? 'hidden' : 'visible'}>
-        {children}
-      </Activity>
+      <Activity mode={session.isPending ? 'hidden' : 'visible'}>{children}</Activity>
     </>
   );
 };

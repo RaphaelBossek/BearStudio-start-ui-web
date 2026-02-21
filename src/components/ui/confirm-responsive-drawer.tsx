@@ -1,8 +1,8 @@
 import {
+  type ComponentProps,
   cloneElement,
-  ComponentProps,
-  ReactElement,
-  ReactNode,
+  type ReactElement,
+  type ReactNode,
   useState,
 } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -92,16 +92,13 @@ export const ConfirmResponsiveDrawer = (props: {
         >
           <ResponsiveDrawerHeader>
             <ResponsiveDrawerTitle>{displayHeading}</ResponsiveDrawerTitle>
-            <ResponsiveDrawerDescription>
-              {props.description}
-            </ResponsiveDrawerDescription>
+            <ResponsiveDrawerDescription>{props.description}</ResponsiveDrawerDescription>
           </ResponsiveDrawerHeader>
           <ResponsiveDrawerFooter>
             <ResponsiveDrawerClose
               render={<Button variant="secondary" className="max-sm:w-full" />}
             >
-              {props.cancelText ??
-                t('components:confirmResponsiveDrawer.cancelText')}
+              {props.cancelText ?? t('components:confirmResponsiveDrawer.cancelText')}
             </ResponsiveDrawerClose>
             <Button
               variant={props.confirmVariant ?? 'default'}
@@ -109,8 +106,7 @@ export const ConfirmResponsiveDrawer = (props: {
               loading={isPending}
               onClick={handleConfirm}
             >
-              {props.confirmText ??
-                t('components:confirmResponsiveDrawer.confirmText')}
+              {props.confirmText ?? t('components:confirmResponsiveDrawer.confirmText')}
             </Button>
           </ResponsiveDrawerFooter>
         </ResponsiveDrawerContent>

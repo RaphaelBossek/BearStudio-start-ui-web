@@ -2,12 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
-import {
-  Form,
-  FormField,
-  FormFieldController,
-  FormFieldLabel,
-} from '@/components/form';
+import { Form, FormField, FormFieldController, FormFieldLabel } from '@/components/form';
 import { onSubmit } from '@/components/form/docs.utils';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
@@ -106,11 +101,7 @@ export const CustomOptions = () => {
           >
             <SelectGroup>
               {options.map((item) => (
-                <SelectItem
-                  value={item.id}
-                  key={item.id}
-                  disabled={item.disabled}
-                >
+                <SelectItem value={item.id} key={item.id} disabled={item.disabled}>
                   <Avatar size="sm" className="size-6">
                     <AvatarFallback variant="boring" name={item.name} />
                   </Avatar>

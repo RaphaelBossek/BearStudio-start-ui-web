@@ -2,25 +2,17 @@
 import { TanStackDevtools } from '@tanstack/react-devtools';
 import { QueryClient } from '@tanstack/react-query';
 import { ReactQueryDevtoolsPanel } from '@tanstack/react-query-devtools';
-import {
-  createRootRouteWithContext,
-  HeadContent,
-  Outlet,
-  Scripts,
-} from '@tanstack/react-router';
+import { createRootRouteWithContext, HeadContent, Outlet, Scripts } from '@tanstack/react-router';
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools';
 import { createServerFn } from '@tanstack/react-start';
 import { type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-
+import { PageError } from '@/components/errors/page-error';
+import { MailDevDevtoolPanel } from '@/devtools/maildev';
+import { EnvHint } from '@/features/devtools/env-hint';
 import { getPageTitle } from '@/lib/get-page-title';
 import i18n, { syncLanguage } from '@/lib/i18n';
 import { AVAILABLE_LANGUAGES } from '@/lib/i18n/constants';
-
-import { PageError } from '@/components/errors/page-error';
-
-import { MailDevDevtoolPanel } from '@/devtools/maildev';
-import { EnvHint } from '@/features/devtools/env-hint';
 import { Providers } from '@/providers';
 import { getUserLanguage } from '@/server/utils';
 import appCss from '@/styles/app.css?url';
@@ -128,9 +120,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
   const { i18n } = useTranslation();
   syncLanguage(i18n.language);
 
-  const languageConfig = AVAILABLE_LANGUAGES.find(
-    ({ key }) => key === i18n.language
-  );
+  const languageConfig = AVAILABLE_LANGUAGES.find(({ key }) => key === i18n.language);
 
   return (
     <html
@@ -138,9 +128,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
       lang={i18n.language}
       dir={languageConfig?.dir ?? 'ltr'}
       style={{
-        fontSize: languageConfig?.fontScale
-          ? `${languageConfig.fontScale * 100}%`
-          : undefined,
+        fontSize: languageConfig?.fontScale ? `${languageConfig.fontScale * 100}%` : undefined,
       }}
     >
       <head>

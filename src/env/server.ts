@@ -2,18 +2,13 @@
 import { createEnv } from '@t3-oss/env-core';
 import { z } from 'zod';
 
-const isProd = process.env.NODE_ENV
-  ? process.env.NODE_ENV === 'production'
-  : import.meta.env?.PROD;
+const isProd = process.env.NODE_ENV ? process.env.NODE_ENV === 'production' : import.meta.env?.PROD;
 
 export const envServer = createEnv({
   server: {
     DATABASE_URL: z.url(),
     AUTH_SECRET: z.string(),
-    AUTH_SESSION_EXPIRATION_IN_SECONDS: z.coerce
-      .number()
-      .int()
-      .prefault(2592000), // 30 days by default
+    AUTH_SESSION_EXPIRATION_IN_SECONDS: z.coerce.number().int().prefault(2592000), // 30 days by default
     AUTH_SESSION_UPDATE_AGE_IN_SECONDS: z.coerce.number().int().prefault(86400), // 1 day by default
     AUTH_TRUSTED_ORIGINS: z
       .string()

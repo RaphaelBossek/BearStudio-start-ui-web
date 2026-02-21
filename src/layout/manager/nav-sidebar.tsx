@@ -1,11 +1,6 @@
 import { Link } from '@tanstack/react-router';
-import {
-  LayoutDashboardIcon,
-  PanelLeftIcon,
-  UsersIcon,
-  XIcon,
-} from 'lucide-react';
-import { ReactNode } from 'react';
+import { LayoutDashboardIcon, PanelLeftIcon, UsersIcon, XIcon } from 'lucide-react';
+import type { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Logo } from '@/components/brand/logo';
@@ -107,9 +102,7 @@ export const NavSidebar = (props: { children?: ReactNode }) => {
             ]}
           >
             <SidebarGroup>
-              <SidebarGroupLabel>
-                {t('layout:nav.configuration')}
-              </SidebarGroupLabel>
+              <SidebarGroupLabel>{t('layout:nav.configuration')}</SidebarGroupLabel>
               <SidebarGroupContent>
                 <SidebarMenu>
                   <SidebarMenuItem>

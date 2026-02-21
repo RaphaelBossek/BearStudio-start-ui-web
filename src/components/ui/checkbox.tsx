@@ -80,9 +80,7 @@ export function Checkbox({
             'data-checked:scale-100 data-unchecked:invisible data-unchecked:scale-75'
           )}
           render={(props, state) => (
-            <span {...props}>
-              {state.indeterminate ? <MinusIcon /> : <CheckIcon />}
-            </span>
+            <span {...props}>{state.indeterminate ? <MinusIcon /> : <CheckIcon />}</span>
           )}
         />
       </CheckboxPrimitive.Root>

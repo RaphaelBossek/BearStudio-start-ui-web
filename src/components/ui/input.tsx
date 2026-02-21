@@ -1,10 +1,6 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupInput,
-} from '@/components/ui/input-group';
+import { InputGroup, InputGroupAddon, InputGroupInput } from '@/components/ui/input-group';
 
 type InputProps = Pick<
   React.ComponentProps<'input'>,
@@ -33,23 +29,12 @@ type InputProps = Pick<
     endAddon?: ReactNode;
   };
 
-function Input({
-  ref,
-  size,
-  className,
-  startAddon,
-  endAddon,
-  ...props
-}: InputProps) {
+function Input({ ref, size, className, startAddon, endAddon, ...props }: InputProps) {
   return (
     <InputGroup size={size} className={className}>
-      {!!startAddon && (
-        <InputGroupAddon align="inline-start">{startAddon}</InputGroupAddon>
-      )}
+      {!!startAddon && <InputGroupAddon align="inline-start">{startAddon}</InputGroupAddon>}
       <InputGroupInput {...props} ref={ref} data-slot="input" />
-      {!!endAddon && (
-        <InputGroupAddon align="inline-end">{endAddon}</InputGroupAddon>
-      )}
+      {!!endAddon && <InputGroupAddon align="inline-end">{endAddon}</InputGroupAddon>}
     </InputGroup>
   );
 }

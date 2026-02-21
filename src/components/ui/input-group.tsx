@@ -1,10 +1,8 @@
 import { cva, type VariantProps } from 'class-variance-authority';
-import * as React from 'react';
+import type * as React from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
-
-import { cn } from '@/lib/tailwind/utils';
-
 import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/tailwind/utils';
 
 const inputGroupVariants = cva(
   cn(
@@ -82,10 +80,8 @@ const inputGroupAddonVariants = cva(
   {
     variants: {
       align: {
-        'inline-start':
-          'order-first pl-3 has-[>button]:ml-[-0.45rem] has-[>kbd]:ml-[-0.35rem]',
-        'inline-end':
-          'order-last pr-3 has-[>button]:mr-[-0.45rem] has-[>kbd]:mr-[-0.35rem]',
+        'inline-start': 'order-first pl-3 has-[>button]:ml-[-0.45rem] has-[>kbd]:ml-[-0.35rem]',
+        'inline-end': 'order-last pr-3 has-[>button]:mr-[-0.45rem] has-[>kbd]:mr-[-0.35rem]',
         'block-start':
           'order-first w-full justify-start px-3 pt-3 group-has-[>input]/input-group:pt-2.5 [.border-b]:pb-3',
         'block-end':
@@ -115,17 +111,13 @@ function InputGroupAddon({
           return;
         }
         e.currentTarget.parentElement
-          ?.querySelector<
-            HTMLInputElement | HTMLTextAreaElement
-          >('input, textarea')
+          ?.querySelector<HTMLInputElement | HTMLTextAreaElement>('input, textarea')
           ?.focus();
       }}
       onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.currentTarget.parentElement
-            ?.querySelector<
-              HTMLInputElement | HTMLTextAreaElement
-            >('input, textarea')
+            ?.querySelector<HTMLInputElement | HTMLTextAreaElement>('input, textarea')
             ?.focus();
         }
       }}
@@ -139,15 +131,7 @@ function InputGroupButton({
   variant = 'ghost',
   ...props
 }: React.ComponentProps<typeof Button>) {
-  return (
-    <Button
-      type={type}
-      data-size={size}
-      size={size}
-      variant={variant}
-      {...props}
-    />
-  );
+  return <Button type={type} data-size={size} size={size} variant={variant} {...props} />;
 }
 
 function InputGroupText({ className, ...props }: React.ComponentProps<'span'>) {
@@ -162,10 +146,7 @@ function InputGroupText({ className, ...props }: React.ComponentProps<'span'>) {
   );
 }
 
-function InputGroupInput({
-  className,
-  ...props
-}: React.ComponentProps<'input'>) {
+function InputGroupInput({ className, ...props }: React.ComponentProps<'input'>) {
   return (
     <input
       data-slot="input-group-control"

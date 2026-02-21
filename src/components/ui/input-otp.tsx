@@ -1,7 +1,7 @@
-import { cva, VariantProps } from 'class-variance-authority';
+import { cva, type VariantProps } from 'class-variance-authority';
 import { OTPInput, OTPInputContext as OTPInputContextFromLib } from 'input-otp';
 import { MinusIcon } from 'lucide-react';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import * as React from 'react';
 
 import { cn } from '@/lib/tailwind/utils';
@@ -73,11 +73,7 @@ function InputOTP({
 
 function InputOTPGroup({ className, ...props }: React.ComponentProps<'div'>) {
   return (
-    <div
-      data-slot="input-otp-group"
-      className={cn('flex items-center', className)}
-      {...props}
-    />
+    <div data-slot="input-otp-group" className={cn('flex items-center', className)} {...props} />
   );
 }
 
@@ -89,8 +85,7 @@ function InputOTPSlot({
   index: number;
 }) {
   const ctx = useInputOTPContext();
-  const { char, hasFakeCaret, isActive } =
-    React.use(OTPInputContextFromLib)?.slots[index] ?? {};
+  const { char, hasFakeCaret, isActive } = React.use(OTPInputContextFromLib)?.slots[index] ?? {};
 
   return (
     <div

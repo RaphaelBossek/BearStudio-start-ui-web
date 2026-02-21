@@ -73,12 +73,7 @@ test('disabled', async () => {
       {({ form }) => (
         <FormField>
           <FormFieldLabel>Name</FormFieldLabel>
-          <FormFieldController
-            type="text"
-            control={form.control}
-            name="name"
-            disabled
-          />
+          <FormFieldController type="text" control={form.control} name="name" disabled />
         </FormField>
       )}
     </FormMocked>
@@ -106,12 +101,7 @@ test('readOnly', async () => {
       {({ form }) => (
         <FormField>
           <FormFieldLabel>Name</FormFieldLabel>
-          <FormFieldController
-            type="text"
-            control={form.control}
-            name="name"
-            readOnly
-          />
+          <FormFieldController type="text" control={form.control} name="name" readOnly />
         </FormField>
       )}
     </FormMocked>

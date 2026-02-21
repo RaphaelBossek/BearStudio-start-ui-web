@@ -14,9 +14,7 @@ export default {
 
 const zFormSchema = () =>
   z.object({
-    bears: z
-      .array(z.string(), 'Required')
-      .nonempty('Select at least one answer.'),
+    bears: z.array(z.string(), 'Required').nonempty('Select at least one answer.'),
   });
 
 const formOptions = {

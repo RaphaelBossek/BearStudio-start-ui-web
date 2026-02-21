@@ -39,16 +39,8 @@ export const StartEndAddons = () => {
       <p className="text-sm">
         See <strong>InputGroup</strong> for more advanced use cases
       </p>
-      <Input
-        startAddon={<MailIcon />}
-        defaultValue="Icon start"
-        placeholder="Placeholder..."
-      />
-      <Input
-        endAddon={<MailIcon />}
-        defaultValue="Icon end"
-        placeholder="Placeholder..."
-      />
+      <Input startAddon={<MailIcon />} defaultValue="Icon start" placeholder="Placeholder..." />
+      <Input endAddon={<MailIcon />} defaultValue="Icon end" placeholder="Placeholder..." />
       <Input
         startAddon={<MailIcon />}
         endAddon={<MailIcon />}

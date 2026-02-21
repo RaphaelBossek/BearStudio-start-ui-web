@@ -34,9 +34,7 @@ export const Controlled = () => {
       }}
       footer={
         <div className="mt-4 text-sm">
-          {selected
-            ? `Selected: ${dayjs(selected).format('DD/MM/YYYY')}`
-            : 'Pick a day'}
+          {selected ? `Selected: ${dayjs(selected).format('DD/MM/YYYY')}` : 'Pick a day'}
         </div>
       }
     />

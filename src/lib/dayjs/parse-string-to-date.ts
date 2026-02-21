@@ -13,10 +13,7 @@ const DD_MM = (year?: 'YY' | 'YYYY') => {
   });
 };
 
-export const parseStringToDate = (
-  input: string,
-  extraFormats: Array<string> = []
-) => {
+export const parseStringToDate = (input: string, extraFormats: Array<string> = []) => {
   return dayjs(
     input,
     [

@@ -1,22 +1,20 @@
 import { AlertCircleIcon } from 'lucide-react';
-import { ComponentProps, ReactNode, use } from 'react';
+import { type ComponentProps, type ReactNode, use } from 'react';
 import {
-  ControllerProps,
-  FieldError,
-  FieldErrors,
-  FieldPath,
-  FieldValues,
+  type ControllerProps,
+  type FieldError,
+  type FieldErrors,
+  type FieldPath,
+  type FieldValues,
   get,
   useFormState,
 } from 'react-hook-form';
-
-import { cn } from '@/lib/tailwind/utils';
-
 import { useFormFieldUnsafe } from '@/components/form/form-field';
+import { cn } from '@/lib/tailwind/utils';
 
 import {
   FormFieldControllerContext,
-  FormFieldControllerContextValue,
+  type FormFieldControllerContextValue,
 } from './form-field-controller/context';
 
 type FormFieldErrorProps<
@@ -40,10 +38,9 @@ export const FormFieldError = <
   ...props
 }: FormFieldErrorProps<TFieldValues, TName>) => {
   const fieldCtx = useFormFieldUnsafe();
-  const controllerCtx =
-    use<FormFieldControllerContextValue<TFieldValues> | null>(
-      FormFieldControllerContext as ExplicitAny
-    );
+  const controllerCtx = use<FormFieldControllerContextValue<TFieldValues> | null>(
+    FormFieldControllerContext as ExplicitAny
+  );
   const { errors } = useFormState<TFieldValues>();
   const control = 'control' in props ? props.control : null;
   const name = 'name' in props ? props.name : null;
@@ -76,9 +73,7 @@ export const FormFieldError = <
     control: _,
     name: __,
     ...rest
-  } = 'control' in props
-    ? props
-    : { ...props, control: undefined, name: undefined };
+  } = 'control' in props ? props : { ...props, control: undefined, name: undefined };
 
   return (
     <div

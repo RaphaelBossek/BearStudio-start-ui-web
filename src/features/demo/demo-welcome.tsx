@@ -7,12 +7,8 @@ export const DemoWelcome = () => {
   return (
     <div className="flex flex-col gap-3 py-3">
       <div className="flex flex-col gap-1">
-        <h2 className="leading-none font-semibold">
-          {t('demo:welcome.title')}
-        </h2>
-        <p className="max-w-prose text-sm text-muted-foreground">
-          {t('demo:welcome.description')}
-        </p>
+        <h2 className="leading-none font-semibold">{t('demo:welcome.title')}</h2>
+        <p className="max-w-prose text-sm text-muted-foreground">{t('demo:welcome.description')}</p>
       </div>
       <div>
         <div className="flex flex-wrap gap-3">
@@ -35,9 +31,7 @@ export const DemoWelcome = () => {
           <Button
             variant="secondary"
             size="xs"
-            render={
-              <a href="https://github.com/BearStudio/start-ui/issues/new" />
-            }
+            render={<a href="https://github.com/BearStudio/start-ui/issues/new" />}
             nativeButton={false}
           >
             {t('demo:welcome.openIssue')}

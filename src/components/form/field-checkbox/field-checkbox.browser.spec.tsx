@@ -1,12 +1,7 @@
 import { expect, test, vi } from 'vitest';
 import { z } from 'zod';
 
-import {
-  FAILED_CLICK_TIMEOUT_MS,
-  page,
-  render,
-  setupUser,
-} from '@/tests/utils';
+import { FAILED_CLICK_TIMEOUT_MS, page, render, setupUser } from '@/tests/utils';
 
 import { FormField, FormFieldController } from '..';
 import { FormMocked } from '../form-test-utils';
@@ -30,11 +25,7 @@ test('should select checkbox on button click', async () => {
     >
       {({ form }) => (
         <FormField>
-          <FormFieldController
-            type="checkbox"
-            control={form.control}
-            name="lovesBears"
-          >
+          <FormFieldController type="checkbox" control={form.control} name="lovesBears">
             I love bears
           </FormFieldController>
         </FormField>
@@ -65,11 +56,7 @@ test('should select checkbox on label click', async () => {
     >
       {({ form }) => (
         <FormField>
-          <FormFieldController
-            type="checkbox"
-            control={form.control}
-            name="lovesBears"
-          >
+          <FormFieldController type="checkbox" control={form.control} name="lovesBears">
             I love bears
           </FormFieldController>
         </FormField>
@@ -101,11 +88,7 @@ test('default value', async () => {
     >
       {({ form }) => (
         <FormField>
-          <FormFieldController
-            type="checkbox"
-            control={form.control}
-            name="lovesBears"
-          >
+          <FormFieldController type="checkbox" control={form.control} name="lovesBears">
             I love bears
           </FormFieldController>
         </FormField>
@@ -131,12 +114,7 @@ test('disabled', async () => {
     >
       {({ form }) => (
         <FormField>
-          <FormFieldController
-            type="checkbox"
-            control={form.control}
-            name="lovesBears"
-            disabled
-          >
+          <FormFieldController type="checkbox" control={form.control} name="lovesBears" disabled>
             I love bears
           </FormFieldController>
         </FormField>

@@ -1,32 +1,17 @@
 import { getUiState } from '@bearstudio/ui-state';
 import { ORPCError } from '@orpc/client';
-import {
-  useInfiniteQuery,
-  useMutation,
-  useQuery,
-  useQueryClient,
-} from '@tanstack/react-query';
+import { useInfiniteQuery, useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 import dayjs from 'dayjs';
 import { AlertCircleIcon, PencilLineIcon, Trash2Icon } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
-
-import { orpc } from '@/lib/orpc/client';
-import { useNavigateBack } from '@/hooks/use-navigate-back';
-
 import { BackButton } from '@/components/back-button';
 import { PageError } from '@/components/errors/page-error';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { ConfirmResponsiveDrawer } from '@/components/ui/confirm-responsive-drawer';
 import {
   DataList,
@@ -40,15 +25,16 @@ import {
 import { ResponsiveIconButton } from '@/components/ui/responsive-icon-button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Spinner } from '@/components/ui/spinner';
-
 import { authClient } from '@/features/auth/client';
 import { WithPermissions } from '@/features/auth/with-permission';
+import { useNavigateBack } from '@/hooks/use-navigate-back';
 import {
   PageLayout,
   PageLayoutContent,
   PageLayoutTopBar,
   PageLayoutTopBarTitle,
 } from '@/layout/manager/page-layout';
+import { orpc } from '@/lib/orpc/client';
 
 export const PageUser = (props: { params: { id: string } }) => {
   const queryClient = useQueryClient();
@@ -117,9 +103,7 @@ export const PageUser = (props: { params: { id: string } }) => {
                   title={t('user:manager.detail.confirmDeleteTitle', {
                     user: userQuery.data?.name ?? userQuery.data?.email ?? '--',
                   })}
-                  description={t(
-                    'user:manager.detail.confirmDeleteDescription'
-                  )}
+                  description={t('user:manager.detail.confirmDeleteDescription')}
                   confirmText={t('user:manager.detail.deleteButton.label')}
                   confirmVariant="destructive"
                 >
@@ -157,10 +141,7 @@ export const PageUser = (props: { params: { id: string } }) => {
                 <CardHeader>
                   <div className="flex items-center gap-3">
                     <Avatar>
-                      <AvatarImage
-                        src={user.image ?? undefined}
-                        alt={user.name ?? ''}
-                      />
+                      <AvatarImage src={user.image ?? undefined} alt={user.name ?? ''} />
                       <AvatarFallback variant="boring" name={user.name ?? ''} />
                     </Avatar>
                     <div className="flex flex-1 flex-col gap-0.5">
@@ -186,9 +167,7 @@ export const PageUser = (props: { params: { id: string } }) => {
                           nativeButton={false}
                         >
                           <PencilLineIcon />
-                          <span className="sr-only">
-                            {t('user:manager.detail.editUser')}
-                          </span>
+                          <span className="sr-only">{t('user:manager.detail.editUser')}</span>
                         </Button>
                         <span className="absolute inset-0" />
                       </Link>
@@ -197,18 +176,14 @@ export const PageUser = (props: { params: { id: string } }) => {
                 </CardHeader>
                 <CardContent className="flex flex-col gap-4">
                   <div className="flex items-center gap-4">
-                    <Badge
-                      variant={user.role === 'admin' ? 'default' : 'secondary'}
-                    >
+                    <Badge variant={user.role === 'admin' ? 'default' : 'secondary'}>
                       {user.role ?? '-'}
                     </Badge>
                     <p className="text-sm text-muted-foreground">
                       {user.onboardedAt ? (
                         <>
                           {t('user:common.onboardingStatus.onboardedAt', {
-                            time: dayjs(user.onboardedAt).format(
-                              'DD/MM/YYYY [at] HH:mm'
-                            ),
+                            time: dayjs(user.onboardedAt).format('DD/MM/YYYY [at] HH:mm'),
                           })}
                         </>
                       ) : (
@@ -263,9 +238,7 @@ const UserSessions = (props: { userId: string }) => {
       <DataList>
         <DataListRow>
           <DataListCell>
-            <h2 className="text-sm font-medium">
-              {t('user:manager.detail.userSessions')}
-            </h2>
+            <h2 className="text-sm font-medium">{t('user:manager.detail.userSessions')}</h2>
           </DataListCell>
 
           <WithPermissions permissions={[{ session: ['revoke'] }]}>
@@ -278,9 +251,7 @@ const UserSessions = (props: { userId: string }) => {
         </DataListRow>
         {ui
           .match('pending', () => <DataListLoadingState />)
-          .match('error', () => (
-            <DataListErrorState retry={() => sessionsQuery.refetch()} />
-          ))
+          .match('error', () => <DataListErrorState retry={() => sessionsQuery.refetch()} />)
           .match('empty', () => (
             <DataListEmptyState className="min-h-20">
               {t('user:manager.detail.noSessions')}
@@ -314,10 +285,7 @@ const UserSessions = (props: { userId: string }) => {
                   </DataListCell>
                   <WithPermissions permissions={[{ session: ['revoke'] }]}>
                     <DataListCell className="flex-none">
-                      <RevokeSessionButton
-                        userId={props.userId}
-                        sessionToken={item.token}
-                      />
+                      <RevokeSessionButton userId={props.userId} sessionToken={item.token} />
                     </DataListCell>
                   </WithPermissions>
                 </DataListRow>
@@ -388,10 +356,7 @@ const RevokeAllSessionsButton = (props: { userId: string }) => {
   );
 };
 
-const RevokeSessionButton = (props: {
-  userId: string;
-  sessionToken: string;
-}) => {
+const RevokeSessionButton = (props: { userId: string; sessionToken: string }) => {
   const queryClient = useQueryClient();
   const currentSession = authClient.useSession();
   const { t } = useTranslation(['user']);

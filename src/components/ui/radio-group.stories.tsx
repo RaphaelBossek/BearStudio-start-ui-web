@@ -1,10 +1,8 @@
 import type { Meta } from '@storybook/react-vite';
 import { CheckIcon } from 'lucide-react';
 import { useId } from 'react';
-
-import { cn } from '@/lib/tailwind/utils';
-
 import { Radio, RadioGroup } from '@/components/ui/radio-group';
+import { cn } from '@/lib/tailwind/utils';
 
 export default {
   title: 'RadioGroup',
@@ -77,11 +75,7 @@ export const Sizes = () => {
       <RadioGroup defaultValue={astrobears[1].value}>
         {astrobears.map(({ value, label }) => {
           return (
-            <Radio
-              key={`${radioGroupId}-${value}`}
-              value={value}
-              size="default"
-            >
+            <Radio key={`${radioGroupId}-${value}`} value={value} size="default">
               {label}
             </Radio>
           );
@@ -136,12 +130,9 @@ export const WithCustomRadio = () => {
                 >
                   <span className="font-medium">{label}</span>
                   <span
-                    className={cn(
-                      'rounded-full bg-primary-foreground p-1 opacity-0',
-                      {
-                        'opacity-100': checked,
-                      }
-                    )}
+                    className={cn('rounded-full bg-primary-foreground p-1 opacity-0', {
+                      'opacity-100': checked,
+                    })}
                   >
                     <CheckIcon className="size-4 text-primary" />
                   </span>

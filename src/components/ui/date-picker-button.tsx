@@ -1,18 +1,12 @@
 import { CalendarIcon } from 'lucide-react';
-import { ComponentProps } from 'react';
+import type { ComponentProps } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import { cn } from '@/lib/tailwind/utils';
-
 import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/tailwind/utils';
 
 export type DatePickerButtonProps = ComponentProps<typeof Button>;
 
-export const DatePickerButton = ({
-  className,
-  children,
-  ...props
-}: DatePickerButtonProps) => {
+export const DatePickerButton = ({ className, children, ...props }: DatePickerButtonProps) => {
   const { t } = useTranslation(['components']);
   return (
     <Button

@@ -42,9 +42,7 @@ export const CalendarCustomization = () => {
 export const NoCalendar = () => {
   const [date, setDate] = useState<Date | null>();
 
-  return (
-    <DatePicker onChange={(value) => setDate(value)} value={date} noCalendar />
-  );
+  return <DatePicker onChange={(value) => setDate(value)} value={date} noCalendar />;
 };
 
 export const InDialog = () => {
@@ -52,9 +50,7 @@ export const InDialog = () => {
 
   return (
     <Dialog>
-      <DialogTrigger render={<Button variant="secondary" />}>
-        Open
-      </DialogTrigger>
+      <DialogTrigger render={<Button variant="secondary" />}>Open</DialogTrigger>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Birthday</DialogTitle>

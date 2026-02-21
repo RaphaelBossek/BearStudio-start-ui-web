@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
-import { MAIN_NAV_LINKS, NavLinkItem } from '@/layout/app/main-nav-config';
+import { MAIN_NAV_LINKS, type NavLinkItem } from '@/layout/app/main-nav-config';
 
 const HEIGHT = 'calc(64px + env(safe-area-inset-bottom))';
 
@@ -28,12 +28,7 @@ export const MainNavMobile = () => {
   );
 };
 
-const Item = ({
-  icon: Icon,
-  iconActive,
-  children,
-  ...linkProps
-}: NavLinkItem) => {
+const Item = ({ icon: Icon, iconActive, children, ...linkProps }: NavLinkItem) => {
   const IconActive = iconActive ?? Icon;
   return (
     <Link

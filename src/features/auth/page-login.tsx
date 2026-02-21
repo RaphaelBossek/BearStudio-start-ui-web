@@ -1,40 +1,29 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
 import { useRouter } from '@tanstack/react-router';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { type SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
 
-import {
-  Form,
-  FormField,
-  FormFieldController,
-  FormFieldLabel,
-} from '@/components/form';
+import { Form, FormField, FormFieldController, FormFieldLabel } from '@/components/form';
 import { Button } from '@/components/ui/button';
 
 import { envClient } from '@/env/client';
 import { authClient } from '@/features/auth/client';
 import { AUTH_SIGNUP_ENABLED } from '@/features/auth/config';
 import { useMascot } from '@/features/auth/mascot';
-import { FormFieldsLogin, zFormFieldsLogin } from '@/features/auth/schema';
+import { type FormFieldsLogin, zFormFieldsLogin } from '@/features/auth/schema';
 import { LoginEmailHint } from '@/features/devtools/login-hint';
 
 const I18N_KEY_PAGE_PREFIX = AUTH_SIGNUP_ENABLED
   ? ('auth:pageLoginWithSignUp' as const)
   : ('auth:pageLogin' as const);
 
-export default function PageLogin({
-  search,
-}: {
-  search: { redirect?: string };
-}) {
+export default function PageLogin({ search }: { search: { redirect?: string } }) {
   const { t } = useTranslation(['auth', 'common']);
   const router = useRouter();
   const social = useMutation({
-    mutationFn: async (
-      provider: Parameters<typeof authClient.signIn.social>[0]['provider']
-    ) => {
+    mutationFn: async (provider: Parameters<typeof authClient.signIn.social>[0]['provider']) => {
       const callbackURL = search.redirect ?? '/';
       let response;
       try {
@@ -44,9 +33,7 @@ export default function PageLogin({
           errorCallbackURL: '/login/error',
         });
       } catch (error) {
-        throw error instanceof Error
-          ? error
-          : new Error(t('auth:errorCode.UNKNOWN_ERROR'));
+        throw error instanceof Error ? error : new Error(t('auth:errorCode.UNKNOWN_ERROR'));
       }
       if (response.error) {
         throw new Error(response.error.message);
@@ -105,9 +92,7 @@ export default function PageLogin({
   return (
     <Form {...form} onSubmit={submitHandler} className="flex flex-col gap-6">
       <div className="flex flex-col items-center gap-2 text-center">
-        <h1 className="text-2xl font-bold">
-          {t(`${I18N_KEY_PAGE_PREFIX}.title`)}
-        </h1>
+        <h1 className="text-2xl font-bold">{t(`${I18N_KEY_PAGE_PREFIX}.title`)}</h1>
         <p className="text-sm text-balance text-muted-foreground">
           {t(`${I18N_KEY_PAGE_PREFIX}.description`)}
         </p>
@@ -115,9 +100,7 @@ export default function PageLogin({
       <div className="grid gap-6">
         <div className="grid gap-4">
           <FormField>
-            <FormFieldLabel className="sr-only">
-              {t('auth:common.email.label')}
-            </FormFieldLabel>
+            <FormFieldLabel className="sr-only">{t('auth:common.email.label')}</FormFieldLabel>
             <FormFieldController
               type="email"
               control={form.control}
@@ -126,12 +109,7 @@ export default function PageLogin({
               placeholder={t('auth:common.email.label')}
             />
           </FormField>
-          <Button
-            loading={form.formState.isSubmitting}
-            type="submit"
-            size="lg"
-            className="w-full"
-          >
+          <Button loading={form.formState.isSubmitting} type="submit" size="lg" className="w-full">
             {t(`${I18N_KEY_PAGE_PREFIX}.loginWithEmail`)}
           </Button>
           <LoginEmailHint />
@@ -145,10 +123,7 @@ export default function PageLogin({
           className="w-full"
           variant="secondary"
           disabled={envClient.VITE_IS_DEMO}
-          loading={
-            social.variables === 'github' &&
-            (social.isPending || social.isSuccess)
-          }
+          loading={social.variables === 'github' && (social.isPending || social.isSuccess)}
           size="lg"
           onClick={() => social.mutate('github')}
         >

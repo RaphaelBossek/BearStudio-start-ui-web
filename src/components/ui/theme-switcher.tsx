@@ -1,17 +1,7 @@
-import {
-  CheckIcon,
-  ChevronsUpDownIcon,
-  MoonIcon,
-  SunIcon,
-  SunMoonIcon,
-} from 'lucide-react';
+import { CheckIcon, ChevronsUpDownIcon, MoonIcon, SunIcon, SunMoonIcon } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { useTranslation } from 'react-i18next';
 import { match } from 'ts-pattern';
-
-import { cn } from '@/lib/tailwind/utils';
-import { useHydrated } from '@/hooks/use-hydrated';
-
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -19,6 +9,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { useHydrated } from '@/hooks/use-hydrated';
+import { cn } from '@/lib/tailwind/utils';
 
 export const themes = ['system', 'light', 'dark'] as const;
 

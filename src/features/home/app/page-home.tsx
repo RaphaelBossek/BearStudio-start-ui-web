@@ -3,11 +3,7 @@ import { Logo } from '@/components/brand/logo';
 import { DemoAppSwitch } from '@/features/demo/demo-app-switch';
 import { DemoMarketingBento } from '@/features/demo/demo-marketing-bento';
 import { DemoWelcome } from '@/features/demo/demo-welcome';
-import {
-  PageLayout,
-  PageLayoutContent,
-  PageLayoutTopBar,
-} from '@/layout/app/page-layout';
+import { PageLayout, PageLayoutContent, PageLayoutTopBar } from '@/layout/app/page-layout';
 
 export const PageHome = () => {
   return (

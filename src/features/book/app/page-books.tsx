@@ -2,12 +2,8 @@ import { getUiState } from '@bearstudio/ui-state';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
-
-import { orpc } from '@/lib/orpc/client';
-
 import { PageError } from '@/components/errors/page-error';
 import { Button } from '@/components/ui/button';
-
 import { BookCover } from '@/features/book/book-cover';
 import {
   PageLayout,
@@ -15,6 +11,7 @@ import {
   PageLayoutTopBar,
   PageLayoutTopBarTitle,
 } from '@/layout/app/page-layout';
+import { orpc } from '@/lib/orpc/client';
 
 export const PageBooks = () => {
   const { t } = useTranslation(['book']);
@@ -41,9 +38,7 @@ export const PageBooks = () => {
   return (
     <PageLayout>
       <PageLayoutTopBar>
-        <PageLayoutTopBarTitle>
-          {t('book:app.list.title')}
-        </PageLayoutTopBarTitle>
+        <PageLayoutTopBarTitle>{t('book:app.list.title')}</PageLayoutTopBarTitle>
       </PageLayoutTopBar>
       <PageLayoutContent>
         {ui

@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ArrowLeftIcon } from 'lucide-react';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { type SubmitHandler, useForm } from 'react-hook-form';
 import { Trans, useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
 
@@ -15,15 +15,9 @@ import { Button } from '@/components/ui/button';
 import { ButtonLink } from '@/components/ui/button-link';
 
 import { authClient } from '@/features/auth/client';
-import {
-  AUTH_EMAIL_OTP_EXPIRATION_IN_MINUTES,
-  AUTH_SIGNUP_ENABLED,
-} from '@/features/auth/config';
+import { AUTH_EMAIL_OTP_EXPIRATION_IN_MINUTES, AUTH_SIGNUP_ENABLED } from '@/features/auth/config';
 import { useMascot } from '@/features/auth/mascot';
-import {
-  FormFieldsLoginVerify,
-  zFormFieldsLoginVerify,
-} from '@/features/auth/schema';
+import { type FormFieldsLoginVerify, zFormFieldsLoginVerify } from '@/features/auth/schema';
 import { LoginEmailOtpHint } from '@/features/devtools/login-hint';
 
 const I18N_KEY_PAGE_PREFIX = AUTH_SIGNUP_ENABLED
@@ -48,9 +42,7 @@ export default function PageLoginVerify({
   const { isValid, isSubmitted } = form.formState;
   useMascot({ isError: !isValid && isSubmitted });
 
-  const submitHandler: SubmitHandler<FormFieldsLoginVerify> = async ({
-    otp,
-  }) => {
+  const submitHandler: SubmitHandler<FormFieldsLoginVerify> = async ({ otp }) => {
     const { error } = await authClient.signIn.emailOtp({
       email: search.email,
       otp,
@@ -59,9 +51,7 @@ export default function PageLoginVerify({
     if (error) {
       toast.error(
         error.code
-          ? t(
-              `auth:errorCode.${error.code as unknown as keyof typeof authClient.$ERROR_CODES}`
-            )
+          ? t(`auth:errorCode.${error.code as unknown as keyof typeof authClient.$ERROR_CODES}`)
           : error.message || t('auth:errorCode.UNKNOWN_ERROR')
       );
       form.setError('otp', {
@@ -75,19 +65,13 @@ export default function PageLoginVerify({
   };
 
   return (
-    <Form
-      {...form}
-      onSubmit={submitHandler}
-      className="flex flex-col gap-4 pb-12"
-    >
+    <Form {...form} onSubmit={submitHandler} className="flex flex-col gap-4 pb-12">
       <div className="flex flex-col gap-1">
         <ButtonLink variant="link" to="/login">
           <ArrowLeftIcon />
           {t('common:actions.back')}
         </ButtonLink>
-        <h1 className="text-lg font-bold text-balance">
-          {t(`${I18N_KEY_PAGE_PREFIX}.title`)}
-        </h1>
+        <h1 className="text-lg font-bold text-balance">{t(`${I18N_KEY_PAGE_PREFIX}.title`)}</h1>
         <p className="text-sm text-balance break-words text-muted-foreground">
           <Trans
             t={t}

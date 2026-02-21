@@ -1,4 +1,4 @@
-import { InferRouterInputs, InferRouterOutputs } from '@orpc/server';
+import type { InferRouterInputs, InferRouterOutputs } from '@orpc/server';
 
 import accountRouter from './routers/account';
 import bookRouter from './routers/book';

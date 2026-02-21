@@ -1,10 +1,4 @@
-export const scalarUiResponse = ({
-  title,
-  schemaUrl,
-}: {
-  title: string;
-  schemaUrl: string;
-}) => {
+export const scalarUiResponse = ({ title, schemaUrl }: { title: string; schemaUrl: string }) => {
   return new Response(
     `
     <!doctype html>

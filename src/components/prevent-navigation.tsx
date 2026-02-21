@@ -7,9 +7,7 @@ export const PreventNavigation = (props: { shouldBlock: boolean }) => {
     <Block
       shouldBlockFn={() => {
         if (!props.shouldBlock) return false;
-        const shouldLeave = confirm(
-          t('components:preventNavigation.confirmLabel')
-        );
+        const shouldLeave = confirm(t('components:preventNavigation.confirmLabel'));
         return !shouldLeave;
       }}
       withResolver

@@ -1,5 +1,5 @@
 import { cva, type VariantProps } from 'class-variance-authority';
-import * as React from 'react';
+import type * as React from 'react';
 
 import { cn } from '@/lib/tailwind/utils';
 
@@ -11,13 +11,7 @@ function Label({
   className,
   ...props
 }: React.ComponentProps<'label'> & VariantProps<typeof labelVariants>) {
-  return (
-    <label
-      data-slot="label"
-      className={cn(labelVariants(), className)}
-      {...props}
-    />
-  );
+  return <label data-slot="label" className={cn(labelVariants(), className)} {...props} />;
 }
 
 export { Label };

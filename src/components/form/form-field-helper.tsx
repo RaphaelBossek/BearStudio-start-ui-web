@@ -1,13 +1,10 @@
-import { ComponentProps } from 'react';
+import type { ComponentProps } from 'react';
 
 import { cn } from '@/lib/tailwind/utils';
 
 import { useFormField } from './form-field';
 
-export const FormFieldHelper = ({
-  className,
-  ...props
-}: ComponentProps<'div'>) => {
+export const FormFieldHelper = ({ className, ...props }: ComponentProps<'div'>) => {
   const ctx = useFormField();
   return (
     <div

@@ -6,7 +6,7 @@ import {
   RouterProvider,
 } from '@tanstack/react-router';
 import { PlusIcon } from 'lucide-react';
-import { ReactNode, useMemo } from 'react';
+import { type ReactNode, useMemo } from 'react';
 
 import { ResponsiveIconButtonLink } from '@/components/ui/responsive-icon-button-link';
 
@@ -69,11 +69,7 @@ export function Variants() {
       <ResponsiveIconButtonLink to="/" label="Add" variant="destructive">
         <PlusIcon />
       </ResponsiveIconButtonLink>
-      <ResponsiveIconButtonLink
-        to="/"
-        label="Add"
-        variant="destructive-secondary"
-      >
+      <ResponsiveIconButtonLink to="/" label="Add" variant="destructive-secondary">
         <PlusIcon />
       </ResponsiveIconButtonLink>
       <ResponsiveIconButtonLink to="/" label="Add" variant="link">

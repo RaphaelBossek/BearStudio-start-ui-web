@@ -1,8 +1,4 @@
-import {
-  NavigateOptions,
-  useCanGoBack,
-  useRouter,
-} from '@tanstack/react-router';
+import { type NavigateOptions, useCanGoBack, useRouter } from '@tanstack/react-router';
 
 export const useNavigateBack = () => {
   const canGoBack = useCanGoBack();

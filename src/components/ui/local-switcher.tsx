@@ -1,9 +1,5 @@
 import { CheckIcon, ChevronsUpDownIcon, LanguagesIcon } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-
-import { AVAILABLE_LANGUAGES, LanguageKey } from '@/lib/i18n/constants';
-import { cn } from '@/lib/tailwind/utils';
-
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -11,6 +7,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { AVAILABLE_LANGUAGES, type LanguageKey } from '@/lib/i18n/constants';
+import { cn } from '@/lib/tailwind/utils';
 
 export const LocalSwitcher = (props: { iconOnly?: boolean }) => {
   const { i18n, t } = useTranslation(['common']);

@@ -3,9 +3,6 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import { Link, useRouter } from '@tanstack/react-router';
 import { PlusIcon } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-
-import { orpc } from '@/lib/orpc/client';
-
 import { Button } from '@/components/ui/button';
 import {
   DataList,
@@ -20,7 +17,6 @@ import {
 import { ResponsiveIconButtonLink } from '@/components/ui/responsive-icon-button-link';
 import { SearchButton } from '@/components/ui/search-button';
 import { SearchInput } from '@/components/ui/search-input';
-
 import { BookCover } from '@/features/book/book-cover';
 import {
   PageLayout,
@@ -28,6 +24,7 @@ import {
   PageLayoutTopBar,
   PageLayoutTopBarTitle,
 } from '@/layout/manager/page-layout';
+import { orpc } from '@/lib/orpc/client';
 
 export const PageBooks = (props: { search: { searchTerm?: string } }) => {
   const router = useRouter();
@@ -87,27 +84,15 @@ export const PageBooks = (props: { search: { searchTerm?: string } }) => {
           </ResponsiveIconButtonLink>
         }
       >
-        <PageLayoutTopBarTitle>
-          {t('book:manager.list.title')}
-        </PageLayoutTopBarTitle>
-        <SearchButton
-          {...searchInputProps}
-          className="-mx-2 md:hidden"
-          size="icon-sm"
-        />
-        <SearchInput
-          {...searchInputProps}
-          size="sm"
-          className="max-w-2xs max-md:hidden"
-        />
+        <PageLayoutTopBarTitle>{t('book:manager.list.title')}</PageLayoutTopBarTitle>
+        <SearchButton {...searchInputProps} className="-mx-2 md:hidden" size="icon-sm" />
+        <SearchInput {...searchInputProps} size="sm" className="max-w-2xs max-md:hidden" />
       </PageLayoutTopBar>
       <PageLayoutContent className="pb-20">
         <DataList>
           {ui
             .match('pending', () => <DataListLoadingState />)
-            .match('error', () => (
-              <DataListErrorState retry={() => booksQuery.refetch()} />
-            ))
+            .match('error', () => <DataListErrorState retry={() => booksQuery.refetch()} />)
             .match('empty', () => <DataListEmptyState />)
             .match('empty-search', ({ searchTerm }) => (
               <DataListEmptyState searchTerm={searchTerm} />

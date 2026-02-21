@@ -1,12 +1,12 @@
-import { ORPCError, os } from '@orpc/server';
-import { type ResponseHeadersPluginContext } from '@orpc/server/plugins';
-import { getRequestHeaders } from '@tanstack/react-start/server';
 import { randomUUID } from 'node:crypto';
 import { performance } from 'node:perf_hooks';
+import { ORPCError, os } from '@orpc/server';
+import type { ResponseHeadersPluginContext } from '@orpc/server/plugins';
+import { getRequestHeaders } from '@tanstack/react-start/server';
 import { match } from 'ts-pattern';
 
 import { envClient } from '@/env/client';
-import { Permission } from '@/features/auth/permissions';
+import type { Permission } from '@/features/auth/permissions';
 import { auth } from '@/server/auth';
 import { db } from '@/server/db';
 import { Prisma } from '@/server/db/generated/client';
@@ -23,10 +23,7 @@ const base = os
 
     const duration = performance.now() - start;
 
-    context.resHeaders?.append(
-      'Server-Timing',
-      `auth;dur=${duration.toFixed(2)}`
-    );
+    context.resHeaders?.append('Server-Timing', `auth;dur=${duration.toFixed(2)}`);
 
     return await next({
       context: {
@@ -58,10 +55,7 @@ const base = os
 
       const duration = performance.now() - start;
       loggerForMiddleWare.info({ durationMs: duration }, 'After');
-      context.resHeaders?.append(
-        'Server-Timing',
-        `global;dur=${duration.toFixed(2)}`
-      );
+      context.resHeaders?.append('Server-Timing', `global;dur=${duration.toFixed(2)}`);
 
       return result;
     } catch (error) {
@@ -88,8 +82,7 @@ const base = os
       const serverTimingHeader = timingStore
         .getStore()
         ?.prisma.map(
-          (timing) =>
-            `db-${timing.model}-${timing.operation};dur=${timing.duration.toFixed(2)}`
+          (timing) => `db-${timing.model}-${timing.operation};dur=${timing.duration.toFixed(2)}`
         )
         .join(', ');
 
@@ -121,38 +114,26 @@ const base = os
       if (error instanceof Prisma.PrismaClientKnownRequestError) {
         throw match(error.code)
           .with('P2002', () => {
-            context.logger.warn(
-              error.meta,
-              `Prisma Error: ${error.code} ${error.message}`
-            );
+            context.logger.warn(error.meta, `Prisma Error: ${error.code} ${error.message}`);
             return new ORPCError('CONFLICT', {
               message: 'Unique constraint violation',
               data: { target: error.meta?.target },
             });
           })
           .with('P2025', () => {
-            context.logger.warn(
-              error.meta,
-              `Prisma Error ${error.code}: ${error.message}`
-            );
+            context.logger.warn(error.meta, `Prisma Error ${error.code}: ${error.message}`);
             return new ORPCError('NOT_FOUND', {
               message: 'Record not found',
             });
           })
           .with('P2003', () => {
-            context.logger.error(
-              error.meta,
-              `Prisma Error ${error.code}: ${error.message}`
-            );
+            context.logger.error(error.meta, `Prisma Error ${error.code}: ${error.message}`);
             return new ORPCError('BAD_REQUEST', {
               message: 'Foreign key constraint violation',
             });
           })
           .otherwise(() => {
-            context.logger.error(
-              error.meta,
-              `Prisma Error ${error.code}: ${error.message}`
-            );
+            context.logger.error(error.meta, `Prisma Error ${error.code}: ${error.message}`);
             return new ORPCError('INTERNAL_SERVER_ERROR', {
               message: 'Database error',
             });
@@ -160,9 +141,7 @@ const base = os
       }
 
       if (error instanceof Prisma.PrismaClientValidationError) {
-        context.logger.error(
-          `Prisma Client Validation Error: ${error.message}`
-        );
+        context.logger.error(`Prisma Client Validation Error: ${error.message}`);
         throw new ORPCError('BAD_REQUEST', {
           message: 'Database validation error',
         });
@@ -176,11 +155,7 @@ const base = os
 
 export const publicProcedure = () => base;
 
-export const protectedProcedure = ({
-  permission,
-}: {
-  permission: Permission | null;
-}) =>
+export const protectedProcedure = ({ permission }: { permission: Permission | null }) =>
   base.use(async ({ context, next }) => {
     const { user, session } = context;
 

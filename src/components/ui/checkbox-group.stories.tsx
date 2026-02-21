@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react-vite';
+import type { Meta } from '@storybook/react-vite';
 
 import { Checkbox } from '@/components/ui/checkbox';
 import { CheckboxGroup } from '@/components/ui/checkbox-group';
@@ -53,11 +53,7 @@ export const DisabledOption = () => {
   return (
     <CheckboxGroup>
       {astrobears.map((option) => (
-        <Checkbox
-          key={option.value}
-          value={option.value}
-          disabled={option.disabled}
-        >
+        <Checkbox key={option.value} value={option.value} disabled={option.disabled}>
           {option.label}
         </Checkbox>
       ))}

@@ -1,17 +1,10 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
-
-import { zu } from '@/lib/zod/zod-utils';
-
-import {
-  Form,
-  FormField,
-  FormFieldController,
-  FormFieldLabel,
-} from '@/components/form';
+import { Form, FormField, FormFieldController, FormFieldLabel } from '@/components/form';
 import { onSubmit } from '@/components/form/docs.utils';
 import { Button } from '@/components/ui/button';
+import { zu } from '@/lib/zod/zod-utils';
 
 export default {
   title: 'Form/FieldOtp',
@@ -23,10 +16,7 @@ const zFormSchema = (options: { length?: number } = {}) => {
     code: zu.fieldText
       .required({ error: 'Invalid code' })
       .pipe(
-        z
-          .string()
-          .min(length, `Code is ${length} digits`)
-          .max(length, `Code is ${length} digits`)
+        z.string().min(length, `Code is ${length} digits`).max(length, `Code is ${length} digits`)
       ),
   });
 };
@@ -44,12 +34,7 @@ export const Default = () => {
       <div className="flex max-w-sm flex-col gap-4">
         <FormField>
           <FormFieldLabel>Code</FormFieldLabel>
-          <FormFieldController
-            type="otp"
-            control={form.control}
-            name="code"
-            maxLength={6}
-          />
+          <FormFieldController type="otp" control={form.control} name="code" maxLength={6} />
         </FormField>
         <div>
           <Button type="submit">Submit</Button>
@@ -72,12 +57,7 @@ export const DefaultValue = () => {
       <div className="flex max-w-sm flex-col gap-4">
         <FormField>
           <FormFieldLabel>Code</FormFieldLabel>
-          <FormFieldController
-            type="otp"
-            control={form.control}
-            name="code"
-            maxLength={6}
-          />
+          <FormFieldController type="otp" control={form.control} name="code" maxLength={6} />
         </FormField>
         <div>
           <Button type="submit">Submit</Button>
@@ -122,12 +102,7 @@ export const CustomLength = () => {
       <div className="flex max-w-sm flex-col gap-4">
         <FormField>
           <FormFieldLabel>Code</FormFieldLabel>
-          <FormFieldController
-            type="otp"
-            control={form.control}
-            name="code"
-            maxLength={4}
-          />
+          <FormFieldController type="otp" control={form.control} name="code" maxLength={4} />
         </FormField>
         <div>
           <Button type="submit">Submit</Button>

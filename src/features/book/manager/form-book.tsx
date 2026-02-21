@@ -1,16 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-
+import { FormField, FormFieldController, FormFieldLabel } from '@/components/form';
+import type { FormFieldsBook } from '@/features/book/schema';
 import { orpc } from '@/lib/orpc/client';
-
-import {
-  FormField,
-  FormFieldController,
-  FormFieldLabel,
-} from '@/components/form';
-
-import { FormFieldsBook } from '@/features/book/schema';
 
 export const FormBook = () => {
   const form = useFormContext<FormFieldsBook>();
@@ -22,12 +15,7 @@ export const FormBook = () => {
     <div className="flex flex-col gap-4">
       <FormField>
         <FormFieldLabel>{t('book:common.title.label')}</FormFieldLabel>
-        <FormFieldController
-          type="text"
-          control={form.control}
-          name="title"
-          autoFocus
-        />
+        <FormFieldController type="text" control={form.control} name="title" autoFocus />
       </FormField>
       <FormField>
         <FormFieldLabel>{t('book:common.author.label')}</FormFieldLabel>
@@ -49,11 +37,7 @@ export const FormBook = () => {
 
       <FormField>
         <FormFieldLabel>{t('book:common.publisher.label')}</FormFieldLabel>
-        <FormFieldController
-          type="text"
-          control={form.control}
-          name="publisher"
-        />
+        <FormFieldController type="text" control={form.control} name="publisher" />
       </FormField>
     </div>
   );

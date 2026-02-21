@@ -13,9 +13,7 @@ import type { Mock } from 'vitest';
 import type { PrismaClient } from '@/server/db/generated/client';
 
 type ModelKeys = {
-  [K in keyof PrismaClient]: PrismaClient[K] extends { findMany: unknown }
-    ? K
-    : never;
+  [K in keyof PrismaClient]: PrismaClient[K] extends { findMany: unknown } ? K : never;
 }[keyof PrismaClient];
 
 type MockedModel<T> = { [K in keyof T]: Mock };

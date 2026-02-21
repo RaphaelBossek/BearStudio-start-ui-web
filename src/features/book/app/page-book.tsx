@@ -3,16 +3,12 @@ import { ORPCError } from '@orpc/client';
 import { useQuery } from '@tanstack/react-query';
 import { AlertCircleIcon } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-
-import { orpc } from '@/lib/orpc/client';
-
 import { BackButton } from '@/components/back-button';
 import { PageError } from '@/components/errors/page-error';
 import { Card, CardContent } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Spinner } from '@/components/ui/spinner';
-
 import { BookCover } from '@/features/book/book-cover';
 import {
   PageLayout,
@@ -20,12 +16,11 @@ import {
   PageLayoutTopBar,
   PageLayoutTopBarTitle,
 } from '@/layout/app/page-layout';
+import { orpc } from '@/lib/orpc/client';
 
 export const PageBook = (props: { params: { id: string } }) => {
   const { t } = useTranslation(['book']);
-  const bookQuery = useQuery(
-    orpc.book.getById.queryOptions({ input: { id: props.params.id } })
-  );
+  const bookQuery = useQuery(orpc.book.getById.queryOptions({ input: { id: props.params.id } }));
 
   const ui = getUiState((set) => {
     if (bookQuery.status === 'pending') return set('pending');
@@ -100,10 +95,7 @@ export const PageBook = (props: { params: { id: string } }) => {
                   </CardContent>
                 </Card>
               </div>
-              <div
-                aria-hidden
-                className="mx-auto w-full max-w-64 min-w-48 flex-1"
-              >
+              <div aria-hidden className="mx-auto w-full max-w-64 min-w-48 flex-1">
                 <BookCover book={book} />
               </div>
             </div>

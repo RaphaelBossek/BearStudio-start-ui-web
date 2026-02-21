@@ -49,11 +49,7 @@ export function Default() {
 export function Invalid() {
   return (
     <Combobox items={options} defaultValue={options[0]}>
-      <ComboboxInput
-        aria-invalid={true}
-        placeholder="Select a fruit"
-        showClear
-      />
+      <ComboboxInput aria-invalid={true} placeholder="Select a fruit" showClear />
       <ComboboxContent>
         <ComboboxEmpty>No items found.</ComboboxEmpty>
         <ComboboxList>

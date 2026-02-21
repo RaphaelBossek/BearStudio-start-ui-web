@@ -1,12 +1,7 @@
 import { expect, test, vi } from 'vitest';
 import { z } from 'zod';
 
-import {
-  FAILED_CLICK_TIMEOUT_MS,
-  page,
-  render,
-  setupUser,
-} from '@/tests/utils';
+import { FAILED_CLICK_TIMEOUT_MS, page, render, setupUser } from '@/tests/utils';
 
 import { FormField, FormFieldController, FormFieldLabel } from '..';
 import { FormMocked } from '../form-test-utils';
@@ -24,12 +19,7 @@ test('update value', async () => {
       {({ form }) => (
         <FormField>
           <FormFieldLabel>Code</FormFieldLabel>
-          <FormFieldController
-            type="otp"
-            control={form.control}
-            name="code"
-            maxLength={6}
-          />
+          <FormFieldController type="otp" control={form.control} name="code" maxLength={6} />
         </FormField>
       )}
     </FormMocked>
@@ -61,12 +51,7 @@ test('default value', async () => {
       {({ form }) => (
         <FormField>
           <FormFieldLabel>Code</FormFieldLabel>
-          <FormFieldController
-            type="otp"
-            control={form.control}
-            name="code"
-            maxLength={6}
-          />
+          <FormFieldController type="otp" control={form.control} name="code" maxLength={6} />
         </FormField>
       )}
     </FormMocked>

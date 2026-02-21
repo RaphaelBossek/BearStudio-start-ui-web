@@ -1,11 +1,7 @@
 import type { Meta } from '@storybook/react-vite';
 
 import { onSubmit } from '@/components/form/docs.utils';
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSlot,
-} from '@/components/ui/input-otp';
+import { InputOTP, InputOTPGroup, InputOTPSlot } from '@/components/ui/input-otp';
 
 export default {
   title: 'InputOTP',

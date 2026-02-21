@@ -1,18 +1,10 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
-import { ReactElement, useState } from 'react';
+import { type ReactElement, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
-
-import { orpc } from '@/lib/orpc/client';
-
-import {
-  Form,
-  FormField,
-  FormFieldController,
-  FormFieldLabel,
-} from '@/components/form';
+import { Form, FormField, FormFieldController, FormFieldLabel } from '@/components/form';
 import { Button } from '@/components/ui/button';
 import {
   ResponsiveDrawer,
@@ -24,12 +16,12 @@ import {
   ResponsiveDrawerTitle,
   ResponsiveDrawerTrigger,
 } from '@/components/ui/responsive-drawer';
-
 import {
-  FormFieldsAccountUpdateName,
+  type FormFieldsAccountUpdateName,
   zFormFieldsAccountUpdateName,
 } from '@/features/account/schema';
 import { authClient } from '@/features/auth/client';
+import { orpc } from '@/lib/orpc/client';
 
 export const ChangeNameDrawer = (props: { children: ReactElement }) => {
   const { t } = useTranslation(['account']);
@@ -73,9 +65,7 @@ export const ChangeNameDrawer = (props: { children: ReactElement }) => {
           className="flex flex-col gap-4"
         >
           <ResponsiveDrawerHeader>
-            <ResponsiveDrawerTitle>
-              {t('account:changeNameDrawer.title')}
-            </ResponsiveDrawerTitle>
+            <ResponsiveDrawerTitle>{t('account:changeNameDrawer.title')}</ResponsiveDrawerTitle>
             <ResponsiveDrawerDescription className="sr-only">
               {t('account:changeNameDrawer.description')}
             </ResponsiveDrawerDescription>
@@ -95,12 +85,7 @@ export const ChangeNameDrawer = (props: { children: ReactElement }) => {
             </FormField>
           </ResponsiveDrawerBody>
           <ResponsiveDrawerFooter>
-            <Button
-              type="submit"
-              className="w-full"
-              size="lg"
-              loading={updateUser.isPending}
-            >
+            <Button type="submit" className="w-full" size="lg" loading={updateUser.isPending}>
               {t('account:changeNameDrawer.submitButton')}
             </Button>
           </ResponsiveDrawerFooter>

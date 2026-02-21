@@ -1,25 +1,18 @@
+import { ChevronDown, ChevronLeft, ChevronRight, ChevronUp } from 'lucide-react';
 import {
-  ChevronDown,
-  ChevronLeft,
-  ChevronRight,
-  ChevronUp,
-} from 'lucide-react';
-import {
-  ChevronProps,
+  type ChevronProps,
   DayPicker,
   type DayPickerProps,
   labelNext,
   labelPrevious,
-  NavProps,
+  type NavProps,
   useDayPicker,
 } from 'react-day-picker';
 import { enUS } from 'react-day-picker/locale';
 import { useTranslation } from 'react-i18next';
 import { match } from 'ts-pattern';
-
-import { cn } from '@/lib/tailwind/utils';
-
 import { Button, buttonVariants } from '@/components/ui/button';
+import { cn } from '@/lib/tailwind/utils';
 
 import { REACT_DAY_PICKER_LOCALE_MAP } from '@/locales/react-day-picker';
 
@@ -61,14 +54,9 @@ export function Calendar({
   );
   const buttonNavClassName = buttonVariants({
     variant: 'secondary',
-    className:
-      'absolute h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100',
+    className: 'absolute h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100',
   });
-  const _buttonNextClassName = cn(
-    buttonNavClassName,
-    'right-0',
-    props.classNames?.button_next
-  );
+  const _buttonNextClassName = cn(buttonNavClassName, 'right-0', props.classNames?.button_next);
   const _buttonPreviousClassName = cn(
     buttonNavClassName,
     'left-0',
@@ -76,10 +64,7 @@ export function Calendar({
   );
   const _navClassName = cn('flex items-start', props.classNames?.nav);
   const _monthGridClassName = cn('mx-auto mt-4', props.classNames?.month_grid);
-  const _weekClassName = cn(
-    'mt-2 flex w-max items-start',
-    props.classNames?.week
-  );
+  const _weekClassName = cn('mt-2 flex w-max items-start', props.classNames?.week);
   const _dayClassName = cn(
     'flex size-8 flex-1 items-center justify-center p-0 text-sm',
     props.classNames?.day
@@ -117,10 +102,7 @@ export function Calendar({
     'day-outside text-muted-foreground opacity-80 aria-selected:bg-accent/50 aria-selected:text-muted-foreground aria-selected:opacity-30',
     props.classNames?.outside
   );
-  const _disabledClassName = cn(
-    'text-muted-foreground opacity-60',
-    props.classNames?.disabled
-  );
+  const _disabledClassName = cn('text-muted-foreground opacity-60', props.classNames?.disabled);
   const _hiddenClassName = cn('invisible flex-1', props.classNames?.hidden);
 
   return (
@@ -129,7 +111,7 @@ export function Calendar({
       showOutsideDays={showOutsideDays}
       className={cn('p-3', className)}
       style={{
-        width: 248.8 * (props.numberOfMonths ?? 1) + 'px',
+        width: `${248.8 * (props.numberOfMonths ?? 1)}px`,
       }}
       classNames={{
         months: _monthsClassName,
@@ -154,10 +136,7 @@ export function Calendar({
         disabled: _disabledClassName,
         hidden: _hiddenClassName,
 
-        dropdowns: cn(
-          'flex flex-1 justify-between [&>span]:flex',
-          props.classNames?.dropdowns
-        ),
+        dropdowns: cn('flex flex-1 justify-between [&>span]:flex', props.classNames?.dropdowns),
         dropdown: cn(
           'cursor-inherit leading-inherit absolute inset-0 m-0 w-full appearance-none border-none p-0 opacity-0',
           props.classNames?.dropdown

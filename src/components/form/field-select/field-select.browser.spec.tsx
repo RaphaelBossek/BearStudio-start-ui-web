@@ -1,12 +1,7 @@
 import { expect, test, vi } from 'vitest';
 import { z } from 'zod';
 
-import {
-  FAILED_CLICK_TIMEOUT_MS,
-  page,
-  render,
-  setupUser,
-} from '@/tests/utils';
+import { FAILED_CLICK_TIMEOUT_MS, page, render, setupUser } from '@/tests/utils';
 
 import { FormField, FormFieldController, FormFieldLabel } from '..';
 import { FormMocked } from '../form-test-utils';
@@ -31,12 +26,7 @@ test('should select item on click', async () => {
       {({ form }) => (
         <FormField>
           <FormFieldLabel>Bearstronaut</FormFieldLabel>
-          <FormFieldController
-            type="select"
-            control={form.control}
-            name="bear"
-            items={options}
-          />
+          <FormFieldController type="select" control={form.control} name="bear" items={options} />
         </FormField>
       )}
     </FormMocked>
@@ -65,12 +55,7 @@ test('default value', async () => {
       {({ form }) => (
         <FormField>
           <FormFieldLabel>Bearstronaut</FormFieldLabel>
-          <FormFieldController
-            type="select"
-            control={form.control}
-            name="bear"
-            items={options}
-          />
+          <FormFieldController type="select" control={form.control} name="bear" items={options} />
         </FormField>
       )}
     </FormMocked>
@@ -129,12 +114,7 @@ test('disabled option', async () => {
       {({ form }) => (
         <FormField>
           <FormFieldLabel>Bearstronaut</FormFieldLabel>
-          <FormFieldController
-            type="select"
-            control={form.control}
-            name="bear"
-            items={options}
-          />
+          <FormFieldController type="select" control={form.control} name="bear" items={options} />
         </FormField>
       )}
     </FormMocked>

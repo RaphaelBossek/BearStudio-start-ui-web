@@ -34,11 +34,7 @@ import {
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
 import { Spinner } from '@/components/ui/spinner';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from '@/components/ui/tooltip';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
 export default {
   title: 'InputGroup',
@@ -78,11 +74,7 @@ export function Default() {
             <DropdownMenuTrigger render={<InputGroupButton variant="ghost" />}>
               Auto
             </DropdownMenuTrigger>
-            <DropdownMenuContent
-              side="top"
-              align="start"
-              className="[--radius:0.95rem]"
-            >
+            <DropdownMenuContent side="top" align="start" className="[--radius:0.95rem]">
               <DropdownMenuItem>Auto</DropdownMenuItem>
               <DropdownMenuItem>Agent</DropdownMenuItem>
               <DropdownMenuItem>Manual</DropdownMenuItem>
@@ -295,13 +287,7 @@ export function DropdownExample() {
         <InputGroupAddon align="inline-end">
           <DropdownMenu>
             <DropdownMenuTrigger
-              render={
-                <InputGroupButton
-                  variant="ghost"
-                  aria-label="More"
-                  size="icon-xs"
-                />
-              }
+              render={<InputGroupButton variant="ghost" aria-label="More" size="icon-xs" />}
             >
               <MoreHorizontalIcon />
             </DropdownMenuTrigger>
@@ -318,9 +304,7 @@ export function DropdownExample() {
         <InputGroupAddon align="inline-end">
           <DropdownMenu>
             <DropdownMenuTrigger
-              render={
-                <InputGroupButton variant="ghost" className="pr-1.5! text-xs" />
-              }
+              render={<InputGroupButton variant="ghost" className="pr-1.5! text-xs" />}
             >
               Search In... <ChevronDownIcon className="size-3" />
             </DropdownMenuTrigger>

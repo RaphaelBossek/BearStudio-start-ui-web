@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 import { Logo } from '@/components/brand/logo';
 import { LocalSwitcher } from '@/components/ui/local-switcher';
@@ -11,10 +11,7 @@ import image from './layout-login-image.jpg';
 import mascot from './mascot.png';
 import mascotError from './mascot-error.png';
 
-export const LayoutLogin = (props: {
-  children?: ReactNode;
-  footer?: ReactNode;
-}) => {
+export const LayoutLogin = (props: { children?: ReactNode; footer?: ReactNode }) => {
   const mascotState = useMascotState();
   return (
     <div
@@ -37,11 +34,7 @@ export const LayoutLogin = (props: {
         {props.footer}
       </div>
       <div className="relative hidden w-full flex-1 items-center justify-center bg-muted lg:flex">
-        <img
-          src={image}
-          alt=""
-          className="absolute inset-0 size-full object-cover"
-        />
+        <img src={image} alt="" className="absolute inset-0 size-full object-cover" />
         <img
           src={mascotState === 'error' ? mascotError : mascot}
           alt=""

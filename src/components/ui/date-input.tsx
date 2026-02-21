@@ -1,14 +1,7 @@
 import dayjs from 'dayjs';
-import {
-  ChangeEvent,
-  ChangeEventHandler,
-  ComponentProps,
-  useState,
-} from 'react';
-
-import { parseStringToDate } from '@/lib/dayjs/parse-string-to-date';
-
+import { type ChangeEvent, type ChangeEventHandler, type ComponentProps, useState } from 'react';
 import { Input } from '@/components/ui/input';
+import { parseStringToDate } from '@/lib/dayjs/parse-string-to-date';
 
 type UseDayPickerInputManagement = {
   inputValue: string;
@@ -57,9 +50,7 @@ export const useDatePickerInputManagement = (
       }
 
       const dateValueAsDayjs = dayjs(dateValue);
-      setInputValue(
-        dateValueAsDayjs.isValid() ? dateValueAsDayjs.format(dateFormat) : ''
-      );
+      setInputValue(dateValueAsDayjs.isValid() ? dateValueAsDayjs.format(dateFormat) : '');
       return;
     }
 
@@ -110,9 +101,7 @@ export const DateInput = ({
         onKeyDown?.(e);
       }}
       onChange={datePickerInputManagement.handleInputChange}
-      value={
-        datePickerInputManagement.inputValue ?? dayjs(value).format(format)
-      }
+      value={datePickerInputManagement.inputValue ?? dayjs(value).format(format)}
       placeholder={format}
       {...props}
     />

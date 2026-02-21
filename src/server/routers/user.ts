@@ -4,7 +4,7 @@ import { z } from 'zod';
 
 import { zSession, zUser } from '@/features/user/schema';
 import { auth } from '@/server/auth';
-import { Prisma } from '@/server/db/generated/client';
+import type { Prisma } from '@/server/db/generated/client';
 import { protectedProcedure } from '@/server/orpc';
 
 const tags = ['users'];
@@ -70,7 +70,7 @@ export default {
         }),
       ]);
 
-      let nextCursor: typeof input.cursor | undefined = undefined;
+      let nextCursor: typeof input.cursor | undefined;
       if (items.length > input.limit) {
         const nextItem = items.pop();
         nextCursor = nextItem?.id;
@@ -271,7 +271,7 @@ export default {
         }),
       ]);
 
-      let nextCursor: typeof input.cursor | undefined = undefined;
+      let nextCursor: typeof input.cursor | undefined;
       if (items.length > input.limit) {
         const nextItem = items.pop();
         nextCursor = nextItem?.id;
@@ -302,9 +302,7 @@ export default {
     .output(z.void())
     .handler(async ({ context, input }) => {
       if (context.user.id === input.id) {
-        context.logger.warn(
-          'Prevent to revoke all sesssions of the current connected user'
-        );
+        context.logger.warn('Prevent to revoke all sesssions of the current connected user');
         throw new ORPCError('BAD_REQUEST', {
           message: 'You cannot revoke all your sessions',
         });
@@ -343,9 +341,7 @@ export default {
     .output(z.void())
     .handler(async ({ context, input }) => {
       if (context.session.token === input.sessionToken) {
-        context.logger.warn(
-          'Prevent to revoke the current connected user session'
-        );
+        context.logger.warn('Prevent to revoke the current connected user session');
         throw new ORPCError('BAD_REQUEST', {
           message: 'You cannot revoke your current session',
         });

@@ -37,9 +37,7 @@ export const SwipeDirections = () => (
   <div className="flex flex-wrap gap-4">
     {(['down', 'up', 'left', 'right'] as const).map((direction) => (
       <Drawer key={direction} swipeDirection={direction}>
-        <DrawerTrigger render={<Button variant="secondary" />}>
-          Open {direction}
-        </DrawerTrigger>
+        <DrawerTrigger render={<Button variant="secondary" />}>Open {direction}</DrawerTrigger>
         <DrawerContent>
           <DrawerHeader>
             <DrawerTitle>Title</DrawerTitle>

@@ -1,10 +1,8 @@
-import { ComponentProps, ReactNode } from 'react';
+import type { ComponentProps, ReactNode } from 'react';
 import { match } from 'ts-pattern';
-
-import { cn } from '@/lib/tailwind/utils';
-import { useIsMobile } from '@/hooks/use-mobile';
-
 import { Button } from '@/components/ui/button';
+import { useIsMobile } from '@/hooks/use-mobile';
+import { cn } from '@/lib/tailwind/utils';
 
 export const ResponsiveIconButton = ({
   size = 'default',

@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react-vite';
+import type { Meta } from '@storybook/react-vite';
 
 import { PageError } from '@/components/errors/page-error';
 
@@ -35,11 +35,5 @@ export const WithErrorCode = () => {
 };
 
 export const WithCustomMessage = () => {
-  return (
-    <PageError
-      type="404"
-      message="This book does not exist"
-      errorCode="book404"
-    />
-  );
+  return <PageError type="404" message="This book does not exist" errorCode="book404" />;
 };

@@ -1,16 +1,11 @@
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import {
-  FormField,
-  FormFieldController,
-  FormFieldHelper,
-  FormFieldLabel,
-} from '@/components/form';
+import { FormField, FormFieldController, FormFieldHelper, FormFieldLabel } from '@/components/form';
 
 import { authClient } from '@/features/auth/client';
 import { rolesNames } from '@/features/auth/permissions';
-import { FormFieldsUser } from '@/features/user/schema';
+import type { FormFieldsUser } from '@/features/user/schema';
 
 export const FormUser = (props: { userId?: string }) => {
   const { t } = useTranslation(['user']);
@@ -22,12 +17,7 @@ export const FormUser = (props: { userId?: string }) => {
     <div className="flex flex-col gap-4">
       <FormField>
         <FormFieldLabel>{t('user:common.name.label')}</FormFieldLabel>
-        <FormFieldController
-          type="text"
-          control={form.control}
-          name="name"
-          autoFocus
-        />
+        <FormFieldController type="text" control={form.control} name="name" autoFocus />
       </FormField>
       <FormField>
         <FormFieldLabel>{t('user:common.email.label')}</FormFieldLabel>
@@ -46,9 +36,7 @@ export const FormUser = (props: { userId?: string }) => {
           }))}
         />
         {isCurrentUser && (
-          <FormFieldHelper>
-            {t('user:common.role.cannotUpdateOwnRole')}
-          </FormFieldHelper>
+          <FormFieldHelper>{t('user:common.role.cannotUpdateOwnRole')}</FormFieldHelper>
         )}
       </FormField>
     </div>

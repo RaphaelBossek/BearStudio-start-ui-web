@@ -1,20 +1,13 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Meta } from '@storybook/react-vite';
+import type { Meta } from '@storybook/react-vite';
 import { CheckIcon } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
-
-import { cn } from '@/lib/tailwind/utils';
-
-import {
-  Form,
-  FormField,
-  FormFieldController,
-  FormFieldHelper,
-} from '@/components/form';
+import { Form, FormField, FormFieldController, FormFieldHelper } from '@/components/form';
 import { onSubmit } from '@/components/form/docs.utils';
 import { FieldCheckbox } from '@/components/form/field-checkbox';
 import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/tailwind/utils';
 
 export default {
   title: 'Form/FieldCheckbox',
@@ -43,11 +36,7 @@ export const Default = () => {
     <Form {...form} onSubmit={onSubmit}>
       <div className="flex flex-col gap-4">
         <FormField>
-          <FormFieldController
-            type="checkbox"
-            control={form.control}
-            name="lovesBears"
-          >
+          <FormFieldController type="checkbox" control={form.control} name="lovesBears">
             I love bears
           </FormFieldController>
           <FormFieldHelper>There is only one possible answer.</FormFieldHelper>
@@ -72,11 +61,7 @@ export const DefaultValue = () => {
     <Form {...form} onSubmit={onSubmit}>
       <div className="flex flex-col gap-4">
         <FormField>
-          <FormFieldController
-            type="checkbox"
-            control={form.control}
-            name="lovesBears"
-          >
+          <FormFieldController type="checkbox" control={form.control} name="lovesBears">
             I love bears
           </FormFieldController>
           <FormFieldHelper>There is only one possible answer.</FormFieldHelper>
@@ -101,12 +86,7 @@ export const Disabled = () => {
     <Form {...form} onSubmit={onSubmit}>
       <div className="flex flex-col gap-4">
         <FormField>
-          <FormFieldController
-            type="checkbox"
-            control={form.control}
-            name="lovesBears"
-            disabled
-          >
+          <FormFieldController type="checkbox" control={form.control} name="lovesBears" disabled>
             I love bears
           </FormFieldController>
           <FormFieldHelper>There is only one possible answer.</FormFieldHelper>
@@ -143,12 +123,9 @@ export const CustomCheckbox = () => {
                 >
                   <span className="font-medium">I love bears</span>
                   <span
-                    className={cn(
-                      'rounded-full bg-primary-foreground p-1 opacity-0',
-                      {
-                        'opacity-100': checked,
-                      }
-                    )}
+                    className={cn('rounded-full bg-primary-foreground p-1 opacity-0', {
+                      'opacity-100': checked,
+                    })}
                   >
                     <CheckIcon className="size-4 text-primary" />
                   </span>

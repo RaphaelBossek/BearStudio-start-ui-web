@@ -1,6 +1,6 @@
 import { Avatar as AvatarPrimitive } from '@base-ui/react/avatar';
 import BoringAvatarComponent from 'boring-avatars';
-import * as React from 'react';
+import type * as React from 'react';
 
 import { cn } from '@/lib/tailwind/utils';
 
@@ -24,27 +24,18 @@ function Avatar({
   );
 }
 
-function AvatarImage({
-  className,
-  ...props
-}: React.ComponentProps<typeof AvatarPrimitive.Image>) {
+function AvatarImage({ className, ...props }: React.ComponentProps<typeof AvatarPrimitive.Image>) {
   return (
     <AvatarPrimitive.Image
       data-slot="avatar-image"
-      className={cn(
-        'aspect-square size-full rounded-full object-cover',
-        className
-      )}
+      className={cn('aspect-square size-full rounded-full object-cover', className)}
       {...props}
     />
   );
 }
 
 function AvatarFallback(
-  props: Omit<
-    React.ComponentProps<typeof AvatarPrimitive.Fallback>,
-    'children'
-  > &
+  props: Omit<React.ComponentProps<typeof AvatarPrimitive.Fallback>, 'children'> &
     StrictUnion<
       | {
           name: string;
@@ -101,10 +92,7 @@ function AvatarFallback(
   return (
     <AvatarPrimitive.Fallback
       data-slot="avatar-fallback"
-      className={cn(
-        'flex size-full items-center justify-center rounded-full',
-        className
-      )}
+      className={cn('flex size-full items-center justify-center rounded-full', className)}
       {...rest}
     >
       <div className="relative size-full">
@@ -164,10 +152,7 @@ function AvatarGroup({ className, ...props }: React.ComponentProps<'div'>) {
   );
 }
 
-function AvatarGroupCount({
-  className,
-  ...props
-}: React.ComponentProps<'div'>) {
+function AvatarGroupCount({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <div
       data-slot="avatar-group-count"
@@ -180,11 +165,4 @@ function AvatarGroupCount({
   );
 }
 
-export {
-  Avatar,
-  AvatarBadge,
-  AvatarFallback,
-  AvatarGroup,
-  AvatarGroupCount,
-  AvatarImage,
-};
+export { Avatar, AvatarBadge, AvatarFallback, AvatarGroup, AvatarGroupCount, AvatarImage };

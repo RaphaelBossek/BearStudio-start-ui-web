@@ -30,9 +30,7 @@ export const Default = () => {
         </ResponsiveDrawerHeader>
         <ResponsiveDrawerBody>Content</ResponsiveDrawerBody>
         <ResponsiveDrawerFooter>
-          <ResponsiveDrawerClose render={<Button />}>
-            Close
-          </ResponsiveDrawerClose>
+          <ResponsiveDrawerClose render={<Button />}>Close</ResponsiveDrawerClose>
         </ResponsiveDrawerFooter>
       </ResponsiveDrawerContent>
     </ResponsiveDrawer>

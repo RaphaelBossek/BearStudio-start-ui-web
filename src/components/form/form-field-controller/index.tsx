@@ -1,20 +1,20 @@
 import { useMemo } from 'react';
 import {
   Controller,
-  ControllerProps,
-  FieldPath,
-  FieldValues,
+  type ControllerProps,
+  type FieldPath,
+  type FieldValues,
 } from 'react-hook-form';
 
 import {
-  FieldComponentProps,
+  type FieldComponentProps,
+  type FieldType,
   fieldComponents,
-  FieldType,
 } from '@/components/form/_fields';
 
 import {
   FormFieldControllerContext,
-  NonGenericFormFieldControllerContextValue,
+  type NonGenericFormFieldControllerContextValue,
 } from './context';
 
 export function FormFieldController<
@@ -26,11 +26,7 @@ export function FormFieldController<
     | { [K in FieldType]: { type: K } & FieldComponentProps<K> }[FieldType]
     | {
         type: 'custom';
-        render: ControllerProps<
-          TFieldValues,
-          TName,
-          TTransformedValues
-        >['render'];
+        render: ControllerProps<TFieldValues, TName, TTransformedValues>['render'];
       }
   ) &
     Omit<ControllerProps<TFieldValues, TName, TTransformedValues>, 'render'> & {
@@ -92,16 +88,13 @@ function FormFieldControllerRender<
   );
 
   const fieldContent = useMemo(() => {
-    if (type === 'custom')
-      return customRender?.({ field, fieldState, formState });
+    if (type === 'custom') return customRender?.({ field, fieldState, formState });
     const Field = fieldComponents[type];
     return <Field {...(fieldProps as FieldComponentProps<ExplicitAny>)} />;
   }, [type, customRender, field, fieldState, formState, fieldProps]);
 
   return (
-    <FormFieldControllerContext
-      value={contextValue as NonGenericFormFieldControllerContextValue}
-    >
+    <FormFieldControllerContext value={contextValue as NonGenericFormFieldControllerContextValue}>
       {fieldContent}
     </FormFieldControllerContext>
   );

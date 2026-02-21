@@ -17,13 +17,9 @@ describe('Calendar', () => {
   it('should render with previous and next button by default', async () => {
     render(<Calendar />);
 
-    await expect
-      .element(page.getByLabelText('Go to the Previous Month'))
-      .toBeDefined();
+    await expect.element(page.getByLabelText('Go to the Previous Month')).toBeDefined();
 
-    await expect
-      .element(page.getByLabelText('Go to the Next Month'))
-      .toBeDefined();
+    await expect.element(page.getByLabelText('Go to the Next Month')).toBeDefined();
   });
 
   it('should render without button date when uncontrolled', () => {
@@ -34,9 +30,7 @@ describe('Calendar', () => {
   });
 
   it('should render date buttons when controlled', () => {
-    render(
-      <Calendar mode="single" selected={new Date()} onSelect={() => {}} />
-    );
+    render(<Calendar mode="single" selected={new Date()} onSelect={() => {}} />);
 
     // 3 are the previous, next and year select buttons
     expect(page.getByRole('button').all().length).toBeGreaterThan(3);

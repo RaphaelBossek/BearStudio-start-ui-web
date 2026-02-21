@@ -2,8 +2,8 @@ import { call } from '@orpc/server';
 import { omit } from 'remeda';
 import { describe, expect, it } from 'vitest';
 
-import { Book } from '@/features/book/schema';
-import { Book as BookFromDb, Prisma } from '@/server/db/generated/client';
+import type { Book } from '@/features/book/schema';
+import { type Book as BookFromDb, Prisma } from '@/server/db/generated/client';
 import bookRouter from '@/server/routers/book';
 import {
   mockDb,
@@ -121,9 +121,7 @@ describe('book router', () => {
     it('should throw NOT_FOUND when book does not exist', async () => {
       mockDb.book.findUnique.mockResolvedValue(null);
 
-      await expect(
-        call(bookRouter.getById, { id: 'nonexistent' })
-      ).rejects.toMatchObject({
+      await expect(call(bookRouter.getById, { id: 'nonexistent' })).rejects.toMatchObject({
         code: 'NOT_FOUND',
       });
     });
@@ -131,9 +129,7 @@ describe('book router', () => {
     it('should throw UNAUTHORIZED when user is not authenticated', async () => {
       mockGetSession.mockResolvedValue(null);
 
-      await expect(
-        call(bookRouter.getById, { id: 'book-1' })
-      ).rejects.toMatchObject({
+      await expect(call(bookRouter.getById, { id: 'book-1' })).rejects.toMatchObject({
         code: 'UNAUTHORIZED',
       });
     });
@@ -157,9 +153,7 @@ describe('book router', () => {
         error: false,
       });
 
-      await expect(
-        call(bookRouter.getById, { id: 'book-1' })
-      ).rejects.toMatchObject({
+      await expect(call(bookRouter.getById, { id: 'book-1' })).rejects.toMatchObject({
         code: 'FORBIDDEN',
       });
     });
@@ -266,19 +260,14 @@ describe('book router', () => {
     });
 
     it('should throw CONFLICT on unique constraint violation (P2002)', async () => {
-      const prismaError = new Prisma.PrismaClientKnownRequestError(
-        'Unique constraint failed',
-        {
-          code: 'P2002',
-          clientVersion: '0.0.0',
-          meta: { target: ['title', 'author'] },
-        }
-      );
+      const prismaError = new Prisma.PrismaClientKnownRequestError('Unique constraint failed', {
+        code: 'P2002',
+        clientVersion: '0.0.0',
+        meta: { target: ['title', 'author'] },
+      });
       mockDb.book.update.mockRejectedValue(prismaError);
 
-      await expect(
-        call(bookRouter.updateById, updateInput)
-      ).rejects.toMatchObject({
+      await expect(call(bookRouter.updateById, updateInput)).rejects.toMatchObject({
         code: 'CONFLICT',
         data: { target: ['title', 'author'] },
       });
@@ -292,9 +281,7 @@ describe('book router', () => {
         })
       );
 
-      await expect(
-        call(bookRouter.updateById, updateInput)
-      ).rejects.toMatchObject({
+      await expect(call(bookRouter.updateById, updateInput)).rejects.toMatchObject({
         code: 'NOT_FOUND',
       });
     });
@@ -302,9 +289,7 @@ describe('book router', () => {
     it('should throw INTERNAL_SERVER_ERROR on unexpected errors', async () => {
       mockDb.book.update.mockRejectedValue(new Error('DB connection lost'));
 
-      await expect(
-        call(bookRouter.updateById, updateInput)
-      ).rejects.toMatchObject({
+      await expect(call(bookRouter.updateById, updateInput)).rejects.toMatchObject({
         code: 'INTERNAL_SERVER_ERROR',
       });
     });
@@ -312,9 +297,7 @@ describe('book router', () => {
     it('should throw UNAUTHORIZED when user is not authenticated', async () => {
       mockGetSession.mockResolvedValue(null);
 
-      await expect(
-        call(bookRouter.updateById, updateInput)
-      ).rejects.toMatchObject({
+      await expect(call(bookRouter.updateById, updateInput)).rejects.toMatchObject({
         code: 'UNAUTHORIZED',
       });
     });
@@ -341,9 +324,7 @@ describe('book router', () => {
         error: false,
       });
 
-      await expect(
-        call(bookRouter.updateById, updateInput)
-      ).rejects.toMatchObject({
+      await expect(call(bookRouter.updateById, updateInput)).rejects.toMatchObject({
         code: 'FORBIDDEN',
       });
     });
@@ -353,9 +334,7 @@ describe('book router', () => {
     it('should delete a book successfully', async () => {
       mockDb.book.delete.mockResolvedValue(mockBookFromDb);
 
-      await expect(
-        call(bookRouter.deleteById, { id: 'book-1' })
-      ).resolves.toBeUndefined();
+      await expect(call(bookRouter.deleteById, { id: 'book-1' })).resolves.toBeUndefined();
     });
 
     it('should throw NOT_FOUND when book does not exist (P2025)', async () => {
@@ -366,9 +345,7 @@ describe('book router', () => {
         })
       );
 
-      await expect(
-        call(bookRouter.deleteById, { id: 'nonexistent' })
-      ).rejects.toMatchObject({
+      await expect(call(bookRouter.deleteById, { id: 'nonexistent' })).rejects.toMatchObject({
         code: 'NOT_FOUND',
       });
     });
@@ -376,9 +353,7 @@ describe('book router', () => {
     it('should throw INTERNAL_SERVER_ERROR on unexpected errors', async () => {
       mockDb.book.delete.mockRejectedValue(new Error('DB connection lost'));
 
-      await expect(
-        call(bookRouter.deleteById, { id: 'book-1' })
-      ).rejects.toMatchObject({
+      await expect(call(bookRouter.deleteById, { id: 'book-1' })).rejects.toMatchObject({
         code: 'INTERNAL_SERVER_ERROR',
       });
     });
@@ -386,9 +361,7 @@ describe('book router', () => {
     it('should throw UNAUTHORIZED when user is not authenticated', async () => {
       mockGetSession.mockResolvedValue(null);
 
-      await expect(
-        call(bookRouter.deleteById, { id: 'book-1' })
-      ).rejects.toMatchObject({
+      await expect(call(bookRouter.deleteById, { id: 'book-1' })).rejects.toMatchObject({
         code: 'UNAUTHORIZED',
       });
     });
@@ -412,9 +385,7 @@ describe('book router', () => {
         error: false,
       });
 
-      await expect(
-        call(bookRouter.deleteById, { id: 'book-1' })
-      ).rejects.toMatchObject({
+      await expect(call(bookRouter.deleteById, { id: 'book-1' })).rejects.toMatchObject({
         code: 'FORBIDDEN',
       });
     });

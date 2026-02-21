@@ -20,9 +20,7 @@ export default {
 export const Default = () => {
   return (
     <Dialog>
-      <DialogTrigger render={<Button variant="secondary" />}>
-        Open
-      </DialogTrigger>
+      <DialogTrigger render={<Button variant="secondary" />}>Open</DialogTrigger>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Title</DialogTitle>

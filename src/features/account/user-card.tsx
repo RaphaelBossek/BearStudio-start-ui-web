@@ -23,10 +23,7 @@ export const UserCard = () => {
               src={session.data?.user.image ?? undefined}
               alt={session.data?.user.name ?? ''}
             />
-            <AvatarFallback
-              variant="boring"
-              name={session.data?.user.name ?? ''}
-            />
+            <AvatarFallback variant="boring" name={session.data?.user.name ?? ''} />
           </Avatar>
           <div className="flex min-w-0 flex-col gap-0.5">
             <CardTitle className="truncate">
@@ -50,14 +47,10 @@ export const UserCard = () => {
         <ChangeNameDrawer>
           <Button variant="link" size="sm" className="-my-1.5">
             <span className="truncate">
-              {session.data?.user.name || (
-                <span className="text-xs text-muted-foreground">--</span>
-              )}
+              {session.data?.user.name || <span className="text-xs text-muted-foreground">--</span>}
             </span>
             <PenLineIcon className="size-3" />
-            <span className="sr-only">
-              {t('account:userCard.name.updateAction')}
-            </span>
+            <span className="sr-only">{t('account:userCard.name.updateAction')}</span>
           </Button>
         </ChangeNameDrawer>
       </AccountCardRow>
@@ -68,9 +61,7 @@ export const UserCard = () => {
               {t('account:userCard.email.notVerified')}
             </Badge>
           )}
-          {session.data?.user.email || (
-            <span className="text-xs text-muted-foreground">--</span>
-          )}
+          {session.data?.user.email || <span className="text-xs text-muted-foreground">--</span>}
         </p>
       </AccountCardRow>
     </Card>

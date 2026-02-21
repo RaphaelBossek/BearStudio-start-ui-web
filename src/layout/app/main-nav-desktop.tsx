@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { Logo } from '@/components/brand/logo';
 
-import { MAIN_NAV_LINKS, NavLinkItem } from '@/layout/app/main-nav-config';
+import { MAIN_NAV_LINKS, type NavLinkItem } from '@/layout/app/main-nav-config';
 
 export const MainNavDesktop = () => {
   const { t } = useTranslation(['layout']);
@@ -36,12 +36,7 @@ export const MainNavDesktop = () => {
   );
 };
 
-const Item = ({
-  icon: Icon,
-  iconActive,
-  children,
-  ...linkProps
-}: NavLinkItem) => {
+const Item = ({ icon: Icon, iconActive, children, ...linkProps }: NavLinkItem) => {
   const IconActive = iconActive ?? Icon;
   return (
     <Link
