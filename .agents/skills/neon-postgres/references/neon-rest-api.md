@@ -6,7 +6,7 @@ See the [official API reference](https://neon.com/docs/reference/api-reference.m
 
 ## OpenAPI Specification
 
-The full [OpenAPI spec](https://neon.com/api_spec/release/v2.json) is available for programmatic lookup of exact endpoints, request/response schemas, and required fields.
+The full [OpenAPI specs](https://neon.com/api_specs/release/v2.json) is available for programmatic lookup of exact endpoints, request/response schemas, and required fields.
 
 ## Base URL
 

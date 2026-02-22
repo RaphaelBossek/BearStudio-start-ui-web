@@ -1,6 +1,6 @@
 # QA Test Results Template
 
-Add this section to the END of the feature spec:
+Add this section to the END of the feature specs:
 
 ```markdown
 ---

@@ -41,6 +41,7 @@ Refer to these files for specific implementation details:
 ## Project Structure
 
 ```
+components.json         Shadcn UI component library configuration
 .storybook/             Storybook UI components
 e2e/                    Playwright end-to-end tests
 prisma/                 Prisma schema and migrations
@@ -57,7 +58,9 @@ src/
   features/{category}   Feature components by category
     auth/permissions.ts Better Auth permissions, roles and access control
   hooks/                Custom React hooks
-  layouts/              Layout components
+  layout/               Layout components
+    manager/            Admin layout
+      nav-sidebar.tsx   Sidebar navigation for the Admin panel
   lib/                  Utilities (orpc, tailwind, tanstack-query etc.)
   locales/              Translations
   routes/               Route definitions (TanStack Router)
@@ -72,7 +75,7 @@ src/
   styles/               Global styles
   tests/                Vitests
   types/                TypeScript types
-spec/
+specs/
   PRD.md            Product Requirements Document (Vision, Roadmap)
   features/         Feature specifications
     {topic}/{feature}/  Nested feature specifications
@@ -80,7 +83,7 @@ spec/
 
 ## Development Workflow
 
-1. `/specify` - Create feature spec from idea
+1. `/specify` - Create feature specs from idea
 2. `/architecture` - Design tech architecture (PM-friendly, no code)
 3. `/frontend` - Build UI components (shadcn/ui first!)
 4. `/backend` - Build APIs, database, RLS policies
@@ -89,12 +92,12 @@ spec/
 
 ## Feature Tracking
 
-All features tracked in `spec/PRD.md`. Every skill reads it at start and updates it when done. Feature specs live in `spec/features/{topic}/{feature}/`.
+All features tracked in `specs/PRD.md`. Every skill reads it at start and updates it when done. Feature specs live in `specs/features/{topic}/{feature}/`.
 
 ## Product Context
 
-spec/PRD.md
+specs/PRD.md
 
 ## Feature Overview
 
-spec/PRD.md
+specs/PRD.md

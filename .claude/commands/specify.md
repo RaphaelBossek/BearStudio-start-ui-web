@@ -29,7 +29,7 @@ Ask these questions (Wait for answers):
 - Suggest improvements if criteria are not met.
 
 ### 3. GENERATE SPEC
-Use the `requirements` skill to create files in `spec/features/{topic}/{feature}/`:
+Use the `requirements` skill to create files in `specs/features/{topic}/{feature}/`:
 - `requirements.md`: JTBD hypothesis, problem space, success metrics.
 - `{feature}.md`: User stories, functional/technical/UI reqs, specific AC.
 - `acceptance-criteria.md`: Common AC and suggestions.
@@ -47,7 +47,7 @@ feat({topic}): Add feature specification for {feature}
 
 ## INIT MODE: New Project Setup
 
-Use this mode when the user provides a project description for the first time. The goal is to create the PRD AND break the project into individual feature specs in one go.
+Use this mode when the user provides a project description for the first time. The goal is to create the PRD AND break the project into individual feature specss in one go.
 
 ### Phase 1: Understand the Project
 Ask the user interactive questions to clarify the big picture:
@@ -68,7 +68,7 @@ Wait for user responses before proceeding.
 4. If INITIAL REQUIREMENTS are very general, make additional suggestions or improvements for better clarity.
 
 ### Phase 3: Create the Global Requirements
-Based on user answers, fill out `spec/PRD.md` with:
+Based on user answers, fill out `specs/PRD.md` with:
 - **Vision:** Clear 2-3 sentence description of what and why
 - **Target Users:** Who they are, their needs and pain points
 - **Success Metrics:** How to measure if the product works
@@ -87,25 +87,25 @@ Present the feature breakdown to the user for review:
 
 ### Phase 4: Create Feature Specs
 For each feature (after user approval of the breakdown):
-- Create a directory `spec/features/{topic}/{feature}/`
-- Create `spec/features/{topic}/{feature}/requirements.md`
-- Create `spec/features/{topic}/{feature}/acceptance-criteria.md`
-- Create `spec/features/{topic}/{feature}/{user-story-breakdown-title}.md` for specific user stories and their acceptance criteria.
+- Create a directory `specs/features/{topic}/{feature}/`
+- Create `specs/features/{topic}/{feature}/requirements.md`
+- Create `specs/features/{topic}/{feature}/acceptance-criteria.md`
+- Create `specs/features/{topic}/{feature}/{user-story-breakdown-title}.md` for specific user stories and their acceptance criteria.
 - Include Jobs to be Done (JTBD), user stories, and edge cases.
 
 ### Phase 5: Update Tracking
-- Update `spec/PRD.md` with ALL new topics and features in the **Planned** section.
+- Update `specs/PRD.md` with ALL new topics and features in the **Planned** section.
 
 ### Phase 6: User Review
 Present everything for final approval:
 - `specs/PRD.md` summary.
-- List of all feature specs created (organized by topic).
+- List of all feature specss created (organized by topic).
 - Recommended build order.
 
 ### Init Mode Handoff
 > "Project setup complete! I've created:
-> - Global requirements at `spec/PRD.md`
-> - X feature specs in `features/`
+> - Global requirements at `specs/PRD.md`
+> - X feature specss in `features/`
 >
 > Recommended first feature: {topic}/{feature}
 > Next step: Run `/plan` to design the technical approach for the first feature."
@@ -114,7 +114,7 @@ Present everything for final approval:
 ```
 feat: Initialize project - Global requirements and X feature specifications
 
-- Created global requirements with vision, target users, and roadmap in spec/PRD.md
-- Created feature specs
-- Updated spec/PRD.md
+- Created global requirements with vision, target users, and roadmap in specs/PRD.md
+- Created feature specss
+- Updated specs/PRD.md
 ```

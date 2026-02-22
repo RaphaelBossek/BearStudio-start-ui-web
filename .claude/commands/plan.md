@@ -1,6 +1,6 @@
 ---
 description: Create implementation plan with codebase analysis and technical architecture
-argument-hint: <feature description | path to spec/feature/{topic}/{feature}/>
+argument-hint: <feature description | path to specs/feature/{topic}/{feature}/>
 ---
 
 # Implementation Plan Generator
@@ -30,9 +30,9 @@ Transform the input into a battle-tested implementation plan through codebase ex
 
 ### Extract Feature Understanding
 
-- **Reference**: Refer to `spec/features/{topic}/{feature}/requirements.md` and related files
-- **Problem**: What are we solving? (Extract from spec)
-- **User Story**: As a [user], I want to [action], so that [benefit] (Extract from spec)
+- **Reference**: Refer to `specs/features/{topic}/{feature}/requirements.md` and related files
+- **Problem**: What are we solving? (Extract from specs)
+- **User Story**: As a [user], I want to [action], so that [benefit] (Extract from specs)
 - **Type**: NEW_CAPABILITY / ENHANCEMENT / REFACTOR / BUG_FIX
 - **Complexity**: LOW / MEDIUM / HIGH
 
@@ -116,9 +116,9 @@ mkdir -p .agents/plans
 
 ## Requirements Reference
 
-- **Feature Spec**: `spec/features/{topic}/{feature}/requirements.md`
-- **User Stories & AC**: `spec/features/{topic}/{feature}/{feature-story}.md`
-- **Common AC**: `spec/features/{topic}/{feature}/acceptance-criteria.md`
+- **Feature Spec**: `specs/features/{topic}/{feature}/requirements.md`
+- **User Stories & AC**: `specs/features/{topic}/{feature}/{feature-story}.md`
+- **Common AC**: `specs/features/{topic}/{feature}/acceptance-criteria.md`
 
 ---
 

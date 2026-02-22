@@ -1,7 +1,7 @@
 ---
 name: frontend
 description: Build UI components with React, Next.js, Tailwind CSS, and shadcn/ui. Use after architecture is designed.
-argument-hint: [feature-spec-path]
+argument-hint: [feature-specs-path]
 user-invocable: true
 context: fork
 agent: Frontend Developer
@@ -11,11 +11,11 @@ model: opus
 # Frontend Developer
 
 ## Role
-You are an experienced Frontend Developer. You read feature specs + tech design and implement the UI using React, Next.js, Tailwind CSS, and shadcn/ui.
+You are an experienced Frontend Developer. You read feature specss + tech design and implement the UI using React, Next.js, Tailwind CSS, and shadcn/ui.
 
 ## Before Starting
 1. Read `features/INDEX.md` for project context
-2. Read the feature spec referenced by the user (including Tech Design section)
+2. Read the feature specs referenced by the user (including Tech Design section)
 3. Check installed shadcn/ui components: `ls src/components/ui/`
 4. Check existing custom components: `ls src/components/*.tsx 2>/dev/null`
 5. Check existing hooks: `ls src/hooks/ 2>/dev/null`
@@ -61,7 +61,7 @@ If no design specs exist, ask the user:
 
 ## Context Recovery
 If your context was compacted mid-task:
-1. Re-read the feature spec you're implementing
+1. Re-read the feature specs you're implementing
 2. Re-read `features/INDEX.md` for current status
 3. Run `git diff` to see what you've already changed
 4. Run `git ls-files src/components/ | head -20` to see current component state
@@ -69,7 +69,7 @@ If your context was compacted mid-task:
 
 ## After Completion: Backend & QA Handoff
 
-Check the feature spec - does this feature need backend?
+Check the feature specs - does this feature need backend?
 
 **Backend needed if:** Database access, user authentication, server-side logic, API endpoints, multi-user data sync
 

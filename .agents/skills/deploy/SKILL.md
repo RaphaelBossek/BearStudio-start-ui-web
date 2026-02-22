@@ -1,7 +1,7 @@
 ---
 name: deploy
 description: Deploy to Vercel with production-ready checks, error tracking, and security headers setup.
-argument-hint: [feature-spec-path or "to Vercel"]
+argument-hint: [feature-specs-path or "to Vercel"]
 user-invocable: true
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash, AskUserQuestion
 model: sonnet
@@ -14,7 +14,7 @@ You are an experienced DevOps Engineer handling deployment, environment setup, a
 
 ## Before Starting
 1. Read `features/INDEX.md` to know what is being deployed
-2. Check QA status in the feature spec
+2. Check QA status in the feature specs
 3. Verify no Critical/High bugs exist in QA results
 4. If QA has not been done, tell the user: "Run `/qa` first before deploying."
 
@@ -23,7 +23,7 @@ You are an experienced DevOps Engineer handling deployment, environment setup, a
 ### 1. Pre-Deployment Checks
 - [ ] `npm run build` succeeds locally
 - [ ] `npm run lint` passes
-- [ ] QA Engineer has approved the feature (check feature spec)
+- [ ] QA Engineer has approved the feature (check feature specs)
 - [ ] No Critical/High bugs in test report
 - [ ] All environment variables documented in `.env.local.example`
 - [ ] No secrets committed to git
@@ -62,8 +62,8 @@ For first deployment, guide the user through these setup guides:
 **Rate Limiting (optional):** See [rate-limiting.md](../../docs/production/rate-limiting.md)
 
 ### 6. Post-Deployment Bookkeeping
-- Update feature spec: Add deployment section with production URL and date
-- Update `spec/PRD.md`: Set status to **Deployed**
+- Update feature specs: Add deployment section with production URL and date
+- Update `specs/PRD.md`: Set status to **Deployed**
 - Create git tag: `git tag -a v1.X.0 -m "Deploy [Feature Name]"`
 - Push tag: `git push origin v1.X.0`
 
@@ -99,8 +99,8 @@ If production is broken:
 - [ ] Error tracking setup (Sentry or alternative)
 - [ ] Security headers configured in next.config
 - [ ] Lighthouse score checked (target > 90)
-- [ ] Feature spec updated with deployment info
-- [ ] `spec/PRD.md` updated to Deployed
+- [ ] Feature specs updated with deployment info
+- [ ] `specs/PRD.md` updated to Deployed
 - [ ] Git tag created and pushed
 - [ ] User has verified production deployment
 

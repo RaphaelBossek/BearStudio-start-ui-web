@@ -278,7 +278,7 @@ The skill uses pattern matching to intelligently detect commit types from diffs:
 - **Mixed code+docs**: Prefer code type, note docs in description
 
 ### test Detection
-- **File patterns**: `test.js`, `spec.ts`, `__tests__/`, `/tests/`
+- **File patterns**: `test.js`, `specs.ts`, `__tests__/`, `/tests/`
 - **Test framework patterns**: `describe`, `it`, `test`, `expect`, `assert`
 
 ### style Detection

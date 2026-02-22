@@ -264,7 +264,7 @@ Before any agent reports "done", they must validate their work. When analyzing t
 **Backend agent** validates:
 - Server starts without errors
 - All API endpoints respond correctly
-- Request/response formats match the spec
+- Request/response formats match the specs
 - Error cases return proper status codes
 - SSE streaming works (if applicable)
 

@@ -1,7 +1,7 @@
 # General Rules
 
 ## Specs & Features
-- Track all in `spec/features/INDEX.md` and `spec/features/{category}/{feature}.md`.
+- Track all in `specs/features/INDEX.md` and `specs/features/{category}/{feature}.md`.
 - File naming: kebab-case. Max 60 chars. Single responsibility.
 - Merge clarifications into existing specs. Avoid new categories.
 - Update status: Planned, In Progress, In Review, Deployed.

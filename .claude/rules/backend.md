@@ -27,7 +27,7 @@
         - If a procedure is replaced, use `.route({ deprecated: true })`.
         - Ensure `os.implement()` exactly matches the `oc` builder contract to prevent drift.
     3.  **Validation**:
-        - After any change, run `npx orpc generate` (or spec generator) and diff the `openapi.json`.
+        - After any change, run `npx orpc generate` (or specs generator) and diff the `openapi.json`.
         - If the diff shows a "Removed" property or a "Required" change on an existing field, revert.
     4.  **Versioning**: If a breaking change is required, create a new endpoint or version.
 

@@ -19,8 +19,8 @@ The software should be developed based on the requirements of the customers usin
 - The software must run in modern browsers on Windows and macOS devices.
 
 ## Project Structure
-- `spec/PRD.md`: Global product vision, roadmap, and table of contents for all features.
-- `spec/features/{topic}/{feature}/`: Folder for a specific feature.
+- `specs/PRD.md`: Global product vision, roadmap, and table of contents for all features.
+- `specs/features/{topic}/{feature}/`: Folder for a specific feature.
     - **Topic**: Use a general category representing a functional domain or a software quality characteristic.
     - **Feature**: A single, testable, and deployable unit within that topic.
     - `requirements.md`: Problem space, JTBD, business rules, and high-level navigation for the job.
@@ -74,8 +74,8 @@ Focus on the non-functional excellence of the software.
 ---
 
 ## Before Starting
-1. Read `spec/PRD.md` to check the global context, vision, and roadmap.
-2. Read `spec/PRD.md` to see existing topics and features.
+1. Read `specs/PRD.md` to check the global context, vision, and roadmap.
+2. Read `specs/PRD.md` to see existing topics and features.
 
 ---
 
@@ -113,29 +113,29 @@ Ask about edge cases with concrete options:
 - What happens when the user is offline?
 
 ### Phase 4: Write Feature Spec
-- Identify the correct `{topic}/{feature}` folder in `spec/features/` or create a new one.
-- Update `spec/features/{topic}/{feature}/requirements.md` to include:
+- Identify the correct `{topic}/{feature}` folder in `specs/features/` or create a new one.
+- Update `specs/features/{topic}/{feature}/requirements.md` to include:
     - Problem space, Pain Points, Business Impact.
     - JTBD hypothesis.
     - Proposed solution (Overview, Out of Scope).
     - Links to user stories and common AC.
-- Create or update `spec/features/{topic}/{feature}/{user-story-breakdown-title}.md` for the specific feature user stories. Include:
+- Create or update `specs/features/{topic}/{feature}/{user-story-breakdown-title}.md` for the specific feature user stories. Include:
     - Timeline & Resources.
     - Functional, Technical, and UI/UX Requirements.
     - Specific AC and Definition of Done (ISO/IEC 25010).
-- Update `spec/features/{topic}/{feature}/acceptance-criteria.md` with new common criteria.
+- Update `specs/features/{topic}/{feature}/acceptance-criteria.md` with new common criteria.
 - Include "Further Suggestions for Acceptance Criteria" in `acceptance-criteria.md`.
 
 ### Phase 4: User Review
-Present the spec and ask for approval:
+Present the specs and ask for approval:
 - "Approved" → Spec is ready for architecture.
 - "Changes needed" → Iterate based on feedback.
 
 ### Phase 5: Update Tracking
-- Add the new topic and feature to the **Planned** section in `spec/PRD.md`.
+- Add the new topic and feature to the **Planned** section in `specs/PRD.md`.
 
 ### Feature Mode Handoff
-> "Feature spec is ready! Next step: Run `/architecture` to design the technical approach for this feature."
+> "Feature specs is ready! Next step: Run `/architecture` to design the technical approach for this feature."
 
 ### Feature Mode Git Commit
 ```
@@ -175,11 +175,11 @@ Each feature file = ONE testable, deployable unit.
 
 ### Init Mode
 - [ ] User has answered all project-level questions
-- [ ] Global requirements filled out in `spec/PRD.md` (Vision, Users, Metrics, Constraints, Non-Goals)
+- [ ] Global requirements filled out in `specs/PRD.md` (Vision, Users, Metrics, Constraints, Non-Goals)
 - [ ] All features split according to Single Responsibility
 - [ ] Dependencies between features documented
-- [ ] All feature specs created with user stories, specific AC, and edge cases
-- [ ] `spec/PRD.md` updated with all topics and features
+- [ ] All feature specss created with user stories, specific AC, and edge cases
+- [ ] `specs/PRD.md` updated with all topics and features
 - [ ] Build order recommended
 - [ ] User has reviewed and approved everything
 
@@ -188,6 +188,6 @@ Each feature file = ONE testable, deployable unit.
 - [ ] At least 3-5 user stories defined with specific acceptance criteria
 - [ ] Every acceptance criterion is testable (not vague)
 - [ ] At least 3-5 edge cases documented
-- [ ] Files saved to `/spec/features/{topic}/{feature}/`
-- [ ] `spec/PRD.md` updated with new feature and status
-- [ ] User has reviewed and approved the spec
+- [ ] Files saved to `/specs/features/{topic}/{feature}/`
+- [ ] `specs/PRD.md` updated with new feature and status
+- [ ] User has reviewed and approved the specs

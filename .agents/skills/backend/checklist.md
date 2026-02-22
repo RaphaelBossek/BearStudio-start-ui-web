@@ -19,7 +19,7 @@
 
 ## Verification (run before marking complete)
 - [ ] `npm run build` passes without errors
-- [ ] All acceptance criteria from feature spec addressed in API
+- [ ] All acceptance criteria from feature specs addressed in API
 - [ ] All API endpoints return correct status codes (test with curl or browser)
 - [ ] `features/INDEX.md` status updated to "In Progress"
 - [ ] Code committed to git

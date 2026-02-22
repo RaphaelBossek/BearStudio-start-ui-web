@@ -30,7 +30,7 @@ Before marking frontend as complete:
 
 ## Verification (run before marking complete)
 - [ ] `npm run build` passes without errors
-- [ ] All acceptance criteria from feature spec addressed in UI
+- [ ] All acceptance criteria from feature specs addressed in UI
 - [ ] `features/INDEX.md` status updated to "In Progress"
 
 ## Completion
