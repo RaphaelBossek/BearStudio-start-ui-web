@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "skills": {
+    "accessibility-compliance": {
+      "source": "wshobson/agents",
+      "sourceType": "github",
+      "computedHash": "3936584cc5ff5c958f33b0072ad17ba2bc9ed947dd3ada3c1ce4f4265385aada"
+    },
+    "better-auth": {
+      "source": "mrgoonie/claudekit-skills",
+      "sourceType": "github",
+      "computedHash": "ebc51f6a9515911f0eb31e8aa256aa53ed295d4b5d9e6538d210dfe202c9e3a1"
+    },
+    "better-auth-best-practices": {
+      "source": "better-auth/skills",
+      "sourceType": "github",
+      "computedHash": "a24359053259e55a75972cab4bf0b0e37e1393bac5f3756ec2e3a7b4b3778d2a"
+    },
+    "git-commit-message": {
+      "source": "vasilyu1983/ai-agents-public",
+      "sourceType": "github",
+      "computedHash": "e759be044438491501a43be0040e43e6c9d7daf1f8577264df0f3eb81e36239a"
+    },
+    "neon-postgres": {
+      "source": "neondatabase/agent-skills",
+      "sourceType": "github",
+      "computedHash": "13624b09c8dde98402647ffa13158f0e66a3fe6c440e74b2110e8b455a11153a"
+    },
+    "owasp-security": {
+      "source": "hoodini/ai-agents-skills",
+      "sourceType": "github",
+      "computedHash": "96ddeeb1eab361ebb8e18c1770a3baab804526fb94966f644a21ae72cc7841e2"
+    }
+  }
+}
