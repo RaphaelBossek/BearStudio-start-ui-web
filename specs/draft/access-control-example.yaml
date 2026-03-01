@@ -1,0 +1,75 @@
+# Access Control System Example Configuration
+# Following specification: @specs/draft/access-control-system.md
+
+# 1. Roles Definition (RBAC & Inheritance)
+roles:
+  # Base role with minimal access
+  base_user:
+    inheritance: null
+    permissions:
+      - resource: "/public/**"
+        actions: ["view"] # Synonym for Read
+        clearance: level_3_public # Public
+  # Department Manager role
+  department_manager:
+    inheritance: "base_user"
+    permissions:
+      - resource: "/projects/*"
+        actions: ["view", "export"] # Synonyms for Read
+        clearance: level_2_internal # Internal / Private
+      - resource: "/finance/reports/*"
+        actions: ["view"] # View only, cannot modify
+        clearance: level_1_secret # Secret / Confidential
+
+  # Accountant role (More specific finance access)
+  accountant:
+    inheritance: "base_user"
+    permissions:
+      - resource: "/finance/**"
+        actions: ["view", "modify", "add"] # Synonyms for Read, Update, Create
+        clearance: level_0_top_secret # Top Secret / Restricted (Full visibility)
+      - resource: "/finance/audit-logs"
+        actions: ["view", "export", "backup"] # synonyms for Read
+        clearance: level_0_top_secret
+
+  # Admin role
+  admin:
+    inheritance: "department_manager"
+    permissions:
+      - resource: "/**"
+        actions: ["view", "modify", "add", "remove", "restore"]
+        clearance: level_0_top_secret
+
+# 2. Users Definition (User Role Assignment & Clearance)
+users:
+  - id: "user_001"
+    name: "Alice Finance"
+    roles: ["accountant"]
+    default_clearance: level_0_top_secret
+
+  - id: "user_002"
+    name: "Bob Manager"
+    roles: ["department_manager"]
+    default_clearance: level_1_secret
+
+  - id: "user_003"
+    name: "Charlie MultiRole"
+    # Aggregates permissions from both roles
+    roles: ["department_manager", "accountant"]
+    default_clearance: level_0_top_secret
+
+# 3. Resource Precedence Example (Deepest Path First)
+# If a user tries to access /finance/reports/Q1.pdf:
+# - Accountant has /finance/** (matches)
+# - Department Manager has /finance/reports/* (matches)
+# The "Deepest Path First" rule means /finance/reports/* applies first if both match.
+
+resources:
+  - path: "/public/documentation"
+    confidentiality: level_3_public
+  - path: "/projects/alpha-secret"
+    confidentiality: level_1_secret
+  - path: "/finance/reports/salary-2024"
+    confidentiality: level_0_top_secret
+  - path: "/finance/audit-logs"
+    confidentiality: level_0_top_secret
