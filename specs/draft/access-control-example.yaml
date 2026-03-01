@@ -32,6 +32,25 @@ roles:
         actions: ["view", "export", "backup"] # synonyms for Read
         clearance: level_0_top_secret
 
+  # Legal Consultant role
+  legal_consultant:
+    inheritance: "base_user"
+    permissions:
+      - resource: "legal_contracts"
+        actions: ["view", "export"] # Synonyms for Read
+        clearance: level_2_internal # Internal / Private visibility granted by role
+
+  # Auditor role (Restricted visibility for certain data)
+  auditor:
+    inheritance: "base_user"
+    permissions:
+      - resource: "finance_reports"
+        actions: ["view"]
+        clearance: level_4_restricted # Explicit prohibition
+      - resource: "audit_logs"
+        actions: ["view"]
+        clearance: level_1_secret
+
   # Admin role
   admin:
     inheritance: "department_manager"
@@ -42,44 +61,88 @@ roles:
 
 # 2. Users Definition (User Role Assignment & Clearance)
 users:
-  - id: "user_001"
+  user_001:
     name: "Alice Finance"
     roles: ["accountant"]
     clearance: level_0_top_secret
 
-  - id: "user_002"
+  user_002:
     name: "Bob Manager"
     roles: ["department_manager"]
-    clearance: level_1_secret
+    clearance: level_1_secret # User ceiling: Bob can see Secret/Internal/Public
 
-  - id: "user_003"
-    name: "Charlie MultiRole"
-    # Aggregates permissions from both roles
-    roles: ["department_manager", "accountant"]
-    clearance: level_0_top_secret
+  user_004:
+    name: "Guest Admin"
+    roles: ["admin"]
+    clearance: level_3_public # Low user clearance for a high-privilege role: restricted visibility.
 
-# 3. Resource Precedence Example (Deepest Path First)
+  user_005:
+    name: "Legal Assistant"
+    roles: ["legal_consultant"]
+    clearance: level_2_internal # User ceiling: Internal / Private
+
+  user_006:
+    name: "External Auditor"
+    roles: ["auditor"]
+    clearance: level_3_public
+
+# 3. Visibility Determination Examples
+# - **Interaction Rule**: `Effective Visibility = MostRestrictive(User Clearance, Role Permission Clearance, Resource Confidentiality)`
+# - **Example 1 (Guest Admin accessing all resources)**:
+#   - User "Guest Admin" has personal `level_3_public` clearance.
+#   - Admin role grants `level_0_top_secret` clearance for `all_resources`.
+#   - Resource `all_resources` has `level_0_top_secret` confidentiality.
+#   - Result: Guest Admin sees all data in an anonymized/public state (`level_3_public`) despite being an admin.
+#
+# - **Example 2 (Department Manager accessing finance_reports)**:
+#   - User "Bob Manager" has personal `level_1_secret` clearance.
+#   - Department Manager role grants `level_1_secret` clearance for `finance_reports`.
+#   - Resource `finance_reports` has `level_0_top_secret` confidentiality.
+#   - Result: Bob sees the report with `level_1_secret` visibility (Partial Masking / FPE), because both his personal clearance and the role's granted clearance are level 1, which is more restrictive than the resource's level 0 classification.
+#
+# - **Example 3 (Legal Assistant accessing legal_contracts)**:
+#   - User "Legal Assistant" has personal `level_2_internal` clearance.
+#   - Legal Consultant role grants `level_2_internal` clearance for `legal_contracts`.
+#   - Resource `legal_contracts` has `level_1_secret` confidentiality.
+#   - Result: Legal Assistant sees the data at `level_2_internal` visibility (Pseudonymization / Substitution / Shuffling).
+#   - Logic: User/Role level 2 is more restrictive than resource level 1.
+#
+# - **Example 4 (External Auditor accessing finance_reports)**:
+#   - User "External Auditor" has `level_3_public` personal clearance.
+#   - Auditor role has `level_4_restricted` clearance for `finance_reports`.
+#   - Even though the resource is `level_0_top_secret`, the Auditor role explicitly prohibits access.
+#   - Result: Access is denied (CRUD operations prohibited).
+#
+# - **Example 5 (Strict Enforcement Scenario)**:
+#   - If **Strict Enforcement** is enabled:
+#   - User "Legal Assistant" (level 2) tries to access `finance_reports` (level 0).
+#   - Even if they had a role granting them access, their clearance (2) is lower than resource confidentiality (0).
+#   - Result: Access is Denied.
+#
 # If a user tries to access /finance/reports/Q1.pdf:
 # - Accountant has /finance/** (matches)
 # - Department Manager has /finance/reports/* (matches)
 # The "Deepest Path First" rule means /finance/reports/* applies first if both match.
 
 resources:
-  - name: "public_assets"
+  public_assets:
     paths: ["/public/**"]
     confidentiality: level_3_public
-  - name: "project_data"
+  project_data:
     paths: ["/projects/*", "/projects/alpha-secret"]
     confidentiality: level_1_secret
-  - name: "finance_reports"
+  finance_reports:
     paths: ["/finance/reports/*", "/finance/reports/salary-2024"]
     confidentiality: level_0_top_secret
-  - name: "finance_data"
+  finance_data:
     paths: ["/finance/**"]
     confidentiality: level_0_top_secret
-  - name: "audit_logs"
+  audit_logs:
     paths: ["/finance/audit-logs"]
     confidentiality: level_0_top_secret
-  - name: "all_resources"
+  all_resources:
     paths: ["/**"]
     confidentiality: level_0_top_secret
+  legal_contracts:
+    paths: ["/legal/contracts/*"]
+    confidentiality: level_1_secret

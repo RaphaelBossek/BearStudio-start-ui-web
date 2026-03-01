@@ -40,9 +40,30 @@ Users are assigned one of the following confidentiality levels, which defines th
 - **`level_3_public`**: Public
 - **`level_4_restricted`**: Restricted / No Access (Lowest clearance)
 
+#### Interaction: User vs. Role vs. Resource
+The system evaluates user-level clearance, role-level clearance, and the resource's assigned confidentiality. The **most restrictive level** (highest numerical index) always prevails to determine the **Effective Visibility Level**.
+
+- **Security Ceiling (User Clearance)**: Defines the absolute limit of trust for an individual. A user can never see data above their personal clearance, regardless of the role they are performing.
+- **Least Privilege (Role Clearance)**: Defines the specific data visibility needed for a task. A user with high personal clearance might only see data at a more restrictive level when performing a role that only requires that access.
+- **Resource Sensitivity (Resource Confidentiality)**: Defines the classification of the data itself. If a user's effective clearance (User/Role) is lower than the Resource Confidentiality, the data is transformed to match that lower clearance level.
+
+| User Clearance | Role Clearance | Resource Confidentiality | Resulting Visibility Level |
+| :--- | :--- | :--- | :--- |
+| `level_0_top_secret` | `level_2_internal` | `level_0_top_secret` | `level_2_internal` |
+| `level_2_internal` | `level_0_top_secret` | `level_0_top_secret` | `level_2_internal` |
+| `level_1_secret` | `level_1_secret` | `level_0_top_secret` | `level_1_secret` |
+| `level_0_top_secret` | `level_0_top_secret` | `level_0_top_secret` | `level_0_top_secret` |
+
 Each role uses these levels to define the individual confidentiality (clearance) required for its assigned resources.
 
-### 2.2 Data Visibility Levels
+### 2.2 Access Prohibition Rules
+The system can be configured to **prohibit access** rather than just masking data when a user's clearance is lower than the resource's confidentiality level.
+
+1.  **Strict Enforcement (Global/Resource Level)**: If enabled, any access request where `User/Role Clearance < Resource Confidentiality` (where "lower" means a higher numerical index) results in a total denial of access (effectively `level_4_restricted`).
+2.  **Clearance Gap Threshold**: Access is prohibited if the gap between the user's clearance and the resource's confidentiality exceeds a defined threshold (e.g., if a user with `level_3_public` tries to access `level_0_top_secret`).
+3.  **Explicit level_4_restricted Assignment**: If either the user's personal clearance or the role-granted clearance for a resource is explicitly set to `level_4_restricted`, the user is prohibited from performing any CRUD operations on that resource, regardless of its confidentiality level.
+
+### 2.3 Data Visibility Levels
 The confidentiality level assigned to a user determines how they perceive specific data attributes within a resource. This is achieved through Dynamic Data Masking (DDM) or Static Data Masking (SDM) depending on the environment:
 
 | Identifier | Technical Term | Transformation Technique | Description | Example (Credit Card) |
@@ -51,7 +72,7 @@ The confidentiality level assigned to a user determines how they perceive specif
 | `level_1_secret` | Partial Masking | Format-Preserving Encryption (FPE) | Shows "hints" for verification without full disclosure. | **** **** **** 1092 |
 | `level_2_internal` | Pseudonymization | Substitution / Shuffling | Replaces data with a reversible, realistic identifier. | 4912 8331 0021 7732 |
 | `level_3_public` | Anonymization | Encryption / Hashing | Scrubbed or aggregated data; no individual identification. | Visa / North America |
-| `level_4_restricted` | Redaction / Nulling | Nulling | Total removal or nulling of the data attribute. | [REDACTED] or NULL |
+| `level_4_restricted` | Redaction / Nulling | Nulling | Total removal or nulling of the data attribute. Access is prohibited for CRUD operations. | [REDACTED] or NULL |
 
 **Note**: The visibility of a resource attribute is dynamically adjusted based on the user's assigned confidentiality level.
 
