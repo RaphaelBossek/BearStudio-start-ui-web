@@ -384,7 +384,7 @@ Enum TreatmentReport_type_enum {
   STANDARD
 }
 
-Table customer [headercolor: #3498DB] {
+Table customer [headercolor: #8C564B] {
   Note: 'Organizational entities (customers) that are assigned to locations and appointment plans.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer (Zeitstempel)']
@@ -420,7 +420,7 @@ Table customer [headercolor: #3498DB] {
   _class String [note: 'Java Klassenname']
 }
 
-Table CustomerDiscount [headercolor: #E67E22] {
+Table CustomerDiscount [headercolor: #8C564B] {
   Note: 'Sub-entity for customer discounts'
   _id number [pk, note: 'Interner Bezeichner (Logical)']
   job number [note: 'Referenz ID auf jobId']
@@ -430,7 +430,7 @@ Table CustomerDiscount [headercolor: #E67E22] {
   dateUntil timestamp [note: 'Enddatum']
 }
 
-Table CustomerPriceList [headercolor: #E67E22] {
+Table CustomerPriceList [headercolor: #8C564B] {
   Note: 'Sub-entity for customer price lists'
   _id number [pk, note: 'Interner Bezeichner (Logical)']
   priceList Document [note: 'Snapshot der Preisliste']
@@ -439,7 +439,7 @@ Table CustomerPriceList [headercolor: #E67E22] {
   comment String [note: 'Kommentar']
 }
 
-Table appointmentPlan [headercolor: #3498DB] {
+Table appointmentPlan [headercolor: #1F77B4] {
   Note: 'Definition of a consultation schedule entry, including service, day, repetitions, times, assigned experts, locations, and customers.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer (Zeitstempel)']
@@ -465,7 +465,7 @@ Table appointmentPlan [headercolor: #3498DB] {
   _class String [note: 'Java Klassenname: `de.videoclinic.model.AppointmentPlan` (Used)']
 }
 
-Table jobId [headercolor: #3498DB] {
+Table jobId [headercolor: #8C564B] {
   Note: 'Definition of a service (Dienstleistung), including title, color, billing modality, specialty, and consultation types.'
   _id number [pk, note: 'Interner Bezeichner']
   title String [note: 'Einen Titel (intern, Experte, Rechnung)']
@@ -491,7 +491,7 @@ Table jobId [headercolor: #3498DB] {
   _class String [note: 'Java Klassenname']
 }
 
-Table skill [headercolor: #3498DB] {
+Table skill [headercolor: #E377C2] {
   Note: 'Definition of a skill (Fähigkeit), including name, description, type, and status.'
   code String [note: 'Eine Bezeichnung der Fähigkeit']
   description String [note: 'Eine Beschreibung']
@@ -500,7 +500,7 @@ Table skill [headercolor: #3498DB] {
   certified Boolean [note: 'Ob für die Fähigkeit ein Zertifikat benötigt wird']
 }
 
-Table patientAlerts [headercolor: #3498DB] {
+Table patientAlerts [headercolor: #2CA02C] {
   Note: 'Exclusion criteria (warnings) consisting of name, description, weight, and status.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer (Zeitstempel)']
@@ -513,7 +513,7 @@ Table patientAlerts [headercolor: #3498DB] {
   _class String [note: 'Java Klassenname']
 }
 
-Table user [headercolor: #3498DB] {
+Table user [headercolor: #FF7F0E] {
   Note: 'Expert profile including personal details, contact info, credentials, status, billing info, and qualifications.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer (Zeitstempel)']
@@ -533,7 +533,7 @@ Table user [headercolor: #3498DB] {
   _class String [note: 'Java Klassenname']
 }
 
-Table product [headercolor: #3498DB] {
+Table product [headercolor: #8C564B] {
   Note: 'Goods or services subscribed by the expert, including quantity, price, and dates.'
   name String [note: 'Ware Bezeichnung']
   price Number [note: 'Listenpreis']
@@ -541,7 +541,7 @@ Table product [headercolor: #3498DB] {
   active Boolean [note: 'Status']
 }
 
-Table consultationData [headercolor: #3498DB] {
+Table consultationData [headercolor: #2CA02C] {
   Note: 'Detailed data for a consultation, including medical records, prescriptions, and results.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer (Zeitstempel)']
@@ -572,7 +572,7 @@ Table consultationData [headercolor: #3498DB] {
   basisWebDataId number [note: 'Referenz auf `basisWebData`']
 }
 
-Table expertDays [headercolor: #3498DB] {
+Table expertDays [headercolor: #1F77B4] {
   Note: 'Detailed availability calendar for experts, tracking shifts and appointment availability per day.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -603,7 +603,7 @@ Table expertDays [headercolor: #3498DB] {
   _class String [note: 'Java Klassenname']
 }
 
-Table icd10 [headercolor: #3498DB] {
+Table icd10 [headercolor: #9467BD] {
   Note: 'International Classification of Diseases (ICD-10) codes and descriptions.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer (Zeitstempel)']
@@ -618,7 +618,7 @@ Table icd10 [headercolor: #3498DB] {
   _class String [note: 'Java Klassenname']
 }
 
-Table treatment [headercolor: #3498DB] {
+Table treatment [headercolor: #2CA02C] {
   Note: 'Tracking of medical treatments, including states and positions.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -637,7 +637,7 @@ Table treatment [headercolor: #3498DB] {
   location Document [note: 'Ort der Behandlung ([ConsultationLocation](#sub-entity-consultationlocation))']
 }
 
-Table notification [headercolor: #3498DB] {
+Table notification [headercolor: #E377C2] {
   Note: 'Logs of notifications sent to users via various channels.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -653,7 +653,7 @@ Table notification [headercolor: #3498DB] {
   emailSent Boolean [note: 'Ob eine E-Mail versendet wurde']
 }
 
-Table cDRCall [headercolor: #3498DB] {
+Table cDRCall [headercolor: #9467BD] {
   Note: 'Call Detail Records for tracking telephonic interactions.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -668,7 +668,7 @@ Table cDRCall [headercolor: #3498DB] {
   location String [note: 'Ort des Anrufs']
 }
 
-Table appointment [headercolor: #3498DB] {
+Table appointment [headercolor: #1F77B4] {
   Note: 'Individual appointments scheduled for patients with experts.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -688,7 +688,7 @@ Table appointment [headercolor: #3498DB] {
   treatmentId number [note: 'Referenz auf `treatment`']
 }
 
-Table consultation [headercolor: #3498DB] {
+Table consultation [headercolor: #2CA02C] {
   Note: 'Legacy consultation records and their states.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -701,7 +701,7 @@ Table consultation [headercolor: #3498DB] {
   customer Document [note: 'Kunde ([ConsultationCustomer](#sub-entity-consultationcustomer))']
 }
 
-Table basisWebData [headercolor: #3498DB] {
+Table basisWebData [headercolor: #D62728] {
   Note: 'Encrypted patient information from external JVA systems.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -724,7 +724,7 @@ Table basisWebData [headercolor: #3498DB] {
   appointment DBRef [note: 'Zugehöriger Termin (Referenz auf `appointment`)']
 }
 
-Table log [headercolor: #3498DB] {
+Table log [headercolor: #E377C2] {
   Note: 'Technical application logs for monitoring and debugging.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -738,7 +738,7 @@ Table log [headercolor: #3498DB] {
   appointment number [note: 'Referenz auf `appointment`']
 }
 
-Table invoiceComponent [headercolor: #3498DB] {
+Table invoiceComponent [headercolor: #8C564B] {
   Note: 'Individual items and rules contributing to a final invoice.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -760,7 +760,7 @@ Table invoiceComponent [headercolor: #3498DB] {
   stornoType Document [note: 'Stornierungsdetails ([InvoiceComponentStorno](#sub-entity-invoicecomponentstorno))']
 }
 
-Table questionaire [headercolor: #3498DB] {
+Table questionaire [headercolor: #2CA02C] {
   Note: 'Quality management surveys and results.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -775,7 +775,7 @@ Table questionaire [headercolor: #3498DB] {
   comment String [note: 'Kommentar']
 }
 
-Table cDRCallAssignment [headercolor: #3498DB] {
+Table cDRCallAssignment [headercolor: #9467BD] {
   Note: 'Mapping of call records to specific patients or consultations.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -791,7 +791,7 @@ Table cDRCallAssignment [headercolor: #3498DB] {
   confidence Number [note: 'Konfidenzlevel der Zuweisung']
 }
 
-Table medication [headercolor: #3498DB] {
+Table medication [headercolor: #9467BD] {
   Note: 'Comprehensive database of medications, ingredients, and dosages.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer (Zeitstempel)']
@@ -817,7 +817,7 @@ Table medication [headercolor: #3498DB] {
   _class String [note: 'Java Klassenname (Used: `de.videoclinic.model.Medication`)']
 }
 
-Table invoice [headercolor: #3498DB] {
+Table invoice [headercolor: #8C564B] {
   Note: 'Billing documents for experts, customers, or patients.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -841,7 +841,7 @@ Table invoice [headercolor: #3498DB] {
   mailSendDate Date [note: 'Versanddatum']
 }
 
-Table appointmentAssignment [headercolor: #3498DB] {
+Table appointmentAssignment [headercolor: #1F77B4] {
   Note: 'Links between appointments and the experts or tasks assigned to them.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -854,7 +854,7 @@ Table appointmentAssignment [headercolor: #3498DB] {
   dateReminder Date [note: 'Erinnerungsdatum']
 }
 
-Table expertWorkMonthly [headercolor: #3498DB] {
+Table expertWorkMonthly [headercolor: #8C564B] {
   Note: 'Aggregated monthly work logs and billing summaries for experts.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -870,7 +870,7 @@ Table expertWorkMonthly [headercolor: #3498DB] {
   dateSent Date [note: 'Sendedatum']
 }
 
-Table basisWebAppointment [headercolor: #3498DB] {
+Table basisWebAppointment [headercolor: #D62728] {
   Note: 'External appointment requests originating from BasisWeb.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -883,7 +883,7 @@ Table basisWebAppointment [headercolor: #3498DB] {
   dateCreated Date [note: 'Erstellungsdatum']
 }
 
-Table zipCodeLookup [headercolor: #3498DB] {
+Table zipCodeLookup [headercolor: #9467BD] {
   Note: 'Geographic reference data for postal codes and cities.'
   _id number [pk, note: 'Interner Bezeichner']
   zipCode String [note: 'Postleitzahl']
@@ -892,7 +892,7 @@ Table zipCodeLookup [headercolor: #3498DB] {
   country String [note: 'Land']
 }
 
-Table userFile [headercolor: #3498DB] {
+Table userFile [headercolor: #FF7F0E] {
   Note: 'Metadata and references for files uploaded by or for users.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -903,7 +903,7 @@ Table userFile [headercolor: #3498DB] {
   ownerId number [note: 'Referenz auf `user`']
 }
 
-Table asyncJobQueue [headercolor: #3498DB] {
+Table asyncJobQueue [headercolor: #E377C2] {
   Note: 'Status and tracking of asynchronous background tasks.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -917,7 +917,7 @@ Table asyncJobQueue [headercolor: #3498DB] {
   createdBy Document [note: 'Ersteller ([ConsultationDoctor](#sub-entity-consultationdoctor))']
 }
 
-Table persistentSession [headercolor: #3498DB] {
+Table persistentSession [headercolor: #FF7F0E] {
   Note: 'Storage for persistent user authentication sessions.'
   _id String [pk, note: 'Session-ID']
   version number [note: 'Versionsnummer']
@@ -929,14 +929,14 @@ Table persistentSession [headercolor: #3498DB] {
   role String [note: 'Aktive Rolle in der Sitzung']
 }
 
-Table cacheState [headercolor: #3498DB] {
+Table cacheState [headercolor: #E377C2] {
   Note: 'Technical collection for tracking the version/state of various system caches.'
   _id String [pk, note: 'Cache-Bezeichner']
   version number [note: 'Aktuelle Version des Caches']
   _class String [note: 'Java Klassenname']
 }
 
-Table jobPriceList [headercolor: #3498DB] {
+Table jobPriceList [headercolor: #8C564B] {
   Note: 'Master price lists for different services and specialties.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -947,7 +947,7 @@ Table jobPriceList [headercolor: #3498DB] {
   active Boolean [note: 'Ob die Preisliste aktiv ist']
 }
 
-Table invoiceReceiver [headercolor: #3498DB] {
+Table invoiceReceiver [headercolor: #8C564B] {
   Note: 'Details of entities receiving invoices, including tax settings.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -965,7 +965,7 @@ Table invoiceReceiver [headercolor: #3498DB] {
   email String [note: 'Primäre E-Mail-Adresse']
 }
 
-Table expertConsultationTemplate [headercolor: #3498DB] {
+Table expertConsultationTemplate [headercolor: #2CA02C] {
   Note: 'Custom templates used by experts for various consultation types.'
   _id number [pk, note: 'Interner Bezeichner']
   name String [note: 'Name der Vorlage']
@@ -976,7 +976,7 @@ Table expertConsultationTemplate [headercolor: #3498DB] {
   job Document [note: 'Vorlage für Dienstleistung ([ConsultationJob](#sub-entity-consultationjob))']
 }
 
-Table location [headercolor: #3498DB] {
+Table location [headercolor: #E377C2] {
   Note: 'Definition of consultation sites, including room configurations and contact details.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -990,7 +990,7 @@ Table location [headercolor: #3498DB] {
   customer DBRef [note: 'Referenz auf `customer`']
 }
 
-Table expertWeek [headercolor: #3498DB] {
+Table expertWeek [headercolor: #1F77B4] {
   Note: 'Weekly availability and shift definitions for an individual expert.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -1010,7 +1010,7 @@ Table expertWeek [headercolor: #3498DB] {
   _class String [note: 'Java Klassenname: `de.videoclinic.model.ExpertWeek` (Used)']
 }
 
-Table userVideoHistory [headercolor: #3498DB] {
+Table userVideoHistory [headercolor: #E377C2] {
   Note: 'Tracking of video call attempts and successful connections.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -1023,7 +1023,7 @@ Table userVideoHistory [headercolor: #3498DB] {
   sessions Array [note: 'Einzelne Video-Sitzungen ([UserVideoSession](#sub-entity-uservideosession))']
 }
 
-Table publicHoliday [headercolor: #3498DB] {
+Table publicHoliday [headercolor: #9467BD] {
   Note: 'Definition of public holidays for specific regions and years.'
   _id number [pk, note: 'Interner Bezeichner']
   day Date [note: 'Datum des Feiertags']
@@ -1032,7 +1032,7 @@ Table publicHoliday [headercolor: #3498DB] {
   country String [note: 'Land (z.B. `DE`)']
 }
 
-Table onboardingHistory [headercolor: #3498DB] {
+Table onboardingHistory [headercolor: #FF7F0E] {
   Note: 'Records of onboarding steps completed by employees or locations.'
   _id number [pk, note: 'Interner Bezeichner']
   referenceId number [note: 'Referenz (z.B. `user.id` oder `location.id`)']
@@ -1046,7 +1046,7 @@ Table onboardingHistory [headercolor: #3498DB] {
   _class String [note: 'Java Klassenname: `de.videoclinic.model.OnboardingHistory` (Used)']
 }
 
-Table shiftPlan [headercolor: #3498DB] {
+Table shiftPlan [headercolor: #1F77B4] {
   Note: 'Recurring shift schedule for expert on-call duties.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -1070,7 +1070,7 @@ Table shiftPlan [headercolor: #3498DB] {
   _class String [note: 'Java-Klassenname: `de.videoclinic.model.ShiftPlan` (Used)']
 }
 
-Table accessRight [headercolor: #3498DB] {
+Table accessRight [headercolor: #FF7F0E] {
   Note: 'Definition of individual permissions and their descriptions.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -1080,7 +1080,7 @@ Table accessRight [headercolor: #3498DB] {
   _class String [note: 'Java-Klassenname: `de.videoclinic.model.AccessRight` (Used)']
 }
 
-Table video [headercolor: #3498DB] {
+Table video [headercolor: #E377C2] {
   Note: 'Metadata for instructional or informational videos in the system.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -1092,7 +1092,7 @@ Table video [headercolor: #3498DB] {
   path String [note: 'Speicherpfad']
 }
 
-Table group [headercolor: #3498DB] {
+Table group [headercolor: #FF7F0E] {
   Note: 'Roles and permissions groups assigned to users.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -1103,7 +1103,7 @@ Table group [headercolor: #3498DB] {
   _class String [note: '`de.videoclinic.model.Group` (Used)']
 }
 
-Table videoCategory [headercolor: #3498DB] {
+Table videoCategory [headercolor: #E377C2] {
   Note: 'Categorization for organizing the video library.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -1113,14 +1113,14 @@ Table videoCategory [headercolor: #3498DB] {
   parent number [note: 'Referenz auf übergeordnete Kategorie']
 }
 
-Table country [headercolor: #3498DB] {
+Table country [headercolor: #9467BD] {
   Note: 'Reference data for countries, including codes and names.'
   _id number [pk, note: 'Interner Bezeichner']
   code String [note: 'Ländercode (ISO)']
   description String [note: 'Name des Landes']
 }
 
-Table notificationTemplate [headercolor: #3498DB] {
+Table notificationTemplate [headercolor: #E377C2] {
   Note: 'Reusable templates for automated system notifications.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -1135,7 +1135,7 @@ Table notificationTemplate [headercolor: #3498DB] {
   _class String [note: '`de.videoclinic.model.NotificationTemplate` (Used)']
 }
 
-Table closedMonth [headercolor: #3498DB] {
+Table closedMonth [headercolor: #8C564B] {
   Note: 'Tracking of billing periods that have been finalized and locked.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -1143,7 +1143,7 @@ Table closedMonth [headercolor: #3498DB] {
   comment String [note: 'Kommentar zum Abschluss']
 }
 
-Table exportTemplate [headercolor: #3498DB] {
+Table exportTemplate [headercolor: #E377C2] {
   Note: 'Configuration for data exports for various business entities.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -1154,7 +1154,7 @@ Table exportTemplate [headercolor: #3498DB] {
   active Boolean [note: 'Status']
 }
 
-Table site [headercolor: #3498DB] {
+Table site [headercolor: #E377C2] {
   Note: 'Physical locations or digital sites associated with the system.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -1165,7 +1165,7 @@ Table site [headercolor: #3498DB] {
   primary Boolean [note: 'Hauptstandort Kennzeichnung']
 }
 
-Table messageOfTheDay [headercolor: #3498DB] {
+Table messageOfTheDay [headercolor: #E377C2] {
   Note: 'Global announcements displayed to users upon login.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -1178,7 +1178,7 @@ Table messageOfTheDay [headercolor: #3498DB] {
   important Boolean [note: 'Wichtig-Kennzeichnung']
 }
 
-Table onboardingStep [headercolor: #3498DB] {
+Table onboardingStep [headercolor: #FF7F0E] {
   Note: 'Individual steps and checks required for onboarding processes.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer (Zeitstempel)']
@@ -1195,14 +1195,14 @@ Table onboardingStep [headercolor: #3498DB] {
   _class String [note: 'Java Klassenname: `de.videoclinic.model.OnboardingStep` (Used)']
 }
 
-Table sequenceEntity [headercolor: #3498DB] {
+Table sequenceEntity [headercolor: #E377C2] {
   Note: 'Global counters used to generate unique numeric identifiers.'
   _id ObjectId [pk, note: 'Interner Bezeichner']
   name String [note: 'Name der Sequenz (z.B. Entitätsname)']
   value number [note: 'Aktueller Zählerwert']
 }
 
-Table treatmentCategory [headercolor: #3498DB] {
+Table treatmentCategory [headercolor: #2CA02C] {
   Note: 'Categories for organizing and classifying different treatments.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -1212,7 +1212,7 @@ Table treatmentCategory [headercolor: #3498DB] {
   _class String [note: '`de.videoclinic.model.TreatmentCategory` (Used)']
 }
 
-Table holiday [headercolor: #3498DB] {
+Table holiday [headercolor: #1F77B4] {
   Note: 'Individual expert absences, vacations, or sick leave.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -1223,7 +1223,7 @@ Table holiday [headercolor: #3498DB] {
   owner DBRef [note: 'Referenz auf `user`']
 }
 
-Table locationRoomsDto [headercolor: #3498DB] {
+Table locationRoomsDto [headercolor: #E377C2] {
   Note: 'Snapshots of location and room configurations at a specific point in time.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -1232,7 +1232,7 @@ Table locationRoomsDto [headercolor: #3498DB] {
   customer DBRef [note: 'Referenz auf `customer`']
 }
 
-Table loginNotification [headercolor: #3498DB] {
+Table loginNotification [headercolor: #FF7F0E] {
   Note: 'Specialized notifications triggered by user login events.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -1242,7 +1242,7 @@ Table loginNotification [headercolor: #3498DB] {
   active Boolean [note: 'Status']
 }
 
-Table patientData [headercolor: #3498DB] {
+Table patientData [headercolor: #2CA02C] {
   Note: 'Additional metadata and settings associated with a patient profile.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -1252,7 +1252,7 @@ Table patientData [headercolor: #3498DB] {
   onlyDocumentation Boolean [note: 'Nur Dokumentation Kennzeichnung']
 }
 
-Table stornoGroup [headercolor: #3498DB] {
+Table stornoGroup [headercolor: #8C564B] {
   Note: 'Rules and groups defining cancellation conditions and fees.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -1261,7 +1261,7 @@ Table stornoGroup [headercolor: #3498DB] {
   storno Array [note: 'Einzelne Stornierungsregeln ([StornoRule](#sub-entity-stornorule))']
 }
 
-Table supportCategory [headercolor: #3498DB] {
+Table supportCategory [headercolor: #E377C2] {
   Note: 'Categories used for organizing support requests and help documents.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -1271,7 +1271,7 @@ Table supportCategory [headercolor: #3498DB] {
   subcategories Array [note: 'Liste von Unterkategorien (Strings)']
 }
 
-Table workHour [headercolor: #3498DB] {
+Table workHour [headercolor: #8C564B] {
   Note: 'Definitions of different work hour types for billing and reporting.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -1280,7 +1280,7 @@ Table workHour [headercolor: #3498DB] {
   description String [note: 'Beschreibung']
 }
 
-Table patient [headercolor: #3498DB] {
+Table patient [headercolor: #2CA02C] {
   Note: 'Core patient profiles, including demographic and contact information.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -1295,14 +1295,14 @@ Table patient [headercolor: #3498DB] {
   location DBRef [note: 'Zugeordneter Standard-Standort']
 }
 
-Table equipment [headercolor: #3498DB] {
+Table equipment [headercolor: #E377C2] {
   Note: 'Inventory of medical or technical equipment used in consultations.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
   name String [note: 'Name des Equipments']
 }
 
-Table uploadFile [headercolor: #3498DB] {
+Table uploadFile [headercolor: #E377C2] {
   Note: 'Records of generic file uploads managed by the system.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -1311,7 +1311,7 @@ Table uploadFile [headercolor: #3498DB] {
   created number [note: 'Erstellungszeitpunkt (Unix TS)']
 }
 
-Table project [headercolor: #3498DB] {
+Table project [headercolor: #E377C2] {
   Note: 'Organizational entities used to group related resources or operations.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -1323,7 +1323,7 @@ Table project [headercolor: #3498DB] {
   location DBRef [note: 'Referenz auf `location`']
 }
 
-Table tag [headercolor: #3498DB] {
+Table tag [headercolor: #E377C2] {
   Note: 'Metadata tags used for labeling and filtering various system entities.'
   _id number [pk, note: 'Interner Bezeichner']
   tag String [note: 'Tag-Name']
@@ -1331,7 +1331,7 @@ Table tag [headercolor: #3498DB] {
   count number [note: 'Verwendungshäufigkeit']
 }
 
-Table locationType [headercolor: #3498DB] {
+Table locationType [headercolor: #E377C2] {
   Note: 'Classification for different types of consultation locations.'
   _id number [pk, note: 'Interner Bezeichner']
   name String [note: 'Name des Typs']
@@ -1339,7 +1339,7 @@ Table locationType [headercolor: #3498DB] {
   prio Number [note: 'Sortierpriorität']
 }
 
-Table cashRegister [headercolor: #3498DB] {
+Table cashRegister [headercolor: #8C564B] {
   Note: 'Records of cash transactions and POS register states.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -1350,13 +1350,13 @@ Table cashRegister [headercolor: #3498DB] {
   enabled Boolean [note: 'Status']
 }
 
-Table 1testuser [headercolor: #3498DB] {
+Table 1testuser [headercolor: #FF7F0E] {
   Note: 'Placeholder or dedicated entity for system testing and QA.'
   _id number [pk, note: 'Interner Bezeichner']
   password String [note: 'Passwort']
 }
 
-Table serviceQm [headercolor: #3498DB] {
+Table serviceQm [headercolor: #2CA02C] {
   Note: 'Data related to quality assurance and management of medical services.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -1366,7 +1366,7 @@ Table serviceQm [headercolor: #3498DB] {
   comment String [note: 'Kommentar']
 }
 
-Table room [headercolor: #3498DB] {
+Table room [headercolor: #E377C2] {
   Note: 'Individual consultation or treatment rooms within a location.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -1376,7 +1376,7 @@ Table room [headercolor: #3498DB] {
   available Boolean [note: 'Verfügbarkeit']
 }
 
-Table videoclinicSystem [headercolor: #3498DB] {
+Table videoclinicSystem [headercolor: #E377C2] {
   Note: 'Global system settings and configuration parameters.'
   _id ObjectId [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -1385,7 +1385,7 @@ Table videoclinicSystem [headercolor: #3498DB] {
   timeManagement Boolean [note: 'Zeit-Management aktiviert']
 }
 
-Table equipmentGroup [headercolor: #3498DB] {
+Table equipmentGroup [headercolor: #E377C2] {
   Note: 'Grouping of equipment for easier management and assignment.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -1394,7 +1394,7 @@ Table equipmentGroup [headercolor: #3498DB] {
   prio Number [note: 'Priorität']
 }
 
-Table department [headercolor: #3498DB] {
+Table department [headercolor: #E377C2] {
   Note: 'Medical specialties or organizational departments.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
@@ -1402,7 +1402,7 @@ Table department [headercolor: #3498DB] {
   description String [note: 'Beschreibung']
 }
 
-Table PlanJob [headercolor: #E67E22] {
+Table PlanJob [headercolor: #1F77B4] {
   _id number [pk, note: 'ID of the job']
   code String [note: 'Short code (Systematische Kodierung)']
   color String [note: 'HEX color code']
@@ -1412,14 +1412,14 @@ Table PlanJob [headercolor: #E67E22] {
   type String [note: 'Job type: `APPOINTMENT` (Used)']
 }
 
-Table PlanUser [headercolor: #E67E22] {
+Table PlanUser [headercolor: #1F77B4] {
   _id number [pk, note: 'User ID']
   name String [note: 'Full name (Freitext)']
   email String [note: 'Email address (Freitext)']
   formalDisplayName String [note: 'Formal display name (Freitext)']
 }
 
-Table PlanLocation [headercolor: #E67E22] {
+Table PlanLocation [headercolor: #1F77B4] {
   _id number [pk, note: 'Location ID']
   name String [note: 'Location name (Freitext)']
   booknumberMask String [note: 'Mask for booking numbers (Strukturierter Text)']
@@ -1427,30 +1427,30 @@ Table PlanLocation [headercolor: #E67E22] {
   customer Document [note: 'Assigned customer ([PlanCustomer](#sub-entity-plancustomer))']
 }
 
-Table PlanCustomer [headercolor: #E67E22] {
+Table PlanCustomer [headercolor: #1F77B4] {
   _id number [pk, note: 'Customer ID']
   name String [note: 'Customer name (Freitext)']
 }
 
-Table SkillRule [headercolor: #E67E22] {
+Table SkillRule [headercolor: #8C564B] {
   _id String [pk, note: 'Internal identifier']
   skills Array [note: 'List of DBRefs to the `skill` collection']
   rule String [note: 'Logical rule for the skills: `ANY_MUST`, `ALL_MUST`, `ANY_WEIGHT`, `ALL_WEIGHT`']
 }
 
-Table PriceDefinition [headercolor: #E67E22] {
+Table PriceDefinition [headercolor: #8C564B] {
   _id String [pk, note: 'Internal identifier']
   prices Array [note: 'List of price points ([PricePoint](#sub-entity-pricepoint))']
 }
 
-Table PricePoint [headercolor: #E67E22] {
+Table PricePoint [headercolor: #8C564B] {
   _id String [pk, note: 'Internal identifier']
   comment String [note: 'Description or reason for the price (e.g., "Basis", "Preisanpassung")']
   price Number [note: 'The price value']
   dateStart Date [note: 'Optional start date for when this price becomes active']
 }
 
-Table AppointmentCondition [headercolor: #E67E22] {
+Table AppointmentCondition [headercolor: #8C564B] {
   _id String [pk, note: 'Internal identifier']
   storno DBRef [note: 'Reference to a `stornoGroup`']
   hourlyPrice Document [note: 'Contains multiple [PriceDefinitions](#sub-entity-pricedefinition) (e.g., `priceHN`, `priceHN2`, `priceA1`, `priceA2`)']
@@ -1462,7 +1462,7 @@ Table AppointmentCondition [headercolor: #E67E22] {
   roundingTypeA3 RoundingType_Enum [note: 'Rounding rule for A3:<br>• `FULL_HOUR` (Used)<br>• `HALF_HOUR` (Used)']
 }
 
-Table ShiftCondition [headercolor: #E67E22] {
+Table ShiftCondition [headercolor: #8C564B] {
   _id String [pk, note: 'Internal identifier']
   priceWeekDay Document [note: '[PriceDefinitions](#sub-entity-pricedefinition) for weekdays']
   priceWeekNight Document [note: '[PriceDefinitions](#sub-entity-pricedefinition) for week nights']
@@ -1470,7 +1470,7 @@ Table ShiftCondition [headercolor: #E67E22] {
   priceWeekendNight Document [note: '[PriceDefinitions](#sub-entity-pricedefinition) for weekend nights']
 }
 
-Table UserProfile [headercolor: #E67E22] {
+Table UserProfile [headercolor: #FF7F0E] {
   _id String [pk, note: 'Internal identifier (often UUID if present, otherwise nested)']
   firstName String [note: 'Vorname']
   lastName String [note: 'Nachname']
@@ -1487,7 +1487,7 @@ Table UserProfile [headercolor: #E67E22] {
   exludedNotifications Array [note: 'Liste deaktivierter Benachrichtigungstypen (Strings: `APPOINTMENT_ACCEPTED`, `APPOINTMENT_ASSIGNED`, `APPOINTMENT_CANCELED`, `APPOINTMENT_DELETED`, `APPOINTMENT_DONE`, `APPOINTMENT_EXPERT_AGREED`, `APPOINTMENT_EXPERT_CANCELED`, `APPOINTMENT_EXPERT_DISAGREED`, `APPOINTMENT_REJECTED`, `APPOINTMENT_REMINDER`, `APPOINTMENT_REQUEST`, `APPOINTMENT_RESERVED`, `APPOINTMENT_UPCOMING`, `CONSULATION_SUBMIT`, `COUNCIL_START`, `COUNCIL_SUBMIT`, `EXPERT_SUMMARY`, `INVOICE_CUSTOMER`, `TEMPLATE`, `USER_PASSWORD`)']
 }
 
-Table Address [headercolor: #E67E22] {
+Table Address [headercolor: #FF7F0E] {
   _id number [pk, note: 'Internal identifier']
   name String [note: 'Name des Empfängers']
   address String [note: 'Straße und Hausnummer']
@@ -1499,7 +1499,7 @@ Table Address [headercolor: #E67E22] {
   type Address_type_enum [note: 'Art der Adresse:<br>• `PRIVATE` (Used)<br>• `WORK` (Used)<br>• `PRAXIS` (Used)<br>• `OTHER` (Used)']
 }
 
-Table EmployeeProfile [headercolor: #E67E22] {
+Table EmployeeProfile [headercolor: #FF7F0E] {
   _id String [pk, note: 'Internal identifier']
   email2 String [note: 'Sekundäre E-Mail-Adresse']
   activeSince Date [note: 'Ab wann der Experte als Arzt tätig ist']
@@ -1518,7 +1518,7 @@ Table EmployeeProfile [headercolor: #E67E22] {
   bayernBoxAccess Document [note: 'Zugangsdaten SecureBox (user/password)']
 }
 
-Table SkillAssignment [headercolor: #E67E22] {
+Table SkillAssignment [headercolor: #FF7F0E] {
   _id String [pk, note: 'Internal identifier']
   skill DBRef [note: 'Referenz auf die `skill` Kollektion']
   active Boolean [note: 'Ob die Fähigkeit für den Experten aktiv ist']
@@ -1526,7 +1526,7 @@ Table SkillAssignment [headercolor: #E67E22] {
   certification Document [note: 'Zertifikatsdatei ([FileMetadata](#sub-entity-filemetadata))']
 }
 
-Table EmployerProfile [headercolor: #E67E22] {
+Table EmployerProfile [headercolor: #FF7F0E] {
   _id String [pk, note: 'Internal identifier']
   konto String [note: 'Debitorenkonto (GKTK)']
   gkto String [note: 'Debitorennummer (GKTO)']
@@ -1538,7 +1538,7 @@ Table EmployerProfile [headercolor: #E67E22] {
   sipAccounts Array [note: 'Liste von SIP-Accounts']
 }
 
-Table SubscribedProduct [headercolor: #E67E22] {
+Table SubscribedProduct [headercolor: #FF7F0E] {
   _id String [pk, note: 'Internal identifier']
   product DBRef [note: 'Referenz auf die `product` Kollektion']
   amount Number [note: 'Anzahl/Menge']
@@ -1549,7 +1549,7 @@ Table SubscribedProduct [headercolor: #E67E22] {
   comment String [note: 'Kommentar']
 }
 
-Table FileMetadata [headercolor: #E67E22] {
+Table FileMetadata [headercolor: #E377C2] {
   _id String [pk, note: 'Eindeutiger Dateiname/ID']
   name String [note: 'Ursprünglicher Dateiname']
   mime String [note: 'MIME-Typ']
@@ -1559,7 +1559,7 @@ Table FileMetadata [headercolor: #E67E22] {
   dateCreated Date [note: 'Erstellungsdatum']
 }
 
-Table ConsultationBase [headercolor: #E67E22] {
+Table ConsultationBase [headercolor: #2CA02C] {
   _id String [pk, note: 'Internal identifier']
   medicalTrainedPersonel Boolean [note: 'Medizinisch geschultes Personal anwesend']
   timeContact Number [note: 'Kontaktzeit']
@@ -1568,7 +1568,7 @@ Table ConsultationBase [headercolor: #E67E22] {
   dateFurtherTreatment Date [note: 'Datum der weiteren Behandlung']
 }
 
-Table ConsultationBody [headercolor: #E67E22] {
+Table ConsultationBody [headercolor: #2CA02C] {
   _id String [pk, note: 'Internal identifier']
   gender String [note: 'Geschlecht']
   age Number [note: 'Alter']
@@ -1579,7 +1579,7 @@ Table ConsultationBody [headercolor: #E67E22] {
   pulse String [note: 'Puls']
 }
 
-Table ConsultationWarning [headercolor: #E67E22] {
+Table ConsultationWarning [headercolor: #2CA02C] {
   _id String [pk, note: 'Internal identifier']
   warning DBRef [note: 'Referenz auf den Warnhinweis ([patientAlerts](#table-patientalerts-former-warning))']
   comment String [note: 'Kommentar']
@@ -1587,7 +1587,7 @@ Table ConsultationWarning [headercolor: #E67E22] {
   dateStart Date [note: 'Startdatum']
 }
 
-Table ConsultationOnboarding [headercolor: #E67E22] {
+Table ConsultationOnboarding [headercolor: #2CA02C] {
   _id String [pk, note: 'Internal identifier']
   previousPhysician String [note: 'Vorheriger Arzt']
   preexistingState String [note: 'Vorzustand']
@@ -1606,7 +1606,7 @@ Table ConsultationOnboarding [headercolor: #E67E22] {
   incarcerationSuitability Boolean [note: 'Gewahrsamstauglichkeit']
 }
 
-Table ConsultationStandard [headercolor: #E67E22] {
+Table ConsultationStandard [headercolor: #2CA02C] {
   _id String [pk, note: 'Internal identifier']
   medicationAnamnesis Document [note: 'Zusammenfassung der Medikation ([ConsultationMedicationAnamnesis](#sub-entity-consultationmedicationanamnesis))']
   anamnesis Array [note: 'Anamnese Einträge ([ConsultationAnamnesis](#sub-entity-consultationanamnesis))']
@@ -1619,7 +1619,7 @@ Table ConsultationStandard [headercolor: #E67E22] {
   furtherTreatment String [note: 'Voreinstellung für die weitere Behandlung (mapped to [ConsultationBase.furtherTreatment](#sub-entity-consultationbase))']
 }
 
-Table ConsultationMedicationAnamnesis [headercolor: #E67E22] {
+Table ConsultationMedicationAnamnesis [headercolor: #2CA02C] {
   _id String [pk, note: 'Internal identifier']
   documentation String [note: 'Dokumentation der Medikation']
   categoryL04 Boolean [note: 'Kategorie L04']
@@ -1639,7 +1639,7 @@ Table ConsultationMedicationAnamnesis [headercolor: #E67E22] {
   categoryA12 Boolean [note: 'Kategorie A12']
 }
 
-Table ConsultationDiagnosis [headercolor: #E67E22] {
+Table ConsultationDiagnosis [headercolor: #2CA02C] {
   _id String [pk, note: 'Internal identifier']
   icd10 Document [note: 'ICD-10 Referenz ([Icd10](#table-icd10))']
   localization ConsultationDiagnosis_localization_enum [note: 'Lokalisierung:<br>• `LEFT` (Used)<br>• `RIGHT` (Used)<br>• `BOTH` (Used)<br>• `UNKNOWN` (Used)']
@@ -1648,7 +1648,7 @@ Table ConsultationDiagnosis [headercolor: #E67E22] {
   comment String [note: 'Kommentar']
 }
 
-Table ConsultationPrescription [headercolor: #E67E22] {
+Table ConsultationPrescription [headercolor: #2CA02C] {
   _id String [pk, note: 'Internal identifier']
   type ConsultationPrescription_type_enum [note: 'Art der Verschreibung:<br>• `LIMITED` (Used)']
   packages Number [note: 'Anzahl der Packungen']
@@ -1666,33 +1666,33 @@ Table ConsultationPrescription [headercolor: #E67E22] {
   reasoning String [note: 'Begründung']
 }
 
-Table ConsultationAnamnesis [headercolor: #E67E22] {
+Table ConsultationAnamnesis [headercolor: #2CA02C] {
   _id String [pk, note: 'Internal identifier']
   type ConsultationAnamnesis_type_enum [note: 'Art des Eintrags:<br>• `MEDICAL` (Used)<br>• `MEDICATION` (Used)<br>• `ALLERGY` (Used)']
   documentation String [note: 'Dokumentationstext']
 }
 
-Table ConsultationPatientReport [headercolor: #E67E22] {
+Table ConsultationPatientReport [headercolor: #2CA02C] {
   _id String [pk, note: 'Internal identifier']
   type ConsultationPatientReport_type_enum [note: 'Art des Berichts:<br>• `FINDINGS` (Used)<br>• `MEASUREMENT` (Used)']
   documentation String [note: 'Dokumentationstext']
 }
 
-Table ConsultationWorkIncapacity [headercolor: #E67E22] {
+Table ConsultationWorkIncapacity [headercolor: #2CA02C] {
   _id String [pk, note: 'Internal identifier']
   dateStart Date [note: 'Startdatum']
   dateEnd Date [note: 'Enddatum']
   comment String [note: 'Kommentar']
 }
 
-Table ConsultationDoctor [headercolor: #E67E22] {
+Table ConsultationDoctor [headercolor: #2CA02C] {
   _id number [pk, note: 'Referenz ID auf `user`']
   name String [note: 'Name des Experten']
   email String [note: 'E-Mail-Adresse']
   formalDisplayName String [note: 'Vollständiger Name mit Titel']
 }
 
-Table ConsultationJob [headercolor: #E67E22] {
+Table ConsultationJob [headercolor: #2CA02C] {
   _id number [pk, note: 'Referenz ID auf `jobId`']
   code String [note: 'Dienstleistungscode']
   color String [note: 'Farbe']
@@ -1702,7 +1702,7 @@ Table ConsultationJob [headercolor: #E67E22] {
   type JobType_Enum [note: 'Abrechnungsart (z.B. `APPOINTMENT`):<br>• `APPOINTMENT` (Used)<br>• `SHIFT` (Used)']
 }
 
-Table ConsultationLocation [headercolor: #E67E22] {
+Table ConsultationLocation [headercolor: #2CA02C] {
   _id number [pk, note: 'Referenz ID auf `location`']
   name String [note: 'Name des Ortes']
   booknumberMask String [note: 'Maske für Buchnummern']
@@ -1710,12 +1710,12 @@ Table ConsultationLocation [headercolor: #E67E22] {
   customer Document [note: 'Zugehöriger Kunde ([ConsultationCustomer](#sub-entity-consultationcustomer))']
 }
 
-Table ConsultationCustomer [headercolor: #E67E22] {
+Table ConsultationCustomer [headercolor: #2CA02C] {
   _id number [pk, note: 'Referenz ID auf `customer`']
   name String [note: 'Name des Kunden']
 }
 
-Table TreatmentPosition [headercolor: #E67E22] {
+Table TreatmentPosition [headercolor: #2CA02C] {
   _id String [pk, note: 'Internal identifier']
   appointmentId number [note: 'Referenz auf `appointment`']
   start Date [note: 'Startzeitpunkt']
@@ -1725,14 +1725,14 @@ Table TreatmentPosition [headercolor: #E67E22] {
   report Document [note: 'Referenz auf den Bericht ([TreatmentReport](#sub-entity-treatmentreport))']
 }
 
-Table TreatmentReport [headercolor: #E67E22] {
+Table TreatmentReport [headercolor: #2CA02C] {
   _id String [pk, note: 'Internal identifier']
   type TreatmentReport_type_enum [note: 'Art des Berichts:<br>• `STANDARD` (Used)']
   consultationId number [note: 'Referenz auf `consultationData`']
   date Date [note: 'Datum des Berichts']
 }
 
-Table BasisWebMedication [headercolor: #E67E22] {
+Table BasisWebMedication [headercolor: #D62728] {
   _id number [pk, note: 'Interner Bezeichner']
   date String [note: 'Datum']
   type String [note: 'Art des Medikaments (Encrypted/Hashed)']
@@ -1742,7 +1742,7 @@ Table BasisWebMedication [headercolor: #E67E22] {
   until String [note: 'Gültig bis']
 }
 
-Table BasisWebWarning [headercolor: #E67E22] {
+Table BasisWebWarning [headercolor: #D62728] {
   _id String [pk, note: 'Internal identifier']
   date String [note: 'Datum']
   active String [note: 'Status (Encrypted/Hashed)']
@@ -1750,7 +1750,7 @@ Table BasisWebWarning [headercolor: #E67E22] {
   content String [note: 'Inhaltstext']
 }
 
-Table BasisWebEntry [headercolor: #E67E22] {
+Table BasisWebEntry [headercolor: #D62728] {
   _id String [pk, note: 'Internal identifier']
   date String [note: 'Datum']
   active String [note: 'Status (Encrypted/Hashed)']
@@ -1758,7 +1758,7 @@ Table BasisWebEntry [headercolor: #E67E22] {
   content String [note: 'Inhaltstext']
 }
 
-Table InvoiceComponentStorno [headercolor: #E67E22] {
+Table InvoiceComponentStorno [headercolor: #8C564B] {
   _id String [pk, note: 'Internal identifier']
   name String [note: 'Name des Stornos']
   percentage Number [note: 'Prozentsatz']
@@ -1766,7 +1766,7 @@ Table InvoiceComponentStorno [headercolor: #E67E22] {
   comment String [note: 'Kommentar']
 }
 
-Table MedicationIngredient [headercolor: #E67E22] {
+Table MedicationIngredient [headercolor: #9467BD] {
   _id String [pk, note: 'Internal identifier']
   name String [note: 'Name des Inhaltsstoffs']
   code String [note: 'Code des Inhaltsstoffs (Systematische Kodierung)']
@@ -1775,7 +1775,7 @@ Table MedicationIngredient [headercolor: #E67E22] {
   extra Boolean [note: 'Ob es sich um einen Hilfsstoff handelt']
 }
 
-Table MedicationProduct [headercolor: #E67E22] {
+Table MedicationProduct [headercolor: #9467BD] {
   _id String [pk, note: 'Internal identifier']
   name String [note: 'Name der Packung']
   packaging String [note: 'Packungsgröße (z.B. "50 g (N2)")']
@@ -1785,7 +1785,7 @@ Table MedicationProduct [headercolor: #E67E22] {
   ingredients Array [note: 'Liste der Inhaltsstoffe (Snapshot)']
 }
 
-Table InvoiceClient [headercolor: #E67E22] {
+Table InvoiceClient [headercolor: #8C564B] {
   _id number [pk, note: 'Interner Bezeichner']
   name String [note: 'Name']
   gkto String [note: 'Debitorennummer']
@@ -1798,7 +1798,7 @@ Table InvoiceClient [headercolor: #E67E22] {
   iban String [note: 'IBAN']
 }
 
-Table InvoicePosition [headercolor: #E67E22] {
+Table InvoicePosition [headercolor: #8C564B] {
   _id String [pk, note: 'Internal identifier']
   no Number [note: 'Positionsnummer']
   title String [note: 'Titel']
@@ -1810,7 +1810,7 @@ Table InvoicePosition [headercolor: #E67E22] {
   job DBRef [note: 'Referenz auf `jobId`']
 }
 
-Table InvoiceTax [headercolor: #E67E22] {
+Table InvoiceTax [headercolor: #8C564B] {
   _id String [pk, note: 'Internal identifier']
   taxType TaxType_Enum [note: 'Steuerart:<br>• `SATZ_NORMAL` (Used)<br>• `SATZ_NULL` (Used)']
   value Number [note: 'Steuersatz']
@@ -1819,7 +1819,7 @@ Table InvoiceTax [headercolor: #E67E22] {
   total Number [note: 'Bruttosumme']
 }
 
-Table AppointmentAssignmentHistory [headercolor: #E67E22] {
+Table AppointmentAssignmentHistory [headercolor: #1F77B4] {
   _id number [pk, note: 'Interner Bezeichner']
   assignmentId number [note: 'Referenz auf `appointmentAssignment`']
   state String [note: 'Neuer Status']
@@ -1827,7 +1827,7 @@ Table AppointmentAssignmentHistory [headercolor: #E67E22] {
   message String [note: 'Systemnachricht oder Kommentar']
 }
 
-Table ExpertWorklogEntry [headercolor: #E67E22] {
+Table ExpertWorklogEntry [headercolor: #8C564B] {
   _id String [pk, note: 'Internal identifier']
   appointmentId number [note: 'Referenz auf `appointment`']
   job DBRef [note: 'Referenz auf `jobId`']
@@ -1839,7 +1839,7 @@ Table ExpertWorklogEntry [headercolor: #E67E22] {
   location String [note: 'Ort']
 }
 
-Table AsyncJobTask [headercolor: #E67E22] {
+Table AsyncJobTask [headercolor: #E377C2] {
   _id String [pk, note: 'Internal identifier']
   title String [note: 'Titel des Arbeitsschritts']
   status String [note: 'Status des Arbeitsschritts (Freitext/Progress message, z.B. "25/2987/5697 OK")']
@@ -1847,14 +1847,14 @@ Table AsyncJobTask [headercolor: #E67E22] {
   dateFinished Date [note: 'Endzeitpunkt']
 }
 
-Table JobPriceEntry [headercolor: #E67E22] {
+Table JobPriceEntry [headercolor: #8C564B] {
   _id String [pk, note: 'Internal identifier']
   jobId number [note: 'Referenz auf `jobId`']
   price Number [note: 'Preiswert']
   roundingType RoundingType_Enum [note: 'Rundungsregel:<br>• `FULL_HOUR` (Used)<br>• `HALF_HOUR` (Used)']
 }
 
-Table LocationPatientDataAccess [headercolor: #E67E22] {
+Table LocationPatientDataAccess [headercolor: #E377C2] {
   _id String [pk, note: 'Internal identifier']
   user String [note: 'Benutzername']
   password String [note: 'Passwort']
@@ -1862,14 +1862,14 @@ Table LocationPatientDataAccess [headercolor: #E67E22] {
   active Boolean [note: 'Status des Zugangs']
 }
 
-Table UserVideoSession [headercolor: #E67E22] {
+Table UserVideoSession [headercolor: #E377C2] {
   _id String [pk, note: 'Internal identifier']
   sessionId String [note: 'Session-ID']
   date Date [note: 'Zeitpunkt']
   timeWatched number [note: 'Zuschauerzeit in dieser Sitzung']
 }
 
-Table OnboardingStep [headercolor: #E67E22] {
+Table OnboardingStep [headercolor: #FF7F0E] {
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer (Zeitstempel)']
   title String [note: 'Titel des Schritts (Freitext)']
@@ -1884,7 +1884,7 @@ Table OnboardingStep [headercolor: #E67E22] {
   changedBy DBRef [note: 'Geändert von (Referenz auf `user`)']
 }
 
-Table StornoRule [headercolor: #E67E22] {
+Table StornoRule [headercolor: #8C564B] {
   _id String [pk, note: 'Internal identifier']
   name String [note: 'Bezeichnung der Regel']
   stornoTime number [note: 'Zeitpunkt (in Sekunden/Millisekunden vor Termin)']
@@ -1892,7 +1892,7 @@ Table StornoRule [headercolor: #E67E22] {
   comment String [note: 'Kommentar']
 }
 
-Table TaxValue [headercolor: #E67E22] {
+Table TaxValue [headercolor: #8C564B] {
   _id String [pk, note: 'Internal identifier']
   name String [note: 'Bezeichnung']
   value Number [note: 'Prozentsatz']

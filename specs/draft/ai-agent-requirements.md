@@ -15,7 +15,9 @@ Automatically generate a structured Markdown document (`db-mapping.md`) that map
 The output must be a Markdown file with the following structure:
 
 1.  **Header:** A title "Database Mapping Specification" and a brief introduction mentioning the source files.
-2.  **Database Overview:** A H2 chapter "Database Overview" containing a Markdown table listing all top-level collections/tables with their Business Name, a brief Summary, and the associated Java Model.
+2.  **Database Overview:** A H2 chapter "Database Overview" containing a brief introduction and then organized into H3 subsections for each topic. Each topic subsection contains a Markdown table listing its top-level collections/tables with their Business Name, a brief Summary, and the associated Java Model.
+    *   **Topics:** Identify logical groupings (topics) for collections based on business usage (e.g., Planning, Accounting). If not clear from the business requirements, the agent must ask the user for confirmation.
+    *   **Colors:** Each topic must be assigned a unique, accessible color generated using the `color-palette-generation` skill (using the topic name as the identifier for deterministic mapping).
     *   **Model Column:** The "Model" column should contain the Java class name (from the `_class` field in MongoDB).
     *   **Prefix Rule:** The common package prefix `de.videoclinic.model.` must be omitted (e.g., use `AppointmentPlan` instead of `de.videoclinic.model.AppointmentPlan`).
     *   **Sub-packages:** If the class is in a sub-package, include it (e.g., `dto.LocationRoomsDto`).
@@ -48,6 +50,9 @@ The output must be a Markdown file with the following structure:
     *   **Sub-entity Naming:** Use CamelCase for all sub-entity names (e.g., `#### Sub-entity: UserProfile`).
 4.  **Nested Structure & Enum Analysis:**
     *   Deeply analyze nested JSON documents discovered via MongoDB.
+    *   **Topic & Color Mapping:** Group each table and sub-entity into topics based on business usage. For each topic, generate a distinct and accessible `headercolor` using the `color-palette-generation` skill.
+        - Use the topic name (e.g., `Planning`, `Accounting`) as the `identifier` for the skill to ensure deterministic color assignment.
+        - Apply these colors to the `headercolor` property in the `videoclinic.dbml` file.
     *   **Enum/Categorical Analysis:** For any field that acts as an enum, set of roles, or categorical value (regardless of whether it's an `Array` or a single `String`), the agent must scan the database to identify all unique values and their types. All possible values must be listed in the documentation.
         - **Deep Dive Strategy:** Use `db.collection.distinct('fieldName')` or `aggregate` with `$group` to find all possible values. 
         - **Value Discovery:** Document even those values that are not part of the initial business specs but exist in the live data.
