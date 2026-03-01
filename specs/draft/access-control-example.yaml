@@ -7,17 +7,17 @@ roles:
   base_user:
     inheritance: null
     permissions:
-      - resource: "/public/**"
+      - resource: "public_assets"
         actions: ["view"] # Synonym for Read
         clearance: level_3_public # Public
   # Department Manager role
   department_manager:
     inheritance: "base_user"
     permissions:
-      - resource: "/projects/*"
+      - resource: "project_data"
         actions: ["view", "export"] # Synonyms for Read
         clearance: level_2_internal # Internal / Private
-      - resource: "/finance/reports/*"
+      - resource: "finance_reports"
         actions: ["view"] # View only, cannot modify
         clearance: level_1_secret # Secret / Confidential
 
@@ -25,10 +25,10 @@ roles:
   accountant:
     inheritance: "base_user"
     permissions:
-      - resource: "/finance/**"
+      - resource: "finance_data"
         actions: ["view", "modify", "add"] # Synonyms for Read, Update, Create
         clearance: level_0_top_secret # Top Secret / Restricted (Full visibility)
-      - resource: "/finance/audit-logs"
+      - resource: "audit_logs"
         actions: ["view", "export", "backup"] # synonyms for Read
         clearance: level_0_top_secret
 
@@ -36,7 +36,7 @@ roles:
   admin:
     inheritance: "department_manager"
     permissions:
-      - resource: "/**"
+      - resource: "all_resources"
         actions: ["view", "modify", "add", "remove", "restore"]
         clearance: level_0_top_secret
 
@@ -45,18 +45,18 @@ users:
   - id: "user_001"
     name: "Alice Finance"
     roles: ["accountant"]
-    default_clearance: level_0_top_secret
+    clearance: level_0_top_secret
 
   - id: "user_002"
     name: "Bob Manager"
     roles: ["department_manager"]
-    default_clearance: level_1_secret
+    clearance: level_1_secret
 
   - id: "user_003"
     name: "Charlie MultiRole"
     # Aggregates permissions from both roles
     roles: ["department_manager", "accountant"]
-    default_clearance: level_0_top_secret
+    clearance: level_0_top_secret
 
 # 3. Resource Precedence Example (Deepest Path First)
 # If a user tries to access /finance/reports/Q1.pdf:
@@ -65,11 +65,21 @@ users:
 # The "Deepest Path First" rule means /finance/reports/* applies first if both match.
 
 resources:
-  - path: "/public/documentation"
+  - name: "public_assets"
+    paths: ["/public/**"]
     confidentiality: level_3_public
-  - path: "/projects/alpha-secret"
+  - name: "project_data"
+    paths: ["/projects/*", "/projects/alpha-secret"]
     confidentiality: level_1_secret
-  - path: "/finance/reports/salary-2024"
+  - name: "finance_reports"
+    paths: ["/finance/reports/*", "/finance/reports/salary-2024"]
     confidentiality: level_0_top_secret
-  - path: "/finance/audit-logs"
+  - name: "finance_data"
+    paths: ["/finance/**"]
+    confidentiality: level_0_top_secret
+  - name: "audit_logs"
+    paths: ["/finance/audit-logs"]
+    confidentiality: level_0_top_secret
+  - name: "all_resources"
+    paths: ["/**"]
     confidentiality: level_0_top_secret

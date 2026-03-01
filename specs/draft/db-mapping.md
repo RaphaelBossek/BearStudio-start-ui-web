@@ -492,6 +492,7 @@ Defines the qualifications required by experts.
 | Column | Type | Field Type | Description (from all-together.md) |
 | :--- | :--- | :--- | :--- |
 | `_id` | `Long` | schema | Interner Bezeichner (MANDATORY) |
+| `version` | `Long` | schema | Versionsnummer |
 | `code` | `String` | schema | Eine Bezeichnung der Fähigkeit |
 | `description` | `String` | schema | Eine Beschreibung |
 | `type` | `String` | schema | Art der Fähigkeit:<br>• `ADDITIONAL` (Used)<br>• `EXTRA` (Used)<br>• `LANGUAGE` (Used)<br>• `MAIN` (Used) |
@@ -544,14 +545,46 @@ Personal and professional data for medical experts.
 | `password` | `String` | schema | Persönliches Passwort |
 | `enabled` | `Boolean` | schema | Ob das Konto aktiv oder deaktiviert ist |
 | `accountLocked` | `Boolean` | schema | Ob das Konto gesperrt ist |
+| `accountExpired` | `Boolean` | schema | Ob das Konto abgelaufen ist |
+| `credentialsExpired` | `Boolean` | schema | Ob die Anmeldedaten abgelaufen sind |
+| `deleted` | `Boolean` | schema | Ob der Benutzer gelöscht wurde |
+| `external` | `Boolean` | schema | Ob es ein externer Benutzer ist |
 | `role` | `String` | schema | Rolle des Benutzers:<br>• `ADMIN`<br>• `ADMIN_INTERN`<br>• `ADMIN_KUNDE`<br>• `KUNDE`<br>• `LEITER_INTERN`<br>• `REGISTERED`<br>• `STANDARD` |
 | `employeeState` | `String` | schema | Status des Kontos:<br>• `ACTIVE`<br>• `CUSTOMER`<br>• `INACTIVE`<br>• `UNCONFIRMED` |
 | `userProfile` | `Document` | schema | Persönliches Profil des Benutzers ([UserProfile](#sub-entity-userprofile)) |
 | `employeeProfile` | `Document` | schema | Berufliches Profil des Experten ([EmployeeProfile](#sub-entity-employeeprofile)) |
 | `employerProfile` | `Document` | schema | Profil des Arbeitgebers/Abrechnungsdaten ([EmployerProfile](#sub-entity-employerprofile)) |
-| `lastLogin` | `Date` | inferred | Letzter Login-Zeitpunkt |
-| `dateCreated` | `Date` | inferred | Erstellungsdatum |
+| `nextBirthday` | `Date` | schema | Nächster Geburtstag |
+| `totpDevice` | `Document` | schema | TOTP-Gerät Information ([TotpDevice](#sub-entity-totpdevice)) |
+| `requireTotp` | `Boolean` | schema | Ob TOTP erforderlich ist |
+| `totpActivity` | `Document` | schema | Letzte TOTP-Aktivität ([TotpActivity](#sub-entity-totpactivity)) |
+| `countInvalidLogin` | `Number` | schema | Anzahl ungültiger Logins |
+| `dateLocked` | `Date` | schema | Sperrdatum des Kontos |
+| `lastIP` | `String` | schema | Letzte IP-Adresse |
+| `countLogin` | `Number` | schema | Gesamtanzahl Logins |
+| `lastLogin` | `Date` | schema | Letzter Login-Zeitpunkt |
+| `settings` | `Document` | schema | Benutzereinstellungen |
+| `ip` | `String` | schema | Aktuelle IP-Adresse |
+| `invalidLogins` | `Array` | schema | Liste ungültiger Logins ([LoginEvent](#sub-entity-loginevent)) |
+| `groups` | `Array` | schema | Liste zugeordneter Gruppen (DBRefs to [group](#entity-benutzergruppen-groups)) |
+| `consecutiveFailedLoginAttempts` | `Number` | schema | Aufeinanderfolgende fehlgeschlagene Logins |
+| `successfulLogins` | `Array` | schema | Liste erfolgreicher Logins ([LoginEvent](#sub-entity-loginevent)) |
+| `dateAcceptedLoginNotification` | `Date` | schema | Akzeptanzdatum der Login-Benachrichtigung |
+| `resetDate` | `Date` | schema | Datum des Passwort-Resets |
+| `resetIp` | `String` | schema | IP des Passwort-Resets |
+| `resetKey` | `String` | schema | Schlüssel für Passwort-Reset |
 | `dateChanged` | `Date` | schema | Änderungsdatum |
+| `changedBy` | `Document` | schema | Zuletzt geändert von ([PlanUser](#sub-entity-planuser)) |
+| `lastReminder` | `Date` | schema | Letzte Erinnerung |
+| `emailVerified` | `String` | schema | Status der E-Mail-Verifizierung |
+| `dateCreated` | `Date` | schema | Erstellungsdatum |
+| `createdBy` | `Document` | schema | Erstellt von ([PlanUser](#sub-entity-planuser)) |
+| `onBoardingPercentComplete` | `Number` | inferred | Onboarding Fortschritt (%) |
+| `stepsTotal` | `Number` | inferred | Gesamtanzahl Onboarding-Schritte |
+| `stepsCompleted` | `Number` | inferred | Abgeschlossene Onboarding-Schritte |
+| `customers` | `Array` | schema | Zugeordnete Kunden (DBRefs to [customer](#entity-kunden-customers)) |
+| `lang` | `String` | schema | Spracheinstellung (z.B. `de`) |
+| `verifikationKey` | `String` | schema | Verifizierungsschlüssel |
 | `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.User` (Used) |
 
 The `user` entity is referenced by:
@@ -599,12 +632,16 @@ Contains personal information and general settings for the user.
 | `salutation` | `String` | inferred | Anrede:<br>• `MALE`<br>• `FEMALE` |
 | `gender` | `String` | schema | Geschlecht:<br>• `MALE` (Used)<br>• `FEMALE` (Used) |
 | `birthday` | `Date` | schema | Geburtsdatum |
-| `mainAddress` | `Document` | schema | Rechnungsadresse ([Address](#sub-entity-address)) |
-| `workPhone` | `String` | schema | Telefonnummer (Arbeit) |
-| `cellularNumber` | `String` | schema | Handynummer |
-| `shiftPhoneNumber` | `String` | schema | Telefonnummer für die Bereitschaft |
-| `notificationPerMail` | `Boolean` | schema | Weiterleitung von Nachrichten an E-Mail |
-| `exludedNotifications` | `Array` | schema | Liste deaktivierter Benachrichtigungstypen (Strings: `APPOINTMENT_ACCEPTED`, `APPOINTMENT_ASSIGNED`, `APPOINTMENT_CANCELED`, `APPOINTMENT_DELETED`, `APPOINTMENT_DONE`, `APPOINTMENT_EXPERT_AGREED`, `APPOINTMENT_EXPERT_CANCELED`, `APPOINTMENT_EXPERT_DISAGREED`, `APPOINTMENT_REJECTED`, `APPOINTMENT_REMINDER`, `APPOINTMENT_REQUEST`, `APPOINTMENT_RESERVED`, `APPOINTMENT_UPCOMING`, `CONSULATION_SUBMIT`, `COUNCIL_START`, `COUNCIL_SUBMIT`, `EXPERT_SUMMARY`, `INVOICE_CUSTOMER`, `TEMPLATE`, `USER_PASSWORD`) |
+| `mainAddress` | `Document` | inferred | Hauptadresse ([Address](#sub-entity-address)) |
+| `cellularNumber` | `String` | inferred | Mobilfunknummer |
+| `shiftPhoneNumber` | `String` | inferred | Bereitschaftsnummer |
+| `notificationPerMail` | `Boolean` | inferred | Benachrichtigung per E-Mail |
+| `exludedNotifications` | `Array` | inferred | Ausgeschlossene Benachrichtigungen (Strings) |
+| `photo` | `Document` | inferred | Profilfoto ([UserFileMetadata](#sub-entity-userfilemetadata)) |
+| `homePhone` | `String` | inferred | Privatnummer |
+| `faxNumber` | `String` | inferred | Faxnummer |
+| `workPhone` | `String` | inferred | Dienstnummer |
+| `userId` | `Long` | inferred | Reference to [user](#entity-experte-expert) |
 
 The `UserProfile` sub-entity is used within:
 - [`user`](#entity-experte-expert) (as `userProfile` field)
@@ -645,13 +682,22 @@ Contains professional qualifications and payment details for the expert.
 | `mailInvoice` | `Boolean` | schema | E-Mail-Rechnung senden |
 | `postInvoice` | `Boolean` | schema | Post-Rechnung senden |
 | `shift` | `String` | schema | Bereitschaftsdienst Fokus (`NONE`, `LOW`, `MEDIUM`, `HIGH`) |
-| `appointment` | `String` | schema | Sprechstunde Fokus |
-| `therapy` | `String` | schema | Therapie Fokus |
-| `skills` | `Array` | schema | Liste der erlangten Fähigkeiten ([SkillAssignment](#sub-entity-skillassignment)) |
-| `imageSignature` | `Document` | inferred | Bild mit der Unterschrift ([FileMetadata](#sub-entity-filemetadata)) |
-| `bayernBoxAccess` | `Document` | inferred | Zugangsdaten SecureBox (user/password) |
-| `imageSignature` | `Document` | Bild mit der Unterschrift ([FileMetadata](#sub-entity-filemetadata)) |
-| `bayernBoxAccess` | `Document` | Zugangsdaten SecureBox (user/password) |
+| `appointment` | `String` | schema | Sprechstunde Fokus (`NONE`, `LOW`, `MEDIUM`, `HIGH`) |
+| `therapy` | `String` | schema | Therapie Fokus (`NONE`, `LOW`, `MEDIUM`, `HIGH`) |
+| `skills` | `Array` | schema | Liste der erlangten Fähigkeiten ([EmployeeSkillAssignment](#sub-entity-employeeskillassignment)) |
+| `exclusionCriteria` | `Array` | inferred | Ausschlusskriterien |
+| `imageSignature` | `Document` | schema | Bild mit der Unterschrift ([UserFileMetadata](#sub-entity-userfilemetadata)) |
+| `bayernBoxAccess` | `Document` | schema | Zugangsdaten SecureBox ([BayernBoxAccess](#sub-entity-bayernboxaccess)) |
+| `categoriesWatched` | `Array` | inferred | Gesehene Video-Kategorien ([WatchedCategory](#sub-entity-watchedcategory)) |
+| `email2` | `String` | inferred | Sekundäre E-Mail-Adresse |
+| `activeSince` | `Date` | inferred | Aktiv seit |
+| `bank` | `String` | inferred | Bankname |
+| `iban` | `String` | inferred | IBAN |
+| `bic` | `String` | inferred | BIC |
+| `taxid` | `String` | inferred | Steuer-ID |
+| `uid` | `String` | inferred | Umsatzsteuer-ID |
+| `mailInvoice` | `Boolean` | inferred | Rechnung per Mail |
+| `postInvoice` | `Boolean` | inferred | Rechnung per Post |
 
 The `EmployeeProfile` sub-entity is used within:
 - [`user`](#entity-experte-expert) (as `employeeProfile` field)
@@ -683,7 +729,12 @@ Contains contract details and billing information related to Videoclinic.
 | `activeSinceVC` | `Date` | schema | Ab wann for Videoclinic tätig |
 | `activeUntilVC` | `Date` | schema | Bis wann for Videoclinic tätig |
 | `products` | `Array` | schema | Liste abonnierter Waren ([SubscribedProduct](#sub-entity-subscribedproduct)) |
-| `sipAccounts` | `Array` | inferred | Liste von SIP-Accounts |
+| `sipAccounts` | `Array` | inferred | Liste von SIP-Accounts ([SipAccount](#sub-entity-sipaccount)) |
+| `employeeType` | `Array` | inferred | Beschäftigungsverhältnis ([EmployeeTypeEntry](#sub-entity-employeetypeentry)) |
+| `currentIncome` | `Number` | inferred | Aktuelles Einkommen |
+| `activeSince` | `Date` | inferred | Aktiv seit |
+| `inctiveReason` | `String` | inferred | Grund für Inaktivität |
+| `experienceAddictionMedicine` | `String` | inferred | Erfahrung in Suchtmedizin |
 
 The `EmployerProfile` sub-entity is used within:
 - [`user`](#entity-experte-expert) (as `employerProfile` field)
@@ -780,7 +831,7 @@ Die Konsultationsdaten erfassen alle medizinischen Informationen, die während e
 | `location` | `Document` | schema | Location of the consultation ([ConsultationLocation](#sub-entity-consultationlocation)) |
 | `period` | `Number` | schema | Abrechnungszeitraum |
 | `appointmentType` | `String` | schema | Termintyp:<br>• `APPOINTMENT` (Used) |
-| `customer` | `Document` | schema | Zugehöriger Kunde ([ConsultationCustomer](#sub-entity-consultationcustomer)) |
+| `__ref_customer_id` | `Document` | schema | Zugehöriger Kunde ([ConsultationCustomer](#sub-entity-consultationcustomer)) |
 | `job` | `Document` | schema | Erbrachte Dienstleistung ([ConsultationJob](#sub-entity-consultationjob)) |
 | `paymentType` | `String` | schema | Zahlungsart:<br>• `FULL` (Used) |
 | `doctor` | `Document` | inferred | Durchführender Experte ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
@@ -1175,7 +1226,7 @@ Erfasst den Verlauf von Behandlungen, insbesondere im Bereich der Psychotherapie
 | `dateLastAppointment` | `Date` | schema | Datum des letzten Termins |
 | `reportCountInitial` | `Number` | schema | Initiale Anzahl Berichte |
 | `reportCountRhytm` | `Number` | schema | Rhythmus der Berichte |
-| `customer` | `Document` | inferred | Zugehöriger Kunde ([ConsultationCustomer](#sub-entity-consultationcustomer)) |
+| `__ref_customer_id` | `Document` | inferred | Zugehöriger Kunde ([ConsultationCustomer](#sub-entity-consultationcustomer)) |
 | `location` | `Document` | schema | Ort der Behandlung ([ConsultationLocation](#sub-entity-consultationlocation)) |
 | `minutes` | `Number` | schema | Dauer in Minuten |
 | `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.Treatment` (Used) |
@@ -1282,18 +1333,66 @@ Verwaltung von Einzelterminen, Bereitschaften und Behandlungen.
 | `version` | `Long` | schema | Versionsnummer |
 | `start` | `Date` | schema | Startzeitpunkt |
 | `until` | `Date` | schema | Endzeitpunkt |
+| `adjustedStart` | `Date` | schema | Angepasster Startzeitpunkt |
+| `adjustedUntil` | `Date` | schema | Angepasster Endzeitpunkt |
+| `actualStart` | `Date` | schema | Tatsächlicher Startzeitpunkt |
+| `actualUntil` | `Date` | schema | Tatsächlicher Endzeitpunkt |
+| `loggedStart` | `Date` | schema | Protokollierter Startzeitpunkt |
+| `loggedUntil` | `Date` | schema | Protokollierter Endzeitpunkt |
+| `verifiedStart` | `Date` | schema | Verifizierter Startzeitpunkt |
+| `verifiedUntil` | `Date` | schema | Verifizierter Endzeitpunkt |
+| `billStart` | `Date` | schema | Abrechnungs-Startzeitpunkt |
+| `billUntil` | `Date` | schema | Abrechnungs-Endzeitpunkt |
+| `dateStarted` | `Date` | schema | Startdatum des Termins |
+| `dateDone` | `Date` | schema | Abschlussdatum des Termins |
+| `dateStorno` | `Date` | schema | Stornierungsdatum |
+| `firstContact` | `Date` | schema | Erster Kontaktzeitpunkt |
 | `dateCreated` | `Date` | schema | Erstellungsdatum |
+| `dateChanged` | `Date` | schema | Letztes Änderungsdatum |
 | `title` | `String` | schema | Titel |
 | `comment` | `String` | schema | Kommentar |
 | `state` | `String` | schema | Status:<br>• `ACTIVE` (Used)<br>• `CANCELED` (Used)<br>• `CLOSED` (Used)<br>• `DONE` (Used)<br>• `LOCKEDIN` (Used)<br>• `READY` (Used)<br>• `REQUESTED` (Used)<br>• `RESCHEDULED` (Used)<br>• `STARTED` (Used)<br>• `STORNO` (Used) |
 | `type` | `String` | schema | Typ:<br>• `APPOINTMENT` (Used)<br>• `SHIFT` (Used)<br>• `TREATMENT` (Used)<br>• `TREATMENT_REPORT` (Used) |
 | `job` | `Document` | schema | Erbrachte Dienstleistung ([ConsultationJob](#sub-entity-consultationjob)) |
 | `billingType` | `String` | schema | Abrechnungsart:<br>• `HOURLY` (Used)<br>• `PER_CONSULTATION` (Used) |
-| `paymentType` | `String` | inferred | Zahlungsart:<br>• `EK` (Used)<br>• `FULL` (Used)<br>• `VK` (Used)<br>• `IGNORE` (Used) |
-| `priceType` | `String` | inferred | Preistyp:<br>• `WEEKDAY` (Used)<br>• `WEEKNIGHT` (Used)<br>• `WEEKENDDAY` (Used)<br>• `WEEKENDNIGHT` (Used) |
-| `customer` | `Document` | inferred | Zugehöriger Kunde ([ConsultationCustomer](#sub-entity-consultationcustomer)) |
-| `location` | `Document` | inferred | Ort des Termins ([ConsultationLocation](#sub-entity-consultationlocation)) |
+| `paymentType` | `String` | schema | Zahlungsart:<br>• `EK` (Used)<br>• `FULL` (Used)<br>• `VK` (Used)<br>• `IGNORE` (Used) |
+| `priceType` | `String` | schema | Preistyp:<br>• `WEEKDAY` (Used)<br>• `WEEKNIGHT` (Used)<br>• `WEEKENDDAY` (Used)<br>• `WEEKENDNIGHT` (Used) |
+| `__ref_customer_id` | `Document` | schema | Zugehöriger Kunde ([ConsultationCustomer](#sub-entity-consultationcustomer)) |
+| `location` | `Document` | schema | Ort des Termins ([ConsultationLocation](#sub-entity-consultationlocation)) |
 | `treatmentId` | `Long` | schema | Reference to [treatment](#entity-behandlungsverlauf-treatment) |
+| `minPatients` | `Number` | schema | Mindestanzahl Patienten |
+| `actualPatients` | `Number` | schema | Anzahl tatsächlicher Patienten |
+| `billablePatients` | `Number` | schema | Anzahl abrechenbarer Patienten |
+| `payablePatients` | `Number` | schema | Anzahl zahlungspflichtiger Patienten |
+| `billableBaseTime` | `Long` | schema | Abrechenbare Basiszeit (ms) |
+| `workTimePlanned` | `Long` | schema | Geplante Arbeitszeit (ms) |
+| `workTimeActual` | `Long` | schema | Tatsächliche Arbeitszeit (ms) |
+| `workTimeIs` | `Long` | schema | Differenz Arbeitszeit (ms) |
+| `requiredStaffCount` | `Number` | schema | Benötigte Personalanzahl |
+| `addedStaffCount` | `Number` | schema | Hinzugefügte Personalanzahl |
+| `backlogCount` | `Number` | schema | Backlog-Anzahl |
+| `adjustedStaffCount` | `Number` | schema | Angepasste Personalanzahl |
+| `assignedStaffCount` | `Number` | schema | Zugewiesene Personalanzahl |
+| `reservedStaffCount` | `Number` | schema | Reservierte Personalanzahl |
+| `missing` | `Long` | schema | Fehlend (ms) |
+| `finished` | `Boolean` | schema | Abgeschlossen |
+| `countFurtherFollowUp` | `Number` | schema | Anzahl Folgeuntersuchungen |
+| `countFurtherIfRequired` | `Number` | schema | Anzahl bei Bedarf |
+| `countFurtherReferral` | `Number` | schema | Anzahl Überweisungen |
+| `countFurtherReferralOther` | `Number` | schema | Anzahl sonstige Überweisungen |
+| `period` | `Number` | schema | Abrechnungszeitraum (YYYYMM) |
+| `changedById` | `Long` | schema | Reference ID to [user](#entity-experte-expert) (last change) |
+| `createdById` | `Long` | schema | Reference ID to [user](#entity-experte-expert) (creation) |
+| `stornoById` | `Long` | schema | Reference ID to [user](#entity-experte-expert) (cancellation) |
+| `planId` | `Long` | schema | Reference ID to [appointmentPlan](#entity-sprechstundenplan-appointment-plan) |
+| `shiftPlanId` | `Long` | schema | Reference ID to [shiftPlan](#entity-schichtplan-shift-plan) |
+| `expertOnly` | `Boolean` | schema | Nur Experte |
+| `jobSupport` | `Boolean` | schema | Job Support |
+| `treatmentRequireReport` | `Boolean` | schema | Bericht erforderlich (Treatment) |
+| `assignedDisplayName` | `String` | schema | Angezeigter Name des zugewiesenen Experten |
+| `expertAppointment` | `Document` | schema | Experten-Termin Snapshot |
+| `unmatchedShiftCalls` | `Number` | schema | Nicht zugeordnete Schichtanrufe |
+| `unmatchedConsultationsCalls` | `Number` | schema | Nicht zugeordnete Konsultationsanrufe |
 | `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.Appointment` (Used) |
 
 The `appointment` entity is referenced by:
@@ -1320,7 +1419,10 @@ Historische oder alternative Konsultationsdaten (ähnlich wie `consultationData`
 | `date` | `Date` | Datum |
 | `type` | `String` | Typ:<br>• `DOCUMENT` (Used)<br>• `EXTERNAL` (Used)<br>• `INCARCERATION` (Used)<br>• `ONBOARDING` (Used)<br>• `ONBOARDING_SHORT` (Used)<br>• `STANDARD` (Used)<br>• `TREATMENT` (Used) |
 | `state` | `String` | Status:<br>• `CLOSED` (Used)<br>• `CREATED` (Used)<br>• `OPEN` (Used)<br>• `REPORTED` (Used)<br>• `TRANSMITTED` (Used)<br>• `VERIFIED` (Used) |
-| `customer` | `Document` | Kunde ([ConsultationCustomer](#sub-entity-consultationcustomer)) |
+| `__ref_doctor_id` | `Document` | Experte ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
+| `__ref_job_id` | `Document` | Dienstleistung ([ConsultationJob](#sub-entity-consultationjob)) |
+| `__ref_location_id` | `Document` | Ort ([ConsultationLocation](#sub-entity-consultationlocation)) |
+| `__ref_customer_id` | `Document` | Kunde ([ConsultationCustomer](#sub-entity-consultationcustomer)) |
 | `_class` | `String` | Java Klassenname: `de.videoclinic.model.Consultation` (Used) |
 
 The `consultation` (Legacy) entity stores historical records and is referenced by:
@@ -1608,7 +1710,17 @@ Zentrale Abrechnungsdokumente für Kunden und Experten.
 | `taxType` | `String` | schema | Steuerart:<br>• `SATZ_NORMAL` (Used)<br>• `SATZ_NULL` (Used) |
 | `taxes` | `Array` | schema | Steuersätze ([InvoiceTax](#sub-entity-invoicetax)) |
 | `dateInvoice` | `Date` | schema | Rechnungsdatum |
+| `dateSkonto` | `Date` | inferred | Skonto-Datum |
 | `dateSubmit` | `Date` | schema | Einreichungsdatum |
+| `dateWorklog` | `Date` | inferred | Arbeitsnachweis-Datum |
+| `dateCreated` | `Date` | inferred | Erstellungsdatum |
+| `createdBy` | `DBRef` | inferred | Erstellt von (Reference to [user](#entity-experte-expert)) |
+| `dateChanged` | `Date` | inferred | Änderungsdatum |
+| `changedBy` | `DBRef` | inferred | Geändert von (Reference to [user](#entity-experte-expert)) |
+| `totalTaxes` | `Number` | inferred | Gesamtsteuer |
+| `paidAt` | `Date` | inferred | Bezahlungsdatum |
+| `storno` | `DBRef` | inferred | Storno-Referenz (Reference to [invoice](#entity-rechnungen-invoices)) |
+| `attachments` | `Array` | inferred | Anhänge ([UserFileMetadata](#sub-entity-userfilemetadata)) |
 | `paymentType` | `String` | schema | Zahlungsart:<br>• `CASH` (Used)<br>• `INVOICE` (Used)<br>• `INVOICE_STORNO` (Used) |
 | `invoiceType` | `String` | schema | Rechnungstyp:<br>• `EXPERT_INVOICE` (Used)<br>• `INVOICE` (Used)<br>• `START_INVOICE` (Used) |
 | `mail` | `String` | schema | E-Mail-Adresse für den Versand |
@@ -1692,10 +1804,19 @@ Zuweisung von Experten zu bestimmten Terminen mit Statusverfolgung.
 | `userId` | `Long` | schema | Reference to [user](#entity-experte-expert) |
 | `assignedById` | `Long` | schema | Zugewiesen durch (Reference to [user](#entity-experte-expert)) |
 | `appointmentId` | `Long` | schema | Reference to [appointment](#entity-termine-appointments) |
+| `period` | `number` | inferred | Abrechnungszeitraum (YYYYMM) |
+| `control` | `boolean` | inferred | Kontrollstatus |
+| `force` | `boolean` | inferred | Erzwingen |
+| `appointmentDay` | `Date` | inferred | Tag des Termins |
+| `paused` | `Long` | inferred | Pausiert (ms) |
 | `state` | `String` | schema | Status der Zuweisung |
 | `dateAssigned` | `Date` | schema | Zuweisungsdatum |
 | `dateCreated` | `Date` | inferred | Erstellungsdatum |
+| `dateChanged` | `Date` | inferred | Änderungsdatum |
+| `changedById` | `Long` | inferred | Zuletzt geändert von (Reference to [user](#entity-experte-expert)) |
 | `dateReminder` | `Date` | schema | Erinnerungsdatum |
+| `dateSelfAdded` | `Date` | inferred | Datum der Selbsteintragung |
+| `support` | `boolean` | inferred | Support-Status |
 | `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.AppointmentAssignment` (Used) |
 
 The `appointmentAssignment` entity is referenced by:
@@ -1730,9 +1851,11 @@ Detaillierte Historie aller Zuweisungsänderungen.
 | `assignmentId` | `Long` | schema | Reference to [appointmentAssignment](#entity-terminzuweisungen-appointment-assignments) |
 | `dateCreated` | `Date` | schema | Zeitpunkt der Änderung |
 | `state` | `String` | schema | Neuer Status |
-| `target` | `Document` | schema | Ziel des Ereignisses (Snapshot von `user`) |
+| `target` | `Document` | schema | Ziel des Ereignisses (Snapshot von [user](#entity-experte-expert)) |
 | `subject` | `String` | schema | Betreff |
 | `message` | `String` | schema | Nachricht oder Kommentar |
+| `relevantDate` | `Date` | inferred | Relevantes Datum für das Ereignis |
+| `notificationId` | `Long` | inferred | Reference to [notification](#entity-benachrichtigungen-notifications) |
 | `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.AppointmentAssignmentHistory` (Used) |
 
 The `appointmentAssignmentHistory` entity provides an audit trail for:
@@ -1840,8 +1963,10 @@ Dateien, die Benutzern zugeordnet sind (z.B. Zertifikate).
 | `data` | `Document` | Metadaten der Datei ([FileMetadata](#sub-entity-filemetadata)) |
 | `name` | `String` | Anzeigename |
 | `type` | `String` | Dateityp:<br>• `APPROBIATION` (Used)<br>• `AUTHENTICATED_MEDICAL_SPECIALIST_CERTIFICATE` (Used)<br>• `BASIC_RULES_CONTRACT` (Used)<br>• `BAVARIA_LAWS_CONTRACT` (Used)<br>• `CONDUCT_CERTIFICATE` (Used)<br>• `CURRICULUM_VITAE` (Used)<br>• `DATA_PROTECTION_CONTRACT` (Used)<br>• `LOAN_AGREEMENT` (Used)<br>• `OTHER` (Used)<br>• `PROFESSIONAL_LIABILITY_INSURANCE` (Used)<br>• `PROOF_OF_EXPERTISE` (Used)<br>• `SERVICE_CONTRACT` (Used)<br>• `SOCIAL_SECURITY_CHECKLIST` (Used) |
-| `ownerId` | `Long` | Reference to [user](#entity-experte-expert) |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.UserFile` (Used) |
+| `ownerId` | `Long` | schema | Reference to [user](#entity-experte-expert) |
+| `date` | `Date` | inferred | Datum |
+| `active` | `Boolean` | inferred | Status |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.UserFile` (Used) |
 
 The `userFile` entity references:
 - [`user`](#entity-experte-expert) (via `ownerId`)
@@ -1905,7 +2030,13 @@ Speichert Informationen über aktive und vergangene Benutzersitzungen im System.
 | `created` | `Date` | schema | Erstellungszeitpunkt |
 | `ip` | `String` | schema | IP-Adresse des Benutzers |
 | `userAgent` | `String` | schema | Browser-Informationen (User Agent) |
-| `lastAccess` | `Date" | inferred | Letzter Zugriff |
+| `authorities` | `Array` | inferred | Liste zugeordneter Berechtigungen ([UserAuthority](#sub-entity-userauthority)) |
+| `loginUser` | `Long` | inferred | Reference to [user](#entity-experte-expert) |
+| `lang` | `String` | inferred | Spracheinstellung (z.B. `de`) |
+| `csfr` | `String` | inferred | CSRF-Token |
+| `newSession` | `Boolean` | inferred | Ob es eine neue Sitzung ist |
+| `type` | `String` | inferred | Sitzungstyp |
+| `lastAccess` | `Date` | inferred | Letzter Zugriff |
 | `role` | `String` | schema | Aktive Rolle in der Sitzung |
 | `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.PersistentSession` (Used) |
 
@@ -2021,14 +2152,41 @@ Medizinische Einrichtungen oder Standorte, an denen Konsultationen durchgeführt
 | Column | Type | Field Type | Description |
 | :--- | :--- | :--- | :--- |
 | `_id` | `Long` | schema | Interner Bezeichner |
+| `foreignId` | `String` | schema | Externe ID (JVA) |
+| `externalId` | `String` | schema | Externe ID (ZMS) |
 | `version` | `Long` | schema | Versionsnummer |
+| `uid` | `String` | schema | Umsatzsteuer-ID |
+| `type` | `DBRef` | schema | Reference to [locationType](#entity-standorttypen-location-types) |
+| `typeEnum` | `String` | schema | Typ als Enum-String |
 | `name` | `String` | schema | Name der Einrichtung |
+| `building` | `String` | schema | Gebäude |
 | `address` | `String` | schema | Adresse |
+| `address2` | `String` | schema | Adresszusatz |
 | `zip` | `String` | schema | PLZ |
 | `city` | `String` | schema | Ort |
-| `customer` | `DBRef` | schema | Reference to [customer](#entity-kunden-customers) |
-| `patientDataType` | `String` | inferred | Art der Patientendatenübermittlung:<br>• `EXTERNAL` (Used)<br>• `EXTERNAL_BASISWEB` (Used)<br>• `INTERNAL` (Used)<br>• `INTERNAL_DAV` (Used)<br>• `INTERNAL_SECUREBOX` (Used)<br>• `INTERNAL_VCCLOUD` (Used) |
+| `state` | `String` | schema | Bundesland |
+| `country` | `String` | schema | Land |
+| `bank` | `String` | schema | Kreditinstitut |
+| `bic` | `String` | schema | BIC |
+| `iban` | `String` | schema | IBAN |
+| `sipAccounts` | `Array` | schema | Liste von SIP-Accounts ([SipAccount](#sub-entity-sipaccount)) |
+| `representative` | `String` | schema | Ansprechpartner |
+| `phone` | `String` | schema | Telefonnummer |
+| `phoneMedical` | `String` | schema | Medizinische Telefonnummer |
+| `contactMedical` | `String` | schema | Medizinischer Ansprechpartner |
+| `emailMedical` | `String` | schema | Medizinische E-Mail |
+| `sip1` | `String` | schema | SIP 1 |
+| `sip2` | `String` | schema | SIP 2 |
+| `sipMobile` | `String` | schema | SIP Mobil |
+| `fax` | `String` | schema | Faxnummer |
+| `medicationType` | `String` | schema | Art der Medikation |
+| `patientDataType` | `String` | schema | Art der Patientendatenübermittlung:<br>• `EXTERNAL` (Used)<br>• `EXTERNAL_BASISWEB` (Used)<br>• `INTERNAL` (Used)<br>• `INTERNAL_DAV` (Used)<br>• `INTERNAL_SECUREBOX` (Used)<br>• `INTERNAL_VCCLOUD` (Used) |
 | `patientDataAccess` | `Document` | schema | Konfiguration für Datenzugriff ([LocationPatientDataAccess](#sub-entity-locationpatientdataaccess)) |
+| `booknumberMask` | `String` | schema | Maske für Buchnummern |
+| `externalDescription` | `String` | schema | Externe Beschreibung |
+| `customer` | `DBRef` | schema | Reference to [customer](#entity-kunden-customers) |
+| `longitude` | `Number` | schema | Längengrad |
+| `latitude` | `Number` | schema | Breitengrad |
 | `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.Location` (Used) |
 
 The `location` entity is referenced by:
@@ -2056,6 +2214,10 @@ Konfiguration für den Zugriff auf externe Patientendaten (z.B. SecureBox).
 | `user` | `String` | schema | Benutzername |
 | `password` | `String` | schema | Passwort |
 | `url` | `String` | schema | Zugriff-URL |
+| `backupUrl` | `String` | schema | Backup-URL |
+| `host` | `String` | schema | Host |
+| `email` | `String` | schema | E-mail |
+| `subject` | `String` | schema | Betreff |
 | `active` | `Boolean` | schema | Status des Zugangs |
 | `type` | `String` | Art des Datenzugriffs:<br>• `INTERNAL_SECUREBOX` (Used)<br>• `EXTERNAL` (Used) |
 | `address` | `String` | URL oder IP-Adresse der SecureBox |
@@ -2088,9 +2250,6 @@ Standardisierte wöchentliche Verfügbarkeitsslots für Experten.
 | `dateCreated` | `Date` | schema | Erstellungszeitpunkt |
 | `createdBy` | `DBRef` | schema | Erstellt von (Reference to [user](#entity-experte-expert)) |
 | `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.ExpertWeek` (Used) |
-| `dateChanged` | `Date` | Time of last change |
-| `createdBy` | `DBRef` | Created by (Reference to [user](#entity-experte-expert)) |
-| `_class` | `String` | Java class name: `de.videoclinic.model.ExpertWeek` (Used) |
 
 The `expertWeek` entity defines standard schedules for:
 - [`user`](#entity-experte-expert) (referenced via `userId`)
@@ -2445,9 +2604,9 @@ Definition der einzelnen Schritte, die ein Experte oder Standort während des On
 | `mandatory` | `Boolean` | schema | Ob der Schritt verpflichtend ist |
 | `type` | `String` | schema | Art des Schritts:<br>• `CHECK` (Used) |
 | `assignmentType` | `String` | schema | Art der Zuordnung:<br>• `EMPLOYEE` (Used)<br>• `LOCATION` (Used) |
-| `dateCreated` | `Date` | schema | Erstellungszeitpunkt |
-| `dateChanged` | `Date` | schema | Zeitpunkt der letzten Änderung |
 | `createdBy` | `DBRef` | schema | Erstellt von (Reference to [user](#entity-experte-expert)) |
+| `dateCreated` | `Date` | schema | Erstellungsdatum |
+| `dateChanged` | `Date` | schema | Änderungsdatum |
 | `changedBy` | `DBRef` | schema | Geändert von (Reference to [user](#entity-experte-expert)) |
 | `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.OnboardingStep` (Used) |
 
@@ -2502,7 +2661,15 @@ Manuell eingetragene Abwesenheiten oder Urlaubszeiten von Experten.
 | `until` | `Date` | schema | Ende der Abwesenheit |
 | `title` | `String` | inferred | Grund/Bezeichnung |
 | `approved` | `Boolean` | inferred | Genehmigungsstatus |
-| `owner` | `DBRef` | schema | Reference to [user](#entity-experte-expert) |
+| `minutes` | `Number` | inferred | Dauer in Minuten |
+| `dateApproved` | `Date` | inferred | Genehmigungsdatum |
+| `approvalComment` | `String` | inferred | Genehmigungskommentar |
+| `approvedBy` | `DBRef` | inferred | Genehmigt von (Reference to [user](#entity-experte-expert)) |
+| `owner` | `DBRef` | schema | Abwesenheit für (Reference to [user](#entity-experte-expert)) |
+| `dateCreated` | `Date` | schema | Erstellungsdatum |
+| `dateChanged` | `Date` | schema | Änderungsdatum |
+| `createdBy` | `DBRef` | schema | Erstellt von (Reference to [user](#entity-experte-expert)) |
+| `changedBy` | `DBRef` | schema | Geändert von (Reference to [user](#entity-experte-expert)) |
 | `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.Holiday` (Used) |
 
 The `holiday` entity is used by:
@@ -2538,6 +2705,10 @@ Spezifische Meldungen, die Benutzern beim Einloggen in das System angezeigt werd
 | `dateFrom` | `Date` | schema | Gültig ab |
 | `dateTo` | `Date` | schema | Gültig bis |
 | `active` | `Boolean` | schema | Status |
+| `dateCreated` | `Date` | inferred | Erstellungsdatum |
+| `createdBy` | `DBRef` | inferred | Erstellt von (Reference to [user](#entity-experte-expert)) |
+| `dateChanged` | `Date` | inferred | Letztes Änderungsdatum |
+| `changedBy` | `DBRef` | inferred | Geändert von (Reference to [user](#entity-experte-expert)) |
 | `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.LoginNotification` (Used) |
 
 The `loginNotification` entity is used for:

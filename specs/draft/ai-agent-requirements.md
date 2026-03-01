@@ -59,6 +59,7 @@ The output must be a Markdown file with the following structure:
         - **Language Consistency:** Descriptions for references MUST be in English (e.g., "Reference to [user](#entity-experte-expert)", "Reference ID to [jobId](#entity-dienstleistung-service)").
         - **Reciprocal Links:** Ensure consistency by using the same linking format across all tables and cross-references.
     *   **Sub-entity Naming:** Use CamelCase for all sub-entity names (e.g., `#### Sub-entity: UserProfile`).
+    *   **Nested Reference Naming (DBML):** For columns in DBML that represent nested sub-entities with references to other tables, use the naming convention: `__ref_` + `snake_case_original_column_name` + `_` + `nested_name_of_self_defined_type` (e.g., `location` in `appointmentPlan` table referring to a customer ID becomes `__ref_location_customer_id`).
 4.  **Nested Structure & Enum Analysis:**
     *   Deeply analyze nested JSON documents discovered via MongoDB.
     *   **Topic & Color Mapping:** Group each table and sub-entity into topics based on business usage. For each topic, generate a distinct and accessible `headercolor` using the `color-palette-generation` skill.
