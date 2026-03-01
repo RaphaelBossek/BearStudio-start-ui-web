@@ -33,6 +33,12 @@ The output must be a Markdown file with the following structure:
     | `column_name` | `data_type` | Business description or mapping from requirements |
 5.  **Functionality Details:** An H3 header "Functionality Details" following the mapping table, containing additional logic, constraints, or business rules from `all-together.md` related to that entity.
 6.  **Sub-entities (Nested Documents):** If a table contains complex nested JSON documents, an H3 header "Sub-entities for [TableName]" must be added. Each complex nested structure must be documented as an H4 sub-entity (e.g., `#### Sub-entity: SkillRule`).
+7.  **Cross-references:** For each table and sub-entity, a "Cross-references" section must follow the mapping table to document relational dependencies.
+    *   **Sub-entities:** For sub-entities (nested documents), explicitly document the parent entity/table and the specific field where the sub-entity is used (e.g., `The PlanUser sub-entity is used within: appointmentPlan`).
+    *   **Top-level Tables:** For top-level tables, document all incoming references (foreign keys or logical links) from other tables (e.g., `The user entity is referenced by: appointmentAssignment`).
+    *   **Formatting:** Do NOT use a dedicated H3/H4 header for this list; instead, place it as plain text or a bulleted list directly after the mapping table (or after the Java model description if present) to maintain document depth consistency.
+    *   **Exhaustiveness:** If no explicit cross-references are found after a thorough analysis, note this as well (e.g., `No explicit cross-references found`). Every entity and sub-entity MUST have this section.
+    *   **Verification:** Use MongoDB MCP tools or search the documentation to ensure all references are captured. Cross-references must be reciprocal: if Table A refers to Sub-entity B, then Sub-entity B must list Table A in its cross-references.
 
 ## Logic & Mapping Rules
 1.  **Entity Identification:** Parse `all-together.md` to identify primary business entities (e.g., "Sprechstundenplan", "Dienstleistung").
@@ -47,6 +53,11 @@ The output must be a Markdown file with the following structure:
         - If the field contains non-repetitive text, classify it as `Freitext` or `Strukturierter Text` (e.g., for progress messages or descriptions).
         - If the field uses systematic classification codes, mark it as `Systematische Kodierung`.
     *   **Complex Fields:** For `Document` or `Array` types that represent a specific nested structure, provide a Markdown link to the corresponding sub-entity definition (e.g., `[SkillRule](#sub-entity-skillrule)`).
+    *   **Internal Linking Principle:** For any column that references another entity, table, or sub-entity (e.g., fields with descriptions like "Reference to ...", "Reference ID to ..."), the agent MUST format the reference as a Markdown link to the corresponding chapter or anchor (e.g., `[user](#entity-experte-expert)`).
+        - **Mandatory for DBRef:** All fields of type `DBRef` or `Document/DBRef` MUST include a "Reference to [Target](#Anchor)" link in their description.
+        - **Target Identification:** Identify the correct anchor by using the entity's business-friendly name or the technical table name (e.g., `#entity-experte-expert`, `#sub-entity-address`).
+        - **Language Consistency:** Descriptions for references MUST be in English (e.g., "Reference to [user](#entity-experte-expert)", "Reference ID to [jobId](#entity-dienstleistung-service)").
+        - **Reciprocal Links:** Ensure consistency by using the same linking format across all tables and cross-references.
     *   **Sub-entity Naming:** Use CamelCase for all sub-entity names (e.g., `#### Sub-entity: UserProfile`).
 4.  **Nested Structure & Enum Analysis:**
     *   Deeply analyze nested JSON documents discovered via MongoDB.

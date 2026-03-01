@@ -22,6 +22,13 @@ Definition of consultation schedules, shifts, and expert availability.
 | [`shiftPlan`](#entity-schichtplan-shift-plan) | Schichtplan (Shift Plan) | Recurring shift schedule for expert on-call duties. | `ShiftPlan` |
 | [`holiday`](#entity-abwesenheiten-urlaub-holidays) | Abwesenheiten/Urlaub (Holidays) | Individual expert absences, vacations, or sick leave. | `Holiday` |
 
+### Capabilities
+Definition of expert skills and required qualifications for services.
+
+| Table Name (DBML) | Business Entity | Description Summary | Model (de.videoclinic.model.*) |
+| :--- | :--- | :--- | :--- |
+| [`skill`](#entity-fähigkeiten-skills) | Fähigkeiten (Skills) | Definition of a skill (Fähigkeit), including name, description, type, and status. | `Skill` |
+
 ### User Management
 Management of experts, users, roles, and their associated profiles and sessions.
 
@@ -184,46 +191,46 @@ These enums currently only contain a single value and often represent a subset o
 Organizational entities (customers) that are assigned to locations and appointment plans.
 
 ### Table: customer
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer (Zeitstempel) |
-| `name` | `String` | Name des Kunden |
-| `code` | `String` | Kunden-Code |
-| `representative` | `String` | Ansprechpartner |
-| `email` | `String` | E-Mail-Adresse |
-| `uid` | `String` | Umsatzsteuer-ID |
-| `bank` | `String` | Kreditinstitut |
-| `bic` | `String` | BIC |
-| `iban` | `String` | IBAN |
-| `address` | `String` | Straße und Hausnummer |
-| `address2` | `String` | Adresszusatz |
-| `zip` | `String` | Postleitzahl |
-| `city` | `String` | Ort |
-| `state` | `String` | Bundesland |
-| `country` | `String` | Land |
-| `webpage` | `String` | Webseite |
-| `phone` | `String` | Telefonnummer |
-| `phone2` | `String` | Zweite Telefonnummer |
-| `faxNumber` | `String` | Faxnummer |
-| `timeframe` | `String` | Abrechnungszeitraum:<br>• `MONTHLY` (Used) |
-| `roundingType` | `String` | Rundungsregel:<br>• `FULL_HOUR` (Used)<br>• `HALF_HOUR` (Used) |
-| `roundingTypeExceptions` | `Array` | Ausnahmen von der Rundungsregel |
-| `discounts` | `Array` | Liste von Rabatten ([CustomerDiscount](#sub-entity-customerdiscount)) |
-| `priceLists` | `Array` | Zugeordnete Preislisten ([CustomerPriceList](#sub-entity-customerpricelist)) |
-| `priceListsValid` | `String` | Validierungshinweis für Preislisten (Freitext) |
-| `dateCustomer` | `Date` | Kundendatum |
-| `dateCreated` | `Date` | Erstellungsdatum |
-| `createdById` | `Long` | Ersteller (Referenz auf `user`) |
-| `dateChanged` | `Date` | Änderungsdatum |
-| `changedById` | `Long` | Geändert von (Referenz auf `user`) |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.Customer` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer (Zeitstempel) |
+| `name` | `String` | schema | Name des Kunden |
+| `code` | `String` | schema | Kunden-Code |
+| `representative` | `String` | schema | Ansprechpartner |
+| `email` | `String` | schema | E-Mail-Adresse |
+| `uid` | `String` | schema | Umsatzsteuer-ID |
+| `bank` | `String` | schema | Kreditinstitut |
+| `bic` | `String` | schema | BIC |
+| `iban` | `String` | schema | IBAN |
+| `address` | `String` | schema | Straße und Hausnummer |
+| `address2` | `String` | schema | Adresszusatz |
+| `zip` | `String` | schema | Postleitzahl |
+| `city` | `String` | schema | Ort |
+| `state` | `String` | schema | Bundesland |
+| `country` | `String` | schema | Land |
+| `webpage` | `String` | schema | Webseite |
+| `phone` | `String` | schema | Telefonnummer |
+| `phone2` | `String` | schema | Zweite Telefonnummer |
+| `faxNumber` | `String` | schema | Faxnummer |
+| `timeframe` | `String` | schema | Abrechnungszeitraum:<br>• `MONTHLY` (Used) |
+| `roundingType` | `String` | schema | Rundungsregel:<br>• `FULL_HOUR` (Used)<br>• `HALF_HOUR` (Used) |
+| `roundingTypeExceptions` | `Array` | schema | Ausnahmen von der Rundungsregel |
+| `discounts` | `Array` | schema | Liste von Rabatten ([CustomerDiscount](#sub-entity-customerdiscount)) |
+| `priceLists` | `Array` | schema | Zugeordnete Preislisten ([CustomerPriceList](#sub-entity-customerpricelist)) |
+| `priceListsValid` | `String` | schema | Validierungshinweis für Preislisten (Freitext) |
+| `dateCustomer` | `Date` | schema | Kundendatum |
+| `dateCreated` | `Date` | schema | Erstellungsdatum |
+| `createdById` | `Long` | schema | Ersteller (Reference to [user](#entity-experte-expert)) |
+| `dateChanged` | `Date` | schema | Änderungsdatum |
+| `changedById` | `Long` | schema | Geändert von (Reference to [user](#entity-experte-expert)) |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.Customer` (Used) |
 
-### Cross-references
 The `customer` entity is referenced by:
 - [`appointment`](#entity-termine-appointments)
 - [`appointmentPlan`](#entity-sprechstundenplan-appointment-plan)
-- [`consultationData`](#entity-konsultationsdaten-consultation-data)
+- [`consultationData`](#entity-konsultationsdaten-consultation-data) (as `customer` sub-entity)
+- [`invoiceComponent`](#entity-rechnungskomponenten-invoice-components)
 - [`invoiceReceiver`](#entity-rechnungsempf-nger-invoice-receivers)
 - [`location`](#entity-standorte-locations)
 - [`project`](#entity-projekte-projects)
@@ -235,29 +242,27 @@ The `customer` entity is referenced by:
 #### Sub-entity: CustomerDiscount
 Definition eines kundenindividuellen Rabatts für eine bestimmte Dienstleistung.
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `job` | `Long` | Referenz ID auf `jobId` |
-| `discount` | `Number` | Rabattsatz |
-| `comment` | `String` | Kommentar |
-| `dateStart` | `Date` | Startdatum |
-| `dateUntil` | `Date` | Enddatum |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `job` | `Long` | schema | Reference ID to [jobId](#entity-dienstleistung-service) |
+| `discount` | `Number` | schema | Rabattsatz |
+| `comment` | `String` | schema | Kommentar |
+| `dateStart` | `Date` | schema | Startdatum |
+| `dateUntil` | `Date` | schema | Enddatum |
 
-### Cross-references
 The `CustomerDiscount` sub-entity is used within:
 - [`customer`](#entity-kunden-customers) (as `discounts` array)
 
 #### Sub-entity: CustomerPriceList
 Zuweisung einer Preisliste zu einem Kunden mit zeitlicher Gültigkeit.
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `priceList` | `Document` | Snapshot der Preisliste (enthält `_id` und `name`) |
-| `start` | `Date` | Startdatum |
-| `until` | `Date` | Enddatum |
-| `comment` | `String` | Kommentar |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `priceList` | `Document` | schema | Snapshot der Preisliste (enthält `_id` und `name`) |
+| `start` | `Date` | schema | Startdatum |
+| `until` | `Date` | schema | Enddatum |
+| `comment` | `String` | schema | Kommentar |
 
-### Cross-references
 The `CustomerPriceList` sub-entity is used within:
 - [`customer`](#entity-kunden-customers) (as `priceLists` array)
 
@@ -267,32 +272,31 @@ The `CustomerPriceList` sub-entity is used within:
 The appointment plan defines the schedule for consultation hours, including services, recurrence rules, assigned experts, locations, and customers.
 
 ### Table: appointmentPlan
-| Column | Type | Description (from all-together.md) |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer (Zeitstempel) |
-| `name` | `String` | Ein Name für den Plan (Freitext) |
-| `job` | `Document` | Eine Dienstleistung ([PlanJob](#sub-entity-planjob)) |
-| `day` | `String` | Einen Wochentag:<br>• `MO` (Used)<br>• `TU` (Used)<br>• `WE` (Used)<br>• `TH` (Used)<br>• `FR` (Used) |
-| `startDate` | `Date` | Ein Startdatum |
-| `endDate` | `Date` | Einen Enddatum |
-| `lastDate` | `Date` | Ein Datum der letzten Wiederholung |
-| `count` | `Number` | Einer Anzahl von Wiederholungen |
-| `scheduling` | `String` | Die Eigenschaft der Wiederholung:<br>• `WEEKLY`: Wöchentlich (Used)<br>• `XOFMONTH`: jeder x-te Tag im Monat (Used)<br>• `FIRST_DAY_MONTH`: Erster Tag im Monats (Not used)<br>• `DAY_MONTH`: Tag im Monat (Not used)<br>• `LAST_DAY_MONTH`: Letzter Tag im Monat (Not used) |
-| `schedulingMulitplier` | `Number` | Multiplikator für die Wiederholung |
-| `timeStart` | `Number` | Einer Startuhrzeit (Format: HHmm, z.B. 930 für 09:30) |
-| `timeEnd` | `Number` | Eine Enduhrzeit (Format: HHmm, z.B. 1200 für 12:00) |
-| `doctor` | `Document` | Einen zugewiesenen Experten ([PlanUser](#sub-entity-planuser)) |
-| `location` | `Document` | Einen zugewiesenen Ort ([PlanLocation](#sub-entity-planlocation)) |
-| `comment` | `String` | Einem Kommentar (Freitext) |
-| `expertOnly` | `Boolean` | Gibt an, ob nur der zugewiesene Experte die Dienstleistung erbringen kann |
-| `dateCreated` | `Date` | Erstellungsdatum |
-| `createdBy` | `Document/DBRef` | Ersteller ([PlanUser](#sub-entity-planuser)) |
-| `dateChanged` | `Date` | Änderungsdatum |
-| `changedBy` | `Document/DBRef` | Ändernder ([PlanUser](#sub-entity-planuser)) |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.AppointmentPlan` (Used) |
+| Column | Type | Field Type | Description (from all-together.md) |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer (Zeitstempel) |
+| `name` | `String` | schema | Ein Name für den Plan (Freitext) |
+| `job` | `Document` | schema | Eine Dienstleistung ([PlanJob](#sub-entity-planjob)) |
+| `day` | `String` | schema | Einen Wochentag:<br>• `MO` (Used)<br>• `TU` (Used)<br>• `WE` (Used)<br>• `TH` (Used)<br>• `FR` (Used) |
+| `startDate` | `Date` | schema | Ein Startdatum |
+| `endDate` | `Date` | schema | Einen Enddatum |
+| `lastDate` | `Date` | schema | Ein Datum der letzten Wiederholung |
+| `count` | `Number` | schema | Einer Anzahl von Wiederholungen |
+| `scheduling` | `String` | schema | Die Eigenschaft der Wiederholung:<br>• `WEEKLY`: Wöchentlich (Used)<br>• `XOFMONTH`: jeder x-te Tag im Monat (Used)<br>• `FIRST_DAY_MONTH`: Erster Tag im Monats (Not used)<br>• `DAY_MONTH`: Tag im Monat (Not used)<br>• `LAST_DAY_MONTH`: Letzter Tag im Monat (Not used) |
+| `schedulingMulitplier` | `Number` | schema | Multiplikator für die Wiederholung |
+| `timeStart` | `Number` | schema | Einer Startuhrzeit (Format: HHmm, z.B. 930 für 09:30) |
+| `timeEnd` | `Number` | schema | Eine Enduhrzeit (Format: HHmm, z.B. 1200 für 12:00) |
+| `doctor` | `Document` | schema | Einen zugewiesenen Experten ([PlanUser](#sub-entity-planuser)) |
+| `location` | `Document` | schema | Einen zugewiesenen Ort ([PlanLocation](#sub-entity-planlocation)) |
+| `comment` | `String` | schema | Einem Kommentar (Freitext) |
+| `expertOnly` | `Boolean` | schema | Indicates if only the assigned expert can provide the service |
+| `dateCreated` | `Date` | schema | Creation date |
+| `createdBy` | `Document/DBRef` | schema | Creator (Reference to [PlanUser](#sub-entity-planuser)) |
+| `dateChanged` | `Date` | schema | Date of last change |
+| `changedBy` | `Document/DBRef` | schema | Changed by (Reference to [PlanUser](#sub-entity-planuser)) |
+| `_class` | `String` | schema | Java class name: `de.videoclinic.model.AppointmentPlan` (Used) |
 
-### Cross-references
 The `appointmentPlan` entity is referenced by:
 - [`appointment`](#entity-termine-appointments) (via `planId`)
 - [`asyncJobQueue`](#entity-hintergrundaufgaben-async-job-queue) (via `type`)
@@ -309,58 +313,54 @@ The following structures are used as nested documents within the `appointmentPla
 #### Sub-entity: PlanJob
 A snapshot of the assigned service.
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | ID of the job |
-| `code` | `String` | Short code (Systematische Kodierung) |
-| `color` | `String` | HEX color code |
-| `expertTitle` | `String` | Title for experts (Freitext) |
-| `remoteCode` | `String` | External code (Systematische Kodierung) |
-| `title` | `String` | Service title (Freitext) |
-| `type` | `String` | Job type: `APPOINTMENT` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | ID of the job |
+| `code` | `String` | schema | Short code (Systematische Kodierung) |
+| `color` | `String` | schema | HEX color code |
+| `expertTitle` | `String` | schema | Title for experts (Freitext) |
+| `remoteCode` | `String` | schema | External code (Systematische Kodierung) |
+| `title` | `String` | schema | Service title (Freitext) |
+| `type` | `String` | schema | Job type: `APPOINTMENT` (Used) |
 
-### Cross-references
 The `PlanJob` sub-entity is used within:
 - [`appointmentPlan`](#entity-sprechstundenplan-appointment-plan)
 
 #### Sub-entity: PlanUser
 A snapshot of a user (doctor, creator, etc.).
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | User ID |
-| `name` | `String` | Full name (Freitext) |
-| `email` | `String` | Email address (Freitext) |
-| `formalDisplayName` | `String` | Formal display name (Freitext) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | User ID |
+| `name` | `String` | schema | Full name (Freitext) |
+| `email` | `String` | schema | Email address (Freitext) |
+| `formalDisplayName` | `String` | schema | Formal display name (Freitext) |
 
-### Cross-references
 The `PlanUser` sub-entity is used within:
 - [`appointmentPlan`](#entity-sprechstundenplan-appointment-plan)
 
 #### Sub-entity: PlanLocation
 A snapshot of the location.
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Location ID |
-| `name` | `String` | Location name (Freitext) |
-| `booknumberMask` | `String` | Mask for booking numbers (Strukturierter Text) |
-| `patientDataType` | `String` | Data type: `EXTERNAL`, `INTERNAL_VCCLOUD`, etc. ([Location.patientDataType](#entity-standorte-locations)) |
-| `customer` | `Document` | Assigned customer ([PlanCustomer](#sub-entity-plancustomer)) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Location ID |
+| `name` | `String` | schema | Location name (Freitext) |
+| `booknumberMask` | `String` | schema | Mask for booking numbers (Strukturierter Text) |
+| `patientDataType` | `String` | schema | Data type: `EXTERNAL`, `EXTERNAL_BASISWEB`, `INTERNAL`, `INTERNAL_SECUREBOX`, `INTERNAL_VCCLOUD` (Used) ([Location.patientDataType](#entity-standorte-locations)) |
+| `customer` | `Document` | schema | Assigned customer ([PlanCustomer](#sub-entity-plancustomer)) |
 
-### Cross-references
 The `PlanLocation` sub-entity is used within:
 - [`appointmentPlan`](#entity-sprechstundenplan-appointment-plan)
 
 #### Sub-entity: PlanCustomer
 A snapshot of the customer.
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Customer ID |
-| `name` | `String` | Customer name (Freitext) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Customer ID |
+| `name` | `String` | schema | Customer name (Freitext) |
 
-### Cross-references
 The `PlanCustomer` sub-entity is used within:
 - [`appointmentPlan`](#entity-sprechstundenplan-appointment-plan) (nested in `location`)
 
@@ -370,38 +370,40 @@ The `PlanCustomer` sub-entity is used within:
 Defines the types of medical services provided, their billing modalities, and required skills.
 
 ### Table: jobId
-| Column | Type | Description (from all-together.md and DB) |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `title` | `String` | Einen Titel (intern, Experte, Rechnung) |
-| `code` | `String` | Eine Kurzbezeichnung |
-| `shortcode` | `String` | Ein Buchstabe als Kurzbezeichnung |
-| `expertTitle` | `String` | Titel für Experten |
-| `remoteCode` | `String` | Externer Code (z.B. Fachrichtung) |
-| `color` | `String` | Eine Farbe |
-| `type` | `String` | Die Abrechnungsmodalität:<br>• `APPOINTMENT` (Used)<br>• `SHIFT` (Used) |
-| `prio` | `Number` | Priorität der Dienstleistung |
-| `skillRules` | `Array` | Regeln für benötigte Fähigkeiten ([SkillRule](#sub-entity-skillrule)) |
-| `appointmentCondition` | `Document` | Konditionen für Termine ([AppointmentCondition](#sub-entity-appointmentcondition)) |
-| `shiftCondition` | `Document` | Konditionen für Bereitschaften ([ShiftCondition](#sub-entity-shiftcondition)) |
-| `consultationStandard` | `Boolean` | Normale Konsultation |
-| `consultationOnboarding` | `Boolean` | Komplette Zugangsuntersuchung |
-| `consultationOnboardingShort` | `Boolean` | Kurze Zugangsuntersuchung |
-| `consultationDocument` | `Boolean` | Konsiliarbericht |
-| `consultationIncarceration` | `Boolean` | Gewahrsamstauglichkeit |
-| `defaultConsultation` | `String` | Vorauswahl für eine Dienstleistung |
-| `defaultFurtherTreatment` | `String` | Voreinstellung für die weitere Behandlung:<br>• `FOLLOW_UP` (Used)<br>• `IF_REQUIRED` (Used) |
-| `_class` | `String` | Java Klassenname |
+| Column | Type | Field Type | Description (from all-together.md and DB) |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer (Zeitstempel) |
+| `title` | `String` | schema | Einen Titel (intern, Experte, Rechnung) |
+| `code` | `String` | schema | Eine Kurzbezeichnung |
+| `shortcode` | `String` | schema | Ein Buchstabe als Kurzbezeichnung |
+| `expertTitle` | `String` | schema | Titel für Experten |
+| `remoteCode` | `String` | schema | Externer Code (z.B. Fachrichtung) |
+| `color` | `String` | schema | Eine Farbe |
+| `type` | `String` | schema | Die Abrechnungsmodalität:<br>• `APPOINTMENT` (Used)<br>• `SHIFT` (Used) |
+| `prio` | `Number` | schema | Priorität der Dienstleistung |
+| `skillRules` | `Array` | schema | Regeln für benötigte Fähigkeiten ([SkillRule](#sub-entity-skillrule)) |
+| `appointmentCondition` | `Document` | schema | Konditionen für Termine ([AppointmentCondition](#sub-entity-appointmentcondition)) |
+| `shiftCondition` | `Document` | schema | Konditionen für Bereitschaften ([ShiftCondition](#sub-entity-shiftcondition)) |
+| `consultationStandard` | `Boolean` | schema | Normale Konsultation |
+| `consultationOnboarding` | `Boolean` | schema | Komplette Zugangsuntersuchung |
+| `consultationOnboardingShort` | `Boolean` | schema | Kurze Zugangsuntersuchung |
+| `consultationDocument` | `Boolean` | schema | Konsiliarbericht |
+| `consultationIncarceration` | `Boolean` | schema | Gewahrsamstauglichkeit |
+| `defaultConsultation` | `String` | schema | Vorauswahl für eine Dienstleistung:<br>• `STANDARD` (Used)<br>• `DOCUMENT` (Used)<br>• `EXTERNAL` (Used)<br>• `INCARCERATION` (Used) |
+| `defaultFurtherTreatment` | `String` | schema | Voreinstellung für die weitere Behandlung:<br>• `FOLLOW_UP` (Used)<br>• `IF_REQUIRED` (Used) |
+| `onCallNumbers` | `Array` | inferred | Rufnummern für Bereitschaften |
+| `_class` | `String` | schema | Java Klassenname |
 
-### Cross-references
 The `jobId` entity is referenced by:
-- [`appointment`](#entity-termine-appointments)
-- [`appointmentPlan`](#entity-sprechstundenplan-appointment-plan)
+- [`appointment`](#entity-termine-appointments) (as `job` sub-entity)
+- [`appointmentPlan`](#entity-sprechstundenplan-appointment-plan) (as `job` sub-entity)
 - [`consultationData`](#entity-konsultationsdaten-consultation-data)
 - [`expertWorkMonthly`](#entity-monatliche-expertenarbeit-expert-work-monthly)
 - [`invoice`](#entity-rechnungen-invoices) (in positions)
-- [`jobPriceList`](#entity-preislisten-job-price-lists)
+- [`jobPriceList`](#entity-preislisten-job-price-lists) (as `jobPriceEntries` sub-entities)
 - [`treatment`](#entity-behandlungsverlauf-treatment)
+- [`customer`](#entity-kunden-customers) (as `discounts` sub-entities)
 
 ### Functionality Details
 - **Billing Modalities:** "Patienten (Bereitschaft)", "Zeit (Sprechstunde, Therapie)", "Experten+Zeit (Konsil)".
@@ -415,25 +417,23 @@ The following structures are used as nested documents within the `jobId` collect
 #### Sub-entity: SkillRule
 Defines requirements for expert skills.
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `String` | Internal identifier |
-| `skills` | `Array` | List of DBRefs to the `skill` collection |
-| `rule` | `String` | Logical rule for the skills: `ANY_MUST`, `ALL_MUST`, `ANY_WEIGHT`, `ALL_WEIGHT` |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `String` | schema | Internal identifier |
+| `skills` | `Array` | schema | List of DBRefs to the [skill](#entity-fähigkeiten-skills) collection |
+| `rule` | `String` | schema | Logical rule for the skills: `ANY_MUST`, `ALL_MUST`, `ANY_WEIGHT`, `ALL_WEIGHT` |
 
-### Cross-references
 The `SkillRule` sub-entity is used within:
 - [`jobId`](#entity-dienstleistung-service) (as `skillRules` array)
 
 #### Sub-entity: PriceDefinition
 A reusable structure for defining time-based or condition-based prices. Used in both `AppointmentCondition` and `ShiftCondition`.
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `String` | Internal identifier |
-| `prices` | `Array` | List of price points ([PricePoint](#sub-entity-pricepoint)) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `String` | schema | Internal identifier |
+| `prices` | `Array` | schema | List of price points ([PricePoint](#sub-entity-pricepoint)) |
 
-### Cross-references
 The `PriceDefinition` sub-entity is used within:
 - [`AppointmentCondition`](#sub-entity-appointmentcondition) (via `hourlyPrice` document)
 - [`ShiftCondition`](#sub-entity-shiftcondition) (via `priceWeekDay`, `priceWeekNight`, etc.)
@@ -441,48 +441,45 @@ The `PriceDefinition` sub-entity is used within:
 #### Sub-entity: PricePoint
 An individual price entry with an optional start date.
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `String` | Internal identifier |
-| `comment` | `String` | Description or reason for the price (e.g., "Basis", "Preisanpassung") |
-| `price` | `Number` | The price value |
-| `dateStart` | `Date` | Optional start date for when this price becomes active |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `String` | schema | Internal identifier |
+| `comment` | `String` | schema | Description or reason for the price (e.g., "Basis", "Preisanpassung") |
+| `price` | `Number` | schema | The price value |
+| `dateStart` | `Date` | schema | Optional start date for when this price becomes active |
 
-### Cross-references
 The `PricePoint` sub-entity is used within:
 - [`PriceDefinition`](#sub-entity-pricedefinition) (as `prices` array)
 
 #### Sub-entity: AppointmentCondition
 Defines pricing and rounding rules for appointments.
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `String` | Internal identifier |
-| `storno` | `DBRef` | Reference to a `stornoGroup` |
-| `hourlyPrice` | `Document` | Contains multiple [PriceDefinitions](#sub-entity-pricedefinition) (e.g., `priceHN`, `priceHN2`, `priceA1`, `priceA2`) |
-| `roundingTypeHN` | `String` | Rounding rule for HN:<br>• `FULL_HOUR` (Used)<br>• `HALF_HOUR` (Used) |
-| `roundingTypeHN2` | `String` | Rounding rule for HN2:<br>• `FULL_HOUR` (Used)<br>• `HALF_HOUR` (Used) |
-| `roundingTypeHN3` | `String` | Rounding rule for HN3:<br>• `FULL_HOUR` (Used)<br>• `HALF_HOUR` (Used) |
-| `roundingTypeA1` | `String` | Rounding rule for A1:<br>• `FULL_HOUR` (Used)<br>• `HALF_HOUR` (Used) |
-| `roundingTypeA2` | `String` | Rounding rule for A2:<br>• `FULL_HOUR` (Used)<br>• `HALF_HOUR` (Used) |
-| `roundingTypeA3` | `String` | Rounding rule for A3:<br>• `FULL_HOUR` (Used)<br>• `HALF_HOUR` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `String` | schema | Internal identifier |
+| `storno` | `DBRef` | schema | Reference to [stornoGroup](#entity-storno-regelgruppen-storno-groups) |
+| `hourlyPrice` | `Document` | schema | Contains multiple [PriceDefinitions](#sub-entity-pricedefinition) (e.g., `priceHN`, `priceHN2`, `priceA1`, `priceA2`) |
+| `roundingTypeHN` | `String` | schema | Rounding rule for HN:<br>• `FULL_HOUR` (Used)<br>• `HALF_HOUR` (Used) |
+| `roundingTypeHN2` | `String` | schema | Rounding rule for HN2:<br>• `FULL_HOUR` (Used)<br>• `HALF_HOUR` (Used) |
+| `roundingTypeHN3` | `String` | schema | Rounding rule for HN3:<br>• `FULL_HOUR` (Used)<br>• `HALF_HOUR` (Used) |
+| `roundingTypeA1` | `String` | schema | Rounding rule for A1:<br>• `FULL_HOUR` (Used)<br>• `HALF_HOUR` (Used) |
+| `roundingTypeA2` | `String` | schema | Rounding rule for A2:<br>• `FULL_HOUR` (Used)<br>• `HALF_HOUR` (Used) |
+| `roundingTypeA3` | `String` | schema | Rounding rule for A3:<br>• `FULL_HOUR` (Used)<br>• `HALF_HOUR` (Used) |
 
-### Cross-references
 The `AppointmentCondition` sub-entity is used within:
 - [`jobId`](#entity-dienstleistung-service) (as `appointmentCondition` field)
 
 #### Sub-entity: ShiftCondition
 Defines pricing for shift-based services, categorized by time and day.
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `String` | Internal identifier |
-| `priceWeekDay` | `Document` | [PriceDefinitions](#sub-entity-pricedefinition) for weekdays |
-| `priceWeekNight` | `Document` | [PriceDefinitions](#sub-entity-pricedefinition) for week nights |
-| `priceWeekendDay` | `Document` | [PriceDefinitions](#sub-entity-pricedefinition) for weekend days |
-| `priceWeekendNight` | `Document` | [PriceDefinitions](#sub-entity-pricedefinition) for weekend nights |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `String` | schema | Internal identifier |
+| `priceWeekDay` | `Document` | schema | [PriceDefinitions](#sub-entity-pricedefinition) for weekdays |
+| `priceWeekNight` | `Document` | schema | [PriceDefinitions](#sub-entity-pricedefinition) for week nights |
+| `priceWeekendDay` | `Document` | schema | [PriceDefinitions](#sub-entity-pricedefinition) for weekend days |
+| `priceWeekendNight` | `Document` | schema | [PriceDefinitions](#sub-entity-pricedefinition) for weekend nights |
 
-### Cross-references
 The `ShiftCondition` sub-entity is used within:
 - [`jobId`](#entity-dienstleistung-service) (as `shiftCondition` field)
 
@@ -492,18 +489,24 @@ The `ShiftCondition` sub-entity is used within:
 Defines the qualifications required by experts.
 
 ### Table: skill
-| Column | Type | Description (from all-together.md) |
-| :--- | :--- | :--- |
-| `code` | `String` | Eine Bezeichnung der Fähigkeit |
-| `description` | `String` | Eine Beschreibung |
-| `type` | `String` | Art der Fähigkeit:<br>• `ADDITIONAL` (Used)<br>• `EXTRA` (Used)<br>• `LANGUAGE` (Used)<br>• `MAIN` (Used) |
-| `certified` | `Boolean` | Ob für die Fähigkeit ein Zertifikat benötigt wird |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.Skill` (Used) |
+| Column | Type | Field Type | Description (from all-together.md) |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner (MANDATORY) |
+| `code` | `String` | schema | Eine Bezeichnung der Fähigkeit |
+| `description` | `String` | schema | Eine Beschreibung |
+| `type` | `String` | schema | Art der Fähigkeit:<br>• `ADDITIONAL` (Used)<br>• `EXTRA` (Used)<br>• `LANGUAGE` (Used)<br>• `MAIN` (Used) |
+| `active` | `Boolean` | schema | Ob die Fähigkeit aktiv oder deaktiviert ist |
+| `certified` | `Boolean` | schema | Ob für die Fähigkeit ein Zertifikat benötigt wird |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.Skill` (Used) |
 
-### Cross-references
 The `skill` entity is referenced by:
-- [`user`](#entity-benutzer-users) (via `EmployeeProfile.skills`)
-- [`jobId`](#entity-dienstleistung-service) (via `SkillRule.skills`)
+- [`user`](#entity-experte-expert) (via [`SkillAssignment`](#sub-entity-skillassignment))
+- [`jobId`](#entity-dienstleistung-service) (via [`SkillRule`](#sub-entity-skillrule))
+
+### Functionality Details
+- **Skill Types:** Classified into `Fachrichtung` (MAIN), `Zusatzausbildung` (EXTRA), `Fort- und Weiterbildung` (ADDITIONAL), and `Sprache` (LANGUAGE).
+- **Status:** Skills can be active or deactivated.
+- **Certification:** Some skills require a certificate, which is then tracked in the expert's profile.
 
 ---
 
@@ -511,19 +514,18 @@ The `skill` entity is referenced by:
 Patient-related risk factors or alerts that can be assigned to patients.
 
 ### Table: patientAlerts (former: warning)
-| Column | Type | Description (from all-together.md) |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer (Zeitstempel) |
-| `name` | `String` | Eine Bezeichnung des Ausschlusskriteriums (Warnhinweis) |
-| `type` | `String` | Art des Warnhinweises:<br>• `ALLERGY` (Used)<br>• `CONSPICIOUS` (Used)<br>• `INFECTION` (Used)<br>• `OTHER` (Used) |
-| `entryRequirement` | `Boolean` | Ob das Ausschlusskriterium aktiv oder deaktiviert ist |
-| `documentationRequirement` | `Boolean` | Ob eine Dokumentationspflicht besteht |
-| `description` | `String` | Eine Beschreibung |
-| `priority` | `Number` | Eine Gewichtung als Zahl |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.Warning` (Used) |
+| Column | Type | Field Type | Description (from all-together.md) |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer (Zeitstempel) |
+| `name` | `String` | schema | Eine Bezeichnung des Ausschlusskriteriums (Warnhinweis) |
+| `type` | `String` | schema | Art des Warnhinweises:<br>• `ALLERGY` (Used)<br>• `CONSPICIOUS` (Used)<br>• `INFECTION` (Used)<br>• `OTHER` (Used) |
+| `entryRequirement` | `Boolean` | schema | Ob das Ausschlusskriterium aktiv oder deaktiviert ist |
+| `documentationRequirement` | `Boolean` | schema | Ob eine Dokumentationspflicht besteht |
+| `description` | `String` | schema | Eine Beschreibung |
+| `priority` | `Number` | schema | Eine Gewichtung als Zahl |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.Warning` (Used) |
 
-### Cross-references
 The `patientAlerts` entity is referenced by:
 - [`consultationData`](#entity-konsultationsdaten-consultation-data) (in `warnings`)
 
@@ -533,24 +535,25 @@ The `patientAlerts` entity is referenced by:
 Personal and professional data for medical experts.
 
 ### Table: user
-| Column | Type | Description (from all-together.md) |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer (Zeitstempel) |
-| `username` | `String` | Benutzername für den Login |
-| `email` | `String` | Primäre E-Mail-Adresse |
-| `password` | `String` | Persönliches Passwort |
-| `enabled` | `Boolean` | Ob das Konto aktiv oder deaktiviert ist |
-| `accountLocked` | `Boolean` | Ob das Konto gesperrt ist |
-| `role` | `String` | Rolle des Benutzers:<br>• `ADMIN`<br>• `ADMIN_INTERN`<br>• `ADMIN_KUNDE`<br>• `KUNDE`<br>• `LEITER_INTERN`<br>• `REGISTERED`<br>• `STANDARD` |
-| `employeeState` | `String` | Status des Kontos:<br>• `ACTIVE`<br>• `CUSTOMER`<br>• `INACTIVE`<br>• `UNCONFIRMED` |
-| `userProfile` | `Document` | Persönliches Profil des Benutzers ([UserProfile](#sub-entity-userprofile)) |
-| `employeeProfile` | `Document` | Berufliches Profil des Experten ([EmployeeProfile](#sub-entity-employeeprofile)) |
-| `employerProfile` | `Document` | Profil des Arbeitgebers/Abrechnungsdaten ([EmployerProfile](#sub-entity-employerprofile)) |
-| `dateChanged` | `Date` | Änderungsdatum |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.User` (Used) |
+| Column | Type | Field Type | Description (from all-together.md) |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer (Zeitstempel) |
+| `username` | `String` | schema | Benutzername für den Login |
+| `email` | `String` | schema | Primäre E-Mail-Adresse |
+| `password` | `String` | schema | Persönliches Passwort |
+| `enabled` | `Boolean` | schema | Ob das Konto aktiv oder deaktiviert ist |
+| `accountLocked` | `Boolean` | schema | Ob das Konto gesperrt ist |
+| `role` | `String` | schema | Rolle des Benutzers:<br>• `ADMIN`<br>• `ADMIN_INTERN`<br>• `ADMIN_KUNDE`<br>• `KUNDE`<br>• `LEITER_INTERN`<br>• `REGISTERED`<br>• `STANDARD` |
+| `employeeState` | `String` | schema | Status des Kontos:<br>• `ACTIVE`<br>• `CUSTOMER`<br>• `INACTIVE`<br>• `UNCONFIRMED` |
+| `userProfile` | `Document` | schema | Persönliches Profil des Benutzers ([UserProfile](#sub-entity-userprofile)) |
+| `employeeProfile` | `Document` | schema | Berufliches Profil des Experten ([EmployeeProfile](#sub-entity-employeeprofile)) |
+| `employerProfile` | `Document` | schema | Profil des Arbeitgebers/Abrechnungsdaten ([EmployerProfile](#sub-entity-employerprofile)) |
+| `lastLogin` | `Date` | inferred | Letzter Login-Zeitpunkt |
+| `dateCreated` | `Date` | inferred | Erstellungsdatum |
+| `dateChanged` | `Date` | schema | Änderungsdatum |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.User` (Used) |
 
-### Cross-references
 The `user` entity is referenced by:
 - [`appointmentAssignment`](#entity-terminzuweisungen-appointment-assignments)
 - [`appointmentAssignmentHistory`](#entity-terminzuweisungs-historie-appointment-assignment-history)
@@ -569,6 +572,9 @@ The `user` entity is referenced by:
 - [`onboardingHistory`](#entity-onboarding-verlauf-onboarding-history) (as `changedBy`)
 - [`onboardingStep`](#entity-onboarding-schritte-onboarding-steps) (as `createdBy`, `changedBy`)
 - [`notificationTemplate`](#entity-benachrichtigungsvorlagen-notification-templates) (as `changedBy`)
+- [`cDRCall`](#entity-anrufliste-cdr-calls) (as `ownerId`, `assignedById`)
+- [`expertWorkMonthly`](#entity-monatliche-expertenarbeit-expert-work-monthly) (as `userId`)
+- [`closedMonth`](#entity-abgeschlossene-zeitr-ume-closed-months) (as `closedBy`)
 
 ### Functionality Details
 - **Availability:** Managed via `expertDays` collection (mapped from "Jahreskalender eines Experten").
@@ -583,43 +589,41 @@ The following structures are used as nested documents within the `user` collecti
 #### Sub-entity: UserProfile
 Contains personal information and general settings for the user.
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `String` | Internal identifier (often UUID if present, otherwise nested) |
-| `firstName` | `String` | Vorname |
-| `lastName` | `String` | Nachname |
-| `displayName` | `String` | Vollständiger Name für die Anzeige |
-| `title` | `String` | Akademischer Titel |
-| `salutation` | `String` | Anrede (`MALE`, `FEMALE`) |
-| `gender` | `String` | Geschlecht |
-| `birthday` | `Date` | Geburtsdatum |
-| `mainAddress` | `Document` | Rechnungsadresse ([Address](#sub-entity-address)) |
-| `workPhone` | `String` | Telefonnummer (Arbeit) |
-| `cellularNumber` | `String` | Handynummer |
-| `shiftPhoneNumber` | `String` | Telefonnummer für die Bereitschaft |
-| `notificationPerMail` | `Boolean` | Weiterleitung von Nachrichten an E-Mail |
-| `exludedNotifications` | `Array` | Liste deaktivierter Benachrichtigungstypen (Strings: `APPOINTMENT_ACCEPTED`, `APPOINTMENT_ASSIGNED`, `APPOINTMENT_CANCELED`, `APPOINTMENT_DELETED`, `APPOINTMENT_DONE`, `APPOINTMENT_EXPERT_AGREED`, `APPOINTMENT_EXPERT_CANCELED`, `APPOINTMENT_EXPERT_DISAGREED`, `APPOINTMENT_REJECTED`, `APPOINTMENT_REMINDER`, `APPOINTMENT_REQUEST`, `APPOINTMENT_RESERVED`, `APPOINTMENT_UPCOMING`, `CONSULATION_SUBMIT`, `COUNCIL_START`, `COUNCIL_SUBMIT`, `EXPERT_SUMMARY`, `INVOICE_CUSTOMER`, `TEMPLATE`, `USER_PASSWORD`) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `String` | schema | Internal identifier (often UUID if present, otherwise nested) |
+| `firstName` | `String` | schema | Vorname |
+| `lastName` | `String` | schema | Nachname |
+| `displayName` | `String` | inferred | Vollständiger Name für die Anzeige |
+| `title` | `String` | inferred | Akademischer Titel |
+| `salutation` | `String` | inferred | Anrede:<br>• `MALE`<br>• `FEMALE` |
+| `gender` | `String` | schema | Geschlecht:<br>• `MALE` (Used)<br>• `FEMALE` (Used) |
+| `birthday` | `Date` | schema | Geburtsdatum |
+| `mainAddress` | `Document` | schema | Rechnungsadresse ([Address](#sub-entity-address)) |
+| `workPhone` | `String` | schema | Telefonnummer (Arbeit) |
+| `cellularNumber` | `String` | schema | Handynummer |
+| `shiftPhoneNumber` | `String` | schema | Telefonnummer für die Bereitschaft |
+| `notificationPerMail` | `Boolean` | schema | Weiterleitung von Nachrichten an E-Mail |
+| `exludedNotifications` | `Array` | schema | Liste deaktivierter Benachrichtigungstypen (Strings: `APPOINTMENT_ACCEPTED`, `APPOINTMENT_ASSIGNED`, `APPOINTMENT_CANCELED`, `APPOINTMENT_DELETED`, `APPOINTMENT_DONE`, `APPOINTMENT_EXPERT_AGREED`, `APPOINTMENT_EXPERT_CANCELED`, `APPOINTMENT_EXPERT_DISAGREED`, `APPOINTMENT_REJECTED`, `APPOINTMENT_REMINDER`, `APPOINTMENT_REQUEST`, `APPOINTMENT_RESERVED`, `APPOINTMENT_UPCOMING`, `CONSULATION_SUBMIT`, `COUNCIL_START`, `COUNCIL_SUBMIT`, `EXPERT_SUMMARY`, `INVOICE_CUSTOMER`, `TEMPLATE`, `USER_PASSWORD`) |
 
-### Cross-references
 The `UserProfile` sub-entity is used within:
 - [`user`](#entity-experte-expert) (as `userProfile` field)
 
 #### Sub-entity: Address
 A reusable structure for postal addresses.
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Internal identifier |
-| `name` | `String` | Name des Empfängers |
-| `address` | `String` | Straße und Hausnummer |
-| `address2` | `String` | Adresszusatz |
-| `zip` | `String` | Postleitzahl |
-| `city` | `String` | Ort |
-| `state` | `String` | Bundesland |
-| `country` | `String` | Land |
-| `type` | `String` | Art der Adresse:<br>• `PRIVATE` (Used)<br>• `WORK` (Used)<br>• `PRAXIS` (Used)<br>• `OTHER` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Internal identifier |
+| `name` | `String` | schema | Name des Empfängers |
+| `address` | `String` | schema | Straße und Hausnummer |
+| `address2` | `String` | schema | Adresszusatz |
+| `zip` | `String` | schema | Postleitzahl |
+| `city` | `String` | schema | Ort |
+| `state` | `String` | schema | Bundesland |
+| `country` | `String` | schema | Land |
+| `type` | `String` | schema | Art der Adresse:<br>• `PRIVATE` (Used)<br>• `WORK` (Used)<br>• `PRAXIS` (Used)<br>• `OTHER` (Used) |
 
-### Cross-references
 The `Address` sub-entity is used within:
 - [`UserProfile`](#sub-entity-userprofile) (as `mainAddress` field)
 - [`EmployerProfile`](#sub-entity-employerprofile) (as `billingAddress` field)
@@ -628,78 +632,76 @@ The `Address` sub-entity is used within:
 #### Sub-entity: EmployeeProfile
 Contains professional qualifications and payment details for the expert.
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `String` | Internal identifier |
-| `email2` | `String` | Sekundäre E-Mail-Adresse |
-| `activeSince` | `Date` | Ab wann der Experte als Arzt tätig ist |
-| `bank` | `String` | Kreditinstitut |
-| `iban` | `String` | IBAN |
-| `bic` | `String` | BIC |
-| `taxid` | `String` | Steuer-ID |
-| `uid` | `String` | Umsatzsteuernummer |
-| `mailInvoice` | `Boolean` | E-Mail-Rechnung senden |
-| `postInvoice` | `Boolean` | Post-Rechnung senden |
-| `shift` | `String` | Bereitschaftsdienst Fokus (`NONE`, `LOW`, `MEDIUM`, `HIGH`) |
-| `appointment` | `String` | Sprechstunde Fokus |
-| `therapy` | `String` | Therapie Fokus |
-| `skills` | `Array` | Liste der erlangten Fähigkeiten ([SkillAssignment](#sub-entity-skillassignment)) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `String` | schema | Internal identifier |
+| `email2` | `String` | schema | Sekundäre E-Mail-Adresse |
+| `activeSince` | `Date` | schema | Ab wann der Experte als Arzt tätig ist |
+| `bank` | `String` | schema | Kreditinstitut |
+| `iban` | `String` | schema | IBAN |
+| `bic` | `String` | schema | BIC |
+| `taxid` | `String` | schema | Steuer-ID |
+| `uid` | `String` | schema | Umsatzsteuernummer |
+| `mailInvoice` | `Boolean` | schema | E-Mail-Rechnung senden |
+| `postInvoice` | `Boolean` | schema | Post-Rechnung senden |
+| `shift` | `String` | schema | Bereitschaftsdienst Fokus (`NONE`, `LOW`, `MEDIUM`, `HIGH`) |
+| `appointment` | `String` | schema | Sprechstunde Fokus |
+| `therapy` | `String` | schema | Therapie Fokus |
+| `skills` | `Array` | schema | Liste der erlangten Fähigkeiten ([SkillAssignment](#sub-entity-skillassignment)) |
+| `imageSignature` | `Document` | inferred | Bild mit der Unterschrift ([FileMetadata](#sub-entity-filemetadata)) |
+| `bayernBoxAccess` | `Document` | inferred | Zugangsdaten SecureBox (user/password) |
 | `imageSignature` | `Document` | Bild mit der Unterschrift ([FileMetadata](#sub-entity-filemetadata)) |
 | `bayernBoxAccess` | `Document` | Zugangsdaten SecureBox (user/password) |
 
-### Cross-references
 The `EmployeeProfile` sub-entity is used within:
 - [`user`](#entity-experte-expert) (as `employeeProfile` field)
 
 #### Sub-entity: SkillAssignment
 Maps a specific skill to the expert with certification details.
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `String` | Internal identifier |
-| `skill` | `DBRef` | Referenz auf die `skill` Kollektion |
-| `active` | `Boolean` | Ob die Fähigkeit für den Experten aktiv ist |
-| `dateCertification` | `Date` | Datum, ab wann die Fähigkeit erlangt wurde |
-| `certification` | `Document` | Zertifikatsdatei ([FileMetadata](#sub-entity-filemetadata)) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `String` | inferred | Internal identifier |
+| `skill` | `DBRef` | schema | Reference to [skill](#entity-fähigkeiten-skills) collection |
+| `active` | `Boolean` | schema | Whether the skill is active for the expert |
+| `dateCertification` | `Date` | schema | Date when the skill was obtained |
+| `certification` | `Document` | schema | Zertifikatsdatei ([FileMetadata](#sub-entity-filemetadata)) |
 
-### Cross-references
 The `SkillAssignment` sub-entity is used within:
 - [`EmployeeProfile`](#sub-entity-employeeprofile) (as `skills` array)
 
 #### Sub-entity: EmployerProfile
 Contains contract details and billing information related to Videoclinic.
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `String` | Internal identifier |
-| `konto` | `String` | Debitorenkonto (GKTK) |
-| `gkto` | `String` | Debitorennummer (GKTO) |
-| `efn` | `String` | Einheitliche Fortbildungsnummer (EFN) |
-| `level` | `String` | Qualifikationsniveau (`ONBOARDING`, `BEGINNER`, etc.) |
-| `activeSinceVC` | `Date` | Ab wann for Videoclinic tätig |
-| `activeUntilVC` | `Date` | Bis wann for Videoclinic tätig |
-| `products` | `Array` | Liste abonnierter Waren ([SubscribedProduct](#sub-entity-subscribedproduct)) |
-| `sipAccounts` | `Array` | Liste von SIP-Accounts |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `String` | schema | Internal identifier |
+| `konto` | `String` | schema | Debitorenkonto (GKTK) |
+| `gkto` | `String` | schema | Debitorennummer (GKTO) |
+| `efn` | `String` | inferred | Einheitliche Fortbildungsnummer (EFN) |
+| `level` | `String` | schema | Qualifikationsniveau:<br>• `ONBOARDING` (Used)<br>• `BEGINNER` (Not used)<br>• `AMATEUR` (Not used)<br>• `PROFI` (Not used) |
+| `activeSinceVC` | `Date` | schema | Ab wann for Videoclinic tätig |
+| `activeUntilVC` | `Date` | schema | Bis wann for Videoclinic tätig |
+| `products` | `Array` | schema | Liste abonnierter Waren ([SubscribedProduct](#sub-entity-subscribedproduct)) |
+| `sipAccounts` | `Array` | inferred | Liste von SIP-Accounts |
 
-### Cross-references
 The `EmployerProfile` sub-entity is used within:
 - [`user`](#entity-experte-expert) (as `employerProfile` field)
 
 #### Sub-entity: SubscribedProduct
 A product or service the expert has subscribed to.
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `String` | Internal identifier |
-| `product` | `DBRef` | Referenz auf die `product` Kollektion |
-| `amount` | `Number` | Anzahl/Menge |
-| `start` | `Date` | Startdatum |
-| `until` | `Date` | Enddatum |
-| `adjustedPrice` | `Number` | Angebotspreis |
-| `description` | `String` | Beschreibung |
-| `comment` | `String` | Kommentar |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `String` | schema | Internal identifier |
+| `product` | `DBRef` | schema | Reference to [product](#entity-waren-products) collection |
+| `amount` | `Number` | schema | Quantity |
+| `start` | `Date` | schema | Start date |
+| `until` | `Date` | schema | Enddatum |
+| `adjustedPrice` | `Number` | schema | Angebotspreis |
+| `description` | `String` | schema | Beschreibung |
+| `comment` | `String` | schema | Kommentar |
 
-### Cross-references
 The `SubscribedProduct` sub-entity is used within:
 - [`EmployerProfile`](#sub-entity-employerprofile) (as `products` array)
 
@@ -716,7 +718,6 @@ Metadata for uploaded files (signatures, certifications, etc.).
 | `type` | `String` | Dateityp:<br>• `cert` (Used)<br>• `sig` (Used)<br>• `usertn` (Used)<br>• `usertempupload` (Used) |
 | `dateCreated` | `Date` | Erstellungsdatum |
 
-### Cross-references
 The `FileMetadata` sub-entity is used within:
 - [`EmployeeProfile`](#sub-entity-employeeprofile) (as `imageSignature`)
 - [`SkillAssignment`](#sub-entity-skillassignment) (as `certification`)
@@ -730,12 +731,24 @@ The `FileMetadata` sub-entity is used within:
 Items experts can subscribe to.
 
 ### Table: product
-| Column | Type | Description (from all-together.md) |
-| :--- | :--- | :--- |
-| `active` | `Boolean` | Status |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.Product` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer (Zeitstempel) |
+| `name` | `String` | schema | Name der Ware |
+| `description` | `String` | schema | Beschreibung |
+| `konto` | `String` | schema | Buchungskonto |
+| `bookingCode` | `String` | schema | Buchungsschlüssel |
+| `type` | `String` | schema | Typ der Ware |
+| `billType` | `String` | schema | Abrechnungsart |
+| `price` | `Number` | schema | Preis |
+| `active` | `Boolean` | schema | Status (Aktiv/Inaktiv) |
+| `dateCreated` | `Date` | schema | Erstellungsdatum |
+| `createdBy` | `DBRef` | schema | Erstellt von (Reference to [user](#entity-experte-expert)) |
+| `dateChanged` | `Date` | schema | Änderungsdatum |
+| `changedBy` | `DBRef` | schema | Geändert von (Reference to [user](#entity-experte-expert)) |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.Product` (Used) |
 
-### Cross-references
 The `product` entity is referenced by:
 - [`user`](#entity-experte-expert) (in `employerProfile.products`)
 - [`invoice`](#entity-rechnungen-invoices) (in `positions`)
@@ -746,34 +759,37 @@ The `product` entity is referenced by:
 Die Konsultationsdaten erfassen alle medizinischen Informationen, die während einer Konsultation dokumentiert werden, einschließlich Anamnese, Befund, Diagnose und Medikation.
 
 ### Table: consultationData
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer (Zeitstempel) |
-| `date` | `Date` | Datum der Konsultation |
-| `timeStart` | `Number` | Startuhrzeit (Sekunden seit Mitternacht) |
-| `timeEnd` | `Number` | Enduhrzeit (Sekunden seit Mitternacht) |
-| `dateSignedOff` | `Date` | Datum der Abzeichnung |
-| `archived` | `Boolean` | Archivierungsstatus |
-| `type` | `String` | Typ der Konsultation:<br>• `EXTERNAL` (Used)<br>• `STANDARD` (Used) |
-| `state` | `String` | Status:<br>• `CLOSED` (Used)<br>• `TRANSMITTED` (Used) |
-| `base` | `Document` | Basiselemente ([ConsultationBase](#sub-entity-consultationbase)) |
-| `body` | `Document` | Körperliche Basisdaten ([ConsultationBody](#sub-entity-consultationbody)) |
-| `warnings` | `Array` | Warnhinweise ([ConsultationWarning](#sub-entity-consultationwarning)) |
-| `onboarding` | `Document` | Daten der Erstuntersuchung ([ConsultationOnboarding](#sub-entity-consultationonboarding)) |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.ConsultationData` (Used) |
-| `standard` | `Document` | Daten einer Standard-Konsultation ([ConsultationStandard](#sub-entity-consultationstandard)) |
-| `signedOffBy` | `DBRef` | Abgezeichnet von (Referenz auf `user`) |
-| `appointment` | `DBRef` | Zugehöriger Termin (Referenz auf `appointment`) |
-| `location` | `Document` | Ort der Konsultation ([ConsultationLocation](#sub-entity-consultationlocation)) |
-| `period` | `Number` | Abrechnungszeitraum |
-| `appointmentType` | `String` | Termintyp:<br>• `APPOINTMENT` (Used) |
-| `customer` | `Document` | Zugehöriger Kunde ([ConsultationCustomer](#sub-entity-consultationcustomer)) |
-| `job` | `Document` | Erbrachte Dienstleistung ([ConsultationJob](#sub-entity-consultationjob)) |
-| `paymentType` | `String` | Zahlungsart:<br>• `FULL` (Used) |
-| `basisWebDataId` | `Long` | Referenz auf `basisWebData` |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer (Zeitstempel) |
+| `date` | `Date` | schema | Datum der Konsultation |
+| `timeStart` | `Number` | schema | Startuhrzeit (Sekunden seit Mitternacht) |
+| `timeEnd` | `Number` | schema | Enduhrzeit (Sekunden seit Mitternacht) |
+| `dateSignedOff` | `Date` | schema | Datum der Abzeichnung |
+| `archived` | `Boolean` | schema | Archivierungsstatus |
+| `type` | `String` | schema | Typ der Konsultation:<br>• `EXTERNAL` (Used)<br>• `STANDARD` (Used) |
+| `state` | `String` | schema | Status:<br>• `CLOSED` (Used)<br>• `TRANSMITTED` (Used) |
+| `base` | `Document` | schema | Basiselemente ([ConsultationBase](#sub-entity-consultationbase)) |
+| `body` | `Document` | schema | Körperliche Basisdaten ([ConsultationBody](#sub-entity-consultationbody)) |
+| `warnings` | `Array` | schema | Warnhinweise ([ConsultationWarning](#sub-entity-consultationwarning)) |
+| `onboarding` | `Document` | schema | Daten der Erstuntersuchung ([ConsultationOnboarding](#sub-entity-consultationonboarding)) |
+| `standard` | `Document` | schema | Daten einer Standard-Konsultation ([ConsultationStandard](#sub-entity-consultationstandard)) |
+| `signedOffBy` | `DBRef` | schema | Signed off by (Reference to [user](#entity-experte-expert)) |
+| `appointment` | `DBRef` | schema | Associated appointment (Reference to [appointment](#entity-termine-appointments)) |
+| `location` | `Document` | schema | Location of the consultation ([ConsultationLocation](#sub-entity-consultationlocation)) |
+| `period` | `Number` | schema | Abrechnungszeitraum |
+| `appointmentType` | `String` | schema | Termintyp:<br>• `APPOINTMENT` (Used) |
+| `customer` | `Document` | schema | Zugehöriger Kunde ([ConsultationCustomer](#sub-entity-consultationcustomer)) |
+| `job` | `Document` | schema | Erbrachte Dienstleistung ([ConsultationJob](#sub-entity-consultationjob)) |
+| `paymentType` | `String` | schema | Zahlungsart:<br>• `FULL` (Used) |
+| `doctor` | `Document` | inferred | Durchführender Experte ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
+| `history` | `Document` | inferred | Historie ([ConsultationHistory](#sub-entity-consultationhistory)) |
+| `bookNumber` | `String` | inferred | Buchnummer (JVA) |
+| `jNumber` | `String` | inferred | J-Nummer (JVA) |
+| `basisWebDataId` | `Long` | schema | Reference to [basisWebData](#entity-jva-patientendaten-basis-web-data) |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.ConsultationData` (Used) |
 
-### Cross-references
 The `consultationData` entity is referenced by:
 - [`invoiceComponent`](#entity-rechnungskomponenten-invoice-components)
 - [`log`](#entity-system-logs-logs)
@@ -786,35 +802,32 @@ The `consultationData` entity is referenced by:
 #### Sub-entity: ConsultationBase
 Basiselemente der Konsultation.
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `String` | Internal identifier |
-| `medicalTrainedPersonel` | `Boolean` | Medizinisch geschultes Personal anwesend |
-| `timeContact` | `Number` | Kontaktzeit |
-| `communicationType` | `String` | Art der Kommunikation:<br>• `VIDEO` (Used) |
-| `furtherTreatment` | `String` | Voreinstellung für die weitere Behandlung:<br>• `FOLLOW_UP` (Used)<br>• `IF_REQUIRED` (Used)<br>• `REFERRAL` (Used)<br>• `REFERRAL_OTHER` (Used) |
-| `dateFurtherTreatment` | `Date` | Datum der weiteren Behandlung |
-| `history` | `Document` | Medizinische Historie ([ConsultationHistory](#sub-entity-consultationhistory)) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `String` | schema | Internal identifier |
+| `medicalTrainedPersonel` | `Boolean` | schema | Medizinisch geschultes Personal anwesend |
+| `timeContact` | `Number` | schema | Kontaktzeit |
+| `communicationType` | `String` | schema | Art der Kommunikation:<br>• `VIDEO` (Used) |
+| `furtherTreatment` | `String` | schema | Voreinstellung für die weitere Behandlung:<br>• `FOLLOW_UP` (Used)<br>• `IF_REQUIRED` (Used)<br>• `REFERRAL` (Used)<br>• `REFERRAL_OTHER` (Used) |
+| `dateFurtherTreatment` | `Date` | schema | Datum der weiteren Behandlung |
 
-### Cross-references
 The `ConsultationBase` sub-entity is used within:
 - [`consultationData`](#entity-konsultationsdaten-consultation-data) (as `base` field)
 
 #### Sub-entity: ConsultationBody
 Körperliche Basisdaten des Patienten zum Zeitpunkt der Konsultation.
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `String` | Internal identifier |
-| `gender` | `String` | Geschlecht |
-| `age` | `Number` | Alter |
-| `birthday` | `Date` | Geburtsdatum |
-| `bodyHeight` | `Number` | Körpergröße |
-| `bodyWeight` | `Number` | Körpergewicht |
-| `rr` | `String` | Blutdruck (RR) |
-| `pulse` | `String` | Puls |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `String` | inferred | Internal identifier |
+| `gender` | `String` | schema | Geschlecht:<br>• `MALE` (Used)<br>• `FEMALE` (Used) |
+| `age` | `Number` | inferred | Alter |
+| `birthday` | `Date` | schema | Geburtsdatum |
+| `bodyHeight` | `Number` | schema | Körpergröße |
+| `bodyWeight` | `Number` | schema | Körpergewicht |
+| `rr` | `String` | schema | Blutdruck (RR) |
+| `pulse` | `String` | schema | Puls |
 
-### Cross-references
 The `ConsultationBody` sub-entity is used within:
 - [`consultationData`](#entity-konsultationsdaten-consultation-data) (as `body` field)
 - [`expertConsultationTemplate`](#entity-konsultationsvorlagen-expert-consultation-templates) (as `body` field)
@@ -822,15 +835,14 @@ The `ConsultationBody` sub-entity is used within:
 #### Sub-entity: ConsultationWarning
 Warnhinweise für den Patienten.
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `String` | Internal identifier |
-| `warning` | `DBRef` | Referenz auf den Warnhinweis ([patientAlerts](#table-patientalerts-former-warning)) |
-| `comment` | `String` | Kommentar |
-| `applies` | `Boolean` | Trifft zu |
-| `dateStart` | `Date` | Startdatum |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `String` | schema | Internal identifier |
+| `warning` | `DBRef` | schema | Reference to the alert ([patientAlerts](#entity-patientenbezogene-risikofaktoren--warnhinweise-patient-alerts)) |
+| `comment` | `String` | schema | Kommentar |
+| `applies` | `Boolean` | schema | Trifft zu |
+| `dateStart` | `Date` | schema | Startdatum |
 
-### Cross-references
 The `ConsultationWarning` sub-entity is used within:
 - [`consultationData`](#entity-konsultationsdaten-consultation-data) (as `warnings` array)
 
@@ -856,7 +868,6 @@ Detaillierte medizinische Daten für die Erstuntersuchung (Zugangsuntersuchung).
 | `dangerous` | `Boolean` | Fremdgefährdung |
 | `incarcerationSuitability` | `Boolean` | Gewahrsamstauglichkeit |
 
-### Cross-references
 The `ConsultationOnboarding` sub-entity is used within:
 - [`consultationData`](#entity-konsultationsdaten-consultation-data) (as `onboarding` field)
 - [`expertConsultationTemplate`](#entity-konsultationsvorlagen-expert-consultation-templates) (as `onboarding` field)
@@ -864,20 +875,19 @@ The `ConsultationOnboarding` sub-entity is used within:
 #### Sub-entity: ConsultationStandard
 Dokumentation einer Standard-Konsultation.
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `String` | Internal identifier |
-| `medicationAnamnesis` | `Document` | Zusammenfassung der Medikation ([ConsultationMedicationAnamnesis](#sub-entity-consultationmedicationanamnesis)) |
-| `anamnesis` | `Array` | Anamnese Einträge ([ConsultationAnamnesis](#sub-entity-consultationanamnesis)) |
-| `patientReport` | `Array` | Befundberichte ([ConsultationPatientReport](#sub-entity-consultationpatientreport)) |
-| `diagnosis` | `Array` | Diagnosen ([ConsultationDiagnosis](#sub-entity-consultationdiagnosis)) |
-| `procedureReport` | `String` | Prozedurenbericht |
-| `prescription` | `Array` | Verschreibungen ([ConsultationPrescription](#sub-entity-consultationprescription)) |
-| `workIncapacity` | `Array` | Arbeitsunfähigkeit ([ConsultationWorkIncapacity](#sub-entity-consultationworkincapacity)) |
-| `referralTo` | `String` | Überweisung an |
-| `furtherTreatment` | `String` | Voreinstellung für die weitere Behandlung (mapped to [ConsultationBase.furtherTreatment](#sub-entity-consultationbase)) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `String` | inferred | Internal identifier |
+| `medicationAnamnesis` | `Document` | schema | Zusammenfassung der Medikation ([ConsultationMedicationAnamnesis](#sub-entity-consultationmedicationanamnesis)) |
+| `anamnesis` | `Array` | schema | Anamnese Einträge ([ConsultationAnamnesis](#sub-entity-consultationanamnesis)) |
+| `patientReport` | `Array` | schema | Befundberichte ([ConsultationPatientReport](#sub-entity-consultationpatientreport)) |
+| `diagnosis` | `Array` | schema | Diagnosen ([ConsultationDiagnosis](#sub-entity-consultationdiagnosis)) |
+| `procedureReport` | `String` | schema | Prozedurenbericht |
+| `prescription` | `Array` | schema | Verschreibungen ([ConsultationPrescription](#sub-entity-consultationprescription)) |
+| `workIncapacity` | `Array` | schema | Arbeitsunfähigkeit ([ConsultationWorkIncapacity](#sub-entity-consultationworkincapacity)) |
+| `referralTo` | `String` | schema | Überweisung an |
+| `furtherTreatment` | `String` | schema | Voreinstellung für die weitere Behandlung (mapped to [ConsultationBase.furtherTreatment](#sub-entity-consultationbase)) |
 
-### Cross-references
 The `ConsultationStandard` sub-entity is used within:
 - [`consultationData`](#entity-konsultationsdaten-consultation-data) (as `standard` field)
 - [`expertConsultationTemplate`](#entity-konsultationsvorlagen-expert-consultation-templates) (as `standard` field)
@@ -885,41 +895,39 @@ The `ConsultationStandard` sub-entity is used within:
 #### Sub-entity: ConsultationMedicationAnamnesis
 Zusammenfassung der Medikationsanamnese mit Kategorisierung.
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `String` | Internal identifier |
-| `documentation` | `String` | Dokumentation der Medikation |
-| `categoryA01` | `Boolean` | Kategorie A01 |
-| `categoryB01` | `Boolean` | Kategorie B01 |
-| `categoryJ05` | `Boolean` | Kategorie J05 |
-| `categoryN06` | `Boolean` | Kategorie N06 |
-| `categoryC09` | `Boolean` | Kategorie C09 |
-| `categoryC10` | `Boolean` | Kategorie C10 |
-| `categoryN02` | `Boolean` | Kategorie N02 |
-| `categoryN05` | `Boolean` | Kategorie N05 |
-| `categoryR03` | `Boolean` | Kategorie R03 |
-| `categoryA02` | `Boolean` | Kategorie A02 |
-| `categoryL02` | `Boolean` | Kategorie L02 |
-| `categoryL04` | `Boolean` | Kategorie L04 |
-| `categoryA12` | `Boolean` | Kategorie A12 |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `String` | inferred | Internal identifier |
+| `documentation` | `String` | schema | Dokumentation der Medikation |
+| `categoryA01` | `Boolean` | schema | Kategorie A01 |
+| `categoryB01` | `Boolean` | schema | Kategorie B01 |
+| `categoryJ05` | `Boolean` | schema | Kategorie J05 |
+| `categoryN06` | `Boolean` | schema | Kategorie N06 |
+| `categoryC09` | `Boolean` | schema | Kategorie C09 |
+| `categoryC10` | `Boolean` | schema | Kategorie C10 |
+| `categoryN02` | `Boolean` | schema | Kategorie N02 |
+| `categoryN05` | `Boolean` | schema | Kategorie N05 |
+| `categoryR03` | `Boolean` | schema | Kategorie R03 |
+| `categoryA02` | `Boolean` | schema | Kategorie A02 |
+| `categoryL02` | `Boolean` | schema | Kategorie L02 |
+| `categoryL04` | `Boolean` | schema | Kategorie L04 |
+| `categoryA12` | `Boolean` | schema | Kategorie A12 |
 
-### Cross-references
 The `ConsultationMedicationAnamnesis` sub-entity is used within:
 - [`ConsultationStandard`](#sub-entity-consultationstandard) (as `medicationAnamnesis` field)
 
 #### Sub-entity: ConsultationDiagnosis
  Einzelne Diagnose mit ICD-10 Code.
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `String` | Internal identifier |
-| `icd10` | `Document` | ICD-10 Referenz ([Icd10](#table-icd10)) |
-| `localization` | `String` | Lokalisierung:<br>• `LEFT` (Used)<br>• `RIGHT` (Used)<br>• `BOTH` (Used)<br>• `UNKNOWN` (Used) |
-| `level` | `String` | Sicherheit der Diagnose:<br>• `GENERAL` (Used)<br>• `VERIFY` (Used)<br>• `ZERO` (Used)<br>• `STATIONARY` (Used) |
-| `title` | `String` | Titel |
-| `comment` | `String` | Kommentar |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `String" | inferred | Internal identifier |
+| `icd10` | `Document` | schema | ICD-10 Reference ([Icd10](#table-icd10)) |
+| `localization` | `String` | schema | Lokalisierung:<br>• `LEFT` (Used)<br>• `RIGHT` (Used)<br>• `BOTH` (Used)<br>• `UNKNOWN` (Used) |
+| `level` | `String` | schema | Sicherheit der Diagnose:<br>• `GENERAL` (Used)<br>• `VERIFY` (Used)<br>• `ZERO` (Used)<br>• `STATIONARY` (Used) |
+| `title` | `String` | schema | Titel |
+| `comment` | `String` | schema | Kommentar |
 
-### Cross-references
 The `ConsultationDiagnosis` sub-entity is used within:
 - [`ConsultationStandard`](#sub-entity-consultationstandard) (as `diagnosis` array)
 
@@ -929,45 +937,37 @@ The `ConsultationDiagnosis` sub-entity is used within:
 Detailed availability calendar for experts, tracking shifts and appointment availability per day.
 
 ### Table: expertDays
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `userId` | `Long` | Referenz auf `user` |
-| `month` | `Number` | Monat (Format: YYYYMM) |
-| `maxWeekDayMorning` | `Number` | Maximale Vormittagsschichten (Wochentag) |
-| `maxWeekDayAfternoon` | `Number` | Maximale Nachmittagsschichten (Wochentag) |
-| `maxWeekDayNight` | `Number` | Maximale Nachtschichten (Wochentag) |
-| `maxWeekEndMorning` | `Number` | Maximale Vormittagsschichten (Wochenende) |
-| `maxWeekEndAfternoon` | `Number` | Maximale Nachmittagsschichten (Wochenende) |
-| `maxWeekEndNight` | `Number` | Maximale Nachtschichten (Wochenende) |
-| `maxWeekDayAppointmentMorning` | `Number` | Maximale Vormittagssprechstunden |
-| `maxWeekDayAppointmentAfternoon` | `Number` | Maximale Nachmittagssprechstunden |
-| `morningNo` | `Array` | Tage mit explizitem "Nein" für Vormittagsbereitschaft |
-| `dateChanged` | `Date` | Zeitpunkt der letzten Änderung |
-| `createdBy` | `DBRef` | Erstellt von (Referenz auf `user`) |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.ExpertDays` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `userId` | `Long` | schema | Reference to [user](#entity-experte-expert) |
+| `month` | `Number` | schema | Monat (Format: YYYYMM) |
+| `maxWeekDayMorning` | `Number` | schema | Maximale Vormittagsschichten (Wochentag) |
+| `maxWeekDayAfternoon` | `Number` | schema | Maximale Nachmittagsschichten (Wochentag) |
+| `maxWeekDayNight` | `Number` | schema | Maximale Nachtschichten (Wochentag) |
+| `maxWeekEndMorning` | `Number` | schema | Maximale Vormittagsschichten (Wochenende) |
+| `maxWeekEndAfternoon` | `Number` | schema | Maximale Nachmittagsschichten (Wochenende) |
+| `maxWeekEndNight` | `Number` | schema | Maximale Nachtschichten (Wochenende) |
+| `maxWeekDayAppointmentMorning` | `Number` | schema | Maximale Vormittagssprechstunden |
+| `maxWeekDayAppointmentAfternoon` | `Number` | schema | Maximale Nachmittagssprechstunden |
+| `morningNo` | `Array` | schema | Days with explicit "No" for morning availability |
+| `afternoonNo` | `Array` | schema | Tage mit explizitem "Nein" für Nachmittagsbereitschaft |
+| `nightNo` | `Array` | schema | Tage mit explizitem "Nein" für Nachtbereitschaft |
+| `morningYes` | `Array` | schema | Tage mit explizitem "Ja" für Vormittagsbereitschaft |
+| `afternoonYes` | `Array` | schema | Tage mit explizitem "Ja" für Nachmittagsbereitschaft |
+| `nightYes` | `Array` | schema | Tage mit explizitem "Ja" für Nachtbereitschaft |
+| `morningAppointmentNo` | `Array` | schema | Tage mit explizitem "Nein" für Vormittagssprechstunde |
+| `afternoonAppointmentNo` | `Array` | schema | Tage mit explizitem "Nein" für Nachmittagssprechstunde |
+| `treatmentAppointmentNo` | `Array` | schema | Tage mit explizitem "Nein" für Therapiesprechstunde |
+| `morningAppointmentYes` | `Array` | schema | Tage mit explizitem "Ja" für Vormittagssprechstunde |
+| `afternoonAppointmentYes` | `Array` | schema | Tage mit explizitem "Ja" für Nachmittagssprechstunde |
+| `treatmentAppointmentYes` | `Array` | schema | Days with explicit "Yes" for therapy appointment |
+| `dateChanged` | `Date` | schema | Time of last change |
+| `changedBy` | `DBRef` | schema | Last change by (Reference to [user](#entity-experte-expert)) |
+| `_class` | `String` | schema | Java class name: `de.videoclinic.model.ExpertDays` (Used) |
 
-### Cross-references
 The `expertDays` entity defines availability for:
-- [`user`](#entity-experte-expert) (referenced via `userId`)
-| `afternoonNo` | `Array` | Tage mit explizitem "Nein" für Nachmittagsbereitschaft |
-| `nightNo` | `Array` | Tage mit explizitem "Nein" für Nachtbereitschaft |
-| `morningYes` | `Array` | Tage mit explizitem "Ja" für Vormittagsbereitschaft |
-| `afternoonYes` | `Array` | Tage mit explizitem "Ja" für Nachmittagsbereitschaft |
-| `nightYes` | `Array` | Tage mit explizitem "Ja" für Nachtbereitschaft |
-| `morningAppointmentNo` | `Array` | Tage mit explizitem "Nein" für Vormittagssprechstunde |
-| `afternoonAppointmentNo` | `Array` | Tage mit explizitem "Nein" für Nachmittagssprechstunde |
-| `treatmentAppointmentNo` | `Array` | Tage mit explizitem "Nein" für Therapiesprechstunde |
-| `morningAppointmentYes` | `Array` | Tage mit explizitem "Ja" für Vormittagssprechstunde |
-| `afternoonAppointmentYes` | `Array` | Tage mit explizitem "Ja" für Nachmittagssprechstunde |
-| `treatmentAppointmentYes` | `Array` | Tage mit explizitem "Ja" für Therapiesprechstunde |
-| `changedBy` | `DBRef` | Letzte Änderung durch (Referenz auf `user`) |
-| `dateChanged` | `timestamp` | Zeitpunkt der letzten Änderung |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.ExpertDays` (Used) |
-
-### Cross-references
-The `expertDays` entity stores availability data for:
 - [`user`](#entity-experte-expert) (referenced via `userId`)
 
 ---
@@ -976,21 +976,20 @@ The `expertDays` entity stores availability data for:
 Systematische Verzeichnis der Krankheiten und verwandter Gesundheitsprobleme.
 
 ### Table: icd10
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer (Zeitstempel) |
-| `code` | `String` | ICD-10 Code |
-| `name` | `String` | Bezeichnung der Diagnose |
-| `text` | `String` | Detaillierter Text zur Diagnose |
-| `inclusion` | `String` | Einschlüsse |
-| `exclusion` | `String` | Ausschlusskriterien |
-| `ageLow` | `Number` | Mindestalter |
-| `ageHigh` | `Number` | Höchstalter |
-| `exotic` | `Boolean` | Ob es sich um eine seltene/exotische Diagnose handelt |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.Icd10` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer (Zeitstempel) |
+| `code` | `String` | schema | ICD-10 Code |
+| `name` | `String` | schema | Bezeichnung der Diagnose |
+| `text` | `String` | schema | Detaillierter Text zur Diagnose |
+| `inclusion` | `String` | schema | Einschlüsse |
+| `exclusion` | `String` | schema | Ausschlusskriterien |
+| `ageLow` | `Number` | schema | Mindestalter |
+| `ageHigh` | `Number` | schema | Höchstalter |
+| `exotic` | `Boolean` | schema | Ob es sich um eine seltene/exotische Diagnose handelt |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.Icd10` (Used) |
 
-### Cross-references
 The `icd10` entity is referenced by:
 - [`consultationData`](#entity-konsultationsdaten-consultation-data) (in `standard.diagnosis`)
 
@@ -1005,7 +1004,7 @@ Medikamentenverschreibung.
 | `type` | `String` | Art der Verschreibung:<br>• `LIMITED` (Used) |
 | `packages` | `Number` | Anzahl der Packungen |
 | `product` | `Document` | Schnappschuss des gewählten Produkts ([MedicationProduct](#sub-entity-medicationproduct)) |
-| `medication` | `DBRef` | Referenz auf Medikament ([Medication](#entity-medikamente-medication)) |
+| `medication` | `DBRef` | Reference to Medikament ([Medication](#entity-medikamente-medication)) |
 | `morning` | `Number` | Dosierung Morgens |
 | `lunch` | `Number` | Dosierung Mittags |
 | `evening` | `Number` | Dosierung Abends |
@@ -1017,7 +1016,6 @@ Medikamentenverschreibung.
 | `comment` | `String` | Kommentar |
 | `reasoning` | `String` | Begründung |
 
-### Cross-references
 The `ConsultationPrescription` sub-entity is used within:
 - [`ConsultationStandard`](#sub-entity-consultationstandard) (as `prescription` array)
 
@@ -1030,7 +1028,6 @@ Medizinische Historie des Patienten.
 | `medication` | `Array` | Historische Medikation |
 | `history` | `Array` | Historische Einträge |
 
-### Cross-references
 The `ConsultationHistory` sub-entity is used within:
 - [`ConsultationBase`](#sub-entity-consultationbase) (as `history` field)
 
@@ -1043,7 +1040,6 @@ Anamnese Eintrag in einer Standard-Konsultation.
 | `type` | `String` | Art des Eintrags:<br>• `MEDICAL` (Used)<br>• `MEDICATION` (Used)<br>• `ALLERGY` (Used) |
 | `documentation` | `String` | Dokumentationstext |
 
-### Cross-references
 The `ConsultationAnamnesis` sub-entity is used within:
 - [`ConsultationStandard`](#sub-entity-consultationstandard) (as `anamnesis` array)
 
@@ -1057,7 +1053,6 @@ Befundbericht in einer Standard-Konsultation.
 | `title` | `String` | Titel des Befundes |
 | `documentation` | `String` | Dokumentationstext |
 
-### Cross-references
 The `ConsultationPatientReport` sub-entity is used within:
 - [`ConsultationStandard`](#sub-entity-consultationstandard) (as `patientReport` array)
 
@@ -1072,7 +1067,6 @@ Arbeitsunfähigkeit in einer Standard-Konsultation.
 | `type` | `String` | Art der AU:<br>• `INITIAL` (Used)<br>• `FOLLOW_UP` (Used) |
 | `comment` | `String` | Kommentar |
 
-### Cross-references
 The `ConsultationWorkIncapacity` sub-entity is used within:
 - [`ConsultationStandard`](#sub-entity-consultationstandard) (as `workIncapacity` array)
 
@@ -1081,12 +1075,11 @@ Durchführender Experte in den Konsultationsdaten.
 
 | Column | Type | Description |
 | :--- | :--- | :--- |
-| `_id` | `Long` | Referenz ID auf `user` |
+| `_id` | `Long` | Reference ID to [user](#entity-experte-expert) |
 | `name` | `String` | Name des Experten |
 | `email` | `String` | E-Mail-Adresse |
 | `formalDisplayName` | `String` | Vollständiger Name mit Titel |
 
-### Cross-references
 The `ConsultationDoctor` sub-entity is used within:
 - [`consultationData`](#entity-konsultationsdaten-consultation-data) (as `doctor` field)
 - [`notification`](#entity-benachrichtigungen-notifications) (as `from` and `to` fields)
@@ -1098,7 +1091,7 @@ Dienstleistung in den Konsultationsdaten.
 
 | Column | Type | Description |
 | :--- | :--- | :--- |
-| `_id` | `Long` | Referenz ID auf `jobId` |
+| `_id` | `Long` | Reference ID to [jobId](#entity-dienstleistung-service) |
 | `code` | `String` | Dienstleistungscode |
 | `color` | `String` | Farbe |
 | `expertTitle` | `String` | Titel für Experten |
@@ -1106,7 +1099,6 @@ Dienstleistung in den Konsultationsdaten.
 | `title` | `String` | Titel |
 | `type` | `String` | Abrechnungsart (z.B. `APPOINTMENT`):<br>• `APPOINTMENT` (Used)<br>• `SHIFT` (Used) |
 
-### Cross-references
 The `ConsultationJob` sub-entity is used within:
 - [`consultationData`](#entity-konsultationsdaten-consultation-data) (as `job` field)
 - [`treatment`](#entity-behandlungsverlauf-treatment) (as `job` field)
@@ -1118,13 +1110,12 @@ Ort der Konsultation.
 
 | Column | Type | Description |
 | :--- | :--- | :--- |
-| `_id` | `Long` | Referenz ID auf `location` |
+| `_id` | `Long` | Reference ID to [location](#entity-standorte-locations) |
 | `name` | `String` | Name des Ortes |
 | `booknumberMask` | `String` | Maske für Buchnummern |
-| `patientDataType` | `String` | Datentyp der Patienten:<br>• `EXTERNAL` (Used)<br>• `INTERNAL_SECUREBOX` (Used) |
+| `patientDataType` | `String` | Datentyp der Patienten:<br>• `EXTERNAL` (Used)<br>• `EXTERNAL_BASISWEB` (Used)<br>• `INTERNAL` (Used)<br>• `INTERNAL_SECUREBOX` (Used)<br>• `INTERNAL_VCCLOUD` (Used) |
 | `customer` | `Document` | Zugehöriger Kunde ([ConsultationCustomer](#sub-entity-consultationcustomer)) |
 
-### Cross-references
 The `ConsultationLocation` sub-entity is used within:
 - [`consultationData`](#entity-konsultationsdaten-consultation-data) (as `location` field)
 - [`treatment`](#entity-behandlungsverlauf-treatment) (as `location` field)
@@ -1134,10 +1125,9 @@ Kunde in den Konsultationsdaten.
 
 | Column | Type | Description |
 | :--- | :--- | :--- |
-| `_id` | `Long` | Referenz ID auf `customer` |
+| `_id` | `Long` | Reference ID to [customer](#entity-kunden-customers) |
 | `name` | `String` | Name des Kunden |
 
-### Cross-references
 The `ConsultationCustomer` sub-entity is used within:
 - [`ConsultationLocation`](#sub-entity-consultationlocation) (as `customer` field)
 - [`consultation`](#entity-konsultationen-legacy) (as `customer` field)
@@ -1148,24 +1138,48 @@ The `ConsultationCustomer` sub-entity is used within:
 Erfasst den Verlauf von Behandlungen, insbesondere im Bereich der Psychotherapie.
 
 ### Table: treatment
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `assigned` | `Document` | Zugewiesener Experte ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
-| `hour` | `Number` | Stundenindex |
-| `day` | `String` | Wochentag:<br>• `MO` (Used)<br>• `TU` (Used)<br>• `WE` (Used)<br>• `TH` (Used)<br>• `FR` (Used) |
-| `bookNumber` | `String` | Buchnummer (JVA) |
-| `jNumber` | `String` | J-Nummer (JVA) |
-| `type` | `String` | Art der Behandlung:<br>• `PSYCH` (Used) |
-| `state` | `String` | Status der Behandlung:<br>• `ACTIVE` (Used)<br>• `CANCELED` (Used)<br>• `CANCELED_CLOSED` (Used)<br>• `CLOSED` (Used)<br>• `ENDING` (Used)<br>• `PROBATORIK` (Used)<br>• `RUNNING` (Used)<br>• `STARTED` (Used)<br>• `STORNO` (Used)<br>• `STORNO_CLOSED` (Used) |
-| `job` | `Document` | Erbrachte Dienstleistung ([ConsultationJob](#sub-entity-consultationjob)) |
-| `archived` | `Boolean` | Archivierungsstatus |
-| `positions` | `Array` | Einzelne Termine der Behandlung ([TreatmentPosition](#sub-entity-treatmentposition)) |
-| `location` | `Document` | Ort der Behandlung ([ConsultationLocation](#sub-entity-consultationlocation)) |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.Treatment` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `assigned` | `Document` | schema | Zugewiesener Experte ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
+| `hour` | `Number` | schema | Stundenindex |
+| `day` | `String` | schema | Wochentag:<br>• `MO` (Used)<br>• `TU` (Used)<br>• `WE` (Used)<br>• `TH` (Used)<br>• `FR` (Used) |
+| `bookNumber` | `String` | schema | Buchnummer (JVA) |
+| `jNumber` | `String` | schema | J-Nummer (JVA) |
+| `type` | `String` | schema | Art der Behandlung:<br>• `PSYCH` (Used) |
+| `state` | `String` | schema | Status der Behandlung:<br>• `ACTIVE` (Used)<br>• `CANCELED` (Used)<br>• `CANCELED_CLOSED` (Used)<br>• `CLOSED` (Used)<br>• `ENDING` (Used)<br>• `PROBATORIK` (Used)<br>• `RUNNING` (Used)<br>• `STARTED` (Used)<br>• `STORNO` (Used)<br>• `STORNO_CLOSED` (Used) |
+| `dateStorno` | `Date` | schema | Stornierungsdatum |
+| `job` | `Document` | schema | Erbrachte Dienstleistung ([ConsultationJob](#sub-entity-consultationjob)) |
+| `jobReport` | `Document` | schema | Dienstleistung für Berichte ([ConsultationJob](#sub-entity-consultationjob)) |
+| `reportingPath` | `String` | schema | Pfad für das Reporting |
+| `jobReportPobatorik` | `Document` | schema | Dienstleistung für Probatorik-Berichte ([ConsultationJob](#sub-entity-consultationjob)) |
+| `archived` | `Boolean` | schema | Archivierungsstatus |
+| `attachments` | `Array` | schema | Liste von Anhängen |
+| `positions` | `Array` | schema | Einzelne Termine der Behandlung ([TreatmentPosition](#sub-entity-treatmentposition)) |
+| `changedBy` | `Document` | schema | Zuletzt geändert von ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
+| `dateChanged` | `Date` | schema | Zeitpunkt der letzten Änderung |
+| `createdBy` | `Document` | schema | Erstellt von ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
+| `dateCreated` | `Date` | inferred | Erstellungsdatum |
+| `closed` | `Date` | schema | Abschlussdatum |
+| `countTotal` | `Number` | schema | Gesamtanzahl |
+| `countFinished` | `Number` | schema | Anzahl abgeschlossener Termine |
+| `dateInitial` | `Date` | schema | Initiales Datum |
+| `countPlanned` | `Number` | schema | Anzahl geplanter Termine |
+| `comment` | `String` | schema | Kommentar |
+| `dateAcceptedPTLeitung` | `Date` | schema | Akzeptiert von PT-Leitung am |
+| `dateAcceptedPT` | `Date` | schema | Akzeptiert von PT am |
+| `dateAcceptedLocation` | `Date` | schema | Akzeptiert von Standort am |
+| `dateStarted` | `Date` | schema | Startdatum (tatsächlich) |
+| `dateStart` | `Date` | schema | Startdatum (geplant) |
+| `dateLastAppointment` | `Date` | schema | Datum des letzten Termins |
+| `reportCountInitial` | `Number` | schema | Initiale Anzahl Berichte |
+| `reportCountRhytm` | `Number` | schema | Rhythmus der Berichte |
+| `customer` | `Document` | inferred | Zugehöriger Kunde ([ConsultationCustomer](#sub-entity-consultationcustomer)) |
+| `location` | `Document` | schema | Ort der Behandlung ([ConsultationLocation](#sub-entity-consultationlocation)) |
+| `minutes` | `Number` | schema | Dauer in Minuten |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.Treatment` (Used) |
 
-### Cross-references
 The `treatment` entity is referenced by:
 - [`appointment`](#entity-termine-appointments) (via `treatmentId`)
 - [`asyncJobQueue`](#entity-hintergrundaufgaben-async-job-queue) (via `type`)
@@ -1175,31 +1189,33 @@ The `treatment` entity is referenced by:
 #### Sub-entity: TreatmentPosition
 Ein einzelner Termin oder eine Position innerhalb eines Behandlungsverlaufs.
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `String` | Internal identifier |
-| `appointmentId` | `Long` | Referenz auf `appointment` |
-| `start` | `Date` | Startzeitpunkt |
-| `until` | `Date` | Endzeitpunkt |
-| `state` | `String` | Status des Termins:<br>• `CANCELED` (Used)<br>• `CLOSED` (Used)<br>• `DONE` (Used)<br>• `LOCKEDIN` (Used)<br>• `READY` (Used)<br>• `RESCHEDULED` (Used)<br>• `STORNO` (Used) |
-| `requireReport` | `Boolean` | Bericht erforderlich |
-| `report` | `Document` | Referenz auf den Bericht ([TreatmentReport](#sub-entity-treatmentreport)) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `String` | inferred | Internal identifier |
+| `appointmentId` | `Long` | schema | Reference to [appointment](#entity-termine-appointments) |
+| `start` | `Date` | schema | Startzeitpunkt |
+| `until` | `Date` | schema | Endzeitpunkt |
+| `state` | `String` | schema | Status des Termins:<br>• `CANCELED` (Used)<br>• `CLOSED` (Used)<br>• `DONE` (Used)<br>• `LOCKEDIN` (Used)<br>• `READY` (Used)<br>• `RESCHEDULED` (Used)<br>• `STORNO` (Used) |
+| `requireReport` | `Boolean` | schema | Bericht erforderlich |
+| `forceReport` | `Boolean` | schema | Bericht erzwingen |
+| `report` | `Document` | schema | Referenz auf den Bericht ([TreatmentReport](#sub-entity-treatmentreport)) |
 
-### Cross-references
 The `TreatmentPosition` sub-entity is used within:
 - [`treatment`](#entity-behandlungsverlauf-treatment) (as `positions` array)
 
 #### Sub-entity: TreatmentReport
 Informationen zum Bericht einer Behandlungsposition.
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `String` | Internal identifier |
-| `type` | `String` | Art des Berichts:<br>• `STANDARD` (Used) |
-| `consultationId` | `Long` | Referenz auf `consultationData` |
-| `date` | `Date` | Datum des Berichts |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `String` | inferred | Internal identifier |
+| `type` | `String` | schema | Art des Berichts:<br>• `STANDARD` (Used) |
+| `consultationId` | `Long` | schema | Referenz auf [consultationData](#entity-konsultationsdaten-consultation-data) |
+| `date` | `Date` | schema | Datum des Berichts |
+| `dateStart` | `Date` | schema | Startdatum des Berichts |
+| `dateEnd` | `Date` | schema | Enddatum des Berichts |
+| `job` | `Document` | schema | Zugehörige Dienstleistung ([ConsultationJob](#sub-entity-consultationjob)) |
 
-### Cross-references
 The `TreatmentReport` sub-entity is used within:
 - [`TreatmentPosition`](#sub-entity-treatmentposition) (as `report` field)
 
@@ -1209,23 +1225,22 @@ The `TreatmentReport` sub-entity is used within:
 Interne Benachrichtigungen und Nachrichten zwischen Benutzern oder vom System.
 
 ### Table: notification
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `ts` | `Date` | Zeitstempel |
-| `from` | `Document` | Absender ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
-| `to` | `Document` | Empfänger ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
-| `important` | `Boolean` | Wichtigkeit |
-| `folder` | `String` | Ordner:<br>• `INBOX` (Used)<br>• `OUTBOX` (Used)<br>• `TRASH` (Used)<br>• `ARCHIVE` (Not used) |
-| `read` | `Date` | Gelesen-Zeitpunkt |
-| `subject` | `String` | Betreff |
-| `message` | `String` | Nachrichtentext |
-| `notificationEvent` | `String` | Art des Ereignisses |
-| `emailSent` | `Boolean` | Ob eine E-Mail versendet wurde |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.Notification` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `ts` | `Date` | schema | Zeitstempel |
+| `from` | `Document` | schema | Absender ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
+| `to` | `Document` | schema | Empfänger ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
+| `important` | `Boolean` | schema | Wichtigkeit |
+| `folder` | `String` | schema | Ordner:<br>• `INBOX` (Used)<br>• `OUTBOX` (Used)<br>• `TRASH` (Used)<br>• `ARCHIVE` (Not used) |
+| `read` | `Date` | schema | Gelesen-Zeitpunkt |
+| `subject` | `String` | schema | Betreff |
+| `message` | `String` | schema | Nachrichtentext |
+| `notificationEvent` | `String` | schema | Art des Ereignisses |
+| `emailSent` | `Boolean` | schema | Ob eine E-Mail versendet wurde |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.Notification` (Used) |
 
-### Cross-references
 The `notification` entity is referenced by:
 - [`appointmentAssignmentHistory`](#entity-terminzuweisungs-historie-appointment-assignment-history) (via `notificationId`)
 
@@ -1235,24 +1250,23 @@ The `notification` entity is referenced by:
 Erfasst Details zu getätigten Video- und Audioanrufen (Call Detail Records).
 
 ### Table: cDRCall
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `type` | `String` | Art des Anrufs:<br>• `DIRECT` (Used)<br>• `CONFERENCE` (Used)<br>• `FORWARDED` (Used)<br>• `INVALID_MISSING_EXPERT` (Used)<br>• `INVALID_SHORT` (Used)<br>• `INVALID_UNKNOWN` (Used) |
-| `dateStart` | `Date` | Startzeitpunkt |
-| `dateConnect` | `Date` | Verbindungszeitpunkt |
-| `dateDisconnect` | `Date` | Trennungszeitpunkt |
-| `location` | `String` | Ort des Anrufs |
-| `userId` | `Long` | Referenz auf `user` |
-| `expert` | `Document` | Snapshot des Experten ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
-| `appointment` | `Long` | Referenz auf `appointment` |
-| `consultation` | `Long` | Referenz auf `consultationData` |
-| `duration` | `Long` | Dauer in Sekunden |
-| `status` | `String` | Status des Anrufs |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.CDRCall` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `type` | `String` | schema | Art des Anrufs:<br>• `DIRECT` (Used)<br>• `CONFERENCE` (Used)<br>• `FORWARDED` (Used)<br>• `INVALID_MISSING_EXPERT` (Used)<br>• `INVALID_SHORT` (Used)<br>• `INVALID_UNKNOWN` (Used) |
+| `dateStart` | `Date` | schema | Startzeitpunkt |
+| `dateConnect` | `Date` | schema | Verbindungszeitpunkt |
+| `dateDisconnect` | `Date` | schema | Trennungszeitpunkt |
+| `duration` | `Long` | schema | Dauer in Sekunden |
+| `video` | `Boolean` | inferred | Ob Video genutzt wurde |
+| `callingNumber` | `String` | inferred | Anrufende Nummer |
+| `connected` | `Boolean` | inferred | Ob eine Verbindung zustande kam |
+| `location` | `String` | schema | Ort des Anrufs |
+| `userId` | `Long` | inferred | Reference to [user](#entity-experte-expert) |
+| `assignmentId` | `Long` | inferred | Reference to [appointmentAssignment](#entity-terminzuweisungen-appointment-assignments) |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.CDRCall` (Used) |
 
-### Cross-references
 The `cDRCall` entity is referenced by:
 - [`cDRCallAssignment`](#entity-cdr-call-zuweisungen-cdr-call-assignment) (implicitly linked by time and location)
 
@@ -1262,28 +1276,31 @@ The `cDRCall` entity is referenced by:
 Verwaltung von Einzelterminen, Bereitschaften und Behandlungen.
 
 ### Table: appointment
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `start` | `Date` | Startzeitpunkt |
-| `until` | `Date` | Endzeitpunkt |
-| `dateCreated` | `Date` | Erstellungsdatum |
-| `title` | `String` | Titel |
-| `comment` | `String` | Kommentar |
-| `state` | `String` | Status:<br>• `ACTIVE` (Used)<br>• `CANCELED` (Used)<br>• `CLOSED` (Used)<br>• `DONE` (Used)<br>• `LOCKEDIN` (Used)<br>• `READY` (Used)<br>• `REQUESTED` (Used)<br>• `RESCHEDULED` (Used)<br>• `STARTED` (Used)<br>• `STORNO` (Used) |
-| `type` | `String` | Typ:<br>• `APPOINTMENT` (Used)<br>• `SHIFT` (Used)<br>• `TREATMENT` (Used)<br>• `TREATMENT_REPORT` (Used) |
-| `job` | `Document` | Erbrachte Dienstleistung ([ConsultationJob](#sub-entity-consultationjob)) |
-| `billingType` | `String` | Abrechnungsart:<br>• `HOURLY` (Used)<br>• `PER_CONSULTATION` (Used) |
-| `treatmentId` | `Long` | Referenz auf `treatment` |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.Appointment` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `start` | `Date` | schema | Startzeitpunkt |
+| `until` | `Date` | schema | Endzeitpunkt |
+| `dateCreated` | `Date` | schema | Erstellungsdatum |
+| `title` | `String` | schema | Titel |
+| `comment` | `String` | schema | Kommentar |
+| `state` | `String` | schema | Status:<br>• `ACTIVE` (Used)<br>• `CANCELED` (Used)<br>• `CLOSED` (Used)<br>• `DONE` (Used)<br>• `LOCKEDIN` (Used)<br>• `READY` (Used)<br>• `REQUESTED` (Used)<br>• `RESCHEDULED` (Used)<br>• `STARTED` (Used)<br>• `STORNO` (Used) |
+| `type` | `String` | schema | Typ:<br>• `APPOINTMENT` (Used)<br>• `SHIFT` (Used)<br>• `TREATMENT` (Used)<br>• `TREATMENT_REPORT` (Used) |
+| `job` | `Document` | schema | Erbrachte Dienstleistung ([ConsultationJob](#sub-entity-consultationjob)) |
+| `billingType` | `String` | schema | Abrechnungsart:<br>• `HOURLY` (Used)<br>• `PER_CONSULTATION` (Used) |
+| `paymentType` | `String` | inferred | Zahlungsart:<br>• `EK` (Used)<br>• `FULL` (Used)<br>• `VK` (Used)<br>• `IGNORE` (Used) |
+| `priceType` | `String` | inferred | Preistyp:<br>• `WEEKDAY` (Used)<br>• `WEEKNIGHT` (Used)<br>• `WEEKENDDAY` (Used)<br>• `WEEKENDNIGHT` (Used) |
+| `customer` | `Document` | inferred | Zugehöriger Kunde ([ConsultationCustomer](#sub-entity-consultationcustomer)) |
+| `location` | `Document` | inferred | Ort des Termins ([ConsultationLocation](#sub-entity-consultationlocation)) |
+| `treatmentId` | `Long` | schema | Reference to [treatment](#entity-behandlungsverlauf-treatment) |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.Appointment` (Used) |
 
-### Cross-references
 The `appointment` entity is referenced by:
 - [`appointmentAssignment`](#entity-terminzuweisungen-appointment-assignments)
 - [`basisWebData`](#entity-jva-patientendaten-basis-web-data)
 - [`cDRCallAssignment`](#entity-cdr-call-zuweisungen-cdr-call-assignment)
-- [`consultationData`](#entity-konsultationsdaten-consultation-data)
+- [`consultationData`](#entity-konsultationsdaten-consultation-data) (via `appointmentId`)
 - [`invoiceComponent`](#entity-rechnungskomponenten-invoice-components)
 - [`log`](#entity-system-logs-logs)
 - [`patientData`](#entity-patientenerg-nzungsdaten-patient-data)
@@ -1306,7 +1323,6 @@ Historische oder alternative Konsultationsdaten (ähnlich wie `consultationData`
 | `customer` | `Document` | Kunde ([ConsultationCustomer](#sub-entity-consultationcustomer)) |
 | `_class` | `String` | Java Klassenname: `de.videoclinic.model.Consultation` (Used) |
 
-### Cross-references
 The `consultation` (Legacy) entity stores historical records and is referenced by:
 - (Internal audit and history tools)
 
@@ -1314,28 +1330,28 @@ The `consultation` (Legacy) entity stores historical records and is referenced b
 Vom JVA-System übermittelte Patientendaten, die verschlüsselt in der Datenbank abgelegt werden.
 
 ### Table: basisWebData
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `uuid` | `String` | Eindeutige ID der Übermittlung |
-| `jva` | `Long` | ID der JVA |
-| `jnummer` | `String` | J-Nummer des Gefangenen |
-| `buchnummer` | `String` | Buchnummer des Gefangenen |
-| `familienname` | `String` | Familienname |
-| `geburtsname` | `String` | Geburtsname |
-| `vorname` | `String` | Vorname |
-| `geburtsdatum` | `String` | Geburtsdatum |
-| `staatsangehoerigkeit` | `String` | Staatsangehörigkeit |
-| `geburtsland` | `String` | Geburtsland |
-| `geschlecht` | `String` | Geschlecht |
-| `medication` | `Array` | Liste übermittelter Medikamente ([BasisWebMedication](#sub-entity-basiswebmedication)) |
-| `warning` | `Array` | Liste übermittelter Warnhinweise ([BasisWebWarning](#sub-entity-basiswebwarning)) |
-| `dateCreated` | `Date` | Erstellungsdatum |
-| `appointment` | `DBRef` | Zugehöriger Termin (Referenz auf `appointment`) |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.BasisWebData` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `uuid` | `String` | schema | Eindeutige ID der Übermittlung |
+| `jva` | `Long` | schema | ID der JVA |
+| `jnummer` | `String` | schema | J-Nummer des Gefangenen |
+| `buchnummer` | `String` | schema | Buchnummer des Gefangenen |
+| `familienname` | `String` | schema | Familienname |
+| `geburtsname` | `String` | schema | Geburtsname |
+| `vorname` | `String` | schema | Vorname |
+| `geburtsdatum` | `String` | schema | Geburtsdatum |
+| `staatsangehoerigkeit` | `String` | schema | Staatsangehörigkeit |
+| `geburtsland` | `String` | schema | Geburtsland |
+| `geschlecht` | `String` | schema | Geschlecht |
+| `medication` | `Array` | schema | Liste übermittelter Medikamente ([BasisWebMedication](#sub-entity-basiswebmedication)) |
+| `warning` | `Array` | schema | Liste übermittelter Warnhinweise ([BasisWebWarning](#sub-entity-basiswebwarning)) |
+| `dateDecrypted` | `Date` | inferred | Entschlüsselungszeitpunkt |
+| `dateCreated` | `Date` | schema | Erstellungsdatum |
+| `appointment` | `DBRef` | schema | Associated appointment (Reference to [appointment](#entity-termine-appointments)) |
+| `_class` | `String` | schema | Java class name: `de.videoclinic.model.BasisWebData` (Used) |
 
-### Cross-references
 The `basisWebData` entity is referenced by:
 - [`consultationData`](#entity-konsultationsdaten-consultation-data) (via `basisWebDataId`)
 
@@ -1344,47 +1360,44 @@ The `basisWebData` entity is referenced by:
 #### Sub-entity: BasisWebMedication
 Übermitteltes Medikament aus dem JVA-System.
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `date` | `String` | Datum |
-| `type` | `String` | Art des Medikaments (Encrypted/Hashed) |
-| `content` | `String` | Inhalt/Wirkstoff |
-| `entry` | `String` | Eintragstext |
-| `note` | `String` | Notiz |
-| `until` | `String` | Gültig bis |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `date` | `String` | schema | Datum |
+| `type` | `String` | schema | Art des Medikaments (Encrypted/Hashed) |
+| `content` | `String` | schema | Inhalt/Wirkstoff |
+| `entry` | `String` | schema | Eintragstext |
+| `note` | `String` | schema | Notiz |
+| `until` | `String` | schema | Gültig bis |
 
-### Cross-references
 The `BasisWebMedication` sub-entity is used within:
 - [`basisWebData`](#entity-jva-patientendaten-basis-web-data) (as `medication` array)
 
 #### Sub-entity: BasisWebWarning
 Übermittelter Warnhinweis aus dem JVA-System.
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `String` | Internal identifier |
-| `date` | `String` | Datum |
-| `active` | `String` | Status (Encrypted/Hashed) |
-| `type` | `String` | Art der Warnung (Encrypted/Hashed) |
-| `content` | `String` | Inhaltstext |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `String` | inferred | Internal identifier |
+| `date` | `String` | schema | Datum |
+| `active` | `String` | schema | Status (Encrypted/Hashed) |
+| `type` | `String` | schema | Art der Warnung (Encrypted/Hashed) |
+| `content` | `String` | schema | Inhaltstext |
 
-### Cross-references
 The `BasisWebWarning` sub-entity is used within:
 - [`basisWebData`](#entity-jva-patientendaten-basis-web-data) (as `warning` array)
 
 #### Sub-entity: BasisWebEntry
 Allgemeiner medizinischer Eintrag aus dem JVA-System.
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `String` | Internal identifier |
-| `date` | `String` | Datum |
-| `active` | `String` | Status (Encrypted/Hashed) |
-| `type` | `String` | Art des Eintrags (Encrypted/Hashed) |
-| `content` | `String` | Inhaltstext |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `String" | inferred | Internal identifier |
+| `date` | `String` | schema | Datum |
+| `active` | `String` | schema | Status (Encrypted/Hashed) |
+| `type` | `String` | schema | Art des Eintrags (Encrypted/Hashed) |
+| `content` | `String` | schema | Inhaltstext |
 
-### Cross-references
 The `BasisWebEntry` sub-entity is used within:
 - (Internal JVA patient data processing)
 
@@ -1394,17 +1407,20 @@ The `BasisWebEntry` sub-entity is used within:
 Protokollierung von Systemereignissen, Fehlern und sicherheitsrelevanten Aktionen.
 
 ### Table: log
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `ts` | `Date` | Zeitstempel |
-| `userId` | `Long` | Referenz auf `user` |
-| `level` | `String` | Log-Level:<br>• `INFO` (Used)<br>• `ERROR` (Used)<br>• `SECURITY` (Used) |
-| `appointment` | `Long` | Referenz auf `appointment` |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.Log` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `ts` | `Date` | schema | Zeitstempel |
+| `userId` | `Long` | schema | Reference to [user](#entity-experte-expert) |
+| `level` | `String` | schema | Log-Level:<br>• `INFO` (Used)<br>• `ERROR` (Used)<br>• `SECURITY` (Used) |
+| `type` | `String` | inferred | Art des Ereignisses:<br>• `CONSULTATION` (Used)<br>• `CONSULTATION_TRANSMIT` (Used)<br>• `CONTACT` (Used) |
+| `key` | `String` | inferred | Eindeutiger Schlüssel für das Ereignis |
+| `message` | `String` | inferred | Log-Nachricht |
+| `param` | `Array` | inferred | Parameter zur Nachricht (Strings) |
+| `appointment` | `Long` | schema | Reference to [appointment](#entity-termine-appointments) |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.Log` (Used) |
 
-### Cross-references
 The `log` entity stores technical logs and is referenced by:
 - (System-wide monitoring tools)
 
@@ -1414,27 +1430,28 @@ The `log` entity stores technical logs and is referenced by:
 Einzelne Bestandteile einer Rechnung, basierend auf Terminen und Konsultationen.
 
 ### Table: invoiceComponent
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `start` | `Date` | Startzeitpunkt |
-| `priceList` | `Long` | Referenz auf `jobPriceList` |
-| `customerId` | `Long` | Referenz auf `customer` |
-| `locationId` | `Long` | Referenz auf `location` |
-| `appointmentId` | `Long` | Referenz auf `appointment` |
-| `consultationId` | `Long` | Referenz auf `consultationData` |
-| `actualPatients` | `Number` | Tatsächliche Anzahl Patienten |
-| `billablePatients` | `Number` | Abrechenbare Patienten |
-| `payablePatients` | `Number` | Auszahlbare Patienten |
-| `billableWorkTime` | `Number` | Abrechenbare Arbeitszeit |
-| `payableWorkTime` | `Number` | Auszahlbare Arbeitszeit |
-| `billValue` | `Number` | Rechnungsbetrag |
-| `payValue` | `Number` | Auszahlungsbetrag |
-| `stornoType` | `Document` | Stornierungsdetails ([InvoiceComponentStorno](#sub-entity-invoicecomponentstorno)) |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.InvoiceComponent` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `start` | `Date` | schema | Startzeitpunkt |
+| `priceList` | `Long` | schema | Reference to [jobPriceList](#entity-preislisten-job-price-lists) |
+| `customerId` | `Long` | schema | Reference to [customer](#entity-kunden-customers) |
+| `locationId` | `Long` | schema | Reference to [location](#entity-standorte-locations) |
+| `appointmentId` | `Long` | schema | Reference to [appointment](#entity-termine-appointments) |
+| `consultationId` | `Long` | schema | Reference to [consultationData](#entity-konsultationsdaten-consultation-data) |
+| `actualPatients` | `Number` | schema | Tatsächliche Anzahl Patienten |
+| `billablePatients` | `Number` | schema | Abrechenbare Patienten |
+| `payablePatients` | `Number` | schema | Auszahlbare Patienten |
+| `billableWorkTime` | `Number` | schema | Abrechenbare Arbeitszeit |
+| `payableWorkTime` | `Number` | schema | Auszahlbare Arbeitszeit |
+| `billValue` | `Number` | schema | Rechnungsbetrag |
+| `payValue` | `Number` | schema | Auszahlungsbetrag |
+| `employeeType` | `String` | inferred | Mitarbeitertyp:<br>• `A1` (Used)<br>• `HN2` (Used)<br>• `HONORAR` (Used) |
+| `appointmentType` | `String` | inferred | Termintyp:<br>• `APPOINTMENT` (Used)<br>• `SHIFT` (Used)<br>• `TREATMENT` (Used)<br>• `TREATMENT_REPORT` (Used) |
+| `stornoType` | `Document` | schema | Stornierungsdetails ([InvoiceComponentStorno](#sub-entity-invoicecomponentstorno)) |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.InvoiceComponent` (Used) |
 
-### Cross-references
 The `invoiceComponent` entity is a derived entity used for accounting and is referenced by:
 - [`invoice`](#entity-rechnungen-invoices) (implicitly during invoice generation)
 
@@ -1443,16 +1460,15 @@ The `invoiceComponent` entity is a derived entity used for accounting and is ref
 #### Sub-entity: InvoiceComponentStorno
 Details zur Stornierung einer Rechnungskomponente.
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `String` | Internal identifier |
-| `name` | `String` | Name des Stornos |
-| `percentage` | `Number` | Prozentsatz |
-| `stornoTime` | `Long` | Zeitpunkt der Stornierung |
-| `comment` | `String` | Kommentar |
-| `type` | `String` | Storno-Typ |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `String` | inferred | Internal identifier |
+| `name` | `String` | schema | Name des Stornos |
+| `percentage` | `Number` | schema | Prozentsatz |
+| `stornoTime` | `Long` | schema | Zeitpunkt der Stornierung |
+| `comment` | `String` | schema | Kommentar |
+| `type` | `String` | schema | Storno-Typ |
 
-### Cross-references
 The `InvoiceComponentStorno` sub-entity is used within:
 - [`invoiceComponent`](#entity-rechnungskomponenten-invoice-components) (as `stornoType` field)
 
@@ -1462,19 +1478,21 @@ The `InvoiceComponentStorno` sub-entity is used within:
 Fragebögen zur Bewertung der Qualität von Konsultationen und Dienstleistungen.
 
 ### Table: questionaire
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `appointmentId` | `Long` | Referenz auf `appointment` |
-| `consultationId` | `Long` | Referenz auf `consultationData` |
-| `date` | `Date` | Datum der Umfrage |
-| `ratingRisk` | `Number` | Bewertung Risiko (1-5) |
-| `ratingTeleApplyable` | `Number` | Bewertung Telemedizin-Eignung (1-5) |
-| `comment` | `String` | Kommentar |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.Questionaire` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `appointmentId` | `Long` | schema | Reference to [appointment](#entity-termine-appointments) |
+| `consultationId` | `Long` | schema | Reference to [consultationData](#entity-konsultationsdaten-consultation-data) |
+| `date` | `Date` | schema | Datum der Umfrage |
+| `ratingRisk` | `Number` | schema | Bewertung Risiko (1-5) |
+| `ratingTeleApplyable` | `Number` | schema | Bewertung Telemedizin-Eignung (1-5) |
+| `ratingDocumentation` | `Number` | inferred | Bewertung Dokumentation (1-5) |
+| `ratingEquipment` | `Number` | inferred | Bewertung Ausrüstung (1-5) |
+| `ratingCommunication` | `Number` | inferred | Bewertung Kommunikation (1-5) |
+| `comment` | `String` | schema | Kommentar |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.Questionaire` (Used) |
 
-### Cross-references
 The `questionaire` entity is referenced by:
 - (Internal quality management reports)
 
@@ -1484,21 +1502,22 @@ The `questionaire` entity is referenced by:
 Ordnet CDR-Anrufe bestimmten Terminen oder Konsultationen zu.
 
 ### Table: cDRCallAssignment
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `start` | `Date` | Startzeitpunkt |
-| `until` | `Date` | Endzeitpunkt |
-| `duration` | `Long` | Dauer in Sekunden |
-| `locationId` | `Long` | Referenz auf `location` |
-| `location` | `String` | Name des Ortes |
-| `user` | `Document` | Beteiligter Benutzer ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
-| `state` | `String` | Status der Zuweisung |
-| `confidence` | `Number` | Konfidenzlevel der Zuweisung |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.CDRCallAssignment` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `start` | `Date` | schema | Startzeitpunkt |
+| `until` | `Date` | schema | Endzeitpunkt |
+| `duration` | `Long` | schema | Dauer in Sekunden |
+| `locationId` | `Long` | schema | Reference to [location](#entity-standorte-locations) |
+| `location` | `String` | schema | Name des Ortes |
+| `user` | `Document` | schema | Beteiligter Benutzer ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
+| `state` | `String` | schema | Status der Zuweisung |
+| `appointmentId` | `Long" | inferred | Reference to [appointment](#entity-termine-appointments) |
+| `consultationId` | `Long" | inferred | Reference to [consultationData](#entity-konsultationsdaten-consultation-data) |
+| `confidence` | `Number" | schema | Konfidenzlevel der Zuweisung |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.CDRCallAssignment` (Used) |
 
-### Cross-references
 The `cDRCallAssignment` entity links calls to:
 - [`appointment`](#entity-termine-appointments)
 - [`consultationData`](#entity-konsultationsdaten-consultation-data)
@@ -1531,7 +1550,6 @@ Zentrales Verzeichnis der verfügbaren Medikamente mit Inhaltsstoffen, Produkten
 | `dosage` | `String` | Dosierungshinweise (Freitext) |
 | `_class` | `String` | Java Klassenname (Used: `de.videoclinic.model.Medication`) |
 
-### Cross-references
 The `medication` entity is referenced by:
 - [`consultationData`](#entity-konsultationsdaten-consultation-data) (in `standard.prescription`)
 
@@ -1549,7 +1567,6 @@ Einzelner Wirkstoff oder Hilfsstoff eines Medikaments.
 | `amount` | `String` | Menge (z.B. "50 mg") |
 | `extra` | `Boolean` | Ob es sich um einen Hilfsstoff handelt |
 
-### Cross-references
 The `MedicationIngredient` sub-entity is used within:
 - [`medication`](#entity-medikamente-medication) (as `ingredients` array)
 - [`MedicationProduct`](#sub-entity-medicationproduct) (as `ingredients` snapshot array)
@@ -1567,7 +1584,6 @@ Konkrete Packungsform oder Variante eines Medikaments.
 | `price` | `Number` | Preis |
 | `ingredients` | `Array` | Liste der Inhaltsstoffe (Snapshot) |
 
-### Cross-references
 The `MedicationProduct` sub-entity is used within:
 - [`medication`](#entity-medikamente-medication) (as `products` array)
 
@@ -1575,31 +1591,30 @@ The `MedicationProduct` sub-entity is used within:
 Zentrale Abrechnungsdokumente für Kunden und Experten.
 
 ### Table: invoice
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `no` | `String` | Rechnungsnummer |
-| `title` | `String` | Titel |
-| `description` | `String` | Beschreibung |
-| `cashRegister` | `DBRef` | Referenz auf `cashRegister` |
-| `client` | `Document` | Rechnungsempfänger-Details (Snapshot: [InvoiceClient](#sub-entity-invoiceclient)) |
-| `month` | `Number` | Monat |
-| `year` | `Number` | Jahr |
-| `positions` | `Array` | Rechnungspositionen ([InvoicePosition](#sub-entity-invoiceposition)) |
-| `totalNetPrice` | `Number` | Gesamt-Nettopreis |
-| `totalPrice` | `Number` | Gesamt-Bruttopreis |
-| `taxType` | `String` | Steuerart:<br>• `SATZ_NORMAL` (Used)<br>• `SATZ_NULL` (Used) |
-| `taxes` | `Array` | Steuersätze ([InvoiceTax](#sub-entity-invoicetax)) |
-| `dateInvoice` | `Date` | Rechnungsdatum |
-| `dateSubmit` | `Date` | Einreichungsdatum |
-| `paymentType` | `String` | Zahlungsart:<br>• `CASH` (Used)<br>• `INVOICE` (Used)<br>• `INVOICE_STORNO` (Used) |
-| `invoiceType` | `String` | Rechnungstyp:<br>• `EXPERT_INVOICE` (Used)<br>• `INVOICE` (Used)<br>• `START_INVOICE` (Used) |
-| `mail` | `String` | E-Mail-Adresse für den Versand |
-| `mailSendDate` | `Date` | Versanddatum |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.Invoice` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `no` | `String` | schema | Rechnungsnummer |
+| `title` | `String` | schema | Titel |
+| `description` | `String` | schema | Beschreibung |
+| `cashRegister` | `DBRef` | schema | Reference to [cashRegister](#entity-kassenregistrierung-cash-register) |
+| `client` | `Document` | schema | Rechnungsempfänger-Details (Snapshot: [InvoiceClient](#sub-entity-invoiceclient)) |
+| `month` | `Number` | schema | Monat |
+| `year` | `Number` | schema | Jahr |
+| `positions` | `Array` | schema | Rechnungspositionen ([InvoicePosition](#sub-entity-invoiceposition)) |
+| `totalNetPrice` | `Number` | schema | Gesamt-Nettopreis |
+| `totalPrice` | `Number` | schema | Gesamt-Bruttopreis |
+| `taxType` | `String` | schema | Steuerart:<br>• `SATZ_NORMAL` (Used)<br>• `SATZ_NULL` (Used) |
+| `taxes` | `Array` | schema | Steuersätze ([InvoiceTax](#sub-entity-invoicetax)) |
+| `dateInvoice` | `Date` | schema | Rechnungsdatum |
+| `dateSubmit` | `Date` | schema | Einreichungsdatum |
+| `paymentType` | `String` | schema | Zahlungsart:<br>• `CASH` (Used)<br>• `INVOICE` (Used)<br>• `INVOICE_STORNO` (Used) |
+| `invoiceType` | `String` | schema | Rechnungstyp:<br>• `EXPERT_INVOICE` (Used)<br>• `INVOICE` (Used)<br>• `START_INVOICE` (Used) |
+| `mail` | `String` | schema | E-Mail-Adresse für den Versand |
+| `mailSendDate` | `Date` | schema | Versanddatum |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.Invoice` (Used) |
 
-### Cross-references
 The `invoice` entity is referenced by:
 - [`invoiceReceiver`](#entity-rechnungsempf-nger-invoice-receivers) (implicit link via billing data)
 - [`expertWorkMonthly`](#entity-monatliche-expertenarbeit-expert-work-monthly) (for billing calculations)
@@ -1610,60 +1625,57 @@ The `invoice` entity is referenced by:
 #### Sub-entity: InvoiceClient
 Snapshot der Client-Daten zum Zeitpunkt der Rechnungserstellung.
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `name` | `String` | Name |
-| `gkto` | `String` | Debitorennummer |
-| `firstName` | `String` | Vorname |
-| `lastName` | `String` | Nachname |
-| `address` | `String` | Adresse |
-| `zip` | `String` | PLZ |
-| `city` | `String` | Ort |
-| `bank` | `String` | Bank |
-| `iban` | `String` | IBAN |
-| `bic` | `String` | BIC |
-| `taxid` | `String` | Steuer-ID |
-| `uid` | `String` | Umsatzsteuer-ID |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `name` | `String` | schema | Name |
+| `gkto` | `String` | schema | Debitorennummer |
+| `firstName` | `String` | schema | Vorname |
+| `lastName` | `String" | schema | Nachname |
+| `address` | `String` | schema | Adresse |
+| `zip` | `String` | schema | PLZ |
+| `city` | `String` | schema | Ort |
+| `bank` | `String` | schema | Bank |
+| `iban` | `String` | schema | IBAN |
+| `bic` | `String` | schema | BIC |
+| `taxid` | `String` | schema | Steuer-ID |
+| `uid` | `String` | schema | Umsatzsteuer-ID |
 
-### Cross-references
 The `InvoiceClient` sub-entity is used within:
 - [`invoice`](#entity-rechnungen-invoices) (as `client` field)
 
 #### Sub-entity: InvoicePosition
 Einzelne Position auf einer Rechnung.
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `String` | Internal identifier |
-| `no` | `Number` | Positionsnummer |
-| `title` | `String` | Titel |
-| `description` | `String` | Beschreibung |
-| `amount` | `Number` | Menge |
-| `pricePerUnit` | `Number` | Preis pro Einheit |
-| `totalPrice` | `Number` | Gesamtpreis der Position |
-| `taxType` | `String` | Steuerart:<br>• `SATZ_NORMAL` (Used)<br>• `SATZ_NULL` (Used) |
-| `job` | `DBRef` | Referenz auf `jobId` |
-| `comment` | `String` | Kommentar |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `String` | inferred | Internal identifier |
+| `no` | `Number` | schema | Positionsnummer |
+| `title` | `String` | schema | Titel |
+| `description` | `String` | schema | Beschreibung |
+| `amount` | `Number` | schema | Menge |
+| `pricePerUnit` | `Number` | schema | Preis pro Einheit |
+| `totalPrice` | `Number` | schema | Gesamtpreis der Position |
+| `taxType` | `String` | schema | Steuerart:<br>• `SATZ_NORMAL` (Used)<br>• `SATZ_NULL` (Used) |
+| `job` | `DBRef` | schema | Reference to [jobId](#entity-dienstleistung-service) |
+| `comment` | `String` | schema | Kommentar |
 
-### Cross-references
 The `InvoicePosition` sub-entity is used within:
 - [`invoice`](#entity-rechnungen-invoices) (as `positions` array)
 
 #### Sub-entity: InvoiceTax
 Zusammenfassung einer Steuerart auf der Rechnung.
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `String` | Internal identifier |
-| `taxType` | `String` | Steuerart:<br>• `SATZ_NORMAL` (Used)<br>• `SATZ_NULL` (Used) |
-| `value` | `Number` | Steuersatz |
-| `sum` | `Number` | Steuersumme |
-| `net` | `Number` | Nettosumme |
-| `total` | `Number` | Bruttosumme |
-| `description` | `String` | Beschreibung |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `String" | inferred | Internal identifier |
+| `taxType` | `String` | schema | Steuerart:<br>• `SATZ_NORMAL` (Used)<br>• `SATZ_NULL` (Used) |
+| `value` | `Number` | schema | Steuersatz |
+| `sum` | `Number` | schema | Steuersumme |
+| `net` | `Number` | schema | Nettosumme |
+| `total` | `Number` | schema | Bruttosumme |
+| `description` | `String" | schema | Beschreibung |
 
-### Cross-references
 The `InvoiceTax` sub-entity is used within:
 - [`invoice`](#entity-rechnungen-invoices) (as `taxes` array)
 
@@ -1673,19 +1685,19 @@ The `InvoiceTax` sub-entity is used within:
 Zuweisung von Experten zu bestimmten Terminen mit Statusverfolgung.
 
 ### Table: appointmentAssignment
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `userId` | `Long` | Referenz auf `user` |
-| `assignedById` | `Long` | Zugewiesen durch (Referenz auf `user`) |
-| `appointmentId` | `Long` | Referenz auf `appointment` |
-| `state` | `String` | Status der Zuweisung |
-| `dateAssigned` | `Date` | Zuweisungsdatum |
-| `dateReminder` | `Date` | Erinnerungsdatum |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.AppointmentAssignment` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `userId` | `Long` | schema | Reference to [user](#entity-experte-expert) |
+| `assignedById` | `Long` | schema | Zugewiesen durch (Reference to [user](#entity-experte-expert)) |
+| `appointmentId` | `Long` | schema | Reference to [appointment](#entity-termine-appointments) |
+| `state` | `String` | schema | Status der Zuweisung |
+| `dateAssigned` | `Date` | schema | Zuweisungsdatum |
+| `dateCreated` | `Date` | inferred | Erstellungsdatum |
+| `dateReminder` | `Date` | schema | Erinnerungsdatum |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.AppointmentAssignment` (Used) |
 
-### Cross-references
 The `appointmentAssignment` entity is referenced by:
 - [`appointmentAssignmentHistory`](#entity-terminzuweisungs-historie-appointment-assignment-history)
 
@@ -1694,15 +1706,14 @@ The `appointmentAssignment` entity is referenced by:
 #### Sub-entity: AppointmentAssignmentHistory
 Audit-Trail für Änderungen an einer Terminzuweisung.
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `assignmentId` | `Long` | Referenz auf `appointmentAssignment` |
-| `state` | `String` | Neuer Status |
-| `dateCreated` | `Date` | Zeitpunkt der Änderung |
-| `message` | `String` | Systemnachricht oder Kommentar |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `assignmentId` | `Long` | schema | Reference to [appointmentAssignment](#entity-terminzuweisungen-appointment-assignments) |
+| `state` | `String` | schema | Neuer Status |
+| `dateCreated` | `Date` | schema | Zeitpunkt der Änderung |
+| `message` | `String` | schema | Systemnachricht oder Kommentar |
 
-### Cross-references
 The `AppointmentAssignmentHistory` sub-entity is used within:
 - [`appointmentAssignment`](#entity-terminzuweisungen-appointment-assignments) (conceptually, though also a separate collection `appointmentAssignmentHistory`)
 
@@ -1712,19 +1723,18 @@ The `AppointmentAssignmentHistory` sub-entity is used within:
 Detaillierte Historie aller Zuweisungsänderungen.
 
 ### Table: appointmentAssignmentHistory
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `assignmentId` | `Long` | Referenz auf `appointmentAssignment` |
-| `dateCreated` | `Date` | Zeitpunkt der Änderung |
-| `state` | `String` | Neuer Status |
-| `target` | `Document` | Ziel des Ereignisses (Snapshot von `user`) |
-| `subject` | `String` | Betreff |
-| `message` | `String` | Nachricht oder Kommentar |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.AppointmentAssignmentHistory` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `assignmentId` | `Long` | schema | Reference to [appointmentAssignment](#entity-terminzuweisungen-appointment-assignments) |
+| `dateCreated` | `Date` | schema | Zeitpunkt der Änderung |
+| `state` | `String` | schema | Neuer Status |
+| `target` | `Document` | schema | Ziel des Ereignisses (Snapshot von `user`) |
+| `subject` | `String` | schema | Betreff |
+| `message` | `String` | schema | Nachricht oder Kommentar |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.AppointmentAssignmentHistory` (Used) |
 
-### Cross-references
 The `appointmentAssignmentHistory` entity provides an audit trail for:
 - [`appointmentAssignment`](#entity-terminzuweisungen-appointment-assignments)
 
@@ -1736,22 +1746,22 @@ The `appointmentAssignmentHistory` entity provides an audit trail for:
 Zusammenfassung der erbrachten Leistungen eines Experten pro Monat zur Abrechnungsvorbereitung.
 
 ### Table: expertWorkMonthly
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `year` | `Number` | Jahr |
-| `month` | `Number` | Monat |
-| `user` | `DBRef` | Referenz auf `user` |
-| `doctorName` | `String` | Name des Experten |
-| `total` | `Number` | Gesamtbetrag |
-| `payableWorkTimeTotal` | `Number` | Auszahlbare Arbeitszeit gesamt |
-| `payablePatientsTotal` | `Number` | Auszahlbare Patienten gesamt |
-| `worklog` | `Array` | Detaillierte Liste der Tätigkeiten ([ExpertWorklogEntry](#sub-entity-expertworklogentry)) |
-| `dateSent` | `Date` | Sendedatum |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.ExpertWorkMonthly` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `year` | `Number` | schema | Jahr |
+| `month` | `Number` | schema | Monat |
+| `user` | `DBRef` | schema | Reference to [user](#entity-experte-expert) |
+| `doctorName` | `String` | schema | Name des Experten |
+| `total` | `Number` | schema | Gesamtbetrag |
+| `payableWorkTimeTotal` | `Number` | schema | Auszahlbare Arbeitszeit gesamt |
+| `payablePatientsTotal` | `Number` | schema | Auszahlbare Patienten gesamt |
+| `worklog` | `Array` | schema | Detaillierte Liste der Tätigkeiten ([ExpertWorklogEntry](#sub-entity-expertworklogentry)) |
+| `dateCreated` | `Date` | inferred | Erstellungsdatum |
+| `dateSent` | `Date` | schema | Sendedatum |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.ExpertWorkMonthly` (Used) |
 
-### Cross-references
 The `expertWorkMonthly` entity is a summary for experts and is referenced by:
 - (Internal billing and payment processes)
 
@@ -1760,21 +1770,20 @@ The `expertWorkMonthly` entity is a summary for experts and is referenced by:
 #### Sub-entity: ExpertWorklogEntry
 Einzelner Eintrag im monatlichen Arbeitsprotokoll eines Experten.
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `String` | Internal identifier |
-| `appointmentId` | `Long` | Referenz auf `appointment` |
-| `job` | `DBRef` | Referenz auf `jobId` |
-| `start` | `Date` | Startzeitpunkt |
-| `actualWorkTime` | `Long` | Tatsächliche Arbeitszeit |
-| `payableWorkTime` | `Number` | Auszahlbare Arbeitszeit |
-| `price` | `Number` | Einzelpreis |
-| `total` | `Number` | Gesamtpreis |
-| `location` | `String` | Ort |
-| `expert` | `Document` | Snapshot des Experten ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
-| `invoice` | `Document` | Rechnungs-Snapshot |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `String` | inferred | Internal identifier |
+| `appointmentId` | `Long` | schema | Reference to [appointment](#entity-termine-appointments) |
+| `job` | `DBRef` | schema | Reference to [jobId](#entity-dienstleistung-service) |
+| `start` | `Date` | schema | Startzeitpunkt |
+| `actualWorkTime` | `Long` | schema | Tatsächliche Arbeitszeit |
+| `payableWorkTime` | `Number` | schema | Auszahlbare Arbeitszeit |
+| `price` | `Number` | schema | Einzelpreis |
+| `total` | `Number` | schema | Gesamtpreis |
+| `location` | `String` | schema | Ort |
+| `expert` | `Document` | inferred | Snapshot des Experten ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
+| `invoice` | `Document` | inferred | Rechnungs-Snapshot |
 
-### Cross-references
 The `ExpertWorklogEntry` sub-entity is used within:
 - [`expertWorkMonthly`](#entity-monatliche-expertenarbeit-expert-work-monthly) (as `worklog` array)
 
@@ -1792,12 +1801,11 @@ Vom Web-System übermittelte Terminanfragen.
 | `version` | `Long` | Versionsnummer |
 | `uuid` | `String` | Eindeutige ID der Anfrage |
 | `start` | `Date` | Gewünschter Startzeitpunkt |
-| `location` | `Long` | Referenz auf `location` |
+| `location` | `Long` | Reference to [location](#entity-standorte-locations) |
 | `jva` | `Long` | ID der JVA |
 | `dateCreated` | `Date` | Erstellungsdatum |
 | `_class` | `String` | Java Klassenname: `de.videoclinic.model.BasisWebAppointment` (Used) |
 
-### Cross-references
 The `basisWebAppointment` entity is referenced by:
 - [`appointment`](#entity-termine-appointments) (implicitly when converted to an appointment)
 
@@ -1816,7 +1824,6 @@ Verzeichnis von Postleitzahlen zur Zuordnung von Orten und Bundesländern.
 | `country` | `String` | Land |
 | `_class` | `String` | Java Klassenname: `de.videoclinic.model.ZipCodeLookup` (Used) |
 
-### Cross-references
 The `zipCodeLookup` entity is used for:
 - (Geographic data validation and lookups in the UI)
 
@@ -1833,10 +1840,9 @@ Dateien, die Benutzern zugeordnet sind (z.B. Zertifikate).
 | `data` | `Document` | Metadaten der Datei ([FileMetadata](#sub-entity-filemetadata)) |
 | `name` | `String` | Anzeigename |
 | `type` | `String` | Dateityp:<br>• `APPROBIATION` (Used)<br>• `AUTHENTICATED_MEDICAL_SPECIALIST_CERTIFICATE` (Used)<br>• `BASIC_RULES_CONTRACT` (Used)<br>• `BAVARIA_LAWS_CONTRACT` (Used)<br>• `CONDUCT_CERTIFICATE` (Used)<br>• `CURRICULUM_VITAE` (Used)<br>• `DATA_PROTECTION_CONTRACT` (Used)<br>• `LOAN_AGREEMENT` (Used)<br>• `OTHER` (Used)<br>• `PROFESSIONAL_LIABILITY_INSURANCE` (Used)<br>• `PROOF_OF_EXPERTISE` (Used)<br>• `SERVICE_CONTRACT` (Used)<br>• `SOCIAL_SECURITY_CHECKLIST` (Used) |
-| `ownerId` | `Long` | Referenz auf `user` |
+| `ownerId` | `Long` | Reference to [user](#entity-experte-expert) |
 | `_class` | `String` | Java Klassenname: `de.videoclinic.model.UserFile` (Used) |
 
-### Cross-references
 The `userFile` entity references:
 - [`user`](#entity-experte-expert) (via `ownerId`)
 
@@ -1846,20 +1852,20 @@ The `userFile` entity references:
 Warteschlange für asynchron auszuführende Systemaufgaben.
 
 ### Table: asyncJobQueue
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `dateCreated` | `Date` | Erstellungsdatum |
-| `dateStarted` | `Date` | Startdatum |
-| `dateFinished` | `Date` | Fertigstellungsdatum |
-| `title` | `String` | Titel der Aufgabe |
-| `state` | `String` | Status:<br>• `DONE` (Used)<br>• `ERROR` (Used)<br>• `FINISHED` (Used)<br>• `RUNNING` (Used) |
-| `type` | `String` | Art der Aufgabe:<br>• `APPOINTMENTPLAN` (Used)<br>• `INVOICE` (Used)<br>• `SHIFTPLAN` (Used)<br>• `TREATMENT` (Used) |
-| `createdBy` | `Document` | Ersteller ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.AsyncJobQueue` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `dateCreated` | `Date` | schema | Erstellungsdatum |
+| `dateStarted` | `Date` | schema | Startdatum |
+| `dateFinished` | `Date` | schema | Fertigstellungsdatum |
+| `title` | `String` | schema | Titel der Aufgabe |
+| `state` | `String` | schema | Status:<br>• `DONE` (Used)<br>• `ERROR` (Used)<br>• `FINISHED` (Used)<br>• `RUNNING` (Used) |
+| `type` | `String` | schema | Art der Aufgabe:<br>• `APPOINTMENTPLAN` (Used)<br>• `INVOICE` (Used)<br>• `SHIFTPLAN` (Used)<br>• `TREATMENT` (Used) |
+| `createdBy` | `Document` | schema | Ersteller ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
+| `tasks` | `Array` | schema | Einzelne Teilschritte ([AsyncJobTask](#sub-entity-asyncjobtask)) |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.AsyncJobQueue` (Used) |
 
-### Cross-references
 The `asyncJobQueue` entity tracks background tasks for:
 - [`appointmentPlan`](#entity-sprechstundenplan-appointment-plan)
 - [`shiftPlan`](#entity-schichtplan-shift-plan)
@@ -1871,15 +1877,14 @@ The `asyncJobQueue` entity tracks background tasks for:
 #### Sub-entity: AsyncJobTask
 Einzelner Arbeitsschritt innerhalb einer Hintergrundaufgabe.
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `String` | Internal identifier |
-| `title` | `String` | Titel des Arbeitsschritts |
-| `status` | `String` | Status des Arbeitsschritts (Freitext/Progress message, z.B. "25/2987/5697 OK") |
-| `dateStarted` | `Date` | Startzeitpunkt |
-| `dateFinished` | `Date` | Endzeitpunkt |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `String` | inferred | Internal identifier |
+| `title` | `String` | schema | Titel des Arbeitsschritts |
+| `status` | `String` | schema | Status des Arbeitsschritts (Freitext/Progress message, e.g. "25/2987/5697 OK") |
+| `dateStarted` | `Date` | schema | Startzeitpunkt |
+| `dateFinished` | `Date` | schema | Endzeitpunkt |
 
-### Cross-references
 The `AsyncJobTask` sub-entity is used within:
 - [`asyncJobQueue`](#entity-hintergrundaufgaben-async-job-queue)
 
@@ -1892,18 +1897,18 @@ Die folgenden Tabellen wurden im System gefunden, aber noch nicht detailliert ge
 Speichert Informationen über aktive und vergangene Benutzersitzungen im System.
 
 ### Table: persistentSession
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `String` | Session-ID |
-| `version` | `Long` | Versionsnummer |
-| `user` | `DBRef` | Referenz auf `user` |
-| `created` | `Date` | Erstellungszeitpunkt |
-| `ip` | `String` | IP-Adresse des Benutzers |
-| `userAgent` | `String` | Browser-Informationen (User Agent) |
-| `role` | `String` | Aktive Rolle in der Sitzung |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.PersistentSession` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `String` | schema | Session-ID |
+| `version` | `Long` | schema | Versionsnummer |
+| `user` | `DBRef` | schema | Reference to [user](#entity-experte-expert) |
+| `created` | `Date` | schema | Erstellungszeitpunkt |
+| `ip` | `String` | schema | IP-Adresse des Benutzers |
+| `userAgent` | `String` | schema | Browser-Informationen (User Agent) |
+| `lastAccess` | `Date" | inferred | Letzter Zugriff |
+| `role` | `String` | schema | Aktive Rolle in der Sitzung |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.PersistentSession` (Used) |
 
-### Cross-references
 The `persistentSession` entity references:
 - [`user`](#entity-experte-expert)
 
@@ -1913,13 +1918,12 @@ The `persistentSession` entity references:
 Technical collection for tracking the version/state of various system caches.
 
 ### Table: cacheState
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `String` | Cache-Bezeichner |
-| `version` | `Long` | Aktuelle Version des Caches |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.CacheState` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `String` | schema | Cache-Bezeichner |
+| `version` | `Long` | schema | Aktuelle Version des Caches |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.CacheState` (Used) |
 
-### Cross-references
 The `cacheState` entity is used for:
 - (Internal system performance tracking and cache invalidation)
 
@@ -1931,18 +1935,17 @@ The `cacheState` entity is used for:
 Versionierte Preislisten für Dienstleistungen mit zeitlicher Gültigkeit.
 
 ### Table: jobPriceList
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `name` | `String` | Name der Preisliste |
-| `start` | `Date` | Gültig ab |
-| `until` | `Date` | Gültig bis |
-| `active` | `Boolean` | Ob die Preisliste aktiv ist |
-| `prices` | `Array` | Liste der Einzelpreise ([JobPriceEntry](#sub-entity-jobpriceentry)) |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.JobPriceList` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `name` | `String` | schema | Name der Preisliste |
+| `start` | `Date` | schema | Gültig ab |
+| `until` | `Date` | schema | Gültig bis |
+| `active` | `Boolean` | schema | Ob die Preisliste aktiv ist |
+| `prices` | `Array` | schema | Liste der Einzelpreise ([JobPriceEntry](#sub-entity-jobpriceentry)) |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.JobPriceList` (Used) |
 
-### Cross-references
 The `jobPriceList` entity is referenced by:
 - [`customer`](#entity-kunden-customers) (in `priceLists`)
 - [`invoiceComponent`](#entity-rechnungskomponenten-invoice-components)
@@ -1953,16 +1956,15 @@ The `jobPriceList` entity is referenced by:
 #### Sub-entity: JobPriceEntry
 Konkreter Preis für eine bestimmte Dienstleistung innerhalb einer Preisliste.
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `String` | Internal identifier |
-| `jobId` | `Long` | Referenz auf `jobId` |
-| `price` | `Number` | Preiswert |
-| `roundingType` | `String` | Rundungsregel:<br>• `FULL_HOUR` (Used)<br>• `HALF_HOUR` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `String" | inferred | Internal identifier |
+| `jobId` | `Long` | schema | Reference to [jobId](#entity-dienstleistung-service) |
+| `price` | `Number` | schema | Preiswert |
+| `roundingType` | `String` | schema | Rundungsregel:<br>• `FULL_HOUR` (Used)<br>• `HALF_HOUR` (Used) |
 | `consultationType` | `String` | Art der Konsultation |
 | `currency` | `String` | Währung |
 
-### Cross-references
 The `JobPriceEntry` sub-entity is used within:
 - [`jobPriceList`](#entity-preislisten-job-price-lists) (as `prices` array)
 
@@ -1972,23 +1974,24 @@ The `JobPriceEntry` sub-entity is used within:
 Konfiguration von Empfängern für Rechnungen, inklusive steuerlicher Details und Kontaktinformationen.
 
 ### Table: invoiceReceiver
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `customer` | `DBRef` | Referenz auf `customer` |
-| `location` | `DBRef` | Referenz auf `location` |
-| `name` | `String` | Name des Empfängers |
-| `address` | `String` | Straße und Hausnummer |
-| `zip` | `String` | PLZ |
-| `city` | `String` | Ort |
-| `taxType` | `String` | Steuerliche Einordnung:<br>• `SATZ_NORMAL` (Used)<br>• `SATZ_NULL` (Used) |
-| `paymentGoal` | `Number` | Zahlungsziel in Tagen |
-| `gkto` | `String` | Debitorennummer |
-| `email` | `String` | Primäre E-Mail-Adresse |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.InvoiceReceiver` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `customer` | `DBRef` | schema | Reference to [customer](#entity-kunden-customers) |
+| `location` | `DBRef` | schema | Reference to [location](#entity-standorte-locations) |
+| `name` | `String` | schema | Name des Empfängers |
+| `address` | `String` | schema | Straße und Hausnummer |
+| `zip` | `String` | schema | PLZ |
+| `city` | `String` | schema | Ort |
+| `taxType` | `String` | schema | Steuerliche Einordnung:<br>• `SATZ_NORMAL` (Used)<br>• `SATZ_NULL` (Used) |
+| `paymentGoal` | `Number` | schema | Zahlungsziel in Tagen |
+| `gkto` | `String` | schema | Debitorennummer |
+| `mailInvoice` | `Boolean` | inferred | Rechnungsversand per E-Mail |
+| `postInvoice` | `Boolean` | inferred | Rechnungsversand per Post |
+| `email` | `String` | schema | Primäre E-Mail-Adresse |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.InvoiceReceiver` (Used) |
 
-### Cross-references
 The `invoiceReceiver` entity is used by:
 - (Internal invoice generation processes)
 
@@ -1998,16 +2001,16 @@ The `invoiceReceiver` entity is used by:
 Vordefinierte Vorlagen für medizinische Konsultationen zur schnelleren Dokumentation.
 
 ### Table: expertConsultationTemplate
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `name` | `String` | Name der Vorlage |
-| `description` | `String` | Beschreibung |
-| `body` | `Document` | Vorlage für körperliche Basisdaten ([ConsultationBody](#sub-entity-consultationbody)) |
-| `standard` | `Document` | Vorlage für Standard-Konsultation ([ConsultationStandard](#sub-entity-consultationstandard)) |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.ExpertConsultationTemplate` (Used) |
-| `onboarding` | `Document` | Vorlage für Erstuntersuchung ([ConsultationOnboarding](#sub-entity-consultationonboarding)) |
-| `job` | `Document` | Vorlage für Dienstleistung ([ConsultationJob](#sub-entity-consultationjob)) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `name` | `String` | schema | Name der Vorlage |
+| `description` | `String` | schema | Beschreibung |
+| `body` | `Document` | schema | Vorlage für körperliche Basisdaten ([ConsultationBody](#sub-entity-consultationbody)) |
+| `standard` | `Document` | schema | Vorlage für Standard-Konsultation ([ConsultationStandard](#sub-entity-consultationstandard)) |
+| `onboarding` | `Document` | schema | Vorlage für Erstuntersuchung ([ConsultationOnboarding](#sub-entity-consultationonboarding)) |
+| `job` | `Document` | schema | Vorlage für Dienstleistung ([ConsultationJob](#sub-entity-consultationjob)) |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.ExpertConsultationTemplate` (Used) |
 
 ---
 
@@ -2015,30 +2018,30 @@ Vordefinierte Vorlagen für medizinische Konsultationen zur schnelleren Dokument
 Medizinische Einrichtungen oder Standorte, an denen Konsultationen durchgeführt werden.
 
 ### Table: location
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `name` | `String` | Name der Einrichtung |
-| `address` | `String` | Adresse |
-| `zip` | `String` | PLZ |
-| `city` | `String` | Ort |
-| `customer` | `DBRef` | Referenz auf `customer` |
-| `patientDataAccess` | `Document` | Konfiguration für Datenzugriff ([LocationPatientDataAccess](#sub-entity-locationpatientdataaccess)) |
-| `rooms` | `Array` | Liste der Räume am Standort (Referenzen auf `room`) |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.Location` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `name` | `String` | schema | Name der Einrichtung |
+| `address` | `String` | schema | Adresse |
+| `zip` | `String` | schema | PLZ |
+| `city` | `String` | schema | Ort |
+| `customer` | `DBRef` | schema | Reference to [customer](#entity-kunden-customers) |
+| `patientDataType` | `String` | inferred | Art der Patientendatenübermittlung:<br>• `EXTERNAL` (Used)<br>• `EXTERNAL_BASISWEB` (Used)<br>• `INTERNAL` (Used)<br>• `INTERNAL_DAV` (Used)<br>• `INTERNAL_SECUREBOX` (Used)<br>• `INTERNAL_VCCLOUD` (Used) |
+| `patientDataAccess` | `Document` | schema | Konfiguration für Datenzugriff ([LocationPatientDataAccess](#sub-entity-locationpatientdataaccess)) |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.Location` (Used) |
 
-### Cross-references
 The `location` entity is referenced by:
 - [`appointment`](#entity-termine-appointments)
 - [`appointmentPlan`](#entity-sprechstundenplan-appointment-plan)
-- [`consultationData`](#entity-konsultationsdaten-consultation-data)
+- [`consultationData`](#entity-konsultationsdaten-consultation-data) (as `location` sub-entity)
 - [`invoiceComponent`](#entity-rechnungskomponenten-invoice-components)
 - [`invoiceReceiver`](#entity-rechnungsempf-nger-invoice-receivers)
 - [`project`](#entity-projekte-projects)
 - [`treatment`](#entity-behandlungsverlauf-treatment)
 - [`basisWebAppointment`](#entity-web-terminanfragen-basis-web-appointment)
 - [`onboardingHistory`](#entity-onboarding-verlauf-onboarding-history)
+- [`cDRCallAssignment`](#entity-cdr-call-zuweisungen-cdr-call-assignment)
 - [`room`](#entity-r-ume-rooms)
 - [`patientData`](#entity-patientenerg-nzungsdaten-patient-data)
 
@@ -2047,20 +2050,19 @@ The `location` entity is referenced by:
 #### Sub-entity: LocationPatientDataAccess
 Konfiguration für den Zugriff auf externe Patientendaten (z.B. SecureBox).
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `String` | Internal identifier |
-| `user` | `String` | Benutzername |
-| `password` | `String` | Passwort |
-| `url` | `String` | Zugriff-URL |
-| `active` | `Boolean` | Status des Zugangs |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `String` | inferred | Internal identifier |
+| `user` | `String` | schema | Benutzername |
+| `password` | `String` | schema | Passwort |
+| `url` | `String` | schema | Zugriff-URL |
+| `active` | `Boolean` | schema | Status des Zugangs |
 | `type` | `String` | Art des Datenzugriffs:<br>• `INTERNAL_SECUREBOX` (Used)<br>• `EXTERNAL` (Used) |
 | `address` | `String` | URL oder IP-Adresse der SecureBox |
 | `port` | `Number` | Portnummer |
 | `secure` | `Boolean` | Ob SSL verwendet wird |
 | `comment` | `String` | Kommentar zur Konfiguration |
 
-### Cross-references
 The `LocationPatientDataAccess` sub-entity is used within:
 - [`location`](#entity-standorte-locations) (as `patientDataAccess` field)
 
@@ -2068,25 +2070,28 @@ The `LocationPatientDataAccess` sub-entity is used within:
 Standardisierte wöchentliche Verfügbarkeitsslots für Experten.
 
 ### Table: expertWeek
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `userId` | `Long` | Referenz auf `user` |
-| `type` | `String` | Typ des Wochenplans:<br>• `TREATMENT` (Used) |
-| `slotsMo` | `Array` | Zeit-Slots für Montag (Werte: 1-24, entsprechend der Tagesstunde) |
-| `slotsTu` | `Array` | Zeit-Slots für Dienstag (Werte: 1-24) |
-| `slotsWe` | `Array` | Zeit-Slots für Mittwoch (Werte: 1-24) |
-| `slotsTh` | `Array` | Zeit-Slots für Donnerstag (Werte: 1-24) |
-| `slotsFr` | `Array` | Zeit-Slots für Freitag (Werte: 1-24) |
-| `slotsSa` | `Array` | Zeit-Slots für Samstag (Werte: 1-24) |
-| `slotsSu` | `Array` | Zeit-Slots für Sonntag (Werte: 1-24) |
-| `changedBy` | `DBRef` | Letzte Änderung durch (Referenz auf `user`) |
-| `dateChanged` | `Date` | Zeitpunkt der letzten Änderung |
-| `createdBy` | `DBRef` | Erstellt von (Referenz auf `user`) |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.ExpertWeek` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `userId` | `Long` | schema | Reference to [user](#entity-experte-expert) |
+| `type` | `String` | schema | Typ des Wochenplans:<br>• `TREATMENT` (Used) |
+| `slotsMo` | `Array` | schema | Zeit-Slots für Montag (Werte: 1-24, entsprechend der Tagesstunde) |
+| `slotsTu` | `Array` | schema | Zeit-Slots für Dienstag (Werte: 1-24) |
+| `slotsWe` | `Array` | schema | Zeit-Slots für Mittwoch (Werte: 1-24) |
+| `slotsTh` | `Array` | schema | Zeit-Slots für Donnerstag (Werte: 1-24) |
+| `slotsFr` | `Array` | schema | Zeit-Slots für Freitag (Werte: 1-24) |
+| `slotsSa` | `Array` | schema | Zeit-Slots für Samstag (Werte: 1-24) |
+| `slotsSu` | `Array` | schema | Time slots for Sunday (values: 1-24) |
+| `dateChanged` | `Date` | schema | Zeitpunkt der letzten Änderung |
+| `changedBy` | `DBRef` | schema | Last change by (Reference to [user](#entity-experte-expert)) |
+| `dateCreated` | `Date` | schema | Erstellungszeitpunkt |
+| `createdBy` | `DBRef` | schema | Erstellt von (Reference to [user](#entity-experte-expert)) |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.ExpertWeek` (Used) |
+| `dateChanged` | `Date` | Time of last change |
+| `createdBy` | `DBRef` | Created by (Reference to [user](#entity-experte-expert)) |
+| `_class` | `String` | Java class name: `de.videoclinic.model.ExpertWeek` (Used) |
 
-### Cross-references
 The `expertWeek` entity defines standard schedules for:
 - [`user`](#entity-experte-expert) (referenced via `userId`)
 
@@ -2096,20 +2101,19 @@ The `expertWeek` entity defines standard schedules for:
 Protokollierung der von Benutzern angesehenen (Schulungs-)Videos.
 
 ### Table: userVideoHistory
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `user` | `DBRef` | Referenz auf `user` |
-| `video` | `DBRef` | Referenz auf `video` |
-| `dateStart` | `Date` | Erster Zugriff |
-| `dateLast` | `Date` | Letzter Zugriff |
-| `timeWatched` | `Long` | Gesamt-Zuschauerzeit in Sekunden |
-| `watchCount` | `Number` | Anzahl der Aufrufe |
-| `sessions` | `Array` | Einzelne Video-Sitzungen ([UserVideoSession](#sub-entity-uservideosession)) |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.UserVideoHistory` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `user` | `DBRef` | schema | Reference to [user](#entity-experte-expert) |
+| `video` | `DBRef` | schema | Reference to [video](#entity-videos-videos) |
+| `dateStart` | `Date` | schema | Erster Zugriff |
+| `dateLast` | `Date` | schema | Letzter Zugriff |
+| `timeWatched` | `Long` | schema | Gesamt-Zuschauerzeit in Sekunden |
+| `watchCount` | `Number` | schema | Anzahl der Aufrufe |
+| `sessions` | `Array` | schema | Einzelne Video-Sitzungen ([UserVideoSession](#sub-entity-uservideosession)) |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.UserVideoHistory` (Used) |
 
-### Cross-references
 The `userVideoHistory` entity references:
 - [`user`](#entity-experte-expert) (via `user` DBRef)
 - [`video`](#entity-videos-videos) (via `video` DBRef)
@@ -2119,17 +2123,17 @@ The `userVideoHistory` entity references:
 #### Sub-entity: UserVideoSession
 Einzelne Wiedergabe-Sitzung eines Videos.
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `String` | Internal identifier |
-| `sessionId` | `String` | Session-ID |
-| `dateStart` | `Date` | Beginn der Sitzung |
-| `dateEnd` | `Date` | Ende der Sitzung |
-| `duration` | `Long` | Wiedergabedauer in Sekunden |
-| `completed` | `Boolean` | Ob das Video vollständig gesehen wurde |
-| `timeWatched` | `Long` | Zuschauerzeit in dieser Sitzung |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `String" | inferred | Internal identifier |
+| `sessionId` | `String` | schema | Session-ID |
+| `dateStart` | `Date` | inferred | Beginn der Sitzung |
+| `dateEnd` | `Date` | inferred | Ende der Sitzung |
+| `duration` | `Long` | inferred | Wiedergabedauer in Sekunden |
+| `completed` | `Boolean` | inferred | Ob das Video vollständig gesehen wurde |
+| `date` | `Date` | inferred | Zeitpunkt |
+| `timeWatched` | `Long` | schema | Zuschauerzeit in dieser Sitzung |
 
-### Cross-references
 The `UserVideoSession` sub-entity is used within:
 - [`userVideoHistory`](#entity-video-verlauf-user-video-history) (as `sessions` array)
 
@@ -2139,16 +2143,15 @@ The `UserVideoSession` sub-entity is used within:
 Definition von gesetzlichen Feiertagen zur Berücksichtigung in der Planung.
 
 ### Table: publicHoliday
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `day` | `Date` | Datum des Feiertags |
-| `name` | `String` | Name des Feiertags |
-| `states` | `Array` | Liste der Bundesländer (Strings) |
-| `country` | `String` | Land (z.B. `DE`) |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.PublicHoliday` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `day` | `Date` | schema | Datum des Feiertags |
+| `name` | `String` | schema | Name des Feiertags (Freitext) |
+| `country` | `String` | schema | Land (e.g. `DE`) |
+| `states` | `Array` | inferred | Liste der Bundesländer (Strings) |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.PublicHoliday` (Used) |
 
-### Cross-references
 The `publicHoliday` entity is used by:
 - (Planning modules to identify non-working days)
 
@@ -2158,19 +2161,19 @@ The `publicHoliday` entity is used by:
 Verlauf und Status der einzelnen Onboarding-Schritte eines Experten.
 
 ### Table: onboardingHistory
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `referenceId` | `Long` | Referenz (z.B. `user.id` oder `location.id`) |
-| `step` | `Document` | Snapshot des Onboarding-Schritts ([OnboardingStep](#sub-entity-onboardingstep)) |
-| `comment` | `String` | Kommentar (Freitext) |
-| `dateStarted` | `Date` | Startzeitpunkt des Schritts |
-| `dateCompleted` | `Date` | Abschlusszeitpunkt des Schritts |
-| `dateChanged` | `Date` | Zeitpunkt der letzten Änderung |
-| `changedBy` | `DBRef` | Letzte Änderung durch (Referenz auf `user`) |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.OnboardingHistory` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `referenceId` | `Long` | schema | Reference (e.g. [user.id](#entity-experte-expert) or [location.id](#entity-standorte-locations)) |
+| `step` | `Document` | schema | Snapshot des Onboarding-Schritts ([OnboardingStep](#sub-entity-onboardingstep)) |
+| `comment` | `String` | schema | Kommentar (Freitext) |
+| `dateStarted` | `Date` | schema | Startzeitpunkt des Schritts |
+| `dateCompleted` | `Date` | schema | Abschlusszeitpunkt des Schritts |
+| `dateChanged` | `Date` | schema | Zeitpunkt der letzten Änderung |
+| `changedBy` | `DBRef` | schema | Letzte Änderung durch (Reference to [user](#entity-experte-expert)) |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.OnboardingHistory` (Used) |
 
-### Cross-references
 The `onboardingHistory` entity references:
 - [`user`](#entity-experte-expert) (via `referenceId` or `changedBy`)
 - [`location`](#entity-standorte-locations) (via `referenceId`)
@@ -2180,22 +2183,21 @@ The `onboardingHistory` entity references:
 #### Sub-entity: OnboardingStep
 Definition der einzelnen Schritte, die ein Experte oder Standort während des Onboarding-Prozesses durchlaufen muss.
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer (Zeitstempel) |
-| `title` | `String` | Titel des Schritts (Freitext) |
-| `description` | `String` | Beschreibung (Freitext) |
-| `priority` | `Number` | Sortierreihenfolge |
-| `mandatory` | `Boolean` | Pflichtschritt |
-| `type` | `String` | Typ des Onboarding-Schritts:<br>• `CHECK` (Used) |
-| `assignmentType` | `String` | Art der Zuordnung:<br>• `EMPLOYEE` (Used)<br>• `LOCATION` (Used) |
-| `dateCreated` | `Date` | Erstellungszeitpunkt |
-| `dateChanged` | `Date` | Zeitpunkt der letzten Änderung |
-| `createdBy` | `DBRef` | Erstellt von (Referenz auf `user`) |
-| `changedBy` | `DBRef` | Geändert von (Referenz auf `user`) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer (Zeitstempel) |
+| `title` | `String` | schema | Titel des Schritts (Freitext) |
+| `description` | `String` | schema | Beschreibung (Freitext) |
+| `priority` | `Number` | schema | Sortierreihenfolge |
+| `mandatory` | `Boolean` | schema | Pflichtschritt |
+| `type` | `String` | schema | Typ des Onboarding-Schritts:<br>• `CHECK` (Used) |
+| `assignmentType` | `String` | schema | Art der Zuordnung:<br>• `EMPLOYEE` (Used)<br>• `LOCATION` (Used) |
+| `dateCreated` | `Date` | schema | Creation time |
+| `dateChanged` | `Date` | schema | Time of last change |
+| `createdBy` | `DBRef` | schema | Created by (Reference to [user](#entity-experte-expert)) |
+| `changedBy` | `DBRef` | schema | Changed by (Reference to [user](#entity-experte-expert)) |
 
-### Cross-references
 The `OnboardingStep` sub-entity is used within:
 - [`onboardingHistory`](#entity-onboarding-verlauf-onboarding-history) (as `step` snapshot)
 - [`onboardingStep`](#entity-onboarding-schritte-onboarding-steps) (as the main entity table)
@@ -2206,28 +2208,29 @@ The `OnboardingStep` sub-entity is used within:
 Planungsvorgaben für wiederkehrende Bereitschaftsdienste.
 
 ### Table: shiftPlan
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `name` | `String` | Name des Schichtplans |
-| `day` | `String` | Wochentag:<br>• `MO` (Used)<br>• `TU` (Used)<br>• `WE` (Used)<br>• `TH` (Used)<br>• `FR` (Used)<br>• `SA` (Used)<br>• `SU` (Used) |
-| `scheduling` | `String` | Wiederholungsregel:<br>• `WEEKLY` (Used) |
-| `schedulingMulitplier` | `Number` | Multiplikator für Planung (z.B. alle X Wochen) |
-| `timeStart` | `Number` | Startuhrzeit (Format: HHmm) |
-| `timeEnd` | `Number` | Enduhrzeit (Format: HHmm) |
-| `job` | `Document` | Dienstleistung ([ConsultationJob](#sub-entity-consultationjob)) |
-| `minPatients` | `Number` | Mindestanzahl an Patienten |
-| `lastDate` | `Date` | Letztes geplantes Datum |
-| `priceType` | `String` | Abrechnungstyp:<br>• `WEEKDAY` (Used)<br>• `WEEKNIGHT` (Used)<br>• `WEEKENDDAY` (Used)<br>• `WEEKENDNIGHT` (Used) |
-| `changedBy` | `Document` | Letzte Änderung durch ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
-| `dateChanged` | `Date` | Zeitpunkt der letzten Änderung |
-| `createdBy` | `Document` | Erstellt von ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
-| `dateCreated` | `Date` | Erstellungszeitpunkt |
-| `comment` | `String` | Kommentar (Freitext) |
-| `_class` | `String` | Java-Klassenname: `de.videoclinic.model.ShiftPlan` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `name` | `String` | schema | Name des Schichtplans |
+| `day` | `String` | schema | Wochentag:<br>• `MO` (Used)<br>• `TU` (Used)<br>• `WE` (Used)<br>• `TH` (Used)<br>• `FR` (Used)<br>• `SA` (Used)<br>• `SU` (Used) |
+| `scheduling` | `String` | schema | Wiederholungsregel:<br>• `WEEKLY` (Used) |
+| `schedulingMulitplier` | `Number` | schema | Multiplikator für Planung (z.B. alle X Wochen) |
+| `timeStart` | `Number` | schema | Startuhrzeit (Format: HHmm) |
+| `timeEnd` | `Number` | schema | Enduhrzeit (Format: HHmm) |
+| `job` | `Document` | schema | Dienstleistung ([ConsultationJob](#sub-entity-consultationjob)) |
+| `minPatients` | `Number` | schema | Mindestanzahl an Patienten |
+| `count` | `Number` | inferred | Anzahl |
+| `lastDate` | `Date` | schema | Letztes geplantes Datum |
+| `priceType` | `String` | schema | Abrechnungstyp:<br>• `WEEKDAY` (Used)<br>• `WEEKNIGHT` (Used)<br>• `WEEKENDDAY` (Used)<br>• `WEEKENDNIGHT` (Used) |
+| `dateChanged` | `Date` | schema | Zeitpunkt der letzten Änderung |
+| `changedBy` | `Document` | schema | Letzte Änderung durch ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
+| `dateCreated` | `Date` | schema | Erstellungszeitpunkt |
+| `createdBy` | `Document` | schema | Erstellt von ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
+| `comment` | `String` | schema | Kommentar (Freitext) |
+| `prefered` | `Array` | inferred | Liste bevorzugter Ärzte (DBRefs) |
+| `_class` | `String` | schema | Java-Klassenname: `de.videoclinic.model.ShiftPlan` (Used) |
 
-### Cross-references
 The `shiftPlan` entity is referenced by:
 - [`appointment`](#entity-termine-appointments) (via `shiftPlanId`)
 - [`asyncJobQueue`](#entity-hintergrundaufgaben-async-job-queue) (via `type`)
@@ -2236,15 +2239,15 @@ The `shiftPlan` entity is referenced by:
 Definition von spezifischen Berechtigungen innerhalb des Systems.
 
 ### Table: accessRight
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `name` | `String` | Name des Rechts (Used: `ACTIVE_CALLS`, `ADMIN`, `ADMIN_INTERN`, `ADMIN_KUNDE`, `ALL_DEPARTMENTS`, `AMDIN`, `ANY_CUSTOMER`, `ANY_EMPLOYEE`, `APPOINTMENTPLAN_CREATE`, `APPOINTMENTPLAN_READ`, `APPOINTMENTPLAN_REMOVE`, `APPOINTMENTPLAN_UPDATE`, `APPOINTMENT_ADHOC`, `APPOINTMENT_ADMIN`, `APPOINTMENT_AGREE`, `APPOINTMENT_ASSIGNMENT`, `APPOINTMENT_CREATE`, `APPOINTMENT_GET`, `APPOINTMENT_MANAGE`, `APPOINTMENT_PURGE`, `APPOINTMENT_READ`, `APPOINTMENT_REMOVE`, `APPOINTMENT_UPDATE`, `APPOINTMENT_USE`, `ASYNCJOBQUEUE_CREATE`, `ASYNCJOBQUEUE_READ`, `ASYNCJOBQUEUE_REMOVE`, `ASYNCJOBQUEUE_UPDATE`, `BASIS`, `BASISWEBAPPOINTMENT_CREATE`, `BASISWEBAPPOINTMENT_READ`, `BASISWEBAPPOINTMENT_REMOVE`, `BASISWEBAPPOINTMENT_UPDATE`, `BASISWEBDATA_CREATE`, `BASISWEBDATA_READ`, `BASISWEBDATA_REMOVE`, `BASISWEBDATA_UPDATE`, `BASISWEBNFB_MANAGER`, `BASISWEB_MANAGER`, `CDRCALLASSIGNMENT_CREATE`, `CDRCALLASSIGNMENT_READ`, `CDRCALLASSIGNMENT_REMOVE`, `CDRCALLASSIGNMENT_UPDATE`, `CDRCALL_CREATE`, `CDRCALL_IMPORT`, `CDRCALL_READ`, `CDRCALL_REMOVE`, `CHECKINOUT`, `CLOSEDMONTH_MANAGE`, `CLOSEDMONTH_READ`, `COMPANY_READ`, `CONFERENCE_CREATE`, `CONFERENCE_READ`, `CONFERENCE_REMOVE`, `CONFERENCE_UPDATE`, `CONSULATION_ADMIN`, `CONSULATION_CREATE`, `CONSULATION_GET`, `CONSULATION_READ`, `CONSULATION_UPDATE`, `CONSULTATION_ADMIN`, `CONSULTATION_CREATE`, `CONSULTATION_GET`, `CONSULTATION_READ`, `CONSULTATION_REPORTING`, `CONSULTATION_REPORTING_PSYCHOTHERAPY`, `CONSULTATION_SUBMIT_CUSTOMER`, `CONSULTATION_UPDATE`, `COUNCILPLAN_CREATE`, `COUNCILPLAN_READ`, `COUNCILPLAN_REMOVE`, `COUNCILPLAN_UPDATE`, `CUSTOMER_CREATE`, `CUSTOMER_DELETE`, `CUSTOMER_READ`, `CUSTOMER_READ_ALL`, `CUSTOMER_REMOVE`, `CUSTOMER_UPDATE`, `EMPLOYEE`, `EQUIPMENT_CREATE`, `EQUIPMENT_READ`, `EQUIPMENT_REMOVE`, `EQUIPMENT_UPDATE`, `EQUIPMENT_WRITE`, `EXPERTCONSULTATION_ADMIN`, `EXPERTCONSULTATION_CREATE`, `EXPERTCONSULTATION_GET`, `EXPERTCONSULTATION_READ`, `EXPERTCONSULTATION_UPDATE`, `EXPERTS_READ`, `EXPERTWEEK_READ`, `EXPERTWORKMONTHLY_CREATE`, `EXPERTWORKMONTHLY_GET`, `EXPERTWORKMONTHLY_READ`, `EXPERTWORKMONTHLY_REMOVE`, `EXPERTWORKMONTHLY_UPDATE`, `EXPERT_WEEK`, `EXPORT_CONSULTATION`, `EXPORT_EK_VK`, `EXPORT_INVOICERECEIVER`, `GROUP_CREATE`, `GROUP_DELETE`, `GROUP_READ`, `GROUP_UPDATE`, `GUEST`, `HOLIDAY_APPROVE`, `HOLIDAY_READ`, `HOLIDAY_SAVE`, `HOLIDAY_SAVE_ALL`, `ICD_QUERY`, `INVOICERECEIVER_CREATE`, `INVOICERECEIVER_READ`, `INVOICERECEIVER_REMOVE`, `INVOICERECEIVER_UPDATE`, `INVOICE_CREATE`, `INVOICE_READ`, `INVOICE_REMOVE`, `INVOICE_STORNO`, `INVOICE_UPDATE`, `INVOICE_VIEW`, `JOBPRICELIST_READ`, `JOB_ADMIN`, `JOB_WRITE`, `KUNDE`, `LEITER_INTERN`, `LOCATIONTYPE_CREATE`, `LOCATIONTYPE_REMOVE`, `LOCATIONTYPE_UPDATE`, `LOCATION_DELETE`, `LOCATION_READ`, `LOCATION_REMOVE`, `LOCATION_WRITE`, `LOGINNOTIFICATION_CREATE`, `LOGINNOTIFICATION_READ`, `LOGINNOTIFICATION_REMOVE`, `LOGINNOTIFICATION_UPDATE`, `LOG_READ`, `LOG_REMOVE`, `MEDICATION_CREATE`, `MEDICATION_READ`, `MEDICATION_REMOVE`, `MEDICATION_UPDATE`, `MOTD_CREATE`, `MOTD_READ`, `NOTIFICATIONTEMPLATE_CREATE`, `NOTIFICATIONTEMPLATE_READ`, `NOTIFICATIONTEMPLATE_REMOVE`, `NOTIFICATIONTEMPLATE_UPDATE`, `NOTIFICATION_ANSWER`, `NOTIFICATION_CREATE`, `NOTIFICATION_CREATE_BATCH`, `NOTIFICATION_READ`, `ONBOARDINGSTEP_CREATE`, `ONBOARDINGSTEP_READ`, `ONBOARDINGSTEP_REMOVE`, `ONBOARDINGSTEP_UPDATE`, `ONBOARDING_READ`, `ONBOARDING_SAVE`, `ONBOARDING_SAVE_ALL`, `PATIENTDATA_CREATE`, `PATIENTDATA_READ`, `PATIENTDATA_REMOVE`, `PATIENTDATA_UPDATE`, `PATIENT_CREATE`, `PATIENT_IMPORT`, `PATIENT_READ`, `PATIENT_READ_ALL`, `PATIENT_REMOVE`, `PATIENT_UPDATE`, `PATIENT_VIEW`, `PATIENT_VIEW_ALL`, `PRODUCT_CREATE`, `PRODUCT_READ`, `PRODUCT_REMOVE`, `PRODUCT_UPDATE`, `PROJECT_ADMIN`, `PROJECT_ASSIGNMENT`, `PROJECT_CREATE`, `PROJECT_FORCE_STORNO`, `PROJECT_GET`, `PROJECT_MANAGE`, `PROJECT_READ`, `PROJECT_STORNO`, `PROJECT_UPDATE`, `QUESTIONAIRE_CREATE`, `QUESTIONAIRE_READ`, `QUESTIONAIRE_REMOVE`, `QUESTIONAIRE_REVIEW`, `QUESTIONAIRE_UPDATE`, `REGISTERED`, `ROOM_CREATE`, `ROOM_READ`, `ROOM_REMOVE`, `ROOM_UPDATE`, `SELFSERVICE`, `SELF_ASSIGNMENT`, `SELF_CHECKINOUT`, `SERVICEQM_CREATE`, `SERVICEQM_READ`, `SERVICEQM_REMOVE`, `SERVICEQM_UPDATE`, `SHIFTPLAN_CREATE`, `SHIFTPLAN_READ`, `SHIFTPLAN_REMOVE`, `SHIFTPLAN_UPDATE`, `SHIFT_CREATE`, `SHIFT_GET`, `SKILL_WRITE`, `STANDARD`, `STORNOGROUP_CREATE`, `STORNOGROUP_READ`, `STORNOGROUP_REMOVE`, `STORNOGROUP_UPDATE`, `SUPPORTCATEGORY_CREATE`, `SUPPORTCATEGORY_READ`, `SUPPORTCATEGORY_REMOVE`, `SUPPORTCATEGORY_UPDATE`, `SUPPORTTICKET_ANSWER`, `SUPPORTTICKET_CREATE`, `SUPPORTTICKET_READ`, `SYSADMIN`, `SYSTEM_READ`, `SYSTEM_WRITE`, `TREATMENTCATEGORY_MANAGE`, `TREATMENTCATEGORY_READ`, `TREATMENT_CREATE`, `TREATMENT_READ`, `TREATMENT_REMOVE`, `TREATMENT_UPDATE`, `UNIFORM_READ`, `UNIFORM_WRITE`, `USER`, `USERS_ADMIN`, `USERS_CREATE`, `USERS_CUSTOMER_READ`, `USERS_DELETE`, `USERS_EXPERTS_READ`, `USERS_READ`, `USERS_ROLE_UPDATE`, `USERS_UPDATE`, `USERVIDEOHISTORY_CREATE`, `USERVIDEOHISTORY_READ`, `USERVIDEOHISTORY_REMOVE`, `USERVIDEOHISTORY_UPDATE`, `USER_GET`, `USER_READ`, `USER_UPDATE`, `VIDEOCATEGORY_CREATE`, `VIDEOCATEGORY_READ`, `VIDEOCATEGORY_REMOVE`, `VIDEOCATEGORY_UPDATE`, `VIDEOHISTORY_CREATE`, `VIDEOHISTORY_READ`, `VIDEOHISTORY_REMOVE`, `VIDEOHISTORY_UPDATE`, `VIDEO_CREATE`, `VIDEO_GET`, `VIDEO_READ`, `VIDEO_REMOVE`, `VIDEO_UPDATE`, `WARNING_READ`, `WARNING_REMOVE`, `WARNING_UPDATE`, `WORKHOUR_WRITE`, `WORKLOG_CONFIRM`, `WORKLOG_WRITE`) |
-| `description` | `String` | Beschreibung (Freitext) |
-| `_class` | `String` | Java-Klassenname: `de.videoclinic.model.AccessRight` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `name` | `String` | schema | Name des Rechts |
+| `description` | `String` | schema | Beschreibung (Freitext) |
+| `role` | `String` | inferred | Zugeordnete Rolle |
+| `_class` | `String` | schema | Java-Klassenname: `de.videoclinic.model.AccessRight` (Used) |
 
-### Cross-references
 The `accessRight` entity is referenced by:
 - [`group`](#entity-benutzergruppen-groups) (via `rights`)
 
@@ -2254,18 +2257,18 @@ The `accessRight` entity is referenced by:
 Metadaten für Schulungs- oder Informationsvideos.
 
 ### Table: video
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `name` | `String` | Videotitel |
-| `category` | `DBRef` | Referenz auf `videoCategory` |
-| `file` | `Document` | Metadaten der Videodatei ([FileMetadata](#sub-entity-filemetadata)) |
-| `preview` | `Document` | Metadaten des Vorschaubilds ([FileMetadata](#sub-entity-filemetadata)) |
-| `lengthInSeconds` | `Long` | Videolänge in Sekunden |
-| `path` | `String` | Speicherpfad |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.Video` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `name` | `String" | schema | Videotitel |
+| `category` | `DBRef` | schema | Reference to [videoCategory](#entity-videokategorien-video-categories) |
+| `file` | `Document` | schema | Metadaten der Videodatei ([FileMetadata](#sub-entity-filemetadata)) |
+| `preview` | `Document` | schema | Metadaten des Vorschaubilds ([FileMetadata](#sub-entity-filemetadata)) |
+| `lengthInSeconds` | `Long` | schema | Videolänge in Sekunden |
+| `path` | `String` | schema | Speicherpfad |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.Video` (Used) |
 
-### Cross-references
 The `video` entity is referenced by:
 - [`userVideoHistory`](#entity-video-verlauf-user-video-history)
 
@@ -2275,14 +2278,16 @@ The `video` entity is referenced by:
 Zusammenfassung von Benutzern zu Gruppen mit gemeinsamen Rollen und Rechten.
 
 ### Table: group
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `name` | `String` | Gruppenname |
-| `_class` | `String` | `de.videoclinic.model.Group` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `name` | `String` | schema | Gruppenname |
+| `description` | `String` | inferred | Beschreibung (Freitext) |
+| `role` | `String` | inferred | Hauptrolle der Gruppe |
+| `rights` | `Array` | inferred | Liste zugeordneter Rechte |
+| `_class` | `String` | schema | `de.videoclinic.model.Group` (Used) |
 
-### Cross-references
 The `group` entity is referenced by:
 - [`user`](#entity-experte-expert) (in `groups`)
 
@@ -2292,14 +2297,16 @@ The `group` entity is referenced by:
 Kategorisierung von Videos in einer hierarchischen Struktur.
 
 ### Table: videoCategory
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `parent` | `Long` | Referenz auf übergeordnete Kategorie |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.VideoCategory` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `title` | `String` | inferred | Name der Kategorie |
+| `description` | `String` | inferred | Beschreibung |
+| `thumbnail` | `Document` | inferred | Vorschaubild ([FileMetadata](#sub-entity-filemetadata)) |
+| `parent` | `Long` | schema | Reference to übergeordnete [videoCategory](#entity-videokategorien-video-categories) |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.VideoCategory` (Used) |
 
-### Cross-references
 The `videoCategory` entity is referenced by:
 - [`video`](#entity-videos-videos)
 
@@ -2309,15 +2316,14 @@ The `videoCategory` entity is referenced by:
 Verzeichnis von Ländern für Adressdaten und Feiertagsberechnungen.
 
 ### Table: country
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `code` | `String` | Ländercode (ISO) |
-| `description` | `String` | Name des Landes |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.Country` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `code` | `String` | schema | Ländercode (ISO) |
+| `description` | `String` | schema | Name des Landes |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.Country` (Used) |
 
-### Cross-references
 The `country` entity is used by:
 - (Geographic lookup and address validation)
 
@@ -2325,19 +2331,20 @@ The `country` entity is used by:
 Vordefinierte Vorlagen für Systembenachrichtigungen basierend auf Ereignissen.
 
 ### Table: notificationTemplate
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `event` | `String` | Ereignis-Typ (Used: `APPOINTMENT_ACCEPTED`, `APPOINTMENT_AGREED`, `APPOINTMENT_ASSIGNED`, `APPOINTMENT_CANCELED`, `APPOINTMENT_DELETED`, `APPOINTMENT_DISAGREED`, `APPOINTMENT_DONE`, `APPOINTMENT_EXPERT_AGREED`, `APPOINTMENT_EXPERT_CANCELED`, `APPOINTMENT_EXPERT_DISAGREED`, `APPOINTMENT_REJECTED`, `APPOINTMENT_REMINDER`, `APPOINTMENT_REQUEST`, `APPOINTMENT_RESERVED`, `APPOINTMENT_STORNO`, `APPOINTMENT_UPCOMING`, `APPOINTMENT_UPCOMING_LOCATION`, `ASYNC_JOB_QUEUE_ERROR`, `ASYNC_JOB_QUEUE_SUCCESS`, `CONSULATION_REPORTED`, `CONSULATION_REPORTED_EXPERT`, `CONSULATION_REPORTING`, `CONSULATION_SUBMIT`, `CONSULTATION_REPORTING_PSYCHOTHERAPY`, `COUNCIL_START`, `COUNCIL_SUBMIT`, `EXPERT_SUMMARY`, `FORWARD_NOTIFICATION`, `HOLIDAY_REMOVED`, `HOLIDAY_REQUEST`, `INVOICE_CUSTOMER`, `JOB_FINISHED`, `RECOVER_PASSWORD`, `TEMPLATE`, `TREATMENT_END_STORNO`, `TREATMENT_EXPERT_START`, `TREATMENT_START`, `USER_PASSWORD`) |
-| `subject` | `String` | Betreffzeile (Strukturierter Text) |
-| `message` | `String` | Nachrichtentext mit Platzhaltern (Strukturierter Text) |
-| `enabled` | `Boolean` | Ob die Vorlage aktiv ist |
-| `language` | `String` | Sprache der Vorlage (Used: `de`) |
-| `dateCreated` | `Date` | Erstellungsdatum |
-| `_class` | `String` | `de.videoclinic.model.NotificationTemplate` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `event` | `String` | schema | Ereignis-Typ (Used: `APPOINTMENT_ACCEPTED`, `APPOINTMENT_AGREED`, `APPOINTMENT_ASSIGNED`, `APPOINTMENT_CANCELED`, `APPOINTMENT_DELETED`, `APPOINTMENT_DISAGREED`, `APPOINTMENT_DONE`, `APPOINTMENT_EXPERT_AGREED`, `APPOINTMENT_EXPERT_CANCELED`, `APPOINTMENT_EXPERT_DISAGREED`, `APPOINTMENT_REJECTED`, `APPOINTMENT_REMINDER`, `APPOINTMENT_REQUEST`, `APPOINTMENT_RESERVED`, `APPOINTMENT_STORNO`, `APPOINTMENT_UPCOMING`, `APPOINTMENT_UPCOMING_LOCATION`, `ASYNC_JOB_QUEUE_ERROR`, `ASYNC_JOB_QUEUE_SUCCESS`, `CONSULATION_REPORTED`, `CONSULATION_REPORTED_EXPERT`, `CONSULATION_REPORTING`, `CONSULATION_SUBMIT`, `CONSULTATION_REPORTING_PSYCHOTHERAPY`, `COUNCIL_START`, `COUNCIL_SUBMIT`, `EXPERT_SUMMARY`, `FORWARD_NOTIFICATION`, `HOLIDAY_REMOVED`, `HOLIDAY_REQUEST`, `INVOICE_CUSTOMER`, `JOB_FINISHED`, `RECOVER_PASSWORD`, `TEMPLATE`, `TREATMENT_END_STORNO`, `TREATMENT_EXPERT_START`, `TREATMENT_START`, `USER_PASSWORD`) |
+| `subject` | `String` | schema | Betreffzeile (Strukturierter Text) |
+| `message` | `String` | schema | Nachrichtentext mit Platzhaltern (Strukturierter Text) |
+| `enabled` | `Boolean` | schema | Ob die Vorlage aktiv ist |
+| `language` | `String` | schema | Sprache der Vorlage (Used: `de`) |
+| `dateCreated` | `Date` | schema | Erstellungsdatum |
+| `dateChanged` | `Date` | inferred | Änderungsdatum |
+| `changedBy` | `DBRef` | inferred | Geändert von (Reference to [user](#entity-experte-expert)) |
+| `_class` | `String` | schema | `de.videoclinic.model.NotificationTemplate` (Used) |
 
-### Cross-references
 The `notificationTemplate` entity is used by:
 - (System-wide notification logic triggered by events)
 
@@ -2347,18 +2354,14 @@ The `notificationTemplate` entity is used by:
 Protokollierung von Abrechnungszeiträumen, die für Änderungen gesperrt wurden.
 
 ### Table: closedMonth
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `month` | `Number` | Monat |
-| `year` | `Number` | Jahr |
-| `dateClosed` | `Date` | Abschlussdatum |
-| `closedBy` | `DBRef` | Abgeschlossen von (Referenz auf `user`) |
-| `comment` | `String` | Kommentar zum Abschluss |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.ClosedMonth` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `period` | `Number` | schema | Abgeschlossener Zeitraum (Format: YYYYMM) |
+| `comment` | `String` | schema | Kommentar zum Abschluss |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.ClosedMonth` (Used) |
 
-### Cross-references
 The `closedMonth` entity is used by:
 - (System-wide billing and locking processes)
 
@@ -2368,18 +2371,17 @@ The `closedMonth` entity is used by:
 Definition von Vorlagen für den Datenexport aus dem System.
 
 ### Table: exportTemplate
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `name` | `String` | Name der Vorlage |
-| `filename` | `String` | Standard-Dateiname für den Export |
-| `template` | `Document` | Metadaten der Template-Datei ([FileMetadata](#sub-entity-filemetadata)) |
-| `type` | `String` | Export-Typ:<br>• `APPOINTMENT` (Used)<br>• `EXPERT` (Used)<br>• `WORKLOG` (Used) |
-| `active` | `Boolean` | Status |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.ExportTemplate` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `name` | `String` | schema | Name der Vorlage |
+| `filename` | `String` | schema | Standard-Dateiname für den Export |
+| `template` | `Document` | schema | Metadaten der Template-Datei ([FileMetadata](#sub-entity-filemetadata)) |
+| `type` | `String` | schema | Export-Typ:<br>• `APPOINTMENT` (Used)<br>• `EXPERT` (Used)<br>• `WORKLOG` (Used) |
+| `active` | `Boolean` | schema | Status |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.ExportTemplate` (Used) |
 
-### Cross-references
 The `exportTemplate` entity is used by:
 - (Data export modules for generating CSV/PDF reports)
 
@@ -2389,18 +2391,21 @@ The `exportTemplate` entity is used by:
 Allgemeine Informationen zu physischen Standorten oder Web-Präsenzen.
 
 ### Table: site
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `name` | `String` | Name der Seite |
-| `address` | `String` | Adresse |
-| `zip` | `String` | PLZ |
-| `city` | `String` | Ort |
-| `primary` | `Boolean` | Hauptstandort Kennzeichnung |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.Site` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `name` | `String` | schema | Name der Seite |
+| `address` | `String` | schema | Adresse |
+| `zip` | `String` | schema | PLZ |
+| `city` | `String` | schema | Ort |
+| `primary` | `Boolean` | schema | Hauptstandort Kennzeichnung |
+| `dateCreated` | `Date` | inferred | Erstellungsdatum |
+| `createdBy` | `DBRef` | inferred | Erstellt von |
+| `dateChanged` | `Date` | inferred | Änderungsdatum |
+| `changedBy` | `DBRef` | inferred | Geändert von |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.Site` (Used) |
 
-### Cross-references
 The `site` entity is used for:
 - (Organizational structure and location grouping)
 
@@ -2410,20 +2415,19 @@ The `site` entity is used for:
 Meldungen, die Benutzern beim Login oder auf dem Dashboard angezeigt werden.
 
 ### Table: messageOfTheDay
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `message` | `String` | Die eigentliche Nachricht (HTML/Text) |
-| `subject` | `String` | Betreff |
-| `roles` | `Array` | Rollen, denen diese Nachricht angezeigt wird (Strings) |
-| `dateStart` | `Date` | Anzeige ab |
-| `dateEnd` | `Date` | Anzeige bis |
-| `enabled` | `Boolean` | Status |
-| `important` | `Boolean` | Wichtig-Kennzeichnung |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.MessageOfTheDay` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `message` | `String` | schema | Die eigentliche Nachricht (HTML/Text) |
+| `subject` | `String` | schema | Betreff |
+| `roles` | `Array` | schema | Rollen, denen diese Nachricht angezeigt wird (Strings) |
+| `dateStart` | `Date` | schema | Anzeige ab |
+| `dateEnd` | `Date` | schema | Anzeige bis |
+| `enabled` | `Boolean` | schema | Status |
+| `important` | `Boolean` | schema | Wichtig-Kennzeichnung |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.MessageOfTheDay` (Used) |
 
-### Cross-references
 The `messageOfTheDay` entity is used for:
 - (Global announcements shown to users on the dashboard)
 
@@ -2431,22 +2435,22 @@ The `messageOfTheDay` entity is used for:
 Definition der einzelnen Schritte, die ein Experte oder Standort während des Onboarding-Prozesses durchlaufen muss.
 
 ### Table: onboardingStep
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer (Zeitstempel) |
-| `title` | `String` | Titel des Schritts (Freitext) |
-| `description` | `String` | Detaillierte Beschreibung (Freitext) |
-| `priority` | `Number` | Reihenfolge der Bearbeitung |
-| `mandatory` | `Boolean` | Ob der Schritt verpflichtend ist |
-| `type` | `String` | Art des Schritts:<br>• `CHECK` (Used) |
-| `assignmentType` | `String` | Art der Zuordnung:<br>• `EMPLOYEE` (Used)<br>• `LOCATION` (Used) |
-| `dateCreated` | `Date` | Erstellungszeitpunkt |
-| `dateChanged` | `Date` | Zeitpunkt der letzten Änderung |
-| `createdBy` | `DBRef` | Erstellt von (Referenz auf `user`) |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.OnboardingStep` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer (Zeitstempel) |
+| `title` | `String` | schema | Titel des Schritts (Freitext) |
+| `description` | `String` | schema | Detaillierte Beschreibung (Freitext) |
+| `priority` | `Number` | schema | Reihenfolge der Bearbeitung |
+| `mandatory` | `Boolean` | schema | Ob der Schritt verpflichtend ist |
+| `type` | `String` | schema | Art des Schritts:<br>• `CHECK` (Used) |
+| `assignmentType` | `String` | schema | Art der Zuordnung:<br>• `EMPLOYEE` (Used)<br>• `LOCATION` (Used) |
+| `dateCreated` | `Date` | schema | Erstellungszeitpunkt |
+| `dateChanged` | `Date` | schema | Zeitpunkt der letzten Änderung |
+| `createdBy` | `DBRef` | schema | Erstellt von (Reference to [user](#entity-experte-expert)) |
+| `changedBy` | `DBRef` | schema | Geändert von (Reference to [user](#entity-experte-expert)) |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.OnboardingStep` (Used) |
 
-### Cross-references
 The `onboardingStep` entity is referenced by:
 - [`onboardingHistory`](#entity-onboarding-verlauf-onboarding-history) (as a snapshot in `step`)
 
@@ -2456,14 +2460,13 @@ The `onboardingStep` entity is referenced by:
 Zähler zur Generierung von fortlaufenden IDs für verschiedene Entitäten.
 
 ### Table: sequenceEntity
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `ObjectId` | Interner Bezeichner |
-| `name` | `String` | Name der Sequenz (z.B. Entitätsname) |
-| `value` | `Long` | Aktueller Zählerwert |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.SequenceEntity` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `ObjectId` | schema | Interner Bezeichner |
+| `name` | `String` | schema | Name der Sequenz (e.g. Entitätsname) |
+| `value` | `Long` | schema | Aktueller Zählerwert |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.SequenceEntity` (Used) |
 
-### Cross-references
 The `sequenceEntity` entity is used by:
 - (Internal ID generation logic for various collections)
 
@@ -2473,16 +2476,15 @@ The `sequenceEntity` entity is used by:
 Kategorisierung von verschiedenen Behandlungsarten.
 
 ### Table: treatmentCategory
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version" | `Long` | Versionsnummer |
-| `name` | `String` | Name der Kategorie (Used: `Allgemeinmedizin`, `Allgemeinmedizin_Telearzt`, `Andrologie`, `Anästhesie`, `Apotheke`, `Arbeitsmedizin`, `Audiologie`, `Augenheilkunde`, `Chirurgie`, `Diätassistent`, `Diätberatung`, `Durchgangsarzt`, `Gastroenterologie`, `Genetik`, `Gynäkologie`, `HNO-Heilkunde`, `Haut- und Geschlechtskrankheiten`, `Hämatologie`, `Hörgeräteakkustiker`, `Innere Medizin`, `Kardiologie`, `Kieferorthopädie`, `Labor`, `Logopädie`, `Mund-Kiefer-Gesichtschirurgie`, `Nephrologie`, `Neurologie`, `Nuklearmedizin`, `Onkologie`, `Optiker`, `Orthopädie`, `Orthopädieschuhmacher`, `Orthopädietechniker`, `Pathologie`, `Physiotherapie`, `Pneumologie`, `Psychiatrie`, `Psychiatrie_Telearzt`, `Pädiatrie`, `Radiologie`, `Rechtsmedizin`, `Sanitätshaus`, `Schmerztherapie`, `Traumatologie`, `Urologie`, `Zahnmedizin`, `Zahntechniker`, `sonstige`, `öffentliches Gesundheitswesen`) |
-| `description` | `String` | Beschreibung (Freitext) |
-| `prio` | `Number` | Priorität |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.TreatmentCategory` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version" | `Long` | schema | Versionsnummer |
+| `name` | `String` | schema | Name der Kategorie (Used: `Allgemeinmedizin`, `Allgemeinmedizin_Telearzt`, `Andrologie`, `Anästhesie`, `Apotheke`, `Arbeitsmedizin`, `Audiologie`, `Augenheilkunde`, `Chirurgie`, `Diätassistent`, `Diätberatung`, `Durchgangsarzt`, `Gastroenterologie`, `Genetik`, `Gynäkologie`, `HNO-Heilkunde`, `Haut- und Geschlechtskrankheiten`, `Hämatologie`, `Hörgeräteakkustiker`, `Innere Medizin`, `Kardiologie`, `Kieferorthopädie`, `Labor`, `Logopädie`, `Mund-Kiefer-Gesichtschirurgie`, `Nephrologie`, `Neurologie`, `Nuklearmedizin`, `Onkologie`, `Optiker`, `Orthopädie`, `Orthopädieschuhmacher`, `Orthopädietechniker`, `Pathologie`, `Physiotherapie`, `Pneumologie`, `Psychiatrie`, `Psychiatrie_Telearzt`, `Pädiatrie`, `Radiologie`, `Rechtsmedizin`, `Sanitätshaus`, `Schmerztherapie`, `Traumatologie`, `Urologie`, `Zahnmedizin`, `Zahntechniker`, `sonstige`, `öffentliches Gesundheitswesen`) |
+| `description` | `String` | schema | Beschreibung (Freitext) |
+| `prio` | `Number` | schema | Priorität |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.TreatmentCategory` (Used) |
 
-### Cross-references
 The `treatmentCategory` entity is referenced by:
 - [`treatment`](#entity-behandlungsverlauf-treatment) (via `category` DBRef)
 
@@ -2492,16 +2494,17 @@ The `treatmentCategory` entity is referenced by:
 Manuell eingetragene Abwesenheiten oder Urlaubszeiten von Experten.
 
 ### Table: holiday
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `start` | `Date` | Beginn der Abwesenheit |
-| `until` | `Date` | Ende der Abwesenheit |
-| `owner` | `DBRef` | Referenz auf `user` |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.Holiday` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `start` | `Date` | schema | Beginn der Abwesenheit |
+| `until` | `Date` | schema | Ende der Abwesenheit |
+| `title` | `String` | inferred | Grund/Bezeichnung |
+| `approved` | `Boolean` | inferred | Genehmigungsstatus |
+| `owner` | `DBRef` | schema | Reference to [user](#entity-experte-expert) |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.Holiday` (Used) |
 
-### Cross-references
 The `holiday` entity is used by:
 - (Planning tools to show expert unavailability)
 
@@ -2511,15 +2514,15 @@ The `holiday` entity is used by:
 Snapshots von Standortdaten inklusive Raum-Informationen für die Web-Oberfläche.
 
 ### Table: locationRoomsDto
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `name` | `String` | Name des Standorts |
-| `customer` | `DBRef` | Referenz auf `customer` |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.LocationRoomsDto` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `name` | `String` | schema | Name des Standorts |
+| `address` | `String` | inferred | Adresse |
+| `customer` | `DBRef` | schema | Reference to [customer](#entity-kunden-customers) |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.LocationRoomsDto` (Used) |
 
-### Cross-references
 The `locationRoomsDto` entity is used for:
 - (UI snapshots of location data)
 
@@ -2527,17 +2530,16 @@ The `locationRoomsDto` entity is used for:
 Spezifische Meldungen, die Benutzern beim Einloggen in das System angezeigt werden.
 
 ### Table: loginNotification
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `content` | `String` | Inhalt der Benachrichtigung |
-| `dateFrom` | `Date` | Gültig ab |
-| `dateTo` | `Date` | Gültig bis |
-| `active` | `Boolean` | Status |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.LoginNotification` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `content` | `String` | schema | Inhalt der Benachrichtigung |
+| `dateFrom` | `Date` | schema | Gültig ab |
+| `dateTo` | `Date` | schema | Gültig bis |
+| `active` | `Boolean` | schema | Status |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.LoginNotification` (Used) |
 
-### Cross-references
 The `loginNotification` entity is used for:
 - (Alerts shown to users upon successful system login)
 
@@ -2547,14 +2549,16 @@ The `loginNotification` entity is used for:
 Zusätzliche oder ergänzende Informationen zu Patienten, oft im Kontext spezifischer Termine.
 
 ### Table: patientData
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `onlyDocumentation` | `Boolean` | Nur Dokumentation Kennzeichnung |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.PatientData` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `appointmentId` | `Long` | inferred | Reference to [appointment](#entity-termine-appointments) |
+| `bookNumber` | `String` | inferred | Buchnummer (JVA) |
+| `location` | `Document` | inferred | Ort der Erfassung ([ConsultationLocation](#sub-entity-consultationlocation)) |
+| `onlyDocumentation` | `Boolean` | schema | Nur Dokumentation Kennzeichnung |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.PatientData` (Used) |
 
-### Cross-references
 The `patientData` entity references:
 - [`appointment`](#entity-termine-appointments)
 - [`location`](#entity-standorte-locations)
@@ -2565,15 +2569,15 @@ The `patientData` entity references:
 Zusammenfassungen von Stornierungsregeln für verschiedene Dienstleistungen oder Kunden.
 
 ### Table: stornoGroup
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `comment` | `String` | Kommentar |
-| `storno` | `Array` | Einzelne Stornierungsregeln ([StornoRule](#sub-entity-stornorule)) |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.StornoGroup` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `title` | `String` | inferred | Titel der Gruppe |
+| `comment` | `String` | schema | Kommentar |
+| `storno` | `Array` | schema | Einzelne Stornierungsregeln ([StornoRule](#sub-entity-stornorule)) |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.StornoGroup` (Used) |
 
-### Cross-references
 The `stornoGroup` entity is referenced by:
 - [`jobId`](#entity-dienstleistung-service) (via `appointmentCondition.storno`)
 
@@ -2582,16 +2586,15 @@ The `stornoGroup` entity is referenced by:
 #### Sub-entity: StornoRule
 Definiert eine spezifische Stornierungsbedingung (Zeitpunkt und Kosten).
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `String` | Internal identifier |
-| `name` | `String` | Bezeichnung der Regel |
-| `stornoTime` | `Long` | Zeitpunkt (in Sekunden/Millisekunden vor Termin) |
-| `percentage` | `Number` | Prozentsatz der Kosten |
-| `type` | `String` | Art der Regel |
-| `comment` | `String` | Kommentar |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `String` | inferred | Internal identifier |
+| `name` | `String` | schema | Bezeichnung der Regel |
+| `stornoTime` | `Long` | schema | Zeitpunkt (in Sekunden/Millisekunden vor Termin) |
+| `percentage` | `Number` | schema | Prozentsatz der Kosten |
+| `type` | `String` | inferred | Art der Regel |
+| `comment` | `String` | schema | Kommentar |
 
-### Cross-references
 The `StornoRule` sub-entity is used within:
 - [`stornoGroup`](#entity-storno-regelgruppen-storno-groups) (as `storno` array)
 
@@ -2601,17 +2604,16 @@ The `StornoRule` sub-entity is used within:
 Kategorisierung von Support-Anfragen und deren Zuordnung zu Bearbeitungsschlangen.
 
 ### Table: supportCategory
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `category` | `String` | Kategoriename (intern) |
-| `title` | `String` | Anzeigename der Kategorie |
-| `queue` | `String` | Bearbeitungsschlange (Queue) |
-| `subcategories` | `Array` | Liste von Unterkategorien (Strings) |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.SupportCategory` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `category` | `String` | schema | Kategoriename (intern) |
+| `title` | `String` | schema | Anzeigename der Kategorie |
+| `queue` | `String` | schema | Bearbeitungsschlange (Queue) |
+| `subcategories` | `Array` | schema | Liste von Unterkategorien (Strings) |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.SupportCategory` (Used) |
 
-### Cross-references
 The `supportCategory` entity is used for:
 - (Internal helpdesk categorization of support tickets)
 
@@ -2621,16 +2623,15 @@ The `supportCategory` entity is used for:
 Definition von standardisierten Arbeitszeit-Modellen oder Stundenkontingenten.
 
 ### Table: workHour
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `hours` | `Number` | Anzahl der Stunden |
-| `code` | `String` | Kurzcode |
-| `description` | `String` | Beschreibung |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.WorkHour` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `hours` | `Number` | schema | Anzahl der Stunden |
+| `code` | `String` | schema | Kurzcode |
+| `description` | `String` | schema | Beschreibung |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.WorkHour` (Used) |
 
-### Cross-references
 The `workHour` entity is used for:
 - (Internal calculation of expert working hours)
 
@@ -2638,19 +2639,21 @@ The `workHour` entity is used for:
 Zentrales Verzeichnis aller Patienten mit persönlichen Daten und Kontakthistorie.
 
 ### Table: patient
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `title` | `String` | Akademischer Titel |
-| `firstName` | `String` | Vorname |
-| `lastName` | `String` | Nachname |
-| `displayName` | `String` | Vollständiger Name für die Anzeige |
-| `birthday` | `Date` | Geburtsdatum |
-| `location` | `DBRef` | Zugeordneter Standard-Standort |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.Patient` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `title` | `String` | schema | Akademischer Titel |
+| `firstName` | `String` | schema | Vorname |
+| `lastName` | `String` | schema | Nachname |
+| `displayName` | `String` | schema | Vollständiger Name für die Anzeige |
+| `birthday` | `Date` | schema | Geburtsdatum |
+| `primaryEmail` | `String` | inferred | Primäre E-Mail-Adresse |
+| `homeZipCode` | `String` | inferred | Postleitzahl |
+| `homeCity` | `String` | inferred | Stadt |
+| `location` | `DBRef` | schema | Zugeordneter Standard-Standort |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.Patient` (Used) |
 
-### Cross-references
 The `patient` entity is referenced by:
 - [`consultationData`](#entity-konsultationsdaten-consultation-data) (implicitly via JVA identifiers or legacy links)
 - [`treatment`](#entity-behandlungsverlauf-treatment) (implicitly via JVA identifiers)
@@ -2661,13 +2664,13 @@ The `patient` entity is referenced by:
 Verzeichnis von medizinischem Equipment, das an Standorten vorhanden sein kann.
 
 ### Table: equipment
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `description` | `String` | Beschreibung |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.Equipment` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `name` | `String` | inferred | Name des Equipments |
+| `description` | `String` | schema | Beschreibung |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.Equipment` (Used) |
 
-### Cross-references
 The `equipment` entity is referenced by:
 - [`questionaire`](#entity-qualit-tsumfragen-questionaires) (implicitly via quality ratings)
 
@@ -2677,15 +2680,15 @@ The `equipment` entity is referenced by:
 Registry aller über die Benutzeroberfläche hochgeladenen Dateien.
 
 ### Table: uploadFile
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `sessionId` | `String` | Session-ID des Uploads |
-| `created` | `Long` | Erstellungszeitpunkt (Unix TS) |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.UploadFile` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `sessionId` | `String` | schema | Session-ID des Uploads |
+| `created` | `Long` | schema | Erstellungszeitpunkt (Unix TS) |
+| `entry` | `Document` | inferred | Metadaten der Datei ([FileMetadata](#sub-entity-filemetadata)) |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.UploadFile` (Used) |
 
-### Cross-references
 The `uploadFile` entity references:
 - (Uploaded files managed by the system)
 
@@ -2695,17 +2698,18 @@ The `uploadFile` entity references:
 Verwaltung von Projekten, die Kunden und Standorten zugeordnet sind.
 
 ### Table: project
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `dateStart` | `Date` | Projektstart |
-| `dateEnd` | `Date` | Projektende |
-| `description` | `String` | Projektbeschreibung |
-| `location` | `DBRef` | Referenz auf `location` |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.Project` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `dateStart` | `Date` | schema | Projektstart |
+| `dateEnd` | `Date` | schema | Projektende |
+| `description` | `String` | schema | Projektbeschreibung |
+| `state` | `String` | inferred | Projektstatus |
+| `customer` | `DBRef` | inferred | Reference to [customer](#entity-kunden-customers) |
+| `location` | `DBRef` | schema | Reference to [location](#entity-standorte-locations) |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.Project` (Used) |
 
-### Cross-references
 The `project` entity is referenced by:
 - (Internal project management tools)
 
@@ -2715,30 +2719,31 @@ The `project` entity is referenced by:
 Zentrales Verzeichnis für Tags zur Kategorisierung verschiedener Entitäten.
 
 ### Table: tag
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `count` | `Long` | Verwendungshäufigkeit |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.Tag` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `tag` | `String` | inferred | Tag-Name |
+| `type` | `String` | inferred | Tag-Kategorie |
+| `count` | `Long` | schema | Verwendungshäufigkeit |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.Tag` (Used) |
 
-### Cross-references
 The `tag` entity is used for:
 - (Labeling and filtering various system entities)
 
 ---
 
 ## Entity: Standorttypen (Location Types)
-Kategorisierung von Standorten (z.B. JVA, Klinik).
+Kategorisierung von Standorten: `JVA`, `CLINIC`, `POLICE`, etc.
 
 ### Table: locationType
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `name` | `String` | Name des Typs |
-| `prio` | `Number` | Sortierpriorität |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.LocationType` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `name` | `String` | schema | Name des Typs:<br>• `JVA` (Used)<br>• `MRV` (Used)<br>• `SHIP` (Used)<br>• `CLINIC` (Used)<br>• `POLICE` (Used)<br>• `OTHER` (Used)<br>• `MUKI` (Used)<br>• `INTERN` (Used)<br>• `KUR` (Used) |
+| `description` | `String` | inferred | Beschreibung |
+| `prio` | `Number` | schema | Sortierpriorität |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.LocationType` (Used) |
 
-### Cross-references
 The `locationType` entity is referenced by:
 - [`location`](#entity-standorte-locations) (conceptually, though not explicitly shown in schema samples)
 
@@ -2746,16 +2751,17 @@ The `locationType` entity is referenced by:
 Definition von Abrechnungseinheiten mit spezifischen Steuersätzen und ID-Formaten.
 
 ### Table: cashRegister
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `cashRegisterId` | `String` | ID der Kasse |
-| `count` | `Long` | Aktueller Zähler für Rechnungsnummern |
-| `enabled` | `Boolean` | Status |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.CashRegister` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `cashRegisterId` | `String` | schema | ID der Kasse |
+| `count` | `Long` | schema | Aktueller Zähler für Rechnungsnummern |
+| `idFormat` | `String` | inferred | Format der Rechnungs-ID |
+| `taxValues` | `Array` | inferred | Verfügbare Steuersätze ([TaxValue](#sub-entity-taxvalue)) |
+| `enabled` | `Boolean` | schema | Status |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.CashRegister` (Used) |
 
-### Cross-references
 The `cashRegister` entity is referenced by:
 - [`invoice`](#entity-rechnungen-invoices)
 
@@ -2764,17 +2770,16 @@ The `cashRegister` entity is referenced by:
 #### Sub-entity: TaxValue
 Definition eines Steuersatzes.
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `String` | Internal identifier |
-| `name` | `String` | Bezeichnung |
-| `value` | `Number` | Prozentsatz |
-| `enabled` | `Boolean` | Status |
-| `start` | `Date` | Gültig ab |
-| `until` | `Date` | Gültig bis |
-| `description` | `String` | Beschreibung |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `String" | inferred | Internal identifier |
+| `name` | `String` | schema | Bezeichnung |
+| `value` | `Number` | schema | Prozentsatz |
+| `enabled` | `Boolean` | schema | Status |
+| `start` | `Date` | schema | Gültig ab |
+| `until` | `Date` | schema | Gültig bis |
+| `description` | `String` | schema | Beschreibung |
 
-### Cross-references
 The `TaxValue` sub-entity is used within:
 - [`cashRegister`](#entity-kassenregistrierung-cash-register) (as `taxes` array)
 
@@ -2784,12 +2789,12 @@ The `TaxValue` sub-entity is used within:
 Interne Testbenutzer für Systemprüfungen.
 
 ### Table: 1testuser
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `password` | `String` | Passwort |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.TestUser` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `password` | `String` | schema | Passwort |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.TestUser` (Used) |
 
-### Cross-references
 The `1testuser` entity is used for:
 - (System testing and QA)
 
@@ -2799,15 +2804,16 @@ The `1testuser` entity is used for:
 Protokollierung von Qualitätsmetriken für erbrachte Dienstleistungen.
 
 ### Table: serviceQm
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `dateCreated` | `Date` | Erstellungsdatum |
-| `comment` | `String` | Kommentar |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.ServiceQm` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `dateCreated` | `Date` | schema | Erstellungsdatum |
+| `ratingRisk` | `Number` | inferred | Risiko-Bewertung |
+| `ratingCommunication` | `Number` | inferred | Kommunikations-Bewertung |
+| `comment` | `String` | schema | Kommentar |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.ServiceQm` (Used) |
 
-### Cross-references
 The `serviceQm` entity is used for:
 - (Quality assurance reports)
 
@@ -2817,14 +2823,16 @@ The `serviceQm` entity is used for:
 Definition von physischen Räumen an den Standorten.
 
 ### Table: room
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `available` | `Boolean` | Verfügbarkeit |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.Room` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `location` | `DBRef` | schema | Reference to [location](#entity-standorte-locations) |
+| `name` | `String` | inferred | Raumname |
+| `number` | `String` | inferred | Raumnummer |
+| `available` | `Boolean` | schema | Verfügbarkeit |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.Room` (Used) |
 
-### Cross-references
 The `room` entity references:
 - [`location`](#entity-standorte-locations)
 
@@ -2834,16 +2842,15 @@ The `room` entity references:
 Globale Systemeinstellungen und Metadaten.
 
 ### Table: videoclinicSystem
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `ObjectId` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `invoiceIdFormat` | `String` | Globales Format für Rechnungs-IDs |
-| `accountManagement` | `Boolean` | Account-Management aktiviert |
-| `timeManagement` | `Boolean` | Zeit-Management aktiviert |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.VideoclinicSystem` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `ObjectId` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `invoiceIdFormat` | `String` | schema | Globales Format für Rechnungs-IDs |
+| `accountManagement` | `Boolean` | schema | Account-Management aktiviert |
+| `timeManagement` | `Boolean` | schema | Zeit-Management aktiviert |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.VideoclinicSystem` (Used) |
 
-### Cross-references
 The `videoclinicSystem` entity is used for:
 - (Global system configuration and feature toggles)
 
@@ -2853,16 +2860,15 @@ The `videoclinicSystem` entity is used for:
 Kategorisierung von medizinischer Ausrüstung.
 
 ### Table: equipmentGroup
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `code` | `String` | Gruppen-Code |
-| `description` | `String` | Beschreibung |
-| `prio` | `Number` | Priorität |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.EquipmentGroup` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `code` | `String` | schema | Gruppen-Code |
+| `description` | `String` | schema | Beschreibung |
+| `prio` | `Number` | schema | Priorität |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.EquipmentGroup` (Used) |
 
-### Cross-references
 The `equipmentGroup` entity is referenced by:
 - [`equipment`](#entity-ausr-stung-equipment) (conceptually, to group inventory items)
 
@@ -2872,14 +2878,13 @@ The `equipmentGroup` entity is referenced by:
 Definition von organisatorischen Abteilungen.
 
 ### Table: department
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `_id` | `Long` | Interner Bezeichner |
-| `version` | `Long` | Versionsnummer |
-| `code` | `String` | Abteilungs-Code |
-| `description` | `String` | Beschreibung |
-| `_class` | `String` | Java Klassenname: `de.videoclinic.model.Department` (Used) |
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `code` | `String` | schema | Abteilungs-Code |
+| `description` | `String` | schema | Beschreibung |
+| `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.Department` (Used) |
 
-### Cross-references
 The `department` entity is used for:
 - (Organizational structure within locations)

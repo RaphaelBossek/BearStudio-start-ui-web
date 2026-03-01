@@ -24,6 +24,8 @@ Enum Scheduling_Enum {
 Enum JobType_Enum {
   APPOINTMENT
   SHIFT
+  TREATMENT
+  TREATMENT_REPORT
 }
 
 Enum TaxType_Enum {
@@ -44,6 +46,7 @@ Enum Role_Enum {
   LEITER_INTERN
   REGISTERED
   STANDARD
+  GUEST
 }
 
 Enum PatientDataType_Enum {
@@ -53,6 +56,52 @@ Enum PatientDataType_Enum {
   INTERNAL_DAV
   INTERNAL_SECUREBOX
   INTERNAL_VCCLOUD
+}
+
+Enum LocationType_Enum {
+  JVA
+  MRV
+  SHIP
+  CLINIC
+  POLICE
+  OTHER
+  MUKI
+  INTERN
+  KUR
+}
+
+Enum DefaultConsultation_Enum {
+  DOCUMENT
+  EXTERNAL
+  INCARCERATION
+  ONBOARDING
+  ONBOARDING_SHORT
+  STANDARD
+  TREATMENT
+}
+
+Enum User_Level_Enum {
+  ONBOARDING
+  BEGINNER
+  AMATEUR
+  PROFI
+}
+
+Enum Salutation_Enum {
+  MALE
+  FEMALE
+}
+
+Enum Gender_Enum {
+  MALE
+  FEMALE
+}
+
+Enum User_Focus_Enum {
+  NONE
+  LOW
+  MEDIUM
+  HIGH
 }
 
 Enum OnboardingType_Enum {
@@ -67,6 +116,8 @@ Enum OnboardingAssignment_Enum {
 Enum jobId_defaultFurtherTreatment_enum {
   FOLLOW_UP
   IF_REQUIRED
+  REFERRAL
+  REFERRAL_OTHER
 }
 
 Enum skill_type_enum {
@@ -90,22 +141,13 @@ Enum user_employeeState_enum {
   UNCONFIRMED
 }
 
-Enum consultationData_type_enum {
-  EXTERNAL
-  STANDARD
-}
-
 Enum consultationData_state_enum {
   CLOSED
+  CREATED
+  OPEN
+  REPORTED
   TRANSMITTED
-}
-
-Enum consultationData_appointmentType_enum {
-  APPOINTMENT
-}
-
-Enum consultationData_paymentType_enum {
-  FULL
+  VERIFIED
 }
 
 Enum treatment_type_enum {
@@ -182,18 +224,6 @@ Enum appointment_state_enum {
   STORNO
 }
 
-Enum appointment_type_enum {
-  APPOINTMENT
-  SHIFT
-  TREATMENT
-  TREATMENT_REPORT
-}
-
-Enum appointment_billingType_enum {
-  HOURLY
-  PER_CONSULTATION
-}
-
 Enum appointment_paymentType_enum {
   EK
   FULL
@@ -201,30 +231,11 @@ Enum appointment_paymentType_enum {
   IGNORE
 }
 
-Enum appointment_priceType_enum {
+Enum priceType_enum {
   WEEKDAY
   WEEKNIGHT
   WEEKENDDAY
   WEEKENDNIGHT
-}
-
-Enum consultation_type_enum {
-  DOCUMENT
-  EXTERNAL
-  INCARCERATION
-  ONBOARDING
-  ONBOARDING_SHORT
-  STANDARD
-  TREATMENT
-}
-
-Enum consultation_state_enum {
-  CLOSED
-  CREATED
-  OPEN
-  REPORTED
-  TRANSMITTED
-  VERIFIED
 }
 
 Enum log_level_enum {
@@ -243,13 +254,6 @@ Enum invoiceComponent_employeeType_enum {
   A1
   HN2
   HONORAR
-}
-
-Enum invoiceComponent_appointmentType_enum {
-  APPOINTMENT
-  SHIFT
-  TREATMENT
-  TREATMENT_REPORT
 }
 
 Enum invoice_paymentType_enum {
@@ -294,25 +298,6 @@ Enum asyncJobQueue_type_enum {
   TREATMENT
 }
 
-Enum expertWeek_type_enum {
-  TREATMENT
-}
-
-Enum shiftPlan_priceType_enum {
-  WEEKDAY
-  WEEKNIGHT
-  WEEKENDDAY
-  WEEKENDNIGHT
-}
-
-Enum accessRight_role_enum {
-  ADMIN
-  GUEST
-  LEITER_INTERN
-  REGISTERED
-  STANDARD
-}
-
 Enum exportTemplate_type_enum {
   APPOINTMENT
   EXPERT
@@ -330,17 +315,6 @@ Enum Address_type_enum {
   OTHER
 }
 
-Enum ConsultationBase_communicationType_enum {
-  VIDEO
-}
-
-Enum ConsultationBase_furtherTreatment_enum {
-  FOLLOW_UP
-  IF_REQUIRED
-  REFERRAL
-  REFERRAL_OTHER
-}
-
 Enum ConsultationDiagnosis_localization_enum {
   LEFT
   RIGHT
@@ -353,35 +327,6 @@ Enum ConsultationDiagnosis_level_enum {
   VERIFY
   ZERO
   STATIONARY
-}
-
-Enum ConsultationPrescription_type_enum {
-  LIMITED
-}
-
-Enum ConsultationAnamnesis_type_enum {
-  MEDICAL
-  MEDICATION
-  ALLERGY
-}
-
-Enum ConsultationPatientReport_type_enum {
-  FINDINGS
-  MEASUREMENT
-}
-
-Enum TreatmentPosition_state_enum {
-  CANCELED
-  CLOSED
-  DONE
-  LOCKEDIN
-  READY
-  RESCHEDULED
-  STORNO
-}
-
-Enum TreatmentReport_type_enum {
-  STANDARD
 }
 
 Table customer [headercolor: #8C564B] {
@@ -405,19 +350,19 @@ Table customer [headercolor: #8C564B] {
   webpage String [note: 'Webseite']
   phone String [note: 'Telefonnummer']
   phone2 String [note: 'Zweite Telefonnummer']
-  faxNumber String [note: 'Faxnummer']
-  timeframe String [note: 'Abrechnungszeitraum: MONTHLY']
+  faxnumber String [note: 'Faxnummer']
+  timeframe String [note: 'Abrechnungszeitraum:<br>• `MONTHLY` (Used)']
   roundingType RoundingType_Enum [note: 'Rundungsregel']
   roundingTypeExceptions Array [note: 'Ausnahmen von der Rundungsregel']
-  discounts Array [note: 'Liste von Rabatten (CustomerDiscount)']
-  priceLists Array [note: 'Zugeordnete Preislisten (CustomerPriceList)']
+  discounts Array [note: 'Liste von Rabatten ([CustomerDiscount](#sub-entity-customerdiscount))']
+  priceLists Array [note: 'Zugeordnete Preislisten ([CustomerPriceList](#sub-entity-customerpricelist))']
   priceListsValid String [note: 'Validierungshinweis für Preislisten']
   dateCustomer timestamp [note: 'Kundendatum']
   dateCreated timestamp [note: 'Erstellungsdatum']
-  createdById number [note: 'Ersteller']
+  createdById number [note: 'Ersteller (Reference to [user](#entity-experte-expert))']
   dateChanged timestamp [note: 'Änderungsdatum']
-  changedById number [note: 'Geändert von']
-  _class String [note: 'Java Klassenname']
+  changedById number [note: 'Geändert von (Reference to [user](#entity-experte-expert))']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.Customer']
 }
 
 Table CustomerDiscount [headercolor: #8C564B] {
@@ -445,29 +390,30 @@ Table appointmentPlan [headercolor: #1F77B4] {
   version number [note: 'Versionsnummer (Zeitstempel)']
   name String [note: 'Ein Name für den Plan (Freitext)']
   job Document [note: 'Eine Dienstleistung ([PlanJob](#sub-entity-planjob))']
-  day DayOfWeek_Enum [note: 'Einen Wochentag:<br>• `MO` (Used)<br>• `TU` (Used)<br>• `WE` (Used)<br>• `TH` (Used)<br>• `FR` (Used)']
-  startDate Date [note: 'Ein Startdatum']
-  endDate Date [note: 'Einen Enddatum']
-  lastDate Date [note: 'Ein Datum der letzten Wiederholung']
-  count Number [note: 'Einer Anzahl von Wiederholungen']
-  scheduling Scheduling_Enum [note: 'Die Eigenschaft der Wiederholung:<br>• `WEEKLY`: Wöchentlich (Used)<br>• `XOFMONTH`: jeder x-te Tag im Monat (Used)<br>• `FIRST_DAY_MONTH`: Erster Tag im Monats (Not used)<br>• `DAY_MONTH`: Tag im Monat (Not used)<br>• `LAST_DAY_MONTH`: Letzter Tag im Monat (Not used)']
-  schedulingMulitplier Number [note: 'Multiplikator für die Wiederholung']
-  timeStart Number [note: 'Einer Startuhrzeit (Format: HHmm, z.B. 930 für 09:30)']
-  timeEnd Number [note: 'Eine Enduhrzeit (Format: HHmm, z.B. 1200 für 12:00)']
+  day DayOfWeek_Enum [note: 'Einen Wochentag']
+  startDate timestamp [note: 'Ein Startdatum']
+  endDate timestamp [note: 'Einen Enddatum']
+  lastDate timestamp [note: 'Ein Datum der letzten Wiederholung']
+  count number [note: 'Einer Anzahl von Wiederholungen']
+  scheduling Scheduling_Enum [note: 'Die Eigenschaft der Wiederholung']
+  schedulingMulitplier number [note: 'Multiplikator für die Wiederholung']
+  timeStart number [note: 'Einer Startuhrzeit (Format: HHmm, z.B. 930 für 09:30)']
+  timeEnd number [note: 'Eine Enduhrzeit (Format: HHmm, z.B. 1200 für 12:00)']
   doctor Document [note: 'Einen zugewiesenen Experten ([PlanUser](#sub-entity-planuser))']
   location Document [note: 'Einen zugewiesenen Ort ([PlanLocation](#sub-entity-planlocation))']
   comment String [note: 'Einem Kommentar (Freitext)']
-  expertOnly Boolean [note: 'Gibt an, ob nur der zugewiesene Experte die Dienstleistung erbringen kann']
-  dateCreated Date [note: 'Erstellungsdatum']
-  createdBy DocumentDBRef [note: 'Ersteller ([PlanUser](#sub-entity-planuser))']
-  dateChanged Date [note: 'Änderungsdatum']
-  changedBy DocumentDBRef [note: 'Ändernder ([PlanUser](#sub-entity-planuser))']
-  _class String [note: 'Java Klassenname: `de.videoclinic.model.AppointmentPlan` (Used)']
+  expertOnly boolean [note: 'Gibt an, ob nur der zugewiesene Experte die Dienstleistung erbringen kann']
+  dateCreated timestamp [note: 'Erstellungsdatum']
+  createdBy Document [note: 'Ersteller ([PlanUser](#sub-entity-planuser))']
+  dateChanged timestamp [note: 'Änderungsdatum']
+  changedBy Document [note: 'Ändernder ([PlanUser](#sub-entity-planuser))']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.AppointmentPlan']
 }
 
 Table jobId [headercolor: #8C564B] {
   Note: 'Definition of a service (Dienstleistung), including title, color, billing modality, specialty, and consultation types.'
   _id number [pk, note: 'Interner Bezeichner']
+  version number [note: 'Versionsnummer (Zeitstempel)']
   title String [note: 'Einen Titel (intern, Experte, Rechnung)']
   code String [note: 'Eine Kurzbezeichnung']
   shortcode String [note: 'Ein Buchstabe als Kurzbezeichnung']
@@ -475,29 +421,30 @@ Table jobId [headercolor: #8C564B] {
   remoteCode String [note: 'Externer Code (z.B. Fachrichtung)']
   color String [note: 'Eine Farbe']
   type JobType_Enum [note: 'Die Abrechnungsmodalität:<br>• `APPOINTMENT` (Used)<br>• `SHIFT` (Used)']
-  prio Number [note: 'Priorität der Dienstleistung']
+  prio number [note: 'Priorität der Dienstleistung']
   skillRules Array [note: 'Regeln für benötigte Fähigkeiten ([SkillRule](#sub-entity-skillrule))']
   appointmentCondition Document [note: 'Konditionen für Termine ([AppointmentCondition](#sub-entity-appointmentcondition))']
   shiftCondition Document [note: 'Konditionen für Bereitschaften ([ShiftCondition](#sub-entity-shiftcondition))']
-  consultationStandard Boolean [note: 'Normale Konsultation']
-  consultationOnboarding Boolean [note: 'Komplette Zugangsuntersuchung']
-  consultationOnboardingShort Boolean [note: 'Kurze Zugangsuntersuchung']
-  consultationDocument Boolean [note: 'Konsiliarbericht']
-  consultationIncarceration Boolean [note: 'Gewahrsamstauglichkeit']
-  defaultConsultation String [note: 'Vorauswahl für eine Dienstleistung']
-  defaultFurtherTreatment jobId_defaultFurtherTreatment_enum [note: 'Voreinstellung für die weitere Behandlung:<br>• `FOLLOW_UP` (Used)<br>• `IF_REQUIRED` (Used)']
-  onCallNumbers Array [note: 'Rufnummern für Bereitschaften']
-  version number [note: 'Versionsnummer (Zeitstempel)']
+  consultationStandard boolean [note: 'Normale Konsultation']
+  consultationOnboarding boolean [note: 'Komplette Zugangsuntersuchung']
+  consultationOnboardingShort boolean [note: 'Kurze Zugangsuntersuchung']
+  consultationDocument boolean [note: 'Konsiliarbericht']
+  consultationIncarceration boolean [note: 'Gewahrsamstauglichkeit']
+  defaultConsultation DefaultConsultation_Enum [note: 'Vorauswahl für eine Dienstleistung']
+  defaultFurtherTreatment jobId_defaultFurtherTreatment_enum [note: 'Voreinstellung für die weitere Behandlung']
+  onCallnumbers Array [note: 'Rufnummern für Bereitschaften']
   _class String [note: 'Java Klassenname']
 }
 
-Table skill [headercolor: #E377C2] {
+Table skill [headercolor: #BD2882] {
   Note: 'Definition of a skill (Fähigkeit), including name, description, type, and status.'
+  _id number [pk, note: 'Interner Bezeichner (MANDATORY)']
   code String [note: 'Eine Bezeichnung der Fähigkeit']
   description String [note: 'Eine Beschreibung']
-  type skill_type_enum [note: 'Art der Fähigkeit:<br>• `ADDITIONAL` (Used)<br>• `EXTRA` (Used)<br>• `LANGUAGE` (Used)<br>• `MAIN` (Used)']
-  active Boolean [note: 'Ob die Fähigkeit aktiv oder deaktiviert ist']
-  certified Boolean [note: 'Ob für die Fähigkeit ein Zertifikat benötigt wird']
+  type skill_type_enum [note: 'Art der Fähigkeit']
+  active boolean [note: 'Ob die Fähigkeit aktiv oder deaktiviert ist']
+  certified boolean [note: 'Ob für die Fähigkeit ein Zertifikat benötigt wird']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.Skill']
 }
 
 Table patientAlerts [headercolor: #2CA02C] {
@@ -505,12 +452,12 @@ Table patientAlerts [headercolor: #2CA02C] {
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer (Zeitstempel)']
   name String [note: 'Eine Bezeichnung des Ausschlusskriteriums (Warnhinweis)']
-  type patientAlerts_type_enum [note: 'Art des Warnhinweises:<br>• `ALLERGY` (Used)<br>• `CONSPICIOUS` (Used)<br>• `INFECTION` (Used)<br>• `OTHER` (Used)']
-  entryRequirement Boolean [note: 'Ob das Ausschlusskriterium aktiv oder deaktiviert ist']
-  documentationRequirement Boolean [note: 'Ob eine Dokumentationspflicht besteht']
+  type patientAlerts_type_enum [note: 'Art des Warnhinweises']
+  entryRequirement boolean [note: 'Ob das Ausschlusskriterium aktiv oder deaktiviert ist']
+  documentationRequirement boolean [note: 'Ob eine Dokumentationspflicht besteht']
   description String [note: 'Eine Beschreibung']
-  priority Number [note: 'Eine Gewichtung als Zahl']
-  _class String [note: 'Java Klassenname']
+  priority number [note: 'Eine Gewichtung als Zahl']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.Warning']
 }
 
 Table user [headercolor: #FF7F0E] {
@@ -520,38 +467,48 @@ Table user [headercolor: #FF7F0E] {
   username String [note: 'Benutzername für den Login']
   email String [note: 'Primäre E-Mail-Adresse']
   password String [note: 'Persönliches Passwort']
-  enabled Boolean [note: 'Ob das Konto aktiv oder deaktiviert ist']
-  accountLocked Boolean [note: 'Ob das Konto gesperrt ist']
-  role Role_Enum [note: 'Rolle des Benutzers:<br>• `ADMIN`<br>• `ADMIN_INTERN`<br>• `ADMIN_KUNDE`<br>• `KUNDE`<br>• `LEITER_INTERN`<br>• `REGISTERED`<br>• `STANDARD`']
-  employeeState user_employeeState_enum [note: 'Status des Kontos:<br>• `ACTIVE`<br>• `CUSTOMER`<br>• `INACTIVE`<br>• `UNCONFIRMED`']
+  enabled boolean [note: 'Ob das Konto aktiv oder deaktiviert ist']
+  accountLocked boolean [note: 'Ob das Konto gesperrt ist']
+  role Role_Enum [note: 'Rolle des Benutzers']
+  employeeState user_employeeState_enum [note: 'Status des Kontos']
   userProfile Document [note: 'Persönliches Profil des Benutzers ([UserProfile](#sub-entity-userprofile))']
   employeeProfile Document [note: 'Berufliches Profil des Experten ([EmployeeProfile](#sub-entity-employeeprofile))']
   employerProfile Document [note: 'Profil des Arbeitgebers/Abrechnungsdaten ([EmployerProfile](#sub-entity-employerprofile))']
-  lastLogin Date [note: 'Letzter Login-Zeitpunkt']
-  dateCreated Date [note: 'Erstellungsdatum']
-  dateChanged Date [note: 'Änderungsdatum']
-  _class String [note: 'Java Klassenname']
+  lastLogin timestamp [note: 'Letzter Login-Zeitpunkt']
+  dateCreated timestamp [note: 'Erstellungsdatum']
+  dateChanged timestamp [note: 'Änderungsdatum']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.User']
 }
 
 Table product [headercolor: #8C564B] {
   Note: 'Goods or services subscribed by the expert, including quantity, price, and dates.'
-  name String [note: 'Ware Bezeichnung']
-  price Number [note: 'Listenpreis']
+  _id number [pk, note: 'Interner Bezeichner']
+  version number [note: 'Versionsnummer (Zeitstempel)']
+  name String [note: 'Name der Ware']
   description String [note: 'Beschreibung']
-  active Boolean [note: 'Status']
+  konto String [note: 'Buchungskonto']
+  bookingCode String [note: 'Buchungsschlüssel']
+  type String [note: 'Typ der Ware']
+  billType String [note: 'Abrechnungsart']
+  price number [note: 'Preis']
+  active boolean [note: 'Status (Aktiv/Inaktiv)']
+  dateCreated timestamp [note: 'Erstellungsdatum']
+  createdBy DBRef [note: 'Erstellt von (Referenz auf `user`)']
+  dateChanged timestamp [note: 'Änderungsdatum']
+  changedBy DBRef [note: 'Geändert von (Referenz auf `user`)']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.Product']
 }
 
 Table consultationData [headercolor: #2CA02C] {
   Note: 'Detailed data for a consultation, including medical records, prescriptions, and results.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer (Zeitstempel)']
-  date Date [note: 'Datum der Konsultation']
-  timeStart Number [note: 'Startuhrzeit (Sekunden seit Mitternacht)']
-  timeEnd Number [note: 'Enduhrzeit (Sekunden seit Mitternacht)']
-  dateSignedOff Date [note: 'Datum der Abzeichnung']
-  archived Boolean [note: 'Archivierungsstatus']
-  type consultationData_type_enum [note: 'Typ der Konsultation:<br>• `EXTERNAL` (Used)<br>• `STANDARD` (Used)']
-  state consultationData_state_enum [note: 'Status:<br>• `CLOSED` (Used)<br>• `TRANSMITTED` (Used)']
+  date timestamp [note: 'Datum der Konsultation']
+  timeStart number [note: 'Startuhrzeit (Sekunden seit Mitternacht)']
+  timeEnd number [note: 'Enduhrzeit (Sekunden seit Mitternacht)']
+  dateSignedOff timestamp [note: 'Datum der Abzeichnung']
+  archived boolean [note: 'Archivierungsstatus']
+  type consultationData_state_enum [note: 'Status']
   base Document [note: 'Basiselemente ([ConsultationBase](#sub-entity-consultationbase))']
   body Document [note: 'Körperliche Basisdaten ([ConsultationBody](#sub-entity-consultationbody))']
   warnings Array [note: 'Warnhinweise ([ConsultationWarning](#sub-entity-consultationwarning))']
@@ -560,16 +517,17 @@ Table consultationData [headercolor: #2CA02C] {
   signedOffBy DBRef [note: 'Abgezeichnet von (Referenz auf `user`)']
   appointment DBRef [note: 'Zugehöriger Termin (Referenz auf `appointment`)']
   location Document [note: 'Ort der Konsultation ([ConsultationLocation](#sub-entity-consultationlocation))']
-  period Number [note: 'Abrechnungszeitraum']
-  appointmentType consultationData_appointmentType_enum [note: 'Termintyp:<br>• `APPOINTMENT` (Used)']
+  period number [note: 'Abrechnungszeitraum']
+  appointmentType JobType_Enum [note: 'Termintyp']
   customer Document [note: 'Zugehöriger Kunde ([ConsultationCustomer](#sub-entity-consultationcustomer))']
   job Document [note: 'Erbrachte Dienstleistung ([ConsultationJob](#sub-entity-consultationjob))']
-  paymentType consultationData_paymentType_enum [note: 'Zahlungsart:<br>• `FULL` (Used)']
+  paymentType appointment_paymentType_enum [note: 'Zahlungsart']
   doctor Document [note: 'Durchführender Experte ([ConsultationDoctor](#sub-entity-consultationdoctor))']
   history Document [note: 'Historie ([ConsultationHistory](#sub-entity-consultationhistory))']
-  bookNumber String [note: 'Buchnummer (JVA)']
-  jNumber String [note: 'J-Nummer (JVA)']
+  booknumber String [note: 'Buchnummer (JVA)']
+  jnumber String [note: 'J-Nummer (JVA)']
   basisWebDataId number [note: 'Referenz auf `basisWebData`']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.ConsultationData']
 }
 
 Table expertDays [headercolor: #1F77B4] {
@@ -612,10 +570,10 @@ Table icd10 [headercolor: #9467BD] {
   text String [note: 'Detaillierter Text zur Diagnose']
   inclusion String [note: 'Einschlüsse']
   exclusion String [note: 'Ausschlusskriterien']
-  ageLow Number [note: 'Mindestalter']
-  ageHigh Number [note: 'Höchstalter']
-  exotic Boolean [note: 'Ob es sich um eine seltene/exotische Diagnose handelt']
-  _class String [note: 'Java Klassenname']
+  ageLow number [note: 'Mindestalter']
+  ageHigh number [note: 'Höchstalter']
+  exotic boolean [note: 'Ob es sich um eine seltene/exotische Diagnose handelt']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.Icd10']
 }
 
 Table treatment [headercolor: #2CA02C] {
@@ -623,34 +581,58 @@ Table treatment [headercolor: #2CA02C] {
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
   assigned Document [note: 'Zugewiesener Experte ([ConsultationDoctor](#sub-entity-consultationdoctor))']
-  hour Number [note: 'Stundenindex']
+  hour number [note: 'Stundenindex']
   day DayOfWeek_Enum [note: 'Wochentag:<br>• `MO` (Used)<br>• `TU` (Used)<br>• `WE` (Used)<br>• `TH` (Used)<br>• `FR` (Used)']
-  bookNumber String [note: 'Buchnummer (JVA)']
-  jNumber String [note: 'J-Nummer (JVA)']
+  booknumber String [note: 'Buchnummer (JVA)']
+  jnumber String [note: 'J-Nummer (JVA)']
   type treatment_type_enum [note: 'Art der Behandlung:<br>• `PSYCH` (Used)']
   state treatment_state_enum [note: 'Status der Behandlung:<br>• `ACTIVE` (Used)<br>• `CANCELED` (Used)<br>• `CANCELED_CLOSED` (Used)<br>• `CLOSED` (Used)<br>• `ENDING` (Used)<br>• `PROBATORIK` (Used)<br>• `RUNNING` (Used)<br>• `STARTED` (Used)<br>• `STORNO` (Used)<br>• `STORNO_CLOSED` (Used)']
+  dateStorno timestamp [note: 'Stornierungsdatum']
   job Document [note: 'Erbrachte Dienstleistung ([ConsultationJob](#sub-entity-consultationjob))']
-  archived Boolean [note: 'Archivierungsstatus']
+  jobReport Document [note: 'Dienstleistung für Berichte']
+  reportingPath String [note: 'Pfad für das Reporting']
+  jobReportPobatorik Document [note: 'Dienstleistung für Probatorik-Berichte']
+  archived boolean [note: 'Archivierungsstatus']
+  attachments Array [note: 'Liste von Anhängen']
   positions Array [note: 'Einzelne Termine der Behandlung ([TreatmentPosition](#sub-entity-treatmentposition))']
-  dateCreated Date [note: 'Erstellungsdatum']
+  changedBy Document [note: 'Zuletzt geändert von']
+  dateChanged timestamp [note: 'Zeitpunkt der letzten Änderung']
+  createdBy Document [note: 'Erstellt von']
+  dateCreated timestamp [note: 'Erstellungsdatum']
+  closed timestamp [note: 'Abschlussdatum']
+  countTotal number [note: 'Gesamtanzahl']
+  countFinished number [note: 'Anzahl abgeschlossener Termine']
+  dateInitial timestamp [note: 'Initiales Datum']
+  countPlanned number [note: 'Anzahl geplanter Termine']
+  comment String [note: 'Kommentar']
+  dateAcceptedPTLeitung timestamp [note: 'Akzeptiert von PT-Leitung am']
+  dateAcceptedPT timestamp [note: 'Akzeptiert von PT am']
+  dateAcceptedLocation timestamp [note: 'Akzeptiert von Standort am']
+  dateStarted timestamp [note: 'Startdatum (tatsächlich)']
+  dateStart timestamp [note: 'Startdatum (geplant)']
+  dateLastAppointment timestamp [note: 'Datum des letzten Termins']
+  reportCountInitial number [note: 'Initiale Anzahl Berichte']
+  reportCountRhytm number [note: 'Rhythmus der Berichte']
   customer Document [note: 'Zugehöriger Kunde ([ConsultationCustomer](#sub-entity-consultationcustomer))']
   location Document [note: 'Ort der Behandlung ([ConsultationLocation](#sub-entity-consultationlocation))']
+  minutes number [note: 'Dauer in Minuten']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.Treatment']
 }
 
 Table notification [headercolor: #E377C2] {
   Note: 'Logs of notifications sent to users via various channels.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
-  ts Date [note: 'Zeitstempel']
+  ts timestamp [note: 'Zeitstempel']
   from Document [note: 'Absender ([ConsultationDoctor](#sub-entity-consultationdoctor))']
   to Document [note: 'Empfänger ([ConsultationDoctor](#sub-entity-consultationdoctor))']
-  important Boolean [note: 'Wichtigkeit']
-  folder notification_folder_enum [note: 'Ordner:<br>• `INBOX` (Used)<br>• `OUTBOX` (Used)<br>• `TRASH` (Used)<br>• `ARCHIVE` (Not used)']
-  read Date [note: 'Gelesen-Zeitpunkt']
+  important boolean [note: 'Wichtigkeit']
+  folder notification_folder_enum [note: 'Ordner']
+  read timestamp [note: 'Gelesen-Zeitpunkt']
   subject String [note: 'Betreff']
   message String [note: 'Nachrichtentext']
-  notificationEvent notification_notificationEvent_enum [note: 'Art des Ereignisses:<br>• `APPOINTMENT_ACCEPTED` (Used)<br>• `APPOINTMENT_AGREED` (Used)<br>• `APPOINTMENT_ASSIGNED` (Used)<br>• `APPOINTMENT_CANCELED` (Used)<br>• `APPOINTMENT_DISAGREED` (Used)<br>• `APPOINTMENT_DONE` (Used)<br>• `APPOINTMENT_EXPERT_AGREED` (Used)<br>• `APPOINTMENT_EXPERT_CANCELED` (Used)<br>• `APPOINTMENT_EXPERT_CANCELLED` (Used)<br>• `APPOINTMENT_EXPERT_DISAGREED` (Used)<br>• `APPOINTMENT_MULTI_AGREED` (Used)<br>• `APPOINTMENT_MULTI_DISAGREED` (Used)<br>• `APPOINTMENT_REJECTED` (Used)<br>• `APPOINTMENT_REMINDER` (Used)<br>• `APPOINTMENT_REQUEST` (Used)<br>• `APPOINTMENT_RESERVED` (Used)<br>• `APPOINTMENT_STORNO` (Used)<br>• `APPOINTMENT_UPCOMING` (Used)<br>• `ASYNC_JOB_QUEUE_ERROR` (Used)<br>• `ASYNC_JOB_QUEUE_SUCCESS` (Used)<br>• `CONSULATION_REPORTED` (Used)<br>• `CONSULATION_REPORTED_EXPERT` (Used)<br>• `CONSULATION_REPORTING` (Used)<br>• `CONSULTATION_REPORTING_PSYCHOTHERAPY` (Used)<br>• `TREATMENT_EXPERT_START` (Used)']
-  emailSent Boolean [note: 'Ob eine E-Mail versendet wurde']
+  notificationEvent notification_notificationEvent_enum [note: 'Art des Ereignisses']
+  emailSent boolean [note: 'Ob eine E-Mail versendet wurde']
 }
 
 Table cDRCall [headercolor: #9467BD] {
@@ -658,34 +640,38 @@ Table cDRCall [headercolor: #9467BD] {
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
   type cDRCall_type_enum [note: 'Art des Anrufs:<br>• `DIRECT` (Used)<br>• `CONFERENCE` (Used)<br>• `FORWARDED` (Used)<br>• `INVALID_MISSING_EXPERT` (Used)<br>• `INVALID_SHORT` (Used)<br>• `INVALID_UNKNOWN` (Used)']
-  dateStart Date [note: 'Startzeitpunkt']
-  dateConnect Date [note: 'Verbindungszeitpunkt']
-  dateDisconnect Date [note: 'Trennungszeitpunkt']
+  dateStart timestamp [note: 'Startzeitpunkt']
+  dateConnect timestamp [note: 'Verbindungszeitpunkt']
+  dateDisconnect timestamp [note: 'Trennungszeitpunkt']
   duration number [note: 'Dauer in Sekunden']
-  video Boolean [note: 'Ob Video genutzt wurde']
-  callingNumber String [note: 'Anrufende Nummer']
-  connected Boolean [note: 'Ob eine Verbindung zustande kam']
+  video boolean [note: 'Ob Video genutzt wurde']
+  callingnumber String [note: 'Anrufende Nummer']
+  connected boolean [note: 'Ob eine Verbindung zustande kam']
   location String [note: 'Ort des Anrufs']
+  userId number [note: 'Referenz auf user']
+  assignmentId number [note: 'Referenz auf appointmentAssignment']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.CDRCall']
 }
 
 Table appointment [headercolor: #1F77B4] {
   Note: 'Individual appointments scheduled for patients with experts.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
-  start Date [note: 'Startzeitpunkt']
-  until Date [note: 'Endzeitpunkt']
-  dateCreated Date [note: 'Erstellungsdatum']
+  start timestamp [note: 'Startzeitpunkt']
+  until timestamp [note: 'Endzeitpunkt']
+  dateCreated timestamp [note: 'Erstellungsdatum']
   title String [note: 'Titel']
   comment String [note: 'Kommentar']
-  state appointment_state_enum [note: 'Status:<br>• `ACTIVE` (Used)<br>• `CANCELED` (Used)<br>• `CLOSED` (Used)<br>• `DONE` (Used)<br>• `LOCKEDIN` (Used)<br>• `READY` (Used)<br>• `REQUESTED` (Used)<br>• `RESCHEDULED` (Used)<br>• `STARTED` (Used)<br>• `STORNO` (Used)']
-  type appointment_type_enum [note: 'Typ:<br>• `APPOINTMENT` (Used)<br>• `SHIFT` (Used)<br>• `TREATMENT` (Used)<br>• `TREATMENT_REPORT` (Used)']
+  state appointment_state_enum [note: 'Status']
+  type JobType_Enum [note: 'Typ']
   job Document [note: 'Erbrachte Dienstleistung ([ConsultationJob](#sub-entity-consultationjob))']
-  billingType appointment_billingType_enum [note: 'Abrechnungsart:<br>• `HOURLY` (Used)<br>• `PER_CONSULTATION` (Used)']
-  paymentType appointment_paymentType_enum [note: 'Zahlungsart:<br>• `EK` (Used)<br>• `FULL` (Used)<br>• `VK` (Used)<br>• `IGNORE` (Used)']
-  priceType appointment_priceType_enum [note: 'Preistyp:<br>• `WEEKDAY` (Used)<br>• `WEEKNIGHT` (Used)<br>• `WEEKENDDAY` (Used)<br>• `WEEKENDNIGHT` (Used)']
+  billingType appointment_billingType_enum [note: 'Abrechnungsart']
+  paymentType appointment_paymentType_enum [note: 'Zahlungsart']
+  priceType priceType_enum [note: 'Preistyp']
   customer Document [note: 'Zugehöriger Kunde ([ConsultationCustomer](#sub-entity-consultationcustomer))']
   location Document [note: 'Ort des Termins ([ConsultationLocation](#sub-entity-consultationlocation))']
   treatmentId number [note: 'Referenz auf `treatment`']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.Appointment']
 }
 
 Table consultation [headercolor: #2CA02C] {
@@ -693,8 +679,8 @@ Table consultation [headercolor: #2CA02C] {
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
   date Date [note: 'Datum']
-  type consultation_type_enum [note: 'Typ:<br>• `DOCUMENT` (Used)<br>• `EXTERNAL` (Used)<br>• `INCARCERATION` (Used)<br>• `ONBOARDING` (Used)<br>• `ONBOARDING_SHORT` (Used)<br>• `STANDARD` (Used)<br>• `TREATMENT` (Used)']
-  state consultation_state_enum [note: 'Status:<br>• `CLOSED` (Used)<br>• `CREATED` (Used)<br>• `OPEN` (Used)<br>• `REPORTED` (Used)<br>• `TRANSMITTED` (Used)<br>• `VERIFIED` (Used)']
+  type DefaultConsultation_Enum [note: 'Typ']
+  state consultationData_state_enum [note: 'Status']
   doctor Document [note: 'Experte ([ConsultationDoctor](#sub-entity-consultationdoctor))']
   job Document [note: 'Dienstleistung ([ConsultationJob](#sub-entity-consultationjob))']
   location Document [note: 'Ort ([ConsultationLocation](#sub-entity-consultationlocation))']
@@ -707,7 +693,7 @@ Table basisWebData [headercolor: #D62728] {
   version number [note: 'Versionsnummer']
   uuid String [note: 'Eindeutige ID der Übermittlung']
   jva number [note: 'ID der JVA']
-  jnummer String [note: 'J-Nummer des Gefangenen']
+  jnumber String [note: 'J-Nummer des Gefangenen']
   buchnummer String [note: 'Buchnummer des Gefangenen']
   familienname String [note: 'Familienname']
   geburtsname String [note: 'Geburtsname']
@@ -719,16 +705,17 @@ Table basisWebData [headercolor: #D62728] {
   medication Array [note: 'Liste übermittelter Medikamente ([BasisWebMedication](#sub-entity-basiswebmedication))']
   warning Array [note: 'Liste übermittelter Warnhinweise ([BasisWebWarning](#sub-entity-basiswebwarning))']
   entries Array [note: 'Liste übermittelter Einträge ([BasisWebEntry](#sub-entity-basiswebentry))']
-  dateDecrypted Date [note: 'Entschlüsselungszeitpunkt']
-  dateCreated Date [note: 'Erstellungsdatum']
+  dateDecrypted timestamp [note: 'Entschlüsselungszeitpunkt']
+  dateCreated timestamp [note: 'Erstellungsdatum']
   appointment DBRef [note: 'Zugehöriger Termin (Referenz auf `appointment`)']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.BasisWebData']
 }
 
 Table log [headercolor: #E377C2] {
   Note: 'Technical application logs for monitoring and debugging.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
-  ts Date [note: 'Zeitstempel']
+  ts timestamp [note: 'Zeitstempel']
   userId number [note: 'Referenz auf `user`']
   level log_level_enum [note: 'Log-Level:<br>• `INFO` (Used)<br>• `ERROR` (Used)<br>• `SECURITY` (Used)']
   type log_type_enum [note: 'Art des Ereignisses:<br>• `CONSULTATION` (Used)<br>• `CONSULTATION_TRANSMIT` (Used)<br>• `CONTACT` (Used)']
@@ -736,28 +723,30 @@ Table log [headercolor: #E377C2] {
   message String [note: 'Log-Nachricht']
   param Array [note: 'Parameter zur Nachricht (Strings)']
   appointment number [note: 'Referenz auf `appointment`']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.Log']
 }
 
 Table invoiceComponent [headercolor: #8C564B] {
   Note: 'Individual items and rules contributing to a final invoice.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
-  start Date [note: 'Startzeitpunkt']
+  start timestamp [note: 'Startzeitpunkt']
   priceList number [note: 'Referenz auf `jobPriceList`']
   customerId number [note: 'Referenz auf `customer`']
   locationId number [note: 'Referenz auf `location`']
   appointmentId number [note: 'Referenz auf `appointment`']
   consultationId number [note: 'Referenz auf `consultationData`']
-  actualPatients Number [note: 'Tatsächliche Anzahl Patienten']
-  billablePatients Number [note: 'Abrechenbare Patienten']
-  payablePatients Number [note: 'Auszahlbare Patienten']
-  billableWorkTime Number [note: 'Abrechenbare Arbeitszeit']
-  payableWorkTime Number [note: 'Auszahlbare Arbeitszeit']
-  billValue Number [note: 'Rechnungsbetrag']
-  payValue Number [note: 'Auszahlungsbetrag']
-  employeeType invoiceComponent_employeeType_enum [note: 'Mitarbeitertyp:<br>• `A1` (Used)<br>• `HN2` (Used)<br>• `HONORAR` (Used)']
-  appointmentType invoiceComponent_appointmentType_enum [note: 'Termintyp:<br>• `APPOINTMENT` (Used)<br>• `SHIFT` (Used)<br>• `TREATMENT` (Used)<br>• `TREATMENT_REPORT` (Used)']
+  actualPatients number [note: 'Tatsächliche Anzahl Patienten']
+  billablePatients number [note: 'Abrechenbare Patienten']
+  payablePatients number [note: 'Auszahlbare Patienten']
+  billableWorkTime number [note: 'Abrechenbare Arbeitszeit']
+  payableWorkTime number [note: 'Auszahlbare Arbeitszeit']
+  billValue number [note: 'Rechnungsbetrag']
+  payValue number [note: 'Auszahlungsbetrag']
+  employeeType invoiceComponent_employeeType_enum [note: 'Mitarbeitertyp']
+  appointmentType JobType_Enum [note: 'Termintyp']
   stornoType Document [note: 'Stornierungsdetails ([InvoiceComponentStorno](#sub-entity-invoicecomponentstorno))']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.InvoiceComponent']
 }
 
 Table questionaire [headercolor: #2CA02C] {
@@ -767,11 +756,11 @@ Table questionaire [headercolor: #2CA02C] {
   appointmentId number [note: 'Referenz auf `appointment`']
   consultationId number [note: 'Referenz auf `consultationData`']
   date Date [note: 'Datum der Umfrage']
-  ratingRisk Number [note: 'Bewertung Risiko (1-5)']
-  ratingTeleApplyable Number [note: 'Bewertung Telemedizin-Eignung (1-5)']
-  ratingDocumentation Number [note: 'Bewertung Dokumentation (1-5)']
-  ratingEquipment Number [note: 'Bewertung Ausrüstung (1-5)']
-  ratingCommunication Number [note: 'Bewertung Kommunikation (1-5)']
+  ratingRisk number [note: 'Bewertung Risiko (1-5)']
+  ratingTeleApplyable number [note: 'Bewertung Telemedizin-Eignung (1-5)']
+  ratingDocumentation number [note: 'Bewertung Dokumentation (1-5)']
+  ratingEquipment number [note: 'Bewertung Ausrüstung (1-5)']
+  ratingCommunication number [note: 'Bewertung Kommunikation (1-5)']
   comment String [note: 'Kommentar']
 }
 
@@ -788,7 +777,7 @@ Table cDRCallAssignment [headercolor: #9467BD] {
   state String [note: 'Status der Zuweisung']
   appointmentId number [note: 'Referenz auf `appointment`']
   consultationId number [note: 'Referenz auf `consultationData`']
-  confidence Number [note: 'Konfidenzlevel der Zuweisung']
+  confidence number [note: 'Konfidenzlevel der Zuweisung']
 }
 
 Table medication [headercolor: #9467BD] {
@@ -800,7 +789,7 @@ Table medication [headercolor: #9467BD] {
   name String [note: 'Bezeichnung des Medikaments']
   praepName String [note: 'Präparatename']
   producer String [note: 'Hersteller']
-  medical Boolean [note: 'Ob es sich um ein medizinisches Produkt handelt']
+  medical boolean [note: 'Ob es sich um ein medizinisches Produkt handelt']
   monokomb String [note: 'Monopräparat oder Kombinationspräparat (Used: `NO`)']
   ingredientCode String [note: 'Code der Wirkstoffe (Systematische Kodierung)']
   ingredientInfo String [note: 'Information zur Wirkstoffmenge']
@@ -826,11 +815,11 @@ Table invoice [headercolor: #8C564B] {
   description String [note: 'Beschreibung']
   cashRegister DBRef [note: 'Referenz auf `cashRegister`']
   client Document [note: 'Rechnungsempfänger-Details (Snapshot: [InvoiceClient](#sub-entity-invoiceclient))']
-  month Number [note: 'Monat']
-  year Number [note: 'Jahr']
+  month number [note: 'Monat']
+  year number [note: 'Jahr']
   positions Array [note: 'Rechnungspositionen ([InvoicePosition](#sub-entity-invoiceposition))']
-  totalNetPrice Number [note: 'Gesamt-Nettopreis']
-  totalPrice Number [note: 'Gesamt-Bruttopreis']
+  totalNetPrice number [note: 'Gesamt-Nettopreis']
+  totalPrice number [note: 'Gesamt-Bruttopreis']
   taxType TaxType_Enum [note: 'Steuerart:<br>• `SATZ_NORMAL` (Used)<br>• `SATZ_NULL` (Used)']
   taxes Array [note: 'Steuersätze ([InvoiceTax](#sub-entity-invoicetax))']
   dateInvoice Date [note: 'Rechnungsdatum']
@@ -849,25 +838,27 @@ Table appointmentAssignment [headercolor: #1F77B4] {
   assignedById number [note: 'Zugewiesen durch (Referenz auf `user`)']
   appointmentId number [note: 'Referenz auf `appointment`']
   state String [note: 'Status der Zuweisung']
-  dateCreated Date [note: 'Erstellungsdatum']
-  dateAssigned Date [note: 'Zuweisungsdatum']
-  dateReminder Date [note: 'Erinnerungsdatum']
+  dateCreated timestamp [note: 'Erstellungsdatum']
+  dateAssigned timestamp [note: 'Zuweisungsdatum']
+  dateReminder timestamp [note: 'Erinnerungsdatum']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.AppointmentAssignment']
 }
 
 Table expertWorkMonthly [headercolor: #8C564B] {
   Note: 'Aggregated monthly work logs and billing summaries for experts.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
-  year Number [note: 'Jahr']
-  month Number [note: 'Monat']
+  year number [note: 'Jahr']
+  month number [note: 'Monat']
   user DBRef [note: 'Referenz auf `user`']
   doctorName String [note: 'Name des Experten']
-  total Number [note: 'Gesamtbetrag']
-  payableWorkTimeTotal Number [note: 'Auszahlbare Arbeitszeit gesamt']
-  payablePatientsTotal Number [note: 'Auszahlbare Patienten gesamt']
+  total number [note: 'Gesamtbetrag']
+  payableWorkTimeTotal number [note: 'Auszahlbare Arbeitszeit gesamt']
+  payablePatientsTotal number [note: 'Auszahlbare Patienten gesamt']
   worklog Array [note: 'Detaillierte Liste der Tätigkeiten ([ExpertWorklogEntry](#sub-entity-expertworklogentry))']
-  dateCreated Date [note: 'Erstellungsdatum']
-  dateSent Date [note: 'Sendedatum']
+  dateCreated timestamp [note: 'Erstellungsdatum']
+  dateSent timestamp [note: 'Sendedatum']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.ExpertWorkMonthly']
 }
 
 Table basisWebAppointment [headercolor: #D62728] {
@@ -880,7 +871,7 @@ Table basisWebAppointment [headercolor: #D62728] {
   jva number [note: 'ID der JVA']
   jnumber String [note: 'J-Nummer des Gefangenen']
   remoteCode String [note: 'Externer Code']
-  dateCreated Date [note: 'Erstellungsdatum']
+  dateCreated timestamp [note: 'Erstellungsdatum']
 }
 
 Table zipCodeLookup [headercolor: #9467BD] {
@@ -899,22 +890,24 @@ Table userFile [headercolor: #FF7F0E] {
   data Document [note: 'Metadaten der Datei ([FileMetadata](#sub-entity-filemetadata))']
   name String [note: 'Anzeigename']
   type userFile_type_enum [note: 'Dateityp:<br>• `APPROBIATION` (Used)<br>• `AUTHENTICATED_MEDICAL_SPECIALIST_CERTIFICATE` (Used)<br>• `BASIC_RULES_CONTRACT` (Used)<br>• `BAVARIA_LAWS_CONTRACT` (Used)<br>• `CONDUCT_CERTIFICATE` (Used)<br>• `CURRICULUM_VITAE` (Used)<br>• `DATA_PROTECTION_CONTRACT` (Used)<br>• `LOAN_AGREEMENT` (Used)<br>• `OTHER` (Used)<br>• `PROFESSIONAL_LIABILITY_INSURANCE` (Used)<br>• `PROOF_OF_EXPERTISE` (Used)<br>• `SERVICE_CONTRACT` (Used)<br>• `SOCIAL_SECURITY_CHECKLIST` (Used)']
-  active Boolean [note: 'Status']
+  active boolean [note: 'Status']
   ownerId number [note: 'Referenz auf `user`']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.UserFile']
 }
 
 Table asyncJobQueue [headercolor: #E377C2] {
   Note: 'Status and tracking of asynchronous background tasks.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
-  dateCreated Date [note: 'Erstellungsdatum']
-  dateStarted Date [note: 'Startdatum']
-  dateFinished Date [note: 'Fertigstellungsdatum']
+  dateCreated timestamp [note: 'Erstellungsdatum']
+  dateStarted timestamp [note: 'Startdatum']
+  dateFinished timestamp [note: 'Fertigstellungsdatum']
   title String [note: 'Titel der Aufgabe']
   state asyncJobQueue_state_enum [note: 'Status:<br>• `DONE` (Used)<br>• `ERROR` (Used)<br>• `FINISHED` (Used)<br>• `RUNNING` (Used)']
   type asyncJobQueue_type_enum [note: 'Art der Aufgabe:<br>• `APPOINTMENTPLAN` (Used)<br>• `INVOICE` (Used)<br>• `SHIFTPLAN` (Used)<br>• `TREATMENT` (Used)']
   tasks Array [note: 'Einzelne Teilschritte ([AsyncJobTask](#sub-entity-asyncjobtask))']
   createdBy Document [note: 'Ersteller ([ConsultationDoctor](#sub-entity-consultationdoctor))']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.AsyncJobQueue']
 }
 
 Table persistentSession [headercolor: #FF7F0E] {
@@ -922,11 +915,12 @@ Table persistentSession [headercolor: #FF7F0E] {
   _id String [pk, note: 'Session-ID']
   version number [note: 'Versionsnummer']
   user DBRef [note: 'Referenz auf `user`']
-  created Date [note: 'Erstellungszeitpunkt']
+  created timestamp [note: 'Erstellungszeitpunkt']
   ip String [note: 'IP-Adresse des Benutzers']
   userAgent String [note: 'Browser-Informationen (User Agent)']
-  lastAccess Date [note: 'Letzter Zugriff']
+  lastAccess timestamp [note: 'Letzter Zugriff']
   role String [note: 'Aktive Rolle in der Sitzung']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.PersistentSession']
 }
 
 Table cacheState [headercolor: #E377C2] {
@@ -941,10 +935,11 @@ Table jobPriceList [headercolor: #8C564B] {
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
   name String [note: 'Name der Preisliste']
-  start Date [note: 'Gültig ab']
-  until Date [note: 'Gültig bis']
+  start timestamp [note: 'Gültig ab']
+  until timestamp [note: 'Gültig bis']
   prices Array [note: 'Einzelne Preiskonditionen ([JobPriceEntry](#sub-entity-jobpriceentry))']
-  active Boolean [note: 'Ob die Preisliste aktiv ist']
+  active boolean [note: 'Ob die Preisliste aktiv ist']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.JobPriceList']
 }
 
 Table invoiceReceiver [headercolor: #8C564B] {
@@ -957,12 +952,31 @@ Table invoiceReceiver [headercolor: #8C564B] {
   address String [note: 'Straße und Hausnummer']
   zip String [note: 'PLZ']
   city String [note: 'Ort']
-  taxType TaxType_Enum [note: 'Steuerliche Einordnung:<br>• `SATZ_NORMAL` (Used)<br>• `SATZ_NULL` (Used)']
-  paymentGoal Number [note: 'Zahlungsziel in Tagen']
+  taxType TaxType_Enum [note: 'Steuerliche Einordnung']
+  paymentGoal number [note: 'Zahlungsziel in Tagen']
   gkto String [note: 'Debitorennummer']
-  mailInvoice Boolean [note: 'Rechnungsversand per E-Mail']
-  postInvoice Boolean [note: 'Rechnungsversand per Post']
+  mailInvoice boolean [note: 'Rechnungsversand per E-Mail']
+  postInvoice boolean [note: 'Rechnungsversand per Post']
   email String [note: 'Primäre E-Mail-Adresse']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.InvoiceReceiver']
+}
+
+Table country [headercolor: #9467BD] {
+  Note: 'Reference data for countries, including codes and names.'
+  _id number [pk, note: 'Interner Bezeichner']
+  version number [note: 'Versionsnummer']
+  code String [note: 'Ländercode (ISO)']
+  description String [note: 'Name des Landes']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.Country']
+}
+
+Table zipCodeLookup [headercolor: #9467BD] {
+  Note: 'Geographic reference data for postal codes and cities.'
+  _id number [pk, note: 'Interner Bezeichner']
+  zipCode String [note: 'Postleitzahl']
+  city String [note: 'Stadt']
+  state String [note: 'Bundesland']
+  country String [note: 'Land']
 }
 
 Table expertConsultationTemplate [headercolor: #2CA02C] {
@@ -974,6 +988,7 @@ Table expertConsultationTemplate [headercolor: #2CA02C] {
   standard Document [note: 'Vorlage für Standard-Konsultation ([ConsultationStandard](#sub-entity-consultationstandard))']
   onboarding Document [note: 'Vorlage für Erstuntersuchung ([ConsultationOnboarding](#sub-entity-consultationonboarding))']
   job Document [note: 'Vorlage für Dienstleistung ([ConsultationJob](#sub-entity-consultationjob))']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.ExpertConsultationTemplate']
 }
 
 Table location [headercolor: #E377C2] {
@@ -988,6 +1003,7 @@ Table location [headercolor: #E377C2] {
   patientDataType PatientDataType_Enum [note: 'Art der Patientendatenübermittlung:<br>• `EXTERNAL` (Used)<br>• `EXTERNAL_BASISWEB` (Used)<br>• `INTERNAL` (Used)<br>• `INTERNAL_DAV` (Used)<br>• `INTERNAL_SECUREBOX` (Used)<br>• `INTERNAL_VCCLOUD` (Used)']
   patientDataAccess Document [note: 'Zugangsdaten für Patientendaten ([LocationPatientDataAccess](#sub-entity-locationpatientdataaccess))']
   customer DBRef [note: 'Referenz auf `customer`']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.Location']
 }
 
 Table expertWeek [headercolor: #1F77B4] {
@@ -995,7 +1011,7 @@ Table expertWeek [headercolor: #1F77B4] {
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
   userId number [note: 'Referenz auf `user`']
-  type expertWeek_type_enum [note: 'Typ des Wochenplans:<br>• `TREATMENT` (Used)']
+  type JobType_Enum [note: 'Typ des Wochenplans']
   slotsMo Array [note: 'Zeit-Slots für Montag (Werte: 1-24, entsprechend der Tagesstunde)']
   slotsTu Array [note: 'Zeit-Slots für Dienstag (Werte: 1-24)']
   slotsWe Array [note: 'Zeit-Slots für Mittwoch (Werte: 1-24)']
@@ -1004,10 +1020,10 @@ Table expertWeek [headercolor: #1F77B4] {
   slotsSa Array [note: 'Zeit-Slots für Samstag (Werte: 1-24)']
   slotsSu Array [note: 'Zeit-Slots für Sonntag (Werte: 1-24)']
   changedBy DBRef [note: 'Letzte Änderung durch (Referenz auf `user`)']
-  dateChanged Date [note: 'Zeitpunkt der letzten Änderung']
+  dateChanged timestamp [note: 'Zeitpunkt der letzten Änderung']
   createdBy DBRef [note: 'Erstellt von (Referenz auf `user`)']
-  dateCreated Date [note: 'Erstellungszeitpunkt']
-  _class String [note: 'Java Klassenname: `de.videoclinic.model.ExpertWeek` (Used)']
+  dateCreated timestamp [note: 'Erstellungszeitpunkt']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.ExpertWeek']
 }
 
 Table userVideoHistory [headercolor: #E377C2] {
@@ -1016,20 +1032,22 @@ Table userVideoHistory [headercolor: #E377C2] {
   version number [note: 'Versionsnummer']
   user DBRef [note: 'Referenz auf `user`']
   video DBRef [note: 'Referenz auf `video`']
-  dateStart Date [note: 'Erster Zugriff']
-  dateLast Date [note: 'Letzter Zugriff']
+  dateStart timestamp [note: 'Erster Zugriff']
+  dateLast timestamp [note: 'Letzter Zugriff']
   timeWatched number [note: 'Gesamt-Zuschauerzeit in Sekunden']
-  watchCount Number [note: 'Anzahl der Aufrufe']
+  watchCount number [note: 'Anzahl der Aufrufe']
   sessions Array [note: 'Einzelne Video-Sitzungen ([UserVideoSession](#sub-entity-uservideosession))']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.UserVideoHistory']
 }
 
 Table publicHoliday [headercolor: #9467BD] {
   Note: 'Definition of public holidays for specific regions and years.'
   _id number [pk, note: 'Interner Bezeichner']
-  day Date [note: 'Datum des Feiertags']
+  day timestamp [note: 'Datum des Feiertags']
   name String [note: 'Name des Feiertags']
   states Array [note: 'Liste der Bundesländer (Strings)']
   country String [note: 'Land (z.B. `DE`)']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.PublicHoliday']
 }
 
 Table onboardingHistory [headercolor: #FF7F0E] {
@@ -1038,12 +1056,12 @@ Table onboardingHistory [headercolor: #FF7F0E] {
   referenceId number [note: 'Referenz (z.B. `user.id` oder `location.id`)']
   step Document [note: 'Snapshot des Onboarding-Schritts ([OnboardingStep](#sub-entity-onboardingstep))']
   comment String [note: 'Kommentar (Freitext)']
-  dateStarted Date [note: 'Startzeitpunkt des Schritts']
-  dateCompleted Date [note: 'Abschlusszeitpunkt des Schritts']
-  dateChanged Date [note: 'Zeitpunkt der letzten Änderung']
+  dateStarted timestamp [note: 'Startzeitpunkt des Schritts']
+  dateCompleted timestamp [note: 'Abschlusszeitpunkt des Schritts']
+  dateChanged timestamp [note: 'Zeitpunkt der letzten Änderung']
   changedBy DBRef [note: 'Letzte Änderung durch (Referenz auf `user`)']
   version number [note: 'Versionsnummer (Zeitstempel)']
-  _class String [note: 'Java Klassenname: `de.videoclinic.model.OnboardingHistory` (Used)']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.OnboardingHistory']
 }
 
 Table shiftPlan [headercolor: #1F77B4] {
@@ -1051,32 +1069,32 @@ Table shiftPlan [headercolor: #1F77B4] {
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
   name String [note: 'Name des Schichtplans']
-  day DayOfWeek_Enum [note: 'Wochentag:<br>• `MO` (Used)<br>• `TU` (Used)<br>• `WE` (Used)<br>• `TH` (Used)<br>• `FR` (Used)<br>• `SA` (Used)<br>• `SU` (Used)']
-  scheduling Scheduling_Enum [note: 'Wiederholungsregel:<br>• `WEEKLY` (Used)']
-  schedulingMulitplier Number [note: 'Multiplikator für Planung (z.B. alle X Wochen)']
-  timeStart Number [note: 'Startuhrzeit (Format: HHmm)']
-  timeEnd Number [note: 'Enduhrzeit (Format: HHmm)']
+  day DayOfWeek_Enum [note: 'Wochentag']
+  scheduling Scheduling_Enum [note: 'Wiederholungsregel']
+  schedulingMulitplier number [note: 'Multiplikator für Planung (z.B. alle X Wochen)']
+  timeStart number [note: 'Startuhrzeit (Format: HHmm)']
+  timeEnd number [note: 'Enduhrzeit (Format: HHmm)']
   job Document [note: 'Dienstleistung ([ConsultationJob](#sub-entity-consultationjob))']
-  minPatients Number [note: 'Mindestanzahl an Patienten']
-  lastDate Date [note: 'Letztes geplantes Datum']
-  priceType shiftPlan_priceType_enum [note: 'Abrechnungstyp:<br>• `WEEKDAY` (Used)<br>• `WEEKNIGHT` (Used)<br>• `WEEKENDDAY` (Used)<br>• `WEEKENDNIGHT` (Used)']
+  minPatients number [note: 'Mindestanzahl an Patienten']
+  lastDate timestamp [note: 'Letztes geplantes Datum']
+  priceType priceType_enum [note: 'Abrechnungstyp']
   changedBy Document [note: 'Letzte Änderung durch ([ConsultationDoctor](#sub-entity-consultationdoctor))']
-  dateChanged Date [note: 'Zeitpunkt der letzten Änderung']
+  dateChanged timestamp [note: 'Zeitpunkt der letzten Änderung']
   createdBy Document [note: 'Erstellt von ([ConsultationDoctor](#sub-entity-consultationdoctor))']
-  dateCreated Date [note: 'Erstellungszeitpunkt']
+  dateCreated timestamp [note: 'Erstellungszeitpunkt']
   comment String [note: 'Kommentar (Freitext)']
-  count Number [note: 'Anzahl']
+  count number [note: 'Anzahl']
   prefered Array [note: 'Liste bevorzugter Ärzte (DBRefs)']
-  _class String [note: 'Java-Klassenname: `de.videoclinic.model.ShiftPlan` (Used)']
+  _class String [note: 'Java-Klassenname: de.videoclinic.model.ShiftPlan']
 }
 
 Table accessRight [headercolor: #FF7F0E] {
   Note: 'Definition of individual permissions and their descriptions.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
-  name String [note: 'Name des Rechts (Used: `ACTIVE_CALLS`, `ADMIN`, `ADMIN_INTERN`, `ADMIN_KUNDE`, `ALL_DEPARTMENTS`, `AMDIN`, `ANY_CUSTOMER`, `ANY_EMPLOYEE`, `APPOINTMENTPLAN_CREATE`, `APPOINTMENTPLAN_READ`, `APPOINTMENTPLAN_REMOVE`, `APPOINTMENTPLAN_UPDATE`, `APPOINTMENT_ADHOC`, `APPOINTMENT_ADMIN`, `APPOINTMENT_AGREE`, `APPOINTMENT_ASSIGNMENT`, `APPOINTMENT_CREATE`, `APPOINTMENT_GET`, `APPOINTMENT_MANAGE`, `APPOINTMENT_PURGE`, `APPOINTMENT_READ`, `APPOINTMENT_REMOVE`, `APPOINTMENT_UPDATE`, `APPOINTMENT_USE`, `ASYNCJOBQUEUE_CREATE`, `ASYNCJOBQUEUE_READ`, `ASYNCJOBQUEUE_REMOVE`, `ASYNCJOBQUEUE_UPDATE`, `BASIS`, `BASISWEBAPPOINTMENT_CREATE`, `BASISWEBAPPOINTMENT_READ`, `BASISWEBAPPOINTMENT_REMOVE`, `BASISWEBAPPOINTMENT_UPDATE`, `BASISWEBDATA_CREATE`, `BASISWEBDATA_READ`, `BASISWEBDATA_REMOVE`, `BASISWEBDATA_UPDATE`, `BASISWEBNFB_MANAGER`, `BASISWEB_MANAGER`, `CDRCALLASSIGNMENT_CREATE`, `CDRCALLASSIGNMENT_READ`, `CDRCALLASSIGNMENT_REMOVE`, `CDRCALLASSIGNMENT_UPDATE`, `CDRCALL_CREATE`, `CDRCALL_IMPORT`, `CDRCALL_READ`, `CDRCALL_REMOVE`, `CHECKINOUT`, `CLOSEDMONTH_MANAGE`, `CLOSEDMONTH_READ`, `COMPANY_READ`, `CONFERENCE_CREATE`, `CONFERENCE_READ`, `CONFERENCE_REMOVE`, `CONFERENCE_UPDATE`, `CONSULATION_ADMIN`, `CONSULATION_CREATE`, `CONSULATION_GET`, `CONSULATION_READ`, `CONSULATION_UPDATE`, `CONSULTATION_ADMIN`, `CONSULTATION_CREATE`, `CONSULTATION_GET`, `CONSULTATION_READ`, `CONSULTATION_REPORTING`, `CONSULTATION_REPORTING_PSYCHOTHERAPY`, `CONSULTATION_SUBMIT_CUSTOMER`, `CONSULTATION_UPDATE`, `COUNCILPLAN_CREATE`, `COUNCILPLAN_READ`, `COUNCILPLAN_REMOVE`, `COUNCILPLAN_UPDATE`, `CUSTOMER_CREATE`, `CUSTOMER_DELETE`, `CUSTOMER_READ`, `CUSTOMER_READ_ALL`, `CUSTOMER_REMOVE`, `CUSTOMER_UPDATE`, `EMPLOYEE`, `EQUIPMENT_CREATE`, `EQUIPMENT_READ`, `EQUIPMENT_REMOVE`, `EQUIPMENT_UPDATE`, `EQUIPMENT_WRITE`, `EXPERTCONSULTATION_ADMIN`, `EXPERTCONSULTATION_CREATE`, `EXPERTCONSULTATION_GET`, `EXPERTCONSULTATION_READ`, `EXPERTCONSULTATION_UPDATE`, `EXPERTS_READ`, `EXPERTWEEK_READ`, `EXPERTWORKMONTHLY_CREATE`, `EXPERTWORKMONTHLY_GET`, `EXPERTWORKMONTHLY_READ`, `EXPERTWORKMONTHLY_REMOVE`, `EXPERTWORKMONTHLY_UPDATE`, `EXPERT_WEEK`, `EXPORT_CONSULTATION`, `EXPORT_EK_VK`, `EXPORT_INVOICERECEIVER`, `GROUP_CREATE`, `GROUP_DELETE`, `GROUP_READ`, `GROUP_UPDATE`, `GUEST`, `HOLIDAY_APPROVE`, `HOLIDAY_READ`, `HOLIDAY_SAVE`, `HOLIDAY_SAVE_ALL`, `ICD_QUERY`, `INVOICERECEIVER_CREATE`, `INVOICERECEIVER_READ`, `INVOICERECEIVER_REMOVE`, `INVOICERECEIVER_UPDATE`, `INVOICE_CREATE`, `INVOICE_READ`, `INVOICE_REMOVE`, `INVOICE_STORNO`, `INVOICE_UPDATE`, `INVOICE_VIEW`, `JOBPRICELIST_READ`, `JOB_ADMIN`, `JOB_WRITE`, `KUNDE`, `LEITER_INTERN`, `LOCATIONTYPE_CREATE`, `LOCATIONTYPE_REMOVE`, `LOCATIONTYPE_UPDATE`, `LOCATION_DELETE`, `LOCATION_READ`, `LOCATION_REMOVE`, `LOCATION_WRITE`, `LOGINNOTIFICATION_CREATE`, `LOGINNOTIFICATION_READ`, `LOGINNOTIFICATION_REMOVE`, `LOGINNOTIFICATION_UPDATE`, `LOG_READ`, `LOG_REMOVE`, `MEDICATION_CREATE`, `MEDICATION_READ`, `MEDICATION_REMOVE`, `MEDICATION_UPDATE`, `MOTD_CREATE`, `MOTD_READ`, `NOTIFICATIONTEMPLATE_CREATE`, `NOTIFICATIONTEMPLATE_READ`, `NOTIFICATIONTEMPLATE_REMOVE`, `NOTIFICATIONTEMPLATE_UPDATE`, `NOTIFICATION_ANSWER`, `NOTIFICATION_CREATE`, `NOTIFICATION_CREATE_BATCH`, `NOTIFICATION_READ`, `ONBOARDINGSTEP_CREATE`, `ONBOARDINGSTEP_READ`, `ONBOARDINGSTEP_REMOVE`, `ONBOARDINGSTEP_UPDATE`, `ONBOARDING_READ`, `ONBOARDING_SAVE`, `ONBOARDING_SAVE_ALL`, `PATIENTDATA_CREATE`, `PATIENTDATA_READ`, `PATIENTDATA_REMOVE`, `PATIENTDATA_UPDATE`, `PATIENT_CREATE`, `PATIENT_IMPORT`, `PATIENT_READ`, `PATIENT_READ_ALL`, `PATIENT_REMOVE`, `PATIENT_UPDATE`, `PATIENT_VIEW`, `PATIENT_VIEW_ALL`, `PRODUCT_CREATE`, `PRODUCT_READ`, `PRODUCT_REMOVE`, `PRODUCT_UPDATE`, `PROJECT_ADMIN`, `PROJECT_ASSIGNMENT`, `PROJECT_CREATE`, `PROJECT_FORCE_STORNO`, `PROJECT_GET`, `PROJECT_MANAGE`, `PROJECT_READ`, `PROJECT_STORNO`, `PROJECT_UPDATE`, `QUESTIONAIRE_CREATE`, `QUESTIONAIRE_READ`, `QUESTIONAIRE_REMOVE`, `QUESTIONAIRE_REVIEW`, `QUESTIONAIRE_UPDATE`, `REGISTERED`, `ROOM_CREATE`, `ROOM_READ`, `ROOM_REMOVE`, `ROOM_UPDATE`, `SELFSERVICE`, `SELF_ASSIGNMENT`, `SELF_CHECKINOUT`, `SERVICEQM_CREATE`, `SERVICEQM_READ`, `SERVICEQM_REMOVE`, `SERVICEQM_UPDATE`, `SHIFTPLAN_CREATE`, `SHIFTPLAN_READ`, `SHIFTPLAN_REMOVE`, `SHIFTPLAN_UPDATE`, `SHIFT_CREATE`, `SHIFT_GET`, `SKILL_WRITE`, `STANDARD`, `STORNOGROUP_CREATE`, `STORNOGROUP_READ`, `STORNOGROUP_REMOVE`, `STORNOGROUP_UPDATE`, `SUPPORTCATEGORY_CREATE`, `SUPPORTCATEGORY_READ`, `SUPPORTCATEGORY_REMOVE`, `SUPPORTCATEGORY_UPDATE`, `SUPPORTTICKET_ANSWER`, `SUPPORTTICKET_CREATE`, `SUPPORTTICKET_READ`, `SYSADMIN`, `SYSTEM_READ`, `SYSTEM_WRITE`, `TREATMENTCATEGORY_MANAGE`, `TREATMENTCATEGORY_READ`, `TREATMENT_CREATE`, `TREATMENT_READ`, `TREATMENT_REMOVE`, `TREATMENT_UPDATE`, `UNIFORM_READ`, `UNIFORM_WRITE`, `USER`, `USERS_ADMIN`, `USERS_CREATE`, `USERS_CUSTOMER_READ`, `USERS_DELETE`, `USERS_EXPERTS_READ`, `USERS_READ`, `USERS_ROLE_UPDATE`, `USERS_UPDATE`, `USERVIDEOHISTORY_CREATE`, `USERVIDEOHISTORY_READ`, `USERVIDEOHISTORY_REMOVE`, `USERVIDEOHISTORY_UPDATE`, `USER_GET`, `USER_READ`, `USER_UPDATE`, `VIDEOCATEGORY_CREATE`, `VIDEOCATEGORY_READ`, `VIDEOCATEGORY_REMOVE`, `VIDEOCATEGORY_UPDATE`, `VIDEOHISTORY_CREATE`, `VIDEOHISTORY_READ`, `VIDEOHISTORY_REMOVE`, `VIDEOHISTORY_UPDATE`, `VIDEO_CREATE`, `VIDEO_GET`, `VIDEO_READ`, `VIDEO_REMOVE`, `VIDEO_UPDATE`, `WARNING_READ`, `WARNING_REMOVE`, `WARNING_UPDATE`, `WORKHOUR_WRITE`, `WORKLOG_CONFIRM`, `WORKLOG_WRITE`)']
+  name String [note: 'Name des Rechts']
   description String [note: 'Beschreibung (Freitext)']
-  role accessRight_role_enum [note: 'Zugeordnete Rolle:<br>• `ADMIN` (Used)<br>• `GUEST` (Used)<br>• `LEITER_INTERN` (Used)<br>• `REGISTERED` (Used)<br>• `STANDARD` (Used)']
+  role Role_Enum [note: 'Zugeordnete Rolle']
   _class String [note: 'Java-Klassenname: `de.videoclinic.model.AccessRight` (Used)']
 }
 
@@ -1090,6 +1108,7 @@ Table video [headercolor: #E377C2] {
   preview Document [note: 'Metadaten des Vorschaubilds ([FileMetadata](#sub-entity-filemetadata))']
   lengthInSeconds number [note: 'Videolänge in Sekunden']
   path String [note: 'Speicherpfad']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.Video']
 }
 
 Table group [headercolor: #FF7F0E] {
@@ -1099,8 +1118,8 @@ Table group [headercolor: #FF7F0E] {
   name String [note: 'Gruppenname']
   description String [note: 'Beschreibung (Freitext)']
   role Role_Enum [note: 'Hauptrolle der Gruppe:<br>• `ADMIN` (Used)<br>• `ADMIN_INTERN` (Used)<br>• `ADMIN_KUNDE` (Used)<br>• `KUNDE` (Used)<br>• `LEITER_INTERN` (Used)<br>• `REGISTERED` (Used)<br>• `STANDARD` (Used)']
-  rights Array [note: 'Liste zugeordneter Rechte (Used: `ACTIVE_CALLS`, `ADMIN`, `ADMIN_INTERN`, `ADMIN_KUNDE`, `ALL_DEPARTMENTS`, `AMDIN`, `ANY_CUSTOMER`, `ANY_EMPLOYEE`, `APPOINTMENTPLAN_CREATE`, `APPOINTMENTPLAN_READ`, `APPOINTMENTPLAN_REMOVE`, `APPOINTMENTPLAN_UPDATE`, `APPOINTMENT_ADHOC`, `APPOINTMENT_ADMIN`, `APPOINTMENT_AGREE`, `APPOINTMENT_ASSIGNMENT`, `APPOINTMENT_CREATE`, `APPOINTMENT_GET`, `APPOINTMENT_MANAGE`, `APPOINTMENT_PURGE`, `APPOINTMENT_READ`, `APPOINTMENT_REMOVE`, `APPOINTMENT_UPDATE`, `APPOINTMENT_USE`, `ASYNCJOBQUEUE_CREATE`, `ASYNCJOBQUEUE_READ`, `ASYNCJOBQUEUE_REMOVE`, `ASYNCJOBQUEUE_UPDATE`, `BASIS`, `BASISWEBAPPOINTMENT_CREATE`, `BASISWEBAPPOINTMENT_READ`, `BASISWEBAPPOINTMENT_REMOVE`, `BASISWEBAPPOINTMENT_UPDATE`, `BASISWEBDATA_CREATE`, `BASISWEBDATA_READ`, `BASISWEBDATA_REMOVE`, `BASISWEBDATA_UPDATE`, `BASISWEBNFB_MANAGER`, `BASISWEB_MANAGER`, `CDRCALLASSIGNMENT_CREATE`, `CDRCALLASSIGNMENT_READ`, `CDRCALLASSIGNMENT_REMOVE`, `CDRCALLASSIGNMENT_UPDATE`, `CDRCALL_CREATE`, `CDRCALL_IMPORT`, `CDRCALL_READ`, `CDRCALL_REMOVE`, `CHECKINOUT`, `CLOSEDMONTH_MANAGE`, `CLOSEDMONTH_READ`, `COMPANY_READ`, `CONFERENCE_CREATE`, `CONFERENCE_READ`, `CONFERENCE_REMOVE`, `CONFERENCE_UPDATE`, `CONSULATION_ADMIN`, `CONSULATION_CREATE`, `CONSULATION_GET`, `CONSULATION_READ`, `CONSULATION_UPDATE`, `CONSULTATION_ADMIN`, `CONSULTATION_CREATE`, `CONSULTATION_GET`, `CONSULTATION_READ`, `CONSULTATION_REPORTING`, `CONSULTATION_REPORTING_PSYCHOTHERAPY`, `CONSULTATION_SUBMIT_CUSTOMER`, `CONSULTATION_UPDATE`, `COUNCILPLAN_CREATE`, `COUNCILPLAN_READ`, `COUNCILPLAN_REMOVE`, `COUNCILPLAN_UPDATE`, `CUSTOMER_CREATE`, `CUSTOMER_DELETE`, `CUSTOMER_READ`, `CUSTOMER_READ_ALL`, `CUSTOMER_REMOVE`, `CUSTOMER_UPDATE`, `EMPLOYEE`, `EQUIPMENT_CREATE`, `EQUIPMENT_READ`, `EQUIPMENT_REMOVE`, `EQUIPMENT_UPDATE`, `EQUIPMENT_WRITE`, `EXPERTCONSULTATION_ADMIN`, `EXPERTCONSULTATION_CREATE`, `EXPERTCONSULTATION_GET`, `EXPERTCONSULTATION_READ`, `EXPERTCONSULTATION_UPDATE`, `EXPERTS_READ`, `EXPERTWEEK_READ`, `EXPERTWORKMONTHLY_CREATE`, `EXPERTWORKMONTHLY_GET`, `EXPERTWORKMONTHLY_READ`, `EXPERTWORKMONTHLY_REMOVE`, `EXPERTWORKMONTHLY_UPDATE`, `EXPERT_WEEK`, `EXPORT_CONSULTATION`, `EXPORT_EK_VK`, `EXPORT_INVOICERECEIVER`, `GROUP_CREATE`, `GROUP_DELETE`, `GROUP_READ`, `GROUP_UPDATE`, `GUEST`, `HOLIDAY_APPROVE`, `HOLIDAY_READ`, `HOLIDAY_SAVE`, `HOLIDAY_SAVE_ALL`, `ICD_QUERY`, `INVOICERECEIVER_CREATE`, `INVOICERECEIVER_READ`, `INVOICERECEIVER_REMOVE`, `INVOICERECEIVER_UPDATE`, `INVOICE_CREATE`, `INVOICE_READ`, `INVOICE_REMOVE`, `INVOICE_STORNO`, `INVOICE_UPDATE`, `INVOICE_VIEW`, `JOBPRICELIST_READ`, `JOB_ADMIN`, `JOB_WRITE`, `KUNDE`, `LEITER_INTERN`, `LOCATIONTYPE_CREATE`, `LOCATIONTYPE_REMOVE`, `LOCATIONTYPE_UPDATE`, `LOCATION_DELETE`, `LOCATION_READ`, `LOCATION_REMOVE`, `LOCATION_WRITE`, `LOGINNOTIFICATION_CREATE`, `LOGINNOTIFICATION_READ`, `LOGINNOTIFICATION_REMOVE`, `LOGINNOTIFICATION_UPDATE`, `LOG_READ`, `LOG_REMOVE`, `MEDICATION_CREATE`, `MEDICATION_READ`, `MEDICATION_REMOVE`, `MEDICATION_UPDATE`, `MOTD_CREATE`, `MOTD_READ`, `NOTIFICATIONTEMPLATE_CREATE`, `NOTIFICATIONTEMPLATE_READ`, `NOTIFICATIONTEMPLATE_REMOVE`, `NOTIFICATIONTEMPLATE_UPDATE`, `NOTIFICATION_ANSWER`, `NOTIFICATION_CREATE`, `NOTIFICATION_CREATE_BATCH`, `NOTIFICATION_READ`, `ONBOARDINGSTEP_CREATE`, `ONBOARDINGSTEP_READ`, `ONBOARDINGSTEP_REMOVE`, `ONBOARDINGSTEP_UPDATE`, `ONBOARDING_READ`, `ONBOARDING_SAVE`, `ONBOARDING_SAVE_ALL`, `PATIENTDATA_CREATE`, `PATIENTDATA_READ`, `PATIENTDATA_REMOVE`, `PATIENTDATA_UPDATE`, `PATIENT_CREATE`, `PATIENT_IMPORT`, `PATIENT_READ`, `PATIENT_READ_ALL`, `PATIENT_REMOVE`, `PATIENT_UPDATE`, `PATIENT_VIEW`, `PATIENT_VIEW_ALL`, `PRODUCT_CREATE`, `PRODUCT_READ`, `PRODUCT_REMOVE`, `PRODUCT_UPDATE`, `PROJECT_ADMIN`, `PROJECT_ASSIGNMENT`, `PROJECT_CREATE`, `PROJECT_FORCE_STORNO`, `PROJECT_GET`, `PROJECT_MANAGE`, `PROJECT_READ`, `PROJECT_STORNO`, `PROJECT_UPDATE`, `QUESTIONAIRE_CREATE`, `QUESTIONAIRE_READ`, `QUESTIONAIRE_REMOVE`, `QUESTIONAIRE_REVIEW`, `QUESTIONAIRE_UPDATE`, `REGISTERED`, `ROOM_CREATE`, `ROOM_READ`, `ROOM_REMOVE`, `ROOM_UPDATE`, `SELFSERVICE`, `SELF_ASSIGNMENT`, `SELF_CHECKINOUT`, `SERVICEQM_CREATE`, `SERVICEQM_READ`, `SERVICEQM_REMOVE`, `SERVICEQM_UPDATE`, `SHIFTPLAN_CREATE`, `SHIFTPLAN_READ`, `SHIFTPLAN_REMOVE`, `SHIFTPLAN_UPDATE`, `SHIFT_CREATE`, `SHIFT_GET`, `SKILL_WRITE`, `STANDARD`, `STORNOGROUP_CREATE`, `STORNOGROUP_READ`, `STORNOGROUP_REMOVE`, `STORNOGROUP_UPDATE`, `SUPPORTCATEGORY_CREATE`, `SUPPORTCATEGORY_READ`, `SUPPORTCATEGORY_REMOVE`, `SUPPORTCATEGORY_UPDATE`, `SUPPORTTICKET_ANSWER`, `SUPPORTTICKET_CREATE`, `SUPPORTTICKET_READ`, `SYSADMIN`, `SYSTEM_READ`, `SYSTEM_WRITE`, `TREATMENTCATEGORY_MANAGE`, `TREATMENTCATEGORY_READ`, `TREATMENT_CREATE`, `TREATMENT_READ`, `TREATMENT_REMOVE`, `TREATMENT_UPDATE`, `UNIFORM_READ`, `UNIFORM_WRITE`, `USER`, `USERS_ADMIN`, `USERS_CREATE`, `USERS_CUSTOMER_READ`, `USERS_DELETE`, `USERS_EXPERTS_READ`, `USERS_READ`, `USERS_ROLE_UPDATE`, `USERS_UPDATE`, `USERVIDEOHISTORY_CREATE`, `USERVIDEOHISTORY_READ`, `USERVIDEOHISTORY_REMOVE`, `USERVIDEOHISTORY_UPDATE`, `USER_GET`, `USER_READ`, `USER_UPDATE`, `VIDEOCATEGORY_CREATE`, `VIDEOCATEGORY_READ`, `VIDEOCATEGORY_REMOVE`, `VIDEOCATEGORY_UPDATE`, `VIDEOHISTORY_CREATE`, `VIDEOHISTORY_READ`, `VIDEOHISTORY_REMOVE`, `VIDEOHISTORY_UPDATE`, `VIDEO_CREATE`, `VIDEO_GET`, `VIDEO_READ`, `VIDEO_REMOVE`, `VIDEO_UPDATE`, `WARNING_READ`, `WARNING_REMOVE`, `WARNING_UPDATE`, `WORKHOUR_WRITE`, `WORKLOG_CONFIRM`, `WORKLOG_WRITE`)']
-  _class String [note: '`de.videoclinic.model.Group` (Used)']
+  rights Array [note: 'Liste zugeordneter Rechte']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.Group']
 }
 
 Table videoCategory [headercolor: #E377C2] {
@@ -1111,36 +1130,40 @@ Table videoCategory [headercolor: #E377C2] {
   description String [note: 'Beschreibung']
   thumbnail Document [note: 'Vorschaubild ([FileMetadata](#sub-entity-filemetadata))']
   parent number [note: 'Referenz auf übergeordnete Kategorie']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.VideoCategory']
 }
 
 Table country [headercolor: #9467BD] {
   Note: 'Reference data for countries, including codes and names.'
   _id number [pk, note: 'Interner Bezeichner']
+  version number [note: 'Versionsnummer']
   code String [note: 'Ländercode (ISO)']
   description String [note: 'Name des Landes']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.Country']
 }
 
 Table notificationTemplate [headercolor: #E377C2] {
   Note: 'Reusable templates for automated system notifications.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
-  event String [note: 'Ereignis-Typ (Used: `APPOINTMENT_ACCEPTED`, `APPOINTMENT_AGREED`, `APPOINTMENT_ASSIGNED`, `APPOINTMENT_CANCELED`, `APPOINTMENT_DELETED`, `APPOINTMENT_DISAGREED`, `APPOINTMENT_DONE`, `APPOINTMENT_EXPERT_AGREED`, `APPOINTMENT_EXPERT_CANCELED`, `APPOINTMENT_EXPERT_DISAGREED`, `APPOINTMENT_REJECTED`, `APPOINTMENT_REMINDER`, `APPOINTMENT_REQUEST`, `APPOINTMENT_RESERVED`, `APPOINTMENT_STORNO`, `APPOINTMENT_UPCOMING`, `APPOINTMENT_UPCOMING_LOCATION`, `ASYNC_JOB_QUEUE_ERROR`, `ASYNC_JOB_QUEUE_SUCCESS`, `CONSULATION_REPORTED`, `CONSULATION_REPORTED_EXPERT`, `CONSULATION_REPORTING`, `CONSULATION_SUBMIT`, `CONSULTATION_REPORTING_PSYCHOTHERAPY`, `COUNCIL_START`, `COUNCIL_SUBMIT`, `EXPERT_SUMMARY`, `FORWARD_NOTIFICATION`, `HOLIDAY_REMOVED`, `HOLIDAY_REQUEST`, `INVOICE_CUSTOMER`, `JOB_FINISHED`, `RECOVER_PASSWORD`, `TEMPLATE`, `TREATMENT_END_STORNO`, `TREATMENT_EXPERT_START`, `TREATMENT_START`, `USER_PASSWORD`)']
+  event String [note: 'Ereignis-Typ']
   subject String [note: 'Betreffzeile (Strukturierter Text)']
   message String [note: 'Nachrichtentext mit Platzhaltern (Strukturierter Text)']
-  enabled Boolean [note: 'Ob die Vorlage aktiv ist']
+  enabled boolean [note: 'Ob die Vorlage aktiv ist']
   language String [note: 'Sprache der Vorlage (Used: `de`)']
-  dateCreated Date [note: 'Erstellungsdatum']
-  dateChanged Date [note: 'Änderungsdatum']
+  dateCreated timestamp [note: 'Erstellungsdatum']
+  dateChanged timestamp [note: 'Änderungsdatum']
   changedBy DBRef [note: 'Geändert von (Referenz auf `user`)']
-  _class String [note: '`de.videoclinic.model.NotificationTemplate` (Used)']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.NotificationTemplate']
 }
 
 Table closedMonth [headercolor: #8C564B] {
   Note: 'Tracking of billing periods that have been finalized and locked.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
-  period Number [note: 'Abgeschlossener Zeitraum (Format: YYYYMM)']
+  period number [note: 'Abgeschlossener Zeitraum (Format: YYYYMM)']
   comment String [note: 'Kommentar zum Abschluss']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.ClosedMonth']
 }
 
 Table exportTemplate [headercolor: #E377C2] {
@@ -1150,8 +1173,9 @@ Table exportTemplate [headercolor: #E377C2] {
   name String [note: 'Name der Vorlage']
   filename String [note: 'Standard-Dateiname für den Export']
   template Document [note: 'Metadaten der Template-Datei ([FileMetadata](#sub-entity-filemetadata))']
-  type exportTemplate_type_enum [note: 'Export-Typ:<br>• `APPOINTMENT` (Used)<br>• `EXPERT` (Used)<br>• `WORKLOG` (Used)']
-  active Boolean [note: 'Status']
+  type exportTemplate_type_enum [note: 'Export-Typ']
+  active boolean [note: 'Status']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.ExportTemplate']
 }
 
 Table site [headercolor: #E377C2] {
@@ -1162,7 +1186,12 @@ Table site [headercolor: #E377C2] {
   address String [note: 'Adresse']
   zip String [note: 'PLZ']
   city String [note: 'Ort']
-  primary Boolean [note: 'Hauptstandort Kennzeichnung']
+  primary boolean [note: 'Hauptstandort Kennzeichnung']
+  dateCreated timestamp [note: 'Erstellungsdatum']
+  createdBy DBRef [note: 'Erstellt von']
+  dateChanged timestamp [note: 'Änderungsdatum']
+  changedBy DBRef [note: 'Geändert von']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.Site']
 }
 
 Table messageOfTheDay [headercolor: #E377C2] {
@@ -1172,10 +1201,11 @@ Table messageOfTheDay [headercolor: #E377C2] {
   message String [note: 'Die eigentliche Nachricht (HTML/Text)']
   subject String [note: 'Betreff']
   roles Array [note: 'Rollen, denen diese Nachricht angezeigt wird (Strings)']
-  dateStart Date [note: 'Anzeige ab']
-  dateEnd Date [note: 'Anzeige bis']
-  enabled Boolean [note: 'Status']
-  important Boolean [note: 'Wichtig-Kennzeichnung']
+  dateStart timestamp [note: 'Anzeige ab']
+  dateEnd timestamp [note: 'Anzeige bis']
+  enabled boolean [note: 'Status']
+  important boolean [note: 'Wichtig-Kennzeichnung']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.MessageOfTheDay']
 }
 
 Table onboardingStep [headercolor: #FF7F0E] {
@@ -1184,15 +1214,15 @@ Table onboardingStep [headercolor: #FF7F0E] {
   version number [note: 'Versionsnummer (Zeitstempel)']
   title String [note: 'Titel des Schritts (Freitext)']
   description String [note: 'Detaillierte Beschreibung (Freitext)']
-  priority Number [note: 'Reihenfolge der Bearbeitung']
-  mandatory Boolean [note: 'Ob der Schritt verpflichtend ist']
-  type OnboardingType_Enum [note: 'Art des Schritts:<br>• `CHECK` (Used)']
-  assignmentType OnboardingAssignment_Enum [note: 'Art der Zuordnung:<br>• `EMPLOYEE` (Used)<br>• `LOCATION` (Used)']
-  dateCreated Date [note: 'Erstellungszeitpunkt']
-  dateChanged Date [note: 'Zeitpunkt der letzten Änderung']
+  priority number [note: 'Reihenfolge der Bearbeitung']
+  mandatory boolean [note: 'Ob der Schritt verpflichtend ist']
+  type OnboardingType_Enum [note: 'Art des Schritts']
+  assignmentType OnboardingAssignment_Enum [note: 'Art der Zuordnung']
+  dateCreated timestamp [note: 'Erstellungszeitpunkt']
+  dateChanged timestamp [note: 'Zeitpunkt der letzten Änderung']
   createdBy DBRef [note: 'Erstellt von (Referenz auf `user`)']
   changedBy DBRef [note: 'Geändert von (Referenz auf `user`)']
-  _class String [note: 'Java Klassenname: `de.videoclinic.model.OnboardingStep` (Used)']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.OnboardingStep']
 }
 
 Table sequenceEntity [headercolor: #E377C2] {
@@ -1200,6 +1230,7 @@ Table sequenceEntity [headercolor: #E377C2] {
   _id ObjectId [pk, note: 'Interner Bezeichner']
   name String [note: 'Name der Sequenz (z.B. Entitätsname)']
   value number [note: 'Aktueller Zählerwert']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.SequenceEntity']
 }
 
 Table treatmentCategory [headercolor: #2CA02C] {
@@ -1208,19 +1239,20 @@ Table treatmentCategory [headercolor: #2CA02C] {
   version number [note: 'Versionsnummer']
   name String [note: 'Name der Kategorie (Used: `Allgemeinmedizin`, `Allgemeinmedizin_Telearzt`, `Andrologie`, `Anästhesie`, `Apotheke`, `Arbeitsmedizin`, `Audiologie`, `Augenheilkunde`, `Chirurgie`, `Diätassistent`, `Diätberatung`, `Durchgangsarzt`, `Gastroenterologie`, `Genetik`, `Gynäkologie`, `HNO-Heilkunde`, `Haut- und Geschlechtskrankheiten`, `Hämatologie`, `Hörgeräteakkustiker`, `Innere Medizin`, `Kardiologie`, `Kieferorthopädie`, `Labor`, `Logopädie`, `Mund-Kiefer-Gesichtschirurgie`, `Nephrologie`, `Neurologie`, `Nuklearmedizin`, `Onkologie`, `Optiker`, `Orthopädie`, `Orthopädieschuhmacher`, `Orthopädietechniker`, `Pathologie`, `Physiotherapie`, `Pneumologie`, `Psychiatrie`, `Psychiatrie_Telearzt`, `Pädiatrie`, `Radiologie`, `Rechtsmedizin`, `Sanitätshaus`, `Schmerztherapie`, `Traumatologie`, `Urologie`, `Zahnmedizin`, `Zahntechniker`, `sonstige`, `öffentliches Gesundheitswesen`)']
   description String [note: 'Beschreibung (Freitext)']
-  prio Number [note: 'Priorität']
-  _class String [note: '`de.videoclinic.model.TreatmentCategory` (Used)']
+  prio number [note: 'Priorität']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.TreatmentCategory']
 }
 
 Table holiday [headercolor: #1F77B4] {
   Note: 'Individual expert absences, vacations, or sick leave.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
-  start Date [note: 'Beginn der Abwesenheit']
-  until Date [note: 'Ende der Abwesenheit']
+  start timestamp [note: 'Beginn der Abwesenheit']
+  until timestamp [note: 'Ende der Abwesenheit']
   title String [note: 'Grund/Bezeichnung']
-  approved Boolean [note: 'Genehmigungsstatus']
+  approved boolean [note: 'Genehmigungsstatus']
   owner DBRef [note: 'Referenz auf `user`']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.Holiday']
 }
 
 Table locationRoomsDto [headercolor: #E377C2] {
@@ -1230,6 +1262,7 @@ Table locationRoomsDto [headercolor: #E377C2] {
   name String [note: 'Name des Standorts']
   address String [note: 'Adresse']
   customer DBRef [note: 'Referenz auf `customer`']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.LocationRoomsDto']
 }
 
 Table loginNotification [headercolor: #FF7F0E] {
@@ -1237,9 +1270,19 @@ Table loginNotification [headercolor: #FF7F0E] {
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
   content String [note: 'Inhalt der Benachrichtigung']
-  dateFrom Date [note: 'Gültig ab']
-  dateTo Date [note: 'Gültig bis']
-  active Boolean [note: 'Status']
+  dateFrom timestamp [note: 'Gültig ab']
+  dateTo timestamp [note: 'Gültig bis']
+  active boolean [note: 'Status']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.LoginNotification']
+}
+
+Table appointmentAssignmentHistory [headercolor: #1F77B4] {
+  Note: 'Audit trail for changes to appointment assignments.'
+  _id number [pk, note: 'Interner Bezeichner']
+  assignmentId number [note: 'Referenz auf `appointmentAssignment`']
+  state String [note: 'Neuer Status']
+  dateCreated timestamp [note: 'Zeitpunkt der Änderung']
+  message String [note: 'Systemnachricht oder Kommentar']
 }
 
 Table patientData [headercolor: #2CA02C] {
@@ -1247,9 +1290,10 @@ Table patientData [headercolor: #2CA02C] {
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
   appointmentId number [note: 'Referenz auf `appointment`']
-  bookNumber String [note: 'Buchnummer (JVA)']
+  booknumber String [note: 'Buchnummer (JVA)']
   location Document [note: 'Ort der Erfassung ([ConsultationLocation](#sub-entity-consultationlocation))']
-  onlyDocumentation Boolean [note: 'Nur Dokumentation Kennzeichnung']
+  onlyDocumentation boolean [note: 'Nur Dokumentation Kennzeichnung']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.PatientData']
 }
 
 Table stornoGroup [headercolor: #8C564B] {
@@ -1259,6 +1303,7 @@ Table stornoGroup [headercolor: #8C564B] {
   title String [note: 'Titel der Gruppe']
   comment String [note: 'Kommentar']
   storno Array [note: 'Einzelne Stornierungsregeln ([StornoRule](#sub-entity-stornorule))']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.StornoGroup']
 }
 
 Table supportCategory [headercolor: #E377C2] {
@@ -1269,15 +1314,17 @@ Table supportCategory [headercolor: #E377C2] {
   title String [note: 'Anzeigename der Kategorie']
   queue String [note: 'Bearbeitungsschlange (Queue)']
   subcategories Array [note: 'Liste von Unterkategorien (Strings)']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.SupportCategory']
 }
 
 Table workHour [headercolor: #8C564B] {
   Note: 'Definitions of different work hour types for billing and reporting.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
-  hours Number [note: 'Anzahl der Stunden']
+  hours number [note: 'Anzahl der Stunden']
   code String [note: 'Kurzcode']
   description String [note: 'Beschreibung']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.WorkHour']
 }
 
 Table patient [headercolor: #2CA02C] {
@@ -1288,18 +1335,19 @@ Table patient [headercolor: #2CA02C] {
   firstName String [note: 'Vorname']
   lastName String [note: 'Nachname']
   displayName String [note: 'Vollständiger Name für die Anzeige']
-  birthday Date [note: 'Geburtsdatum']
+  birthday timestamp [note: 'Geburtsdatum']
   primaryEmail String [note: 'Primäre E-Mail-Adresse']
   homeZipCode String [note: 'Postleitzahl']
   homeCity String [note: 'Stadt']
   location DBRef [note: 'Zugeordneter Standard-Standort']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.Patient']
 }
 
 Table equipment [headercolor: #E377C2] {
   Note: 'Inventory of medical or technical equipment used in consultations.'
   _id number [pk, note: 'Interner Bezeichner']
-  version number [note: 'Versionsnummer']
   name String [note: 'Name des Equipments']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.Equipment']
 }
 
 Table uploadFile [headercolor: #E377C2] {
@@ -1315,28 +1363,31 @@ Table project [headercolor: #E377C2] {
   Note: 'Organizational entities used to group related resources or operations.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
-  dateStart Date [note: 'Projektstart']
-  dateEnd Date [note: 'Projektende']
+  dateStart timestamp [note: 'Projektstart']
+  dateEnd timestamp [note: 'Projektende']
   description String [note: 'Projektbeschreibung']
   state String [note: 'Projektstatus']
   customer DBRef [note: 'Referenz auf `customer`']
   location DBRef [note: 'Referenz auf `location`']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.Project']
 }
 
 Table tag [headercolor: #E377C2] {
   Note: 'Metadata tags used for labeling and filtering various system entities.'
   _id number [pk, note: 'Interner Bezeichner']
   tag String [note: 'Tag-Name']
-  type tag_type_enum [note: 'Tag-Kategorie:<br>• `COMPANY` (Used)']
+  type tag_type_enum [note: 'Tag-Kategorie']
   count number [note: 'Verwendungshäufigkeit']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.Tag']
 }
 
 Table locationType [headercolor: #E377C2] {
   Note: 'Classification for different types of consultation locations.'
   _id number [pk, note: 'Interner Bezeichner']
-  name String [note: 'Name des Typs']
+  name LocationType_Enum [note: 'Name des Typs']
   description String [note: 'Beschreibung']
-  prio Number [note: 'Sortierpriorität']
+  prio number [note: 'Sortierpriorität']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.LocationType']
 }
 
 Table cashRegister [headercolor: #8C564B] {
@@ -1347,23 +1398,26 @@ Table cashRegister [headercolor: #8C564B] {
   count number [note: 'Aktueller Zähler für Rechnungsnummern']
   idFormat String [note: 'Format der Rechnungs-ID']
   taxValues Array [note: 'Verfügbare Steuersätze ([TaxValue](#sub-entity-taxvalue))']
-  enabled Boolean [note: 'Status']
+  enabled boolean [note: 'Status']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.CashRegister']
 }
 
 Table 1testuser [headercolor: #FF7F0E] {
   Note: 'Placeholder or dedicated entity for system testing and QA.'
   _id number [pk, note: 'Interner Bezeichner']
   password String [note: 'Passwort']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.TestUser']
 }
 
 Table serviceQm [headercolor: #2CA02C] {
   Note: 'Data related to quality assurance and management of medical services.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
-  dateCreated Date [note: 'Erstellungsdatum']
-  ratingRisk Number [note: 'Risiko-Bewertung']
-  ratingCommunication Number [note: 'Kommunikations-Bewertung']
+  dateCreated timestamp [note: 'Erstellungsdatum']
+  ratingRisk number [note: 'Risiko-Bewertung']
+  ratingCommunication number [note: 'Kommunikations-Bewertung']
   comment String [note: 'Kommentar']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.ServiceQm']
 }
 
 Table room [headercolor: #E377C2] {
@@ -1373,7 +1427,8 @@ Table room [headercolor: #E377C2] {
   location DBRef [note: 'Referenz auf `location`']
   name String [note: 'Raumname']
   number String [note: 'Raumnummer']
-  available Boolean [note: 'Verfügbarkeit']
+  available boolean [note: 'Verfügbarkeit']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.Room']
 }
 
 Table videoclinicSystem [headercolor: #E377C2] {
@@ -1381,8 +1436,9 @@ Table videoclinicSystem [headercolor: #E377C2] {
   _id ObjectId [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
   invoiceIdFormat String [note: 'Globales Format für Rechnungs-IDs']
-  accountManagement Boolean [note: 'Account-Management aktiviert']
-  timeManagement Boolean [note: 'Zeit-Management aktiviert']
+  accountManagement boolean [note: 'Account-Management aktiviert']
+  timeManagement boolean [note: 'Zeit-Management aktiviert']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.VideoclinicSystem']
 }
 
 Table equipmentGroup [headercolor: #E377C2] {
@@ -1391,7 +1447,8 @@ Table equipmentGroup [headercolor: #E377C2] {
   version number [note: 'Versionsnummer']
   code String [note: 'Gruppen-Code']
   description String [note: 'Beschreibung']
-  prio Number [note: 'Priorität']
+  prio number [note: 'Priorität']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.EquipmentGroup']
 }
 
 Table department [headercolor: #E377C2] {
@@ -1400,6 +1457,7 @@ Table department [headercolor: #E377C2] {
   version number [note: 'Versionsnummer']
   code String [note: 'Abteilungs-Code']
   description String [note: 'Beschreibung']
+  _class String [note: 'Java Klassenname: de.videoclinic.model.Department']
 }
 
 Table PlanJob [headercolor: #1F77B4] {
@@ -1446,20 +1504,20 @@ Table PriceDefinition [headercolor: #8C564B] {
 Table PricePoint [headercolor: #8C564B] {
   _id String [pk, note: 'Internal identifier']
   comment String [note: 'Description or reason for the price (e.g., "Basis", "Preisanpassung")']
-  price Number [note: 'The price value']
+  price number [note: 'The price value']
   dateStart Date [note: 'Optional start date for when this price becomes active']
 }
 
 Table AppointmentCondition [headercolor: #8C564B] {
   _id String [pk, note: 'Internal identifier']
   storno DBRef [note: 'Reference to a `stornoGroup`']
-  hourlyPrice Document [note: 'Contains multiple [PriceDefinitions](#sub-entity-pricedefinition) (e.g., `priceHN`, `priceHN2`, `priceA1`, `priceA2`)']
-  roundingTypeHN RoundingType_Enum [note: 'Rounding rule for HN:<br>• `FULL_HOUR` (Used)<br>• `HALF_HOUR` (Used)']
-  roundingTypeHN2 RoundingType_Enum [note: 'Rounding rule for HN2:<br>• `FULL_HOUR` (Used)<br>• `HALF_HOUR` (Used)']
-  roundingTypeHN3 RoundingType_Enum [note: 'Rounding rule for HN3:<br>• `FULL_HOUR` (Used)<br>• `HALF_HOUR` (Used)']
-  roundingTypeA1 RoundingType_Enum [note: 'Rounding rule for A1:<br>• `FULL_HOUR` (Used)<br>• `HALF_HOUR` (Used)']
-  roundingTypeA2 RoundingType_Enum [note: 'Rounding rule for A2:<br>• `FULL_HOUR` (Used)<br>• `HALF_HOUR` (Used)']
-  roundingTypeA3 RoundingType_Enum [note: 'Rounding rule for A3:<br>• `FULL_HOUR` (Used)<br>• `HALF_HOUR` (Used)']
+  hourlyPrice Document [note: 'Contains multiple [PriceDefinitions](#sub-entity-pricedefinition)']
+  roundingTypeHN RoundingType_Enum [note: 'Rounding rule for HN']
+  roundingTypeHN2 RoundingType_Enum [note: 'Rounding rule for HN2']
+  roundingTypeHN3 RoundingType_Enum [note: 'Rounding rule for HN3']
+  roundingTypeA1 RoundingType_Enum [note: 'Rounding rule for A1']
+  roundingTypeA2 RoundingType_Enum [note: 'Rounding rule for A2']
+  roundingTypeA3 RoundingType_Enum [note: 'Rounding rule for A3']
 }
 
 Table ShiftCondition [headercolor: #8C564B] {
@@ -1476,15 +1534,15 @@ Table UserProfile [headercolor: #FF7F0E] {
   lastName String [note: 'Nachname']
   displayName String [note: 'Vollständiger Name für die Anzeige']
   title String [note: 'Akademischer Titel']
-  salutation String [note: 'Anrede (`MALE`, `FEMALE`)']
-  gender String [note: 'Geschlecht']
+  salutation Salutation_Enum [note: 'Anrede']
+  gender Gender_Enum [note: 'Geschlecht']
   birthday Date [note: 'Geburtsdatum']
   mainAddress Document [note: 'Rechnungsadresse ([Address](#sub-entity-address))']
   workPhone String [note: 'Telefonnummer (Arbeit)']
-  cellularNumber String [note: 'Handynummer']
-  shiftPhoneNumber String [note: 'Telefonnummer für die Bereitschaft']
-  notificationPerMail Boolean [note: 'Weiterleitung von Nachrichten an E-Mail']
-  exludedNotifications Array [note: 'Liste deaktivierter Benachrichtigungstypen (Strings: `APPOINTMENT_ACCEPTED`, `APPOINTMENT_ASSIGNED`, `APPOINTMENT_CANCELED`, `APPOINTMENT_DELETED`, `APPOINTMENT_DONE`, `APPOINTMENT_EXPERT_AGREED`, `APPOINTMENT_EXPERT_CANCELED`, `APPOINTMENT_EXPERT_DISAGREED`, `APPOINTMENT_REJECTED`, `APPOINTMENT_REMINDER`, `APPOINTMENT_REQUEST`, `APPOINTMENT_RESERVED`, `APPOINTMENT_UPCOMING`, `CONSULATION_SUBMIT`, `COUNCIL_START`, `COUNCIL_SUBMIT`, `EXPERT_SUMMARY`, `INVOICE_CUSTOMER`, `TEMPLATE`, `USER_PASSWORD`)']
+  cellularnumber String [note: 'Handynummer']
+  shiftPhonenumber String [note: 'Telefonnummer für die Bereitschaft']
+  notificationPerMail boolean [note: 'Weiterleitung von Nachrichten an E-Mail']
+  exludedNotifications Array [note: 'Liste deaktivierter Benachrichtigungstypen']
 }
 
 Table Address [headercolor: #FF7F0E] {
@@ -1508,11 +1566,11 @@ Table EmployeeProfile [headercolor: #FF7F0E] {
   bic String [note: 'BIC']
   taxid String [note: 'Steuer-ID']
   uid String [note: 'Umsatzsteuernummer']
-  mailInvoice Boolean [note: 'E-Mail-Rechnung senden']
-  postInvoice Boolean [note: 'Post-Rechnung senden']
-  shift String [note: 'Bereitschaftsdienst Fokus (`NONE`, `LOW`, `MEDIUM`, `HIGH`)']
-  appointment String [note: 'Sprechstunde Fokus']
-  therapy String [note: 'Therapie Fokus']
+  mailInvoice boolean [note: 'E-Mail-Rechnung senden']
+  postInvoice boolean [note: 'Post-Rechnung senden']
+  shift User_Focus_Enum [note: 'Bereitschaftsdienst Fokus:<br>• `NONE` (Used)<br>• `LOW` (Used)<br>• `MEDIUM` (Used)<br>• `HIGH` (Used)']
+  appointment User_Focus_Enum [note: 'Sprechstunde Fokus']
+  therapy User_Focus_Enum [note: 'Therapie Fokus']
   skills Array [note: 'Liste der erlangten Fähigkeiten ([SkillAssignment](#sub-entity-skillassignment))']
   imageSignature Document [note: 'Bild mit der Unterschrift ([FileMetadata](#sub-entity-filemetadata))']
   bayernBoxAccess Document [note: 'Zugangsdaten SecureBox (user/password)']
@@ -1521,7 +1579,7 @@ Table EmployeeProfile [headercolor: #FF7F0E] {
 Table SkillAssignment [headercolor: #FF7F0E] {
   _id String [pk, note: 'Internal identifier']
   skill DBRef [note: 'Referenz auf die `skill` Kollektion']
-  active Boolean [note: 'Ob die Fähigkeit für den Experten aktiv ist']
+  active boolean [note: 'Ob die Fähigkeit für den Experten aktiv ist']
   dateCertification Date [note: 'Datum, ab wann die Fähigkeit erlangt wurde']
   certification Document [note: 'Zertifikatsdatei ([FileMetadata](#sub-entity-filemetadata))']
 }
@@ -1531,7 +1589,7 @@ Table EmployerProfile [headercolor: #FF7F0E] {
   konto String [note: 'Debitorenkonto (GKTK)']
   gkto String [note: 'Debitorennummer (GKTO)']
   efn String [note: 'Einheitliche Fortbildungsnummer (EFN)']
-  level String [note: 'Qualifikationsniveau (`ONBOARDING`, `BEGINNER`, etc.)']
+  level User_Level_Enum [note: 'Qualifikationsniveau:<br>• `ONBOARDING` (Used)<br>• `BEGINNER` (Not used)<br>• `AMATEUR` (Not used)<br>• `PROFI` (Not used)']
   activeSinceVC Date [note: 'Ab wann für Videoclinic tätig']
   activeUntilVC Date [note: 'Bis wann für Videoclinic tätig']
   products Array [note: 'Liste abonnierter Waren ([SubscribedProduct](#sub-entity-subscribedproduct))']
@@ -1541,10 +1599,10 @@ Table EmployerProfile [headercolor: #FF7F0E] {
 Table SubscribedProduct [headercolor: #FF7F0E] {
   _id String [pk, note: 'Internal identifier']
   product DBRef [note: 'Referenz auf die `product` Kollektion']
-  amount Number [note: 'Anzahl/Menge']
+  amount number [note: 'Anzahl/Menge']
   start Date [note: 'Startdatum']
   until Date [note: 'Enddatum']
-  adjustedPrice Number [note: 'Angebotspreis']
+  adjustedPrice number [note: 'Angebotspreis']
   description String [note: 'Beschreibung']
   comment String [note: 'Kommentar']
 }
@@ -1556,25 +1614,25 @@ Table FileMetadata [headercolor: #E377C2] {
   size number [note: 'Dateigröße in Bytes']
   checksum String [note: 'Prüfsumme (SHA-256)']
   type String [note: 'Dateityp:<br>• `cert` (Used)<br>• `sig` (Used)<br>• `usertn` (Used)<br>• `usertempupload` (Used)']
-  dateCreated Date [note: 'Erstellungsdatum']
+  dateCreated timestamp [note: 'Erstellungsdatum']
 }
 
 Table ConsultationBase [headercolor: #2CA02C] {
   _id String [pk, note: 'Internal identifier']
-  medicalTrainedPersonel Boolean [note: 'Medizinisch geschultes Personal anwesend']
-  timeContact Number [note: 'Kontaktzeit']
-  communicationType ConsultationBase_communicationType_enum [note: 'Art der Kommunikation:<br>• `VIDEO` (Used)']
-  furtherTreatment ConsultationBase_furtherTreatment_enum [note: 'Voreinstellung für die weitere Behandlung:<br>• `FOLLOW_UP` (Used)<br>• `IF_REQUIRED` (Used)<br>• `REFERRAL` (Used)<br>• `REFERRAL_OTHER` (Used)']
+  medicalTrainedPersonel boolean [note: 'Medizinisch geschultes Personal anwesend']
+  timeContact number [note: 'Kontaktzeit']
+  communicationType ConsultationBase_communicationType_enum [note: 'Art der Kommunikation']
+  furtherTreatment jobId_defaultFurtherTreatment_enum [note: 'Voreinstellung für die weitere Behandlung']
   dateFurtherTreatment Date [note: 'Datum der weiteren Behandlung']
 }
 
 Table ConsultationBody [headercolor: #2CA02C] {
   _id String [pk, note: 'Internal identifier']
-  gender String [note: 'Geschlecht']
-  age Number [note: 'Alter']
-  birthday Date [note: 'Geburtsdatum']
-  bodyHeight Number [note: 'Körpergröße']
-  bodyWeight Number [note: 'Körpergewicht']
+  gender Gender_Enum [note: 'Geschlecht']
+  age number [note: 'Alter']
+  birthday timestamp [note: 'Geburtsdatum']
+  bodyHeight number [note: 'Körpergröße']
+  bodyWeight number [note: 'Körpergewicht']
   rr String [note: 'Blutdruck (RR)']
   pulse String [note: 'Puls']
 }
@@ -1583,8 +1641,8 @@ Table ConsultationWarning [headercolor: #2CA02C] {
   _id String [pk, note: 'Internal identifier']
   warning DBRef [note: 'Referenz auf den Warnhinweis ([patientAlerts](#table-patientalerts-former-warning))']
   comment String [note: 'Kommentar']
-  applies Boolean [note: 'Trifft zu']
-  dateStart Date [note: 'Startdatum']
+  applies boolean [note: 'Trifft zu']
+  dateStart timestamp [note: 'Startdatum']
 }
 
 Table ConsultationOnboarding [headercolor: #2CA02C] {
@@ -1601,9 +1659,9 @@ Table ConsultationOnboarding [headercolor: #2CA02C] {
   skinCondition String [note: 'Hautbefund']
   alcoholUsage String [note: 'Alkoholkonsum']
   drugUsage String [note: 'Drogenkonsum']
-  suicidal Boolean [note: 'Suizidalität']
-  dangerous Boolean [note: 'Fremdgefährdung']
-  incarcerationSuitability Boolean [note: 'Gewahrsamstauglichkeit']
+  suicidal boolean [note: 'Suizidalität']
+  dangerous boolean [note: 'Fremdgefährdung']
+  incarcerationSuitability boolean [note: 'Gewahrsamstauglichkeit']
 }
 
 Table ConsultationStandard [headercolor: #2CA02C] {
@@ -1622,66 +1680,66 @@ Table ConsultationStandard [headercolor: #2CA02C] {
 Table ConsultationMedicationAnamnesis [headercolor: #2CA02C] {
   _id String [pk, note: 'Internal identifier']
   documentation String [note: 'Dokumentation der Medikation']
-  categoryL04 Boolean [note: 'Kategorie L04']
-  categoryL01 Boolean [note: 'Kategorie L01']
-  categoryS01 Boolean [note: 'Kategorie S01']
-  categoryA10 Boolean [note: 'Kategorie A10']
-  categoryB01 Boolean [note: 'Kategorie B01']
-  categoryJ05 Boolean [note: 'Kategorie J05']
-  categoryN06 Boolean [note: 'Kategorie N06']
-  categoryC09 Boolean [note: 'Kategorie C09']
-  categoryC10 Boolean [note: 'Kategorie C10']
-  categoryN02 Boolean [note: 'Kategorie N02']
-  categoryN05 Boolean [note: 'Kategorie N05']
-  categoryR03 Boolean [note: 'Kategorie R03']
-  categoryA02 Boolean [note: 'Kategorie A02']
-  categoryL02 Boolean [note: 'Kategorie L02']
-  categoryA12 Boolean [note: 'Kategorie A12']
+  categoryL04 boolean [note: 'Kategorie L04']
+  categoryL01 boolean [note: 'Kategorie L01']
+  categoryS01 boolean [note: 'Kategorie S01']
+  categoryA10 boolean [note: 'Kategorie A10']
+  categoryB01 boolean [note: 'Kategorie B01']
+  categoryJ05 boolean [note: 'Kategorie J05']
+  categoryN06 boolean [note: 'Kategorie N06']
+  categoryC09 boolean [note: 'Kategorie C09']
+  categoryC10 boolean [note: 'Kategorie C10']
+  categoryN02 boolean [note: 'Kategorie N02']
+  categoryN05 boolean [note: 'Kategorie N05']
+  categoryR03 boolean [note: 'Kategorie R03']
+  categoryA02 boolean [note: 'Kategorie A02']
+  categoryL02 boolean [note: 'Kategorie L02']
+  categoryA12 boolean [note: 'Kategorie A12']
 }
 
 Table ConsultationDiagnosis [headercolor: #2CA02C] {
   _id String [pk, note: 'Internal identifier']
   icd10 Document [note: 'ICD-10 Referenz ([Icd10](#table-icd10))']
-  localization ConsultationDiagnosis_localization_enum [note: 'Lokalisierung:<br>• `LEFT` (Used)<br>• `RIGHT` (Used)<br>• `BOTH` (Used)<br>• `UNKNOWN` (Used)']
-  level ConsultationDiagnosis_level_enum [note: 'Sicherheit der Diagnose:<br>• `GENERAL` (Used)<br>• `VERIFY` (Used)<br>• `ZERO` (Used)<br>• `STATIONARY` (Used)']
+  localization ConsultationDiagnosis_localization_enum [note: 'Lokalisierung']
+  level ConsultationDiagnosis_level_enum [note: 'Sicherheit der Diagnose']
   title String [note: 'Titel']
   comment String [note: 'Kommentar']
 }
 
 Table ConsultationPrescription [headercolor: #2CA02C] {
   _id String [pk, note: 'Internal identifier']
-  type ConsultationPrescription_type_enum [note: 'Art der Verschreibung:<br>• `LIMITED` (Used)']
-  packages Number [note: 'Anzahl der Packungen']
+  type ConsultationPrescription_type_enum [note: 'Art der Verschreibung']
+  packages number [note: 'Anzahl der Packungen']
   product Document [note: 'Schnappschuss des gewählten Produkts ([MedicationProduct](#sub-entity-medicationproduct))']
   medication DBRef [note: 'Referenz auf Medikament ([Medication](#entity-medikamente-medication))']
-  morning Number [note: 'Dosierung Morgens']
-  lunch Number [note: 'Dosierung Mittags']
-  evening Number [note: 'Dosierung Abends']
-  night Number [note: 'Dosierung Nachts']
-  amountEveryXDays Number [note: 'Menge alle X Tage']
-  everyXDays Number [note: 'Alle X Tage']
-  start Date [note: 'Startdatum']
-  end Date [note: 'Enddatum']
+  morning number [note: 'Dosierung Morgens']
+  lunch number [note: 'Dosierung Mittags']
+  evening number [note: 'Dosierung Abends']
+  night number [note: 'Dosierung Nachts']
+  amountEveryXDays number [note: 'Menge alle X Tage']
+  everyXDays number [note: 'Alle X Tage']
+  start timestamp [note: 'Startdatum']
+  end timestamp [note: 'Enddatum']
   comment String [note: 'Kommentar']
   reasoning String [note: 'Begründung']
 }
 
 Table ConsultationAnamnesis [headercolor: #2CA02C] {
   _id String [pk, note: 'Internal identifier']
-  type ConsultationAnamnesis_type_enum [note: 'Art des Eintrags:<br>• `MEDICAL` (Used)<br>• `MEDICATION` (Used)<br>• `ALLERGY` (Used)']
+  type ConsultationAnamnesis_type_enum [note: 'Art des Eintrags']
   documentation String [note: 'Dokumentationstext']
 }
 
 Table ConsultationPatientReport [headercolor: #2CA02C] {
   _id String [pk, note: 'Internal identifier']
-  type ConsultationPatientReport_type_enum [note: 'Art des Berichts:<br>• `FINDINGS` (Used)<br>• `MEASUREMENT` (Used)']
+  type ConsultationPatientReport_type_enum [note: 'Art des Berichts']
   documentation String [note: 'Dokumentationstext']
 }
 
 Table ConsultationWorkIncapacity [headercolor: #2CA02C] {
   _id String [pk, note: 'Internal identifier']
-  dateStart Date [note: 'Startdatum']
-  dateEnd Date [note: 'Enddatum']
+  dateStart timestamp [note: 'Startdatum']
+  dateEnd timestamp [note: 'Enddatum']
   comment String [note: 'Kommentar']
 }
 
@@ -1699,14 +1757,14 @@ Table ConsultationJob [headercolor: #2CA02C] {
   expertTitle String [note: 'Titel für Experten']
   remoteCode String [note: 'Externer Code']
   title String [note: 'Titel']
-  type JobType_Enum [note: 'Abrechnungsart (z.B. `APPOINTMENT`):<br>• `APPOINTMENT` (Used)<br>• `SHIFT` (Used)']
+  type JobType_Enum [note: 'Abrechnungsart (z.B. `APPOINTMENT`)']
 }
 
 Table ConsultationLocation [headercolor: #2CA02C] {
   _id number [pk, note: 'Referenz ID auf `location`']
   name String [note: 'Name des Ortes']
   booknumberMask String [note: 'Maske für Buchnummern']
-  patientDataType PatientDataType_Enum [note: 'Datentyp der Patienten:<br>• `EXTERNAL` (Used)<br>• `INTERNAL_SECUREBOX` (Used)']
+  patientDataType PatientDataType_Enum [note: 'Datentyp der Patienten']
   customer Document [note: 'Zugehöriger Kunde ([ConsultationCustomer](#sub-entity-consultationcustomer))']
 }
 
@@ -1718,18 +1776,22 @@ Table ConsultationCustomer [headercolor: #2CA02C] {
 Table TreatmentPosition [headercolor: #2CA02C] {
   _id String [pk, note: 'Internal identifier']
   appointmentId number [note: 'Referenz auf `appointment`']
-  start Date [note: 'Startzeitpunkt']
-  until Date [note: 'Endzeitpunkt']
-  state TreatmentPosition_state_enum [note: 'Status des Termins:<br>• `CANCELED` (Used)<br>• `CLOSED` (Used)<br>• `DONE` (Used)<br>• `LOCKEDIN` (Used)<br>• `READY` (Used)<br>• `RESCHEDULED` (Used)<br>• `STORNO` (Used)']
-  requireReport Boolean [note: 'Bericht erforderlich']
+  start timestamp [note: 'Startzeitpunkt']
+  until timestamp [note: 'Endzeitpunkt']
+  state TreatmentPosition_state_enum [note: 'Status des Termins']
+  requireReport boolean [note: 'Bericht erforderlich']
+  forceReport boolean [note: 'Bericht erzwingen']
   report Document [note: 'Referenz auf den Bericht ([TreatmentReport](#sub-entity-treatmentreport))']
 }
 
 Table TreatmentReport [headercolor: #2CA02C] {
   _id String [pk, note: 'Internal identifier']
-  type TreatmentReport_type_enum [note: 'Art des Berichts:<br>• `STANDARD` (Used)']
+  type OnboardingType_Enum [note: 'Art des Berichts']
   consultationId number [note: 'Referenz auf `consultationData`']
-  date Date [note: 'Datum des Berichts']
+  date timestamp [note: 'Datum des Berichts']
+  dateStart timestamp [note: 'Startdatum des Berichts']
+  dateEnd timestamp [note: 'Enddatum des Berichts']
+  job Document [note: 'Zugehörige Dienstleistung']
 }
 
 Table BasisWebMedication [headercolor: #D62728] {
@@ -1761,7 +1823,7 @@ Table BasisWebEntry [headercolor: #D62728] {
 Table InvoiceComponentStorno [headercolor: #8C564B] {
   _id String [pk, note: 'Internal identifier']
   name String [note: 'Name des Stornos']
-  percentage Number [note: 'Prozentsatz']
+  percentage number [note: 'Prozentsatz']
   stornoTime number [note: 'Zeitpunkt der Stornierung']
   comment String [note: 'Kommentar']
 }
@@ -1772,7 +1834,7 @@ Table MedicationIngredient [headercolor: #9467BD] {
   code String [note: 'Code des Inhaltsstoffs (Systematische Kodierung)']
   equivalent String [note: 'Entsprechung']
   amount String [note: 'Menge (z.B. "50 mg")']
-  extra Boolean [note: 'Ob es sich um einen Hilfsstoff handelt']
+  extra boolean [note: 'Ob es sich um einen Hilfsstoff handelt']
 }
 
 Table MedicationProduct [headercolor: #9467BD] {
@@ -1780,8 +1842,8 @@ Table MedicationProduct [headercolor: #9467BD] {
   name String [note: 'Name der Packung']
   packaging String [note: 'Packungsgröße (z.B. "50 g (N2)")']
   packageName String [note: 'Ausgeschriebener Packungsname']
-  rl Boolean [note: 'Relevanz-Indikator']
-  price Number [note: 'Preis']
+  rl boolean [note: 'Relevanz-Indikator']
+  price number [note: 'Preis']
   ingredients Array [note: 'Liste der Inhaltsstoffe (Snapshot)']
 }
 
@@ -1800,12 +1862,12 @@ Table InvoiceClient [headercolor: #8C564B] {
 
 Table InvoicePosition [headercolor: #8C564B] {
   _id String [pk, note: 'Internal identifier']
-  no Number [note: 'Positionsnummer']
+  no number [note: 'Positionsnummer']
   title String [note: 'Titel']
   description String [note: 'Beschreibung']
-  amount Number [note: 'Menge']
-  pricePerUnit Number [note: 'Preis pro Einheit']
-  totalPrice Number [note: 'Gesamtpreis der Position']
+  amount number [note: 'Menge']
+  pricePerUnit number [note: 'Preis pro Einheit']
+  totalPrice number [note: 'Gesamtpreis der Position']
   taxType TaxType_Enum [note: 'Steuerart:<br>• `SATZ_NORMAL` (Used)<br>• `SATZ_NULL` (Used)']
   job DBRef [note: 'Referenz auf `jobId`']
 }
@@ -1813,10 +1875,10 @@ Table InvoicePosition [headercolor: #8C564B] {
 Table InvoiceTax [headercolor: #8C564B] {
   _id String [pk, note: 'Internal identifier']
   taxType TaxType_Enum [note: 'Steuerart:<br>• `SATZ_NORMAL` (Used)<br>• `SATZ_NULL` (Used)']
-  value Number [note: 'Steuersatz']
-  sum Number [note: 'Steuersumme']
-  net Number [note: 'Nettosumme']
-  total Number [note: 'Bruttosumme']
+  value number [note: 'Steuersatz']
+  sum number [note: 'Steuersumme']
+  net number [note: 'Nettosumme']
+  total number [note: 'Bruttosumme']
 }
 
 Table AppointmentAssignmentHistory [headercolor: #1F77B4] {
@@ -1831,11 +1893,11 @@ Table ExpertWorklogEntry [headercolor: #8C564B] {
   _id String [pk, note: 'Internal identifier']
   appointmentId number [note: 'Referenz auf `appointment`']
   job DBRef [note: 'Referenz auf `jobId`']
-  start Date [note: 'Startzeitpunkt']
+  start timestamp [note: 'Startzeitpunkt']
   actualWorkTime number [note: 'Tatsächliche Arbeitszeit']
-  payableWorkTime Number [note: 'Auszahlbare Arbeitszeit']
-  price Number [note: 'Einzelpreis']
-  total Number [note: 'Gesamtpreis']
+  payableWorkTime number [note: 'Auszahlbare Arbeitszeit']
+  price number [note: 'Einzelpreis']
+  total number [note: 'Gesamtpreis']
   location String [note: 'Ort']
 }
 
@@ -1843,14 +1905,14 @@ Table AsyncJobTask [headercolor: #E377C2] {
   _id String [pk, note: 'Internal identifier']
   title String [note: 'Titel des Arbeitsschritts']
   status String [note: 'Status des Arbeitsschritts (Freitext/Progress message, z.B. "25/2987/5697 OK")']
-  dateStarted Date [note: 'Startzeitpunkt']
-  dateFinished Date [note: 'Endzeitpunkt']
+  dateStarted timestamp [note: 'Startzeitpunkt']
+  dateFinished timestamp [note: 'Endzeitpunkt']
 }
 
 Table JobPriceEntry [headercolor: #8C564B] {
   _id String [pk, note: 'Internal identifier']
   jobId number [note: 'Referenz auf `jobId`']
-  price Number [note: 'Preiswert']
+  price number [note: 'Preiswert']
   roundingType RoundingType_Enum [note: 'Rundungsregel:<br>• `FULL_HOUR` (Used)<br>• `HALF_HOUR` (Used)']
 }
 
@@ -1859,13 +1921,13 @@ Table LocationPatientDataAccess [headercolor: #E377C2] {
   user String [note: 'Benutzername']
   password String [note: 'Passwort']
   url String [note: 'Zugriff-URL']
-  active Boolean [note: 'Status des Zugangs']
+  active boolean [note: 'Status des Zugangs']
 }
 
 Table UserVideoSession [headercolor: #E377C2] {
   _id String [pk, note: 'Internal identifier']
   sessionId String [note: 'Session-ID']
-  date Date [note: 'Zeitpunkt']
+  date timestamp [note: 'Zeitpunkt']
   timeWatched number [note: 'Zuschauerzeit in dieser Sitzung']
 }
 
@@ -1874,10 +1936,10 @@ Table OnboardingStep [headercolor: #FF7F0E] {
   version number [note: 'Versionsnummer (Zeitstempel)']
   title String [note: 'Titel des Schritts (Freitext)']
   description String [note: 'Beschreibung (Freitext)']
-  priority Number [note: 'Sortierreihenfolge']
-  mandatory Boolean [note: 'Pflichtschritt']
-  type OnboardingType_Enum [note: 'Typ des Onboarding-Schritts:<br>• `CHECK` (Used)']
-  assignmentType OnboardingAssignment_Enum [note: 'Art der Zuordnung:<br>• `EMPLOYEE` (Used)<br>• `LOCATION` (Used)']
+  priority number [note: 'Sortierreihenfolge']
+  mandatory boolean [note: 'Pflichtschritt']
+  type OnboardingType_Enum [note: 'Typ des Onboarding-Schritts']
+  assignmentType OnboardingAssignment_Enum [note: 'Art der Zuordnung']
   dateCreated Date [note: 'Erstellungszeitpunkt']
   dateChanged Date [note: 'Zeitpunkt der letzten Änderung']
   createdBy DBRef [note: 'Erstellt von (Referenz auf `user`)']
@@ -1888,19 +1950,19 @@ Table StornoRule [headercolor: #8C564B] {
   _id String [pk, note: 'Internal identifier']
   name String [note: 'Bezeichnung der Regel']
   stornoTime number [note: 'Zeitpunkt (in Sekunden/Millisekunden vor Termin)']
-  percentage Number [note: 'Prozentsatz der Kosten']
+  percentage number [note: 'Prozentsatz der Kosten']
   comment String [note: 'Kommentar']
 }
 
 Table TaxValue [headercolor: #8C564B] {
   _id String [pk, note: 'Internal identifier']
   name String [note: 'Bezeichnung']
-  value Number [note: 'Prozentsatz']
-  enabled Boolean [note: 'Status']
+  value number [note: 'Prozentsatz']
+  enabled boolean [note: 'Status']
 }
 
 // Relationships
-Ref: AppointmentAssignmentHistory.assignmentId > appointmentAssignment._id
+Ref: appointmentAssignmentHistory.assignmentId > appointmentAssignment._id
 Ref: ExpertWorklogEntry.appointmentId > appointment._id
 Ref: ExpertWorklogEntry.job > jobId._id
 Ref: InvoicePosition.job > jobId._id
@@ -1910,17 +1972,28 @@ Ref: OnboardingStep.createdBy > user._id
 Ref: TreatmentPosition.appointmentId > appointment._id
 Ref: TreatmentReport.consultationId > consultationData._id
 Ref: appointment.treatmentId > treatment._id
+Ref: appointment.customer > customer._id
+Ref: appointment.location > location._id
 Ref: appointmentAssignment.appointmentId > appointment._id
 Ref: appointmentAssignment.assignedById > user._id
 Ref: appointmentAssignment.userId > user._id
+Ref: appointmentPlan.customer > customer._id
+Ref: appointmentPlan.location > location._id
+Ref: appointmentPlan.doctor > user._id
 Ref: basisWebAppointment.location > location._id
 Ref: basisWebData.appointment > appointment._id
 Ref: cDRCallAssignment.appointmentId > appointment._id
 Ref: cDRCallAssignment.consultationId > consultationData._id
 Ref: cDRCallAssignment.locationId > location._id
+Ref: consultation.doctor > user._id
+Ref: consultation.job > jobId._id
+Ref: consultation.location > location._id
+Ref: consultation.customer > customer._id
 Ref: consultationData.appointment > appointment._id
 Ref: consultationData.basisWebDataId > basisWebData._id
 Ref: consultationData.signedOffBy > user._id
+Ref: consultationData.customer > customer._id
+Ref: consultationData.location > location._id
 Ref: expertWeek.changedBy > user._id
 Ref: expertWeek.createdBy > user._id
 Ref: expertWeek.userId > user._id
@@ -1940,6 +2013,7 @@ Ref: log.appointment > appointment._id
 Ref: log.userId > user._id
 Ref: notificationTemplate.changedBy > user._id
 Ref: onboardingHistory.changedBy > user._id
+Ref: onboardingHistory.referenceId > user._id
 Ref: onboardingStep.changedBy > user._id
 Ref: onboardingStep.createdBy > user._id
 Ref: patientData.appointmentId > appointment._id
@@ -1950,6 +2024,12 @@ Ref: questionaire.appointmentId > appointment._id
 Ref: questionaire.consultationId > consultationData._id
 Ref: room.location > location._id
 Ref: userFile.ownerId > user._id
+Ref: SkillAssignment.skill > skill._id
+Ref: SkillRule.skills > skill._id
 Ref: userVideoHistory.user > user._id
 Ref: userVideoHistory.video > video._id
 Ref: video.category > videoCategory._id
+Ref: CustomerDiscount.job > jobId._id
+Ref: treatment.customer > customer._id
+Ref: treatment.location > location._id
+Ref: patient.location > location._id
