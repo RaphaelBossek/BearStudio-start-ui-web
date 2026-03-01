@@ -258,7 +258,7 @@ Zuweisung einer Preisliste zu einem Kunden mit zeitlicher Gültigkeit.
 
 | Column | Type | Field Type | Description |
 | :--- | :--- | :--- | :--- |
-| `priceList` | `Document` | schema | Snapshot der Preisliste (enthält `_id` und `name`) |
+| `priceList` | `Document` | snapshot | Snapshot der Preisliste (enthält `_id` und `name`) |
 | `start` | `Date` | schema | Startdatum |
 | `until` | `Date` | schema | Enddatum |
 | `comment` | `String` | schema | Kommentar |
@@ -277,7 +277,7 @@ The appointment plan defines the schedule for consultation hours, including serv
 | `_id` | `Long` | schema | Interner Bezeichner |
 | `version` | `Long` | schema | Versionsnummer (Zeitstempel) |
 | `name` | `String` | schema | Ein Name für den Plan (Freitext) |
-| `job` | `Document` | schema | Eine Dienstleistung ([PlanJob](#sub-entity-planjob)) |
+| `job` | `Document` | snapshot | Eine Dienstleistung (denormalized snapshot of [`jobId`](#entity-dienstleistung-service)) ([PlanJob](#sub-entity-planjob)) |
 | `day` | `String` | schema | Einen Wochentag:<br>• `MO` (Used)<br>• `TU` (Used)<br>• `WE` (Used)<br>• `TH` (Used)<br>• `FR` (Used) |
 | `startDate` | `Date` | schema | Ein Startdatum |
 | `endDate` | `Date` | schema | Einen Enddatum |
@@ -287,14 +287,14 @@ The appointment plan defines the schedule for consultation hours, including serv
 | `schedulingMulitplier` | `Number` | schema | Multiplikator für die Wiederholung |
 | `timeStart` | `Number` | schema | Einer Startuhrzeit (Format: HHmm, z.B. 930 für 09:30) |
 | `timeEnd` | `Number` | schema | Eine Enduhrzeit (Format: HHmm, z.B. 1200 für 12:00) |
-| `doctor` | `Document` | schema | Einen zugewiesenen Experten ([PlanUser](#sub-entity-planuser)) |
-| `location` | `Document` | schema | Einen zugewiesenen Ort ([PlanLocation](#sub-entity-planlocation)) |
+| `doctor` | `Document` | snapshot | Assigned expert (denormalized snapshot of [`user`](#entity-experte-expert)) ([PlanUser](#sub-entity-planuser)) |
+| `location` | `Document` | snapshot | Assigned location (denormalized snapshot of [`location`](#entity-standorte-locations)) ([PlanLocation](#sub-entity-planlocation)) |
 | `comment` | `String` | schema | Einem Kommentar (Freitext) |
 | `expertOnly` | `Boolean` | schema | Indicates if only the assigned expert can provide the service |
 | `dateCreated` | `Date` | schema | Creation date |
-| `createdBy` | `Document/DBRef` | schema | Creator (Reference to [PlanUser](#sub-entity-planuser)) |
+| `createdBy` | `Document/DBRef` | snapshot | Creator (denormalized snapshot of [`user`](#entity-experte-expert)) ([PlanUser](#sub-entity-planuser)) |
 | `dateChanged` | `Date` | schema | Date of last change |
-| `changedBy` | `Document/DBRef` | schema | Changed by (Reference to [PlanUser](#sub-entity-planuser)) |
+| `changedBy` | `Document/DBRef` | snapshot | Changed by (denormalized snapshot of [`user`](#entity-experte-expert)) ([PlanUser](#sub-entity-planuser)) |
 | `_class` | `String` | schema | Java class name: `de.videoclinic.model.AppointmentPlan` (Used) |
 
 The `appointmentPlan` entity is referenced by:
@@ -308,10 +308,10 @@ The `appointmentPlan` entity is referenced by:
 
 ### Sub-entities for appointmentPlan
 
-The following structures are used as nested documents within the `appointmentPlan` collection.
+The following structures are used as nested documents within the `appointmentPlan` collection. These are denormalized snapshots (copies) of selected fields from other collections, used to ensure historical consistency and performance.
 
 #### Sub-entity: PlanJob
-A snapshot of the assigned service.
+A denormalized snapshot of the associated [`jobId`](#entity-dienstleistung-service) entity.
 
 | Column | Type | Field Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -327,7 +327,7 @@ The `PlanJob` sub-entity is used within:
 - [`appointmentPlan`](#entity-sprechstundenplan-appointment-plan)
 
 #### Sub-entity: PlanUser
-A snapshot of a user (doctor, creator, etc.).
+A denormalized snapshot of the associated [`user`](#entity-experte-expert) entity.
 
 | Column | Type | Field Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -340,26 +340,26 @@ The `PlanUser` sub-entity is used within:
 - [`appointmentPlan`](#entity-sprechstundenplan-appointment-plan)
 
 #### Sub-entity: PlanLocation
-A snapshot of the location.
+A denormalized snapshot of the associated [`location`](#entity-standorte-locations) entity.
 
 | Column | Type | Field Type | Description |
 | :--- | :--- | :--- | :--- |
-| `_id` | `Long` | schema | Location ID |
-| `name` | `String` | schema | Location name (Freitext) |
+| `_id` | `Long` | schema | Location ID (referenced from [`location`](#entity-standorte-locations)) |
+| `name` | `String` | schema | Location name (copied from [`location`](#entity-standorte-locations) for consistency) |
 | `booknumberMask` | `String` | schema | Mask for booking numbers (Strukturierter Text) |
 | `patientDataType` | `String` | schema | Data type: `EXTERNAL`, `EXTERNAL_BASISWEB`, `INTERNAL`, `INTERNAL_SECUREBOX`, `INTERNAL_VCCLOUD` (Used) ([Location.patientDataType](#entity-standorte-locations)) |
-| `customer` | `Document` | schema | Assigned customer ([PlanCustomer](#sub-entity-plancustomer)) |
+| `customer` | `Document` | snapshot | Denormalized snapshot of the assigned customer ([PlanCustomer](#sub-entity-plancustomer)) |
 
 The `PlanLocation` sub-entity is used within:
 - [`appointmentPlan`](#entity-sprechstundenplan-appointment-plan)
 
 #### Sub-entity: PlanCustomer
-A snapshot of the customer.
+A denormalized snapshot of the associated [`customer`](#entity-kunden-customers) entity.
 
 | Column | Type | Field Type | Description |
 | :--- | :--- | :--- | :--- |
-| `_id` | `Long` | schema | Customer ID |
-| `name` | `String` | schema | Customer name (Freitext) |
+| `_id` | `Long` | schema | Customer ID (referenced from [`customer`](#entity-kunden-customers)) |
+| `name` | `String` | schema | Customer name (copied from [`customer`](#entity-kunden-customers) for consistency) |
 
 The `PlanCustomer` sub-entity is used within:
 - [`appointmentPlan`](#entity-sprechstundenplan-appointment-plan) (nested in `location`)
@@ -828,13 +828,13 @@ Die Konsultationsdaten erfassen alle medizinischen Informationen, die während e
 | `standard` | `Document` | schema | Daten einer Standard-Konsultation ([ConsultationStandard](#sub-entity-consultationstandard)) |
 | `signedOffBy` | `DBRef` | schema | Signed off by (Reference to [user](#entity-experte-expert)) |
 | `appointment` | `DBRef` | schema | Associated appointment (Reference to [appointment](#entity-termine-appointments)) |
-| `location` | `Document` | schema | Location of the consultation ([ConsultationLocation](#sub-entity-consultationlocation)) |
+| `location` | `Document` | snapshot | Location of the consultation (denormalized snapshot of [`location`](#entity-standorte-locations)) ([ConsultationLocation](#sub-entity-consultationlocation)) |
 | `period` | `Number` | schema | Abrechnungszeitraum |
 | `appointmentType` | `String` | schema | Termintyp:<br>• `APPOINTMENT` (Used) |
-| `__ref_customer_id` | `Document` | schema | Zugehöriger Kunde ([ConsultationCustomer](#sub-entity-consultationcustomer)) |
-| `job` | `Document` | schema | Erbrachte Dienstleistung ([ConsultationJob](#sub-entity-consultationjob)) |
+| `customer` | `Document` | snapshot | Zugehöriger Kunde (denormalized snapshot of [`customer`](#entity-kunden-customers)) ([ConsultationCustomer](#sub-entity-consultationcustomer)) |
+| `job` | `Document` | snapshot | Erbrachte Dienstleistung (denormalized snapshot of [`jobId`](#entity-dienstleistung-service)) ([ConsultationJob](#sub-entity-consultationjob)) |
 | `paymentType` | `String` | schema | Zahlungsart:<br>• `FULL` (Used) |
-| `doctor` | `Document` | inferred | Durchführender Experte ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
+| `doctor` | `Document` | snapshot | Durchführender Experte (denormalized snapshot of [`user`](#entity-experte-expert)) ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
 | `history` | `Document` | inferred | Historie ([ConsultationHistory](#sub-entity-consultationhistory)) |
 | `bookNumber` | `String` | inferred | Buchnummer (JVA) |
 | `jNumber` | `String` | inferred | J-Nummer (JVA) |
@@ -1193,7 +1193,7 @@ Erfasst den Verlauf von Behandlungen, insbesondere im Bereich der Psychotherapie
 | :--- | :--- | :--- | :--- |
 | `_id` | `Long` | schema | Interner Bezeichner |
 | `version` | `Long` | schema | Versionsnummer |
-| `assigned` | `Document` | schema | Zugewiesener Experte ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
+| `assigned` | `Document` | snapshot | Zugewiesener Experte (denormalized snapshot of [`user`](#entity-experte-expert)) ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
 | `hour` | `Number` | schema | Stundenindex |
 | `day` | `String` | schema | Wochentag:<br>• `MO` (Used)<br>• `TU` (Used)<br>• `WE` (Used)<br>• `TH` (Used)<br>• `FR` (Used) |
 | `bookNumber` | `String` | schema | Buchnummer (JVA) |
@@ -1201,16 +1201,16 @@ Erfasst den Verlauf von Behandlungen, insbesondere im Bereich der Psychotherapie
 | `type` | `String` | schema | Art der Behandlung:<br>• `PSYCH` (Used) |
 | `state` | `String` | schema | Status der Behandlung:<br>• `ACTIVE` (Used)<br>• `CANCELED` (Used)<br>• `CANCELED_CLOSED` (Used)<br>• `CLOSED` (Used)<br>• `ENDING` (Used)<br>• `PROBATORIK` (Used)<br>• `RUNNING` (Used)<br>• `STARTED` (Used)<br>• `STORNO` (Used)<br>• `STORNO_CLOSED` (Used) |
 | `dateStorno` | `Date` | schema | Stornierungsdatum |
-| `job` | `Document` | schema | Erbrachte Dienstleistung ([ConsultationJob](#sub-entity-consultationjob)) |
-| `jobReport` | `Document` | schema | Dienstleistung für Berichte ([ConsultationJob](#sub-entity-consultationjob)) |
+| `job` | `Document` | snapshot | Erbrachte Dienstleistung (denormalized snapshot of [`jobId`](#entity-dienstleistung-service)) ([ConsultationJob](#sub-entity-consultationjob)) |
+| `jobReport` | `Document` | snapshot | Dienstleistung für Berichte (denormalized snapshot of [`jobId`](#entity-dienstleistung-service)) ([ConsultationJob](#sub-entity-consultationjob)) |
 | `reportingPath` | `String` | schema | Pfad für das Reporting |
-| `jobReportPobatorik` | `Document` | schema | Dienstleistung für Probatorik-Berichte ([ConsultationJob](#sub-entity-consultationjob)) |
+| `jobReportPobatorik` | `Document` | snapshot | Dienstleistung für Probatorik-Berichte (denormalized snapshot of [`jobId`](#entity-dienstleistung-service)) ([ConsultationJob](#sub-entity-consultationjob)) |
 | `archived` | `Boolean` | schema | Archivierungsstatus |
 | `attachments` | `Array` | schema | Liste von Anhängen |
 | `positions` | `Array` | schema | Einzelne Termine der Behandlung ([TreatmentPosition](#sub-entity-treatmentposition)) |
-| `changedBy` | `Document` | schema | Zuletzt geändert von ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
+| `changedBy` | `Document` | snapshot | Zuletzt geändert von (denormalized snapshot of [`user`](#entity-experte-expert)) ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
 | `dateChanged` | `Date` | schema | Zeitpunkt der letzten Änderung |
-| `createdBy` | `Document` | schema | Erstellt von ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
+| `createdBy` | `Document` | snapshot | Erstellt von (denormalized snapshot of [`user`](#entity-experte-expert)) ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
 | `dateCreated` | `Date` | inferred | Erstellungsdatum |
 | `closed` | `Date` | schema | Abschlussdatum |
 | `countTotal` | `Number` | schema | Gesamtanzahl |
@@ -1226,8 +1226,8 @@ Erfasst den Verlauf von Behandlungen, insbesondere im Bereich der Psychotherapie
 | `dateLastAppointment` | `Date` | schema | Datum des letzten Termins |
 | `reportCountInitial` | `Number` | schema | Initiale Anzahl Berichte |
 | `reportCountRhytm` | `Number` | schema | Rhythmus der Berichte |
-| `__ref_customer_id` | `Document` | inferred | Zugehöriger Kunde ([ConsultationCustomer](#sub-entity-consultationcustomer)) |
-| `location` | `Document` | schema | Ort der Behandlung ([ConsultationLocation](#sub-entity-consultationlocation)) |
+| `customer` | `Document` | snapshot | Zugehöriger Kunde (denormalized snapshot of [`customer`](#entity-kunden-customers)) ([ConsultationCustomer](#sub-entity-consultationcustomer)) |
+| `location` | `Document` | snapshot | Ort der Behandlung (denormalized snapshot of [`location`](#entity-standorte-locations)) ([ConsultationLocation](#sub-entity-consultationlocation)) |
 | `minutes` | `Number` | schema | Dauer in Minuten |
 | `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.Treatment` (Used) |
 
@@ -1265,7 +1265,7 @@ Informationen zum Bericht einer Behandlungsposition.
 | `date` | `Date` | schema | Datum des Berichts |
 | `dateStart` | `Date` | schema | Startdatum des Berichts |
 | `dateEnd` | `Date` | schema | Enddatum des Berichts |
-| `job` | `Document` | schema | Zugehörige Dienstleistung ([ConsultationJob](#sub-entity-consultationjob)) |
+| `job` | `Document` | snapshot | Zugehörige Dienstleistung (denormalized snapshot of [`jobId`](#entity-dienstleistung-service)) ([ConsultationJob](#sub-entity-consultationjob)) |
 
 The `TreatmentReport` sub-entity is used within:
 - [`TreatmentPosition`](#sub-entity-treatmentposition) (as `report` field)
@@ -1281,8 +1281,8 @@ Interne Benachrichtigungen und Nachrichten zwischen Benutzern oder vom System.
 | `_id` | `Long` | schema | Interner Bezeichner |
 | `version` | `Long` | schema | Versionsnummer |
 | `ts` | `Date` | schema | Zeitstempel |
-| `from` | `Document` | schema | Absender ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
-| `to` | `Document` | schema | Empfänger ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
+| `from` | `Document` | snapshot | Absender (denormalized snapshot of [`user`](#entity-experte-expert)) ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
+| `to` | `Document` | snapshot | Empfänger (denormalized snapshot of [`user`](#entity-experte-expert)) ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
 | `important` | `Boolean` | schema | Wichtigkeit |
 | `folder` | `String` | schema | Ordner:<br>• `INBOX` (Used)<br>• `OUTBOX` (Used)<br>• `TRASH` (Used)<br>• `ARCHIVE` (Not used) |
 | `read` | `Date` | schema | Gelesen-Zeitpunkt |
@@ -1353,12 +1353,12 @@ Verwaltung von Einzelterminen, Bereitschaften und Behandlungen.
 | `comment` | `String` | schema | Kommentar |
 | `state` | `String` | schema | Status:<br>• `ACTIVE` (Used)<br>• `CANCELED` (Used)<br>• `CLOSED` (Used)<br>• `DONE` (Used)<br>• `LOCKEDIN` (Used)<br>• `READY` (Used)<br>• `REQUESTED` (Used)<br>• `RESCHEDULED` (Used)<br>• `STARTED` (Used)<br>• `STORNO` (Used) |
 | `type` | `String` | schema | Typ:<br>• `APPOINTMENT` (Used)<br>• `SHIFT` (Used)<br>• `TREATMENT` (Used)<br>• `TREATMENT_REPORT` (Used) |
-| `job` | `Document` | schema | Erbrachte Dienstleistung ([ConsultationJob](#sub-entity-consultationjob)) |
+| `job` | `Document` | snapshot | Erbrachte Dienstleistung (denormalized snapshot of [`jobId`](#entity-dienstleistung-service)) ([ConsultationJob](#sub-entity-consultationjob)) |
 | `billingType` | `String` | schema | Abrechnungsart:<br>• `HOURLY` (Used)<br>• `PER_CONSULTATION` (Used) |
 | `paymentType` | `String` | schema | Zahlungsart:<br>• `EK` (Used)<br>• `FULL` (Used)<br>• `VK` (Used)<br>• `IGNORE` (Used) |
 | `priceType` | `String` | schema | Preistyp:<br>• `WEEKDAY` (Used)<br>• `WEEKNIGHT` (Used)<br>• `WEEKENDDAY` (Used)<br>• `WEEKENDNIGHT` (Used) |
-| `__ref_customer_id` | `Document` | schema | Zugehöriger Kunde ([ConsultationCustomer](#sub-entity-consultationcustomer)) |
-| `location` | `Document` | schema | Ort des Termins ([ConsultationLocation](#sub-entity-consultationlocation)) |
+| `customer` | `Document` | snapshot | Zugehöriger Kunde (denormalized snapshot of [`customer`](#entity-kunden-customers)) ([ConsultationCustomer](#sub-entity-consultationcustomer)) |
+| `location` | `Document` | snapshot | Ort des Termins (denormalized snapshot of [`location`](#entity-standorte-locations)) ([ConsultationLocation](#sub-entity-consultationlocation)) |
 | `treatmentId` | `Long` | schema | Reference to [treatment](#entity-behandlungsverlauf-treatment) |
 | `minPatients` | `Number` | schema | Mindestanzahl Patienten |
 | `actualPatients` | `Number` | schema | Anzahl tatsächlicher Patienten |
@@ -1419,10 +1419,10 @@ Historische oder alternative Konsultationsdaten (ähnlich wie `consultationData`
 | `date` | `Date` | Datum |
 | `type` | `String` | Typ:<br>• `DOCUMENT` (Used)<br>• `EXTERNAL` (Used)<br>• `INCARCERATION` (Used)<br>• `ONBOARDING` (Used)<br>• `ONBOARDING_SHORT` (Used)<br>• `STANDARD` (Used)<br>• `TREATMENT` (Used) |
 | `state` | `String` | Status:<br>• `CLOSED` (Used)<br>• `CREATED` (Used)<br>• `OPEN` (Used)<br>• `REPORTED` (Used)<br>• `TRANSMITTED` (Used)<br>• `VERIFIED` (Used) |
-| `__ref_doctor_id` | `Document` | Experte ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
-| `__ref_job_id` | `Document` | Dienstleistung ([ConsultationJob](#sub-entity-consultationjob)) |
-| `__ref_location_id` | `Document` | Ort ([ConsultationLocation](#sub-entity-consultationlocation)) |
-| `__ref_customer_id` | `Document` | Kunde ([ConsultationCustomer](#sub-entity-consultationcustomer)) |
+| `__ref_snapshot_doctor_id` | `Document` | Experte ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
+| `__ref_snapshot_job_id` | `Document` | Dienstleistung ([ConsultationJob](#sub-entity-consultationjob)) |
+| `__ref_snapshot_location_id` | `Document` | Ort ([ConsultationLocation](#sub-entity-consultationlocation)) |
+| `__ref_snapshot_customer_id` | `Document` | Kunde ([ConsultationCustomer](#sub-entity-consultationcustomer)) |
 | `_class` | `String` | Java Klassenname: `de.videoclinic.model.Consultation` (Used) |
 
 The `consultation` (Legacy) entity stores historical records and is referenced by:
@@ -2377,15 +2377,15 @@ Planungsvorgaben für wiederkehrende Bereitschaftsdienste.
 | `schedulingMulitplier` | `Number` | schema | Multiplikator für Planung (z.B. alle X Wochen) |
 | `timeStart` | `Number` | schema | Startuhrzeit (Format: HHmm) |
 | `timeEnd` | `Number` | schema | Enduhrzeit (Format: HHmm) |
-| `job` | `Document` | schema | Dienstleistung ([ConsultationJob](#sub-entity-consultationjob)) |
+| `job` | `Document` | snapshot | Dienstleistung (denormalized snapshot of [`jobId`](#entity-dienstleistung-service)) ([ConsultationJob](#sub-entity-consultationjob)) |
 | `minPatients` | `Number` | schema | Mindestanzahl an Patienten |
 | `count` | `Number` | inferred | Anzahl |
 | `lastDate` | `Date` | schema | Letztes geplantes Datum |
 | `priceType` | `String` | schema | Abrechnungstyp:<br>• `WEEKDAY` (Used)<br>• `WEEKNIGHT` (Used)<br>• `WEEKENDDAY` (Used)<br>• `WEEKENDNIGHT` (Used) |
 | `dateChanged` | `Date` | schema | Zeitpunkt der letzten Änderung |
-| `changedBy` | `Document` | schema | Letzte Änderung durch ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
+| `changedBy` | `Document` | snapshot | Letzte Änderung durch (denormalized snapshot of [`user`](#entity-experte-expert)) ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
 | `dateCreated` | `Date` | schema | Erstellungszeitpunkt |
-| `createdBy` | `Document` | schema | Erstellt von ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
+| `createdBy` | `Document` | snapshot | Erstellt von (denormalized snapshot of [`user`](#entity-experte-expert)) ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
 | `comment` | `String` | schema | Kommentar (Freitext) |
 | `prefered` | `Array` | inferred | Liste bevorzugter Ärzte (DBRefs) |
 | `_class` | `String` | schema | Java-Klassenname: `de.videoclinic.model.ShiftPlan` (Used) |

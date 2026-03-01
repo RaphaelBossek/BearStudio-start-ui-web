@@ -59,7 +59,13 @@ The output must be a Markdown file with the following structure:
         - **Language Consistency:** Descriptions for references MUST be in English (e.g., "Reference to [user](#entity-experte-expert)", "Reference ID to [jobId](#entity-dienstleistung-service)").
         - **Reciprocal Links:** Ensure consistency by using the same linking format across all tables and cross-references.
     *   **Sub-entity Naming:** Use CamelCase for all sub-entity names (e.g., `#### Sub-entity: UserProfile`).
-    *   **Nested Reference Naming (DBML):** For columns in DBML that represent nested sub-entities with references to other tables, use the naming convention: `__ref_` + `snake_case_original_column_name` + `_` + `nested_name_of_self_defined_type` (e.g., `location` in `appointmentPlan` table referring to a customer ID becomes `__ref_location_customer_id`).
+    *   **Snapshot Pattern Recognition:** When a field is of type `Document` or `Array` and contains fields that appear to be copies of another entity (e.g., `_id`, `name`), the agent MUST:
+        - Verify if it is a denormalized snapshot of a primary entity.
+        - Document it as a "denormalized snapshot" in the description.
+        - Set the "Field Type" column to `snapshot` (instead of `schema`).
+        - Explicitly state which primary entity it is a snapshot of.
+        - In the sub-entity documentation, clarify that it is used for historical consistency or performance.
+    *   **Nested Reference Naming (DBML):** For columns in DBML that represent nested sub-entities with references to other tables, use the naming convention: `__ref_snapshot_` + `snake_case_original_column_name` + `_` + `nested_name_of_self_defined_type` (e.g., `location` in `appointmentPlan` table referring to a customer ID becomes `__ref_snapshot_location_customer_id`).
 4.  **Nested Structure & Enum Analysis:**
     *   Deeply analyze nested JSON documents discovered via MongoDB.
     *   **Topic & Color Mapping:** Group each table and sub-entity into topics based on business usage. For each topic, generate a distinct and accessible `headercolor` using the `color-palette-generation` skill.

@@ -389,7 +389,7 @@ Table appointmentPlan [headercolor: #1F77B4] {
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer (Zeitstempel)']
   name String [note: 'Ein Name für den Plan (Freitext)']
-  __ref_job_id number [note: 'Eine Dienstleistung ([PlanJob](#sub-entity-planjob))']
+  __ref_snapshot_job_id number [note: 'Eine Dienstleistung ([PlanJob](#sub-entity-planjob))']
   day DayOfWeek_Enum [note: 'Einen Wochentag']
   startDate timestamp [note: 'Ein Startdatum']
   endDate timestamp [note: 'Einen Enddatum']
@@ -399,14 +399,14 @@ Table appointmentPlan [headercolor: #1F77B4] {
   schedulingMulitplier number [note: 'Multiplikator für die Wiederholung']
   timeStart number [note: 'Einer Startuhrzeit (Format: HHmm, z.B. 930 für 09:30)']
   timeEnd number [note: 'Eine Enduhrzeit (Format: HHmm, z.B. 1200 für 12:00)']
-  __ref_doctor_id Document [note: 'Einen zugewiesenen Experten ([PlanUser](#sub-entity-planuser))']
-  __ref_location_id Document [note: 'Einen zugewiesenen Ort ([PlanLocation](#sub-entity-planlocation))']
+  __ref_snapshot_doctor_id Document [note: 'Einen zugewiesenen Experten ([PlanUser](#sub-entity-planuser))']
+  __ref_snapshot_location_id Document [note: 'Einen zugewiesenen Ort ([PlanLocation](#sub-entity-planlocation))']
   comment String [note: 'Einem Kommentar (Freitext)']
   expertOnly boolean [note: 'Gibt an, ob nur der zugewiesene Experte die Dienstleistung erbringen kann']
   dateCreated timestamp [note: 'Erstellungsdatum']
-  __ref_created_by_id Document [note: 'Ersteller ([PlanUser](#sub-entity-planuser))']
+  __ref_snapshot_created_by_id Document [note: 'Ersteller ([PlanUser](#sub-entity-planuser))']
   dateChanged timestamp [note: 'Änderungsdatum']
-  __ref_changed_by_id Document [note: 'Ändernder ([PlanUser](#sub-entity-planuser))']
+  __ref_snapshot_changed_by_id Document [note: 'Ändernder ([PlanUser](#sub-entity-planuser))']
   _class String [note: 'Java Klassenname: de.videoclinic.model.AppointmentPlan']
 }
 
@@ -499,11 +499,11 @@ Table user [headercolor: #FF7F0E] {
   resetIp String [note: 'IP des Passwort-Resets']
   resetKey String [note: 'Schlüssel für Passwort-Reset']
   dateChanged timestamp [note: 'Änderungsdatum']
-  __ref_changed_by_id Document [note: 'Zuletzt geändert von']
+  __ref_snapshot_changed_by_id Document [note: 'Zuletzt geändert von']
   lastReminder timestamp [note: 'Letzte Erinnerung']
   emailVerified String [note: 'Status der E-Mail-Verifizierung']
   dateCreated timestamp [note: 'Erstellungsdatum']
-  __ref_created_by_id Document [note: 'Erstellt von']
+  __ref_snapshot_created_by_id Document [note: 'Erstellt von']
   onBoardingPercentComplete number [note: 'Onboarding Fortschritt (%)']
   stepsTotal number [note: 'Gesamtanzahl Onboarding-Schritte']
   stepsCompleted number [note: 'Abgeschlossene Onboarding-Schritte']
@@ -526,9 +526,9 @@ Table product [headercolor: #8C564B] {
   price number [note: 'Preis']
   active boolean [note: 'Status (Aktiv/Inaktiv)']
   dateCreated timestamp [note: 'Erstellungsdatum']
-  __ref_created_by_id Document [note: 'Erstellt von (Referenz auf `user`)']
+  __ref_snapshot_created_by_id Document [note: 'Erstellt von (Referenz auf `user`)']
   dateChanged timestamp [note: 'Änderungsdatum']
-  __ref_changed_by_id Document [note: 'Geändert von (Referenz auf `user`)']
+  __ref_snapshot_changed_by_id Document [note: 'Geändert von (Referenz auf `user`)']
   _class String [note: 'Java Klassenname: de.videoclinic.model.Product']
 }
 
@@ -548,14 +548,14 @@ Table consultationData [headercolor: #2CA02C] {
   onboarding Document [note: 'Daten der Erstuntersuchung ([ConsultationOnboarding](#sub-entity-consultationonboarding))']
   standard Document [note: 'Daten einer Standard-Konsultation ([ConsultationStandard](#sub-entity-consultationstandard))']
   signedOffBy DBRef [note: 'Abgezeichnet von (Referenz auf `user`)']
-  appointment DBRef [note: 'Zugehöriger Termin (Referenz auf `appointment`)']
-  __ref_location_id Document [note: 'Ort der Konsultation ([ConsultationLocation](#sub-entity-consultationlocation))']
+  appointment DBRef [note: 'Zugehöriger Termin (Referenz on `appointment`)']
+  __ref_snapshot_location_id Document [note: 'Ort der Konsultation ([ConsultationLocation](#sub-entity-consultationlocation))']
   period number [note: 'Abrechnungszeitraum']
   appointmentType JobType_Enum [note: 'Termintyp']
-  __ref_customer_id Document [note: 'Zugehöriger Kunde ([ConsultationCustomer](#sub-entity-consultationcustomer))']
-  __ref_job_id Document [note: 'Erbrachte Dienstleistung ([ConsultationJob](#sub-entity-consultationjob))']
+  __ref_snapshot_customer_id Document [note: 'Zugehöriger Kunde ([ConsultationCustomer](#sub-entity-consultationcustomer))']
+  __ref_snapshot_job_id Document [note: 'Erbrachte Dienstleistung ([ConsultationJob](#sub-entity-consultationjob))']
   paymentType appointment_paymentType_enum [note: 'Zahlungsart']
-  __ref_doctor_id Document [note: 'Durchführender Experte ([ConsultationDoctor](#sub-entity-consultationdoctor))']
+  __ref_snapshot_doctor_id Document [note: 'Durchführender Experte ([ConsultationDoctor](#sub-entity-consultationdoctor))']
   history Document [note: 'Historie ([ConsultationHistory](#sub-entity-consultationhistory))']
   booknumber String [note: 'Buchnummer (JVA)']
   jnumber String [note: 'J-Nummer (JVA)']
@@ -589,7 +589,7 @@ Table expertDays [headercolor: #1F77B4] {
   morningAppointmentYes Array [note: 'Tage mit explizitem "Ja" für Vormittagssprechstunde']
   afternoonAppointmentYes Array [note: 'Tage mit explizitem "Ja" für Nachmittagssprechstunde']
   treatmentAppointmentYes Array [note: 'Days with explicit "Yes" for therapy appointment']
-  __ref_changed_by_id Document [note: 'Letzte Änderung durch (Reference to user)']
+  __ref_snapshot_changed_by_id Document [note: 'Letzte Änderung durch (Reference to user)']
   dateChanged timestamp [note: 'Zeitpunkt der letzten Änderung']
   _class String [note: 'Java class name: de.videoclinic.model.ExpertDays']
 }
@@ -613,7 +613,7 @@ Table treatment [headercolor: #2CA02C] {
   Note: 'Tracking of medical treatments, including states and positions.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
-  __ref_assigned_id Document [note: 'Zugewiesener Experte ([ConsultationDoctor](#sub-entity-consultationdoctor))']
+  __ref_snapshot_assigned_id Document [note: 'Zugewiesener Experte ([ConsultationDoctor](#sub-entity-consultationdoctor))']
   hour number [note: 'Stundenindex']
   day DayOfWeek_Enum [note: 'Wochentag:<br>• `MO` (Used)<br>• `TU` (Used)<br>• `WE` (Used)<br>• `TH` (Used)<br>• `FR` (Used)']
   booknumber String [note: 'Buchnummer (JVA)']
@@ -621,16 +621,16 @@ Table treatment [headercolor: #2CA02C] {
   type treatment_type_enum [note: 'Art der Behandlung:<br>• `PSYCH` (Used)']
   state treatment_state_enum [note: 'Status der Behandlung:<br>• `ACTIVE` (Used)<br>• `CANCELED` (Used)<br>• `CANCELED_CLOSED` (Used)<br>• `CLOSED` (Used)<br>• `ENDING` (Used)<br>• `PROBATORIK` (Used)<br>• `RUNNING` (Used)<br>• `STARTED` (Used)<br>• `STORNO` (Used)<br>• `STORNO_CLOSED` (Used)']
   dateStorno timestamp [note: 'Stornierungsdatum']
-  __ref_job_id Document [note: 'Erbrachte Dienstleistung ([ConsultationJob](#sub-entity-consultationjob))']
-  __ref_job_report_id Document [note: 'Dienstleistung für Berichte']
+  __ref_snapshot_job_id Document [note: 'Erbrachte Dienstleistung ([ConsultationJob](#sub-entity-consultationjob))']
+  __ref_snapshot_job_report_id Document [note: 'Dienstleistung für Berichte']
   reportingPath String [note: 'Pfad für das Reporting']
-  __ref_job_report_pobatorik_id Document [note: 'Dienstleistung für Probatorik-Berichte']
+  __ref_snapshot_job_report_pobatorik_id Document [note: 'Dienstleistung für Probatorik-Berichte']
   archived boolean [note: 'Archivierungsstatus']
   attachments Array [note: 'Liste von Anhängen']
   positions Array [note: 'Einzelne Termine der Behandlung ([TreatmentPosition](#sub-entity-treatmentposition))']
-  __ref_changed_by_id Document [note: 'Zuletzt geändert von']
+  __ref_snapshot_changed_by_id Document [note: 'Zuletzt geändert von']
   dateChanged timestamp [note: 'Zeitpunkt der letzten Änderung']
-  __ref_created_by_id Document [note: 'Erstellt von']
+  __ref_snapshot_created_by_id Document [note: 'Erstellt von']
   dateCreated timestamp [note: 'Erstellungsdatum']
   closed timestamp [note: 'Abschlussdatum']
   countTotal number [note: 'Gesamtanzahl']
@@ -646,8 +646,8 @@ Table treatment [headercolor: #2CA02C] {
   dateLastAppointment timestamp [note: 'Datum des letzten Termins']
   reportCountInitial number [note: 'Initiale Anzahl Berichte']
   reportCountRhytm number [note: 'Rhythmus der Berichte']
-  __ref_customer_id Document [note: 'Zugehöriger Kunde ([ConsultationCustomer](#sub-entity-consultationcustomer))']
-  __ref_location_id Document [note: 'Ort der Behandlung ([ConsultationLocation](#sub-entity-consultationlocation))']
+  __ref_snapshot_customer_id Document [note: 'Zugehöriger Kunde ([ConsultationCustomer](#sub-entity-consultationcustomer))']
+  __ref_snapshot_location_id Document [note: 'Ort der Behandlung ([ConsultationLocation](#sub-entity-consultationlocation))']
   minutes number [note: 'Dauer in Minuten']
   _class String [note: 'Java Klassenname: de.videoclinic.model.Treatment']
 }
@@ -712,12 +712,12 @@ Table appointment [headercolor: #1F77B4] {
   comment String [note: 'Kommentar']
   state appointment_state_enum [note: 'Status']
   type appointment_type_enum [note: 'Typ']
-  __ref_job_id Document [note: 'Erbrachte Dienstleistung ([ConsultationJob](#sub-entity-consultationjob))']
+  __ref_snapshot_job_id Document [note: 'Erbrachte Dienstleistung ([ConsultationJob](#sub-entity-consultationjob))']
   billingType appointment_billingType_enum [note: 'Abrechnungsart']
   paymentType appointment_paymentType_enum [note: 'Zahlungsart']
   priceType priceType_enum [note: 'Preistyp']
-  __ref_customer_id Document [note: 'Zugehöriger Kunde ([ConsultationCustomer](#sub-entity-consultationcustomer))']
-  __ref_location_id Document [note: 'Ort des Termins ([ConsultationLocation](#sub-entity-consultationlocation))']
+  __ref_snapshot_customer_id Document [note: 'Zugehöriger Kunde ([ConsultationCustomer](#sub-entity-consultationcustomer))']
+  __ref_snapshot_location_id Document [note: 'Ort des Termins ([ConsultationLocation](#sub-entity-consultationlocation))']
   treatmentId number [note: 'Referenz auf `treatment`']
   minPatients number [note: 'Mindestanzahl Patienten']
   actualPatients number [note: 'Anzahl tatsächlicher Patienten']
@@ -762,10 +762,10 @@ Table consultation [headercolor: #2CA02C] {
   date Date [note: 'Datum']
   type DefaultConsultation_Enum [note: 'Typ']
   state consultationData_state_enum [note: 'Status']
-  __ref_doctor_id Document [note: 'Experte ([ConsultationDoctor](#sub-entity-consultationdoctor))']
-  __ref_job_id Document [note: 'Dienstleistung ([ConsultationJob](#sub-entity-consultationjob))']
-  __ref_location_id Document [note: 'Ort ([ConsultationLocation](#sub-entity-consultationlocation))']
-  __ref_customer_id Document [note: 'Kunde ([ConsultationCustomer](#sub-entity-consultationcustomer))']
+  __ref_snapshot_doctor_id Document [note: 'Experte ([ConsultationDoctor](#sub-entity-consultationdoctor))']
+  __ref_snapshot_job_id Document [note: 'Dienstleistung ([ConsultationJob](#sub-entity-consultationjob))']
+  __ref_snapshot_location_id Document [note: 'Ort ([ConsultationLocation](#sub-entity-consultationlocation))']
+  __ref_snapshot_customer_id Document [note: 'Kunde ([ConsultationCustomer](#sub-entity-consultationcustomer))']
 }
 
 Table basisWebData [headercolor: #D62728] {
@@ -826,7 +826,7 @@ Table invoiceComponent [headercolor: #8C564B] {
   payValue number [note: 'Auszahlungsbetrag']
   employeeType invoiceComponent_employeeType_enum [note: 'Mitarbeitertyp']
   appointmentType JobType_Enum [note: 'Termintyp']
-  __ref_storno_type_id Document [note: 'Stornierungsdetails ([InvoiceComponentStorno](#sub-entity-invoicecomponentstorno))']
+  __ref_snapshot_storno_type_id Document [note: 'Stornierungsdetails ([InvoiceComponentStorno](#sub-entity-invoicecomponentstorno))']
   _class String [note: 'Java Klassenname: de.videoclinic.model.InvoiceComponent']
 }
 
@@ -854,7 +854,7 @@ Table cDRCallAssignment [headercolor: #9467BD] {
   duration number [note: 'Dauer in Sekunden']
   locationId number [note: 'Referenz auf `location`']
   location String [note: 'Name des Ortes']
-  __ref_user_id Document [note: 'Beteiligter Benutzer ([ConsultationDoctor](#sub-entity-consultationdoctor))']
+  __ref_snapshot_user_id Document [note: 'Beteiligter Benutzer ([ConsultationDoctor](#sub-entity-consultationdoctor))']
   state String [note: 'Status der Zuweisung']
   appointmentId number [note: 'Referenz auf `appointment`']
   consultationId number [note: 'Referenz auf `consultationData`']
@@ -895,7 +895,7 @@ Table invoice [headercolor: #8C564B] {
   title String [note: 'Titel']
   description String [note: 'Beschreibung']
   cashRegister DBRef [note: 'Referenz auf `cashRegister`']
-  __ref_client_id Document [note: 'Rechnungsempfänger-Details (Snapshot: [InvoiceClient](#sub-entity-invoiceclient))']
+  __ref_snapshot_client_id Document [note: 'Rechnungsempfänger-Details (Snapshot: [InvoiceClient](#sub-entity-invoiceclient))']
   month number [note: 'Monat']
   year number [note: 'Jahr']
   positions Array [note: 'Rechnungspositionen ([InvoicePosition](#sub-entity-invoiceposition))']
@@ -997,7 +997,7 @@ Table asyncJobQueue [headercolor: #E377C2] {
   state asyncJobQueue_state_enum [note: 'Status:<br>• `DONE` (Used)<br>• `ERROR` (Used)<br>• `FINISHED` (Used)<br>• `RUNNING` (Used)']
   type asyncJobQueue_type_enum [note: 'Art der Aufgabe:<br>• `APPOINTMENTPLAN` (Used)<br>• `INVOICE` (Used)<br>• `SHIFTPLAN` (Used)<br>• `TREATMENT` (Used)']
   tasks Array [note: 'Einzelne Teilschritte ([AsyncJobTask](#sub-entity-asyncjobtask))']
-  __ref_created_by_id Document [note: 'Ersteller ([ConsultationDoctor](#sub-entity-consultationdoctor))']
+  __ref_snapshot_created_by_id Document [note: 'Ersteller ([ConsultationDoctor](#sub-entity-consultationdoctor))']
   _class String [note: 'Java Klassenname: de.videoclinic.model.AsyncJobQueue']
 }
 
@@ -1077,7 +1077,7 @@ Table location [headercolor: #E377C2] {
   externalId String [note: 'Externe ID (ZMS)']
   version number [note: 'Versionsnummer']
   uid String [note: 'Umsatzsteuer-ID']
-  __ref_type_id DBRef [note: 'Reference to locationType']
+  __ref_snapshot_type_id DBRef [note: 'Reference to locationType']
   typeEnum String [note: 'Typ als Enum-String']
   name String [note: 'Name der Einrichtung']
   building String [note: 'Gebäude']
@@ -1124,9 +1124,9 @@ Table expertWeek [headercolor: #1F77B4] {
   slotsFr Array [note: 'Zeit-Slots für Freitag (Werte: 1-24)']
   slotsSa Array [note: 'Zeit-Slots für Samstag (Werte: 1-24)']
   slotsSu Array [note: 'Zeit-Slots für Sonntag (Werte: 1-24)']
-  __ref_changed_by_id Document [note: 'Letzte Änderung durch (Referenz auf `user`)']
+  __ref_snapshot_changed_by_id Document [note: 'Letzte Änderung durch (Referenz auf `user`)']
   dateChanged timestamp [note: 'Zeitpunkt der letzten Änderung']
-  __ref_created_by_id Document [note: 'Erstellt von (Referenz auf `user`)']
+  __ref_snapshot_created_by_id Document [note: 'Erstellt von (Referenz auf `user`)']
   dateCreated timestamp [note: 'Erstellungszeitpunkt']
   _class String [note: 'Java Klassenname: de.videoclinic.model.ExpertWeek']
 }
@@ -1159,12 +1159,12 @@ Table onboardingHistory [headercolor: #FF7F0E] {
   Note: 'Records of onboarding steps completed by employees or locations.'
   _id number [pk, note: 'Interner Bezeichner']
   referenceId number [note: 'Referenz (z.B. `user.id` oder `location.id`)']
-  __ref_step_id Document [note: 'Snapshot des Onboarding-Schritts ([OnboardingStep](#sub-entity-onboardingstep))']
+  __ref_snapshot_step_id Document [note: 'Snapshot des Onboarding-Schritts ([OnboardingStep](#sub-entity-onboardingstep))']
   comment String [note: 'Kommentar (Freitext)']
   dateStarted timestamp [note: 'Startzeitpunkt des Schritts']
   dateCompleted timestamp [note: 'Abschlusszeitpunkt des Schritts']
   dateChanged timestamp [note: 'Zeitpunkt der letzten Änderung']
-  __ref_changed_by_id Document [note: 'Letzte Änderung durch (Referenz auf `user`)']
+  __ref_snapshot_changed_by_id Document [note: 'Letzte Änderung durch (Referenz auf `user`)']
   version number [note: 'Versionsnummer (Zeitstempel)']
   _class String [note: 'Java Klassenname: de.videoclinic.model.OnboardingHistory']
 }
@@ -1179,13 +1179,13 @@ Table shiftPlan [headercolor: #1F77B4] {
   schedulingMulitplier number [note: 'Multiplikator für Planung (z.B. alle X Wochen)']
   timeStart number [note: 'Startuhrzeit (Format: HHmm)']
   timeEnd number [note: 'Enduhrzeit (Format: HHmm)']
-  __ref_job_id Document [note: 'Dienstleistung ([ConsultationJob](#sub-entity-consultationjob))']
+  __ref_snapshot_job_id Document [note: 'Dienstleistung ([ConsultationJob](#sub-entity-consultationjob))']
   minPatients number [note: 'Mindestanzahl an Patienten']
   lastDate timestamp [note: 'Letztes geplantes Datum']
   priceType priceType_enum [note: 'Abrechnungstyp']
-  __ref_changed_by_id Document [note: 'Letzte Änderung durch ([ConsultationDoctor](#sub-entity-consultationdoctor))']
+  __ref_snapshot_changed_by_id Document [note: 'Letzte Änderung durch ([ConsultationDoctor](#sub-entity-consultationdoctor))']
   dateChanged timestamp [note: 'Zeitpunkt der letzten Änderung']
-  __ref_created_by_id Document [note: 'Erstellt von ([ConsultationDoctor](#sub-entity-consultationdoctor))']
+  __ref_snapshot_created_by_id Document [note: 'Erstellt von ([ConsultationDoctor](#sub-entity-consultationdoctor))']
   dateCreated timestamp [note: 'Erstellungszeitpunkt']
   comment String [note: 'Kommentar (Freitext)']
   count number [note: 'Anzahl']
@@ -1258,7 +1258,7 @@ Table notificationTemplate [headercolor: #E377C2] {
   language String [note: 'Sprache der Vorlage (Used: `de`)']
   dateCreated timestamp [note: 'Erstellungsdatum']
   dateChanged timestamp [note: 'Änderungsdatum']
-  __ref_changed_by_id Document [note: 'Geändert von (Referenz auf `user`)']
+  __ref_snapshot_changed_by_id Document [note: 'Geändert von (Referenz auf `user`)']
   _class String [note: 'Java Klassenname: de.videoclinic.model.NotificationTemplate']
 }
 
@@ -1293,9 +1293,9 @@ Table site [headercolor: #E377C2] {
   city String [note: 'Ort']
   primary boolean [note: 'Hauptstandort Kennzeichnung']
   dateCreated timestamp [note: 'Erstellungsdatum']
-  __ref_created_by_id Document [note: 'Erstellt von']
+  __ref_snapshot_created_by_id Document [note: 'Erstellt von']
   dateChanged timestamp [note: 'Änderungsdatum']
-  __ref_changed_by_id Document [note: 'Geändert von']
+  __ref_snapshot_changed_by_id Document [note: 'Geändert von']
   _class String [note: 'Java Klassenname: de.videoclinic.model.Site']
 }
 
@@ -1325,8 +1325,8 @@ Table onboardingStep [headercolor: #FF7F0E] {
   assignmentType OnboardingAssignment_Enum [note: 'Art der Zuordnung']
   dateCreated timestamp [note: 'Erstellungszeitpunkt']
   dateChanged timestamp [note: 'Zeitpunkt der letzten Änderung']
-  __ref_created_by_id Document [note: 'Erstellt von (Referenz auf `user`)']
-  __ref_changed_by_id Document [note: 'Geändert von (Referenz auf `user`)']
+  __ref_snapshot_created_by_id Document [note: 'Erstellt von (Referenz auf `user`)']
+  __ref_snapshot_changed_by_id Document [note: 'Geändert von (Referenz auf `user`)']
   _class String [note: 'Java Klassenname: de.videoclinic.model.OnboardingStep']
 }
 
@@ -1363,8 +1363,8 @@ Table holiday [headercolor: #1F77B4] {
   owner DBRef [note: 'Abwesenheit für (Reference to user)']
   dateCreated timestamp [note: 'Erstellungsdatum']
   dateChanged timestamp [note: 'Änderungsdatum']
-  __ref_created_by_id Document [note: 'Erstellt von (Reference to user)']
-  __ref_changed_by_id Document [note: 'Geändert von (Reference to user)']
+  __ref_snapshot_created_by_id Document [note: 'Erstellt von (Reference to user)']
+  __ref_snapshot_changed_by_id Document [note: 'Geändert von (Reference to user)']
   _class String [note: 'Java Klassenname: de.videoclinic.model.Holiday']
 }
 
@@ -1410,7 +1410,7 @@ Table patientData [headercolor: #2CA02C] {
   version number [note: 'Versionsnummer']
   appointmentId number [note: 'Referenz auf `appointment`']
   booknumber String [note: 'Buchnummer (JVA)']
-  __ref_location_id Document [note: 'Ort der Erfassung ([ConsultationLocation](#sub-entity-consultationlocation))']
+  __ref_snapshot_location_id Document [note: 'Ort der Erfassung ([ConsultationLocation](#sub-entity-consultationlocation))']
   onlyDocumentation boolean [note: 'Nur Dokumentation Kennzeichnung']
   _class String [note: 'Java Klassenname: de.videoclinic.model.PatientData']
 }
@@ -1601,7 +1601,7 @@ Table PlanLocation [headercolor: #1F77B4] {
   name String [note: 'Location name (Freitext)']
   booknumberMask String [note: 'Mask for booking numbers (Strukturierter Text)']
   patientDataType String [note: 'Data type: `EXTERNAL`, `INTERNAL_VCCLOUD`, etc. ([Location.patientDataType](#entity-standorte-locations))']
-  __ref_customer_id Document [note: 'Assigned customer ([PlanCustomer](#sub-entity-plancustomer))']
+  __ref_snapshot_customer_id Document [note: 'Assigned customer ([PlanCustomer](#sub-entity-plancustomer))']
 }
 
 Table PlanCustomer [headercolor: #1F77B4] {
@@ -1630,7 +1630,7 @@ Table PricePoint [headercolor: #8C564B] {
 Table AppointmentCondition [headercolor: #8C564B] {
   _id String [pk, note: 'Internal identifier']
   storno DBRef [note: 'Reference to a `stornoGroup`']
-  __ref_hourly_price_id Document [note: 'Contains multiple [PriceDefinitions](#sub-entity-pricedefinition)']
+  __ref_snapshot_hourly_price_id Document [note: 'Contains multiple [PriceDefinitions](#sub-entity-pricedefinition)']
   roundingTypeHN RoundingType_Enum [note: 'Rounding rule for HN']
   roundingTypeHN2 RoundingType_Enum [note: 'Rounding rule for HN2']
   roundingTypeHN3 RoundingType_Enum [note: 'Rounding rule for HN3']
@@ -1641,10 +1641,10 @@ Table AppointmentCondition [headercolor: #8C564B] {
 
 Table ShiftCondition [headercolor: #8C564B] {
   _id String [pk, note: 'Internal identifier']
-  __ref_price_week_day_id Document [note: '[PriceDefinitions](#sub-entity-pricedefinition) for weekdays']
-  __ref_price_week_night_id Document [note: '[PriceDefinitions](#sub-entity-pricedefinition) for week nights']
-  __ref_price_weekend_day_id Document [note: '[PriceDefinitions](#sub-entity-pricedefinition) for weekend days']
-  __ref_price_weekend_night_id Document [note: '[PriceDefinitions](#sub-entity-pricedefinition) for weekend nights']
+  __ref_snapshot_price_week_day_id Document [note: '[PriceDefinitions](#sub-entity-pricedefinition) for weekdays']
+  __ref_snapshot_price_week_night_id Document [note: '[PriceDefinitions](#sub-entity-pricedefinition) for week nights']
+  __ref_snapshot_price_weekend_day_id Document [note: '[PriceDefinitions](#sub-entity-pricedefinition) for weekend days']
+  __ref_snapshot_price_weekend_night_id Document [note: '[PriceDefinitions](#sub-entity-pricedefinition) for weekend nights']
 }
 
 Table UserProfile [headercolor: #FF7F0E] {
@@ -1785,7 +1785,7 @@ Table ConsultationOnboarding [headercolor: #2CA02C] {
 
 Table ConsultationStandard [headercolor: #2CA02C] {
   _id String [pk, note: 'Internal identifier']
-  __ref_medication_anamnesis_id Document [note: 'Zusammenfassung der Medikation ([ConsultationMedicationAnamnesis](#sub-entity-consultationmedicationanamnesis))']
+  __ref_snapshot_medication_anamnesis_id Document [note: 'Zusammenfassung der Medikation ([ConsultationMedicationAnamnesis](#sub-entity-consultationmedicationanamnesis))']
   anamnesis Array [note: 'Anamnese Einträge ([ConsultationAnamnesis](#sub-entity-consultationanamnesis))']
   patientReport Array [note: 'Befundberichte ([ConsultationPatientReport](#sub-entity-consultationpatientreport))']
   diagnosis Array [note: 'Diagnosen ([ConsultationDiagnosis](#sub-entity-consultationdiagnosis))']
@@ -1818,7 +1818,7 @@ Table ConsultationMedicationAnamnesis [headercolor: #2CA02C] {
 
 Table ConsultationDiagnosis [headercolor: #2CA02C] {
   _id String [pk, note: 'Internal identifier']
-  __ref_icd10_id Document [note: 'ICD-10 Referenz ([Icd10](#table-icd10))']
+  __ref_snapshot_icd10_id Document [note: 'ICD-10 Referenz ([Icd10](#table-icd10))']
   localization ConsultationDiagnosis_localization_enum [note: 'Lokalisierung']
   level ConsultationDiagnosis_level_enum [note: 'Sicherheit der Diagnose']
   title String [note: 'Titel']
@@ -1829,7 +1829,7 @@ Table ConsultationPrescription [headercolor: #2CA02C] {
   _id String [pk, note: 'Internal identifier']
   type ConsultationPrescription_type_enum [note: 'Art der Verschreibung']
   packages number [note: 'Anzahl der Packungen']
-  __ref_product_id Document [note: 'Schnappschuss des gewählten Produkts ([MedicationProduct](#sub-entity-medicationproduct))']
+  __ref_snapshot_product_id Document [note: 'Schnappschuss des gewählten Produkts ([MedicationProduct](#sub-entity-medicationproduct))']
   medication DBRef [note: 'Referenz auf Medikament ([Medication](#entity-medikamente-medication))']
   morning number [note: 'Dosierung Morgens']
   lunch number [note: 'Dosierung Mittags']
@@ -1884,7 +1884,7 @@ Table ConsultationLocation [headercolor: #2CA02C] {
   name String [note: 'Name des Ortes']
   booknumberMask String [note: 'Maske für Buchnummern']
   patientDataType PatientDataType_Enum [note: 'Datentyp der Patienten']
-  __ref_customer_id Document [note: 'Zugehöriger Kunde ([ConsultationCustomer](#sub-entity-consultationcustomer))']
+  __ref_snapshot_customer_id Document [note: 'Zugehöriger Kunde ([ConsultationCustomer](#sub-entity-consultationcustomer))']
 }
 
 Table ConsultationCustomer [headercolor: #2CA02C] {
@@ -1900,7 +1900,7 @@ Table TreatmentPosition [headercolor: #2CA02C] {
   state TreatmentPosition_state_enum [note: 'Status des Termins']
   requireReport boolean [note: 'Bericht erforderlich']
   forceReport boolean [note: 'Bericht erzwingen']
-  __ref_report_id Document [note: 'Referenz auf den Bericht ([TreatmentReport](#sub-entity-treatmentreport))']
+  __ref_snapshot_report_id Document [note: 'Referenz auf den Bericht ([TreatmentReport](#sub-entity-treatmentreport))']
 }
 
 Table TreatmentReport [headercolor: #2CA02C] {
@@ -1910,7 +1910,7 @@ Table TreatmentReport [headercolor: #2CA02C] {
   date timestamp [note: 'Datum des Berichts']
   dateStart timestamp [note: 'Startdatum des Berichts']
   dateEnd timestamp [note: 'Enddatum des Berichts']
-  __ref_job_id Document [note: 'Zugehörige Dienstleistung']
+  __ref_snapshot_job_id Document [note: 'Zugehörige Dienstleistung']
 }
 
 Table BasisWebMedication [headercolor: #D62728] {
@@ -2068,36 +2068,36 @@ Ref: ExpertWorklogEntry.appointmentId > appointment._id
 Ref: ExpertWorklogEntry.job > jobId._id
 Ref: InvoicePosition.job > jobId._id
 Ref: JobPriceEntry.jobId > jobId._id
-Ref: onboardingStep.__ref_changed_by_id > user._id
+Ref: onboardingStep.__ref_snapshot_changed_by_id > user._id
 Ref: TreatmentPosition.appointmentId > appointment._id
 Ref: TreatmentReport.consultationId > consultationData._id
 Ref: appointment.treatmentId > treatment._id
-Ref: appointment.__ref_customer_id > customer._id
-Ref: appointment.__ref_location_id > location._id
+Ref: appointment.__ref_snapshot_customer_id > customer._id
+Ref: appointment.__ref_snapshot_location_id > location._id
 Ref: appointmentAssignment.appointmentId > appointment._id
 Ref: appointmentAssignment.assignedById > user._id
 Ref: appointmentAssignment.userId > user._id
-Ref: appointmentPlan.__ref_location_id > location._id
-Ref: appointmentPlan.__ref_doctor_id > user._id
+Ref: appointmentPlan.__ref_snapshot_location_id > location._id
+Ref: appointmentPlan.__ref_snapshot_doctor_id > user._id
 Ref: basisWebAppointment.location > location._id
 Ref: basisWebData.appointment > appointment._id
 Ref: cDRCallAssignment.appointmentId > appointment._id
 Ref: cDRCallAssignment.consultationId > consultationData._id
 Ref: cDRCallAssignment.locationId > location._id
-Ref: consultation.__ref_doctor_id > user._id
-Ref: consultation.__ref_job_id > jobId._id
-Ref: consultation.__ref_location_id > location._id
-Ref: consultation.__ref_customer_id > customer._id
+Ref: consultation.__ref_snapshot_doctor_id > user._id
+Ref: consultation.__ref_snapshot_job_id > jobId._id
+Ref: consultation.__ref_snapshot_location_id > location._id
+Ref: consultation.__ref_snapshot_customer_id > customer._id
 Ref: consultationData.appointment > appointment._id
 Ref: consultationData.basisWebDataId > basisWebData._id
 Ref: consultationData.signedOffBy > user._id
-Ref: consultationData.__ref_customer_id > customer._id
-Ref: consultationData.__ref_location_id > location._id
-Ref: expertWeek.__ref_changed_by_id > user._id
-Ref: expertWeek.__ref_created_by_id > user._id
+Ref: consultationData.__ref_snapshot_customer_id > customer._id
+Ref: consultationData.__ref_snapshot_location_id > location._id
+Ref: expertWeek.__ref_snapshot_changed_by_id > user._id
+Ref: expertWeek.__ref_snapshot_created_by_id > user._id
 Ref: expertWeek.userId > user._id
-Ref: expertDays.__ref_changed_by_id > user._id
-Ref: holiday.__ref_created_by_id > user._id
+Ref: expertDays.__ref_snapshot_changed_by_id > user._id
+Ref: holiday.__ref_snapshot_created_by_id > user._id
 Ref: invoiceComponent.appointmentId > appointment._id
 Ref: invoiceComponent.consultationId > consultationData._id
 Ref: invoiceComponent.customerId > customer._id
@@ -2109,15 +2109,15 @@ Ref: location.customer > customer._id
 Ref: locationRoomsDto.customer > customer._id
 Ref: log.appointment > appointment._id
 Ref: log.userId > user._id
-Ref: notificationTemplate.__ref_changed_by_id > user._id
-Ref: onboardingHistory.__ref_changed_by_id > user._id
+Ref: notificationTemplate.__ref_snapshot_changed_by_id > user._id
+Ref: onboardingHistory.__ref_snapshot_changed_by_id > user._id
 Ref: onboardingHistory.referenceId > user._id
-Ref: onboardingStep.__ref_created_by_id > user._id
+Ref: onboardingStep.__ref_snapshot_created_by_id > user._id
 Ref: patientData.appointmentId > appointment._id
-Ref: product.__ref_changed_by_id > user._id
-Ref: product.__ref_created_by_id > user._id
-Ref: site.__ref_changed_by_id > user._id
-Ref: site.__ref_created_by_id > user._id
+Ref: product.__ref_snapshot_changed_by_id > user._id
+Ref: product.__ref_snapshot_created_by_id > user._id
+Ref: site.__ref_snapshot_changed_by_id > user._id
+Ref: site.__ref_snapshot_created_by_id > user._id
 Ref: persistentSession.user > user._id
 Ref: project.customer > customer._id
 Ref: project.location > location._id
@@ -2131,9 +2131,9 @@ Ref: userVideoHistory.user > user._id
 Ref: userVideoHistory.video > video._id
 Ref: video.category > videoCategory._id
 Ref: CustomerDiscount.job > jobId._id
-Ref: treatment.__ref_customer_id > customer._id
-Ref: treatment.__ref_location_id > location._id
-Ref: treatment.__ref_created_by_id > user._id
-Ref: treatment.__ref_changed_by_id > user._id
-Ref: user.__ref_changed_by_id > user._id
+Ref: treatment.__ref_snapshot_customer_id > customer._id
+Ref: treatment.__ref_snapshot_location_id > location._id
+Ref: treatment.__ref_snapshot_created_by_id > user._id
+Ref: treatment.__ref_snapshot_changed_by_id > user._id
+Ref: user.__ref_snapshot_changed_by_id > user._id
 Ref: patient.location > location._id
