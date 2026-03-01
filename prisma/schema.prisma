@@ -17,6 +17,75 @@ enum UserRole {
   admin
 }
 
+enum BillingModality {
+  PATIENTS
+  TIME
+  EXPERT_TIME
+}
+
+enum SkillType {
+  SPECIALTY
+  ADDITIONAL_TRAINING
+  FURTHER_EDUCATION
+  LANGUAGE
+}
+
+enum QualificationLevel {
+  ONBOARDING
+  BEGINNER
+  AMATEUR
+  PROFESSIONAL
+}
+
+enum AccountStatus {
+  ACTIVE
+  PRE_REGISTERED
+  SICK_LEAVE
+  INACTIVE
+}
+
+enum ConsultationType {
+  EXTERN
+  CONSILIAR
+  NORMAL
+  COMPLETE_ENTRY
+  SHORT_ENTRY
+  CUSTODY
+}
+
+enum FollowUpSetting {
+  HOSPITALIZATION
+  RE_PRESENTATION
+  FOLLOW_UP
+  REFERRAL
+}
+
+enum ServiceForm {
+  READINESS
+  CONSULTATION
+  THERAPY
+}
+
+enum BillingAddressType {
+  RESIDENCE
+  SECOND_RESIDENCE
+  WORK
+  PRACTICE
+  OTHER
+}
+
+enum AvailabilityStatus {
+  UNKNOWN
+  YES
+  NO
+}
+
+enum ShiftType {
+  MORNING
+  AFTERNOON
+  NIGHT
+}
+
 model User {
   id            String    @id @default(cuid())
   name          String
@@ -34,8 +103,242 @@ model User {
   banExpires  DateTime?
   onboardedAt DateTime?
 
+  expertProfile ExpertProfile?
+
   @@unique([email])
   @@map("user")
+}
+
+model ExpertProfile {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  academicTitle   String?
+  salutation      String?
+  active          Boolean   @default(true)
+  secondaryEmail  String?
+  emailForwarding Boolean   @default(false)
+  phone           String?
+  birthDate       DateTime?
+  signatureImage  String?
+
+  secureBoxUsername String?
+  secureBoxPassword String?
+
+  practicingSince              DateTime?
+  practicingAtVideoclinicSince DateTime?
+  practicingAtVideoclinicUntil DateTime?
+
+  debtorNumber  String? // GKTO
+  debtorAccount String? // GKTK
+  efn           String? // Einheitliche Fortbildungsnummer
+  avvAcceptedAt DateTime? // Auftragsdatenverarbeitungsantrag
+
+  status         AccountStatus @default(PRE_REGISTERED)
+  sickLeaveStart DateTime?
+  sickLeaveEnd   DateTime?
+
+  description    String?   @db.Text
+  contractDate   DateTime?
+  contractNumber String?
+  vatNumber      String?
+  taxId          String?
+
+  iban     String?
+  bankName String?
+  bic      String?
+
+  qualificationLevel          QualificationLevel @default(ONBOARDING)
+  addictionMedicineExperience String? // very high, high, middle, low, very low
+
+  focusReadiness    String? // none, low, middle, high
+  focusConsultation String? // none, low, middle, high
+  focusTherapy      String? // none, low, middle, high
+
+  addresses        Address[]
+  skills           ExpertSkill[]
+  exclusions       ExpertExclusion[]
+  availabilities   Availability[]
+  appointmentPlans AppointmentPlan[]
+
+  @@map("expert_profile")
+}
+
+model Address {
+  id              String             @id @default(cuid())
+  expertProfileId String
+  expertProfile   ExpertProfile      @relation(fields: [expertProfileId], references: [id], onDelete: Cascade)
+  type            BillingAddressType
+
+  recipient   String
+  street      String
+  houseNumber String
+  extra       String?
+  zipCode     String
+  city        String
+  state       String
+  country     String
+
+  @@unique([expertProfileId, type])
+  @@map("address")
+}
+
+model Department {
+  id        String    @id @default(cuid())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  name      String    @unique
+  services  Service[]
+
+  @@map("department")
+}
+
+model Skill {
+  id                  String    @id @default(cuid())
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+  name                String    @unique
+  description         String?   @db.Text
+  type                SkillType
+  active              Boolean   @default(true)
+  certificateRequired Boolean   @default(false)
+
+  experts  ExpertSkill[]
+  services ServiceSkill[]
+
+  @@map("skill")
+}
+
+model ExpertSkill {
+  expertProfileId String
+  expertProfile   ExpertProfile @relation(fields: [expertProfileId], references: [id], onDelete: Cascade)
+  skillId         String
+  skill           Skill         @relation(fields: [skillId], references: [id], onDelete: Cascade)
+  acquiredAt      DateTime?
+  certificateUrl  String?
+
+  @@id([expertProfileId, skillId])
+  @@map("expert_skill")
+}
+
+model ExclusionCriterion {
+  id          String   @id @default(cuid())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  name        String   @unique
+  description String?  @db.Text
+  weight      Int      @default(0)
+  active      Boolean  @default(true)
+
+  experts ExpertExclusion[]
+
+  @@map("exclusion_criterion")
+}
+
+model ExpertExclusion {
+  expertProfileId String
+  expertProfile   ExpertProfile      @relation(fields: [expertProfileId], references: [id], onDelete: Cascade)
+  exclusionId     String
+  exclusion       ExclusionCriterion @relation(fields: [exclusionId], references: [id], onDelete: Cascade)
+
+  @@id([expertProfileId, exclusionId])
+  @@map("expert_exclusion")
+}
+
+model Service {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  internalName String
+  expertName   String
+  invoiceName  String
+  shortName    String
+  color        String
+  sortOrder    Int    @default(0)
+
+  billingModality BillingModality
+  departmentId    String
+  department      Department      @relation(fields: [departmentId], references: [id])
+
+  consultationTypes       ConsultationType[]
+  defaultConsultationType ConsultationType?
+
+  followUpSetting FollowUpSetting?
+
+  skills     ServiceSkill[]
+  skillLogic String         @default("ALL") // "ALL" or "ANY"
+
+  appointmentPlans AppointmentPlan[]
+
+  @@map("service")
+}
+
+model ServiceSkill {
+  serviceId String
+  service   Service @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+  skillId   String
+  skill     Skill   @relation(fields: [skillId], references: [id], onDelete: Cascade)
+
+  @@id([serviceId, skillId])
+  @@map("service_skill")
+}
+
+model Location {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name      String   @unique
+  address   String?
+
+  appointmentPlans AppointmentPlan[]
+
+  @@map("location")
+}
+
+model AppointmentPlan {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  serviceId String
+  service   Service @relation(fields: [serviceId], references: [id])
+
+  dayOfWeek      Int // 0-6
+  startDate      DateTime
+  lastRepeatDate DateTime?
+  repeatCount    Int?
+  repeatType     String // WEEKLY, FIRST_DAY_MONTH, EVERY_X_DAY_MONTH, DAY_MONTH, LAST_DAY_MONTH
+
+  startTime String // HH:mm
+  endTime   String // HH:mm
+
+  expertProfileId String
+  expertProfile   ExpertProfile @relation(fields: [expertProfileId], references: [id])
+
+  locationId String
+  location   Location @relation(fields: [locationId], references: [id])
+
+  endDate DateTime?
+  comment String?   @db.Text
+
+  @@map("appointment_plan")
+}
+
+model Availability {
+  id              String             @id @default(cuid())
+  expertProfileId String
+  expertProfile   ExpertProfile      @relation(fields: [expertProfileId], references: [id], onDelete: Cascade)
+  date            DateTime
+  serviceForm     ServiceForm
+  shift           ShiftType?
+  status          AvailabilityStatus @default(UNKNOWN)
+
+  @@unique([expertProfileId, date, serviceForm, shift])
+  @@map("availability")
 }
 
 model Session {

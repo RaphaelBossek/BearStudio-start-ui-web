@@ -42,4 +42,11 @@ f
 
 ### Done
 
+| Topic | Feature | Spec | Created |
+|-------|---------|------|---------|
+| medical-management | Consultation Scheduling | [medical-management/scheduling](features/medical-management/scheduling/requirements.md) | 2026-02-25 |
+| medical-management | Service Management | [medical-management/services](features/medical-management/services/requirements.md) | 2026-02-25 |
+| medical-management | Skill Management | [medical-management/skills](features/medical-management/skills/requirements.md) | 2026-02-25 |
+| medical-management | Expert Profiles | [medical-management/experts](features/medical-management/experts/requirements.md) | 2026-02-25 |
+
 <!-- Add completed features above this line -->

@@ -1,5 +1,12 @@
 import { Link } from '@tanstack/react-router';
-import { LayoutDashboardIcon, PanelLeftIcon, UsersIcon, XIcon } from 'lucide-react';
+import {
+  AwardIcon,
+  BriefcaseMedicalIcon,
+  LayoutDashboardIcon,
+  PanelLeftIcon,
+  UsersIcon,
+  XIcon,
+} from 'lucide-react';
 import type { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -85,6 +92,36 @@ export const NavSidebar = (props: { children?: ReactNode }) => {
                           <span>
                             <IconBookOpen />
                             <span>{t('layout:nav.books')}</span>
+                          </span>
+                        }
+                      />
+                    )}
+                  </Link>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <Link to="/manager/medical-management/services">
+                    {({ isActive }) => (
+                      <SidebarMenuButton
+                        isActive={isActive}
+                        render={
+                          <span>
+                            <BriefcaseMedicalIcon />
+                            <span>Medical Services</span>
+                          </span>
+                        }
+                      />
+                    )}
+                  </Link>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <Link to="/manager/medical-management/skills">
+                    {({ isActive }) => (
+                      <SidebarMenuButton
+                        isActive={isActive}
+                        render={
+                          <span>
+                            <AwardIcon />
+                            <span>Skills & Certs</span>
                           </span>
                         }
                       />
