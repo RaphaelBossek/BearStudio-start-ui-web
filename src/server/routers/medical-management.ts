@@ -6,7 +6,7 @@ import { protectedProcedure } from '@/server/orpc';
 const tags = ['medical-management'];
 
 export default {
-  getAllServices: protectedProcedure()
+  getAllServices: protectedProcedure({ permission: null })
     .route({
       method: 'GET',
       path: '/mcp/services',
@@ -35,7 +35,7 @@ export default {
       });
     }),
 
-  getAllSkills: protectedProcedure()
+  getAllSkills: protectedProcedure({ permission: null })
     .route({
       method: 'GET',
       path: '/mcp/skills',

@@ -1,6 +1,6 @@
+import { useQuery } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
 import { CheckCircle2Icon, XCircleIcon } from 'lucide-react';
-import { Page } from '@/components/layout/page';
 import { Badge } from '@/components/ui/badge';
 import {
   Table,
@@ -10,19 +10,29 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
+import {
+  PageLayout,
+  PageLayoutContent,
+  PageLayoutTopBar,
+  PageLayoutTopBarTitle,
+} from '@/layout/manager/page-layout';
 import { orpc } from '@/lib/orpc/client';
 
-export const Route = createFileRoute('/manager/medical-management/skills')({
+export const Route = createFileRoute('/manager/medical-management/skills/')({
   component: SkillsPage,
 });
 
 function SkillsPage() {
-  const { data: skills, isLoading } = orpc.medicalManagement.getAllSkills.useQuery({});
+  const { data: skills, isLoading } = useQuery(
+    orpc.medicalManagement.getAllSkills.queryOptions({ input: {} })
+  );
 
   return (
-    <Page>
-      <Page.Header title="Skills & Certificates" />
-      <Page.Body>
+    <PageLayout>
+      <PageLayoutTopBar>
+        <PageLayoutTopBarTitle>Skills & Certificates</PageLayoutTopBarTitle>
+      </PageLayoutTopBar>
+      <PageLayoutContent>
         <div className="rounded-md border">
           <Table>
             <TableHeader>
@@ -64,7 +74,7 @@ function SkillsPage() {
                       {skill.active ? (
                         <Badge variant="default">Active</Badge>
                       ) : (
-                        <Badge variant="destructive">Inactive</Badge>
+                        <Badge variant="negative">Inactive</Badge>
                       )}
                     </TableCell>
                   </TableRow>
@@ -73,7 +83,7 @@ function SkillsPage() {
             </TableBody>
           </Table>
         </div>
-      </Page.Body>
-    </Page>
+      </PageLayoutContent>
+    </PageLayout>
   );
 }

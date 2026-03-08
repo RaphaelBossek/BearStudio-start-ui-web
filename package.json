@@ -10,7 +10,7 @@
   "scripts": {
     "postinstall": "run-p gen:prisma gen:build-info",
     "prepare": "pnpm lefthook install",
-    "dev": "run-p env dev:*",
+    "dev": "cross-env NODE_OPTIONS=\"--no-experimental-webstorage\" run-p env dev:*",
     "dev:app": "pnpm gen:build-info && vite dev",
     "build": "cross-env NODE_ENV=production run-p env gen:build-info && vite build",
     "start": "dotenv -- node .output/server/index.mjs",
@@ -22,6 +22,7 @@
     "format": "biome format --write .",
     "lint": "run-p lint:*",
     "lint:biome": "biome check ./src --formatter-enabled=false --assist-enabled=false",
+    "typecheck": "run-p lint:ts",
     "lint:ts": "tsc --noEmit",
     "gen:prisma": "prisma generate --no-hints",
     "gen:build-info": "dotenv -- node ./run-jiti ./src/features/build-info/script-to-generate-json.ts",

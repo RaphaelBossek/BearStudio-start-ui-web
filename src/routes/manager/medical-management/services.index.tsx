@@ -1,6 +1,6 @@
+import { useQuery } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
-import { Page } from '@/components/layout/page';
 import { Badge } from '@/components/ui/badge';
 import {
   Table,
@@ -10,20 +10,30 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
+import {
+  PageLayout,
+  PageLayoutContent,
+  PageLayoutTopBar,
+  PageLayoutTopBarTitle,
+} from '@/layout/manager/page-layout';
 import { orpc } from '@/lib/orpc/client';
 
-export const Route = createFileRoute('/manager/medical-management/services')({
+export const Route = createFileRoute('/manager/medical-management/services/')({
   component: ServicesPage,
 });
 
 function ServicesPage() {
   const { t } = useTranslation();
-  const { data: services, isLoading } = orpc.medicalManagement.getAllServices.useQuery({});
+  const { data: services, isLoading } = useQuery(
+    orpc.medicalManagement.getAllServices.queryOptions({ input: {} })
+  );
 
   return (
-    <Page>
-      <Page.Header title="Medical Services" />
-      <Page.Body>
+    <PageLayout>
+      <PageLayoutTopBar>
+        <PageLayoutTopBarTitle>Medical Services</PageLayoutTopBarTitle>
+      </PageLayoutTopBar>
+      <PageLayoutContent>
         <div className="rounded-md border">
           <Table>
             <TableHeader>
@@ -60,7 +70,7 @@ function ServicesPage() {
                     <TableCell>
                       <div className="flex flex-wrap gap-1">
                         {service.consultationTypes.map((type) => (
-                          <Badge key={type} variant="outline" className="text-[10px]">
+                          <Badge key={type} variant="secondary" className="text-[10px]">
                             {type}
                           </Badge>
                         ))}
@@ -72,7 +82,7 @@ function ServicesPage() {
             </TableBody>
           </Table>
         </div>
-      </Page.Body>
-    </Page>
+      </PageLayoutContent>
+    </PageLayout>
   );
 }
