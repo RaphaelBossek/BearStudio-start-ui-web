@@ -24,7 +24,7 @@
     "lint:biome": "biome check ./src --formatter-enabled=false --assist-enabled=false",
     "typecheck": "run-p lint:ts",
     "lint:ts": "tsc --noEmit",
-    "gen:prisma": "prisma generate --no-hints",
+    "gen:prisma": "prisma generate --schema prisma/schema.prisma --no-hints && prisma generate --schema prisma/schema-mongodb.prisma --no-hints",
     "gen:build-info": "dotenv -- node ./run-jiti ./src/features/build-info/script-to-generate-json.ts",
     "gen:icons": "svgr --config-file src/components/icons/svgr.config.cjs src/components/icons/svg-sources && biome format --write src/components/icons/generated",
     "test": "vitest --browser.headless",

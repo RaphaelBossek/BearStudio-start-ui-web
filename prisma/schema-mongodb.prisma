@@ -1,0 +1,42 @@
+// This is the Prisma schema file for the secondary MongoDB connection
+
+generator client {
+  provider     = "prisma-client"
+  output       = "../src/server/db/generated-mongodb"
+  moduleFormat = "esm"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("MONGODB_URL")
+}
+
+model ExpertWeek {
+  id          BigInt    @id @map("_id")
+  version     BigInt?
+  userId      BigInt?
+  type        String?
+  slotsMo     Float[]
+  slotsTu     Float[]
+  slotsWe     Float[]
+  slotsTh     Float[]
+  slotsFr     Float[]
+  slotsSa     Float[]
+  slotsSu     Float[]
+  dateChanged DateTime?
+  dateCreated DateTime?
+  class       String?   @map("_class")
+
+  @@map("expertWeek")
+}
+
+model UserMongo {
+  id          BigInt       @id @map("_id")
+  userProfile UserProfile?
+
+  @@map("user")
+}
+
+type UserProfile {
+  displayName String?
+}

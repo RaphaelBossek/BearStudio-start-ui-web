@@ -2,6 +2,7 @@ import { envServer } from '@/env/server';
 import { timingStore } from '@/server/timing-store';
 
 import { PrismaClient } from './generated/client';
+import { PrismaClient as PrismaClientMongo } from './generated-mongodb/client';
 
 const levels = {
   trace: ['query', 'error', 'warn', 'info'],
@@ -42,11 +43,22 @@ function createPrisma() {
   });
 }
 
+function createPrismaMongo() {
+  return new PrismaClientMongo({
+    log: levels[envServer.LOGGER_LEVEL],
+  });
+}
+
 const globalForPrisma = globalThis as unknown as {
   prisma: ReturnType<typeof createPrisma> | undefined;
+  prismaMongo: ReturnType<typeof createPrismaMongo> | undefined;
   serverTiming?: Array<{ key: string; duration: string }>;
 };
 
 export const db = globalForPrisma.prisma ?? createPrisma();
+export const dbMongoDB = globalForPrisma.prismaMongo ?? createPrismaMongo();
 
-if (import.meta.env.DEV) globalForPrisma.prisma = db;
+if (import.meta.env.DEV) {
+  globalForPrisma.prisma = db;
+  globalForPrisma.prismaMongo = dbMongoDB;
+}

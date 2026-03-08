@@ -3,6 +3,7 @@ import type { InferRouterInputs, InferRouterOutputs } from '@orpc/server';
 import accountRouter from './routers/account';
 import bookRouter from './routers/book';
 import configRouter from './routers/config';
+import expertWeekRouter from './routers/expert-week';
 import genreRouter from './routers/genre';
 import medicalManagementRouter from './routers/medical-management';
 import userRouter from './routers/user';
@@ -17,4 +18,5 @@ export const router = {
   user: userRouter,
   config: configRouter,
   medicalManagement: medicalManagementRouter,
+  expertWeek: expertWeekRouter,
 };
