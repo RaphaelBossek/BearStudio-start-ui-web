@@ -33,6 +33,8 @@ import { Route as ApiOpenapiAppRouteImport } from './routes/api/openapi/app'
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth.$'
 import { Route as ManagerUsersNewIndexRouteImport } from './routes/manager/users/new.index'
 import { Route as ManagerUsersIdIndexRouteImport } from './routes/manager/users/$id.index'
+import { Route as ManagerMedicalManagementSkillsIndexRouteImport } from './routes/manager/medical-management/skills.index'
+import { Route as ManagerMedicalManagementServicesIndexRouteImport } from './routes/manager/medical-management/services.index'
 import { Route as ManagerBooksNewIndexRouteImport } from './routes/manager/books/new.index'
 import { Route as ManagerBooksIdIndexRouteImport } from './routes/manager/books/$id.index'
 import { Route as AppBooksIdIndexRouteImport } from './routes/app/books/$id.index'
@@ -162,6 +164,18 @@ const ManagerUsersIdIndexRoute = ManagerUsersIdIndexRouteImport.update({
   path: '/users/$id/',
   getParentRoute: () => ManagerRouteRoute,
 } as any)
+const ManagerMedicalManagementSkillsIndexRoute =
+  ManagerMedicalManagementSkillsIndexRouteImport.update({
+    id: '/medical-management/skills/',
+    path: '/medical-management/skills/',
+    getParentRoute: () => ManagerRouteRoute,
+  } as any)
+const ManagerMedicalManagementServicesIndexRoute =
+  ManagerMedicalManagementServicesIndexRouteImport.update({
+    id: '/medical-management/services/',
+    path: '/medical-management/services/',
+    getParentRoute: () => ManagerRouteRoute,
+  } as any)
 const ManagerBooksNewIndexRoute = ManagerBooksNewIndexRouteImport.update({
   id: '/books/new/',
   path: '/books/new/',
@@ -234,6 +248,8 @@ export interface FileRoutesByFullPath {
   '/app/books/$id/': typeof AppBooksIdIndexRoute
   '/manager/books/$id/': typeof ManagerBooksIdIndexRoute
   '/manager/books/new/': typeof ManagerBooksNewIndexRoute
+  '/manager/medical-management/services/': typeof ManagerMedicalManagementServicesIndexRoute
+  '/manager/medical-management/skills/': typeof ManagerMedicalManagementSkillsIndexRoute
   '/manager/users/$id/': typeof ManagerUsersIdIndexRoute
   '/manager/users/new/': typeof ManagerUsersNewIndexRoute
   '/manager/books/$id/update/': typeof ManagerBooksIdUpdateIndexRoute
@@ -265,6 +281,8 @@ export interface FileRoutesByTo {
   '/app/books/$id': typeof AppBooksIdIndexRoute
   '/manager/books/$id': typeof ManagerBooksIdIndexRoute
   '/manager/books/new': typeof ManagerBooksNewIndexRoute
+  '/manager/medical-management/services': typeof ManagerMedicalManagementServicesIndexRoute
+  '/manager/medical-management/skills': typeof ManagerMedicalManagementSkillsIndexRoute
   '/manager/users/$id': typeof ManagerUsersIdIndexRoute
   '/manager/users/new': typeof ManagerUsersNewIndexRoute
   '/manager/books/$id/update': typeof ManagerBooksIdUpdateIndexRoute
@@ -300,6 +318,8 @@ export interface FileRoutesById {
   '/app/books/$id/': typeof AppBooksIdIndexRoute
   '/manager/books/$id/': typeof ManagerBooksIdIndexRoute
   '/manager/books/new/': typeof ManagerBooksNewIndexRoute
+  '/manager/medical-management/services/': typeof ManagerMedicalManagementServicesIndexRoute
+  '/manager/medical-management/skills/': typeof ManagerMedicalManagementSkillsIndexRoute
   '/manager/users/$id/': typeof ManagerUsersIdIndexRoute
   '/manager/users/new/': typeof ManagerUsersNewIndexRoute
   '/manager/books/$id/update/': typeof ManagerBooksIdUpdateIndexRoute
@@ -336,6 +356,8 @@ export interface FileRouteTypes {
     | '/app/books/$id/'
     | '/manager/books/$id/'
     | '/manager/books/new/'
+    | '/manager/medical-management/services/'
+    | '/manager/medical-management/skills/'
     | '/manager/users/$id/'
     | '/manager/users/new/'
     | '/manager/books/$id/update/'
@@ -367,6 +389,8 @@ export interface FileRouteTypes {
     | '/app/books/$id'
     | '/manager/books/$id'
     | '/manager/books/new'
+    | '/manager/medical-management/services'
+    | '/manager/medical-management/skills'
     | '/manager/users/$id'
     | '/manager/users/new'
     | '/manager/books/$id/update'
@@ -401,6 +425,8 @@ export interface FileRouteTypes {
     | '/app/books/$id/'
     | '/manager/books/$id/'
     | '/manager/books/new/'
+    | '/manager/medical-management/services/'
+    | '/manager/medical-management/skills/'
     | '/manager/users/$id/'
     | '/manager/users/new/'
     | '/manager/books/$id/update/'
@@ -592,6 +618,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ManagerUsersIdIndexRouteImport
       parentRoute: typeof ManagerRouteRoute
     }
+    '/manager/medical-management/skills/': {
+      id: '/manager/medical-management/skills/'
+      path: '/medical-management/skills'
+      fullPath: '/manager/medical-management/skills/'
+      preLoaderRoute: typeof ManagerMedicalManagementSkillsIndexRouteImport
+      parentRoute: typeof ManagerRouteRoute
+    }
+    '/manager/medical-management/services/': {
+      id: '/manager/medical-management/services/'
+      path: '/medical-management/services'
+      fullPath: '/manager/medical-management/services/'
+      preLoaderRoute: typeof ManagerMedicalManagementServicesIndexRouteImport
+      parentRoute: typeof ManagerRouteRoute
+    }
     '/manager/books/new/': {
       id: '/manager/books/new/'
       path: '/books/new'
@@ -693,6 +733,8 @@ interface ManagerRouteRouteChildren {
   ManagerUsersIndexRoute: typeof ManagerUsersIndexRoute
   ManagerBooksIdIndexRoute: typeof ManagerBooksIdIndexRoute
   ManagerBooksNewIndexRoute: typeof ManagerBooksNewIndexRoute
+  ManagerMedicalManagementServicesIndexRoute: typeof ManagerMedicalManagementServicesIndexRoute
+  ManagerMedicalManagementSkillsIndexRoute: typeof ManagerMedicalManagementSkillsIndexRoute
   ManagerUsersIdIndexRoute: typeof ManagerUsersIdIndexRoute
   ManagerUsersNewIndexRoute: typeof ManagerUsersNewIndexRoute
   ManagerBooksIdUpdateIndexRoute: typeof ManagerBooksIdUpdateIndexRoute
@@ -707,6 +749,10 @@ const ManagerRouteRouteChildren: ManagerRouteRouteChildren = {
   ManagerUsersIndexRoute: ManagerUsersIndexRoute,
   ManagerBooksIdIndexRoute: ManagerBooksIdIndexRoute,
   ManagerBooksNewIndexRoute: ManagerBooksNewIndexRoute,
+  ManagerMedicalManagementServicesIndexRoute:
+    ManagerMedicalManagementServicesIndexRoute,
+  ManagerMedicalManagementSkillsIndexRoute:
+    ManagerMedicalManagementSkillsIndexRoute,
   ManagerUsersIdIndexRoute: ManagerUsersIdIndexRoute,
   ManagerUsersNewIndexRoute: ManagerUsersNewIndexRoute,
   ManagerBooksIdUpdateIndexRoute: ManagerBooksIdUpdateIndexRoute,
