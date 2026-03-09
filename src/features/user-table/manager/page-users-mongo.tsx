@@ -19,7 +19,8 @@ import {
   PageLayoutTopBarTitle,
 } from '@/layout/manager/page-layout';
 import { orpc } from '@/lib/orpc/client';
-import { UsersMongoTable, type UsersMongoTableProps } from './users-table';
+import { UserDetailsSettings } from './user-details-settings';
+import { UsersMongoTable } from './users-table';
 
 export const PageUsersMongo = (props: {
   search: {
@@ -158,13 +159,7 @@ export const PageUsersMongo = (props: {
               {userDetailQuery.isLoading ? (
                 <div className="flex items-center justify-center h-40">Loading details...</div>
               ) : userDetailQuery.data ? (
-                <div className="space-y-6">
-                  <div className="rounded-md border bg-muted/50 p-4">
-                    <pre className="text-[11px] font-mono leading-relaxed whitespace-pre-wrap break-all">
-                      {JSON.stringify(userDetailQuery.data, null, 2)}
-                    </pre>
-                  </div>
-                </div>
+                <UserDetailsSettings user={userDetailQuery.data} />
               ) : (
                 <div className="text-center py-10 text-muted-foreground">User not found.</div>
               )}

@@ -74,20 +74,8 @@ export default {
       const mappedItems = items.map((user) => ({
         ...user,
         id: user.id.toString(),
-        invalidLogins:
-          user.invalidLogins?.slice(0, 3).map((ev) => ({
-            ...ev,
-            count: ev.count !== undefined && ev.count !== null ? Number(ev.count) : null,
-          })) || null,
-        successfulLogins:
-          user.successfulLogins?.slice(0, 3).map((ev) => ({
-            ...ev,
-            count: ev.count !== undefined && ev.count !== null ? Number(ev.count) : null,
-          })) || null,
-        countLogin:
-          user.countLogin !== undefined && user.countLogin !== null
-            ? Number(user.countLogin)
-            : null,
+        invalidLogins: user.invalidLogins?.slice(0, 3) || null,
+        successfulLogins: user.successfulLogins?.slice(0, 3) || null,
       }));
 
       return {
@@ -110,8 +98,18 @@ export default {
       });
       if (!user) return null;
 
-      return JSON.parse(
-        JSON.stringify(user, (key, value) => (typeof value === 'bigint' ? value.toString() : value))
-      );
+      // Deeply convert BigInt to string and handle dates
+      const stringifyBigInt = (obj: any): any => {
+        if (obj === null || obj === undefined) return obj;
+        if (typeof obj === 'bigint') return obj.toString();
+        if (obj instanceof Date) return obj;
+        if (Array.isArray(obj)) return obj.map(stringifyBigInt);
+        if (typeof obj === 'object') {
+          return Object.fromEntries(Object.entries(obj).map(([k, v]) => [k, stringifyBigInt(v)]));
+        }
+        return obj;
+      };
+
+      return stringifyBigInt(user);
     }),
 };

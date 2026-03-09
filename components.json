@@ -17,5 +17,8 @@
     "lib": "@/lib/tailwind",
     "hooks": "@/hooks"
   },
+  "registries": {
+    "@shadcndesign": "https://shadcndesign-registry.vercel.app/registry/{name}.json"
+  },
   "iconLibrary": "lucide"
 }
