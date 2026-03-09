@@ -22,6 +22,61 @@ export * from './enums';
  */
 export type UserProfile = Prisma.UserProfileModel;
 /**
+ * Model EmployeeProfile
+ *
+ */
+export type EmployeeProfile = Prisma.EmployeeProfileModel;
+/**
+ * Model EmployeeSkillAssignment
+ *
+ */
+export type EmployeeSkillAssignment = Prisma.EmployeeSkillAssignmentModel;
+/**
+ * Model EmployerProfile
+ *
+ */
+export type EmployerProfile = Prisma.EmployerProfileModel;
+/**
+ * Model UserAddress
+ *
+ */
+export type UserAddress = Prisma.UserAddressModel;
+/**
+ * Model FileMetadata
+ *
+ */
+export type FileMetadata = Prisma.FileMetadataModel;
+/**
+ * Model TotpDevice
+ *
+ */
+export type TotpDevice = Prisma.TotpDeviceModel;
+/**
+ * Model TotpActivity
+ *
+ */
+export type TotpActivity = Prisma.TotpActivityModel;
+/**
+ * Model LoginEvent
+ *
+ */
+export type LoginEvent = Prisma.LoginEventModel;
+/**
+ * Model UserPlanUser
+ *
+ */
+export type UserPlanUser = Prisma.UserPlanUserModel;
+/**
+ * Model BayernBoxAccess
+ *
+ */
+export type BayernBoxAccess = Prisma.BayernBoxAccessModel;
+/**
+ * Model WatchedCategory
+ *
+ */
+export type WatchedCategory = Prisma.WatchedCategoryModel;
+/**
  * Model ExpertWeek
  *
  */

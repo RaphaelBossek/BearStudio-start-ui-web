@@ -25,7 +25,24 @@ export type UserProfileNullableCompositeFilter = {
 };
 
 export type UserProfileOrderByInput = {
+  id?: Prisma.SortOrder;
+  firstName?: Prisma.SortOrder;
+  lastName?: Prisma.SortOrder;
   displayName?: Prisma.SortOrder;
+  title?: Prisma.SortOrder;
+  salutation?: Prisma.SortOrder;
+  gender?: Prisma.SortOrder;
+  birthday?: Prisma.SortOrder;
+  mainAddress?: Prisma.UserAddressOrderByInput;
+  cellularNumber?: Prisma.SortOrder;
+  shiftPhoneNumber?: Prisma.SortOrder;
+  notificationPerMail?: Prisma.SortOrder;
+  exludedNotifications?: Prisma.SortOrder;
+  photo?: Prisma.FileMetadataOrderByInput;
+  homePhone?: Prisma.SortOrder;
+  faxNumber?: Prisma.SortOrder;
+  workPhone?: Prisma.SortOrder;
+  userId?: Prisma.SortOrder;
 };
 
 export type UserProfileNullableCreateEnvelopeInput = {
@@ -42,7 +59,78 @@ export type UserProfileWhereInput = {
   AND?: Prisma.UserProfileWhereInput | Prisma.UserProfileWhereInput[];
   OR?: Prisma.UserProfileWhereInput[];
   NOT?: Prisma.UserProfileWhereInput | Prisma.UserProfileWhereInput[];
+  id?: Prisma.StringNullableFilter<'UserProfile'> | string | null;
+  firstName?: Prisma.StringNullableFilter<'UserProfile'> | string | null;
+  lastName?: Prisma.StringNullableFilter<'UserProfile'> | string | null;
   displayName?: Prisma.StringNullableFilter<'UserProfile'> | string | null;
+  title?: Prisma.StringNullableFilter<'UserProfile'> | string | null;
+  salutation?: Prisma.StringNullableFilter<'UserProfile'> | string | null;
+  gender?: Prisma.StringNullableFilter<'UserProfile'> | string | null;
+  birthday?: Prisma.DateTimeNullableFilter<'UserProfile'> | Date | string | null;
+  mainAddress?: Prisma.XOR<
+    Prisma.UserAddressNullableCompositeFilter,
+    Prisma.UserAddressObjectEqualityInput
+  > | null;
+  cellularNumber?: Prisma.StringNullableFilter<'UserProfile'> | string | null;
+  shiftPhoneNumber?: Prisma.StringNullableFilter<'UserProfile'> | string | null;
+  notificationPerMail?: Prisma.BoolNullableFilter<'UserProfile'> | boolean | null;
+  exludedNotifications?: Prisma.StringNullableListFilter<'UserProfile'>;
+  photo?: Prisma.XOR<
+    Prisma.FileMetadataNullableCompositeFilter,
+    Prisma.FileMetadataObjectEqualityInput
+  > | null;
+  homePhone?: Prisma.StringNullableFilter<'UserProfile'> | string | null;
+  faxNumber?: Prisma.StringNullableFilter<'UserProfile'> | string | null;
+  workPhone?: Prisma.StringNullableFilter<'UserProfile'> | string | null;
+  userId?: Prisma.BigIntNullableFilter<'UserProfile'> | bigint | number | null;
+};
+
+export type UserAddressObjectEqualityInput = {
+  id?: bigint | number | null;
+  name?: string | null;
+  address?: string | null;
+  address2?: string | null;
+  zip?: string | null;
+  city?: string | null;
+  state?: string | null;
+  country?: string | null;
+  type?: string | null;
+};
+
+export type FileMetadataObjectEqualityInput = {
+  id?: string | null;
+  name?: string | null;
+  mime?: string | null;
+  size?: bigint | number | null;
+  checksum?: string | null;
+  type?: string | null;
+  dateCreated?: Date | string | null;
+};
+
+export type UserAddressCreateInput = {
+  id?: bigint | number | null;
+  name?: string | null;
+  address?: string | null;
+  address2?: string | null;
+  zip?: string | null;
+  city?: string | null;
+  state?: string | null;
+  country?: string | null;
+  type?: string | null;
+};
+
+export type UserProfileCreateexludedNotificationsInput = {
+  set: string[];
+};
+
+export type FileMetadataCreateInput = {
+  id?: string | null;
+  name?: string | null;
+  mime?: string | null;
+  size?: bigint | number | null;
+  checksum?: string | null;
+  type?: string | null;
+  dateCreated?: Date | string | null;
 };
 
 export type UserProfileUpsertInput = {
@@ -50,34 +138,143 @@ export type UserProfileUpsertInput = {
   update: Prisma.UserProfileUpdateInput;
 };
 
+export type StringNullableListFilter<$PrismaModel = never> = {
+  equals?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel> | null;
+  has?: string | Prisma.StringFieldRefInput<$PrismaModel> | null;
+  hasEvery?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>;
+  hasSome?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>;
+  isEmpty?: boolean;
+};
+
 export type UserProfileUpdateInput = {
+  id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  salutation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  birthday?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  mainAddress?: Prisma.XOR<
+    Prisma.UserAddressNullableUpdateEnvelopeInput,
+    Prisma.UserAddressCreateInput
+  > | null;
+  cellularNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  shiftPhoneNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  notificationPerMail?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
+  exludedNotifications?: Prisma.UserProfileUpdateexludedNotificationsInput | string[];
+  photo?: Prisma.XOR<
+    Prisma.FileMetadataNullableUpdateEnvelopeInput,
+    Prisma.FileMetadataCreateInput
+  > | null;
+  homePhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  faxNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  workPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  userId?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null;
+};
+
+export type UserProfileUpdateexludedNotificationsInput = {
+  set?: string[];
+  push?: string | string[];
 };
 
 export type UserProfileSelect<
   ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetSelect<
   {
+    id?: boolean;
+    firstName?: boolean;
+    lastName?: boolean;
     displayName?: boolean;
+    title?: boolean;
+    salutation?: boolean;
+    gender?: boolean;
+    birthday?: boolean;
+    mainAddress?: boolean | Prisma.UserAddressDefaultArgs<ExtArgs>;
+    cellularNumber?: boolean;
+    shiftPhoneNumber?: boolean;
+    notificationPerMail?: boolean;
+    exludedNotifications?: boolean;
+    photo?: boolean | Prisma.FileMetadataDefaultArgs<ExtArgs>;
+    homePhone?: boolean;
+    faxNumber?: boolean;
+    workPhone?: boolean;
+    userId?: boolean;
   },
   ExtArgs['result']['userProfile']
 >;
 
 export type UserProfileSelectScalar = {
+  id?: boolean;
+  firstName?: boolean;
+  lastName?: boolean;
   displayName?: boolean;
+  title?: boolean;
+  salutation?: boolean;
+  gender?: boolean;
+  birthday?: boolean;
+  cellularNumber?: boolean;
+  shiftPhoneNumber?: boolean;
+  notificationPerMail?: boolean;
+  exludedNotifications?: boolean;
+  homePhone?: boolean;
+  faxNumber?: boolean;
+  workPhone?: boolean;
+  userId?: boolean;
 };
 
 export type UserProfileOmit<
   ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
-> = runtime.Types.Extensions.GetOmit<'displayName', ExtArgs['result']['userProfile']>;
+> = runtime.Types.Extensions.GetOmit<
+  | 'id'
+  | 'firstName'
+  | 'lastName'
+  | 'displayName'
+  | 'title'
+  | 'salutation'
+  | 'gender'
+  | 'birthday'
+  | 'mainAddress'
+  | 'cellularNumber'
+  | 'shiftPhoneNumber'
+  | 'notificationPerMail'
+  | 'exludedNotifications'
+  | 'photo'
+  | 'homePhone'
+  | 'faxNumber'
+  | 'workPhone'
+  | 'userId',
+  ExtArgs['result']['userProfile']
+>;
+export type UserProfileInclude<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
+> = {};
 
 export type $UserProfilePayload = {
   name: 'UserProfile';
   objects: {};
   scalars: {
+    id: string | null;
+    firstName: string | null;
+    lastName: string | null;
     displayName: string | null;
+    title: string | null;
+    salutation: string | null;
+    gender: string | null;
+    birthday: Date | null;
+    cellularNumber: string | null;
+    shiftPhoneNumber: string | null;
+    notificationPerMail: boolean | null;
+    exludedNotifications: string[];
+    homePhone: string | null;
+    faxNumber: string | null;
+    workPhone: string | null;
+    userId: bigint | null;
   };
-  composites: {};
+  composites: {
+    mainAddress: Prisma.$UserAddressPayload | null;
+    photo: Prisma.$FileMetadataPayload | null;
+  };
 };
 
 export type UserProfileGetPayload<S extends boolean | null | undefined | UserProfileDefaultArgs> =
@@ -87,7 +284,22 @@ export type UserProfileGetPayload<S extends boolean | null | undefined | UserPro
  * Fields of the UserProfile model
  */
 export interface UserProfileFieldRefs {
+  readonly id: Prisma.FieldRef<'UserProfile', 'String'>;
+  readonly firstName: Prisma.FieldRef<'UserProfile', 'String'>;
+  readonly lastName: Prisma.FieldRef<'UserProfile', 'String'>;
   readonly displayName: Prisma.FieldRef<'UserProfile', 'String'>;
+  readonly title: Prisma.FieldRef<'UserProfile', 'String'>;
+  readonly salutation: Prisma.FieldRef<'UserProfile', 'String'>;
+  readonly gender: Prisma.FieldRef<'UserProfile', 'String'>;
+  readonly birthday: Prisma.FieldRef<'UserProfile', 'DateTime'>;
+  readonly cellularNumber: Prisma.FieldRef<'UserProfile', 'String'>;
+  readonly shiftPhoneNumber: Prisma.FieldRef<'UserProfile', 'String'>;
+  readonly notificationPerMail: Prisma.FieldRef<'UserProfile', 'Boolean'>;
+  readonly exludedNotifications: Prisma.FieldRef<'UserProfile', 'String[]'>;
+  readonly homePhone: Prisma.FieldRef<'UserProfile', 'String'>;
+  readonly faxNumber: Prisma.FieldRef<'UserProfile', 'String'>;
+  readonly workPhone: Prisma.FieldRef<'UserProfile', 'String'>;
+  readonly userId: Prisma.FieldRef<'UserProfile', 'BigInt'>;
 }
 
 // Custom InputTypes
@@ -105,4 +317,8 @@ export type UserProfileDefaultArgs<
    * Omit specific fields from the UserProfile
    */
   omit?: Prisma.UserProfileOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserProfileInclude<ExtArgs> | null;
 };

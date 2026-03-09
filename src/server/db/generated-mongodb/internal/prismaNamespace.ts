@@ -600,6 +600,42 @@ export type ExpertWeekScalarFieldEnum =
 
 export const UserMongoScalarFieldEnum = {
   id: 'id',
+  version: 'version',
+  username: 'username',
+  email: 'email',
+  password: 'password',
+  enabled: 'enabled',
+  accountLocked: 'accountLocked',
+  accountExpired: 'accountExpired',
+  credentialsExpired: 'credentialsExpired',
+  deleted: 'deleted',
+  external: 'external',
+  role: 'role',
+  employeeState: 'employeeState',
+  nextBirthday: 'nextBirthday',
+  requireTotp: 'requireTotp',
+  countInvalidLogin: 'countInvalidLogin',
+  dateLocked: 'dateLocked',
+  lastIP: 'lastIP',
+  countLogin: 'countLogin',
+  lastLogin: 'lastLogin',
+  settings: 'settings',
+  ip: 'ip',
+  consecutiveFailedLoginAttempts: 'consecutiveFailedLoginAttempts',
+  dateAcceptedLoginNotification: 'dateAcceptedLoginNotification',
+  resetDate: 'resetDate',
+  resetIp: 'resetIp',
+  resetKey: 'resetKey',
+  dateChanged: 'dateChanged',
+  lastReminder: 'lastReminder',
+  emailVerified: 'emailVerified',
+  dateCreated: 'dateCreated',
+  onBoardingPercentComplete: 'onBoardingPercentComplete',
+  stepsTotal: 'stepsTotal',
+  stepsCompleted: 'stepsCompleted',
+  lang: 'lang',
+  verifikationKey: 'verifikationKey',
+  class: 'class',
 } as const;
 
 export type UserMongoScalarFieldEnum =
@@ -664,6 +700,11 @@ export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel
 export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>;
 
 /**
+ * Reference to a field of type 'Boolean'
+ */
+export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>;
+
+/**
  * Reference to a field of type 'Int'
  */
 export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>;
@@ -672,6 +713,11 @@ export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'In
  * Reference to a field of type 'Int[]'
  */
 export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>;
+
+/**
+ * Reference to a field of type 'Json'
+ */
+export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>;
 
 /**
  * Batch Payload for updateMany & deleteMany & createMany

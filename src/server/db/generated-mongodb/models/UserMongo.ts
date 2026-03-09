@@ -27,43 +27,283 @@ export type AggregateUserMongo = {
 
 export type UserMongoAvgAggregateOutputType = {
   id: number | null;
+  version: number | null;
+  countInvalidLogin: number | null;
+  countLogin: number | null;
+  consecutiveFailedLoginAttempts: number | null;
+  onBoardingPercentComplete: number | null;
+  stepsTotal: number | null;
+  stepsCompleted: number | null;
 };
 
 export type UserMongoSumAggregateOutputType = {
   id: bigint | null;
+  version: bigint | null;
+  countInvalidLogin: number | null;
+  countLogin: number | null;
+  consecutiveFailedLoginAttempts: number | null;
+  onBoardingPercentComplete: number | null;
+  stepsTotal: number | null;
+  stepsCompleted: number | null;
 };
 
 export type UserMongoMinAggregateOutputType = {
   id: bigint | null;
+  version: bigint | null;
+  username: string | null;
+  email: string | null;
+  password: string | null;
+  enabled: boolean | null;
+  accountLocked: boolean | null;
+  accountExpired: boolean | null;
+  credentialsExpired: boolean | null;
+  deleted: boolean | null;
+  external: boolean | null;
+  role: string | null;
+  employeeState: string | null;
+  nextBirthday: Date | null;
+  requireTotp: boolean | null;
+  countInvalidLogin: number | null;
+  dateLocked: Date | null;
+  lastIP: string | null;
+  countLogin: number | null;
+  lastLogin: Date | null;
+  ip: string | null;
+  consecutiveFailedLoginAttempts: number | null;
+  dateAcceptedLoginNotification: Date | null;
+  resetDate: Date | null;
+  resetIp: string | null;
+  resetKey: string | null;
+  dateChanged: Date | null;
+  lastReminder: Date | null;
+  emailVerified: string | null;
+  dateCreated: Date | null;
+  onBoardingPercentComplete: number | null;
+  stepsTotal: number | null;
+  stepsCompleted: number | null;
+  lang: string | null;
+  verifikationKey: string | null;
+  class: string | null;
 };
 
 export type UserMongoMaxAggregateOutputType = {
   id: bigint | null;
+  version: bigint | null;
+  username: string | null;
+  email: string | null;
+  password: string | null;
+  enabled: boolean | null;
+  accountLocked: boolean | null;
+  accountExpired: boolean | null;
+  credentialsExpired: boolean | null;
+  deleted: boolean | null;
+  external: boolean | null;
+  role: string | null;
+  employeeState: string | null;
+  nextBirthday: Date | null;
+  requireTotp: boolean | null;
+  countInvalidLogin: number | null;
+  dateLocked: Date | null;
+  lastIP: string | null;
+  countLogin: number | null;
+  lastLogin: Date | null;
+  ip: string | null;
+  consecutiveFailedLoginAttempts: number | null;
+  dateAcceptedLoginNotification: Date | null;
+  resetDate: Date | null;
+  resetIp: string | null;
+  resetKey: string | null;
+  dateChanged: Date | null;
+  lastReminder: Date | null;
+  emailVerified: string | null;
+  dateCreated: Date | null;
+  onBoardingPercentComplete: number | null;
+  stepsTotal: number | null;
+  stepsCompleted: number | null;
+  lang: string | null;
+  verifikationKey: string | null;
+  class: string | null;
 };
 
 export type UserMongoCountAggregateOutputType = {
   id: number;
+  version: number;
+  username: number;
+  email: number;
+  password: number;
+  enabled: number;
+  accountLocked: number;
+  accountExpired: number;
+  credentialsExpired: number;
+  deleted: number;
+  external: number;
+  role: number;
+  employeeState: number;
+  nextBirthday: number;
+  requireTotp: number;
+  countInvalidLogin: number;
+  dateLocked: number;
+  lastIP: number;
+  countLogin: number;
+  lastLogin: number;
+  settings: number;
+  ip: number;
+  consecutiveFailedLoginAttempts: number;
+  dateAcceptedLoginNotification: number;
+  resetDate: number;
+  resetIp: number;
+  resetKey: number;
+  dateChanged: number;
+  lastReminder: number;
+  emailVerified: number;
+  dateCreated: number;
+  onBoardingPercentComplete: number;
+  stepsTotal: number;
+  stepsCompleted: number;
+  lang: number;
+  verifikationKey: number;
+  class: number;
   _all: number;
 };
 
 export type UserMongoAvgAggregateInputType = {
   id?: true;
+  version?: true;
+  countInvalidLogin?: true;
+  countLogin?: true;
+  consecutiveFailedLoginAttempts?: true;
+  onBoardingPercentComplete?: true;
+  stepsTotal?: true;
+  stepsCompleted?: true;
 };
 
 export type UserMongoSumAggregateInputType = {
   id?: true;
+  version?: true;
+  countInvalidLogin?: true;
+  countLogin?: true;
+  consecutiveFailedLoginAttempts?: true;
+  onBoardingPercentComplete?: true;
+  stepsTotal?: true;
+  stepsCompleted?: true;
 };
 
 export type UserMongoMinAggregateInputType = {
   id?: true;
+  version?: true;
+  username?: true;
+  email?: true;
+  password?: true;
+  enabled?: true;
+  accountLocked?: true;
+  accountExpired?: true;
+  credentialsExpired?: true;
+  deleted?: true;
+  external?: true;
+  role?: true;
+  employeeState?: true;
+  nextBirthday?: true;
+  requireTotp?: true;
+  countInvalidLogin?: true;
+  dateLocked?: true;
+  lastIP?: true;
+  countLogin?: true;
+  lastLogin?: true;
+  ip?: true;
+  consecutiveFailedLoginAttempts?: true;
+  dateAcceptedLoginNotification?: true;
+  resetDate?: true;
+  resetIp?: true;
+  resetKey?: true;
+  dateChanged?: true;
+  lastReminder?: true;
+  emailVerified?: true;
+  dateCreated?: true;
+  onBoardingPercentComplete?: true;
+  stepsTotal?: true;
+  stepsCompleted?: true;
+  lang?: true;
+  verifikationKey?: true;
+  class?: true;
 };
 
 export type UserMongoMaxAggregateInputType = {
   id?: true;
+  version?: true;
+  username?: true;
+  email?: true;
+  password?: true;
+  enabled?: true;
+  accountLocked?: true;
+  accountExpired?: true;
+  credentialsExpired?: true;
+  deleted?: true;
+  external?: true;
+  role?: true;
+  employeeState?: true;
+  nextBirthday?: true;
+  requireTotp?: true;
+  countInvalidLogin?: true;
+  dateLocked?: true;
+  lastIP?: true;
+  countLogin?: true;
+  lastLogin?: true;
+  ip?: true;
+  consecutiveFailedLoginAttempts?: true;
+  dateAcceptedLoginNotification?: true;
+  resetDate?: true;
+  resetIp?: true;
+  resetKey?: true;
+  dateChanged?: true;
+  lastReminder?: true;
+  emailVerified?: true;
+  dateCreated?: true;
+  onBoardingPercentComplete?: true;
+  stepsTotal?: true;
+  stepsCompleted?: true;
+  lang?: true;
+  verifikationKey?: true;
+  class?: true;
 };
 
 export type UserMongoCountAggregateInputType = {
   id?: true;
+  version?: true;
+  username?: true;
+  email?: true;
+  password?: true;
+  enabled?: true;
+  accountLocked?: true;
+  accountExpired?: true;
+  credentialsExpired?: true;
+  deleted?: true;
+  external?: true;
+  role?: true;
+  employeeState?: true;
+  nextBirthday?: true;
+  requireTotp?: true;
+  countInvalidLogin?: true;
+  dateLocked?: true;
+  lastIP?: true;
+  countLogin?: true;
+  lastLogin?: true;
+  settings?: true;
+  ip?: true;
+  consecutiveFailedLoginAttempts?: true;
+  dateAcceptedLoginNotification?: true;
+  resetDate?: true;
+  resetIp?: true;
+  resetKey?: true;
+  dateChanged?: true;
+  lastReminder?: true;
+  emailVerified?: true;
+  dateCreated?: true;
+  onBoardingPercentComplete?: true;
+  stepsTotal?: true;
+  stepsCompleted?: true;
+  lang?: true;
+  verifikationKey?: true;
+  class?: true;
   _all?: true;
 };
 
@@ -158,6 +398,42 @@ export type UserMongoGroupByArgs<
 
 export type UserMongoGroupByOutputType = {
   id: bigint;
+  version: bigint | null;
+  username: string | null;
+  email: string | null;
+  password: string | null;
+  enabled: boolean | null;
+  accountLocked: boolean | null;
+  accountExpired: boolean | null;
+  credentialsExpired: boolean | null;
+  deleted: boolean | null;
+  external: boolean | null;
+  role: string | null;
+  employeeState: string | null;
+  nextBirthday: Date | null;
+  requireTotp: boolean | null;
+  countInvalidLogin: number | null;
+  dateLocked: Date | null;
+  lastIP: string | null;
+  countLogin: number | null;
+  lastLogin: Date | null;
+  settings: runtime.JsonValue | null;
+  ip: string | null;
+  consecutiveFailedLoginAttempts: number | null;
+  dateAcceptedLoginNotification: Date | null;
+  resetDate: Date | null;
+  resetIp: string | null;
+  resetKey: string | null;
+  dateChanged: Date | null;
+  lastReminder: Date | null;
+  emailVerified: string | null;
+  dateCreated: Date | null;
+  onBoardingPercentComplete: number | null;
+  stepsTotal: number | null;
+  stepsCompleted: number | null;
+  lang: string | null;
+  verifikationKey: string | null;
+  class: string | null;
   _count: UserMongoCountAggregateOutputType | null;
   _avg: UserMongoAvgAggregateOutputType | null;
   _sum: UserMongoSumAggregateOutputType | null;
@@ -182,15 +458,121 @@ export type UserMongoWhereInput = {
   OR?: Prisma.UserMongoWhereInput[];
   NOT?: Prisma.UserMongoWhereInput | Prisma.UserMongoWhereInput[];
   id?: Prisma.BigIntFilter<'UserMongo'> | bigint | number;
+  version?: Prisma.BigIntNullableFilter<'UserMongo'> | bigint | number | null;
+  username?: Prisma.StringNullableFilter<'UserMongo'> | string | null;
+  email?: Prisma.StringNullableFilter<'UserMongo'> | string | null;
+  password?: Prisma.StringNullableFilter<'UserMongo'> | string | null;
+  enabled?: Prisma.BoolNullableFilter<'UserMongo'> | boolean | null;
+  accountLocked?: Prisma.BoolNullableFilter<'UserMongo'> | boolean | null;
+  accountExpired?: Prisma.BoolNullableFilter<'UserMongo'> | boolean | null;
+  credentialsExpired?: Prisma.BoolNullableFilter<'UserMongo'> | boolean | null;
+  deleted?: Prisma.BoolNullableFilter<'UserMongo'> | boolean | null;
+  external?: Prisma.BoolNullableFilter<'UserMongo'> | boolean | null;
+  role?: Prisma.StringNullableFilter<'UserMongo'> | string | null;
+  employeeState?: Prisma.StringNullableFilter<'UserMongo'> | string | null;
   userProfile?: Prisma.XOR<
     Prisma.UserProfileNullableCompositeFilter,
     Prisma.UserProfileObjectEqualityInput
   > | null;
+  employeeProfile?: Prisma.XOR<
+    Prisma.EmployeeProfileNullableCompositeFilter,
+    Prisma.EmployeeProfileObjectEqualityInput
+  > | null;
+  employerProfile?: Prisma.XOR<
+    Prisma.EmployerProfileNullableCompositeFilter,
+    Prisma.EmployerProfileObjectEqualityInput
+  > | null;
+  nextBirthday?: Prisma.DateTimeNullableFilter<'UserMongo'> | Date | string | null;
+  totpDevice?: Prisma.XOR<
+    Prisma.TotpDeviceNullableCompositeFilter,
+    Prisma.TotpDeviceObjectEqualityInput
+  > | null;
+  requireTotp?: Prisma.BoolNullableFilter<'UserMongo'> | boolean | null;
+  totpActivity?: Prisma.XOR<
+    Prisma.TotpActivityNullableCompositeFilter,
+    Prisma.TotpActivityObjectEqualityInput
+  > | null;
+  countInvalidLogin?: Prisma.IntNullableFilter<'UserMongo'> | number | null;
+  dateLocked?: Prisma.DateTimeNullableFilter<'UserMongo'> | Date | string | null;
+  lastIP?: Prisma.StringNullableFilter<'UserMongo'> | string | null;
+  countLogin?: Prisma.IntNullableFilter<'UserMongo'> | number | null;
+  lastLogin?: Prisma.DateTimeNullableFilter<'UserMongo'> | Date | string | null;
+  settings?: Prisma.JsonNullableFilter<'UserMongo'>;
+  ip?: Prisma.StringNullableFilter<'UserMongo'> | string | null;
+  invalidLogins?: Prisma.LoginEventCompositeListFilter | Prisma.LoginEventObjectEqualityInput[];
+  consecutiveFailedLoginAttempts?: Prisma.IntNullableFilter<'UserMongo'> | number | null;
+  successfulLogins?: Prisma.LoginEventCompositeListFilter | Prisma.LoginEventObjectEqualityInput[];
+  dateAcceptedLoginNotification?: Prisma.DateTimeNullableFilter<'UserMongo'> | Date | string | null;
+  resetDate?: Prisma.DateTimeNullableFilter<'UserMongo'> | Date | string | null;
+  resetIp?: Prisma.StringNullableFilter<'UserMongo'> | string | null;
+  resetKey?: Prisma.StringNullableFilter<'UserMongo'> | string | null;
+  dateChanged?: Prisma.DateTimeNullableFilter<'UserMongo'> | Date | string | null;
+  changedBy?: Prisma.XOR<
+    Prisma.UserPlanUserNullableCompositeFilter,
+    Prisma.UserPlanUserObjectEqualityInput
+  > | null;
+  lastReminder?: Prisma.DateTimeNullableFilter<'UserMongo'> | Date | string | null;
+  emailVerified?: Prisma.StringNullableFilter<'UserMongo'> | string | null;
+  dateCreated?: Prisma.DateTimeNullableFilter<'UserMongo'> | Date | string | null;
+  createdBy?: Prisma.XOR<
+    Prisma.UserPlanUserNullableCompositeFilter,
+    Prisma.UserPlanUserObjectEqualityInput
+  > | null;
+  onBoardingPercentComplete?: Prisma.FloatNullableFilter<'UserMongo'> | number | null;
+  stepsTotal?: Prisma.IntNullableFilter<'UserMongo'> | number | null;
+  stepsCompleted?: Prisma.IntNullableFilter<'UserMongo'> | number | null;
+  lang?: Prisma.StringNullableFilter<'UserMongo'> | string | null;
+  verifikationKey?: Prisma.StringNullableFilter<'UserMongo'> | string | null;
+  class?: Prisma.StringNullableFilter<'UserMongo'> | string | null;
 };
 
 export type UserMongoOrderByWithRelationInput = {
   id?: Prisma.SortOrder;
+  version?: Prisma.SortOrder;
+  username?: Prisma.SortOrder;
+  email?: Prisma.SortOrder;
+  password?: Prisma.SortOrder;
+  enabled?: Prisma.SortOrder;
+  accountLocked?: Prisma.SortOrder;
+  accountExpired?: Prisma.SortOrder;
+  credentialsExpired?: Prisma.SortOrder;
+  deleted?: Prisma.SortOrder;
+  external?: Prisma.SortOrder;
+  role?: Prisma.SortOrder;
+  employeeState?: Prisma.SortOrder;
   userProfile?: Prisma.UserProfileOrderByInput;
+  employeeProfile?: Prisma.EmployeeProfileOrderByInput;
+  employerProfile?: Prisma.EmployerProfileOrderByInput;
+  nextBirthday?: Prisma.SortOrder;
+  totpDevice?: Prisma.TotpDeviceOrderByInput;
+  requireTotp?: Prisma.SortOrder;
+  totpActivity?: Prisma.TotpActivityOrderByInput;
+  countInvalidLogin?: Prisma.SortOrder;
+  dateLocked?: Prisma.SortOrder;
+  lastIP?: Prisma.SortOrder;
+  countLogin?: Prisma.SortOrder;
+  lastLogin?: Prisma.SortOrder;
+  settings?: Prisma.SortOrder;
+  ip?: Prisma.SortOrder;
+  invalidLogins?: Prisma.LoginEventOrderByCompositeAggregateInput;
+  consecutiveFailedLoginAttempts?: Prisma.SortOrder;
+  successfulLogins?: Prisma.LoginEventOrderByCompositeAggregateInput;
+  dateAcceptedLoginNotification?: Prisma.SortOrder;
+  resetDate?: Prisma.SortOrder;
+  resetIp?: Prisma.SortOrder;
+  resetKey?: Prisma.SortOrder;
+  dateChanged?: Prisma.SortOrder;
+  changedBy?: Prisma.UserPlanUserOrderByInput;
+  lastReminder?: Prisma.SortOrder;
+  emailVerified?: Prisma.SortOrder;
+  dateCreated?: Prisma.SortOrder;
+  createdBy?: Prisma.UserPlanUserOrderByInput;
+  onBoardingPercentComplete?: Prisma.SortOrder;
+  stepsTotal?: Prisma.SortOrder;
+  stepsCompleted?: Prisma.SortOrder;
+  lang?: Prisma.SortOrder;
+  verifikationKey?: Prisma.SortOrder;
+  class?: Prisma.SortOrder;
 };
 
 export type UserMongoWhereUniqueInput = Prisma.AtLeast<
@@ -199,16 +581,120 @@ export type UserMongoWhereUniqueInput = Prisma.AtLeast<
     AND?: Prisma.UserMongoWhereInput | Prisma.UserMongoWhereInput[];
     OR?: Prisma.UserMongoWhereInput[];
     NOT?: Prisma.UserMongoWhereInput | Prisma.UserMongoWhereInput[];
+    version?: Prisma.BigIntNullableFilter<'UserMongo'> | bigint | number | null;
+    username?: Prisma.StringNullableFilter<'UserMongo'> | string | null;
+    email?: Prisma.StringNullableFilter<'UserMongo'> | string | null;
+    password?: Prisma.StringNullableFilter<'UserMongo'> | string | null;
+    enabled?: Prisma.BoolNullableFilter<'UserMongo'> | boolean | null;
+    accountLocked?: Prisma.BoolNullableFilter<'UserMongo'> | boolean | null;
+    accountExpired?: Prisma.BoolNullableFilter<'UserMongo'> | boolean | null;
+    credentialsExpired?: Prisma.BoolNullableFilter<'UserMongo'> | boolean | null;
+    deleted?: Prisma.BoolNullableFilter<'UserMongo'> | boolean | null;
+    external?: Prisma.BoolNullableFilter<'UserMongo'> | boolean | null;
+    role?: Prisma.StringNullableFilter<'UserMongo'> | string | null;
+    employeeState?: Prisma.StringNullableFilter<'UserMongo'> | string | null;
     userProfile?: Prisma.XOR<
       Prisma.UserProfileNullableCompositeFilter,
       Prisma.UserProfileObjectEqualityInput
     > | null;
+    employeeProfile?: Prisma.XOR<
+      Prisma.EmployeeProfileNullableCompositeFilter,
+      Prisma.EmployeeProfileObjectEqualityInput
+    > | null;
+    employerProfile?: Prisma.XOR<
+      Prisma.EmployerProfileNullableCompositeFilter,
+      Prisma.EmployerProfileObjectEqualityInput
+    > | null;
+    nextBirthday?: Prisma.DateTimeNullableFilter<'UserMongo'> | Date | string | null;
+    totpDevice?: Prisma.XOR<
+      Prisma.TotpDeviceNullableCompositeFilter,
+      Prisma.TotpDeviceObjectEqualityInput
+    > | null;
+    requireTotp?: Prisma.BoolNullableFilter<'UserMongo'> | boolean | null;
+    totpActivity?: Prisma.XOR<
+      Prisma.TotpActivityNullableCompositeFilter,
+      Prisma.TotpActivityObjectEqualityInput
+    > | null;
+    countInvalidLogin?: Prisma.IntNullableFilter<'UserMongo'> | number | null;
+    dateLocked?: Prisma.DateTimeNullableFilter<'UserMongo'> | Date | string | null;
+    lastIP?: Prisma.StringNullableFilter<'UserMongo'> | string | null;
+    countLogin?: Prisma.IntNullableFilter<'UserMongo'> | number | null;
+    lastLogin?: Prisma.DateTimeNullableFilter<'UserMongo'> | Date | string | null;
+    settings?: Prisma.JsonNullableFilter<'UserMongo'>;
+    ip?: Prisma.StringNullableFilter<'UserMongo'> | string | null;
+    invalidLogins?: Prisma.LoginEventCompositeListFilter | Prisma.LoginEventObjectEqualityInput[];
+    consecutiveFailedLoginAttempts?: Prisma.IntNullableFilter<'UserMongo'> | number | null;
+    successfulLogins?:
+      | Prisma.LoginEventCompositeListFilter
+      | Prisma.LoginEventObjectEqualityInput[];
+    dateAcceptedLoginNotification?:
+      | Prisma.DateTimeNullableFilter<'UserMongo'>
+      | Date
+      | string
+      | null;
+    resetDate?: Prisma.DateTimeNullableFilter<'UserMongo'> | Date | string | null;
+    resetIp?: Prisma.StringNullableFilter<'UserMongo'> | string | null;
+    resetKey?: Prisma.StringNullableFilter<'UserMongo'> | string | null;
+    dateChanged?: Prisma.DateTimeNullableFilter<'UserMongo'> | Date | string | null;
+    changedBy?: Prisma.XOR<
+      Prisma.UserPlanUserNullableCompositeFilter,
+      Prisma.UserPlanUserObjectEqualityInput
+    > | null;
+    lastReminder?: Prisma.DateTimeNullableFilter<'UserMongo'> | Date | string | null;
+    emailVerified?: Prisma.StringNullableFilter<'UserMongo'> | string | null;
+    dateCreated?: Prisma.DateTimeNullableFilter<'UserMongo'> | Date | string | null;
+    createdBy?: Prisma.XOR<
+      Prisma.UserPlanUserNullableCompositeFilter,
+      Prisma.UserPlanUserObjectEqualityInput
+    > | null;
+    onBoardingPercentComplete?: Prisma.FloatNullableFilter<'UserMongo'> | number | null;
+    stepsTotal?: Prisma.IntNullableFilter<'UserMongo'> | number | null;
+    stepsCompleted?: Prisma.IntNullableFilter<'UserMongo'> | number | null;
+    lang?: Prisma.StringNullableFilter<'UserMongo'> | string | null;
+    verifikationKey?: Prisma.StringNullableFilter<'UserMongo'> | string | null;
+    class?: Prisma.StringNullableFilter<'UserMongo'> | string | null;
   },
   'id'
 >;
 
 export type UserMongoOrderByWithAggregationInput = {
   id?: Prisma.SortOrder;
+  version?: Prisma.SortOrder;
+  username?: Prisma.SortOrder;
+  email?: Prisma.SortOrder;
+  password?: Prisma.SortOrder;
+  enabled?: Prisma.SortOrder;
+  accountLocked?: Prisma.SortOrder;
+  accountExpired?: Prisma.SortOrder;
+  credentialsExpired?: Prisma.SortOrder;
+  deleted?: Prisma.SortOrder;
+  external?: Prisma.SortOrder;
+  role?: Prisma.SortOrder;
+  employeeState?: Prisma.SortOrder;
+  nextBirthday?: Prisma.SortOrder;
+  requireTotp?: Prisma.SortOrder;
+  countInvalidLogin?: Prisma.SortOrder;
+  dateLocked?: Prisma.SortOrder;
+  lastIP?: Prisma.SortOrder;
+  countLogin?: Prisma.SortOrder;
+  lastLogin?: Prisma.SortOrder;
+  settings?: Prisma.SortOrder;
+  ip?: Prisma.SortOrder;
+  consecutiveFailedLoginAttempts?: Prisma.SortOrder;
+  dateAcceptedLoginNotification?: Prisma.SortOrder;
+  resetDate?: Prisma.SortOrder;
+  resetIp?: Prisma.SortOrder;
+  resetKey?: Prisma.SortOrder;
+  dateChanged?: Prisma.SortOrder;
+  lastReminder?: Prisma.SortOrder;
+  emailVerified?: Prisma.SortOrder;
+  dateCreated?: Prisma.SortOrder;
+  onBoardingPercentComplete?: Prisma.SortOrder;
+  stepsTotal?: Prisma.SortOrder;
+  stepsCompleted?: Prisma.SortOrder;
+  lang?: Prisma.SortOrder;
+  verifikationKey?: Prisma.SortOrder;
+  class?: Prisma.SortOrder;
   _count?: Prisma.UserMongoCountOrderByAggregateInput;
   _avg?: Prisma.UserMongoAvgOrderByAggregateInput;
   _max?: Prisma.UserMongoMaxOrderByAggregateInput;
@@ -225,86 +711,914 @@ export type UserMongoScalarWhereWithAggregatesInput = {
     | Prisma.UserMongoScalarWhereWithAggregatesInput
     | Prisma.UserMongoScalarWhereWithAggregatesInput[];
   id?: Prisma.BigIntWithAggregatesFilter<'UserMongo'> | bigint | number;
+  version?: Prisma.BigIntNullableWithAggregatesFilter<'UserMongo'> | bigint | number | null;
+  username?: Prisma.StringNullableWithAggregatesFilter<'UserMongo'> | string | null;
+  email?: Prisma.StringNullableWithAggregatesFilter<'UserMongo'> | string | null;
+  password?: Prisma.StringNullableWithAggregatesFilter<'UserMongo'> | string | null;
+  enabled?: Prisma.BoolNullableWithAggregatesFilter<'UserMongo'> | boolean | null;
+  accountLocked?: Prisma.BoolNullableWithAggregatesFilter<'UserMongo'> | boolean | null;
+  accountExpired?: Prisma.BoolNullableWithAggregatesFilter<'UserMongo'> | boolean | null;
+  credentialsExpired?: Prisma.BoolNullableWithAggregatesFilter<'UserMongo'> | boolean | null;
+  deleted?: Prisma.BoolNullableWithAggregatesFilter<'UserMongo'> | boolean | null;
+  external?: Prisma.BoolNullableWithAggregatesFilter<'UserMongo'> | boolean | null;
+  role?: Prisma.StringNullableWithAggregatesFilter<'UserMongo'> | string | null;
+  employeeState?: Prisma.StringNullableWithAggregatesFilter<'UserMongo'> | string | null;
+  nextBirthday?: Prisma.DateTimeNullableWithAggregatesFilter<'UserMongo'> | Date | string | null;
+  requireTotp?: Prisma.BoolNullableWithAggregatesFilter<'UserMongo'> | boolean | null;
+  countInvalidLogin?: Prisma.IntNullableWithAggregatesFilter<'UserMongo'> | number | null;
+  dateLocked?: Prisma.DateTimeNullableWithAggregatesFilter<'UserMongo'> | Date | string | null;
+  lastIP?: Prisma.StringNullableWithAggregatesFilter<'UserMongo'> | string | null;
+  countLogin?: Prisma.IntNullableWithAggregatesFilter<'UserMongo'> | number | null;
+  lastLogin?: Prisma.DateTimeNullableWithAggregatesFilter<'UserMongo'> | Date | string | null;
+  settings?: Prisma.JsonNullableWithAggregatesFilter<'UserMongo'>;
+  ip?: Prisma.StringNullableWithAggregatesFilter<'UserMongo'> | string | null;
+  consecutiveFailedLoginAttempts?:
+    | Prisma.IntNullableWithAggregatesFilter<'UserMongo'>
+    | number
+    | null;
+  dateAcceptedLoginNotification?:
+    | Prisma.DateTimeNullableWithAggregatesFilter<'UserMongo'>
+    | Date
+    | string
+    | null;
+  resetDate?: Prisma.DateTimeNullableWithAggregatesFilter<'UserMongo'> | Date | string | null;
+  resetIp?: Prisma.StringNullableWithAggregatesFilter<'UserMongo'> | string | null;
+  resetKey?: Prisma.StringNullableWithAggregatesFilter<'UserMongo'> | string | null;
+  dateChanged?: Prisma.DateTimeNullableWithAggregatesFilter<'UserMongo'> | Date | string | null;
+  lastReminder?: Prisma.DateTimeNullableWithAggregatesFilter<'UserMongo'> | Date | string | null;
+  emailVerified?: Prisma.StringNullableWithAggregatesFilter<'UserMongo'> | string | null;
+  dateCreated?: Prisma.DateTimeNullableWithAggregatesFilter<'UserMongo'> | Date | string | null;
+  onBoardingPercentComplete?: Prisma.FloatNullableWithAggregatesFilter<'UserMongo'> | number | null;
+  stepsTotal?: Prisma.IntNullableWithAggregatesFilter<'UserMongo'> | number | null;
+  stepsCompleted?: Prisma.IntNullableWithAggregatesFilter<'UserMongo'> | number | null;
+  lang?: Prisma.StringNullableWithAggregatesFilter<'UserMongo'> | string | null;
+  verifikationKey?: Prisma.StringNullableWithAggregatesFilter<'UserMongo'> | string | null;
+  class?: Prisma.StringNullableWithAggregatesFilter<'UserMongo'> | string | null;
 };
 
 export type UserMongoCreateInput = {
   id: bigint | number;
+  version?: bigint | number | null;
+  username?: string | null;
+  email?: string | null;
+  password?: string | null;
+  enabled?: boolean | null;
+  accountLocked?: boolean | null;
+  accountExpired?: boolean | null;
+  credentialsExpired?: boolean | null;
+  deleted?: boolean | null;
+  external?: boolean | null;
+  role?: string | null;
+  employeeState?: string | null;
   userProfile?: Prisma.XOR<
     Prisma.UserProfileNullableCreateEnvelopeInput,
     Prisma.UserProfileCreateInput
   > | null;
+  employeeProfile?: Prisma.XOR<
+    Prisma.EmployeeProfileNullableCreateEnvelopeInput,
+    Prisma.EmployeeProfileCreateInput
+  > | null;
+  employerProfile?: Prisma.XOR<
+    Prisma.EmployerProfileNullableCreateEnvelopeInput,
+    Prisma.EmployerProfileCreateInput
+  > | null;
+  nextBirthday?: Date | string | null;
+  totpDevice?: Prisma.XOR<
+    Prisma.TotpDeviceNullableCreateEnvelopeInput,
+    Prisma.TotpDeviceCreateInput
+  > | null;
+  requireTotp?: boolean | null;
+  totpActivity?: Prisma.XOR<
+    Prisma.TotpActivityNullableCreateEnvelopeInput,
+    Prisma.TotpActivityCreateInput
+  > | null;
+  countInvalidLogin?: number | null;
+  dateLocked?: Date | string | null;
+  lastIP?: string | null;
+  countLogin?: number | null;
+  lastLogin?: Date | string | null;
+  settings?: runtime.InputJsonValue | null;
+  ip?: string | null;
+  invalidLogins?:
+    | Prisma.XOR<Prisma.LoginEventListCreateEnvelopeInput, Prisma.LoginEventCreateInput>
+    | Prisma.LoginEventCreateInput[];
+  consecutiveFailedLoginAttempts?: number | null;
+  successfulLogins?:
+    | Prisma.XOR<Prisma.LoginEventListCreateEnvelopeInput, Prisma.LoginEventCreateInput>
+    | Prisma.LoginEventCreateInput[];
+  dateAcceptedLoginNotification?: Date | string | null;
+  resetDate?: Date | string | null;
+  resetIp?: string | null;
+  resetKey?: string | null;
+  dateChanged?: Date | string | null;
+  changedBy?: Prisma.XOR<
+    Prisma.UserPlanUserNullableCreateEnvelopeInput,
+    Prisma.UserPlanUserCreateInput
+  > | null;
+  lastReminder?: Date | string | null;
+  emailVerified?: string | null;
+  dateCreated?: Date | string | null;
+  createdBy?: Prisma.XOR<
+    Prisma.UserPlanUserNullableCreateEnvelopeInput,
+    Prisma.UserPlanUserCreateInput
+  > | null;
+  onBoardingPercentComplete?: number | null;
+  stepsTotal?: number | null;
+  stepsCompleted?: number | null;
+  lang?: string | null;
+  verifikationKey?: string | null;
+  class?: string | null;
 };
 
 export type UserMongoUncheckedCreateInput = {
   id: bigint | number;
+  version?: bigint | number | null;
+  username?: string | null;
+  email?: string | null;
+  password?: string | null;
+  enabled?: boolean | null;
+  accountLocked?: boolean | null;
+  accountExpired?: boolean | null;
+  credentialsExpired?: boolean | null;
+  deleted?: boolean | null;
+  external?: boolean | null;
+  role?: string | null;
+  employeeState?: string | null;
   userProfile?: Prisma.XOR<
     Prisma.UserProfileNullableCreateEnvelopeInput,
     Prisma.UserProfileCreateInput
   > | null;
+  employeeProfile?: Prisma.XOR<
+    Prisma.EmployeeProfileNullableCreateEnvelopeInput,
+    Prisma.EmployeeProfileCreateInput
+  > | null;
+  employerProfile?: Prisma.XOR<
+    Prisma.EmployerProfileNullableCreateEnvelopeInput,
+    Prisma.EmployerProfileCreateInput
+  > | null;
+  nextBirthday?: Date | string | null;
+  totpDevice?: Prisma.XOR<
+    Prisma.TotpDeviceNullableCreateEnvelopeInput,
+    Prisma.TotpDeviceCreateInput
+  > | null;
+  requireTotp?: boolean | null;
+  totpActivity?: Prisma.XOR<
+    Prisma.TotpActivityNullableCreateEnvelopeInput,
+    Prisma.TotpActivityCreateInput
+  > | null;
+  countInvalidLogin?: number | null;
+  dateLocked?: Date | string | null;
+  lastIP?: string | null;
+  countLogin?: number | null;
+  lastLogin?: Date | string | null;
+  settings?: runtime.InputJsonValue | null;
+  ip?: string | null;
+  invalidLogins?:
+    | Prisma.XOR<Prisma.LoginEventListCreateEnvelopeInput, Prisma.LoginEventCreateInput>
+    | Prisma.LoginEventCreateInput[];
+  consecutiveFailedLoginAttempts?: number | null;
+  successfulLogins?:
+    | Prisma.XOR<Prisma.LoginEventListCreateEnvelopeInput, Prisma.LoginEventCreateInput>
+    | Prisma.LoginEventCreateInput[];
+  dateAcceptedLoginNotification?: Date | string | null;
+  resetDate?: Date | string | null;
+  resetIp?: string | null;
+  resetKey?: string | null;
+  dateChanged?: Date | string | null;
+  changedBy?: Prisma.XOR<
+    Prisma.UserPlanUserNullableCreateEnvelopeInput,
+    Prisma.UserPlanUserCreateInput
+  > | null;
+  lastReminder?: Date | string | null;
+  emailVerified?: string | null;
+  dateCreated?: Date | string | null;
+  createdBy?: Prisma.XOR<
+    Prisma.UserPlanUserNullableCreateEnvelopeInput,
+    Prisma.UserPlanUserCreateInput
+  > | null;
+  onBoardingPercentComplete?: number | null;
+  stepsTotal?: number | null;
+  stepsCompleted?: number | null;
+  lang?: string | null;
+  verifikationKey?: string | null;
+  class?: string | null;
 };
 
 export type UserMongoUpdateInput = {
+  version?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null;
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  enabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
+  accountLocked?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
+  accountExpired?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
+  credentialsExpired?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
+  deleted?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
+  external?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
+  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  employeeState?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   userProfile?: Prisma.XOR<
     Prisma.UserProfileNullableUpdateEnvelopeInput,
     Prisma.UserProfileCreateInput
   > | null;
+  employeeProfile?: Prisma.XOR<
+    Prisma.EmployeeProfileNullableUpdateEnvelopeInput,
+    Prisma.EmployeeProfileCreateInput
+  > | null;
+  employerProfile?: Prisma.XOR<
+    Prisma.EmployerProfileNullableUpdateEnvelopeInput,
+    Prisma.EmployerProfileCreateInput
+  > | null;
+  nextBirthday?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  totpDevice?: Prisma.XOR<
+    Prisma.TotpDeviceNullableUpdateEnvelopeInput,
+    Prisma.TotpDeviceCreateInput
+  > | null;
+  requireTotp?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
+  totpActivity?: Prisma.XOR<
+    Prisma.TotpActivityNullableUpdateEnvelopeInput,
+    Prisma.TotpActivityCreateInput
+  > | null;
+  countInvalidLogin?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+  dateLocked?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  lastIP?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  countLogin?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+  lastLogin?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  settings?: runtime.InputJsonValue | runtime.InputJsonValue | null;
+  ip?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  invalidLogins?:
+    | Prisma.XOR<Prisma.LoginEventListUpdateEnvelopeInput, Prisma.LoginEventCreateInput>
+    | Prisma.LoginEventCreateInput[];
+  consecutiveFailedLoginAttempts?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+  successfulLogins?:
+    | Prisma.XOR<Prisma.LoginEventListUpdateEnvelopeInput, Prisma.LoginEventCreateInput>
+    | Prisma.LoginEventCreateInput[];
+  dateAcceptedLoginNotification?:
+    | Prisma.NullableDateTimeFieldUpdateOperationsInput
+    | Date
+    | string
+    | null;
+  resetDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  resetIp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  resetKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  dateChanged?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  changedBy?: Prisma.XOR<
+    Prisma.UserPlanUserNullableUpdateEnvelopeInput,
+    Prisma.UserPlanUserCreateInput
+  > | null;
+  lastReminder?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  emailVerified?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  dateCreated?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  createdBy?: Prisma.XOR<
+    Prisma.UserPlanUserNullableUpdateEnvelopeInput,
+    Prisma.UserPlanUserCreateInput
+  > | null;
+  onBoardingPercentComplete?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null;
+  stepsTotal?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+  stepsCompleted?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+  lang?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  verifikationKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  class?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 };
 
 export type UserMongoUncheckedUpdateInput = {
+  version?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null;
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  enabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
+  accountLocked?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
+  accountExpired?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
+  credentialsExpired?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
+  deleted?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
+  external?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
+  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  employeeState?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   userProfile?: Prisma.XOR<
     Prisma.UserProfileNullableUpdateEnvelopeInput,
     Prisma.UserProfileCreateInput
   > | null;
+  employeeProfile?: Prisma.XOR<
+    Prisma.EmployeeProfileNullableUpdateEnvelopeInput,
+    Prisma.EmployeeProfileCreateInput
+  > | null;
+  employerProfile?: Prisma.XOR<
+    Prisma.EmployerProfileNullableUpdateEnvelopeInput,
+    Prisma.EmployerProfileCreateInput
+  > | null;
+  nextBirthday?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  totpDevice?: Prisma.XOR<
+    Prisma.TotpDeviceNullableUpdateEnvelopeInput,
+    Prisma.TotpDeviceCreateInput
+  > | null;
+  requireTotp?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
+  totpActivity?: Prisma.XOR<
+    Prisma.TotpActivityNullableUpdateEnvelopeInput,
+    Prisma.TotpActivityCreateInput
+  > | null;
+  countInvalidLogin?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+  dateLocked?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  lastIP?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  countLogin?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+  lastLogin?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  settings?: runtime.InputJsonValue | runtime.InputJsonValue | null;
+  ip?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  invalidLogins?:
+    | Prisma.XOR<Prisma.LoginEventListUpdateEnvelopeInput, Prisma.LoginEventCreateInput>
+    | Prisma.LoginEventCreateInput[];
+  consecutiveFailedLoginAttempts?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+  successfulLogins?:
+    | Prisma.XOR<Prisma.LoginEventListUpdateEnvelopeInput, Prisma.LoginEventCreateInput>
+    | Prisma.LoginEventCreateInput[];
+  dateAcceptedLoginNotification?:
+    | Prisma.NullableDateTimeFieldUpdateOperationsInput
+    | Date
+    | string
+    | null;
+  resetDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  resetIp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  resetKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  dateChanged?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  changedBy?: Prisma.XOR<
+    Prisma.UserPlanUserNullableUpdateEnvelopeInput,
+    Prisma.UserPlanUserCreateInput
+  > | null;
+  lastReminder?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  emailVerified?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  dateCreated?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  createdBy?: Prisma.XOR<
+    Prisma.UserPlanUserNullableUpdateEnvelopeInput,
+    Prisma.UserPlanUserCreateInput
+  > | null;
+  onBoardingPercentComplete?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null;
+  stepsTotal?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+  stepsCompleted?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+  lang?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  verifikationKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  class?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 };
 
 export type UserMongoCreateManyInput = {
   id: bigint | number;
+  version?: bigint | number | null;
+  username?: string | null;
+  email?: string | null;
+  password?: string | null;
+  enabled?: boolean | null;
+  accountLocked?: boolean | null;
+  accountExpired?: boolean | null;
+  credentialsExpired?: boolean | null;
+  deleted?: boolean | null;
+  external?: boolean | null;
+  role?: string | null;
+  employeeState?: string | null;
   userProfile?: Prisma.XOR<
     Prisma.UserProfileNullableCreateEnvelopeInput,
     Prisma.UserProfileCreateInput
   > | null;
+  employeeProfile?: Prisma.XOR<
+    Prisma.EmployeeProfileNullableCreateEnvelopeInput,
+    Prisma.EmployeeProfileCreateInput
+  > | null;
+  employerProfile?: Prisma.XOR<
+    Prisma.EmployerProfileNullableCreateEnvelopeInput,
+    Prisma.EmployerProfileCreateInput
+  > | null;
+  nextBirthday?: Date | string | null;
+  totpDevice?: Prisma.XOR<
+    Prisma.TotpDeviceNullableCreateEnvelopeInput,
+    Prisma.TotpDeviceCreateInput
+  > | null;
+  requireTotp?: boolean | null;
+  totpActivity?: Prisma.XOR<
+    Prisma.TotpActivityNullableCreateEnvelopeInput,
+    Prisma.TotpActivityCreateInput
+  > | null;
+  countInvalidLogin?: number | null;
+  dateLocked?: Date | string | null;
+  lastIP?: string | null;
+  countLogin?: number | null;
+  lastLogin?: Date | string | null;
+  settings?: runtime.InputJsonValue | null;
+  ip?: string | null;
+  invalidLogins?:
+    | Prisma.XOR<Prisma.LoginEventListCreateEnvelopeInput, Prisma.LoginEventCreateInput>
+    | Prisma.LoginEventCreateInput[];
+  consecutiveFailedLoginAttempts?: number | null;
+  successfulLogins?:
+    | Prisma.XOR<Prisma.LoginEventListCreateEnvelopeInput, Prisma.LoginEventCreateInput>
+    | Prisma.LoginEventCreateInput[];
+  dateAcceptedLoginNotification?: Date | string | null;
+  resetDate?: Date | string | null;
+  resetIp?: string | null;
+  resetKey?: string | null;
+  dateChanged?: Date | string | null;
+  changedBy?: Prisma.XOR<
+    Prisma.UserPlanUserNullableCreateEnvelopeInput,
+    Prisma.UserPlanUserCreateInput
+  > | null;
+  lastReminder?: Date | string | null;
+  emailVerified?: string | null;
+  dateCreated?: Date | string | null;
+  createdBy?: Prisma.XOR<
+    Prisma.UserPlanUserNullableCreateEnvelopeInput,
+    Prisma.UserPlanUserCreateInput
+  > | null;
+  onBoardingPercentComplete?: number | null;
+  stepsTotal?: number | null;
+  stepsCompleted?: number | null;
+  lang?: string | null;
+  verifikationKey?: string | null;
+  class?: string | null;
 };
 
 export type UserMongoUpdateManyMutationInput = {
+  version?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null;
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  enabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
+  accountLocked?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
+  accountExpired?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
+  credentialsExpired?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
+  deleted?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
+  external?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
+  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  employeeState?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   userProfile?: Prisma.XOR<
     Prisma.UserProfileNullableUpdateEnvelopeInput,
     Prisma.UserProfileCreateInput
   > | null;
+  employeeProfile?: Prisma.XOR<
+    Prisma.EmployeeProfileNullableUpdateEnvelopeInput,
+    Prisma.EmployeeProfileCreateInput
+  > | null;
+  employerProfile?: Prisma.XOR<
+    Prisma.EmployerProfileNullableUpdateEnvelopeInput,
+    Prisma.EmployerProfileCreateInput
+  > | null;
+  nextBirthday?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  totpDevice?: Prisma.XOR<
+    Prisma.TotpDeviceNullableUpdateEnvelopeInput,
+    Prisma.TotpDeviceCreateInput
+  > | null;
+  requireTotp?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
+  totpActivity?: Prisma.XOR<
+    Prisma.TotpActivityNullableUpdateEnvelopeInput,
+    Prisma.TotpActivityCreateInput
+  > | null;
+  countInvalidLogin?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+  dateLocked?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  lastIP?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  countLogin?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+  lastLogin?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  settings?: runtime.InputJsonValue | runtime.InputJsonValue | null;
+  ip?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  invalidLogins?:
+    | Prisma.XOR<Prisma.LoginEventListUpdateEnvelopeInput, Prisma.LoginEventCreateInput>
+    | Prisma.LoginEventCreateInput[];
+  consecutiveFailedLoginAttempts?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+  successfulLogins?:
+    | Prisma.XOR<Prisma.LoginEventListUpdateEnvelopeInput, Prisma.LoginEventCreateInput>
+    | Prisma.LoginEventCreateInput[];
+  dateAcceptedLoginNotification?:
+    | Prisma.NullableDateTimeFieldUpdateOperationsInput
+    | Date
+    | string
+    | null;
+  resetDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  resetIp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  resetKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  dateChanged?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  changedBy?: Prisma.XOR<
+    Prisma.UserPlanUserNullableUpdateEnvelopeInput,
+    Prisma.UserPlanUserCreateInput
+  > | null;
+  lastReminder?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  emailVerified?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  dateCreated?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  createdBy?: Prisma.XOR<
+    Prisma.UserPlanUserNullableUpdateEnvelopeInput,
+    Prisma.UserPlanUserCreateInput
+  > | null;
+  onBoardingPercentComplete?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null;
+  stepsTotal?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+  stepsCompleted?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+  lang?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  verifikationKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  class?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 };
 
 export type UserMongoUncheckedUpdateManyInput = {
+  version?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null;
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  enabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
+  accountLocked?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
+  accountExpired?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
+  credentialsExpired?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
+  deleted?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
+  external?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
+  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  employeeState?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   userProfile?: Prisma.XOR<
     Prisma.UserProfileNullableUpdateEnvelopeInput,
     Prisma.UserProfileCreateInput
   > | null;
+  employeeProfile?: Prisma.XOR<
+    Prisma.EmployeeProfileNullableUpdateEnvelopeInput,
+    Prisma.EmployeeProfileCreateInput
+  > | null;
+  employerProfile?: Prisma.XOR<
+    Prisma.EmployerProfileNullableUpdateEnvelopeInput,
+    Prisma.EmployerProfileCreateInput
+  > | null;
+  nextBirthday?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  totpDevice?: Prisma.XOR<
+    Prisma.TotpDeviceNullableUpdateEnvelopeInput,
+    Prisma.TotpDeviceCreateInput
+  > | null;
+  requireTotp?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
+  totpActivity?: Prisma.XOR<
+    Prisma.TotpActivityNullableUpdateEnvelopeInput,
+    Prisma.TotpActivityCreateInput
+  > | null;
+  countInvalidLogin?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+  dateLocked?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  lastIP?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  countLogin?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+  lastLogin?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  settings?: runtime.InputJsonValue | runtime.InputJsonValue | null;
+  ip?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  invalidLogins?:
+    | Prisma.XOR<Prisma.LoginEventListUpdateEnvelopeInput, Prisma.LoginEventCreateInput>
+    | Prisma.LoginEventCreateInput[];
+  consecutiveFailedLoginAttempts?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+  successfulLogins?:
+    | Prisma.XOR<Prisma.LoginEventListUpdateEnvelopeInput, Prisma.LoginEventCreateInput>
+    | Prisma.LoginEventCreateInput[];
+  dateAcceptedLoginNotification?:
+    | Prisma.NullableDateTimeFieldUpdateOperationsInput
+    | Date
+    | string
+    | null;
+  resetDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  resetIp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  resetKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  dateChanged?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  changedBy?: Prisma.XOR<
+    Prisma.UserPlanUserNullableUpdateEnvelopeInput,
+    Prisma.UserPlanUserCreateInput
+  > | null;
+  lastReminder?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  emailVerified?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  dateCreated?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+  createdBy?: Prisma.XOR<
+    Prisma.UserPlanUserNullableUpdateEnvelopeInput,
+    Prisma.UserPlanUserCreateInput
+  > | null;
+  onBoardingPercentComplete?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null;
+  stepsTotal?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+  stepsCompleted?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+  lang?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  verifikationKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  class?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 };
 
 export type UserProfileObjectEqualityInput = {
+  id?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
   displayName?: string | null;
+  title?: string | null;
+  salutation?: string | null;
+  gender?: string | null;
+  birthday?: Date | string | null;
+  mainAddress?: Prisma.UserAddressObjectEqualityInput | null;
+  cellularNumber?: string | null;
+  shiftPhoneNumber?: string | null;
+  notificationPerMail?: boolean | null;
+  exludedNotifications?: string[];
+  photo?: Prisma.FileMetadataObjectEqualityInput | null;
+  homePhone?: string | null;
+  faxNumber?: string | null;
+  workPhone?: string | null;
+  userId?: bigint | number | null;
+};
+
+export type EmployeeProfileObjectEqualityInput = {
+  id?: string | null;
+  email2?: string | null;
+  activeSince?: Date | string | null;
+  bank?: string | null;
+  iban?: string | null;
+  bic?: string | null;
+  taxid?: string | null;
+  uid?: string | null;
+  mailInvoice?: boolean | null;
+  postInvoice?: boolean | null;
+  shift?: string | null;
+  appointment?: string | null;
+  therapy?: string | null;
+  skills?: Prisma.EmployeeSkillAssignmentObjectEqualityInput[];
+  exclusionCriteria?: string[];
+  imageSignature?: Prisma.FileMetadataObjectEqualityInput | null;
+  bayernBoxAccess?: Prisma.BayernBoxAccessObjectEqualityInput | null;
+  categoriesWatched?: Prisma.WatchedCategoryObjectEqualityInput[];
+};
+
+export type EmployerProfileObjectEqualityInput = {
+  id?: string | null;
+  konto?: string | null;
+  gkto?: string | null;
+  efn?: string | null;
+  level?: string | null;
+  activeSince?: Date | string | null;
+  activeUntil?: Date | string | null;
+  activeSinceVC?: Date | string | null;
+  activeUntilVC?: Date | string | null;
+  currentIncome?: number | null;
+  inctiveReason?: string | null;
+  experienceAddictionMedicine?: string | null;
+};
+
+export type TotpDeviceObjectEqualityInput = {
+  ip?: string | null;
+  dateRegistered?: Date | string | null;
+  secret?: string | null;
+  activated?: Date | string | null;
+};
+
+export type TotpActivityObjectEqualityInput = {
+  dateAccess?: Date | string | null;
+  ip?: string | null;
+  ua?: string | null;
+  action?: string | null;
+};
+
+export type LoginEventObjectEqualityInput = {
+  ip?: string | null;
+  date?: Date | string | null;
+  first?: Date | string | null;
+  ua?: string | null;
+  count?: number | null;
+};
+
+export type UserPlanUserObjectEqualityInput = {
+  id?: bigint | number | null;
+  name?: string | null;
+  email?: string | null;
+  formalDisplayName?: string | null;
 };
 
 export type UserMongoCountOrderByAggregateInput = {
   id?: Prisma.SortOrder;
+  version?: Prisma.SortOrder;
+  username?: Prisma.SortOrder;
+  email?: Prisma.SortOrder;
+  password?: Prisma.SortOrder;
+  enabled?: Prisma.SortOrder;
+  accountLocked?: Prisma.SortOrder;
+  accountExpired?: Prisma.SortOrder;
+  credentialsExpired?: Prisma.SortOrder;
+  deleted?: Prisma.SortOrder;
+  external?: Prisma.SortOrder;
+  role?: Prisma.SortOrder;
+  employeeState?: Prisma.SortOrder;
+  nextBirthday?: Prisma.SortOrder;
+  requireTotp?: Prisma.SortOrder;
+  countInvalidLogin?: Prisma.SortOrder;
+  dateLocked?: Prisma.SortOrder;
+  lastIP?: Prisma.SortOrder;
+  countLogin?: Prisma.SortOrder;
+  lastLogin?: Prisma.SortOrder;
+  settings?: Prisma.SortOrder;
+  ip?: Prisma.SortOrder;
+  consecutiveFailedLoginAttempts?: Prisma.SortOrder;
+  dateAcceptedLoginNotification?: Prisma.SortOrder;
+  resetDate?: Prisma.SortOrder;
+  resetIp?: Prisma.SortOrder;
+  resetKey?: Prisma.SortOrder;
+  dateChanged?: Prisma.SortOrder;
+  lastReminder?: Prisma.SortOrder;
+  emailVerified?: Prisma.SortOrder;
+  dateCreated?: Prisma.SortOrder;
+  onBoardingPercentComplete?: Prisma.SortOrder;
+  stepsTotal?: Prisma.SortOrder;
+  stepsCompleted?: Prisma.SortOrder;
+  lang?: Prisma.SortOrder;
+  verifikationKey?: Prisma.SortOrder;
+  class?: Prisma.SortOrder;
 };
 
 export type UserMongoAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder;
+  version?: Prisma.SortOrder;
+  countInvalidLogin?: Prisma.SortOrder;
+  countLogin?: Prisma.SortOrder;
+  consecutiveFailedLoginAttempts?: Prisma.SortOrder;
+  onBoardingPercentComplete?: Prisma.SortOrder;
+  stepsTotal?: Prisma.SortOrder;
+  stepsCompleted?: Prisma.SortOrder;
 };
 
 export type UserMongoMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder;
+  version?: Prisma.SortOrder;
+  username?: Prisma.SortOrder;
+  email?: Prisma.SortOrder;
+  password?: Prisma.SortOrder;
+  enabled?: Prisma.SortOrder;
+  accountLocked?: Prisma.SortOrder;
+  accountExpired?: Prisma.SortOrder;
+  credentialsExpired?: Prisma.SortOrder;
+  deleted?: Prisma.SortOrder;
+  external?: Prisma.SortOrder;
+  role?: Prisma.SortOrder;
+  employeeState?: Prisma.SortOrder;
+  nextBirthday?: Prisma.SortOrder;
+  requireTotp?: Prisma.SortOrder;
+  countInvalidLogin?: Prisma.SortOrder;
+  dateLocked?: Prisma.SortOrder;
+  lastIP?: Prisma.SortOrder;
+  countLogin?: Prisma.SortOrder;
+  lastLogin?: Prisma.SortOrder;
+  ip?: Prisma.SortOrder;
+  consecutiveFailedLoginAttempts?: Prisma.SortOrder;
+  dateAcceptedLoginNotification?: Prisma.SortOrder;
+  resetDate?: Prisma.SortOrder;
+  resetIp?: Prisma.SortOrder;
+  resetKey?: Prisma.SortOrder;
+  dateChanged?: Prisma.SortOrder;
+  lastReminder?: Prisma.SortOrder;
+  emailVerified?: Prisma.SortOrder;
+  dateCreated?: Prisma.SortOrder;
+  onBoardingPercentComplete?: Prisma.SortOrder;
+  stepsTotal?: Prisma.SortOrder;
+  stepsCompleted?: Prisma.SortOrder;
+  lang?: Prisma.SortOrder;
+  verifikationKey?: Prisma.SortOrder;
+  class?: Prisma.SortOrder;
 };
 
 export type UserMongoMinOrderByAggregateInput = {
   id?: Prisma.SortOrder;
+  version?: Prisma.SortOrder;
+  username?: Prisma.SortOrder;
+  email?: Prisma.SortOrder;
+  password?: Prisma.SortOrder;
+  enabled?: Prisma.SortOrder;
+  accountLocked?: Prisma.SortOrder;
+  accountExpired?: Prisma.SortOrder;
+  credentialsExpired?: Prisma.SortOrder;
+  deleted?: Prisma.SortOrder;
+  external?: Prisma.SortOrder;
+  role?: Prisma.SortOrder;
+  employeeState?: Prisma.SortOrder;
+  nextBirthday?: Prisma.SortOrder;
+  requireTotp?: Prisma.SortOrder;
+  countInvalidLogin?: Prisma.SortOrder;
+  dateLocked?: Prisma.SortOrder;
+  lastIP?: Prisma.SortOrder;
+  countLogin?: Prisma.SortOrder;
+  lastLogin?: Prisma.SortOrder;
+  ip?: Prisma.SortOrder;
+  consecutiveFailedLoginAttempts?: Prisma.SortOrder;
+  dateAcceptedLoginNotification?: Prisma.SortOrder;
+  resetDate?: Prisma.SortOrder;
+  resetIp?: Prisma.SortOrder;
+  resetKey?: Prisma.SortOrder;
+  dateChanged?: Prisma.SortOrder;
+  lastReminder?: Prisma.SortOrder;
+  emailVerified?: Prisma.SortOrder;
+  dateCreated?: Prisma.SortOrder;
+  onBoardingPercentComplete?: Prisma.SortOrder;
+  stepsTotal?: Prisma.SortOrder;
+  stepsCompleted?: Prisma.SortOrder;
+  lang?: Prisma.SortOrder;
+  verifikationKey?: Prisma.SortOrder;
+  class?: Prisma.SortOrder;
 };
 
 export type UserMongoSumOrderByAggregateInput = {
   id?: Prisma.SortOrder;
+  version?: Prisma.SortOrder;
+  countInvalidLogin?: Prisma.SortOrder;
+  countLogin?: Prisma.SortOrder;
+  consecutiveFailedLoginAttempts?: Prisma.SortOrder;
+  onBoardingPercentComplete?: Prisma.SortOrder;
+  stepsTotal?: Prisma.SortOrder;
+  stepsCompleted?: Prisma.SortOrder;
 };
 
 export type UserProfileCreateInput = {
+  id?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
   displayName?: string | null;
+  title?: string | null;
+  salutation?: string | null;
+  gender?: string | null;
+  birthday?: Date | string | null;
+  mainAddress?: Prisma.UserAddressCreateInput | null;
+  cellularNumber?: string | null;
+  shiftPhoneNumber?: string | null;
+  notificationPerMail?: boolean | null;
+  exludedNotifications?: Prisma.UserProfileCreateexludedNotificationsInput | string[];
+  photo?: Prisma.FileMetadataCreateInput | null;
+  homePhone?: string | null;
+  faxNumber?: string | null;
+  workPhone?: string | null;
+  userId?: bigint | number | null;
+};
+
+export type EmployeeProfileCreateInput = {
+  id?: string | null;
+  email2?: string | null;
+  activeSince?: Date | string | null;
+  bank?: string | null;
+  iban?: string | null;
+  bic?: string | null;
+  taxid?: string | null;
+  uid?: string | null;
+  mailInvoice?: boolean | null;
+  postInvoice?: boolean | null;
+  shift?: string | null;
+  appointment?: string | null;
+  therapy?: string | null;
+  skills?: Prisma.EmployeeSkillAssignmentCreateInput | Prisma.EmployeeSkillAssignmentCreateInput[];
+  exclusionCriteria?: Prisma.EmployeeProfileCreateexclusionCriteriaInput | string[];
+  imageSignature?: Prisma.FileMetadataCreateInput | null;
+  bayernBoxAccess?: Prisma.BayernBoxAccessCreateInput | null;
+  categoriesWatched?: Prisma.WatchedCategoryCreateInput | Prisma.WatchedCategoryCreateInput[];
+};
+
+export type EmployerProfileCreateInput = {
+  id?: string | null;
+  konto?: string | null;
+  gkto?: string | null;
+  efn?: string | null;
+  level?: string | null;
+  activeSince?: Date | string | null;
+  activeUntil?: Date | string | null;
+  activeSinceVC?: Date | string | null;
+  activeUntilVC?: Date | string | null;
+  currentIncome?: number | null;
+  inctiveReason?: string | null;
+  experienceAddictionMedicine?: string | null;
+};
+
+export type TotpDeviceCreateInput = {
+  ip?: string | null;
+  dateRegistered?: Date | string | null;
+  secret?: string | null;
+  activated?: Date | string | null;
+};
+
+export type TotpActivityCreateInput = {
+  dateAccess?: Date | string | null;
+  ip?: string | null;
+  ua?: string | null;
+  action?: string | null;
+};
+
+export type LoginEventCreateInput = {
+  ip?: string | null;
+  date?: Date | string | null;
+  first?: Date | string | null;
+  ua?: string | null;
+  count?: number | null;
+};
+
+export type UserPlanUserCreateInput = {
+  id?: bigint | number | null;
+  name?: string | null;
+  email?: string | null;
+  formalDisplayName?: string | null;
+};
+
+export type NullableBoolFieldUpdateOperationsInput = {
+  set?: boolean | null;
+  unset?: boolean;
+};
+
+export type NullableIntFieldUpdateOperationsInput = {
+  set?: number | null;
+  increment?: number;
+  decrement?: number;
+  multiply?: number;
+  divide?: number;
+  unset?: boolean;
+};
+
+export type NullableFloatFieldUpdateOperationsInput = {
+  set?: number | null;
+  increment?: number;
+  decrement?: number;
+  multiply?: number;
+  divide?: number;
+  unset?: boolean;
 };
 
 export type UserMongoSelect<
@@ -312,18 +1626,146 @@ export type UserMongoSelect<
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
+    version?: boolean;
+    username?: boolean;
+    email?: boolean;
+    password?: boolean;
+    enabled?: boolean;
+    accountLocked?: boolean;
+    accountExpired?: boolean;
+    credentialsExpired?: boolean;
+    deleted?: boolean;
+    external?: boolean;
+    role?: boolean;
+    employeeState?: boolean;
     userProfile?: boolean | Prisma.UserProfileDefaultArgs<ExtArgs>;
+    employeeProfile?: boolean | Prisma.EmployeeProfileDefaultArgs<ExtArgs>;
+    employerProfile?: boolean | Prisma.EmployerProfileDefaultArgs<ExtArgs>;
+    nextBirthday?: boolean;
+    totpDevice?: boolean | Prisma.TotpDeviceDefaultArgs<ExtArgs>;
+    requireTotp?: boolean;
+    totpActivity?: boolean | Prisma.TotpActivityDefaultArgs<ExtArgs>;
+    countInvalidLogin?: boolean;
+    dateLocked?: boolean;
+    lastIP?: boolean;
+    countLogin?: boolean;
+    lastLogin?: boolean;
+    settings?: boolean;
+    ip?: boolean;
+    invalidLogins?: boolean | Prisma.LoginEventDefaultArgs<ExtArgs>;
+    consecutiveFailedLoginAttempts?: boolean;
+    successfulLogins?: boolean | Prisma.LoginEventDefaultArgs<ExtArgs>;
+    dateAcceptedLoginNotification?: boolean;
+    resetDate?: boolean;
+    resetIp?: boolean;
+    resetKey?: boolean;
+    dateChanged?: boolean;
+    changedBy?: boolean | Prisma.UserPlanUserDefaultArgs<ExtArgs>;
+    lastReminder?: boolean;
+    emailVerified?: boolean;
+    dateCreated?: boolean;
+    createdBy?: boolean | Prisma.UserPlanUserDefaultArgs<ExtArgs>;
+    onBoardingPercentComplete?: boolean;
+    stepsTotal?: boolean;
+    stepsCompleted?: boolean;
+    lang?: boolean;
+    verifikationKey?: boolean;
+    class?: boolean;
   },
   ExtArgs['result']['userMongo']
 >;
 
 export type UserMongoSelectScalar = {
   id?: boolean;
+  version?: boolean;
+  username?: boolean;
+  email?: boolean;
+  password?: boolean;
+  enabled?: boolean;
+  accountLocked?: boolean;
+  accountExpired?: boolean;
+  credentialsExpired?: boolean;
+  deleted?: boolean;
+  external?: boolean;
+  role?: boolean;
+  employeeState?: boolean;
+  nextBirthday?: boolean;
+  requireTotp?: boolean;
+  countInvalidLogin?: boolean;
+  dateLocked?: boolean;
+  lastIP?: boolean;
+  countLogin?: boolean;
+  lastLogin?: boolean;
+  settings?: boolean;
+  ip?: boolean;
+  consecutiveFailedLoginAttempts?: boolean;
+  dateAcceptedLoginNotification?: boolean;
+  resetDate?: boolean;
+  resetIp?: boolean;
+  resetKey?: boolean;
+  dateChanged?: boolean;
+  lastReminder?: boolean;
+  emailVerified?: boolean;
+  dateCreated?: boolean;
+  onBoardingPercentComplete?: boolean;
+  stepsTotal?: boolean;
+  stepsCompleted?: boolean;
+  lang?: boolean;
+  verifikationKey?: boolean;
+  class?: boolean;
 };
 
 export type UserMongoOmit<
   ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
-> = runtime.Types.Extensions.GetOmit<'id' | 'userProfile', ExtArgs['result']['userMongo']>;
+> = runtime.Types.Extensions.GetOmit<
+  | 'id'
+  | 'version'
+  | 'username'
+  | 'email'
+  | 'password'
+  | 'enabled'
+  | 'accountLocked'
+  | 'accountExpired'
+  | 'credentialsExpired'
+  | 'deleted'
+  | 'external'
+  | 'role'
+  | 'employeeState'
+  | 'userProfile'
+  | 'employeeProfile'
+  | 'employerProfile'
+  | 'nextBirthday'
+  | 'totpDevice'
+  | 'requireTotp'
+  | 'totpActivity'
+  | 'countInvalidLogin'
+  | 'dateLocked'
+  | 'lastIP'
+  | 'countLogin'
+  | 'lastLogin'
+  | 'settings'
+  | 'ip'
+  | 'invalidLogins'
+  | 'consecutiveFailedLoginAttempts'
+  | 'successfulLogins'
+  | 'dateAcceptedLoginNotification'
+  | 'resetDate'
+  | 'resetIp'
+  | 'resetKey'
+  | 'dateChanged'
+  | 'changedBy'
+  | 'lastReminder'
+  | 'emailVerified'
+  | 'dateCreated'
+  | 'createdBy'
+  | 'onBoardingPercentComplete'
+  | 'stepsTotal'
+  | 'stepsCompleted'
+  | 'lang'
+  | 'verifikationKey'
+  | 'class',
+  ExtArgs['result']['userMongo']
+>;
 export type UserMongoInclude<
   ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {};
@@ -336,11 +1778,55 @@ export type $UserMongoPayload<
   scalars: runtime.Types.Extensions.GetPayloadResult<
     {
       id: bigint;
+      version: bigint | null;
+      username: string | null;
+      email: string | null;
+      password: string | null;
+      enabled: boolean | null;
+      accountLocked: boolean | null;
+      accountExpired: boolean | null;
+      credentialsExpired: boolean | null;
+      deleted: boolean | null;
+      external: boolean | null;
+      role: string | null;
+      employeeState: string | null;
+      nextBirthday: Date | null;
+      requireTotp: boolean | null;
+      countInvalidLogin: number | null;
+      dateLocked: Date | null;
+      lastIP: string | null;
+      countLogin: number | null;
+      lastLogin: Date | null;
+      settings: runtime.JsonValue | null;
+      ip: string | null;
+      consecutiveFailedLoginAttempts: number | null;
+      dateAcceptedLoginNotification: Date | null;
+      resetDate: Date | null;
+      resetIp: string | null;
+      resetKey: string | null;
+      dateChanged: Date | null;
+      lastReminder: Date | null;
+      emailVerified: string | null;
+      dateCreated: Date | null;
+      onBoardingPercentComplete: number | null;
+      stepsTotal: number | null;
+      stepsCompleted: number | null;
+      lang: string | null;
+      verifikationKey: string | null;
+      class: string | null;
     },
     ExtArgs['result']['userMongo']
   >;
   composites: {
     userProfile: Prisma.$UserProfilePayload | null;
+    employeeProfile: Prisma.$EmployeeProfilePayload | null;
+    employerProfile: Prisma.$EmployerProfilePayload | null;
+    totpDevice: Prisma.$TotpDevicePayload | null;
+    totpActivity: Prisma.$TotpActivityPayload | null;
+    invalidLogins: Prisma.$LoginEventPayload[];
+    successfulLogins: Prisma.$LoginEventPayload[];
+    changedBy: Prisma.$UserPlanUserPayload | null;
+    createdBy: Prisma.$UserPlanUserPayload | null;
   };
 };
 
@@ -859,6 +2345,42 @@ export interface Prisma__UserMongoClient<
  */
 export interface UserMongoFieldRefs {
   readonly id: Prisma.FieldRef<'UserMongo', 'BigInt'>;
+  readonly version: Prisma.FieldRef<'UserMongo', 'BigInt'>;
+  readonly username: Prisma.FieldRef<'UserMongo', 'String'>;
+  readonly email: Prisma.FieldRef<'UserMongo', 'String'>;
+  readonly password: Prisma.FieldRef<'UserMongo', 'String'>;
+  readonly enabled: Prisma.FieldRef<'UserMongo', 'Boolean'>;
+  readonly accountLocked: Prisma.FieldRef<'UserMongo', 'Boolean'>;
+  readonly accountExpired: Prisma.FieldRef<'UserMongo', 'Boolean'>;
+  readonly credentialsExpired: Prisma.FieldRef<'UserMongo', 'Boolean'>;
+  readonly deleted: Prisma.FieldRef<'UserMongo', 'Boolean'>;
+  readonly external: Prisma.FieldRef<'UserMongo', 'Boolean'>;
+  readonly role: Prisma.FieldRef<'UserMongo', 'String'>;
+  readonly employeeState: Prisma.FieldRef<'UserMongo', 'String'>;
+  readonly nextBirthday: Prisma.FieldRef<'UserMongo', 'DateTime'>;
+  readonly requireTotp: Prisma.FieldRef<'UserMongo', 'Boolean'>;
+  readonly countInvalidLogin: Prisma.FieldRef<'UserMongo', 'Int'>;
+  readonly dateLocked: Prisma.FieldRef<'UserMongo', 'DateTime'>;
+  readonly lastIP: Prisma.FieldRef<'UserMongo', 'String'>;
+  readonly countLogin: Prisma.FieldRef<'UserMongo', 'Int'>;
+  readonly lastLogin: Prisma.FieldRef<'UserMongo', 'DateTime'>;
+  readonly settings: Prisma.FieldRef<'UserMongo', 'Json'>;
+  readonly ip: Prisma.FieldRef<'UserMongo', 'String'>;
+  readonly consecutiveFailedLoginAttempts: Prisma.FieldRef<'UserMongo', 'Int'>;
+  readonly dateAcceptedLoginNotification: Prisma.FieldRef<'UserMongo', 'DateTime'>;
+  readonly resetDate: Prisma.FieldRef<'UserMongo', 'DateTime'>;
+  readonly resetIp: Prisma.FieldRef<'UserMongo', 'String'>;
+  readonly resetKey: Prisma.FieldRef<'UserMongo', 'String'>;
+  readonly dateChanged: Prisma.FieldRef<'UserMongo', 'DateTime'>;
+  readonly lastReminder: Prisma.FieldRef<'UserMongo', 'DateTime'>;
+  readonly emailVerified: Prisma.FieldRef<'UserMongo', 'String'>;
+  readonly dateCreated: Prisma.FieldRef<'UserMongo', 'DateTime'>;
+  readonly onBoardingPercentComplete: Prisma.FieldRef<'UserMongo', 'Float'>;
+  readonly stepsTotal: Prisma.FieldRef<'UserMongo', 'Int'>;
+  readonly stepsCompleted: Prisma.FieldRef<'UserMongo', 'Int'>;
+  readonly lang: Prisma.FieldRef<'UserMongo', 'String'>;
+  readonly verifikationKey: Prisma.FieldRef<'UserMongo', 'String'>;
+  readonly class: Prisma.FieldRef<'UserMongo', 'String'>;
 }
 
 // Custom InputTypes
