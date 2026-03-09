@@ -892,7 +892,87 @@ The `FileMetadata` sub-entity is used within:
 - [`video`](#entity-videos-videos) (as `file` and `preview`)
 - [`exportTemplate`](#entity-export-vorlagen-export-templates) (as `template`)
 
+#### Sub-entity: ConsultationDoctor
+
+Denormalisierter Snapshot eines Experten ([user](#entity-experte-expert)).
+
+| Column | Type | Description |
+| :--- | :--- | :--- |
+| `_id` | `Long` | Referenz ID auf [user](#entity-experte-expert) |
+| `name` | `String` | Name des Experten |
+| `email` | `String` | E-Mail-Adresse |
+| `formalDisplayName` | `String` | Vollständiger Name mit Titel |
+
+The `ConsultationDoctor` sub-entity is used within:
+
+- [`consultationData`](#entity-konsultationsdaten-consultation-data) (as `doctor`)
+- [`consultation`](#entity-konsultationen-legacy) (as `__ref_snapshot_doctor_id`)
+- [`notification`](#entity-benachrichtigungen-notifications) (as `from` and `to`)
+- [`cDRCallAssignment`](#entity-cdr-call-zuweisungen-cdr-call-assignment) (as `user`)
+- [`expertWorklogEntry`](#sub-entity-expertworklogentry) (as `expert`)
+- [`asyncJobQueue`](#entity-hintergrundaufgaben-async-job-queue) (as `createdBy`)
+
+#### Sub-entity: ConsultationJob
+
+Denormalisierter Snapshot einer Dienstleistung ([jobId](#entity-dienstleistung-service)).
+
+| Column | Type | Description |
+| :--- | :--- | :--- |
+| `_id` | `Long` | Referenz ID auf [jobId](#entity-dienstleistung-service) |
+| `code` | `String` | Dienstleistungscode |
+| `color` | `String` | Farbe (Hex/Name) |
+| `expertTitle` | `String` | Titel für Experten |
+| `remoteCode` | `String` | Externer Code |
+| `title` | `String` | Titel |
+| `type` | `String` | Abrechnungsart (z.B. `APPOINTMENT`, `SHIFT`) |
+
+The `ConsultationJob` sub-entity is used within:
+
+- [`appointment`](#entity-termine-appointments) (as `job`)
+- [`consultationData`](#entity-konsultationsdaten-consultation-data) (as `job`)
+- [`consultation`](#entity-konsultationen-legacy) (as `__ref_snapshot_job_id`)
+- [`expertConsultationTemplate`](#entity-konsultationsvorlagen-expert-consultation-templates) (as `job`)
+- [`shiftPlan`](#entity-schichtplan-shift-plan) (as `job`)
+
+#### Sub-entity: ConsultationCustomer
+
+Denormalisierter Snapshot eines Kunden ([customer](#entity-kunden-customers)).
+
+| Column | Type | Description |
+| :--- | :--- | :--- |
+| `_id` | `Long` | Referenz ID auf [customer](#entity-kunden-customers) |
+| `name` | `String` | Name des Kunden |
+
+The `ConsultationCustomer` sub-entity is used within:
+
+- [`appointment`](#entity-termine-appointments) (as `customer`)
+- [`consultationData`](#entity-konsultationsdaten-consultation-data) (as `customer`)
+- [`consultation`](#entity-konsultationen-legacy) (as `__ref_snapshot_customer_id`)
+- [`treatment`](#entity-behandlungsverlauf-treatment) (as `customer`)
+
+#### Sub-entity: ConsultationLocation
+
+Denormalisierter Snapshot eines Standorts ([location](#entity-standorte-locations)).
+
+| Column | Type | Description |
+| :--- | :--- | :--- |
+| `_id` | `Long` | Referenz ID auf [location](#entity-standorte-locations) |
+| `name` | `String` | Name des Ortes |
+| `booknumberMask` | `String` | Maske für Buchnummern |
+| `patientDataType` | `String` | Datentyp der Patienten (z.B. `EXTERNAL`, `INTERNAL_VCCLOUD`) |
+| `customer` | `Document` | Zugehöriger Kunde ([ConsultationCustomer](#sub-entity-consultationcustomer)) |
+
+The `ConsultationLocation` sub-entity is used within:
+
+- [`appointment`](#entity-termine-appointments) (as `location`)
+- [`consultationData`](#entity-konsultationsdaten-consultation-data) (as `location`)
+- [`consultation`](#entity-konsultationen-legacy) (as `__ref_snapshot_location_id`)
+- [`treatment`](#entity-behandlungsverlauf-treatment) (as `location`)
+- [`patientData`](#entity-patientenerg-nzungsdaten-patient-data) (as `location`)
+- [`appointmentPlan`](#entity-sprechstundenplan-appointment-plan) (as `location`)
+
 ## Entity: Benutzergruppen (Groups)
+
 Zusammenfassung von Benutzern zu Gruppen mit gemeinsamen Rollen und Rechten.
 
 ### Table: group

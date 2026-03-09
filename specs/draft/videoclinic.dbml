@@ -1899,15 +1899,15 @@ Table ConsultationJob [headercolor: #2CA02C] {
   expertTitle String [note: 'Titel für Experten']
   remoteCode String [note: 'Externer Code']
   title String [note: 'Titel']
-  type JobType_Enum [note: 'Abrechnungsart (z.B. `APPOINTMENT`)']
+  type String [note: 'Abrechnungsart (z.B. `APPOINTMENT`)']
 }
 
 Table ConsultationLocation [headercolor: #2CA02C] {
   _id number [pk, note: 'Referenz ID auf `location`']
   name String [note: 'Name des Ortes']
   booknumberMask String [note: 'Maske für Buchnummern']
-  patientDataType PatientDataType_Enum [note: 'Datentyp der Patienten']
-  __ref_snapshot_customer_id Document [note: 'Zugehöriger Kunde ([ConsultationCustomer](#sub-entity-consultationcustomer))']
+  patientDataType String [note: 'Datentyp der Patienten']
+  customer Document [note: 'Zugehöriger Kunde ([ConsultationCustomer](#sub-entity-consultationcustomer))']
 }
 
 Table ConsultationCustomer [headercolor: #2CA02C] {
