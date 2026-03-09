@@ -31,12 +31,183 @@ model ExpertWeek {
 }
 
 model UserMongo {
-  id          BigInt       @id @map("_id")
-  userProfile UserProfile?
+  id                             BigInt           @id @map("_id")
+  version                        BigInt?
+  username                       String?
+  email                          String?
+  password                       String?
+  enabled                        Boolean?
+  accountLocked                  Boolean?
+  accountExpired                 Boolean?
+  credentialsExpired             Boolean?
+  deleted                        Boolean?
+  external                       Boolean?
+  role                           String?
+  employeeState                  String?
+  userProfile                    UserProfile?
+  employeeProfile                EmployeeProfile?
+  employerProfile                EmployerProfile?
+  nextBirthday                   DateTime?
+  totpDevice                     TotpDevice?
+  requireTotp                    Boolean?
+  totpActivity                   TotpActivity?
+  countInvalidLogin              Int?
+  dateLocked                     DateTime?
+  lastIP                         String?
+  countLogin                     Int?
+  lastLogin                      DateTime?
+  settings                       Json?
+  ip                             String?
+  invalidLogins                  LoginEvent[]
+  // groups                        Json[]           // DBRefs
+  consecutiveFailedLoginAttempts Int?
+  successfulLogins               LoginEvent[]
+  dateAcceptedLoginNotification  DateTime?
+  resetDate                      DateTime?
+  resetIp                        String?
+  resetKey                       String?
+  dateChanged                    DateTime?
+  changedBy                      UserPlanUser?
+  lastReminder                   DateTime?
+  emailVerified                  String?
+  dateCreated                    DateTime?
+  createdBy                      UserPlanUser?
+  onBoardingPercentComplete      Float?
+  stepsTotal                     Int?
+  stepsCompleted                 Int?
+  // customers                     Json[]           // DBRefs
+  lang                           String?
+  verifikationKey                String?
+  class                          String?          @map("_class")
 
   @@map("user")
 }
 
 type UserProfile {
-  displayName String?
+  id                   String?
+  firstName            String?
+  lastName             String?
+  displayName          String?
+  title                String?
+  salutation           String?
+  gender               String?
+  birthday             DateTime?
+  mainAddress          UserAddress?
+  cellularNumber       String?
+  shiftPhoneNumber     String?
+  notificationPerMail  Boolean?
+  exludedNotifications String[]
+  photo                FileMetadata?
+  homePhone            String?
+  faxNumber            String?
+  workPhone            String?
+  userId               BigInt?
+}
+
+type EmployeeProfile {
+  id                String?
+  email2            String?
+  activeSince       DateTime?
+  bank              String?
+  iban              String?
+  bic               String?
+  taxid             String?
+  uid               String?
+  mailInvoice       Boolean?
+  postInvoice       Boolean?
+  shift             String?
+  appointment       String?
+  therapy           String?
+  skills            EmployeeSkillAssignment[]
+  exclusionCriteria String[]
+  imageSignature    FileMetadata?
+  bayernBoxAccess   BayernBoxAccess?
+  categoriesWatched WatchedCategory[]
+}
+
+type EmployeeSkillAssignment {
+  id                String?
+  // skill          Json?             // DBRef
+  active            Boolean?
+  dateCertification DateTime?
+  certification     FileMetadata?
+}
+
+type EmployerProfile {
+  id                          String?
+  konto                       String?
+  gkto                        String?
+  efn                         String?
+  level                       String?
+  activeSince                 DateTime?
+  activeUntil                 DateTime?
+  activeSinceVC               DateTime?
+  activeUntilVC               DateTime?
+  // products                 Json[]            // DBRefs
+  // sipAccounts              Json[]
+  // employeeType             Json[]
+  currentIncome               Float?
+  inctiveReason               String?
+  experienceAddictionMedicine String?
+}
+
+type UserAddress {
+  id       BigInt?
+  name     String?
+  address  String?
+  address2 String?
+  zip      String?
+  city     String?
+  state    String?
+  country  String?
+  type     String?
+}
+
+type FileMetadata {
+  id          String?   @map("_id")
+  name        String?
+  mime        String?
+  size        BigInt?
+  checksum    String?
+  type        String?
+  dateCreated DateTime?
+}
+
+type TotpDevice {
+  ip             String?
+  dateRegistered DateTime?
+  secret         String?
+  activated      DateTime?
+}
+
+type TotpActivity {
+  dateAccess DateTime?
+  ip         String?
+  ua         String?
+  action     String?
+}
+
+type LoginEvent {
+  ip    String?
+  date  DateTime?
+  first DateTime?
+  ua    String?
+  count Int?
+}
+
+type UserPlanUser {
+  id                BigInt? @map("_id")
+  name              String?
+  email             String?
+  formalDisplayName String?
+}
+
+type BayernBoxAccess {
+  username String?
+  password String?
+}
+
+type WatchedCategory {
+  categoryId BigInt?
+  date       DateTime?
 }

@@ -7,6 +7,7 @@ import expertWeekRouter from './routers/expert-week';
 import genreRouter from './routers/genre';
 import medicalManagementRouter from './routers/medical-management';
 import userRouter from './routers/user';
+import userMongoRouter from './routers/user-mongo';
 
 export type Router = typeof router;
 export type Inputs = InferRouterInputs<typeof router>;
@@ -16,6 +17,7 @@ export const router = {
   book: bookRouter,
   genre: genreRouter,
   user: userRouter,
+  userMongo: userMongoRouter,
   config: configRouter,
   medicalManagement: medicalManagementRouter,
   expertWeek: expertWeekRouter,

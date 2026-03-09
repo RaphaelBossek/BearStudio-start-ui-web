@@ -173,6 +173,21 @@ export const NavSidebar = (props: { children?: ReactNode }) => {
                       )}
                     </Link>
                   </SidebarMenuItem>
+                  <SidebarMenuItem>
+                    <Link to="/manager/users-mongo">
+                      {({ isActive }) => (
+                        <SidebarMenuButton
+                          isActive={isActive}
+                          render={
+                            <span>
+                              <UsersIcon />
+                              <span>Users (Legacy)</span>
+                            </span>
+                          }
+                        />
+                      )}
+                    </Link>
+                  </SidebarMenuItem>
                 </SidebarMenu>
               </SidebarGroupContent>
             </SidebarGroup>
