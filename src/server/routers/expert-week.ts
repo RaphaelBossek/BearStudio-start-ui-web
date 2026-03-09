@@ -1,7 +1,6 @@
 import { z } from 'zod';
 import { zExpertWeek } from '@/features/expert-week/schema';
 import { dbMongoDB } from '@/server/db';
-import type { Prisma } from '@/server/db/generated-mongodb/client';
 import { protectedProcedure } from '@/server/orpc';
 
 const tags = ['expert-weeks'];
@@ -16,7 +15,7 @@ export default {
     .input(
       z
         .object({
-          cursor: z.string().optional(),
+          page: z.coerce.number().int().min(1).optional().prefault(1),
           limit: z.coerce.number().int().min(1).max(100).prefault(25),
           searchTerm: z.string().trim().optional().prefault(''),
           sortBy: z.enum(['dateCreated', 'dateChanged', 'userDisplayName']).optional(),
@@ -27,7 +26,6 @@ export default {
     .output(
       z.object({
         items: z.array(zExpertWeek()),
-        nextCursor: z.string().optional(),
         total: z.number(),
       })
     )
@@ -79,8 +77,8 @@ export default {
           where,
         }),
         dbMongoDB.expertWeek.findMany({
-          take: input.limit + 1,
-          cursor: input.cursor ? { id: BigInt(input.cursor) } : undefined,
+          take: input.limit,
+          skip: (input.page - 1) * input.limit,
           where,
           orderBy:
             input.sortBy && input.sortBy !== 'userDisplayName'
@@ -102,12 +100,6 @@ export default {
         userMap = new Map(
           userProfiles.map((u: any) => [u.id.toString(), u.userProfile?.displayName])
         );
-      }
-
-      let nextCursor: typeof input.cursor | undefined;
-      if (items.length > input.limit) {
-        const nextItem = items.pop();
-        nextCursor = nextItem?.id.toString();
       }
 
       const mappedItems = items.map((item: any) => ({
@@ -141,7 +133,6 @@ export default {
 
       return {
         items: mappedItems as any[],
-        nextCursor,
         total,
       };
     }),

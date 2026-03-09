@@ -29,6 +29,7 @@ f
 |-------|---------|------|---------|
 | performance | General Performance | [performance/general](features/performance/general/requirements.md) | 2026-02-22 |
 | security | Security Headers | [security/headers](features/security/headers/requirements.md) | 2026-02-22 |
+| scheduling | Expert Week View | [scheduling/expert-week-view](features/scheduling/expert-week-view/requirements.md) | 2026-03-08 |
 
 ### In Progress
 

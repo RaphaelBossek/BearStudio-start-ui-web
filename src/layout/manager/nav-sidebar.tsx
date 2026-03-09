@@ -2,6 +2,7 @@ import { Link } from '@tanstack/react-router';
 import {
   AwardIcon,
   BriefcaseMedicalIcon,
+  CalendarIcon,
   LayoutDashboardIcon,
   PanelLeftIcon,
   UsersIcon,
@@ -122,6 +123,21 @@ export const NavSidebar = (props: { children?: ReactNode }) => {
                           <span>
                             <AwardIcon />
                             <span>Skills & Certs</span>
+                          </span>
+                        }
+                      />
+                    )}
+                  </Link>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <Link to="/manager/expert-weeks">
+                    {({ isActive }) => (
+                      <SidebarMenuButton
+                        isActive={isActive}
+                        render={
+                          <span>
+                            <CalendarIcon />
+                            <span>Expert Weeks</span>
                           </span>
                         }
                       />
