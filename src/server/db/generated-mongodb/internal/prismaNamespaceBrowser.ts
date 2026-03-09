@@ -54,6 +54,7 @@ export const AnyNull = runtime.objectEnumValues.instances.AnyNull;
 export const ModelName = {
   ExpertWeek: 'ExpertWeek',
   UserMongo: 'UserMongo',
+  Appointment: 'Appointment',
 } as const;
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
@@ -124,6 +125,73 @@ export const UserMongoScalarFieldEnum = {
 
 export type UserMongoScalarFieldEnum =
   (typeof UserMongoScalarFieldEnum)[keyof typeof UserMongoScalarFieldEnum];
+
+export const AppointmentScalarFieldEnum = {
+  id: 'id',
+  version: 'version',
+  start: 'start',
+  until: 'until',
+  adjustedStart: 'adjustedStart',
+  adjustedUntil: 'adjustedUntil',
+  actualStart: 'actualStart',
+  actualUntil: 'actualUntil',
+  loggedStart: 'loggedStart',
+  loggedUntil: 'loggedUntil',
+  verifiedStart: 'verifiedStart',
+  verifiedUntil: 'verifiedUntil',
+  billStart: 'billStart',
+  billUntil: 'billUntil',
+  dateStarted: 'dateStarted',
+  dateDone: 'dateDone',
+  dateStorno: 'dateStorno',
+  firstContact: 'firstContact',
+  dateCreated: 'dateCreated',
+  dateChanged: 'dateChanged',
+  title: 'title',
+  comment: 'comment',
+  state: 'state',
+  type: 'type',
+  billingType: 'billingType',
+  paymentType: 'paymentType',
+  priceType: 'priceType',
+  treatmentId: 'treatmentId',
+  minPatients: 'minPatients',
+  actualPatients: 'actualPatients',
+  billablePatients: 'billablePatients',
+  payablePatients: 'payablePatients',
+  billableBaseTime: 'billableBaseTime',
+  workTimePlanned: 'workTimePlanned',
+  workTimeActual: 'workTimeActual',
+  workTimeIs: 'workTimeIs',
+  requiredStaffCount: 'requiredStaffCount',
+  addedStaffCount: 'addedStaffCount',
+  backlogCount: 'backlogCount',
+  adjustedStaffCount: 'adjustedStaffCount',
+  assignedStaffCount: 'assignedStaffCount',
+  reservedStaffCount: 'reservedStaffCount',
+  missing: 'missing',
+  finished: 'finished',
+  countFurtherFollowUp: 'countFurtherFollowUp',
+  countFurtherIfRequired: 'countFurtherIfRequired',
+  countFurtherReferral: 'countFurtherReferral',
+  countFurtherReferralOther: 'countFurtherReferralOther',
+  period: 'period',
+  changedById: 'changedById',
+  createdById: 'createdById',
+  stornoById: 'stornoById',
+  planId: 'planId',
+  shiftPlanId: 'shiftPlanId',
+  expertOnly: 'expertOnly',
+  jobSupport: 'jobSupport',
+  treatmentRequireReport: 'treatmentRequireReport',
+  assignedDisplayName: 'assignedDisplayName',
+  unmatchedShiftCalls: 'unmatchedShiftCalls',
+  unmatchedConsultationsCalls: 'unmatchedConsultationsCalls',
+  class: 'class',
+} as const;
+
+export type AppointmentScalarFieldEnum =
+  (typeof AppointmentScalarFieldEnum)[keyof typeof AppointmentScalarFieldEnum];
 
 export const SortOrder = {
   asc: 'asc',

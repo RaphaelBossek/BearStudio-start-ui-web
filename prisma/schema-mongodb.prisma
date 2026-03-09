@@ -211,3 +211,95 @@ type WatchedCategory {
   categoryId BigInt?
   date       DateTime?
 }
+
+model Appointment {
+  id                          BigInt                @id @map("_id")
+  version                     BigInt?
+  start                       DateTime?
+  until                       DateTime?
+  adjustedStart               DateTime?
+  adjustedUntil               DateTime?
+  actualStart                 DateTime?
+  actualUntil                 DateTime?
+  loggedStart                 DateTime?
+  loggedUntil                 DateTime?
+  verifiedStart               DateTime?
+  verifiedUntil               DateTime?
+  billStart                   DateTime?
+  billUntil                   DateTime?
+  dateStarted                 DateTime?
+  dateDone                    DateTime?
+  dateStorno                  DateTime?
+  firstContact                DateTime?
+  dateCreated                 DateTime?
+  dateChanged                 DateTime?
+  title                       String?
+  comment                     String?
+  state                       String?
+  type                        String?
+  job                         ConsultationJob?
+  billingType                 String?
+  paymentType                 String?
+  priceType                   String?
+  customer                    ConsultationCustomer?
+  location                    ConsultationLocation?
+  treatmentId                 BigInt?
+  minPatients                 Int?
+  actualPatients              Int?
+  billablePatients            Int?
+  payablePatients             Int?
+  billableBaseTime            BigInt?
+  workTimePlanned             BigInt?
+  workTimeActual              BigInt?
+  workTimeIs                  BigInt?
+  requiredStaffCount          Int?
+  addedStaffCount             Int?
+  backlogCount                Int?
+  adjustedStaffCount          Int?
+  assignedStaffCount          Int?
+  reservedStaffCount          Int?
+  missing                     BigInt?
+  finished                    Boolean?
+  countFurtherFollowUp        Int?
+  countFurtherIfRequired      Int?
+  countFurtherReferral        Int?
+  countFurtherReferralOther   Int?
+  period                      Int?
+  changedById                 BigInt?
+  createdById                 BigInt?
+  stornoById                  BigInt?
+  planId                      BigInt?
+  shiftPlanId                 BigInt?
+  expertOnly                  Boolean?
+  jobSupport                  Boolean?
+  treatmentRequireReport      Boolean?
+  assignedDisplayName         String?
+  // expertAppointment        Json?
+  unmatchedShiftCalls         Int?
+  unmatchedConsultationsCalls Int?
+  class                       String?               @map("_class")
+
+  @@map("appointment")
+}
+
+type ConsultationJob {
+  id          BigInt? @map("_id")
+  title       String?
+  code        String?
+  shortcode   String?
+  expertTitle String?
+  color       String?
+  type        String?
+}
+
+type ConsultationCustomer {
+  id          BigInt? @map("_id")
+  name        String?
+  displayName String?
+}
+
+type ConsultationLocation {
+  id      BigInt? @map("_id")
+  name    String?
+  address String?
+}

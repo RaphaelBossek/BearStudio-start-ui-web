@@ -1,5 +1,9 @@
 export type * from './commonInputTypes';
+export type * from './models/Appointment';
 export type * from './models/BayernBoxAccess';
+export type * from './models/ConsultationCustomer';
+export type * from './models/ConsultationJob';
+export type * from './models/ConsultationLocation';
 export type * from './models/EmployeeProfile';
 export type * from './models/EmployeeSkillAssignment';
 export type * from './models/EmployerProfile';

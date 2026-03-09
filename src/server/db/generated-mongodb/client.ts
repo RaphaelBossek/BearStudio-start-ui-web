@@ -111,6 +111,21 @@ export type BayernBoxAccess = Prisma.BayernBoxAccessModel;
  */
 export type WatchedCategory = Prisma.WatchedCategoryModel;
 /**
+ * Model ConsultationJob
+ *
+ */
+export type ConsultationJob = Prisma.ConsultationJobModel;
+/**
+ * Model ConsultationCustomer
+ *
+ */
+export type ConsultationCustomer = Prisma.ConsultationCustomerModel;
+/**
+ * Model ConsultationLocation
+ *
+ */
+export type ConsultationLocation = Prisma.ConsultationLocationModel;
+/**
  * Model ExpertWeek
  *
  */
@@ -120,3 +135,8 @@ export type ExpertWeek = Prisma.ExpertWeekModel;
  *
  */
 export type UserMongo = Prisma.UserMongoModel;
+/**
+ * Model Appointment
+ *
+ */
+export type Appointment = Prisma.AppointmentModel;

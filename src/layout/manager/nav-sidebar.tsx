@@ -144,6 +144,21 @@ export const NavSidebar = (props: { children?: ReactNode }) => {
                     )}
                   </Link>
                 </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <Link to="/manager/appointments-mongo">
+                    {({ isActive }) => (
+                      <SidebarMenuButton
+                        isActive={isActive}
+                        render={
+                          <span>
+                            <CalendarIcon />
+                            <span>Appointments (Mongo)</span>
+                          </span>
+                        }
+                      />
+                    )}
+                  </Link>
+                </SidebarMenuItem>
               </SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>

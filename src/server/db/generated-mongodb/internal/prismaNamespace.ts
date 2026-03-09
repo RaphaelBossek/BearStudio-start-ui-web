@@ -389,6 +389,7 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 export const ModelName = {
   ExpertWeek: 'ExpertWeek',
   UserMongo: 'UserMongo',
+  Appointment: 'Appointment',
 } as const;
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
@@ -409,7 +410,7 @@ export type TypeMap<
     omit: GlobalOmitOptions;
   };
   meta: {
-    modelProps: 'expertWeek' | 'userMongo';
+    modelProps: 'expertWeek' | 'userMongo' | 'appointment';
     txIsolationLevel: never;
   };
   model: {
@@ -561,6 +562,80 @@ export type TypeMap<
         };
       };
     };
+    Appointment: {
+      payload: Prisma.$AppointmentPayload<ExtArgs>;
+      fields: Prisma.AppointmentFieldRefs;
+      operations: {
+        findUnique: {
+          args: Prisma.AppointmentFindUniqueArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AppointmentPayload> | null;
+        };
+        findUniqueOrThrow: {
+          args: Prisma.AppointmentFindUniqueOrThrowArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AppointmentPayload>;
+        };
+        findFirst: {
+          args: Prisma.AppointmentFindFirstArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AppointmentPayload> | null;
+        };
+        findFirstOrThrow: {
+          args: Prisma.AppointmentFindFirstOrThrowArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AppointmentPayload>;
+        };
+        findMany: {
+          args: Prisma.AppointmentFindManyArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AppointmentPayload>[];
+        };
+        create: {
+          args: Prisma.AppointmentCreateArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AppointmentPayload>;
+        };
+        createMany: {
+          args: Prisma.AppointmentCreateManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        delete: {
+          args: Prisma.AppointmentDeleteArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AppointmentPayload>;
+        };
+        update: {
+          args: Prisma.AppointmentUpdateArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AppointmentPayload>;
+        };
+        deleteMany: {
+          args: Prisma.AppointmentDeleteManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        updateMany: {
+          args: Prisma.AppointmentUpdateManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        upsert: {
+          args: Prisma.AppointmentUpsertArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AppointmentPayload>;
+        };
+        aggregate: {
+          args: Prisma.AppointmentAggregateArgs<ExtArgs>;
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAppointment>;
+        };
+        groupBy: {
+          args: Prisma.AppointmentGroupByArgs<ExtArgs>;
+          result: runtime.Types.Utils.Optional<Prisma.AppointmentGroupByOutputType>[];
+        };
+        findRaw: {
+          args: Prisma.AppointmentFindRawArgs<ExtArgs>;
+          result: Prisma.JsonObject;
+        };
+        aggregateRaw: {
+          args: Prisma.AppointmentAggregateRawArgs<ExtArgs>;
+          result: Prisma.JsonObject;
+        };
+        count: {
+          args: Prisma.AppointmentCountArgs<ExtArgs>;
+          result: runtime.Types.Utils.Optional<Prisma.AppointmentCountAggregateOutputType> | number;
+        };
+      };
+    };
   };
 } & {
   other: {
@@ -640,6 +715,73 @@ export const UserMongoScalarFieldEnum = {
 
 export type UserMongoScalarFieldEnum =
   (typeof UserMongoScalarFieldEnum)[keyof typeof UserMongoScalarFieldEnum];
+
+export const AppointmentScalarFieldEnum = {
+  id: 'id',
+  version: 'version',
+  start: 'start',
+  until: 'until',
+  adjustedStart: 'adjustedStart',
+  adjustedUntil: 'adjustedUntil',
+  actualStart: 'actualStart',
+  actualUntil: 'actualUntil',
+  loggedStart: 'loggedStart',
+  loggedUntil: 'loggedUntil',
+  verifiedStart: 'verifiedStart',
+  verifiedUntil: 'verifiedUntil',
+  billStart: 'billStart',
+  billUntil: 'billUntil',
+  dateStarted: 'dateStarted',
+  dateDone: 'dateDone',
+  dateStorno: 'dateStorno',
+  firstContact: 'firstContact',
+  dateCreated: 'dateCreated',
+  dateChanged: 'dateChanged',
+  title: 'title',
+  comment: 'comment',
+  state: 'state',
+  type: 'type',
+  billingType: 'billingType',
+  paymentType: 'paymentType',
+  priceType: 'priceType',
+  treatmentId: 'treatmentId',
+  minPatients: 'minPatients',
+  actualPatients: 'actualPatients',
+  billablePatients: 'billablePatients',
+  payablePatients: 'payablePatients',
+  billableBaseTime: 'billableBaseTime',
+  workTimePlanned: 'workTimePlanned',
+  workTimeActual: 'workTimeActual',
+  workTimeIs: 'workTimeIs',
+  requiredStaffCount: 'requiredStaffCount',
+  addedStaffCount: 'addedStaffCount',
+  backlogCount: 'backlogCount',
+  adjustedStaffCount: 'adjustedStaffCount',
+  assignedStaffCount: 'assignedStaffCount',
+  reservedStaffCount: 'reservedStaffCount',
+  missing: 'missing',
+  finished: 'finished',
+  countFurtherFollowUp: 'countFurtherFollowUp',
+  countFurtherIfRequired: 'countFurtherIfRequired',
+  countFurtherReferral: 'countFurtherReferral',
+  countFurtherReferralOther: 'countFurtherReferralOther',
+  period: 'period',
+  changedById: 'changedById',
+  createdById: 'createdById',
+  stornoById: 'stornoById',
+  planId: 'planId',
+  shiftPlanId: 'shiftPlanId',
+  expertOnly: 'expertOnly',
+  jobSupport: 'jobSupport',
+  treatmentRequireReport: 'treatmentRequireReport',
+  assignedDisplayName: 'assignedDisplayName',
+  unmatchedShiftCalls: 'unmatchedShiftCalls',
+  unmatchedConsultationsCalls: 'unmatchedConsultationsCalls',
+  class: 'class',
+} as const;
+
+export type AppointmentScalarFieldEnum =
+  (typeof AppointmentScalarFieldEnum)[keyof typeof AppointmentScalarFieldEnum];
 
 export const SortOrder = {
   asc: 'asc',
@@ -811,6 +953,7 @@ export interface PrismaClientOptions {
 export type GlobalOmitConfig = {
   expertWeek?: Prisma.ExpertWeekOmit;
   userMongo?: Prisma.UserMongoOmit;
+  appointment?: Prisma.AppointmentOmit;
 };
 
 /* Types for Logging */

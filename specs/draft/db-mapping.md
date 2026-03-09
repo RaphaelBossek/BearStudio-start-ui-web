@@ -297,7 +297,7 @@ A denormalized snapshot of the associated [`customer`](#entity-kunden-customers)
 The `PlanCustomer` sub-entity is used within:
 - [`appointmentPlan`](#entity-sprechstundenplan-appointment-plan) (nested in `location`)
 
-## Entity: Experten-Wochenplan (Expert Week)
+## Entity: Experten-Wochenplan (Expert Week)b
 Standardisierte wöchentliche Verfügbarkeitsslots für Experten.
 
 ### Table: expertWeek
