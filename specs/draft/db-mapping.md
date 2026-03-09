@@ -831,6 +831,47 @@ A product or service the expert has subscribed to.
 The `SubscribedProduct` sub-entity is used within:
 - [`EmployerProfile`](#sub-entity-employerprofile) (as `products` array)
 
+#### Sub-entity: TotpDevice
+Information about the TOTP device used for multi-factor authentication.
+
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `ip` | `String` | schema | IP address used during registration |
+| `dateRegistered` | `Date` | schema | Date of registration |
+| `secret` | `String` | schema | TOTP secret key |
+| `activated` | `Date` | schema | Date of activation |
+
+The `TotpDevice` sub-entity is used within:
+- [`user`](#entity-experte-expert) (as `totpDevice` field)
+
+#### Sub-entity: TotpActivity
+Records the last TOTP-related activity.
+
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `dateAccess` | `Date` | schema | Date of last access |
+| `ip` | `String` | schema | IP address of the access |
+| `ua` | `String` | schema | User Agent of the access |
+| `action` | `String` | schema | Performed action (e.g., `login`) |
+
+The `TotpActivity` sub-entity is used within:
+- [`user`](#entity-experte-expert) (as `totpActivity` field)
+
+#### Sub-entity: LoginEvent
+Details of a login attempt (successful or unsuccessful).
+
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `ip` | `String` | schema | IP address of the attempt |
+| `date` | `Date` | schema | Date of the latest attempt for this IP |
+| `first` | `Date` | schema | Date of the first attempt for this IP |
+| `ua` | `String` | inferred | User Agent (often present in successful logins) |
+| `count` | `Number` | schema | Total count of attempts for this IP |
+
+The `LoginEvent` sub-entity is used within:
+- [`user`](#entity-experte-expert) (as `invalidLogins` and `successfulLogins` arrays)
+
+
 #### Sub-entity: FileMetadata
 Metadata for uploaded files (signatures, certifications, etc.).
 

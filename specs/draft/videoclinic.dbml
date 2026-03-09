@@ -480,9 +480,9 @@ Table user [headercolor: #FF7F0E] {
   employeeProfile Document [note: 'Berufliches Profil ([EmployeeProfile](#sub-entity-employeeprofile))']
   employerProfile Document [note: 'Arbeitgeberprofil ([EmployerProfile](#sub-entity-employerprofile))']
   nextBirthday timestamp [note: 'Nächster Geburtstag']
-  totpDevice Document [note: 'TOTP-Gerät Information']
+  totpDevice Document [note: 'TOTP-Gerät Information ([TotpDevice](#sub-entity-totpdevice))']
   requireTotp boolean [note: 'Ob TOTP erforderlich ist']
-  totpActivity Document [note: 'Letzte TOTP-Aktivität']
+  totpActivity Document [note: 'Letzte TOTP-Aktivität ([TotpActivity](#sub-entity-totpactivity))']
   countInvalidLogin number [note: 'Anzahl ungültiger Logins']
   dateLocked timestamp [note: 'Sperrdatum des Kontos']
   lastIP String [note: 'Letzte IP-Adresse']
@@ -490,10 +490,10 @@ Table user [headercolor: #FF7F0E] {
   lastLogin timestamp [note: 'Letzter Login-Zeitpunkt']
   settings Document [note: 'Benutzereinstellungen']
   ip String [note: 'Aktuelle IP-Adresse']
-  invalidLogins Array [note: 'Liste ungültiger Logins']
+  invalidLogins Array [note: 'Liste ungültiger Logins ([LoginEvent](#sub-entity-loginevent))']
   groups Array [note: 'Liste zugeordneter Gruppen (DBRefs to group)']
   consecutiveFailedLoginAttempts number [note: 'Aufeinanderfolgende fehlgeschlagene Logins']
-  successfulLogins Array [note: 'Liste erfolgreicher Logins']
+  successfulLogins Array [note: 'Liste erfolgreicher Logins ([LoginEvent](#sub-entity-loginevent))']
   dateAcceptedLoginNotification timestamp [note: 'Akzeptanzdatum der Login-Benachrichtigung']
   resetDate timestamp [note: 'Datum des Passwort-Resets']
   resetIp String [note: 'IP des Passwort-Resets']
@@ -1664,7 +1664,30 @@ Table UserProfile [headercolor: #FF7F0E] {
   exludedNotifications Array [note: 'Liste deaktivierter Benachrichtigungstypen']
 }
 
+Table TotpDevice [headercolor: #FF7F0E] {
+  ip String [note: 'IP-Adresse bei der Registrierung']
+  dateRegistered timestamp [note: 'Registrierungsdatum']
+  secret String [note: 'TOTP-Geheimnis (Secret Key)']
+  activated timestamp [note: 'Aktivierungsdatum']
+}
+
+Table TotpActivity [headercolor: #FF7F0E] {
+  dateAccess timestamp [note: 'Zeitpunkt des letzten Zugriffs']
+  ip String [note: 'IP-Adresse des Zugriffs']
+  ua String [note: 'User Agent des Zugriffs']
+  action String [note: 'Durchgeführte Aktion (z. B. login)']
+}
+
+Table LoginEvent [headercolor: #FF7F0E] {
+  ip String [note: 'IP-Adresse des Versuchs']
+  date timestamp [note: 'Zeitpunkt des letzten Versuchs (dieser IP)']
+  first timestamp [note: 'Zeitpunkt des ersten Versuchs (dieser IP)']
+  ua String [note: 'User-Agent (bei erfolgreichem Login)']
+  count number [note: 'Gesamtanzahl der Versuche (dieser IP)']
+}
+
 Table Address [headercolor: #FF7F0E] {
+
   _id number [pk, note: 'Internal identifier']
   name String [note: 'Name des Empfängers']
   address String [note: 'Straße und Hausnummer']
