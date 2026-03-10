@@ -95,22 +95,7 @@ function RootComponent() {
     <RootDocument>
       <Providers>
         <Outlet />
-        <TanStackDevtools
-          config={{
-            openHotkey: [], // Disable keyboard shortcut
-          }}
-          plugins={[
-            { name: 'Tanstack Query', render: <ReactQueryDevtoolsPanel /> },
-            {
-              name: 'Tanstack Router',
-              render: <TanStackRouterDevtoolsPanel />,
-            },
-            {
-              name: 'MailDev iframe',
-              render: <MailDevDevtoolPanel />,
-            },
-          ]}
-        />
+        {/* TanStackDevtools disabled */}
       </Providers>
     </RootDocument>
   );
