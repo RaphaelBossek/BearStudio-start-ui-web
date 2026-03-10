@@ -303,3 +303,35 @@ type ConsultationLocation {
   name    String?
   address String?
 }
+
+type ConsultationDoctor {
+  id          BigInt? @map("_id")
+  name        String?
+  displayName String?
+  email       String?
+}
+
+model ShiftPlan {
+  id                   BigInt               @id @map("_id")
+  version              BigInt?
+  name                 String?
+  day                  String?
+  scheduling           String?
+  schedulingMulitplier Int?
+  timeStart            Int?
+  timeEnd              Int?
+  job                  ConsultationJob?
+  minPatients          Int?
+  count                Int?
+  lastDate             DateTime?
+  priceType            String?
+  dateChanged          DateTime?
+  changedBy            ConsultationDoctor?
+  dateCreated          DateTime?
+  createdBy            ConsultationDoctor?
+  comment              String?
+  // prefered          Json[]               // DBRefs to preferred doctors
+  class                String?              @map("_class")
+
+  @@map("shiftPlan")
+}

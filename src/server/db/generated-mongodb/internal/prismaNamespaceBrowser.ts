@@ -55,6 +55,7 @@ export const ModelName = {
   ExpertWeek: 'ExpertWeek',
   UserMongo: 'UserMongo',
   Appointment: 'Appointment',
+  ShiftPlan: 'ShiftPlan',
 } as const;
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
@@ -192,6 +193,28 @@ export const AppointmentScalarFieldEnum = {
 
 export type AppointmentScalarFieldEnum =
   (typeof AppointmentScalarFieldEnum)[keyof typeof AppointmentScalarFieldEnum];
+
+export const ShiftPlanScalarFieldEnum = {
+  id: 'id',
+  version: 'version',
+  name: 'name',
+  day: 'day',
+  scheduling: 'scheduling',
+  schedulingMulitplier: 'schedulingMulitplier',
+  timeStart: 'timeStart',
+  timeEnd: 'timeEnd',
+  minPatients: 'minPatients',
+  count: 'count',
+  lastDate: 'lastDate',
+  priceType: 'priceType',
+  dateChanged: 'dateChanged',
+  dateCreated: 'dateCreated',
+  comment: 'comment',
+  class: 'class',
+} as const;
+
+export type ShiftPlanScalarFieldEnum =
+  (typeof ShiftPlanScalarFieldEnum)[keyof typeof ShiftPlanScalarFieldEnum];
 
 export const SortOrder = {
   asc: 'asc',

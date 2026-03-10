@@ -3,6 +3,7 @@ import {
   AwardIcon,
   BriefcaseMedicalIcon,
   CalendarIcon,
+  ClockIcon,
   LayoutDashboardIcon,
   PanelLeftIcon,
   UsersIcon,
@@ -153,6 +154,21 @@ export const NavSidebar = (props: { children?: ReactNode }) => {
                           <span>
                             <CalendarIcon />
                             <span>Appointments (Mongo)</span>
+                          </span>
+                        }
+                      />
+                    )}
+                  </Link>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <Link to="/manager/shift-plans-mongo">
+                    {({ isActive }) => (
+                      <SidebarMenuButton
+                        isActive={isActive}
+                        render={
+                          <span>
+                            <ClockIcon />
+                            <span>Shift Plans (Mongo)</span>
                           </span>
                         }
                       />

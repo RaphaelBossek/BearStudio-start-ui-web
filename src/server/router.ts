@@ -7,6 +7,7 @@ import configRouter from './routers/config';
 import expertWeekRouter from './routers/expert-week';
 import genreRouter from './routers/genre';
 import medicalManagementRouter from './routers/medical-management';
+import shiftPlanMongoRouter from './routers/shift-plan-mongo';
 import userRouter from './routers/user';
 import userMongoRouter from './routers/user-mongo';
 
@@ -23,4 +24,5 @@ export const router = {
   medicalManagement: medicalManagementRouter,
   expertWeek: expertWeekRouter,
   appointmentMongo: appointmentMongoRouter,
+  shiftPlanMongo: shiftPlanMongoRouter,
 };

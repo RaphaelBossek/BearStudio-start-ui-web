@@ -92,6 +92,11 @@ export type ConsultationCustomer = Prisma.ConsultationCustomerModel;
  */
 export type ConsultationLocation = Prisma.ConsultationLocationModel;
 /**
+ * Model ConsultationDoctor
+ *
+ */
+export type ConsultationDoctor = Prisma.ConsultationDoctorModel;
+/**
  * Model ExpertWeek
  *
  */
@@ -106,3 +111,8 @@ export type UserMongo = Prisma.UserMongoModel;
  *
  */
 export type Appointment = Prisma.AppointmentModel;
+/**
+ * Model ShiftPlan
+ *
+ */
+export type ShiftPlan = Prisma.ShiftPlanModel;

@@ -390,6 +390,7 @@ export const ModelName = {
   ExpertWeek: 'ExpertWeek',
   UserMongo: 'UserMongo',
   Appointment: 'Appointment',
+  ShiftPlan: 'ShiftPlan',
 } as const;
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
@@ -410,7 +411,7 @@ export type TypeMap<
     omit: GlobalOmitOptions;
   };
   meta: {
-    modelProps: 'expertWeek' | 'userMongo' | 'appointment';
+    modelProps: 'expertWeek' | 'userMongo' | 'appointment' | 'shiftPlan';
     txIsolationLevel: never;
   };
   model: {
@@ -636,6 +637,80 @@ export type TypeMap<
         };
       };
     };
+    ShiftPlan: {
+      payload: Prisma.$ShiftPlanPayload<ExtArgs>;
+      fields: Prisma.ShiftPlanFieldRefs;
+      operations: {
+        findUnique: {
+          args: Prisma.ShiftPlanFindUniqueArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ShiftPlanPayload> | null;
+        };
+        findUniqueOrThrow: {
+          args: Prisma.ShiftPlanFindUniqueOrThrowArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ShiftPlanPayload>;
+        };
+        findFirst: {
+          args: Prisma.ShiftPlanFindFirstArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ShiftPlanPayload> | null;
+        };
+        findFirstOrThrow: {
+          args: Prisma.ShiftPlanFindFirstOrThrowArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ShiftPlanPayload>;
+        };
+        findMany: {
+          args: Prisma.ShiftPlanFindManyArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ShiftPlanPayload>[];
+        };
+        create: {
+          args: Prisma.ShiftPlanCreateArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ShiftPlanPayload>;
+        };
+        createMany: {
+          args: Prisma.ShiftPlanCreateManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        delete: {
+          args: Prisma.ShiftPlanDeleteArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ShiftPlanPayload>;
+        };
+        update: {
+          args: Prisma.ShiftPlanUpdateArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ShiftPlanPayload>;
+        };
+        deleteMany: {
+          args: Prisma.ShiftPlanDeleteManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        updateMany: {
+          args: Prisma.ShiftPlanUpdateManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        upsert: {
+          args: Prisma.ShiftPlanUpsertArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ShiftPlanPayload>;
+        };
+        aggregate: {
+          args: Prisma.ShiftPlanAggregateArgs<ExtArgs>;
+          result: runtime.Types.Utils.Optional<Prisma.AggregateShiftPlan>;
+        };
+        groupBy: {
+          args: Prisma.ShiftPlanGroupByArgs<ExtArgs>;
+          result: runtime.Types.Utils.Optional<Prisma.ShiftPlanGroupByOutputType>[];
+        };
+        findRaw: {
+          args: Prisma.ShiftPlanFindRawArgs<ExtArgs>;
+          result: Prisma.JsonObject;
+        };
+        aggregateRaw: {
+          args: Prisma.ShiftPlanAggregateRawArgs<ExtArgs>;
+          result: Prisma.JsonObject;
+        };
+        count: {
+          args: Prisma.ShiftPlanCountArgs<ExtArgs>;
+          result: runtime.Types.Utils.Optional<Prisma.ShiftPlanCountAggregateOutputType> | number;
+        };
+      };
+    };
   };
 } & {
   other: {
@@ -782,6 +857,28 @@ export const AppointmentScalarFieldEnum = {
 
 export type AppointmentScalarFieldEnum =
   (typeof AppointmentScalarFieldEnum)[keyof typeof AppointmentScalarFieldEnum];
+
+export const ShiftPlanScalarFieldEnum = {
+  id: 'id',
+  version: 'version',
+  name: 'name',
+  day: 'day',
+  scheduling: 'scheduling',
+  schedulingMulitplier: 'schedulingMulitplier',
+  timeStart: 'timeStart',
+  timeEnd: 'timeEnd',
+  minPatients: 'minPatients',
+  count: 'count',
+  lastDate: 'lastDate',
+  priceType: 'priceType',
+  dateChanged: 'dateChanged',
+  dateCreated: 'dateCreated',
+  comment: 'comment',
+  class: 'class',
+} as const;
+
+export type ShiftPlanScalarFieldEnum =
+  (typeof ShiftPlanScalarFieldEnum)[keyof typeof ShiftPlanScalarFieldEnum];
 
 export const SortOrder = {
   asc: 'asc',
@@ -954,6 +1051,7 @@ export type GlobalOmitConfig = {
   expertWeek?: Prisma.ExpertWeekOmit;
   userMongo?: Prisma.UserMongoOmit;
   appointment?: Prisma.AppointmentOmit;
+  shiftPlan?: Prisma.ShiftPlanOmit;
 };
 
 /* Types for Logging */
