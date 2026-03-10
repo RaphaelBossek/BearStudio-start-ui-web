@@ -14,7 +14,12 @@ export const PageLogout = () => {
     mutationFn: async () => {
       const response = await authClient.signOut();
       if (response.error) {
-        throw response.error;
+        // If the session no longer exists (e.g. already expired or deleted),
+        // treat it as already signed out and proceed to redirect.
+        const status = response.error.status;
+        if (status !== 400 && status !== 401 && status !== 404) {
+          throw response.error;
+        }
       }
       await session.refetch();
     },

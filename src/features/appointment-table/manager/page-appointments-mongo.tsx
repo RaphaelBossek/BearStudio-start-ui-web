@@ -1,7 +1,7 @@
 import { getUiState } from '@bearstudio/ui-state';
 import { useQuery } from '@tanstack/react-query';
 import { useRouter } from '@tanstack/react-router';
-import { useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { DataListErrorState, DataListLoadingState } from '@/components/ui/datalist';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -63,10 +63,67 @@ export const PageAppointmentsMongo = (props: {
     });
   });
 
-  const pagination = {
-    pageIndex: (props.search.page ?? 1) - 1,
-    pageSize: props.search.limit ?? 25,
-  };
+  const pagination = useMemo(
+    () => ({
+      pageIndex: (props.search.page ?? 1) - 1,
+      pageSize: props.search.limit ?? 25,
+    }),
+    [props.search.page, props.search.limit]
+  );
+
+  const sorting = useMemo(
+    () =>
+      props.search.sortBy
+        ? [{ id: props.search.sortBy, desc: props.search.sortOrder === 'desc' }]
+        : [],
+    [props.search.sortBy, props.search.sortOrder]
+  );
+
+  const handlePaginationChange = useCallback(
+    (newPagination: { pageIndex: number; pageSize: number }) => {
+      router.navigate({
+        to: '.',
+        search: (prev: any) => ({
+          ...prev,
+          limit: newPagination.pageSize,
+          page: newPagination.pageIndex + 1,
+        }),
+        replace: true,
+      });
+    },
+    [router]
+  );
+
+  const handleSortingChange = useCallback(
+    (newSorting: { id: string; desc: boolean }[]) => {
+      const sort = newSorting[0];
+      router.navigate({
+        to: '.',
+        search: (prev: any) => ({
+          ...prev,
+          sortBy: sort?.id as any,
+          sortOrder: sort?.desc ? 'desc' : 'asc',
+        }),
+        replace: true,
+      });
+    },
+    [router]
+  );
+
+  const handleGlobalFilterChange = useCallback(
+    (value: string) => {
+      router.navigate({
+        to: '.',
+        search: (prev: any) => ({ ...prev, searchTerm: String(value), page: 1 }),
+        replace: true,
+      });
+    },
+    [router]
+  );
+
+  const handleInspect = useCallback((appointment: any) => {
+    setSelectedAppointmentId(appointment.id);
+  }, []);
 
   return (
     <PageLayout>
@@ -83,66 +140,12 @@ export const PageAppointmentsMongo = (props: {
               isLoading={appointmentsQuery.isLoading || appointmentsQuery.isFetching}
               total={total}
               pagination={pagination}
-              onPaginationChange={(newPagination) => {
-                router.navigate({
-                  to: '.',
-                  search: (prev: any) => ({
-                    ...prev,
-                    limit: newPagination.pageSize,
-                    page: newPagination.pageIndex + 1,
-                  }),
-                  replace: true,
-                });
-              }}
-              hasNextPage={
-                (props.search.page ?? 1) - 1 < Math.ceil(total / pagination.pageSize) - 1
-              }
-              hasPrevPage={(props.search.page ?? 1) > 1}
-              onNextPage={() => {
-                router.navigate({
-                  to: '.',
-                  search: (prev: any) => ({ ...prev, page: (props.search.page ?? 1) + 1 }),
-                  replace: true,
-                });
-              }}
-              onPrevPage={() => {
-                router.navigate({
-                  to: '.',
-                  search: (prev: any) => ({
-                    ...prev,
-                    page: Math.max(1, (props.search.page ?? 1) - 1),
-                  }),
-                  replace: true,
-                });
-              }}
-              sorting={
-                props.search.sortBy
-                  ? [{ id: props.search.sortBy, desc: props.search.sortOrder === 'desc' }]
-                  : []
-              }
-              onSortingChange={(newSorting) => {
-                const sort = newSorting[0];
-                router.navigate({
-                  to: '.',
-                  search: (prev: any) => ({
-                    ...prev,
-                    sortBy: sort?.id as any,
-                    sortOrder: sort?.desc ? 'desc' : 'asc',
-                  }),
-                  replace: true,
-                });
-              }}
+              onPaginationChange={handlePaginationChange}
+              sorting={sorting}
+              onSortingChange={handleSortingChange}
               globalFilter={props.search.searchTerm ?? ''}
-              onGlobalFilterChange={(value) => {
-                router.navigate({
-                  to: '.',
-                  search: (prev: any) => ({ ...prev, searchTerm: String(value), page: 1 }),
-                  replace: true,
-                });
-              }}
-              onInspect={(appointment) => {
-                setSelectedAppointmentId(appointment.id);
-              }}
+              onGlobalFilterChange={handleGlobalFilterChange}
+              onInspect={handleInspect}
             />
           ))
           .exhaustive()}
