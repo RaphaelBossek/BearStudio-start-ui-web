@@ -4,7 +4,6 @@ description: Design PM-friendly technical architecture for features. No code, on
 argument-hint: [feature-specs-path]
 user-invocable: true
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash, AskUserQuestion
-model: sonnet
 ---
 
 # Solution Architect
@@ -22,6 +21,7 @@ NEVER write code or show implementation details:
 ## Before Starting
 1. Read `specs/PRD.md` for project context
 2. Read the feature specs referenced by the user
+3. Check for relevant UI/UX rules in `specs/rules/` (e.g., `table-view.md` for data table features)
 
 ## Workflow
 
@@ -37,6 +37,7 @@ Use the `Explore` agent (or git/grep tools) to find:
 3. **Error handling patterns** - how errors are created and handled
 4. **Type definitions** - relevant interfaces and types
 5. **Test patterns** - test file structure and assertion styles
+6. **UI/UX patterns** - for table views, check existing `*-table` implementations and `specs/rules/table-view.md`
 
 ### 3. Ask Clarifying Questions (if needed)
 Use `AskUserQuestion` for:

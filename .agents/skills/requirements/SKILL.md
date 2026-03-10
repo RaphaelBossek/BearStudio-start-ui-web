@@ -4,7 +4,6 @@ description: Create detailed feature specifications with user stories, acceptanc
 argument-hint: [project-description or feature-idea]
 user-invocable: true
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash, AskUserQuestion
-model: sonnet
 ---
 
 # Requirements Engineer
@@ -76,6 +75,7 @@ Focus on the non-functional excellence of the software.
 ## Before Starting
 1. Read `specs/PRD.md` to check the global context, vision, and roadmap.
 2. Read `specs/PRD.md` to see existing topics and features.
+3. Check for relevant UI/UX rules in `specs/rules/` (e.g., `table-view.md` for data table features).
 
 ---
 

@@ -1,24 +1,24 @@
 ---
 name: backend
-description: Build APIs, database schemas, and server-side logic with Supabase. Use after frontend is built.
+description: Build APIs, database schemas, and server-side logic with Prisma, MongoDB, and oRPC. Use after frontend is built.
 argument-hint: [feature-specs-path]
 user-invocable: true
 context: fork
 agent: Backend Developer
-model: opus
 ---
 
 # Backend Developer
 
 ## Role
-You are an experienced Backend Developer. You read feature specss + tech design and implement APIs, database schemas, and server-side logic using Supabase and Next.js.
+You are an experienced Backend Developer. You read feature specss + tech design and implement APIs, database schemas, and server-side logic using Prisma (MongoDB), oRPC, and TanStack Start.
 
 ## Before Starting
-1. Read `features/INDEX.md` for project context
+1. Read `specs/PRD.md` for project context
 2. Read the feature specs referenced by the user (including Tech Design section)
-3. Check existing APIs: `git ls-files src/app/api/`
-4. Check existing database patterns: `git log --oneline -S "CREATE TABLE" -10`
-5. Check existing lib files: `ls src/lib/`
+3. Check for relevant data requirements in `specs/rules/` (e.g., `table-view.md` for pagination/sorting)
+4. Check existing routers: `git ls-files src/server/routers/`
+5. Check existing database schema: `cat prisma/schema-mongodb.prisma | head -50`
+6. Check existing lib files: `ls src/lib/`
 
 ## Workflow
 
@@ -35,18 +35,22 @@ Use `AskUserQuestion` for:
 - What specific input validations are required?
 
 ### 3. Create Database Schema
-- Write SQL for new tables in Supabase SQL Editor
-- Enable Row Level Security on EVERY table
-- Create RLS policies for all CRUD operations
-- Add indexes on performance-critical columns (WHERE, ORDER BY, JOIN)
-- Use foreign keys with ON DELETE CASCADE where appropriate
+- Update `prisma/schema-mongodb.prisma` for MongoDB schemas
+- Ensure proper indexing on fields used for filtering/sorting (see `specs/rules/table-view.md`)
+- Add compound indexes for common query patterns (e.g., `@@index([status, createdAt])`)
+- For table views: ensure pagination-friendly queries with `skip` and `take`
 
-### 4. Create API Routes
-- Create route handlers in `/src/app/api/`
-- Implement CRUD operations
-- Add Zod input validation on all POST/PUT endpoints
+### 4. Create oRPC Routes
+- Create oRPC routers in `/src/server/routers/`
+- Implement CRUD operations with Prisma
+- Add Zod input validation on all mutations
 - Add proper error handling with meaningful messages
-- Always check authentication (verify user session)
+- Always check authentication (verify user session via Better Auth)
+- **For table views**: Implement pagination, sorting, and filtering:
+  - Accept `page`, `limit`, `sortBy`, `sortOrder`, and `search` parameters
+  - Return `{ data, total }` for pagination UI
+  - Use Prisma's `skip`, `take`, `orderBy`, and `where` clauses
+  - Follow patterns from existing `*-mongo.ts` routers
 
 ### 5. Connect Frontend
 - Update frontend components to use real API endpoints
