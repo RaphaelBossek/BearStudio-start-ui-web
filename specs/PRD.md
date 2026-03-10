@@ -2,7 +2,7 @@
 
 ## Vision
 The goal of this project is to build a high-quality, maintainable software product that addresses customer needs using modern technologies (TanStack, React, Neon, Prisma, Better Auth).
-f
+
 ## Target Users
 - **Customers:** Primary users looking for medical or telehealth services.
 - **Administrators/Staff:** Managing the platform operations.
@@ -32,6 +32,7 @@ f
 | scheduling | Expert Week View | [scheduling/expert-week-view](features/scheduling/expert-week-view/requirements.md) | 2026-03-08 |
 | scheduling | Appointment Table View | [scheduling/appointment-table](features/scheduling/appointment-table/requirements.md) | 2026-03-09 |
 | resource-management | User Management Table View | [resource-management/user-table](features/resource-management/user-table/requirements.md) | 2026-03-09 |
+| scheduling | Shift Plan Table View | [scheduling/shift-plan-table](features/scheduling/shift-plan-table/requirements.md) | 2026-03-10 |
 
 
 ### In Progress
