@@ -96,7 +96,7 @@ export function DataTable<TData, TValue>({
     onColumnVisibilityChange: setColumnVisibility,
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
-    ...(onPaginationChange ? {} : { getPaginationRowModel: getPaginationRowModel() }),
+    getPaginationRowModel: getPaginationRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getFacetedRowModel: getFacetedRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
@@ -171,7 +171,12 @@ export function DataTable<TData, TValue>({
       </div>
 
       <div className="sticky bottom-0 z-10 bg-background/95 backdrop-blur-sm pt-4 border-t">
-        <DataTablePagination table={table} total={total} />
+        <DataTablePagination
+          table={table}
+          total={total}
+          pagination={pagination ?? { pageIndex: 0, pageSize: 10 }}
+          onPaginationChange={onPaginationChange}
+        />
       </div>
     </div>
   );

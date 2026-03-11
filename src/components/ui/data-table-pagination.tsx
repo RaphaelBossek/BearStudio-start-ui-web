@@ -22,11 +22,27 @@ import { cn } from '@/lib/tailwind/utils';
 interface DataTablePaginationProps<TData> {
   table: Table<TData>;
   total: number;
+  pagination: { pageIndex: number; pageSize: number };
+  onPaginationChange?: (pagination: { pageIndex: number; pageSize: number }) => void;
 }
 
-export function DataTablePagination<TData>({ table, total }: DataTablePaginationProps<TData>) {
-  const { pageIndex, pageSize } = table.getState().pagination;
+export function DataTablePagination<TData>({
+  table,
+  total,
+  pagination,
+  onPaginationChange,
+}: DataTablePaginationProps<TData>) {
+  // Use external pagination prop instead of table.getState() for manual pagination
+  const { pageIndex, pageSize } = pagination;
   const pageCount = table.getPageCount();
+
+  const handlePageChange = (newPageIndex: number) => {
+    if (onPaginationChange) {
+      onPaginationChange({ pageIndex: newPageIndex, pageSize: pagination.pageSize });
+    } else {
+      table.setPageIndex(newPageIndex);
+    }
+  };
 
   const getPageNumbers = () => {
     const pages: (number | string)[] = [];
@@ -64,7 +80,13 @@ export function DataTablePagination<TData>({ table, total }: DataTablePagination
           <Select
             value={`${pageSize}`}
             onValueChange={(value) => {
-              table.setPageSize(Number(value));
+              const newPageSize = Number(value);
+              if (onPaginationChange) {
+                // Reset to first page when changing page size to avoid out-of-bounds
+                onPaginationChange({ pageIndex: 0, pageSize: newPageSize });
+              } else {
+                table.setPageSize(newPageSize);
+              }
             }}
           >
             <SelectTrigger className="h-8 w-[70px]">
@@ -87,7 +109,7 @@ export function DataTablePagination<TData>({ table, total }: DataTablePagination
                 type="button"
                 variant="ghost"
                 className="h-8 w-8 p-0"
-                onClick={() => table.previousPage()}
+                onClick={() => handlePageChange(pageIndex - 1)}
                 disabled={!table.getCanPreviousPage()}
               >
                 <ChevronLeftIcon className="h-4 w-4" />
@@ -110,7 +132,7 @@ export function DataTablePagination<TData>({ table, total }: DataTablePagination
                     type="button"
                     variant={isCurrent ? 'default' : 'ghost'}
                     size="icon-xs"
-                    onClick={() => table.setPageIndex(page as number)}
+                    onClick={() => handlePageChange(page as number)}
                     disabled={isCurrent}
                     aria-current={isCurrent ? 'page' : undefined}
                   >
@@ -125,7 +147,7 @@ export function DataTablePagination<TData>({ table, total }: DataTablePagination
                 type="button"
                 variant="ghost"
                 className="h-8 w-8 p-0"
-                onClick={() => table.nextPage()}
+                onClick={() => handlePageChange(pageIndex + 1)}
                 disabled={!table.getCanNextPage()}
               >
                 <ChevronRightIcon className="h-4 w-4" />

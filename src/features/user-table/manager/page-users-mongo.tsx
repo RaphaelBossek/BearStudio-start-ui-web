@@ -79,6 +79,12 @@ export const PageUsersMongo = (props: {
     [props.search.sortBy, props.search.sortOrder]
   );
 
+  const pageCount = useMemo(
+    () =>
+      pagination.pageSize > 0 ? Math.ceil((usersQuery.data?.total ?? 0) / pagination.pageSize) : 0,
+    [usersQuery.data?.total, pagination.pageSize]
+  );
+
   const handlePaginationChange = useCallback(
     (newPagination: { pageIndex: number; pageSize: number }) => {
       router.navigate({
@@ -146,6 +152,7 @@ export const PageUsersMongo = (props: {
               globalFilter={props.search.searchTerm ?? ''}
               onGlobalFilterChange={handleGlobalFilterChange}
               onInspect={handleInspect}
+              pageCount={pageCount}
             />
           ))
           .exhaustive()}

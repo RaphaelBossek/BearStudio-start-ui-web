@@ -19,6 +19,7 @@ export interface UsersMongoTableProps {
   globalFilter: string;
   onGlobalFilterChange: (value: string) => void;
   onInspect: (user: UserMongoRow) => void;
+  pageCount?: number;
 }
 
 export function UsersMongoTable({
@@ -32,6 +33,7 @@ export function UsersMongoTable({
   globalFilter,
   onGlobalFilterChange,
   onInspect,
+  pageCount,
 }: UsersMongoTableProps) {
   const columns: ColumnDef<UserMongoRow>[] = useMemo(
     () => [
@@ -128,11 +130,6 @@ export function UsersMongoTable({
       },
     ],
     [onInspect]
-  );
-
-  const pageCount = useMemo(
-    () => Math.ceil(total / pagination.pageSize),
-    [total, pagination.pageSize]
   );
 
   return (
