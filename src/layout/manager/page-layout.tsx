@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator';
 import { SidebarTrigger, useSidebar } from '@/components/ui/sidebar';
+import { ManagerBreadcrumbs } from '@/layout/manager/manager-breadcrumbs';
 import { cn } from '@/lib/tailwind/utils';
 
 export const PageLayoutContainer = (props: { children?: ReactNode; className?: string }) => {
@@ -62,9 +63,10 @@ export const PageLayoutTopBar = (props: {
 
 export const PageLayoutTopBarTitle = (props: { children?: ReactNode; className?: string }) => {
   return (
-    <h1 className={cn('min-w-0 truncate text-base font-medium md:text-sm', props.className)}>
-      {props.children}
-    </h1>
+    <div className={cn('min-w-0 flex flex-col gap-0.5', props.className)}>
+      <ManagerBreadcrumbs />
+      <h1 className="min-w-0 truncate text-base font-medium md:text-sm">{props.children}</h1>
+    </div>
   );
 };
 

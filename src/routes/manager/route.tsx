@@ -9,6 +9,9 @@ export const Route = createFileRoute('/manager')({
   component: RouteComponent,
   notFoundComponent: () => <PageError type="404" />,
   errorComponent: () => <PageError type="error-boundary" />,
+  staticData: {
+    breadcrumb: 'layout:nav.home',
+  },
 });
 
 function RouteComponent() {

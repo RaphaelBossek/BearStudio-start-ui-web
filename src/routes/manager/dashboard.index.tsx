@@ -4,6 +4,9 @@ import { PageDashboard } from '@/features/dashboard/manager/page-dashboard';
 
 export const Route = createFileRoute('/manager/dashboard/')({
   component: RouteComponent,
+  staticData: {
+    breadcrumb: 'layout:nav.dashboard',
+  },
 });
 
 function RouteComponent() {
