@@ -55,6 +55,10 @@ If no design specs exist, ask the user:
   - Implement pagination, sorting, search/filtering, and column selection
   - Add "Inspect" drawer for detailed row views
   - Follow memoization patterns from `AGENTS.md` to avoid pagination bugs
+  - Keep route breadcrumbs (top-bar navigation) separate from table pagination controls/chips
+  - For route breadcrumbs, use TanStack Router `staticData.breadcrumb` + shared `useMatches()` renderer
+  - Treat `staticData.breadcrumb` as `string | string[] | ((match) => string | string[])` for static and dynamic breadcrumbs
+  - Resolve dynamic breadcrumbs from `match.params` / validated `match.search`, and prefer i18n keys for labels
 
 ### 5. Integrate into Pages
 - Add components to pages in `/src/app/`

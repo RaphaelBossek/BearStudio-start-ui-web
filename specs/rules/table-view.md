@@ -21,7 +21,7 @@ This document defines the general requirements and UI principles for all data ta
   - **Data Depth**: Search/filtering must query ALL rows (server-side), not just the visible page.
 - **Navigation Controls**:
   - The bottom navigation bar (Next/Prev, Page Size) must ALWAYS be visible.
-  - **Pagination Slider**: Include a breadcrumb-style pagination slider (e.g., `1, 2, 3, ... 9, 10`) below the table.
+  - **Pagination Slider**: Include page-number chips/slider (e.g., `1, 2, 3, ... 9, 10`) below the table.
   - **Logic**: The slider must dynamically update based on the current page size and the total number of pages.
 
 ### 2. Interaction and Visibility
@@ -61,3 +61,12 @@ When implementing or modifying a table view, follow these strict rules to mainta
    - Implement the "more..." Drawer for > 9 columns.
 5. **Always Visible UI**: Ensure search, filters, and pagination controls (including the breadcrumb slider) are NOT hidden during scrolling or data fetching.
 6. **Server-side Scope**: Filters must trigger a backend query that searches matching rows across the entire dataset, but filtered results are restricted to data present in visible columns.
+
+## Route Breadcrumb Clarification (TanStack Router)
+
+The pagination slider in table views is **not** the app-level route breadcrumb.
+
+- Route breadcrumbs (top bar navigation hierarchy) must be driven by TanStack Router `staticData.breadcrumb` + `useMatches()`.
+- Table pagination chips (`1, 2, 3, ...`) remain part of table pagination UX and are independent from route hierarchy navigation.
+- Do not derive route breadcrumbs from table pagination state.
+
