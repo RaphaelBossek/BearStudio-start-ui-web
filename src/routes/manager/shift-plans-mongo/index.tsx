@@ -5,6 +5,9 @@ import { PageShiftPlansMongo } from '@/features/shift-plan-table/manager/page-sh
 
 export const Route = createFileRoute('/manager/shift-plans-mongo/')({
   component: RouteComponent,
+  staticData: {
+    breadcrumb: 'layout:nav.shiftPlansMongo',
+  },
   validateSearch: zodValidator(
     z.object({
       searchTerm: z.string().optional().default(''),

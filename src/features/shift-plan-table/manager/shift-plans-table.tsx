@@ -19,6 +19,7 @@ export interface ShiftPlansMongoTableProps {
   globalFilter: string;
   onGlobalFilterChange: (value: string) => void;
   onInspect: (shiftPlan: ShiftPlanRow) => void;
+  pageCount?: number;
 }
 
 const getDayLabel = (day: string | null | undefined) => {
@@ -66,6 +67,7 @@ export function ShiftPlansMongoTable({
   globalFilter,
   onGlobalFilterChange,
   onInspect,
+  pageCount,
 }: ShiftPlansMongoTableProps) {
   const columns: ColumnDef<ShiftPlanRow>[] = useMemo(
     () => [
@@ -150,7 +152,7 @@ export function ShiftPlansMongoTable({
     [onInspect]
   );
 
-  const pageCount = useMemo(
+  const computedPageCount = useMemo(
     () => Math.ceil(total / pagination.pageSize),
     [total, pagination.pageSize]
   );
@@ -167,7 +169,7 @@ export function ShiftPlansMongoTable({
       onSortingChange={onSortingChange}
       globalFilter={globalFilter}
       onGlobalFilterChange={onGlobalFilterChange}
-      pageCount={pageCount}
+      pageCount={pageCount ?? computedPageCount}
       searchPlaceholder="Search shift plans..."
     />
   );

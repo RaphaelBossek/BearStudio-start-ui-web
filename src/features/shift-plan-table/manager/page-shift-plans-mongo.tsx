@@ -19,6 +19,12 @@ import {
   PageLayoutTopBarTitle,
 } from '@/layout/manager/page-layout';
 import { orpc } from '@/lib/orpc/client';
+import {
+  calculatePageCount,
+  clampPageIndex,
+  pageIndexToRoutePage,
+  routePageToPageIndex,
+} from '@/lib/pagination';
 import { ShiftPlanDetails } from './shift-plan-details';
 import { ShiftPlansMongoTable } from './shift-plans-table';
 
@@ -65,10 +71,15 @@ export const PageShiftPlansMongo = (props: {
 
   const pagination = useMemo(
     () => ({
-      pageIndex: (props.search.page ?? 1) - 1,
+      pageIndex: routePageToPageIndex(props.search.page),
       pageSize: props.search.limit ?? 25,
     }),
     [props.search.page, props.search.limit]
+  );
+
+  const pageCount = useMemo(
+    () => calculatePageCount(shiftPlansQuery.data?.total ?? 0, pagination.pageSize),
+    [shiftPlansQuery.data?.total, pagination.pageSize]
   );
 
   const sorting = useMemo(
@@ -81,17 +92,23 @@ export const PageShiftPlansMongo = (props: {
 
   const handlePaginationChange = useCallback(
     (newPagination: { pageIndex: number; pageSize: number }) => {
+      const nextPageCount = calculatePageCount(
+        shiftPlansQuery.data?.total ?? 0,
+        newPagination.pageSize
+      );
+      const safePageIndex = clampPageIndex(newPagination.pageIndex, nextPageCount);
+
       router.navigate({
         to: '.',
         search: (prev: any) => ({
           ...prev,
           limit: newPagination.pageSize,
-          page: newPagination.pageIndex + 1,
+          page: pageIndexToRoutePage(safePageIndex, nextPageCount),
         }),
         replace: true,
       });
     },
-    [router]
+    [router, shiftPlansQuery.data?.total]
   );
 
   const handleSortingChange = useCallback(
@@ -146,6 +163,7 @@ export const PageShiftPlansMongo = (props: {
               globalFilter={props.search.searchTerm ?? ''}
               onGlobalFilterChange={handleGlobalFilterChange}
               onInspect={handleInspect}
+              pageCount={pageCount}
             />
           ))
           .exhaustive()}
