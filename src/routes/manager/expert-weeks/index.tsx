@@ -6,6 +6,9 @@ import { PageExpertWeeks } from '@/features/expert-week/manager/page-expert-week
 
 export const Route = createFileRoute('/manager/expert-weeks/')({
   component: RouteComponent,
+  staticData: {
+    breadcrumb: 'layout:nav.expertWeeks',
+  },
   validateSearch: zodValidator(
     z.object({
       searchTerm: z.string().optional().prefault(''),

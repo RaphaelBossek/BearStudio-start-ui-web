@@ -12,6 +12,12 @@ import {
   PageLayoutTopBarTitle,
 } from '@/layout/manager/page-layout';
 import { orpc } from '@/lib/orpc/client';
+import {
+  calculatePageCount,
+  clampPageIndex,
+  pageIndexToRoutePage,
+  routePageToPageIndex,
+} from '@/lib/pagination';
 
 export const PageExpertWeeks = (props: {
   search: {
@@ -48,10 +54,15 @@ export const PageExpertWeeks = (props: {
 
   const pagination = useMemo(
     () => ({
-      pageIndex: (props.search.page ?? 1) - 1,
+      pageIndex: routePageToPageIndex(props.search.page),
       pageSize: props.search.limit ?? 25,
     }),
     [props.search.page, props.search.limit]
+  );
+
+  const pageCount = useMemo(
+    () => calculatePageCount(expertWeeksQuery.data?.total ?? 0, pagination.pageSize),
+    [expertWeeksQuery.data?.total, pagination.pageSize]
   );
 
   const sorting = useMemo(
@@ -64,17 +75,23 @@ export const PageExpertWeeks = (props: {
 
   const handlePaginationChange = useCallback(
     (newPagination: { pageIndex: number; pageSize: number }) => {
+      const nextPageCount = calculatePageCount(
+        expertWeeksQuery.data?.total ?? 0,
+        newPagination.pageSize
+      );
+      const safePageIndex = clampPageIndex(newPagination.pageIndex, nextPageCount);
+
       router.navigate({
         to: '.',
         search: (prev) => ({
           ...prev,
           limit: newPagination.pageSize,
-          page: newPagination.pageIndex + 1,
+          page: pageIndexToRoutePage(safePageIndex, nextPageCount),
         }),
         replace: true,
       });
     },
-    [router]
+    [router, expertWeeksQuery.data?.total]
   );
 
   const handleSortingChange = useCallback(
@@ -124,6 +141,7 @@ export const PageExpertWeeks = (props: {
               onSortingChange={handleSortingChange}
               globalFilter={props.search.searchTerm ?? ''}
               onGlobalFilterChange={handleGlobalFilterChange}
+              pageCount={pageCount}
             />
           ))
           .exhaustive()}

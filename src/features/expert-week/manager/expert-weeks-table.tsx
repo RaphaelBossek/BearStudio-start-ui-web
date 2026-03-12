@@ -16,6 +16,7 @@ export interface ExpertWeeksTableProps {
   onSortingChange: (sorting: { id: string; desc: boolean }[]) => void;
   globalFilter: string;
   onGlobalFilterChange: (value: string) => void;
+  pageCount?: number;
 }
 
 const columns: ColumnDef<ExpertWeekRow>[] = [
@@ -106,8 +107,9 @@ export function ExpertWeeksTable({
   onSortingChange,
   globalFilter,
   onGlobalFilterChange,
+  pageCount,
 }: ExpertWeeksTableProps) {
-  const pageCount = useMemo(
+  const computedPageCount = useMemo(
     () => Math.ceil(total / pagination.pageSize),
     [total, pagination.pageSize]
   );
@@ -124,7 +126,7 @@ export function ExpertWeeksTable({
       onSortingChange={onSortingChange}
       globalFilter={globalFilter}
       onGlobalFilterChange={onGlobalFilterChange}
-      pageCount={pageCount}
+      pageCount={pageCount ?? computedPageCount}
       searchPlaceholder="Search experts..."
     />
   );
