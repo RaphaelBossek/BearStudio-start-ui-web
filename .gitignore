@@ -161,8 +161,10 @@ http-client.private.env.json
 # Github Copilot persisted session migrations, see: https://github.com/microsoft/copilot-intellij-feedback/issues/712#issuecomment-3322062215
 .idea/**/copilot.data.migration.*.xml
 
-# Junie
+# Specific AI agents
 .junie
+.kilo
+.kilocode
 
 # TanStack Router/Start (Vite plugin)
 src/routeTree.gen.ts
