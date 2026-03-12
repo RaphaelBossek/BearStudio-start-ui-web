@@ -5,6 +5,9 @@ import { PageAppointmentsMongo } from '@/features/appointment-table/manager/page
 
 export const Route = createFileRoute('/manager/appointments-mongo/')({
   component: RouteComponent,
+  staticData: {
+    breadcrumb: 'layout:nav.appointmentsMongo',
+  },
   validateSearch: zodValidator(
     z.object({
       searchTerm: z.string().optional().default(''),

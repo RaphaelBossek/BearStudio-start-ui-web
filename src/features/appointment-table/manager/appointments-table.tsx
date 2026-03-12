@@ -19,6 +19,7 @@ export interface AppointmentsMongoTableProps {
   globalFilter: string;
   onGlobalFilterChange: (value: string) => void;
   onInspect: (appointment: AppointmentRow) => void;
+  pageCount?: number;
 }
 
 const getStateVariant = (state: string | null | undefined) => {
@@ -53,6 +54,7 @@ export function AppointmentsMongoTable({
   globalFilter,
   onGlobalFilterChange,
   onInspect,
+  pageCount,
 }: AppointmentsMongoTableProps) {
   const columns: ColumnDef<AppointmentRow>[] = useMemo(
     () => [
@@ -135,7 +137,7 @@ export function AppointmentsMongoTable({
     [onInspect]
   );
 
-  const pageCount = useMemo(
+  const computedPageCount = useMemo(
     () => Math.ceil(total / pagination.pageSize),
     [total, pagination.pageSize]
   );
@@ -152,7 +154,7 @@ export function AppointmentsMongoTable({
       onSortingChange={onSortingChange}
       globalFilter={globalFilter}
       onGlobalFilterChange={onGlobalFilterChange}
-      pageCount={pageCount}
+      pageCount={pageCount ?? computedPageCount}
       searchPlaceholder="Search appointments..."
     />
   );
