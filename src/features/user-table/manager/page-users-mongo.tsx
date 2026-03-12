@@ -19,6 +19,12 @@ import {
   PageLayoutTopBarTitle,
 } from '@/layout/manager/page-layout';
 import { orpc } from '@/lib/orpc/client';
+import {
+  calculatePageCount,
+  clampPageIndex,
+  pageIndexToRoutePage,
+  routePageToPageIndex,
+} from '@/lib/pagination';
 import { UserDetailsSettings } from './user-details-settings';
 import { UsersMongoTable } from './users-table';
 
@@ -65,7 +71,7 @@ export const PageUsersMongo = (props: {
 
   const pagination = useMemo(
     () => ({
-      pageIndex: (props.search.page ?? 1) - 1,
+      pageIndex: routePageToPageIndex(props.search.page),
       pageSize: props.search.limit ?? 25,
     }),
     [props.search.page, props.search.limit]
@@ -80,24 +86,26 @@ export const PageUsersMongo = (props: {
   );
 
   const pageCount = useMemo(
-    () =>
-      pagination.pageSize > 0 ? Math.ceil((usersQuery.data?.total ?? 0) / pagination.pageSize) : 0,
+    () => calculatePageCount(usersQuery.data?.total ?? 0, pagination.pageSize),
     [usersQuery.data?.total, pagination.pageSize]
   );
 
   const handlePaginationChange = useCallback(
     (newPagination: { pageIndex: number; pageSize: number }) => {
+      const nextPageCount = calculatePageCount(usersQuery.data?.total ?? 0, newPagination.pageSize);
+      const safePageIndex = clampPageIndex(newPagination.pageIndex, nextPageCount);
+
       router.navigate({
         to: '.',
         search: (prev: any) => ({
           ...prev,
           limit: newPagination.pageSize,
-          page: newPagination.pageIndex + 1,
+          page: pageIndexToRoutePage(safePageIndex, nextPageCount),
         }),
         replace: true,
       });
     },
-    [router]
+    [router, usersQuery.data?.total]
   );
 
   const handleSortingChange = useCallback(

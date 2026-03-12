@@ -5,6 +5,9 @@ import { PageUsersMongo } from '@/features/user-table/manager/page-users-mongo';
 
 export const Route = createFileRoute('/manager/users-mongo/')({
   component: RouteComponent,
+  staticData: {
+    breadcrumb: 'layout:nav.usersLegacy',
+  },
   validateSearch: zodValidator(
     z.object({
       searchTerm: z.string().optional().default(''),
