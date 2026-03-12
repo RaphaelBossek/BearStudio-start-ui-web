@@ -1,6 +1,6 @@
-# AGENTES.md
+# AGENTS.md
 
-The role of this file is to describe common mistakes and confusion points that agents might encounter as they work in this project. If you ever encounter something in the project that surprises you, please alert the developer working with you and indicate that this is the case in the AgentsMD file to help prevent future agents from having the same issue.
+The role of this file is to describe common mistakes and confusion points that agents might encounter as they work in this project. If you ever encounter something in the project that surprises you, please alert the developer working with you and indicate that this is the case in this file to help prevent future agents from having the same issue.
 
 ## TanStack Table with Manual Pagination (URL-based state)
 
@@ -78,6 +78,34 @@ const handleSortingChange = React.useCallback((updater) => {
 }, [sorting, onSortingChange]);
 ```
 
+### Pagination Invariants and Guard Rails (critical)
+
+Memoization alone is not enough. All manual pagination flows must enforce these invariants:
+
+1. **UI state is 0-based, URL/API state is 1-based**
+   - Table state: `pageIndex` starts at `0`
+   - Route/search state: `page` starts at `1`
+   - Conversion must always be explicit in both directions.
+
+2. **Never navigate with invalid page indexes**
+   - Clamp before navigation:
+     - `safePageIndex = max(0, min(requestedPageIndex, pageCount - 1))`
+   - Convert only after clamping:
+     - `page = safePageIndex + 1`
+   - This prevents accidental `page=0` in URL when previous-page is triggered at boundaries.
+
+3. **Clamp in both UI and parent navigation handler**
+   - In pagination UI component, guard `handlePageChange` against `< 0` and `>= pageCount`
+   - In parent `handlePaginationChange`, re-clamp defensively before `router.navigate`
+   - Defensive double-checking prevents regressions when future components call pagination directly.
+
+4. **Always provide deterministic `pageCount` for manual pagination**
+   - Compute from backend total and current page size.
+   - Pass it to the table so `getCanPreviousPage` and `getCanNextPage` stay reliable.
+
+5. **When filters/search/sort/page-size change, reset page to first page**
+   - Keep URL and table aligned by forcing `page=1` for those state transitions.
+
 ### Why This Matters
 
 Without proper memoization:
@@ -92,3 +120,70 @@ Without proper memoization:
 - Page resets to 1 unexpectedly
 - Breadcrumb buttons are disabled when they shouldn't be
 
+## TanStack Router Route Breadcrumbs (Top Bar Navigation)
+
+For app-level breadcrumbs (route hierarchy breadcrumbs, not table page-number breadcrumbs), use TanStack Router `staticData` + `useMatches`.
+
+### Required Pattern
+
+1. **Declare route breadcrumb metadata using typed `staticData`**
+   - Add a global `declare module '@tanstack/react-router'` augmentation for `StaticDataRouteOption`.
+   - Use this value contract for `staticData.breadcrumb`:
+     - `string` (single label)
+     - `string[]` (multiple labels emitted by one route)
+     - `(match: AnyRouteMatch) => string | string[]` (dynamic label(s), e.g. params/search-driven)
+   - Prefer translation keys (e.g. `layout:nav.dashboard`) over hardcoded labels.
+
+2. **Use one shared breadcrumb renderer based on route matches**
+   - Build a single reusable component that calls `useMatches()`.
+   - For each match, read `match.staticData?.breadcrumb`; skip routes without breadcrumb metadata.
+   - Resolve function values with the current `match`, normalize to array, and flatten in route order.
+   - Render all but the last breadcrumb as links, and the last breadcrumb as current page.
+
+3. **Dynamic breadcrumb behavior must come from route state, not ad-hoc UI state**
+   - For path params, derive labels from `match.params` (example: `#${match.params.id}`).
+   - For query-based flows, derive labels from validated `match.search` (example: step-based breadcrumbs).
+   - Keep all route breadcrumb logic colocated in route `staticData`, not scattered in page components.
+
+4. **Keep route breadcrumbs separate from table pagination controls**
+   - Do not mix table page-number controls with route hierarchy breadcrumbs.
+   - "Breadcrumb-style pagination slider" in table specs refers to pagination chips/sequence UI only.
+   - Route breadcrumbs belong in top-bar/layout navigation and must be derived from TanStack Router matches.
+
+5. **Localization and advanced path control**
+   - Translation keys are recommended for labels.
+   - If custom link targets are required later, evolve the breadcrumb value type to support object forms (e.g. `{ label, path }`) and update renderer/type in one change.
+
+### Why This Matters
+
+- Without route-level static metadata, top bar breadcrumbs cannot be consistently derived.
+- Without `useMatches`, breadcrumb trees drift from real route hierarchy.
+- Dynamic labels (params/search) break if not resolved from `match`.
+- Mixing route breadcrumbs and table-pagination UI causes UX confusion and state bugs.
+
+## DataTablePagination — `pageCount` Must Be Passed Explicitly
+
+**Do NOT derive `pageCount` from `table.getPageCount()` inside `DataTablePagination`.**
+
+When `manualPagination: true` and the table is created with `pageCount: -1` (TanStack sentinel for "unknown"), `table.getPageCount()` returns `-1`. The utility function `normalizePageCount(-1)` returns `0` (because `-1 <= 0`), and `clampPageIndex(anyPage, 0)` returns `0` unconditionally via its zero-guard.
+
+**Symptom:** Clicking any page-number button in the breadcrumb pagination always resets the table to page 1 regardless of which page was clicked.
+
+**Fix:** Pass `pageCount` as an explicit prop from `DataTable` → `DataTablePagination`, derived from the backend total (e.g. `Math.ceil(total / pageSize)`). Never read it from `table.getPageCount()` in the pagination component.
+
+```typescript
+// ✅ Correct — DataTable forwards the externally-computed pageCount
+<DataTablePagination
+  table={table}
+  total={total}
+  pagination={pagination ?? { pageIndex: 0, pageSize: 10 }}
+  pageCount={pageCount ?? 0}         // ← must come from parent, not table.getPageCount()
+  onPaginationChange={onPaginationChange}
+/>
+
+// ✅ Correct — DataTablePagination uses the explicit prop
+const safePageCount = normalizePageCount(pageCount); // pageCount is a prop, not table.getPageCount()
+
+// ❌ Wrong — do NOT do this
+const pageCount = normalizePageCount(table.getPageCount()); // returns 0 under manual pagination
+```

@@ -175,6 +175,7 @@ export function DataTable<TData, TValue>({
           table={table}
           total={total}
           pagination={pagination ?? { pageIndex: 0, pageSize: 10 }}
+          pageCount={pageCount ?? 0}
           onPaginationChange={onPaginationChange}
         />
       </div>

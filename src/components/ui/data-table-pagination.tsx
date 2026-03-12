@@ -4,10 +4,7 @@ import {
   Breadcrumb,
   BreadcrumbEllipsis,
   BreadcrumbItem,
-  BreadcrumbLink,
   BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
 import { Button } from '@/components/ui/button';
 import {
@@ -17,12 +14,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { cn } from '@/lib/tailwind/utils';
+import { clampPageIndex, normalizePageCount } from '@/lib/pagination';
 
 interface DataTablePaginationProps<TData> {
   table: Table<TData>;
   total: number;
   pagination: { pageIndex: number; pageSize: number };
+  pageCount: number;
   onPaginationChange?: (pagination: { pageIndex: number; pageSize: number }) => void;
 }
 
@@ -30,17 +28,21 @@ export function DataTablePagination<TData>({
   table,
   total,
   pagination,
+  pageCount,
   onPaginationChange,
 }: DataTablePaginationProps<TData>) {
   // Use external pagination prop instead of table.getState() for manual pagination
   const { pageIndex, pageSize } = pagination;
-  const pageCount = table.getPageCount();
+  // Normalise defensively — never rely on table.getPageCount() which returns -1 under manual pagination
+  const safePageCount = normalizePageCount(pageCount);
 
   const handlePageChange = (newPageIndex: number) => {
+    const safePageIndex = clampPageIndex(newPageIndex, safePageCount);
+
     if (onPaginationChange) {
-      onPaginationChange({ pageIndex: newPageIndex, pageSize: pagination.pageSize });
+      onPaginationChange({ pageIndex: safePageIndex, pageSize: pagination.pageSize });
     } else {
-      table.setPageIndex(newPageIndex);
+      table.setPageIndex(safePageIndex);
     }
   };
 
@@ -48,21 +50,21 @@ export function DataTablePagination<TData>({
     const pages: (number | string)[] = [];
     const maxVisible = 7;
 
-    if (pageCount <= maxVisible) {
-      for (let i = 0; i < pageCount; i++) pages.push(i);
+    if (safePageCount <= maxVisible) {
+      for (let i = 0; i < safePageCount; i++) pages.push(i);
     } else {
       pages.push(0);
       if (pageIndex > 3) pages.push('ellipsis-start');
 
       const start = Math.max(1, pageIndex - 1);
-      const end = Math.min(pageCount - 2, pageIndex + 1);
+      const end = Math.min(safePageCount - 2, pageIndex + 1);
 
       for (let i = start; i <= end; i++) {
         pages.push(i);
       }
 
-      if (pageIndex < pageCount - 4) pages.push('ellipsis-end');
-      pages.push(pageCount - 1);
+      if (pageIndex < safePageCount - 4) pages.push('ellipsis-end');
+      pages.push(safePageCount - 1);
     }
     return pages;
   };
