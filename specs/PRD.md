@@ -53,5 +53,6 @@ The goal of this project is to build a high-quality, maintainable software produ
 | medical-management | Service Management | [medical-management/services](features/medical-management/services/requirements.md) | 2026-02-25 |
 | medical-management | Skill Management | [medical-management/skills](features/medical-management/skills/requirements.md) | 2026-02-25 |
 | medical-management | Expert Profiles | [medical-management/experts](features/medical-management/experts/requirements.md) | 2026-02-25 |
+| resource-management | Treatment Table View | [resource-management/treatment-table](features/resource-management/treatment-table/requirements.md) | 2026-03-14 |
 
 <!-- Add completed features above this line -->
