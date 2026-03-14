@@ -1,11 +1,13 @@
 import type { Table } from '@tanstack/react-table';
 import { Settings2Icon } from 'lucide-react';
+import * as React from 'react';
 import { Checkbox } from '@/components/ui/checkbox';
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuGroup,
+  DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
@@ -17,7 +19,6 @@ import {
   ResponsiveDrawerContent,
   ResponsiveDrawerHeader,
   ResponsiveDrawerTitle,
-  ResponsiveDrawerTrigger,
 } from '@/components/ui/responsive-drawer';
 
 interface DataTableColumnToggleProps<TData> {
@@ -25,12 +26,19 @@ interface DataTableColumnToggleProps<TData> {
 }
 
 export function DataTableColumnToggle<TData>({ table }: DataTableColumnToggleProps<TData>) {
-  const columns = table
-    .getAllColumns()
-    .filter((column) => typeof column.accessorFn !== 'undefined' && column.getCanHide());
+  const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
+  const [, forceUpdate] = React.useReducer(() => ({}), {});
+
+  const columns = table.getAllColumns().filter((column) => column.getCanHide());
 
   const showMore = columns.length > 9;
-  const visibleColumns = showMore ? columns.slice(0, 8) : columns;
+  const visibleColumns = showMore ? columns.filter((column) => column.getIsVisible()) : columns;
+
+  // React to table state changes internally to ensure the component is always fresh
+  // even if the parent doesn't propagate the reference change properly in edge cases
+  React.useEffect(() => {
+    forceUpdate();
+  }, [table.getState().columnVisibility]);
 
   return (
     <div className="flex items-center gap-2">
@@ -49,7 +57,10 @@ export function DataTableColumnToggle<TData>({ table }: DataTableColumnTogglePro
                   key={column.id}
                   className="capitalize"
                   checked={column.getIsVisible()}
-                  onCheckedChange={(value) => column.toggleVisibility(!!value)}
+                  onCheckedChange={(value) => {
+                    column.toggleVisibility(!!value);
+                  }}
+                  closeOnClick={false}
                 >
                   {column.id}
                 </DropdownMenuCheckboxItem>
@@ -57,35 +68,49 @@ export function DataTableColumnToggle<TData>({ table }: DataTableColumnTogglePro
             })}
           </DropdownMenuGroup>
           {showMore && (
-            <ResponsiveDrawer>
-              <ResponsiveDrawerTrigger className="w-full justify-start px-2 py-1.5 text-sm font-normal text-primary hover:bg-accent hover:text-accent-foreground rounded-sm cursor-pointer">
+            <>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem
+                className="w-full justify-start cursor-pointer text-primary hover:bg-accent hover:text-accent-foreground"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setIsDrawerOpen(true);
+                }}
+              >
                 More...
-              </ResponsiveDrawerTrigger>
-              <ResponsiveDrawerContent>
-                <ResponsiveDrawerHeader>
-                  <ResponsiveDrawerTitle>Column Selection</ResponsiveDrawerTitle>
-                </ResponsiveDrawerHeader>
-                <ResponsiveDrawerBody className="space-y-4 py-4">
-                  <div className="grid grid-cols-2 gap-4">
-                    {columns.map((column) => (
-                      <div key={column.id} className="flex items-center space-x-2">
-                        <Checkbox
-                          id={`col-${column.id}`}
-                          checked={column.getIsVisible()}
-                          onCheckedChange={(value) => column.toggleVisibility(!!value)}
-                        />
-                        <Label htmlFor={`col-${column.id}`} className="capitalize">
-                          {column.id}
-                        </Label>
-                      </div>
-                    ))}
-                  </div>
-                </ResponsiveDrawerBody>
-              </ResponsiveDrawerContent>
-            </ResponsiveDrawer>
+              </DropdownMenuItem>
+            </>
           )}
         </DropdownMenuContent>
       </DropdownMenu>
+
+      {showMore && (
+        <ResponsiveDrawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
+          <ResponsiveDrawerContent>
+            <ResponsiveDrawerHeader>
+              <ResponsiveDrawerTitle>Column Selection</ResponsiveDrawerTitle>
+            </ResponsiveDrawerHeader>
+            <ResponsiveDrawerBody className="space-y-4 py-4">
+              <div className="grid grid-cols-2 gap-4">
+                {columns.map((column) => (
+                  <div key={column.id} className="flex items-center space-x-2">
+                    <Checkbox
+                      id={`col-${column.id}`}
+                      checked={column.getIsVisible()}
+                      onCheckedChange={(value) => {
+                        column.toggleVisibility(!!value);
+                      }}
+                    />
+                    <Label htmlFor={`col-${column.id}`} className="capitalize">
+                      {column.id}
+                    </Label>
+                  </div>
+                ))}
+              </div>
+            </ResponsiveDrawerBody>
+          </ResponsiveDrawerContent>
+        </ResponsiveDrawer>
+      )}
     </div>
   );
 }

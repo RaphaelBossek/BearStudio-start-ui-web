@@ -22,7 +22,6 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { cn } from '@/lib/tailwind/utils';
 import { DataTableColumnToggle } from './data-table-column-toggle';
 import { DataTablePagination } from './data-table-pagination';
 import { SearchInput } from './search-input';
@@ -41,6 +40,17 @@ interface DataTableProps<TData, TValue> {
   globalFilter?: string;
   onGlobalFilterChange?: (value: string) => void;
   pageCount?: number;
+}
+
+/**
+ * Formats a cell value for display, handling null/undefined cases.
+ * Returns '—' for empty values, otherwise returns the string representation.
+ */
+export function formatCellValue(value: unknown): string {
+  if (value === null || value === undefined || value === '') {
+    return '—';
+  }
+  return String(value);
 }
 
 export function DataTable<TData, TValue>({
@@ -69,23 +79,13 @@ export function DataTable<TData, TValue>({
     [sorting, onSortingChange]
   );
 
-  const handleColumnVisibilityChange = React.useCallback(
-    (updater: any) => {
-      const next = typeof updater === 'function' ? updater(columnVisibility) : updater;
+  const handleColumnVisibilityChange = React.useCallback((updater: any) => {
+    setColumnVisibility((prev) => (typeof updater === 'function' ? updater(prev) : updater));
+  }, []);
 
-      setColumnVisibility(next);
-    },
-    [columnVisibility]
-  );
-
-  const handleColumnFiltersChange = React.useCallback(
-    (updater: any) => {
-      const next = typeof updater === 'function' ? updater(columnFilters) : updater;
-
-      setColumnFilters(next);
-    },
-    [columnFilters]
-  );
+  const handleColumnFiltersChange = React.useCallback((updater: any) => {
+    setColumnFilters((prev) => (typeof updater === 'function' ? updater(prev) : updater));
+  }, []);
 
   const handleGlobalFilterChange = React.useCallback(
     (updater: any) => {
