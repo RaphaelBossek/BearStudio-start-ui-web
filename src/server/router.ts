@@ -8,6 +8,7 @@ import expertWeekRouter from './routers/expert-week';
 import genreRouter from './routers/genre';
 import medicalManagementRouter from './routers/medical-management';
 import shiftPlanMongoRouter from './routers/shift-plan-mongo';
+import treatmentMongoRouter from './routers/treatment-mongo';
 import userRouter from './routers/user';
 import userMongoRouter from './routers/user-mongo';
 
@@ -25,4 +26,5 @@ export const router = {
   expertWeek: expertWeekRouter,
   appointmentMongo: appointmentMongoRouter,
   shiftPlanMongo: shiftPlanMongoRouter,
+  treatmentMongo: treatmentMongoRouter,
 };
