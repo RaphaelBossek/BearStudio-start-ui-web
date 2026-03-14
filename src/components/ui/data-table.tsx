@@ -108,9 +108,30 @@ export function DataTable<TData, TValue>({
     [pagination, onPaginationChange]
   );
 
+  const safeColumns = React.useMemo(() => {
+    return columns.map((col) => {
+      if (
+        'accessorKey' in col &&
+        typeof col.accessorKey === 'string' &&
+        col.accessorKey.includes('.')
+      ) {
+        if (!('accessorFn' in col) || !col.accessorFn) {
+          const keys = col.accessorKey.split('.');
+          return {
+            ...col,
+            id: col.id || col.accessorKey,
+            accessorFn: (row: any) =>
+              keys.reduce((acc: any, part: string) => (acc ? acc[part] : undefined), row),
+          } as ColumnDef<TData, TValue>;
+        }
+      }
+      return col;
+    });
+  }, [columns]);
+
   const table = useReactTable({
     data,
-    columns,
+    columns: safeColumns,
     state: {
       sorting,
       columnVisibility,

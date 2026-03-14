@@ -3,7 +3,7 @@ import { EyeIcon } from 'lucide-react';
 import { useMemo } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { DataTable } from '@/components/ui/data-table';
+import { DataTable, formatCellValue } from '@/components/ui/data-table';
 import type { Outputs } from '@/server/router';
 
 type ShiftPlanRow = Outputs['shiftPlanMongo']['list']['items'][number];
@@ -80,7 +80,7 @@ export function ShiftPlansMongoTable({
         accessorKey: 'name',
         header: 'Name',
         enableSorting: true,
-        cell: (info) => info.getValue() || '—',
+        cell: (info) => formatCellValue(info.getValue()),
       },
       {
         accessorKey: 'day',
@@ -107,7 +107,7 @@ export function ShiftPlansMongoTable({
         accessorKey: 'job.title',
         header: 'Job',
         enableSorting: false,
-        cell: (info) => info.getValue() || '—',
+        cell: (info) => formatCellValue(info.getValue()),
       },
       {
         accessorKey: 'priceType',
@@ -115,7 +115,9 @@ export function ShiftPlansMongoTable({
         enableSorting: true,
         cell: (info) => {
           const priceType = info.getValue() as string;
-          return <Badge variant={getPriceTypeVariant(priceType)}>{priceType || '—'}</Badge>;
+          return (
+            <Badge variant={getPriceTypeVariant(priceType)}>{formatCellValue(priceType)}</Badge>
+          );
         },
       },
       {
@@ -132,7 +134,7 @@ export function ShiftPlansMongoTable({
         accessorKey: 'minPatients',
         header: 'Min Patients',
         enableSorting: false,
-        cell: (info) => info.getValue() || '—',
+        cell: (info) => formatCellValue(info.getValue()),
       },
       {
         id: 'actions',

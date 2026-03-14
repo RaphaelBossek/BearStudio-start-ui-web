@@ -3,7 +3,7 @@ import { EyeIcon } from 'lucide-react';
 import { useMemo } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { DataTable } from '@/components/ui/data-table';
+import { DataTable, formatCellValue } from '@/components/ui/data-table';
 import type { Outputs } from '@/server/router';
 
 type UserMongoRow = Outputs['userMongo']['list']['items'][number];
@@ -41,23 +41,25 @@ export function UsersMongoTable({
         accessorKey: 'userProfile.displayName',
         header: 'Display Name',
         enableSorting: true,
-        cell: (info) => info.getValue() || '—',
+        cell: (info) => formatCellValue(info.getValue()),
       },
       {
         accessorKey: 'username',
         header: 'Username',
         enableSorting: true,
+        cell: (info) => formatCellValue(info.getValue()),
       },
       {
         accessorKey: 'email',
         header: 'Email',
         enableSorting: true,
+        cell: (info) => formatCellValue(info.getValue()),
       },
       {
         accessorKey: 'role',
         header: 'Role',
         enableSorting: true,
-        cell: (info) => <Badge variant="secondary">{info.getValue() as string}</Badge>,
+        cell: (info) => <Badge variant="secondary">{formatCellValue(info.getValue())}</Badge>,
       },
       {
         accessorKey: 'enabled',

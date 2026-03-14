@@ -3,7 +3,7 @@ import { EyeIcon } from 'lucide-react';
 import { useMemo } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { DataTable } from '@/components/ui/data-table';
+import { DataTable, formatCellValue } from '@/components/ui/data-table';
 import type { Outputs } from '@/server/router';
 
 type AppointmentRow = Outputs['appointmentMongo']['list']['items'][number];
@@ -67,7 +67,7 @@ export function AppointmentsMongoTable({
         accessorKey: 'title',
         header: 'Title',
         enableSorting: true,
-        cell: (info) => info.getValue() || '—',
+        cell: (info) => formatCellValue(info.getValue()),
       },
       {
         accessorKey: 'start',
@@ -92,32 +92,32 @@ export function AppointmentsMongoTable({
         enableSorting: true,
         cell: (info) => {
           const state = info.getValue() as string;
-          return <Badge variant={getStateVariant(state)}>{state || '—'}</Badge>;
+          return <Badge variant={getStateVariant(state)}>{formatCellValue(state)}</Badge>;
         },
       },
       {
         accessorKey: 'type',
         header: 'Type',
         enableSorting: true,
-        cell: (info) => <Badge variant="secondary">{(info.getValue() as string) || '—'}</Badge>,
+        cell: (info) => <Badge variant="secondary">{formatCellValue(info.getValue())}</Badge>,
       },
       {
         accessorKey: 'job.title',
         header: 'Job',
         enableSorting: false,
-        cell: (info) => info.getValue() || '—',
+        cell: (info) => formatCellValue(info.getValue()),
       },
       {
         accessorKey: 'customer.name',
         header: 'Customer',
         enableSorting: false,
-        cell: (info) => info.getValue() || '—',
+        cell: (info) => formatCellValue(info.getValue()),
       },
       {
         accessorKey: 'location.name',
         header: 'Location',
         enableSorting: false,
-        cell: (info) => info.getValue() || '—',
+        cell: (info) => formatCellValue(info.getValue()),
       },
       {
         id: 'actions',
