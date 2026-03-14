@@ -79,6 +79,38 @@ const handleSortingChange = React.useCallback((updater) => {
 ```
 
 ### Pagination Invariants and Guard Rails (critical)
+### React Query `keepPreviousData` Requirement (critical)
+
+When paginating via URL parameters (e.g., clicking next page changes `?page=2`), the underlying `useQuery` hook transition to `'pending'` state if `keepPreviousData` is not used. 
+
+If your table is conditionally rendered based on the query status (e.g., hiding the table to show a loading spinner), **the table will unmount and remount**. When it remounts while the query is pending, the `total` items will temporarily be `0`, making `pageCount` evaluate to `0`. The pagination logic's safety guard (`clampPageIndex`) will forcefully clamp the requested page index down to `0` (which maps back to `page=1` in the URL), **hijacking the user's navigation and locking them on the first page**.
+
+**Always use `placeholderData: keepPreviousData`** so the table stays mounted with previous data and `total` count intact while fetching the next page.
+
+**Correct implementation:**
+```typescript
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
+
+const usersQuery = useQuery({
+  ...orpc.user.list.queryOptions({
+    input: {
+      page: props.search.page,
+      limit: props.search.limit,
+    },
+  }),
+  placeholderData: keepPreviousData, // ← CRITICAL to prevent unmount and page clamping
+});
+```
+
+**Incorrect implementation:**
+```typescript
+// ❌ DANGEROUS: Will unmount table on page change, resetting page to 1
+const usersQuery = useQuery(
+  orpc.user.list.queryOptions({
+    input: { page: props.search.page }
+  })
+);
+```
 
 Memoization alone is not enough. All manual pagination flows must enforce these invariants:
 

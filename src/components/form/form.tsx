@@ -5,6 +5,7 @@ import {
   type SubmitHandler,
 } from 'react-hook-form';
 
+import { logger } from '@/lib/logger';
 import { cn } from '@/lib/tailwind/utils';
 
 type FormProps<
@@ -42,7 +43,7 @@ export const Form = <TFieldValues extends FieldValues>({
           if (props.onSubmit) {
             props.handleSubmit(props.onSubmit)(e);
           } else {
-            console.warn('Missing onSubmit method on <Form>');
+            logger.warn('Missing onSubmit method on <Form>');
           }
         }}
         className={cn('flex flex-1 flex-col', className)}

@@ -82,3 +82,7 @@ export const logger = envServer.LOGGER_PRETTY
       })
     )
   : pino(options);
+
+if (typeof globalThis !== 'undefined') {
+  (globalThis as any).serverLogger = logger;
+}

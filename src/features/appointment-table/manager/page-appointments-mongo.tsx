@@ -1,8 +1,7 @@
 import { getUiState } from '@bearstudio/ui-state';
-import { useQuery } from '@tanstack/react-query';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { useRouter } from '@tanstack/react-router';
 import { useCallback, useMemo, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { DataListErrorState, DataListLoadingState } from '@/components/ui/datalist';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import {
@@ -37,12 +36,11 @@ export const PageAppointmentsMongo = (props: {
     sortOrder?: 'asc' | 'desc';
   };
 }) => {
-  const { t } = useTranslation(['common']);
   const router = useRouter();
   const [selectedAppointmentId, setSelectedAppointmentId] = useState<string | null>(null);
 
-  const appointmentsQuery = useQuery(
-    orpc.appointmentMongo.list.queryOptions({
+  const appointmentsQuery = useQuery({
+    ...orpc.appointmentMongo.list.queryOptions({
       input: {
         searchTerm: props.search.searchTerm,
         limit: props.search.limit,
@@ -50,8 +48,9 @@ export const PageAppointmentsMongo = (props: {
         sortBy: props.search.sortBy,
         sortOrder: props.search.sortOrder,
       },
-    })
-  );
+    }),
+    placeholderData: keepPreviousData,
+  });
 
   const appointmentDetailQuery = useQuery(
     orpc.appointmentMongo.get.queryOptions({
@@ -120,6 +119,7 @@ export const PageAppointmentsMongo = (props: {
           ...prev,
           sortBy: sort?.id as any,
           sortOrder: sort?.desc ? 'desc' : 'asc',
+          page: 1,
         }),
         replace: true,
       });

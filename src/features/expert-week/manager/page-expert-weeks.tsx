@@ -1,5 +1,5 @@
 import { getUiState } from '@bearstudio/ui-state';
-import { useQuery } from '@tanstack/react-query';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { useRouter } from '@tanstack/react-router';
 import { useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -31,8 +31,8 @@ export const PageExpertWeeks = (props: {
   const { t } = useTranslation(['common']);
   const router = useRouter();
 
-  const expertWeeksQuery = useQuery(
-    orpc.expertWeek.list.queryOptions({
+  const expertWeeksQuery = useQuery({
+    ...orpc.expertWeek.list.queryOptions({
       input: {
         searchTerm: props.search.searchTerm,
         limit: props.search.limit,
@@ -40,8 +40,9 @@ export const PageExpertWeeks = (props: {
         sortBy: props.search.sortBy,
         sortOrder: props.search.sortOrder,
       },
-    })
-  );
+    }),
+    placeholderData: keepPreviousData,
+  });
 
   const ui = getUiState((set) => {
     if (expertWeeksQuery.status === 'pending') return set('pending');
@@ -103,6 +104,7 @@ export const PageExpertWeeks = (props: {
           ...prev,
           sortBy: sort?.id as any,
           sortOrder: sort?.desc ? 'desc' : 'asc',
+          page: 1,
         }),
         replace: true,
       });

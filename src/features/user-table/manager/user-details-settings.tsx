@@ -9,7 +9,6 @@ import {
 } from 'lucide-react';
 import type * as React from 'react';
 import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import {
@@ -38,7 +37,6 @@ const DataListItem = ({ label, value }: { label: string; value: React.ReactNode 
 );
 
 export const UserDetailsSettings = ({ user }: UserDetailsSettingsProps) => {
-  const { t } = useTranslation(['common']);
   const [activeTab, setActiveTab] = useState('general');
 
   const categories = [
