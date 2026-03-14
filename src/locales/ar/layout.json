@@ -5,6 +5,7 @@
     "dashboard": "لوحة القيادة",
     "expertWeeks": "أسابيع الخبراء",
     "appointmentsMongo": "المواعيد (Mongo)",
+    "treatmentsMongo": "العلاجات (Mongo)",
     "shiftPlansMongo": "خطط المناوبات (Mongo)",
     "usersLegacy": "المستخدمون (قديم)",
     "users": "المستخدمون",

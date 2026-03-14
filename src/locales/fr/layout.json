@@ -5,6 +5,7 @@
     "dashboard": "Tableau de bord",
     "expertWeeks": "Semaines d'experts",
     "appointmentsMongo": "Rendez-vous (Mongo)",
+    "treatmentsMongo": "Traitements (Mongo)",
     "shiftPlansMongo": "Plans de service (Mongo)",
     "usersLegacy": "Utilisateurs (hérités)",
     "users": "Utilisateurs",

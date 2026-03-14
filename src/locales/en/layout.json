@@ -6,6 +6,7 @@
     "books": "Books",
     "expertWeeks": "Expert Weeks",
     "appointmentsMongo": "Appointments (Mongo)",
+    "treatmentsMongo": "Treatments (Mongo)",
     "shiftPlansMongo": "Shift Plans (Mongo)",
     "usersLegacy": "Users (Legacy)",
     "configuration": "Configuration",

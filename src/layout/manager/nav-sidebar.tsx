@@ -161,6 +161,21 @@ export const NavSidebar = (props: { children?: ReactNode }) => {
                   </Link>
                 </SidebarMenuItem>
                 <SidebarMenuItem>
+                  <Link to="/manager/treatments-mongo">
+                    {({ isActive }) => (
+                      <SidebarMenuButton
+                        isActive={isActive}
+                        render={
+                          <span>
+                            <BriefcaseMedicalIcon />
+                            <span>{t('layout:nav.treatmentsMongo')}</span>
+                          </span>
+                        }
+                      />
+                    )}
+                  </Link>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
                   <Link to="/manager/shift-plans-mongo">
                     {({ isActive }) => (
                       <SidebarMenuButton
