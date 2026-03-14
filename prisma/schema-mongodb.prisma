@@ -335,3 +335,113 @@ model ShiftPlan {
 
   @@map("shiftPlan")
 }
+
+model Treatment {
+  id                   BigInt                @id @map("_id")
+  version              BigInt?
+  assigned             TreatmentUser?
+  hour                 Int?
+  day                  String?
+  bookNumber           String?
+  jNumber              String?
+  type                 String?
+  state                String?
+  dateStorno           DateTime?
+  job                  TreatmentJob?
+  jobReport            TreatmentJob?
+  reportingPath        String?
+  jobReportPobatorik   TreatmentJob?
+  archived             Boolean?
+  attachments          TreatmentAttachment[]
+  positions            TreatmentPosition[]
+  changedBy            TreatmentUser?
+  dateChanged          DateTime?
+  createdBy            TreatmentUser?
+  dateCreated          DateTime?
+  closed               DateTime?
+  countTotal           Int?
+  countFinished        Int?
+  dateInitial          DateTime?
+  countPlanned         Int?
+  comment              String?
+  dateAcceptedPTLeitung DateTime?
+  dateAcceptedPT       DateTime?
+  dateAcceptedLocation DateTime?
+  dateStarted          DateTime?
+  dateStart            DateTime?
+  dateLastAppointment  DateTime?
+  reportCountInitial   Int?
+  reportCountRhytm     Int?
+  customer             TreatmentCustomer?
+  location             TreatmentLocation?
+  minutes              Int?
+  class                String?               @map("_class")
+
+  @@map("treatment")
+}
+
+type TreatmentUser {
+  id                BigInt? @map("_id")
+  email             String?
+  name              String?
+  formalDisplayName String?
+}
+
+type TreatmentJob {
+  id          BigInt? @map("_id")
+  code        String?
+  remoteCode  String?
+  title       String?
+  expertTitle String?
+  type        String?
+  color       String?
+}
+
+type TreatmentAttachment {
+  file   TreatmentFile?
+  attach Boolean?
+}
+
+type TreatmentFile {
+  id          String?   @map("_id")
+  name        String?
+  mime        String?
+  type        String?
+  checksum    String?
+  version     BigInt?
+  deep        String?
+  dateCreated DateTime?
+  createdBy   BigInt?
+}
+
+type TreatmentPosition {
+  appointmentId BigInt?
+  start         DateTime?
+  until         DateTime?
+  state         String?
+  requireReport Boolean?
+  forceReport   Boolean?
+  report        TreatmentReport?
+}
+
+type TreatmentReport {
+  date            DateTime?
+  type            String?
+  consultationId  BigInt?
+  dateEnd         DateTime?
+  job             TreatmentJob?
+  dateStart       DateTime?
+}
+
+type TreatmentCustomer {
+  id   BigInt? @map("_id")
+  name String?
+}
+
+type TreatmentLocation {
+  id             BigInt?           @map("_id")
+  name           String?
+  patientDataType String?
+  booknumberMask String?
+  customer       TreatmentCustomer?
+}

@@ -391,6 +391,7 @@ export const ModelName = {
   UserMongo: 'UserMongo',
   Appointment: 'Appointment',
   ShiftPlan: 'ShiftPlan',
+  Treatment: 'Treatment',
 } as const;
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
@@ -411,7 +412,7 @@ export type TypeMap<
     omit: GlobalOmitOptions;
   };
   meta: {
-    modelProps: 'expertWeek' | 'userMongo' | 'appointment' | 'shiftPlan';
+    modelProps: 'expertWeek' | 'userMongo' | 'appointment' | 'shiftPlan' | 'treatment';
     txIsolationLevel: never;
   };
   model: {
@@ -711,6 +712,80 @@ export type TypeMap<
         };
       };
     };
+    Treatment: {
+      payload: Prisma.$TreatmentPayload<ExtArgs>;
+      fields: Prisma.TreatmentFieldRefs;
+      operations: {
+        findUnique: {
+          args: Prisma.TreatmentFindUniqueArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TreatmentPayload> | null;
+        };
+        findUniqueOrThrow: {
+          args: Prisma.TreatmentFindUniqueOrThrowArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TreatmentPayload>;
+        };
+        findFirst: {
+          args: Prisma.TreatmentFindFirstArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TreatmentPayload> | null;
+        };
+        findFirstOrThrow: {
+          args: Prisma.TreatmentFindFirstOrThrowArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TreatmentPayload>;
+        };
+        findMany: {
+          args: Prisma.TreatmentFindManyArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TreatmentPayload>[];
+        };
+        create: {
+          args: Prisma.TreatmentCreateArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TreatmentPayload>;
+        };
+        createMany: {
+          args: Prisma.TreatmentCreateManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        delete: {
+          args: Prisma.TreatmentDeleteArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TreatmentPayload>;
+        };
+        update: {
+          args: Prisma.TreatmentUpdateArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TreatmentPayload>;
+        };
+        deleteMany: {
+          args: Prisma.TreatmentDeleteManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        updateMany: {
+          args: Prisma.TreatmentUpdateManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        upsert: {
+          args: Prisma.TreatmentUpsertArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TreatmentPayload>;
+        };
+        aggregate: {
+          args: Prisma.TreatmentAggregateArgs<ExtArgs>;
+          result: runtime.Types.Utils.Optional<Prisma.AggregateTreatment>;
+        };
+        groupBy: {
+          args: Prisma.TreatmentGroupByArgs<ExtArgs>;
+          result: runtime.Types.Utils.Optional<Prisma.TreatmentGroupByOutputType>[];
+        };
+        findRaw: {
+          args: Prisma.TreatmentFindRawArgs<ExtArgs>;
+          result: Prisma.JsonObject;
+        };
+        aggregateRaw: {
+          args: Prisma.TreatmentAggregateRawArgs<ExtArgs>;
+          result: Prisma.JsonObject;
+        };
+        count: {
+          args: Prisma.TreatmentCountArgs<ExtArgs>;
+          result: runtime.Types.Utils.Optional<Prisma.TreatmentCountAggregateOutputType> | number;
+        };
+      };
+    };
   };
 } & {
   other: {
@@ -879,6 +954,41 @@ export const ShiftPlanScalarFieldEnum = {
 
 export type ShiftPlanScalarFieldEnum =
   (typeof ShiftPlanScalarFieldEnum)[keyof typeof ShiftPlanScalarFieldEnum];
+
+export const TreatmentScalarFieldEnum = {
+  id: 'id',
+  version: 'version',
+  hour: 'hour',
+  day: 'day',
+  bookNumber: 'bookNumber',
+  jNumber: 'jNumber',
+  type: 'type',
+  state: 'state',
+  dateStorno: 'dateStorno',
+  reportingPath: 'reportingPath',
+  archived: 'archived',
+  dateChanged: 'dateChanged',
+  dateCreated: 'dateCreated',
+  closed: 'closed',
+  countTotal: 'countTotal',
+  countFinished: 'countFinished',
+  dateInitial: 'dateInitial',
+  countPlanned: 'countPlanned',
+  comment: 'comment',
+  dateAcceptedPTLeitung: 'dateAcceptedPTLeitung',
+  dateAcceptedPT: 'dateAcceptedPT',
+  dateAcceptedLocation: 'dateAcceptedLocation',
+  dateStarted: 'dateStarted',
+  dateStart: 'dateStart',
+  dateLastAppointment: 'dateLastAppointment',
+  reportCountInitial: 'reportCountInitial',
+  reportCountRhytm: 'reportCountRhytm',
+  minutes: 'minutes',
+  class: 'class',
+} as const;
+
+export type TreatmentScalarFieldEnum =
+  (typeof TreatmentScalarFieldEnum)[keyof typeof TreatmentScalarFieldEnum];
 
 export const SortOrder = {
   asc: 'asc',
@@ -1052,6 +1162,7 @@ export type GlobalOmitConfig = {
   userMongo?: Prisma.UserMongoOmit;
   appointment?: Prisma.AppointmentOmit;
   shiftPlan?: Prisma.ShiftPlanOmit;
+  treatment?: Prisma.TreatmentOmit;
 };
 
 /* Types for Logging */

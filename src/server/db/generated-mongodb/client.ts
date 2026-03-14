@@ -131,6 +131,46 @@ export type ConsultationLocation = Prisma.ConsultationLocationModel;
  */
 export type ConsultationDoctor = Prisma.ConsultationDoctorModel;
 /**
+ * Model TreatmentUser
+ *
+ */
+export type TreatmentUser = Prisma.TreatmentUserModel;
+/**
+ * Model TreatmentJob
+ *
+ */
+export type TreatmentJob = Prisma.TreatmentJobModel;
+/**
+ * Model TreatmentAttachment
+ *
+ */
+export type TreatmentAttachment = Prisma.TreatmentAttachmentModel;
+/**
+ * Model TreatmentFile
+ *
+ */
+export type TreatmentFile = Prisma.TreatmentFileModel;
+/**
+ * Model TreatmentPosition
+ *
+ */
+export type TreatmentPosition = Prisma.TreatmentPositionModel;
+/**
+ * Model TreatmentReport
+ *
+ */
+export type TreatmentReport = Prisma.TreatmentReportModel;
+/**
+ * Model TreatmentCustomer
+ *
+ */
+export type TreatmentCustomer = Prisma.TreatmentCustomerModel;
+/**
+ * Model TreatmentLocation
+ *
+ */
+export type TreatmentLocation = Prisma.TreatmentLocationModel;
+/**
  * Model ExpertWeek
  *
  */
@@ -150,3 +190,8 @@ export type Appointment = Prisma.AppointmentModel;
  *
  */
 export type ShiftPlan = Prisma.ShiftPlanModel;
+/**
+ * Model Treatment
+ *
+ */
+export type Treatment = Prisma.TreatmentModel;

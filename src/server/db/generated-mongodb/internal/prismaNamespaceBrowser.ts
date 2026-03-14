@@ -56,6 +56,7 @@ export const ModelName = {
   UserMongo: 'UserMongo',
   Appointment: 'Appointment',
   ShiftPlan: 'ShiftPlan',
+  Treatment: 'Treatment',
 } as const;
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
@@ -215,6 +216,41 @@ export const ShiftPlanScalarFieldEnum = {
 
 export type ShiftPlanScalarFieldEnum =
   (typeof ShiftPlanScalarFieldEnum)[keyof typeof ShiftPlanScalarFieldEnum];
+
+export const TreatmentScalarFieldEnum = {
+  id: 'id',
+  version: 'version',
+  hour: 'hour',
+  day: 'day',
+  bookNumber: 'bookNumber',
+  jNumber: 'jNumber',
+  type: 'type',
+  state: 'state',
+  dateStorno: 'dateStorno',
+  reportingPath: 'reportingPath',
+  archived: 'archived',
+  dateChanged: 'dateChanged',
+  dateCreated: 'dateCreated',
+  closed: 'closed',
+  countTotal: 'countTotal',
+  countFinished: 'countFinished',
+  dateInitial: 'dateInitial',
+  countPlanned: 'countPlanned',
+  comment: 'comment',
+  dateAcceptedPTLeitung: 'dateAcceptedPTLeitung',
+  dateAcceptedPT: 'dateAcceptedPT',
+  dateAcceptedLocation: 'dateAcceptedLocation',
+  dateStarted: 'dateStarted',
+  dateStart: 'dateStart',
+  dateLastAppointment: 'dateLastAppointment',
+  reportCountInitial: 'reportCountInitial',
+  reportCountRhytm: 'reportCountRhytm',
+  minutes: 'minutes',
+  class: 'class',
+} as const;
+
+export type TreatmentScalarFieldEnum =
+  (typeof TreatmentScalarFieldEnum)[keyof typeof TreatmentScalarFieldEnum];
 
 export const SortOrder = {
   asc: 'asc',
