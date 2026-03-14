@@ -56,6 +56,17 @@ The following stories are derived from this Job to achieve the Desired Outcomes:
 - **Timeline:** [Estimated timeline for implementation.]
 - **Required Resources:** [List resources needed.]
 
+## View Classification
+- [ ] **Target User**: Who is the primary user of this feature?
+  - [ ] **End User** (Patient/Customer/General user) → `/app/*` route, update `src/layout/app/nav-sidebar.tsx`
+  - [ ] **Admin/Manager/Staff** (Configuration/Management) → `/manager/*` route, update `src/layout/manager/nav-sidebar.tsx`
+  - [ ] **Both** (different permissions/views)
+- [ ] **Navigation**: Sidebar menu configuration
+  - Section: [Application | Configuration | User Profile | Other]
+  - Icon: [Lucide icon name, e.g., `CalendarIcon`, `UsersIcon`]
+  - Label translation key: `layout:nav.[featureKey]`
+  - Position: [After which existing menu item]
+
 ## Functional Requirements
 - [List functional requirements the solution must fulfill.]
 

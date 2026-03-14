@@ -63,6 +63,13 @@ If no design specs exist, ask the user:
 ### 5. Integrate into Pages
 - Add components to pages in `/src/app/`
 - Set up routing if needed
+- **CRITICAL: Update navigation sidebar** for the feature to be accessible:
+  - Determine view type from feature specs (user vs admin/manager)
+  - **User views** (`/app/*` routes) → Update `src/layout/app/nav-sidebar.tsx`
+  - **Manager/Admin views** (`/manager/*` routes) → Update `src/layout/manager/nav-sidebar.tsx`
+  - Add translation key to `src/locales/{en,fr,ar,sw}/layout.json` under `nav.{featureKey}`
+  - Use existing Lucide icon or add new one
+  - Place in appropriate section (Application, Configuration, etc.)
 - Connect to backend APIs or localStorage as specified in tech design
 
 ### 6. User Review
