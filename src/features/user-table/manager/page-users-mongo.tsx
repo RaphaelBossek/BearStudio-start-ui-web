@@ -1,8 +1,7 @@
 import { getUiState } from '@bearstudio/ui-state';
-import { useQuery } from '@tanstack/react-query';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { useRouter } from '@tanstack/react-router';
 import { useCallback, useMemo, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { DataListErrorState, DataListLoadingState } from '@/components/ui/datalist';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import {
@@ -37,12 +36,11 @@ export const PageUsersMongo = (props: {
     sortOrder?: 'asc' | 'desc';
   };
 }) => {
-  const { t } = useTranslation(['common']);
   const router = useRouter();
   const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
 
-  const usersQuery = useQuery(
-    orpc.userMongo.list.queryOptions({
+  const usersQuery = useQuery({
+    ...orpc.userMongo.list.queryOptions({
       input: {
         searchTerm: props.search.searchTerm,
         limit: props.search.limit,
@@ -50,8 +48,9 @@ export const PageUsersMongo = (props: {
         sortBy: props.search.sortBy,
         sortOrder: props.search.sortOrder,
       },
-    })
-  );
+    }),
+    placeholderData: keepPreviousData,
+  });
 
   const userDetailQuery = useQuery(
     orpc.userMongo.get.queryOptions({
@@ -117,6 +116,7 @@ export const PageUsersMongo = (props: {
           ...prev,
           sortBy: sort?.id as any,
           sortOrder: sort?.desc ? 'desc' : 'asc',
+          page: 1,
         }),
         replace: true,
       });
@@ -128,7 +128,11 @@ export const PageUsersMongo = (props: {
     (value: string) => {
       router.navigate({
         to: '.',
-        search: (prev: any) => ({ ...prev, searchTerm: String(value), page: 1 }),
+        search: (prev: any) => ({
+          ...prev,
+          searchTerm: String(value),
+          page: 1,
+        }),
         replace: true,
       });
     },

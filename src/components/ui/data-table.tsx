@@ -63,9 +63,37 @@ export function DataTable<TData, TValue>({
   const handleSortingChange = React.useCallback(
     (updater: any) => {
       const next = typeof updater === 'function' ? updater(sorting ?? []) : updater;
+
       onSortingChange?.(next);
     },
     [sorting, onSortingChange]
+  );
+
+  const handleColumnVisibilityChange = React.useCallback(
+    (updater: any) => {
+      const next = typeof updater === 'function' ? updater(columnVisibility) : updater;
+
+      setColumnVisibility(next);
+    },
+    [columnVisibility]
+  );
+
+  const handleColumnFiltersChange = React.useCallback(
+    (updater: any) => {
+      const next = typeof updater === 'function' ? updater(columnFilters) : updater;
+
+      setColumnFilters(next);
+    },
+    [columnFilters]
+  );
+
+  const handleGlobalFilterChange = React.useCallback(
+    (updater: any) => {
+      const next = typeof updater === 'function' ? updater(globalFilter) : updater;
+
+      onGlobalFilterChange?.(next);
+    },
+    [globalFilter, onGlobalFilterChange]
   );
 
   const handlePaginationChange = React.useCallback(
@@ -74,6 +102,7 @@ export function DataTable<TData, TValue>({
         typeof updater === 'function'
           ? updater(pagination ?? { pageIndex: 0, pageSize: 10 })
           : updater;
+
       onPaginationChange?.(next);
     },
     [pagination, onPaginationChange]
@@ -91,9 +120,9 @@ export function DataTable<TData, TValue>({
     },
     onSortingChange: handleSortingChange,
     onPaginationChange: handlePaginationChange,
-    onGlobalFilterChange: onGlobalFilterChange,
-    onColumnFiltersChange: setColumnFilters,
-    onColumnVisibilityChange: setColumnVisibility,
+    onGlobalFilterChange: handleGlobalFilterChange,
+    onColumnFiltersChange: handleColumnFiltersChange,
+    onColumnVisibilityChange: handleColumnVisibilityChange,
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
