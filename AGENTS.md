@@ -219,3 +219,14 @@ const safePageCount = normalizePageCount(pageCount); // pageCount is a prop, not
 // ❌ Wrong — do NOT do this
 const pageCount = normalizePageCount(table.getPageCount()); // returns 0 under manual pagination
 ```
+
+### Nested Drawers in Dropdowns (DataTableColumnToggle)
+
+1. **Avoid Event Bubbling Collisions**: When implementing a `Drawer` or `Dialog` related to a `DropdownMenu` (e.g., the "more..." option in `DataTableColumnToggle`), **do NOT** nest the `Drawer` component directly inside the `DropdownMenuContent`.
+   - In React, events bubble up the React component tree regardless of the DOM tree (Portals).
+   - Clicking a `Checkbox` inside the Drawer will bubble the click event up to the `DropdownMenuContent`.
+   - The dropdown menu will interpret the click as a command to close itself, immediately unmounting both the menu and the nested Drawer.
+   - **Fix:** Render the `Drawer` as a sibling to the `DropdownMenu` and open it programmatically (`setIsDrawerOpen(true)`) from an `onClick` handler inside a `DropdownMenuItem`.
+
+2. **Column Visibility State Syncing**: TanStack React Table's internal state updates do not inherently force a re-render of external sibling components unless explicitly handled.
+   - For `DataTableColumnToggle` to faithfully reflect changes made elsewhere (or from its own unbatched callbacks), use a `useEffect` subscription to `table.getState().columnVisibility` that triggers a `forceUpdate`.
