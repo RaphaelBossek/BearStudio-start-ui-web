@@ -1,4 +1,4 @@
-import { CalendarIcon, DatabaseIcon, InfoIcon, MapPinIcon, UserIcon, XIcon } from 'lucide-react';
+import { CalendarIcon, DatabaseIcon, InfoIcon, MapPinIcon, UserIcon } from 'lucide-react';
 import type * as React from 'react';
 import { useState } from 'react';
 import { Badge } from '@/components/ui/badge';
@@ -17,7 +17,6 @@ import { cn } from '@/lib/tailwind/utils';
 
 interface AppointmentDrawerProps {
   appointment: any;
-  onClose: () => void;
 }
 
 const DataListItem = ({ label, value }: { label: string; value: React.ReactNode }) => (
@@ -50,7 +49,7 @@ const getStateVariant = (state: string | null | undefined) => {
   }
 };
 
-export const AppointmentDrawer = ({ appointment, onClose }: AppointmentDrawerProps) => {
+export const AppointmentDrawer = ({ appointment }: AppointmentDrawerProps) => {
   const [activeTab, setActiveTab] = useState('general');
 
   const categories = [
@@ -209,9 +208,6 @@ export const AppointmentDrawer = ({ appointment, onClose }: AppointmentDrawerPro
             Associated appointment for this treatment.
           </p>
         </div>
-        <Button variant="ghost" size="icon" onClick={onClose}>
-          <XIcon className="size-4" />
-        </Button>
       </div>
       <div className="flex gap-6 flex-1 overflow-hidden p-6">
         <aside className="w-48 shrink-0 flex flex-col gap-1 border-r pr-4">
