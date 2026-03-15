@@ -9,8 +9,7 @@ import {
 } from 'lucide-react';
 import type * as React from 'react';
 import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { CategorizedDrawerLayout, DrawerContentSection } from '@/components/drawer-navigation';
 import {
   DataList,
   DataListCell,
@@ -37,7 +36,7 @@ const DataListItem = ({ label, value }: { label: string; value: React.ReactNode 
 );
 
 export const UserDetailsSettings = ({ user }: UserDetailsSettingsProps) => {
-  const [activeTab, setActiveTab] = useState('general');
+  const [activeCategory, setActiveCategory] = useState('general');
 
   const categories = [
     { id: 'general', label: 'General', icon: UserIcon },
@@ -49,43 +48,41 @@ export const UserDetailsSettings = ({ user }: UserDetailsSettingsProps) => {
     { id: 'raw', label: 'Raw Data', icon: DatabaseIcon },
   ];
 
-  const renderContent = () => {
-    switch (activeTab) {
+  const renderContent = (categoryId: string) => {
+    switch (categoryId) {
       case 'general':
         return (
-          <Card>
-            <CardHeader>
-              <CardTitle>General Profile</CardTitle>
-              <CardDescription>Basic information about the user.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <DataList>
-                <DataListItem label="Salutation" value={user.userProfile?.salutation} />
-                <DataListItem label="Title" value={user.userProfile?.title} />
-                <DataListItem label="First Name" value={user.userProfile?.firstName} />
-                <DataListItem label="Last Name" value={user.userProfile?.lastName} />
-                <DataListItem label="Display Name" value={user.userProfile?.displayName} />
-                <DataListItem
-                  label="Birthday"
-                  value={
-                    user.userProfile?.birthday
-                      ? new Date(user.userProfile.birthday).toLocaleDateString()
-                      : null
-                  }
-                />
-                <DataListItem label="Gender" value={user.userProfile?.gender} />
-              </DataList>
-            </CardContent>
-          </Card>
+          <DrawerContentSection
+            variant="card"
+            title="General Profile"
+            description="Basic information about the user."
+          >
+            <DataList>
+              <DataListItem label="Salutation" value={user.userProfile?.salutation} />
+              <DataListItem label="Title" value={user.userProfile?.title} />
+              <DataListItem label="First Name" value={user.userProfile?.firstName} />
+              <DataListItem label="Last Name" value={user.userProfile?.lastName} />
+              <DataListItem label="Display Name" value={user.userProfile?.displayName} />
+              <DataListItem
+                label="Birthday"
+                value={
+                  user.userProfile?.birthday
+                    ? new Date(user.userProfile.birthday).toLocaleDateString()
+                    : null
+                }
+              />
+              <DataListItem label="Gender" value={user.userProfile?.gender} />
+            </DataList>
+          </DrawerContentSection>
         );
       case 'contact':
         return (
-          <Card>
-            <CardHeader>
-              <CardTitle>Contact Information</CardTitle>
-              <CardDescription>Address and communication details.</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-6">
+          <DrawerContentSection
+            variant="card"
+            title="Contact Information"
+            description="Address and communication details."
+          >
+            <div className="space-y-6">
               <div>
                 <h4 className="text-sm font-medium mb-2 px-1.5">Email & Phone</h4>
                 <DataList>
@@ -108,56 +105,54 @@ export const UserDetailsSettings = ({ user }: UserDetailsSettingsProps) => {
                   <DataListItem label="Country" value={user.userProfile?.mainAddress?.country} />
                 </DataList>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </DrawerContentSection>
         );
       case 'account':
         return (
-          <Card>
-            <CardHeader>
-              <CardTitle>Account & System</CardTitle>
-              <CardDescription>System-level account status and metadata.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <DataList>
-                <DataListItem label="Username" value={user.username} />
-                <DataListItem label="Role" value={user.role} />
-                <DataListItem
-                  label="Status"
-                  value={
-                    user.enabled ? (
-                      <span className="text-green-600 font-medium">Enabled</span>
-                    ) : (
-                      <span className="text-red-600 font-medium">Disabled</span>
-                    )
-                  }
-                />
-                <DataListItem
-                  label="Created At"
-                  value={user.dateCreated ? new Date(user.dateCreated).toLocaleString() : null}
-                />
-                <DataListItem
-                  label="Changed At"
-                  value={user.dateChanged ? new Date(user.dateChanged).toLocaleString() : null}
-                />
-                <DataListItem label="Logins" value={user.countLogin} />
-                <DataListItem
-                  label="Last Login"
-                  value={user.lastLogin ? new Date(user.lastLogin).toLocaleString() : null}
-                />
-                <DataListItem label="Last IP" value={user.lastIP} />
-              </DataList>
-            </CardContent>
-          </Card>
+          <DrawerContentSection
+            variant="card"
+            title="Account & System"
+            description="System-level account status and metadata."
+          >
+            <DataList>
+              <DataListItem label="Username" value={user.username} />
+              <DataListItem label="Role" value={user.role} />
+              <DataListItem
+                label="Status"
+                value={
+                  user.enabled ? (
+                    <span className="text-green-600 font-medium">Enabled</span>
+                  ) : (
+                    <span className="text-red-600 font-medium">Disabled</span>
+                  )
+                }
+              />
+              <DataListItem
+                label="Created At"
+                value={user.dateCreated ? new Date(user.dateCreated).toLocaleString() : null}
+              />
+              <DataListItem
+                label="Changed At"
+                value={user.dateChanged ? new Date(user.dateChanged).toLocaleString() : null}
+              />
+              <DataListItem label="Logins" value={user.countLogin} />
+              <DataListItem
+                label="Last Login"
+                value={user.lastLogin ? new Date(user.lastLogin).toLocaleString() : null}
+              />
+              <DataListItem label="Last IP" value={user.lastIP} />
+            </DataList>
+          </DrawerContentSection>
         );
       case 'professional':
         return (
-          <Card>
-            <CardHeader>
-              <CardTitle>Professional Profile</CardTitle>
-              <CardDescription>Bank details and certification info.</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-6">
+          <DrawerContentSection
+            variant="card"
+            title="Professional Profile"
+            description="Bank details and certification info."
+          >
+            <div className="space-y-6">
               <div>
                 <h4 className="text-sm font-medium mb-2 px-1.5">Bank Details</h4>
                 <DataList>
@@ -196,42 +191,40 @@ export const UserDetailsSettings = ({ user }: UserDetailsSettingsProps) => {
                   )) || <span className="text-sm text-muted-foreground">No skills assigned.</span>}
                 </div>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </DrawerContentSection>
         );
       case 'billing':
         return (
-          <Card>
-            <CardHeader>
-              <CardTitle>Billing & Employer</CardTitle>
-              <CardDescription>Employer-specific settings and billing info.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <DataList>
-                <DataListItem label="Konto" value={user.employerProfile?.konto} />
-                <DataListItem label="Level" value={user.employerProfile?.level} />
-                <DataListItem
-                  label="Active Since"
-                  value={
-                    user.employerProfile?.activeSince
-                      ? new Date(user.employerProfile.activeSince).toLocaleDateString()
-                      : null
-                  }
-                />
-                <DataListItem label="Current Income" value={user.employerProfile?.currentIncome} />
-                <DataListItem label="Inactive Reason" value={user.employerProfile?.inctiveReason} />
-              </DataList>
-            </CardContent>
-          </Card>
+          <DrawerContentSection
+            variant="card"
+            title="Billing & Employer"
+            description="Employer-specific settings and billing info."
+          >
+            <DataList>
+              <DataListItem label="Konto" value={user.employerProfile?.konto} />
+              <DataListItem label="Level" value={user.employerProfile?.level} />
+              <DataListItem
+                label="Active Since"
+                value={
+                  user.employerProfile?.activeSince
+                    ? new Date(user.employerProfile.activeSince).toLocaleDateString()
+                    : null
+                }
+              />
+              <DataListItem label="Current Income" value={user.employerProfile?.currentIncome} />
+              <DataListItem label="Inactive Reason" value={user.employerProfile?.inctiveReason} />
+            </DataList>
+          </DrawerContentSection>
         );
       case 'security':
         return (
-          <Card>
-            <CardHeader>
-              <CardTitle>Security & Authentication</CardTitle>
-              <CardDescription>TOTP and login event history.</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-6">
+          <DrawerContentSection
+            variant="card"
+            title="Security & Authentication"
+            description="TOTP and login event history."
+          >
+            <div className="space-y-6">
               <div>
                 <h4 className="text-sm font-medium mb-2 px-1.5">TOTP Status</h4>
                 <DataList>
@@ -269,24 +262,22 @@ export const UserDetailsSettings = ({ user }: UserDetailsSettingsProps) => {
                   )}
                 </div>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </DrawerContentSection>
         );
       case 'raw':
         return (
-          <Card>
-            <CardHeader>
-              <CardTitle>Raw Document Data</CardTitle>
-              <CardDescription>Full unformatted JSON data from MongoDB.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="rounded-md border bg-muted/30 p-4">
-                <pre className="text-[10px] font-mono leading-tight whitespace-pre-wrap break-all h-[500px] overflow-auto">
-                  {JSON.stringify(user, null, 2)}
-                </pre>
-              </div>
-            </CardContent>
-          </Card>
+          <DrawerContentSection
+            variant="card"
+            title="Raw Document Data"
+            description="Full unformatted JSON data from MongoDB."
+          >
+            <div className="rounded-md border bg-muted/30 p-4">
+              <pre className="text-[10px] font-mono leading-tight whitespace-pre-wrap break-all h-[500px] overflow-auto">
+                {JSON.stringify(user, null, 2)}
+              </pre>
+            </div>
+          </DrawerContentSection>
         );
       default:
         return null;
@@ -294,27 +285,13 @@ export const UserDetailsSettings = ({ user }: UserDetailsSettingsProps) => {
   };
 
   return (
-    <div className="flex gap-6 h-full p-1">
-      <aside className="w-48 shrink-0 flex flex-col gap-1 border-r pr-4">
-        {categories.map((cat) => {
-          const Icon = cat.icon;
-          return (
-            <Button
-              key={cat.id}
-              variant={activeTab === cat.id ? 'secondary' : 'ghost'}
-              className={cn(
-                'w-full justify-start gap-2 h-9 text-sm',
-                activeTab === cat.id && 'bg-secondary font-medium'
-              )}
-              onClick={() => setActiveTab(cat.id)}
-            >
-              <Icon className="size-4 shrink-0" />
-              {cat.label}
-            </Button>
-          );
-        })}
-      </aside>
-      <div className="flex-1 min-w-0 pb-10">{renderContent()}</div>
-    </div>
+    <CategorizedDrawerLayout
+      title="User Details"
+      description="Full inspection of the user document from the legacy MongoDB."
+      categories={categories}
+      activeCategory={activeCategory}
+      onCategoryChange={setActiveCategory}
+      renderContent={renderContent}
+    />
   );
 };

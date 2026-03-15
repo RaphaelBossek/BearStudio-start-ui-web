@@ -1,8 +1,7 @@
 import { CalendarIcon, ClockIcon, DatabaseIcon, InfoIcon, UserIcon } from 'lucide-react';
 import type * as React from 'react';
 import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { CategorizedDrawerLayout, DrawerContentSection } from '@/components/drawer-navigation';
 import {
   DataList,
   DataListCell,
@@ -11,7 +10,6 @@ import {
   DataListTextHeader,
 } from '@/components/ui/datalist';
 import { Separator } from '@/components/ui/separator';
-import { cn } from '@/lib/tailwind/utils';
 
 interface ShiftPlanDetailsProps {
   shiftPlan: any;
@@ -48,7 +46,7 @@ const getDayLabel = (day: string | null | undefined) => {
 };
 
 export const ShiftPlanDetails = ({ shiftPlan }: ShiftPlanDetailsProps) => {
-  const [activeTab, setActiveTab] = useState('general');
+  const [activeCategory, setActiveCategory] = useState('general');
 
   const categories = [
     { id: 'general', label: 'General', icon: InfoIcon },
@@ -58,85 +56,79 @@ export const ShiftPlanDetails = ({ shiftPlan }: ShiftPlanDetailsProps) => {
     { id: 'raw', label: 'Raw Data', icon: DatabaseIcon },
   ];
 
-  const renderContent = () => {
-    switch (activeTab) {
+  const renderContent = (categoryId: string) => {
+    switch (categoryId) {
       case 'general':
         return (
-          <Card>
-            <CardHeader>
-              <CardTitle>General Information</CardTitle>
-              <CardDescription>Basic shift plan details.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <DataList>
-                <DataListItem label="ID" value={shiftPlan.id} />
-                <DataListItem label="Name" value={shiftPlan.name} />
-                <DataListItem label="Version" value={shiftPlan.version} />
-                <DataListItem label="Price Type" value={shiftPlan.priceType} />
-                <DataListItem label="Comment" value={shiftPlan.comment} />
-              </DataList>
-            </CardContent>
-          </Card>
+          <DrawerContentSection
+            variant="card"
+            title="General Information"
+            description="Basic shift plan details."
+          >
+            <DataList>
+              <DataListItem label="ID" value={shiftPlan.id} />
+              <DataListItem label="Name" value={shiftPlan.name} />
+              <DataListItem label="Version" value={shiftPlan.version} />
+              <DataListItem label="Price Type" value={shiftPlan.priceType} />
+              <DataListItem label="Comment" value={shiftPlan.comment} />
+            </DataList>
+          </DrawerContentSection>
         );
       case 'schedule':
         return (
-          <Card>
-            <CardHeader>
-              <CardTitle>Schedule Details</CardTitle>
-              <CardDescription>Recurrence and scheduling information.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <DataList>
-                <DataListItem label="Day" value={getDayLabel(shiftPlan.day)} />
-                <DataListItem label="Scheduling" value={shiftPlan.scheduling} />
-                <DataListItem label="Multiplier" value={shiftPlan.schedulingMulitplier} />
-                <DataListItem
-                  label="Last Date"
-                  value={
-                    shiftPlan.lastDate ? new Date(shiftPlan.lastDate).toLocaleDateString() : null
-                  }
-                />
-                <DataListItem label="Min Patients" value={shiftPlan.minPatients} />
-                <DataListItem label="Count" value={shiftPlan.count} />
-              </DataList>
-            </CardContent>
-          </Card>
+          <DrawerContentSection
+            variant="card"
+            title="Schedule Details"
+            description="Recurrence and scheduling information."
+          >
+            <DataList>
+              <DataListItem label="Day" value={getDayLabel(shiftPlan.day)} />
+              <DataListItem label="Scheduling" value={shiftPlan.scheduling} />
+              <DataListItem label="Multiplier" value={shiftPlan.schedulingMulitplier} />
+              <DataListItem
+                label="Last Date"
+                value={
+                  shiftPlan.lastDate ? new Date(shiftPlan.lastDate).toLocaleDateString() : null
+                }
+              />
+              <DataListItem label="Min Patients" value={shiftPlan.minPatients} />
+              <DataListItem label="Count" value={shiftPlan.count} />
+            </DataList>
+          </DrawerContentSection>
         );
       case 'timing':
         return (
-          <Card>
-            <CardHeader>
-              <CardTitle>Timing Details</CardTitle>
-              <CardDescription>Start and end times for the shift.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <DataList>
-                <DataListItem label="Start Time" value={formatTime(shiftPlan.timeStart)} />
-                <DataListItem label="End Time" value={formatTime(shiftPlan.timeEnd)} />
-                <DataListItem
-                  label="Created"
-                  value={
-                    shiftPlan.dateCreated ? new Date(shiftPlan.dateCreated).toLocaleString() : null
-                  }
-                />
-                <DataListItem
-                  label="Changed"
-                  value={
-                    shiftPlan.dateChanged ? new Date(shiftPlan.dateChanged).toLocaleString() : null
-                  }
-                />
-              </DataList>
-            </CardContent>
-          </Card>
+          <DrawerContentSection
+            variant="card"
+            title="Timing Details"
+            description="Start and end times for the shift."
+          >
+            <DataList>
+              <DataListItem label="Start Time" value={formatTime(shiftPlan.timeStart)} />
+              <DataListItem label="End Time" value={formatTime(shiftPlan.timeEnd)} />
+              <DataListItem
+                label="Created"
+                value={
+                  shiftPlan.dateCreated ? new Date(shiftPlan.dateCreated).toLocaleString() : null
+                }
+              />
+              <DataListItem
+                label="Changed"
+                value={
+                  shiftPlan.dateChanged ? new Date(shiftPlan.dateChanged).toLocaleString() : null
+                }
+              />
+            </DataList>
+          </DrawerContentSection>
         );
       case 'people':
         return (
-          <Card>
-            <CardHeader>
-              <CardTitle>People & Job</CardTitle>
-              <CardDescription>Creator, modifier, and job information.</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-6">
+          <DrawerContentSection
+            variant="card"
+            title="People & Job"
+            description="Creator, modifier, and job information."
+          >
+            <div className="space-y-6">
               <div>
                 <h4 className="text-sm font-medium mb-2 px-1.5">Created By</h4>
                 <DataList>
@@ -165,24 +157,22 @@ export const ShiftPlanDetails = ({ shiftPlan }: ShiftPlanDetailsProps) => {
                   <DataListItem label="Type" value={shiftPlan.job?.type} />
                 </DataList>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </DrawerContentSection>
         );
       case 'raw':
         return (
-          <Card>
-            <CardHeader>
-              <CardTitle>Raw Document Data</CardTitle>
-              <CardDescription>Full unformatted JSON data from MongoDB.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="rounded-md border bg-muted/30 p-4">
-                <pre className="text-[10px] font-mono leading-tight whitespace-pre-wrap break-all h-[500px] overflow-auto">
-                  {JSON.stringify(shiftPlan, null, 2)}
-                </pre>
-              </div>
-            </CardContent>
-          </Card>
+          <DrawerContentSection
+            variant="card"
+            title="Raw Document Data"
+            description="Full unformatted JSON data from MongoDB."
+          >
+            <div className="rounded-md border bg-muted/30 p-4">
+              <pre className="text-[10px] font-mono leading-tight whitespace-pre-wrap break-all h-[500px] overflow-auto">
+                {JSON.stringify(shiftPlan, null, 2)}
+              </pre>
+            </div>
+          </DrawerContentSection>
         );
       default:
         return null;
@@ -190,27 +180,13 @@ export const ShiftPlanDetails = ({ shiftPlan }: ShiftPlanDetailsProps) => {
   };
 
   return (
-    <div className="flex gap-6 h-full p-1">
-      <aside className="w-48 shrink-0 flex flex-col gap-1 border-r pr-4">
-        {categories.map((cat) => {
-          const Icon = cat.icon;
-          return (
-            <Button
-              key={cat.id}
-              variant={activeTab === cat.id ? 'secondary' : 'ghost'}
-              className={cn(
-                'w-full justify-start gap-2 h-9 text-sm',
-                activeTab === cat.id && 'bg-secondary font-medium'
-              )}
-              onClick={() => setActiveTab(cat.id)}
-            >
-              <Icon className="size-4 shrink-0" />
-              {cat.label}
-            </Button>
-          );
-        })}
-      </aside>
-      <div className="flex-1 min-w-0 pb-10">{renderContent()}</div>
-    </div>
+    <CategorizedDrawerLayout
+      title="Shift Plan Details"
+      description="Full inspection of the shift plan document from MongoDB."
+      categories={categories}
+      activeCategory={activeCategory}
+      onCategoryChange={setActiveCategory}
+      renderContent={renderContent}
+    />
   );
 };

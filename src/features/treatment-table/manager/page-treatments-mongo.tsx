@@ -215,12 +215,7 @@ export const PageTreatmentsMongo = (props: {
           onOpenChange={(open) => !open && setSelectedAppointment(null)}
         >
           <SheetContent className="sm:max-w-2xl overflow-hidden flex flex-col p-0">
-            {selectedAppointment && (
-              <AppointmentDrawer
-                appointment={selectedAppointment}
-                onClose={() => setSelectedAppointment(null)}
-              />
-            )}
+            {selectedAppointment && <AppointmentDrawer appointment={selectedAppointment} />}
           </SheetContent>
         </Sheet>
       </PageLayoutContent>
