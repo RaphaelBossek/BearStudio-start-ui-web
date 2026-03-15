@@ -50,9 +50,7 @@ export async function createUsers() {
     createdCounter += 1;
   }
 
-  console.log(
-    `✅ ${existingCount} existing user 👉 ${createdCounter} users created`
-  );
+  console.log(`✅ ${existingCount} existing user 👉 ${createdCounter} users created`);
   console.log(`👉 Admin connect with: ${emphasis('admin@admin.com')}`);
   console.log(`👉 User connect with: ${emphasis('user@user.com')}`);
 }

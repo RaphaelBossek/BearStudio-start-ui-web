@@ -1,5 +1,5 @@
-import { faker } from '@faker-js/faker';
 import { randomInt } from 'node:crypto';
+import { faker } from '@faker-js/faker';
 
 import { db } from '@/server/db';
 import data from './book-data.json';
@@ -24,16 +24,11 @@ export async function createBooks() {
   const result = await db.genre.createMany({
     data: genres
       .filter(
-        ([genre]) =>
-          !existingGenres
-            .map((existingGenre) => existingGenre.name)
-            .includes(genre)
+        ([genre]) => !existingGenres.map((existingGenre) => existingGenre.name).includes(genre)
       )
       .map(([name, color]) => ({ name, color })),
   });
-  console.log(
-    `✅ ${existingGenres.length} existing genres 👉 ${result.count} genres created`
-  );
+  console.log(`✅ ${existingGenres.length} existing genres 👉 ${result.count} genres created`);
 
   console.log(`⏳ Seeding books`);
 
@@ -60,10 +55,7 @@ export async function createBooks() {
           author,
           title,
           genre: {
-            connect:
-              existingGenresAfterSeed[
-                randomInt(existingGenresAfterSeed.length)
-              ],
+            connect: existingGenresAfterSeed[randomInt(existingGenresAfterSeed.length)],
           },
           publisher: faker.book.publisher(),
         },
@@ -72,7 +64,5 @@ export async function createBooks() {
     })
   );
 
-  console.log(
-    `✅ ${existingCount} existing books 👉 ${createdCounter} books created`
-  );
+  console.log(`✅ ${existingCount} existing books 👉 ${createdCounter} books created`);
 }
