@@ -388,13 +388,20 @@ type TreatmentUser {
 }
 
 type TreatmentJob {
-  id          BigInt? @map("_id")
-  code        String?
-  remoteCode  String?
-  title       String?
-  expertTitle String?
-  type        String?
-  color       String?
+  id                         BigInt?  @map("_id")
+  code                       String?
+  remoteCode                 String?
+  title                      String?
+  expertTitle                String?
+  type                       String?
+  color                      String?
+  consultationStandard       Boolean?
+  consultationOnboarding     Boolean?
+  consultationOnboardingShort Boolean?
+  consultationDocument       Boolean?
+  consultationIncarceration  Boolean?
+  defaultConsultation        String?
+  defaultFurtherTreatment    String?
 }
 
 type TreatmentAttachment {

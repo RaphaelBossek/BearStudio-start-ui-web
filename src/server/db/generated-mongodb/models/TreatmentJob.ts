@@ -32,6 +32,13 @@ export type TreatmentJobOrderByInput = {
   expertTitle?: Prisma.SortOrder;
   type?: Prisma.SortOrder;
   color?: Prisma.SortOrder;
+  consultationStandard?: Prisma.SortOrder;
+  consultationOnboarding?: Prisma.SortOrder;
+  consultationOnboardingShort?: Prisma.SortOrder;
+  consultationDocument?: Prisma.SortOrder;
+  consultationIncarceration?: Prisma.SortOrder;
+  defaultConsultation?: Prisma.SortOrder;
+  defaultFurtherTreatment?: Prisma.SortOrder;
 };
 
 export type TreatmentJobNullableCreateEnvelopeInput = {
@@ -55,6 +62,13 @@ export type TreatmentJobWhereInput = {
   expertTitle?: Prisma.StringNullableFilter<'TreatmentJob'> | string | null;
   type?: Prisma.StringNullableFilter<'TreatmentJob'> | string | null;
   color?: Prisma.StringNullableFilter<'TreatmentJob'> | string | null;
+  consultationStandard?: Prisma.BoolNullableFilter<'TreatmentJob'> | boolean | null;
+  consultationOnboarding?: Prisma.BoolNullableFilter<'TreatmentJob'> | boolean | null;
+  consultationOnboardingShort?: Prisma.BoolNullableFilter<'TreatmentJob'> | boolean | null;
+  consultationDocument?: Prisma.BoolNullableFilter<'TreatmentJob'> | boolean | null;
+  consultationIncarceration?: Prisma.BoolNullableFilter<'TreatmentJob'> | boolean | null;
+  defaultConsultation?: Prisma.StringNullableFilter<'TreatmentJob'> | string | null;
+  defaultFurtherTreatment?: Prisma.StringNullableFilter<'TreatmentJob'> | string | null;
 };
 
 export type TreatmentJobUpsertInput = {
@@ -70,6 +84,13 @@ export type TreatmentJobUpdateInput = {
   expertTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  consultationStandard?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
+  consultationOnboarding?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
+  consultationOnboardingShort?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
+  consultationDocument?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
+  consultationIncarceration?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null;
+  defaultConsultation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  defaultFurtherTreatment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 };
 
 export type TreatmentJobSelect<
@@ -83,6 +104,13 @@ export type TreatmentJobSelect<
     expertTitle?: boolean;
     type?: boolean;
     color?: boolean;
+    consultationStandard?: boolean;
+    consultationOnboarding?: boolean;
+    consultationOnboardingShort?: boolean;
+    consultationDocument?: boolean;
+    consultationIncarceration?: boolean;
+    defaultConsultation?: boolean;
+    defaultFurtherTreatment?: boolean;
   },
   ExtArgs['result']['treatmentJob']
 >;
@@ -95,12 +123,32 @@ export type TreatmentJobSelectScalar = {
   expertTitle?: boolean;
   type?: boolean;
   color?: boolean;
+  consultationStandard?: boolean;
+  consultationOnboarding?: boolean;
+  consultationOnboardingShort?: boolean;
+  consultationDocument?: boolean;
+  consultationIncarceration?: boolean;
+  defaultConsultation?: boolean;
+  defaultFurtherTreatment?: boolean;
 };
 
 export type TreatmentJobOmit<
   ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetOmit<
-  'id' | 'code' | 'remoteCode' | 'title' | 'expertTitle' | 'type' | 'color',
+  | 'id'
+  | 'code'
+  | 'remoteCode'
+  | 'title'
+  | 'expertTitle'
+  | 'type'
+  | 'color'
+  | 'consultationStandard'
+  | 'consultationOnboarding'
+  | 'consultationOnboardingShort'
+  | 'consultationDocument'
+  | 'consultationIncarceration'
+  | 'defaultConsultation'
+  | 'defaultFurtherTreatment',
   ExtArgs['result']['treatmentJob']
 >;
 
@@ -115,6 +163,13 @@ export type $TreatmentJobPayload = {
     expertTitle: string | null;
     type: string | null;
     color: string | null;
+    consultationStandard: boolean | null;
+    consultationOnboarding: boolean | null;
+    consultationOnboardingShort: boolean | null;
+    consultationDocument: boolean | null;
+    consultationIncarceration: boolean | null;
+    defaultConsultation: string | null;
+    defaultFurtherTreatment: string | null;
   };
   composites: {};
 };
@@ -133,6 +188,13 @@ export interface TreatmentJobFieldRefs {
   readonly expertTitle: Prisma.FieldRef<'TreatmentJob', 'String'>;
   readonly type: Prisma.FieldRef<'TreatmentJob', 'String'>;
   readonly color: Prisma.FieldRef<'TreatmentJob', 'String'>;
+  readonly consultationStandard: Prisma.FieldRef<'TreatmentJob', 'Boolean'>;
+  readonly consultationOnboarding: Prisma.FieldRef<'TreatmentJob', 'Boolean'>;
+  readonly consultationOnboardingShort: Prisma.FieldRef<'TreatmentJob', 'Boolean'>;
+  readonly consultationDocument: Prisma.FieldRef<'TreatmentJob', 'Boolean'>;
+  readonly consultationIncarceration: Prisma.FieldRef<'TreatmentJob', 'Boolean'>;
+  readonly defaultConsultation: Prisma.FieldRef<'TreatmentJob', 'String'>;
+  readonly defaultFurtherTreatment: Prisma.FieldRef<'TreatmentJob', 'String'>;
 }
 
 // Custom InputTypes

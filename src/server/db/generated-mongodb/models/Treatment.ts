@@ -1227,6 +1227,13 @@ export type TreatmentJobObjectEqualityInput = {
   expertTitle?: string | null;
   type?: string | null;
   color?: string | null;
+  consultationStandard?: boolean | null;
+  consultationOnboarding?: boolean | null;
+  consultationOnboardingShort?: boolean | null;
+  consultationDocument?: boolean | null;
+  consultationIncarceration?: boolean | null;
+  defaultConsultation?: string | null;
+  defaultFurtherTreatment?: string | null;
 };
 
 export type TreatmentAttachmentObjectEqualityInput = {
@@ -1392,6 +1399,13 @@ export type TreatmentJobCreateInput = {
   expertTitle?: string | null;
   type?: string | null;
   color?: string | null;
+  consultationStandard?: boolean | null;
+  consultationOnboarding?: boolean | null;
+  consultationOnboardingShort?: boolean | null;
+  consultationDocument?: boolean | null;
+  consultationIncarceration?: boolean | null;
+  defaultConsultation?: string | null;
+  defaultFurtherTreatment?: string | null;
 };
 
 export type TreatmentAttachmentCreateInput = {
