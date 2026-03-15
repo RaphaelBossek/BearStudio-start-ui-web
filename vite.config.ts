@@ -1,15 +1,14 @@
+import { resolve } from 'node:path';
 import { devtools } from '@tanstack/devtools-vite';
 import { tanstackStart } from '@tanstack/react-start/plugin/vite';
 import viteReact from '@vitejs/plugin-react';
 import cpy from 'cpy';
-import { Nitro } from 'nitro/types';
+import type { Nitro } from 'nitro/types';
 import { nitro } from 'nitro/vite';
-import { resolve } from 'node:path';
 import { defineConfig, loadEnv } from 'vite';
 import tsConfigPaths from 'vite-tsconfig-paths';
 
-const { nitroRetrieveServerDirHook, prismaCopyBinariesPlugin } =
-  createPrismaCopyBinariesPlugin();
+const { nitroRetrieveServerDirHook, prismaCopyBinariesPlugin } = createPrismaCopyBinariesPlugin();
 
 export default defineConfig(({ mode }) => {
   // Load env file based on `mode` in the current working directory.

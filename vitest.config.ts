@@ -1,6 +1,6 @@
+import path from 'node:path';
 import react from '@vitejs/plugin-react';
 import { playwright } from '@vitest/browser-playwright';
-import path from 'node:path';
 import { defineConfig } from 'vitest/config';
 
 const resolve = (filePath: string) => path.resolve(__dirname, filePath);
@@ -22,10 +22,7 @@ export default defineConfig({
             instances: [{ browser: 'chromium' }],
           },
           include: ['src/**/*.browser.{test,spec}.?(c|m)[jt]s?(x)'],
-          setupFiles: [
-            resolve('src/tests/setup.base.ts'),
-            resolve('src/tests/setup.browser.ts'),
-          ],
+          setupFiles: [resolve('src/tests/setup.base.ts'), resolve('src/tests/setup.browser.ts')],
         },
         resolve: {
           alias: {

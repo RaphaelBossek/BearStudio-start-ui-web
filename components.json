@@ -18,7 +18,13 @@
     "hooks": "@/hooks"
   },
   "registries": {
-    "@shadcndesign": "https://shadcndesign-registry.vercel.app/registry/{name}.json"
+    "@shadcndesign": "https://shadcndesign-registry.vercel.app/registry/{name}.json",
+    "@shadcnblocks": {
+      "url": "https://shadcnblocks.com/r/{name}",
+      "headers": {
+        "Authorization": "Bearer ${SHADCNBLOCKS_API_KEY}"
+      }
+    }
   },
   "iconLibrary": "lucide"
 }
