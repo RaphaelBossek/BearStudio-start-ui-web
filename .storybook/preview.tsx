@@ -1,17 +1,13 @@
 import type { Preview } from '@storybook/react-vite';
 import { useDarkMode } from '@vueless/storybook-dark-mode';
-import { StrictMode, useEffect } from 'react';
-import { ReactNode } from 'react';
+import { type ReactNode, StrictMode, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { StoryContext } from 'storybook/internal/csf';
+import type { StoryContext } from 'storybook/internal/csf';
 
 import '@/styles/app.css';
 import './preview.css';
 
-import {
-  AVAILABLE_LANGUAGES,
-  DEFAULT_LANGUAGE_KEY,
-} from '../src/lib/i18n/constants';
+import { AVAILABLE_LANGUAGES, DEFAULT_LANGUAGE_KEY } from '../src/lib/i18n/constants';
 import i18nGlobal from '../src/lib/i18n/index';
 import { Providers } from '../src/providers';
 
@@ -27,9 +23,7 @@ const DocumentationWrapper = ({
   // Update language
   useEffect(() => {
     i18n.changeLanguage(context.globals.locale);
-    const languageConfig = AVAILABLE_LANGUAGES.find(
-      ({ key }) => key === context.globals.locale
-    );
+    const languageConfig = AVAILABLE_LANGUAGES.find(({ key }) => key === context.globals.locale);
     if (languageConfig) {
       document.documentElement.lang = languageConfig.key;
       document.documentElement.dir = languageConfig.dir ?? 'ltr';
