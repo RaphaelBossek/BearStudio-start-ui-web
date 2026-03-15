@@ -31,11 +31,15 @@
 - [x] `Treatment` model MUST include: `id`, `version`, `bookNumber`, `jNumber`, `type`, `state`, `hour`, `day`, `comment`, `archived`.
 - [x] `Treatment` model MUST include date fields: `dateCreated`, `dateChanged`, `dateStart`, `dateStarted`, `dateInitial`, `dateStorno`, `closed`, `dateLastAppointment`.
 - [x] `Treatment` model MUST include count fields: `countTotal`, `countFinished`, `countPlanned`, `reportCountInitial`, `reportCountRhytm`, `minutes`.
-- [x] `Treatment` model MUST include related objects: `assigned`, `job`, `jobReport`, `jobReportPobatorik`, `customer`, `location`, `positions`, `attachments`.
+- [x] `Treatment` model MUST include related objects: `assigned`, `createdBy`, `changedBy`, `job`, `jobReport`, `jobReportPobatorik`, `customer`, `location`, `positions`.
+- [x] `TreatmentJob` MUST include consultation boolean fields: `consultationStandard`, `consultationOnboarding`, `consultationOnboardingShort`, `consultationDocument`, `consultationIncarceration`, `defaultConsultation`, `defaultFurtherTreatment`.
+- [x] `TreatmentPosition` MUST expose `report` (type `TreatmentReport`) with `date`, `type`, `consultationId`, `dateStart`, `dateEnd`, `job`.
+- [x] `zTreatmentSchema` Zod schema MUST be the wire contract — no `as any[]` cast at the router boundary.
+- [x] `TreatmentDetails` component MUST use the typed `Treatment` type (not `any`).
+- [x] Inspect drawer MUST include a "Positions" tab showing all positions with their report details in a scrollable container.
 
 ## Further Suggestions for Acceptance Criteria
 - [ ] Filter by date range (dateStart/dateCreated).
 - [ ] Filter by treatment state.
 - [ ] Export current view to CSV/Excel.
 - [ ] Show all appointments (not just first) in a list within the drawer.
-- [ ] Display treatment positions with their appointment details inline.
