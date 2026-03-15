@@ -3,6 +3,7 @@ import {
   DatabaseIcon,
   FileTextIcon,
   InfoIcon,
+  ListIcon,
   MapPinIcon,
   UserIcon,
 } from 'lucide-react';
@@ -17,9 +18,10 @@ import {
   DataListTextHeader,
 } from '@/components/ui/datalist';
 import { Separator } from '@/components/ui/separator';
+import type { Treatment } from '@/features/treatment-table/schema';
 
 interface TreatmentDetailsProps {
-  treatment: any;
+  treatment: Treatment;
 }
 
 const DataListItem = ({ label, value }: { label: string; value: React.ReactNode }) => (
@@ -42,6 +44,7 @@ export const TreatmentDetails = ({ treatment }: TreatmentDetailsProps) => {
     { id: 'participants', label: 'Participants', icon: UserIcon },
     { id: 'location', label: 'Location/Job', icon: MapPinIcon },
     { id: 'counts', label: 'Counts', icon: FileTextIcon },
+    { id: 'positions', label: 'Positions', icon: ListIcon },
     { id: 'raw', label: 'Raw Data', icon: DatabaseIcon },
   ];
 
@@ -226,6 +229,91 @@ export const TreatmentDetails = ({ treatment }: TreatmentDetailsProps) => {
             </DataList>
           </DrawerContentSection>
         );
+      case 'positions': {
+        const positions = treatment.positions ?? [];
+        return (
+          <DrawerContentSection
+            variant="card"
+            title="Positions"
+            description={`${positions.length} position${positions.length !== 1 ? 's' : ''} in this treatment.`}
+          >
+            <div className="max-h-[500px] overflow-y-auto space-y-4">
+              {positions.length === 0 ? (
+                <p className="text-sm text-muted-foreground px-1.5">No positions.</p>
+              ) : (
+                positions.map((pos, index) => (
+                  <div key={pos.appointmentId ?? index} className="rounded-md border p-3 space-y-2">
+                    <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+                      Position {index + 1}
+                    </p>
+                    <DataList>
+                      <DataListItem label="Appointment ID" value={pos.appointmentId} />
+                      <DataListItem label="State" value={pos.state} />
+                      <DataListItem
+                        label="Start"
+                        value={pos.start ? new Date(pos.start).toLocaleString() : null}
+                      />
+                      <DataListItem
+                        label="Until"
+                        value={pos.until ? new Date(pos.until).toLocaleString() : null}
+                      />
+                      <DataListItem
+                        label="Require Report"
+                        value={
+                          pos.requireReport != null ? (pos.requireReport ? 'Yes' : 'No') : null
+                        }
+                      />
+                      <DataListItem
+                        label="Force Report"
+                        value={pos.forceReport != null ? (pos.forceReport ? 'Yes' : 'No') : null}
+                      />
+                    </DataList>
+                    {pos.report && (
+                      <div className="pt-2">
+                        <p className="text-xs font-medium mb-1 text-muted-foreground px-1">
+                          Report
+                        </p>
+                        <DataList>
+                          <DataListItem label="Type" value={pos.report.type} />
+                          <DataListItem
+                            label="Date"
+                            value={
+                              pos.report.date ? new Date(pos.report.date).toLocaleString() : null
+                            }
+                          />
+                          <DataListItem
+                            label="Date Start"
+                            value={
+                              pos.report.dateStart
+                                ? new Date(pos.report.dateStart).toLocaleString()
+                                : null
+                            }
+                          />
+                          <DataListItem
+                            label="Date End"
+                            value={
+                              pos.report.dateEnd
+                                ? new Date(pos.report.dateEnd).toLocaleString()
+                                : null
+                            }
+                          />
+                          <DataListItem label="Consultation ID" value={pos.report.consultationId} />
+                          {pos.report.job && (
+                            <DataListItem
+                              label="Report Job"
+                              value={pos.report.job.title ?? pos.report.job.code}
+                            />
+                          )}
+                        </DataList>
+                      </div>
+                    )}
+                  </div>
+                ))
+              )}
+            </div>
+          </DrawerContentSection>
+        );
+      }
       case 'raw':
         return (
           <DrawerContentSection
