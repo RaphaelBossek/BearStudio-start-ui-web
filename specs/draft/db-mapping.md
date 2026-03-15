@@ -1159,7 +1159,7 @@ Erfasst den Verlauf von Behandlungen, insbesondere im Bereich der Psychotherapie
 | :--- | :--- | :--- | :--- |
 | `_id` | `Long` | schema | Interner Bezeichner |
 | `version` | `Long` | schema | Versionsnummer |
-| `assigned` | `Document` | snapshot | Zugewiesener Experte (denormalized snapshot of [`user`](#entity-experte-expert)) ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
+| `assigned` | `Document` | snapshot | Zugewiesener Experte (denormalized snapshot, copy of fields from [`user`](#entity-experte-expert)) ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
 | `hour` | `Number` | schema | Stundenindex |
 | `day` | `String` | schema | Wochentag:<br>• `MO` (Used)<br>• `TU` (Used)<br>• `WE` (Used)<br>• `TH` (Used)<br>• `FR` (Used) |
 | `bookNumber` | `String` | schema | Buchnummer (JVA) |
@@ -1167,16 +1167,16 @@ Erfasst den Verlauf von Behandlungen, insbesondere im Bereich der Psychotherapie
 | `type` | `String` | schema | Art der Behandlung:<br>• `PSYCH` (Used) |
 | `state` | `String` | schema | Status der Behandlung:<br>• `ACTIVE` (Used)<br>• `CANCELED` (Used)<br>• `CANCELED_CLOSED` (Used)<br>• `CLOSED` (Used)<br>• `ENDING` (Used)<br>• `PROBATORIK` (Used)<br>• `RUNNING` (Used)<br>• `STARTED` (Used)<br>• `STORNO` (Used)<br>• `STORNO_CLOSED` (Used) |
 | `dateStorno` | `Date` | schema | Stornierungsdatum |
-| `job` | `Document` | snapshot | Erbrachte Dienstleistung (denormalized snapshot of [`jobId`](#entity-dienstleistung-service)) ([ConsultationJob](#sub-entity-consultationjob)) |
-| `jobReport` | `Document` | snapshot | Dienstleistung für Berichte (denormalized snapshot of [`jobId`](#entity-dienstleistung-service)) ([ConsultationJob](#sub-entity-consultationjob)) |
+| `job` | `Document` | snapshot | Erbrachte Dienstleistung (denormalized snapshot, copy of fields from [`jobId`](#entity-dienstleistung-service)) ([ConsultationJob](#sub-entity-consultationjob)) |
+| `jobReport` | `Document` | snapshot | Dienstleistung für Berichte (denormalized snapshot, copy of fields from [`jobId`](#entity-dienstleistung-service)) ([ConsultationJob](#sub-entity-consultationjob)) |
 | `reportingPath` | `String` | schema | Pfad für das Reporting |
-| `jobReportPobatorik` | `Document` | snapshot | Dienstleistung für Probatorik-Berichte (denormalized snapshot of [`jobId`](#entity-dienstleistung-service)) ([ConsultationJob](#sub-entity-consultationjob)) |
+| `jobReportPobatorik` | `Document` | snapshot | Dienstleistung für Probatorik-Berichte (denormalized snapshot, copy of fields from [`jobId`](#entity-dienstleistung-service)) ([ConsultationJob](#sub-entity-consultationjob)) |
 | `archived` | `Boolean` | schema | Archivierungsstatus |
-| `attachments` | `Array` | schema | Liste von Anhängen |
+| `attachments` | `Array` | schema | Liste von Anhängen ([TreatmentAttachment](#sub-entity-treatmentattachment)) |
 | `positions` | `Array` | schema | Einzelne Termine der Behandlung ([TreatmentPosition](#sub-entity-treatmentposition)) |
-| `changedBy` | `Document` | snapshot | Zuletzt geändert von (denormalized snapshot of [`user`](#entity-experte-expert)) ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
+| `changedBy` | `Document` | snapshot | Zuletzt geändert von (denormalized snapshot, copy of fields from [`user`](#entity-experte-expert)) ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
 | `dateChanged` | `Date` | schema | Zeitpunkt der letzten Änderung |
-| `createdBy` | `Document` | snapshot | Erstellt von (denormalized snapshot of [`user`](#entity-experte-expert)) ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
+| `createdBy` | `Document` | snapshot | Erstellt von (denormalized snapshot, copy of fields from [`user`](#entity-experte-expert)) ([ConsultationDoctor](#sub-entity-consultationdoctor)) |
 | `dateCreated` | `Date` | inferred | Erstellungsdatum |
 | `closed` | `Date` | schema | Abschlussdatum |
 | `countTotal` | `Number` | schema | Gesamtanzahl |
@@ -1192,8 +1192,8 @@ Erfasst den Verlauf von Behandlungen, insbesondere im Bereich der Psychotherapie
 | `dateLastAppointment` | `Date` | schema | Datum des letzten Termins |
 | `reportCountInitial` | `Number` | schema | Initiale Anzahl Berichte |
 | `reportCountRhytm` | `Number` | schema | Rhythmus der Berichte |
-| `customer` | `Document` | snapshot | Zugehöriger Kunde (denormalized snapshot of [`customer`](#entity-kunden-customers)) ([ConsultationCustomer](#sub-entity-consultationcustomer)) |
-| `location` | `Document` | snapshot | Ort der Behandlung (denormalized snapshot of [`location`](#entity-standorte-locations)) ([ConsultationLocation](#sub-entity-consultationlocation)) |
+| `customer` | `Document` | snapshot | Zugehöriger Kunde (denormalized snapshot, copy of fields from [`customer`](#entity-kunden-customers)) ([ConsultationCustomer](#sub-entity-consultationcustomer)) |
+| `location` | `Document` | snapshot | Ort der Behandlung (denormalized snapshot, copy of fields from [`location`](#entity-standorte-locations)) ([ConsultationLocation](#sub-entity-consultationlocation)) |
 | `minutes` | `Number` | schema | Dauer in Minuten |
 | `_class` | `String` | schema | Java Klassenname: `de.videoclinic.model.Treatment` (Used) |
 
@@ -1202,6 +1202,37 @@ The `treatment` entity is referenced by:
 - [`asyncJobQueue`](#entity-hintergrundaufgaben-async-job-queue) (via `type`)
 
 ### Sub-entities for treatment
+
+The following structures are used as nested documents within the `treatment` collection. Snapshot fields are denormalized copies of selected fields from their source-of-truth entities.
+
+#### Sub-entity: TreatmentAttachment
+Ein einzelner Anhangseintrag innerhalb von `attachments[]`.
+
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `file` | `Document` | schema | Dateimetadaten ([TreatmentAttachmentFile](#sub-entity-treatmentattachmentfile)) |
+| `attach` | `Boolean` | inferred | Optionaler Anhang-Status (Schema-Feld, in Samples als Boolean beobachtet) |
+
+The `TreatmentAttachment` sub-entity is used within:
+- [`treatment`](#entity-behandlungsverlauf-treatment) (as `attachments` array)
+
+#### Sub-entity: TreatmentAttachmentFile
+Datei-Metadaten für einen Behandlung-Anhang als denormalized snapshot (copy of fields from persisted file payload, not from [`userFile`](#entity-benutzerdateien-user-files)).
+
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `String` | schema | Datei-ID (UUID-ähnlicher Schlüssel) |
+| `name` | `String` | schema | Dateiname |
+| `mime` | `String` | schema | MIME-Typ |
+| `type` | `String` | schema | Dateidomäne im Treatment-Kontext (observed: `treatment`); unterscheidet sich fachlich von `userFile.type` |
+| `checksum` | `String` | schema | Prüfsumme |
+| `version` | `Number/Long` | inferred | Versionswert; in Samples sowohl `Number` als auch `Long` beobachtet |
+| `deep` | `String` | inferred | Storage-/Pfad-Locator innerhalb des Dateispeichers |
+| `dateCreated` | `Date` | schema | Erstellungsdatum der Datei |
+| `createdBy` | `Long` | schema | Ersteller-ID (copy of field from source payload; source-of-truth reference to [`user`](#entity-experte-expert)) |
+
+The `TreatmentAttachmentFile` sub-entity is used within:
+- [`TreatmentAttachment`](#sub-entity-treatmentattachment) (as `file` field)
 
 #### Sub-entity: TreatmentPosition
 Ein einzelner Termin oder eine Position innerhalb eines Behandlungsverlaufs.

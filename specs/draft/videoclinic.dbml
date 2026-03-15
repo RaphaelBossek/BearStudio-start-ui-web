@@ -613,7 +613,7 @@ Table treatment [headercolor: #2CA02C] {
   Note: 'Tracking of medical treatments, including states and positions.'
   _id number [pk, note: 'Interner Bezeichner']
   version number [note: 'Versionsnummer']
-  __ref_snapshot_assigned_id Document [note: 'Zugewiesener Experte ([ConsultationDoctor](#sub-entity-consultationdoctor))']
+  __ref_snapshot_assigned_id Document [note: 'Zugewiesener Experte (denormalized snapshot, copy of fields from `user`) ([ConsultationDoctor](#sub-entity-consultationdoctor))']
   hour number [note: 'Stundenindex']
   day DayOfWeek_Enum [note: 'Wochentag:<br>• `MO` (Used)<br>• `TU` (Used)<br>• `WE` (Used)<br>• `TH` (Used)<br>• `FR` (Used)']
   booknumber String [note: 'Buchnummer (JVA)']
@@ -621,16 +621,16 @@ Table treatment [headercolor: #2CA02C] {
   type treatment_type_enum [note: 'Art der Behandlung:<br>• `PSYCH` (Used)']
   state treatment_state_enum [note: 'Status der Behandlung:<br>• `ACTIVE` (Used)<br>• `CANCELED` (Used)<br>• `CANCELED_CLOSED` (Used)<br>• `CLOSED` (Used)<br>• `ENDING` (Used)<br>• `PROBATORIK` (Used)<br>• `RUNNING` (Used)<br>• `STARTED` (Used)<br>• `STORNO` (Used)<br>• `STORNO_CLOSED` (Used)']
   dateStorno timestamp [note: 'Stornierungsdatum']
-  __ref_snapshot_job_id Document [note: 'Erbrachte Dienstleistung ([ConsultationJob](#sub-entity-consultationjob))']
-  __ref_snapshot_job_report_id Document [note: 'Dienstleistung für Berichte']
+  __ref_snapshot_job_id Document [note: 'Erbrachte Dienstleistung (denormalized snapshot, copy of fields from `jobId`) ([ConsultationJob](#sub-entity-consultationjob))']
+  __ref_snapshot_job_report_id Document [note: 'Dienstleistung für Berichte (denormalized snapshot, copy of fields from `jobId`) ([ConsultationJob](#sub-entity-consultationjob))']
   reportingPath String [note: 'Pfad für das Reporting']
-  __ref_snapshot_job_report_pobatorik_id Document [note: 'Dienstleistung für Probatorik-Berichte']
+  __ref_snapshot_job_report_pobatorik_id Document [note: 'Dienstleistung für Probatorik-Berichte (denormalized snapshot, copy of fields from `jobId`) ([ConsultationJob](#sub-entity-consultationjob))']
   archived boolean [note: 'Archivierungsstatus']
-  attachments Array [note: 'Liste von Anhängen']
+  attachments Array [note: 'Liste von Anhängen ([TreatmentAttachment](#sub-entity-treatmentattachment))']
   positions Array [note: 'Einzelne Termine der Behandlung ([TreatmentPosition](#sub-entity-treatmentposition))']
-  __ref_snapshot_changed_by_id Document [note: 'Zuletzt geändert von']
+  __ref_snapshot_changed_by_id Document [note: 'Zuletzt geändert von (denormalized snapshot, copy of fields from `user`) ([ConsultationDoctor](#sub-entity-consultationdoctor))']
   dateChanged timestamp [note: 'Zeitpunkt der letzten Änderung']
-  __ref_snapshot_created_by_id Document [note: 'Erstellt von']
+  __ref_snapshot_created_by_id Document [note: 'Erstellt von (denormalized snapshot, copy of fields from `user`) ([ConsultationDoctor](#sub-entity-consultationdoctor))']
   dateCreated timestamp [note: 'Erstellungsdatum']
   closed timestamp [note: 'Abschlussdatum']
   countTotal number [note: 'Gesamtanzahl']
@@ -646,8 +646,8 @@ Table treatment [headercolor: #2CA02C] {
   dateLastAppointment timestamp [note: 'Datum des letzten Termins']
   reportCountInitial number [note: 'Initiale Anzahl Berichte']
   reportCountRhytm number [note: 'Rhythmus der Berichte']
-  __ref_snapshot_customer_id Document [note: 'Zugehöriger Kunde ([ConsultationCustomer](#sub-entity-consultationcustomer))']
-  __ref_snapshot_location_id Document [note: 'Ort der Behandlung ([ConsultationLocation](#sub-entity-consultationlocation))']
+  __ref_snapshot_customer_id Document [note: 'Zugehöriger Kunde (denormalized snapshot, copy of fields from `customer`) ([ConsultationCustomer](#sub-entity-consultationcustomer))']
+  __ref_snapshot_location_id Document [note: 'Ort der Behandlung (denormalized snapshot, copy of fields from `location`) ([ConsultationLocation](#sub-entity-consultationlocation))']
   minutes number [note: 'Dauer in Minuten']
   _class String [note: 'Java Klassenname: de.videoclinic.model.Treatment']
 }
@@ -1915,6 +1915,23 @@ Table ConsultationCustomer [headercolor: #2CA02C] {
   name String [note: 'Name des Kunden']
 }
 
+Table TreatmentAttachment [headercolor: #2CA02C] {
+  file Document [note: 'Dateimetadaten ([TreatmentAttachmentFile](#sub-entity-treatmentattachmentfile))']
+  attach boolean [note: 'Optionaler Anhang-Status (in Samples als Boolean beobachtet)']
+}
+
+Table TreatmentAttachmentFile [headercolor: #2CA02C] {
+  _id String [pk, note: 'Datei-ID (UUID-ähnlicher Schlüssel)']
+  name String [note: 'Dateiname']
+  mime String [note: 'MIME-Typ']
+  type String [note: 'Dateidomäne im Treatment-Kontext (observed: `treatment`); fachlich getrennt von `userFile.type`']
+  checksum String [note: 'Prüfsumme']
+  version number [note: 'Versionswert; in Samples als Number oder Long vorhanden']
+  deep String [note: 'Storage-/Pfad-Locator der Datei']
+  dateCreated timestamp [note: 'Erstellungsdatum der Datei']
+  createdBy number [note: 'Ersteller-ID (copy of field from source payload, source-of-truth: `user`)']
+}
+
 Table TreatmentPosition [headercolor: #2CA02C] {
   _id String [pk, note: 'Internal identifier']
   appointmentId number [note: 'Referenz auf `appointment`']
@@ -2156,7 +2173,12 @@ Ref: video.category > videoCategory._id
 Ref: CustomerDiscount.job > jobId._id
 Ref: treatment.__ref_snapshot_customer_id > customer._id
 Ref: treatment.__ref_snapshot_location_id > location._id
+Ref: treatment.__ref_snapshot_assigned_id > user._id
+Ref: treatment.__ref_snapshot_job_id > jobId._id
+Ref: treatment.__ref_snapshot_job_report_id > jobId._id
+Ref: treatment.__ref_snapshot_job_report_pobatorik_id > jobId._id
 Ref: treatment.__ref_snapshot_created_by_id > user._id
 Ref: treatment.__ref_snapshot_changed_by_id > user._id
+Ref: TreatmentAttachmentFile.createdBy > user._id
 Ref: user.__ref_snapshot_changed_by_id > user._id
 Ref: patient.location > location._id
