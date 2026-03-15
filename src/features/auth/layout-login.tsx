@@ -7,10 +7,6 @@ import { ThemeSwitcher } from '@/components/ui/theme-switcher';
 
 import { useMascotState } from '@/features/auth/mascot';
 
-import image from './layout-login-image.jpg';
-import mascot from './mascot.png';
-import mascotError from './mascot-error.png';
-
 export const LayoutLogin = (props: { children?: ReactNode; footer?: ReactNode }) => {
   const mascotState = useMascotState();
   return (
@@ -34,9 +30,13 @@ export const LayoutLogin = (props: { children?: ReactNode; footer?: ReactNode })
         {props.footer}
       </div>
       <div className="relative hidden w-full flex-1 items-center justify-center bg-muted lg:flex">
-        <img src={image} alt="" className="absolute inset-0 size-full object-cover" />
         <img
-          src={mascotState === 'error' ? mascotError : mascot}
+          src="/auth/layout-login-image.jpg"
+          alt="Background illustration for login page"
+          className="absolute inset-0 size-full object-cover"
+        />
+        <img
+          src={mascotState === 'error' ? '/logo-mark-error.svg' : '/logo-mark.svg'}
           alt=""
           className="animate-float-in-space pointer-events-none absolute top-1/2 left-1/2 w-52 -translate-1/2"
         />

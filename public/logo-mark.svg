@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="250" height="214" viewBox="0 0 250 214">
+  <title>Videoclinic Logo Mark</title>
+  <defs>
+    <style>
+      .logo-mark { fill: #049e9d; }
+      .logo-text { fill: #000000; }
+      
+      @media (prefers-color-scheme: dark) {
+        .logo-mark { fill: #049e9d; }
+        .logo-text { fill: #ffffff; }
+      }
+    </style>
+  </defs>
+
+  <!-- Logo mark -->
+  <g id="logo-mark">
+    <path
+      d="M91.265,213.844l-59.611-.055L106.279,0h59.631Z"
+      transform="translate(25.68 0)"
+      class="logo-text"
+    />
+    <path
+      d="M92.863,101.456l20.58-59.03h60.372L153.2,101.456Z"
+      transform="translate(75.337 34.651)"
+      class="logo-mark"
+    />
+    <path
+      d="M0,101.456l20.58-59.03H80.951l-20.618,59.03Z"
+      transform="translate(0 34.651)"
+      class="logo-mark"
+    />
+  </g>
+</svg>
