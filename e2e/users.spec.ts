@@ -14,9 +14,7 @@ test.describe('User management as user', () => {
   test('Should not have access', async ({ page }) => {
     await page.to('/manager/users');
 
-    await expect(
-      page.getByText(t.components.pageError[403].message)
-    ).toBeVisible();
+    await expect(page.getByText(t.components.pageError[403].message)).toBeVisible();
   });
 });
 
@@ -40,9 +38,7 @@ test.describe('User management as manager', () => {
     await page.getByText(t.user.manager.new.createButton.label).click();
 
     await page.waitForURL('/manager/users');
-    await page
-      .getByPlaceholder(t.components.searchInput.placeholder)
-      .fill(`new-user-${randomId}`);
+    await page.getByPlaceholder(t.components.searchInput.placeholder).fill(`new-user-${randomId}`);
     await expect(page.getByText(uniqueEmail)).toBeVisible();
   });
 
@@ -51,18 +47,14 @@ test.describe('User management as manager', () => {
       force: true,
     });
 
-    await page
-      .getByRole('link', { name: t.user.manager.detail.editUser })
-      .click();
+    await page.getByRole('link', { name: t.user.manager.detail.editUser }).click();
 
     const randomId = randomString(8);
     const newAdminName = `Admin ${randomId}`;
     await page.getByLabel(t.user.common.name.label).fill(newAdminName);
     await page.getByText(t.user.manager.update.updateButton.label).click();
 
-    await expect(
-      page.locator('main').getByText(newAdminName).first()
-    ).toBeVisible();
+    await expect(page.locator('main').getByText(newAdminName).first()).toBeVisible();
   });
 
   test('Delete a user', async ({ page }) => {
@@ -73,20 +65,12 @@ test.describe('User management as manager', () => {
       .first()
       .click({ force: true });
 
-    await page
-      .getByRole('button', { name: t.user.manager.detail.deleteButton.label })
-      .click();
+    await page.getByRole('button', { name: t.user.manager.detail.deleteButton.label }).click();
 
-    await expect(
-      page.getByText(t.user.manager.detail.confirmDeleteDescription)
-    ).toBeVisible();
+    await expect(page.getByText(t.user.manager.detail.confirmDeleteDescription)).toBeVisible();
 
-    await page
-      .getByRole('button', { name: t.user.manager.detail.deleteButton.label })
-      .click();
+    await page.getByRole('button', { name: t.user.manager.detail.deleteButton.label }).click();
 
-    await expect(
-      page.getByText(t.user.manager.detail.userDeleted)
-    ).toBeVisible();
+    await expect(page.getByText(t.user.manager.detail.userDeleted)).toBeVisible();
   });
 });

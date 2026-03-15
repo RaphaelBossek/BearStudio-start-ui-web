@@ -1,14 +1,9 @@
-import { expect, Page } from '@playwright/test';
-import { CustomFixture } from 'e2e/utils/types';
-
+import { expect, type Page } from '@playwright/test';
+import type { CustomFixture } from 'e2e/utils/types';
+import { AUTH_EMAIL_OTP_MOCKED, AUTH_SIGNUP_ENABLED } from '@/features/auth/config';
 import { DEFAULT_LANGUAGE_KEY } from '@/lib/i18n/constants';
-
-import {
-  AUTH_EMAIL_OTP_MOCKED,
-  AUTH_SIGNUP_ENABLED,
-} from '@/features/auth/config';
 import locales from '@/locales';
-import { FileRouteTypes } from '@/routeTree.gen';
+import type { FileRouteTypes } from '@/routeTree.gen';
 
 interface PageUtils {
   /**
@@ -27,10 +22,7 @@ interface PageUtils {
 
 export type ExtendedPage = { page: PageUtils };
 
-export const pageWithUtils: CustomFixture<Page & PageUtils> = async (
-  { page },
-  apply
-) => {
+export const pageWithUtils: CustomFixture<Page & PageUtils> = async ({ page }, apply) => {
   page.login = async function login(input: { email: string; code?: string }) {
     const routeLogin = '/login' satisfies FileRouteTypes['to'];
     const routeLoginVerify = '/login/verify' satisfies FileRouteTypes['to'];

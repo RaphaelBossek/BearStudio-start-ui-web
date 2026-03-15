@@ -1,9 +1,5 @@
-import {
-  PlaywrightTestArgs,
-  PlaywrightTestOptions,
-  TestFixture,
-} from '@playwright/test';
-import { ExtendedPage } from 'e2e/utils/page';
+import type { PlaywrightTestArgs, PlaywrightTestOptions, TestFixture } from '@playwright/test';
+import type { ExtendedPage } from 'e2e/utils/page';
 
 export type CustomFixture<TReturn> = TestFixture<
   TReturn,
