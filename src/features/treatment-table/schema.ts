@@ -17,6 +17,13 @@ export const zTreatmentJobSchema = () =>
     expertTitle: z.string().nullable().optional(),
     type: z.string().nullable().optional(),
     color: z.string().nullable().optional(),
+    consultationStandard: z.boolean().nullable().optional(),
+    consultationOnboarding: z.boolean().nullable().optional(),
+    consultationOnboardingShort: z.boolean().nullable().optional(),
+    consultationDocument: z.boolean().nullable().optional(),
+    consultationIncarceration: z.boolean().nullable().optional(),
+    defaultConsultation: z.string().nullable().optional(),
+    defaultFurtherTreatment: z.string().nullable().optional(),
   });
 
 export const zTreatmentCustomerSchema = () =>
@@ -34,6 +41,16 @@ export const zTreatmentLocationSchema = () =>
     customer: zTreatmentCustomerSchema().nullable().optional(),
   });
 
+export const zTreatmentReportSchema = () =>
+  z.object({
+    date: z.coerce.date().nullable().optional(),
+    type: z.string().nullable().optional(),
+    consultationId: z.string().nullable().optional(),
+    dateEnd: z.coerce.date().nullable().optional(),
+    job: zTreatmentJobSchema().nullable().optional(),
+    dateStart: z.coerce.date().nullable().optional(),
+  });
+
 export const zTreatmentPositionSchema = () =>
   z.object({
     appointmentId: z.string().nullable().optional(),
@@ -42,6 +59,7 @@ export const zTreatmentPositionSchema = () =>
     state: z.string().nullable().optional(),
     requireReport: z.boolean().nullable().optional(),
     forceReport: z.boolean().nullable().optional(),
+    report: zTreatmentReportSchema().nullable().optional(),
   });
 
 export const zTreatmentSchema = () =>
@@ -74,6 +92,8 @@ export const zTreatmentSchema = () =>
     dateAcceptedPT: z.coerce.date().nullable().optional(),
     dateAcceptedLocation: z.coerce.date().nullable().optional(),
     assigned: zTreatmentAssignedSchema().nullable().optional(),
+    createdBy: zTreatmentAssignedSchema().nullable().optional(),
+    changedBy: zTreatmentAssignedSchema().nullable().optional(),
     job: zTreatmentJobSchema().nullable().optional(),
     jobReport: zTreatmentJobSchema().nullable().optional(),
     jobReportPobatorik: zTreatmentJobSchema().nullable().optional(),
