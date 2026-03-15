@@ -74,7 +74,7 @@ export default {
       const mappedItems = items.map((item) => stringifyBigInt(item));
 
       return {
-        items: mappedItems as any[],
+        items: mappedItems,
         total,
       };
     }),
