@@ -8,8 +8,9 @@ import {
   UserIcon,
 } from 'lucide-react';
 import type * as React from 'react';
-import { useState } from 'react';
-import { CategorizedDrawerLayout, DrawerContentSection } from '@/components/drawer-navigation';
+import { useMemo } from 'react';
+import type { SectionConfig } from '@/components/drawer-navigation';
+import { DrawerContentSection, SectionedScrollLayout } from '@/components/drawer-navigation';
 import {
   DataList,
   DataListCell,
@@ -20,9 +21,9 @@ import {
 import { Separator } from '@/components/ui/separator';
 import type { Treatment } from '@/features/treatment-table/schema';
 
-interface TreatmentDetailsProps {
+type TreatmentDetailsProps = {
   treatment: Treatment;
-}
+};
 
 const DataListItem = ({ label, value }: { label: string; value: React.ReactNode }) => (
   <DataListRow className="py-0.5">
@@ -36,22 +37,13 @@ const DataListItem = ({ label, value }: { label: string; value: React.ReactNode 
 );
 
 export const TreatmentDetails = ({ treatment }: TreatmentDetailsProps) => {
-  const [activeCategory, setActiveCategory] = useState('general');
-
-  const categories = [
-    { id: 'general', label: 'General', icon: InfoIcon },
-    { id: 'timing', label: 'Timing', icon: CalendarIcon },
-    { id: 'participants', label: 'Participants', icon: UserIcon },
-    { id: 'location', label: 'Location/Job', icon: MapPinIcon },
-    { id: 'counts', label: 'Counts', icon: FileTextIcon },
-    { id: 'positions', label: 'Positions', icon: ListIcon },
-    { id: 'raw', label: 'Raw Data', icon: DatabaseIcon },
-  ];
-
-  const renderContent = (categoryId: string) => {
-    switch (categoryId) {
-      case 'general':
-        return (
+  const sections = useMemo<SectionConfig[]>(
+    () => [
+      {
+        id: 'general',
+        label: 'General',
+        icon: InfoIcon,
+        content: (
           <DrawerContentSection
             variant="card"
             title="General Information"
@@ -68,9 +60,13 @@ export const TreatmentDetails = ({ treatment }: TreatmentDetailsProps) => {
               <DataListItem label="Reporting Path" value={treatment.reportingPath} />
             </DataList>
           </DrawerContentSection>
-        );
-      case 'timing':
-        return (
+        ),
+      },
+      {
+        id: 'timing',
+        label: 'Timing',
+        icon: CalendarIcon,
+        content: (
           <DrawerContentSection
             variant="card"
             title="Timing Details"
@@ -125,9 +121,13 @@ export const TreatmentDetails = ({ treatment }: TreatmentDetailsProps) => {
               />
             </DataList>
           </DrawerContentSection>
-        );
-      case 'participants':
-        return (
+        ),
+      },
+      {
+        id: 'participants',
+        label: 'Participants',
+        icon: UserIcon,
+        content: (
           <DrawerContentSection
             variant="card"
             title="Participants"
@@ -163,9 +163,13 @@ export const TreatmentDetails = ({ treatment }: TreatmentDetailsProps) => {
               </div>
             </div>
           </DrawerContentSection>
-        );
-      case 'location':
-        return (
+        ),
+      },
+      {
+        id: 'location',
+        label: 'Location/Job',
+        icon: MapPinIcon,
+        content: (
           <DrawerContentSection
             variant="card"
             title="Location & Job"
@@ -209,9 +213,13 @@ export const TreatmentDetails = ({ treatment }: TreatmentDetailsProps) => {
               </div>
             </div>
           </DrawerContentSection>
-        );
-      case 'counts':
-        return (
+        ),
+      },
+      {
+        id: 'counts',
+        label: 'Counts',
+        icon: FileTextIcon,
+        content: (
           <DrawerContentSection
             variant="card"
             title="Count Information"
@@ -228,94 +236,109 @@ export const TreatmentDetails = ({ treatment }: TreatmentDetailsProps) => {
               <DataListItem label="Minutes" value={treatment.minutes} />
             </DataList>
           </DrawerContentSection>
-        );
-      case 'positions': {
-        const positions = treatment.positions ?? [];
-        return (
-          <DrawerContentSection
-            variant="card"
-            title="Positions"
-            description={`${positions.length} position${positions.length !== 1 ? 's' : ''} in this treatment.`}
-          >
-            <div className="max-h-[500px] overflow-y-auto space-y-4">
-              {positions.length === 0 ? (
-                <p className="text-sm text-muted-foreground px-1.5">No positions.</p>
-              ) : (
-                positions.map((pos, index) => (
-                  <div key={pos.appointmentId ?? index} className="rounded-md border p-3 space-y-2">
-                    <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
-                      Position {index + 1}
-                    </p>
-                    <DataList>
-                      <DataListItem label="Appointment ID" value={pos.appointmentId} />
-                      <DataListItem label="State" value={pos.state} />
-                      <DataListItem
-                        label="Start"
-                        value={pos.start ? new Date(pos.start).toLocaleString() : null}
-                      />
-                      <DataListItem
-                        label="Until"
-                        value={pos.until ? new Date(pos.until).toLocaleString() : null}
-                      />
-                      <DataListItem
-                        label="Require Report"
-                        value={
-                          pos.requireReport != null ? (pos.requireReport ? 'Yes' : 'No') : null
-                        }
-                      />
-                      <DataListItem
-                        label="Force Report"
-                        value={pos.forceReport != null ? (pos.forceReport ? 'Yes' : 'No') : null}
-                      />
-                    </DataList>
-                    {pos.report && (
-                      <div className="pt-2">
-                        <p className="text-xs font-medium mb-1 text-muted-foreground px-1">
-                          Report
-                        </p>
-                        <DataList>
-                          <DataListItem label="Type" value={pos.report.type} />
-                          <DataListItem
-                            label="Date"
-                            value={
-                              pos.report.date ? new Date(pos.report.date).toLocaleString() : null
-                            }
-                          />
-                          <DataListItem
-                            label="Date Start"
-                            value={
-                              pos.report.dateStart
-                                ? new Date(pos.report.dateStart).toLocaleString()
-                                : null
-                            }
-                          />
-                          <DataListItem
-                            label="Date End"
-                            value={
-                              pos.report.dateEnd
-                                ? new Date(pos.report.dateEnd).toLocaleString()
-                                : null
-                            }
-                          />
-                          <DataListItem label="Consultation ID" value={pos.report.consultationId} />
-                          {pos.report.job && (
+        ),
+      },
+      {
+        id: 'positions',
+        label: 'Positions',
+        icon: ListIcon,
+        content: (() => {
+          const positions = treatment.positions ?? [];
+          return (
+            <DrawerContentSection
+              variant="card"
+              title="Positions"
+              description={`${positions.length} position${positions.length !== 1 ? 's' : ''} in this treatment.`}
+            >
+              <div className="max-h-[500px] overflow-y-auto space-y-4">
+                {positions.length === 0 ? (
+                  <p className="text-sm text-muted-foreground px-1.5">No positions.</p>
+                ) : (
+                  positions.map((pos, index) => (
+                    <div
+                      key={pos.appointmentId ?? index}
+                      className="rounded-md border p-3 space-y-2"
+                    >
+                      <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+                        Position {index + 1}
+                      </p>
+                      <DataList>
+                        <DataListItem label="Appointment ID" value={pos.appointmentId} />
+                        <DataListItem label="State" value={pos.state} />
+                        <DataListItem
+                          label="Start"
+                          value={pos.start ? new Date(pos.start).toLocaleString() : null}
+                        />
+                        <DataListItem
+                          label="Until"
+                          value={pos.until ? new Date(pos.until).toLocaleString() : null}
+                        />
+                        <DataListItem
+                          label="Require Report"
+                          value={
+                            pos.requireReport != null ? (pos.requireReport ? 'Yes' : 'No') : null
+                          }
+                        />
+                        <DataListItem
+                          label="Force Report"
+                          value={pos.forceReport != null ? (pos.forceReport ? 'Yes' : 'No') : null}
+                        />
+                      </DataList>
+                      {pos.report && (
+                        <div className="pt-2">
+                          <p className="text-xs font-medium mb-1 text-muted-foreground px-1">
+                            Report
+                          </p>
+                          <DataList>
+                            <DataListItem label="Type" value={pos.report.type} />
                             <DataListItem
-                              label="Report Job"
-                              value={pos.report.job.title ?? pos.report.job.code}
+                              label="Date"
+                              value={
+                                pos.report.date ? new Date(pos.report.date).toLocaleString() : null
+                              }
                             />
-                          )}
-                        </DataList>
-                      </div>
-                    )}
-                  </div>
-                ))
-              )}
-            </div>
-          </DrawerContentSection>
-        );
-      }
-      case 'raw':
-        return (
+                            <DataListItem
+                              label="Date Start"
+                              value={
+                                pos.report.dateStart
+                                  ? new Date(pos.report.dateStart).toLocaleString()
+                                  : null
+                              }
+                            />
+                            <DataListItem
+                              label="Date End"
+                              value={
+                                pos.report.dateEnd
+                                  ? new Date(pos.report.dateEnd).toLocaleString()
+                                  : null
+                              }
+                            />
+                            <DataListItem
+                              label="Consultation ID"
+                              value={pos.report.consultationId}
+                            />
+                            {pos.report.job && (
+                              <DataListItem
+                                label="Report Job"
+                                value={pos.report.job.title ?? pos.report.job.code}
+                              />
+                            )}
+                          </DataList>
+                        </div>
+                      )}
+                    </div>
+                  ))
+                )}
+              </div>
+            </DrawerContentSection>
+          );
+        })(),
+      },
+      {
+        id: 'raw',
+        label: 'Raw Data',
+        icon: DatabaseIcon,
+        content: (
           <DrawerContentSection
             variant="card"
             title="Raw Document Data"
@@ -327,20 +350,17 @@ export const TreatmentDetails = ({ treatment }: TreatmentDetailsProps) => {
               </pre>
             </div>
           </DrawerContentSection>
-        );
-      default:
-        return null;
-    }
-  };
+        ),
+      },
+    ],
+    [treatment]
+  );
 
   return (
-    <CategorizedDrawerLayout
+    <SectionedScrollLayout
       title="Treatment Details"
       description="Full inspection of the treatment document from MongoDB."
-      categories={categories}
-      activeCategory={activeCategory}
-      onCategoryChange={setActiveCategory}
-      renderContent={renderContent}
+      sections={sections}
     />
   );
 };

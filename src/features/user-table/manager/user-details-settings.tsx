@@ -8,8 +8,9 @@ import {
   UserIcon,
 } from 'lucide-react';
 import type * as React from 'react';
-import { useState } from 'react';
-import { CategorizedDrawerLayout, DrawerContentSection } from '@/components/drawer-navigation';
+import { useMemo } from 'react';
+import type { SectionConfig } from '@/components/drawer-navigation';
+import { DrawerContentSection, SectionedScrollLayout } from '@/components/drawer-navigation';
 import {
   DataList,
   DataListCell,
@@ -20,9 +21,9 @@ import {
 import { Separator } from '@/components/ui/separator';
 import { cn } from '@/lib/tailwind/utils';
 
-interface UserDetailsSettingsProps {
+type UserDetailsSettingsProps = {
   user: any;
-}
+};
 
 const DataListItem = ({ label, value }: { label: string; value: React.ReactNode }) => (
   <DataListRow className="py-0.5">
@@ -36,22 +37,13 @@ const DataListItem = ({ label, value }: { label: string; value: React.ReactNode 
 );
 
 export const UserDetailsSettings = ({ user }: UserDetailsSettingsProps) => {
-  const [activeCategory, setActiveCategory] = useState('general');
-
-  const categories = [
-    { id: 'general', label: 'General', icon: UserIcon },
-    { id: 'contact', label: 'Contact', icon: ContactIcon },
-    { id: 'account', label: 'Account', icon: Settings2Icon },
-    { id: 'professional', label: 'Professional', icon: BriefcaseIcon },
-    { id: 'billing', label: 'Billing', icon: CreditCardIcon },
-    { id: 'security', label: 'Security', icon: ShieldCheckIcon },
-    { id: 'raw', label: 'Raw Data', icon: DatabaseIcon },
-  ];
-
-  const renderContent = (categoryId: string) => {
-    switch (categoryId) {
-      case 'general':
-        return (
+  const sections = useMemo<SectionConfig[]>(
+    () => [
+      {
+        id: 'general',
+        label: 'General',
+        icon: UserIcon,
+        content: (
           <DrawerContentSection
             variant="card"
             title="General Profile"
@@ -74,9 +66,13 @@ export const UserDetailsSettings = ({ user }: UserDetailsSettingsProps) => {
               <DataListItem label="Gender" value={user.userProfile?.gender} />
             </DataList>
           </DrawerContentSection>
-        );
-      case 'contact':
-        return (
+        ),
+      },
+      {
+        id: 'contact',
+        label: 'Contact',
+        icon: ContactIcon,
+        content: (
           <DrawerContentSection
             variant="card"
             title="Contact Information"
@@ -107,9 +103,13 @@ export const UserDetailsSettings = ({ user }: UserDetailsSettingsProps) => {
               </div>
             </div>
           </DrawerContentSection>
-        );
-      case 'account':
-        return (
+        ),
+      },
+      {
+        id: 'account',
+        label: 'Account',
+        icon: Settings2Icon,
+        content: (
           <DrawerContentSection
             variant="card"
             title="Account & System"
@@ -144,9 +144,13 @@ export const UserDetailsSettings = ({ user }: UserDetailsSettingsProps) => {
               <DataListItem label="Last IP" value={user.lastIP} />
             </DataList>
           </DrawerContentSection>
-        );
-      case 'professional':
-        return (
+        ),
+      },
+      {
+        id: 'professional',
+        label: 'Professional',
+        icon: BriefcaseIcon,
+        content: (
           <DrawerContentSection
             variant="card"
             title="Professional Profile"
@@ -193,9 +197,13 @@ export const UserDetailsSettings = ({ user }: UserDetailsSettingsProps) => {
               </div>
             </div>
           </DrawerContentSection>
-        );
-      case 'billing':
-        return (
+        ),
+      },
+      {
+        id: 'billing',
+        label: 'Billing',
+        icon: CreditCardIcon,
+        content: (
           <DrawerContentSection
             variant="card"
             title="Billing & Employer"
@@ -216,9 +224,13 @@ export const UserDetailsSettings = ({ user }: UserDetailsSettingsProps) => {
               <DataListItem label="Inactive Reason" value={user.employerProfile?.inctiveReason} />
             </DataList>
           </DrawerContentSection>
-        );
-      case 'security':
-        return (
+        ),
+      },
+      {
+        id: 'security',
+        label: 'Security',
+        icon: ShieldCheckIcon,
+        content: (
           <DrawerContentSection
             variant="card"
             title="Security & Authentication"
@@ -264,9 +276,13 @@ export const UserDetailsSettings = ({ user }: UserDetailsSettingsProps) => {
               </div>
             </div>
           </DrawerContentSection>
-        );
-      case 'raw':
-        return (
+        ),
+      },
+      {
+        id: 'raw',
+        label: 'Raw Data',
+        icon: DatabaseIcon,
+        content: (
           <DrawerContentSection
             variant="card"
             title="Raw Document Data"
@@ -278,20 +294,17 @@ export const UserDetailsSettings = ({ user }: UserDetailsSettingsProps) => {
               </pre>
             </div>
           </DrawerContentSection>
-        );
-      default:
-        return null;
-    }
-  };
+        ),
+      },
+    ],
+    [user]
+  );
 
   return (
-    <CategorizedDrawerLayout
+    <SectionedScrollLayout
       title="User Details"
       description="Full inspection of the user document from the legacy MongoDB."
-      categories={categories}
-      activeCategory={activeCategory}
-      onCategoryChange={setActiveCategory}
-      renderContent={renderContent}
+      sections={sections}
     />
   );
 };

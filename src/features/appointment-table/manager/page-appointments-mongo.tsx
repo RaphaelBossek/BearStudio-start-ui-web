@@ -1,16 +1,10 @@
 import { getUiState } from '@bearstudio/ui-state';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { useRouter } from '@tanstack/react-router';
+import { TableProperties } from 'lucide-react';
 import { useCallback, useMemo, useState } from 'react';
 import { DataListErrorState, DataListLoadingState } from '@/components/ui/datalist';
-import { ScrollArea } from '@/components/ui/scroll-area';
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-} from '@/components/ui/sheet';
+import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/components/ui/resizable';
 import {
   PageLayout,
   PageLayoutContent,
@@ -147,51 +141,61 @@ export const PageAppointmentsMongo = (props: {
       <PageLayoutTopBar>
         <PageLayoutTopBarTitle>Appointments (Mongo DB)</PageLayoutTopBarTitle>
       </PageLayoutTopBar>
-      <PageLayoutContent className="pb-20">
-        {ui
-          .match('pending', () => <DataListLoadingState />)
-          .match('error', () => <DataListErrorState retry={() => appointmentsQuery.refetch()} />)
-          .match('default', ({ items, total }) => (
-            <AppointmentsMongoTable
-              data={items as any}
-              isLoading={appointmentsQuery.isLoading || appointmentsQuery.isFetching}
-              total={total}
-              pagination={pagination}
-              onPaginationChange={handlePaginationChange}
-              sorting={sorting}
-              onSortingChange={handleSortingChange}
-              globalFilter={props.search.searchTerm ?? ''}
-              onGlobalFilterChange={handleGlobalFilterChange}
-              onInspect={handleInspect}
-              pageCount={pageCount}
-            />
-          ))
-          .exhaustive()}
+      <PageLayoutContent noContainer className="h-full">
+        <ResizablePanelGroup orientation="horizontal" className="h-full">
+          {/* Table panel */}
+          <ResizablePanel defaultSize={50} minSize={35} className="h-full">
+            <div className="h-full p-4">
+              {ui
+                .match('pending', () => <DataListLoadingState />)
+                .match('error', () => (
+                  <DataListErrorState retry={() => appointmentsQuery.refetch()} />
+                ))
+                .match('default', ({ items, total }) => (
+                  <AppointmentsMongoTable
+                    data={items as any}
+                    isLoading={appointmentsQuery.isLoading || appointmentsQuery.isFetching}
+                    total={total}
+                    pagination={pagination}
+                    onPaginationChange={handlePaginationChange}
+                    sorting={sorting}
+                    onSortingChange={handleSortingChange}
+                    globalFilter={props.search.searchTerm ?? ''}
+                    onGlobalFilterChange={handleGlobalFilterChange}
+                    pageCount={pageCount}
+                    onRowClick={handleInspect}
+                    selectedId={selectedAppointmentId}
+                  />
+                ))
+                .exhaustive()}
+            </div>
+          </ResizablePanel>
 
-        <Sheet
-          open={!!selectedAppointmentId}
-          onOpenChange={(open) => !open && setSelectedAppointmentId(null)}
-        >
-          <SheetContent className="sm:max-w-2xl overflow-hidden flex flex-col">
-            <SheetHeader className="mb-4">
-              <SheetTitle>Appointment Details</SheetTitle>
-              <SheetDescription>
-                Full inspection of the appointment document from MongoDB.
-              </SheetDescription>
-            </SheetHeader>
-            <ScrollArea className="flex-1 mt-2">
-              {appointmentDetailQuery.isLoading ? (
-                <div className="flex items-center justify-center h-40">Loading details...</div>
-              ) : appointmentDetailQuery.data ? (
-                <AppointmentDetails appointment={appointmentDetailQuery.data} />
-              ) : (
-                <div className="text-center py-10 text-muted-foreground">
-                  Appointment not found.
-                </div>
-              )}
-            </ScrollArea>
-          </SheetContent>
-        </Sheet>
+          <ResizableHandle withHandle />
+
+          {/* Detail panel */}
+          <ResizablePanel defaultSize={50} minSize={28} className="h-full">
+            {selectedAppointmentId ? (
+              <div className="h-full overflow-auto">
+                {appointmentDetailQuery.isLoading ? (
+                  <DataListLoadingState />
+                ) : appointmentDetailQuery.data ? (
+                  <AppointmentDetails appointment={appointmentDetailQuery.data} />
+                ) : (
+                  <div className="text-center py-10 text-muted-foreground">
+                    Appointment not found.
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div className="flex flex-col items-center justify-center h-full gap-3 text-muted-foreground">
+                <TableProperties className="size-10 opacity-30" />
+                <p className="text-sm font-medium">No item selected</p>
+                <p className="text-xs opacity-70">Click a row to view details</p>
+              </div>
+            )}
+          </ResizablePanel>
+        </ResizablePanelGroup>
       </PageLayoutContent>
     </PageLayout>
   );

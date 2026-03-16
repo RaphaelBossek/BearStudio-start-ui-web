@@ -6,7 +6,7 @@
 - [ ] The table MUST support server-side sorting by start date, state, and title.
 - [ ] The table MUST allow searching by appointment title or assigned expert name.
 - [ ] The table MUST allow users to toggle the visibility of columns (e.g., `_id`, `state`, `type`, `job.title`, `customer.name`).
-- [ ] Clicking on an "Inspect" or "Detail" button MUST open a sidebar (Drawer) or Modal showing the full JSON representation of the appointment.
+- [ ] Clicking a row MUST open the appointment detail pane in the `ResizablePanel` using the `SectionedScrollLayout` component.
 
 ## UI/UX Criteria
 - [ ] Use `@tanstack/react-table` for table logic.

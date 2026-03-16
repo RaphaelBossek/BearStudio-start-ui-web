@@ -91,6 +91,7 @@
     "react-hook-form": "7.71.1",
     "react-i18next": "16.5.4",
     "react-merge-refs": "3.0.2",
+    "react-resizable-panels": "^4.7.3",
     "react-textarea-autosize": "8.5.9",
     "react-use-disclosure": "9.0.0",
     "remeda": "2.33.4",

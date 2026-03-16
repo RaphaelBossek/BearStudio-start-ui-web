@@ -40,6 +40,10 @@ interface DataTableProps<TData, TValue> {
   globalFilter?: string;
   onGlobalFilterChange?: (value: string) => void;
   pageCount?: number;
+  /** Called when a data row is clicked. Not fired for header/loading/empty rows. */
+  onRowClick?: (row: TData) => void;
+  /** The ID of the currently selected row (used for highlighting). */
+  selectedId?: string | null;
 }
 
 /**
@@ -66,6 +70,8 @@ export function DataTable<TData, TValue>({
   globalFilter,
   onGlobalFilterChange,
   pageCount,
+  onRowClick,
+  selectedId,
 }: DataTableProps<TData, TValue>) {
   const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
@@ -158,7 +164,7 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="space-y-4 flex flex-col h-full">
+    <div className="gap-4 flex flex-col h-full">
       <div className="flex items-center justify-between gap-4 sticky top-0 z-10 bg-background/95 backdrop-blur-sm pb-4 pt-1">
         <SearchInput
           placeholder={searchPlaceholder}
@@ -197,15 +203,27 @@ export function DataTable<TData, TValue>({
                 </TableCell>
               </TableRow>
             ) : table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => (
-                <TableRow key={row.id} data-state={row.getIsSelected() && 'selected'}>
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              ))
+              table.getRowModel().rows.map((row) => {
+                const rowData = row.original as Record<string, unknown>;
+                const isSelected =
+                  selectedId != null && 'id' in rowData && rowData.id === selectedId;
+                return (
+                  <TableRow
+                    key={row.id}
+                    data-state={
+                      isSelected ? 'selected' : row.getIsSelected() ? 'selected' : undefined
+                    }
+                    onClick={onRowClick ? () => onRowClick(row.original) : undefined}
+                    className={onRowClick ? 'cursor-pointer' : undefined}
+                  >
+                    {row.getVisibleCells().map((cell) => (
+                      <TableCell key={cell.id}>
+                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                      </TableCell>
+                    ))}
+                  </TableRow>
+                );
+              })
             ) : (
               <TableRow>
                 <TableCell

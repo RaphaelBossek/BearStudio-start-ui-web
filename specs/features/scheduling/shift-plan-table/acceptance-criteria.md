@@ -52,7 +52,7 @@ This document outlines the common acceptance criteria that apply across all user
 - Data is re-fetched on pagination, sorting, or filtering
 - No stale data is displayed after navigation
 - Total count updates dynamically when filters are applied
-- Drawer content reflects data at the time it was opened (snapshot)
+- Detail pane content reflects data at the time the row was clicked (snapshot)
 
 ---
 
@@ -61,14 +61,14 @@ This document outlines the common acceptance criteria that apply across all user
 ### INT-1: Keyboard Navigation
 - All interactive elements are reachable via keyboard (Tab/Shift+Tab)
 - Table rows can be focused and activated via Enter key
-- Drawer can be closed via ESC key
+- Detail pane can be dismissed via keyboard (ESC or row re-click)
 - Filter dropdowns are navigable via arrow keys
-- Focus trap works correctly in modal/drawer contexts
+- Focus is managed correctly when the detail pane opens
 
 ### INT-2: Mouse/Touch Interaction
 - All clickable elements have visible hover states
 - Column headers show sort indicator on hover
-- Action buttons (Inspect, Filter, etc.) are clearly clickable
+- Action buttons (Filter, etc.) and clickable rows have visible hover states
 - No accidental triggers from hover states alone
 - Touch targets meet minimum size requirements (44x44px)
 
@@ -93,7 +93,7 @@ This document outlines the common acceptance criteria that apply across all user
 - Sorting: < 1 second
 - Filtering: < 1 second
 - Column visibility toggle: Instant (< 100ms, no server call)
-- Drawer open/close: < 300ms (smooth animation)
+- Detail pane open: < 300ms (smooth animation)
 
 ### PERF-3: Resource Efficiency
 - No memory leaks from unmounted components
@@ -110,7 +110,7 @@ This document outlines the common acceptance criteria that apply across all user
 - Sort state is announced to screen readers
 - Filter changes are announced with live regions
 - Pagination state is announced on page change
-- Drawer open/close is announced
+- Detail pane open/close is announced to screen readers
 
 ### A11Y-2: Color Contrast
 - All text meets WCAG AA contrast requirements (4.5:1 for normal text)
@@ -185,7 +185,7 @@ This document outlines the common acceptance criteria that apply across all user
 ### INT-UI-1: Component Reusability
 - Table components follow the established pattern from Appointments/Users
 - No duplicate code for common table functionality
-- Shared components (badges, drawers) are used consistently
+- Shared components (badges, detail panes) are used consistently
 - Custom components are documented and testable
 
 ---
@@ -207,7 +207,7 @@ This document outlines the common acceptance criteria that apply across all user
 ### TEST-3: End-to-End Tests
 - User can navigate through pages successfully
 - User can search and see filtered results
-- User can open and close the detail drawer
+- User can open the detail pane by clicking a row
 - User can toggle column visibility
 
 ---

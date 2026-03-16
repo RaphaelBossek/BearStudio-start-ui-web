@@ -1,8 +1,6 @@
 import type { ColumnDef } from '@tanstack/react-table';
-import { EyeIcon } from 'lucide-react';
 import { useMemo } from 'react';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
 import { DataTable, formatCellValue } from '@/components/ui/data-table';
 import type { Outputs } from '@/server/router';
 
@@ -18,8 +16,9 @@ export interface AppointmentsMongoTableProps {
   onSortingChange: (sorting: { id: string; desc: boolean }[]) => void;
   globalFilter: string;
   onGlobalFilterChange: (value: string) => void;
-  onInspect: (appointment: AppointmentRow) => void;
   pageCount?: number;
+  onRowClick?: (appointment: AppointmentRow) => void;
+  selectedId?: string | null;
 }
 
 const getStateVariant = (state: string | null | undefined) => {
@@ -53,8 +52,9 @@ export function AppointmentsMongoTable({
   onSortingChange,
   globalFilter,
   onGlobalFilterChange,
-  onInspect,
   pageCount,
+  onRowClick,
+  selectedId,
 }: AppointmentsMongoTableProps) {
   const columns: ColumnDef<AppointmentRow>[] = useMemo(
     () => [
@@ -119,22 +119,8 @@ export function AppointmentsMongoTable({
         enableSorting: false,
         cell: (info) => formatCellValue(info.getValue()),
       },
-      {
-        id: 'actions',
-        header: 'Actions',
-        cell: (info) => (
-          <Button
-            variant="ghost"
-            size="icon-xs"
-            onClick={() => onInspect(info.row.original)}
-            title="Inspect Appointment"
-          >
-            <EyeIcon />
-          </Button>
-        ),
-      },
     ],
-    [onInspect]
+    []
   );
 
   const computedPageCount = useMemo(
@@ -156,6 +142,8 @@ export function AppointmentsMongoTable({
       onGlobalFilterChange={onGlobalFilterChange}
       pageCount={pageCount ?? computedPageCount}
       searchPlaceholder="Search appointments..."
+      onRowClick={onRowClick}
+      selectedId={selectedId}
     />
   );
 }

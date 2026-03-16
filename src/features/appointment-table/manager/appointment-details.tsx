@@ -1,7 +1,8 @@
 import { CalendarIcon, DatabaseIcon, InfoIcon, MapPinIcon, UserIcon } from 'lucide-react';
 import type * as React from 'react';
-import { useState } from 'react';
-import { CategorizedDrawerLayout, DrawerContentSection } from '@/components/drawer-navigation';
+import { useMemo } from 'react';
+import type { SectionConfig } from '@/components/drawer-navigation';
+import { DrawerContentSection, SectionedScrollLayout } from '@/components/drawer-navigation';
 import {
   DataList,
   DataListCell,
@@ -11,9 +12,9 @@ import {
 } from '@/components/ui/datalist';
 import { Separator } from '@/components/ui/separator';
 
-interface AppointmentDetailsProps {
+type AppointmentDetailsProps = {
   appointment: any;
-}
+};
 
 const DataListItem = ({ label, value }: { label: string; value: React.ReactNode }) => (
   <DataListRow className="py-0.5">
@@ -27,20 +28,13 @@ const DataListItem = ({ label, value }: { label: string; value: React.ReactNode 
 );
 
 export const AppointmentDetails = ({ appointment }: AppointmentDetailsProps) => {
-  const [activeCategory, setActiveCategory] = useState('general');
-
-  const categories = [
-    { id: 'general', label: 'General', icon: InfoIcon },
-    { id: 'timing', label: 'Timing', icon: CalendarIcon },
-    { id: 'participants', label: 'Participants', icon: UserIcon },
-    { id: 'location', label: 'Location/Job', icon: MapPinIcon },
-    { id: 'raw', label: 'Raw Data', icon: DatabaseIcon },
-  ];
-
-  const renderContent = (categoryId: string) => {
-    switch (categoryId) {
-      case 'general':
-        return (
+  const sections = useMemo<SectionConfig[]>(
+    () => [
+      {
+        id: 'general',
+        label: 'General',
+        icon: InfoIcon,
+        content: (
           <DrawerContentSection
             variant="card"
             title="General Information"
@@ -54,9 +48,13 @@ export const AppointmentDetails = ({ appointment }: AppointmentDetailsProps) => 
               <DataListItem label="Comment" value={appointment.comment} />
             </DataList>
           </DrawerContentSection>
-        );
-      case 'timing':
-        return (
+        ),
+      },
+      {
+        id: 'timing',
+        label: 'Timing',
+        icon: CalendarIcon,
+        content: (
           <DrawerContentSection
             variant="card"
             title="Timing Details"
@@ -89,9 +87,13 @@ export const AppointmentDetails = ({ appointment }: AppointmentDetailsProps) => 
               />
             </DataList>
           </DrawerContentSection>
-        );
-      case 'participants':
-        return (
+        ),
+      },
+      {
+        id: 'participants',
+        label: 'Participants',
+        icon: UserIcon,
+        content: (
           <DrawerContentSection
             variant="card"
             title="Participants"
@@ -104,9 +106,13 @@ export const AppointmentDetails = ({ appointment }: AppointmentDetailsProps) => 
               <DataListItem label="Actual Patients" value={appointment.actualPatients} />
             </DataList>
           </DrawerContentSection>
-        );
-      case 'location':
-        return (
+        ),
+      },
+      {
+        id: 'location',
+        label: 'Location/Job',
+        icon: MapPinIcon,
+        content: (
           <DrawerContentSection
             variant="card"
             title="Location & Job"
@@ -131,9 +137,13 @@ export const AppointmentDetails = ({ appointment }: AppointmentDetailsProps) => 
               </div>
             </div>
           </DrawerContentSection>
-        );
-      case 'raw':
-        return (
+        ),
+      },
+      {
+        id: 'raw',
+        label: 'Raw Data',
+        icon: DatabaseIcon,
+        content: (
           <DrawerContentSection
             variant="card"
             title="Raw Document Data"
@@ -145,20 +155,17 @@ export const AppointmentDetails = ({ appointment }: AppointmentDetailsProps) => 
               </pre>
             </div>
           </DrawerContentSection>
-        );
-      default:
-        return null;
-    }
-  };
+        ),
+      },
+    ],
+    [appointment]
+  );
 
   return (
-    <CategorizedDrawerLayout
+    <SectionedScrollLayout
       title="Appointment Details"
       description="Full inspection of the appointment document from MongoDB."
-      categories={categories}
-      activeCategory={activeCategory}
-      onCategoryChange={setActiveCategory}
-      renderContent={renderContent}
+      sections={sections}
     />
   );
 };

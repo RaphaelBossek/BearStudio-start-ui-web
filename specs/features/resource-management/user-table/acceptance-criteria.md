@@ -5,7 +5,7 @@
 - [ ] The table MUST display `user.userProfile.displayName` as the primary reference column.
 - [ ] Users MUST be able to toggle the visibility of nested document fields as individual columns.
 - [ ] Columns for array fields MUST only show a maximum of the first 3 entries.
-- [ ] Every row MUST have an "Actions" column with a button to open the detailed view.
+- [ ] Clicking a row MUST open the user detail pane in the `ResizablePanel` using the `SectionedScrollLayout` component.
 - [ ] The Detailed View MUST display all information from the user document, including all nested levels.
 
 ## Usability

@@ -32,7 +32,7 @@ This document defines the general requirements and UI principles for all data ta
   - **Overflow (> 9 columns)**: If more than 9 columns exist, add a "more..." option at the bottom of the dropdown.
   - **"more..." Action**: Selecting "more..." opens a **Drawer** (or Modal) containing a checklist of all available columns.
 - **No Page Reloads**: Column toggling and other table interactions must happen without full page refreshes.
-- **Detail Inspection**: Every row should provide an "Inspect" action that opens a **Drawer** displaying the full, formatted JSON/Tree structure of the entity.
+- **Detail Inspection**: Rows are clickable — clicking a row opens the detail pane in the `ResizablePanel`. No dedicated inspect/eye button column is needed.
 
 ## Data Presentation Principles
 
@@ -111,11 +111,7 @@ const handleGlobalFilterChange = useCallback((value) => {
 // causing React Table to reinitialize and reset pageIndex to 0.
 const columns: ColumnDef<Row>[] = useMemo(() => [
   // ... column definitions ...
-  {
-    id: 'actions',
-    cell: (info) => <Button onClick={() => onInspect(info.row.original)} />,
-  },
-], [onInspect]); // include any callbacks used inside column cells
+], []); // add any callbacks used inside column cells as dependencies
 
 // Memoize pageCount calculation
 const pageCount = useMemo(
@@ -126,8 +122,8 @@ const pageCount = useMemo(
 
 **In parent page components — also memoize inspect/action callbacks:**
 ```typescript
-// Memoize inspect handler so columns array stays stable
-const handleInspect = useCallback((item: ItemType) => {
+// Memoize row-click handler so columns array stays stable
+const handleRowClick = useCallback((item: ItemType) => {
   setSelectedId(item.id);
 }, []);
 ```

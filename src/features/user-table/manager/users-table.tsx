@@ -1,8 +1,6 @@
 import type { ColumnDef } from '@tanstack/react-table';
-import { EyeIcon } from 'lucide-react';
 import { useMemo } from 'react';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
 import { DataTable, formatCellValue } from '@/components/ui/data-table';
 import type { Outputs } from '@/server/router';
 
@@ -18,8 +16,9 @@ export interface UsersMongoTableProps {
   onSortingChange: (sorting: { id: string; desc: boolean }[]) => void;
   globalFilter: string;
   onGlobalFilterChange: (value: string) => void;
-  onInspect: (user: UserMongoRow) => void;
   pageCount?: number;
+  onRowClick?: (user: UserMongoRow) => void;
+  selectedId?: string | null;
 }
 
 export function UsersMongoTable({
@@ -32,8 +31,9 @@ export function UsersMongoTable({
   onSortingChange,
   globalFilter,
   onGlobalFilterChange,
-  onInspect,
   pageCount,
+  onRowClick,
+  selectedId,
 }: UsersMongoTableProps) {
   const columns: ColumnDef<UserMongoRow>[] = useMemo(
     () => [
@@ -116,22 +116,8 @@ export function UsersMongoTable({
           );
         },
       },
-      {
-        id: 'actions',
-        header: 'Actions',
-        cell: (info) => (
-          <Button
-            variant="ghost"
-            size="icon-xs"
-            onClick={() => onInspect(info.row.original)}
-            title="Inspect User"
-          >
-            <EyeIcon />
-          </Button>
-        ),
-      },
     ],
-    [onInspect]
+    []
   );
 
   return (
@@ -148,6 +134,8 @@ export function UsersMongoTable({
       onGlobalFilterChange={onGlobalFilterChange}
       pageCount={pageCount}
       searchPlaceholder="Search users..."
+      onRowClick={onRowClick}
+      selectedId={selectedId}
     />
   );
 }

@@ -1,8 +1,6 @@
 import type { ColumnDef } from '@tanstack/react-table';
-import { CalendarIcon, EyeIcon } from 'lucide-react';
 import { useMemo } from 'react';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
 import { DataTable, formatCellValue } from '@/components/ui/data-table';
 import type { Outputs } from '@/server/router';
 
@@ -18,9 +16,9 @@ export interface TreatmentsMongoTableProps {
   onSortingChange: (sorting: { id: string; desc: boolean }[]) => void;
   globalFilter: string;
   onGlobalFilterChange: (value: string) => void;
-  onInspect: (treatment: TreatmentRow) => void;
-  onViewAppointments: (treatment: TreatmentRow) => void;
   pageCount?: number;
+  onRowClick?: (treatment: TreatmentRow) => void;
+  selectedId?: string | null;
 }
 
 const getStateVariant = (state: string | null | undefined) => {
@@ -52,9 +50,9 @@ export function TreatmentsMongoTable({
   onSortingChange,
   globalFilter,
   onGlobalFilterChange,
-  onInspect,
-  onViewAppointments,
   pageCount,
+  onRowClick,
+  selectedId,
 }: TreatmentsMongoTableProps) {
   const columns: ColumnDef<TreatmentRow>[] = useMemo(
     () => [
@@ -149,32 +147,8 @@ export function TreatmentsMongoTable({
           return total ? `${finished}/${total}` : String(finished);
         },
       },
-      {
-        id: 'actions',
-        header: 'Actions',
-        cell: (info) => (
-          <div className="flex items-center gap-1">
-            <Button
-              variant="ghost"
-              size="icon-xs"
-              onClick={() => onViewAppointments(info.row.original)}
-              title="View Appointments"
-            >
-              <CalendarIcon />
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon-xs"
-              onClick={() => onInspect(info.row.original)}
-              title="Inspect Treatment"
-            >
-              <EyeIcon />
-            </Button>
-          </div>
-        ),
-      },
     ],
-    [onInspect, onViewAppointments]
+    []
   );
 
   const computedPageCount = useMemo(
@@ -196,6 +170,8 @@ export function TreatmentsMongoTable({
       onGlobalFilterChange={onGlobalFilterChange}
       pageCount={pageCount ?? computedPageCount}
       searchPlaceholder="Search treatments..."
+      onRowClick={onRowClick}
+      selectedId={selectedId}
     />
   );
 }

@@ -1,8 +1,6 @@
 import type { ColumnDef } from '@tanstack/react-table';
-import { EyeIcon } from 'lucide-react';
 import { useMemo } from 'react';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
 import { DataTable, formatCellValue } from '@/components/ui/data-table';
 import type { Outputs } from '@/server/router';
 
@@ -18,8 +16,9 @@ export interface ShiftPlansMongoTableProps {
   onSortingChange: (sorting: { id: string; desc: boolean }[]) => void;
   globalFilter: string;
   onGlobalFilterChange: (value: string) => void;
-  onInspect: (shiftPlan: ShiftPlanRow) => void;
   pageCount?: number;
+  onRowClick?: (shiftPlan: ShiftPlanRow) => void;
+  selectedId?: string | null;
 }
 
 const getDayLabel = (day: string | null | undefined) => {
@@ -66,8 +65,9 @@ export function ShiftPlansMongoTable({
   onSortingChange,
   globalFilter,
   onGlobalFilterChange,
-  onInspect,
   pageCount,
+  onRowClick,
+  selectedId,
 }: ShiftPlansMongoTableProps) {
   const columns: ColumnDef<ShiftPlanRow>[] = useMemo(
     () => [
@@ -136,22 +136,8 @@ export function ShiftPlansMongoTable({
         enableSorting: false,
         cell: (info) => formatCellValue(info.getValue()),
       },
-      {
-        id: 'actions',
-        header: 'Actions',
-        cell: (info) => (
-          <Button
-            variant="ghost"
-            size="icon-xs"
-            onClick={() => onInspect(info.row.original)}
-            title="Inspect Shift Plan"
-          >
-            <EyeIcon />
-          </Button>
-        ),
-      },
     ],
-    [onInspect]
+    []
   );
 
   const computedPageCount = useMemo(
@@ -173,6 +159,8 @@ export function ShiftPlansMongoTable({
       onGlobalFilterChange={onGlobalFilterChange}
       pageCount={pageCount ?? computedPageCount}
       searchPlaceholder="Search shift plans..."
+      onRowClick={onRowClick}
+      selectedId={selectedId}
     />
   );
 }

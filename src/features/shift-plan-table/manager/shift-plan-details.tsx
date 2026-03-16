@@ -1,7 +1,8 @@
 import { CalendarIcon, ClockIcon, DatabaseIcon, InfoIcon, UserIcon } from 'lucide-react';
 import type * as React from 'react';
-import { useState } from 'react';
-import { CategorizedDrawerLayout, DrawerContentSection } from '@/components/drawer-navigation';
+import { useMemo } from 'react';
+import type { SectionConfig } from '@/components/drawer-navigation';
+import { DrawerContentSection, SectionedScrollLayout } from '@/components/drawer-navigation';
 import {
   DataList,
   DataListCell,
@@ -11,9 +12,9 @@ import {
 } from '@/components/ui/datalist';
 import { Separator } from '@/components/ui/separator';
 
-interface ShiftPlanDetailsProps {
+type ShiftPlanDetailsProps = {
   shiftPlan: any;
-}
+};
 
 const DataListItem = ({ label, value }: { label: string; value: React.ReactNode }) => (
   <DataListRow className="py-0.5">
@@ -46,20 +47,13 @@ const getDayLabel = (day: string | null | undefined) => {
 };
 
 export const ShiftPlanDetails = ({ shiftPlan }: ShiftPlanDetailsProps) => {
-  const [activeCategory, setActiveCategory] = useState('general');
-
-  const categories = [
-    { id: 'general', label: 'General', icon: InfoIcon },
-    { id: 'schedule', label: 'Schedule', icon: CalendarIcon },
-    { id: 'timing', label: 'Timing', icon: ClockIcon },
-    { id: 'people', label: 'People', icon: UserIcon },
-    { id: 'raw', label: 'Raw Data', icon: DatabaseIcon },
-  ];
-
-  const renderContent = (categoryId: string) => {
-    switch (categoryId) {
-      case 'general':
-        return (
+  const sections = useMemo<SectionConfig[]>(
+    () => [
+      {
+        id: 'general',
+        label: 'General',
+        icon: InfoIcon,
+        content: (
           <DrawerContentSection
             variant="card"
             title="General Information"
@@ -73,9 +67,13 @@ export const ShiftPlanDetails = ({ shiftPlan }: ShiftPlanDetailsProps) => {
               <DataListItem label="Comment" value={shiftPlan.comment} />
             </DataList>
           </DrawerContentSection>
-        );
-      case 'schedule':
-        return (
+        ),
+      },
+      {
+        id: 'schedule',
+        label: 'Schedule',
+        icon: CalendarIcon,
+        content: (
           <DrawerContentSection
             variant="card"
             title="Schedule Details"
@@ -95,9 +93,13 @@ export const ShiftPlanDetails = ({ shiftPlan }: ShiftPlanDetailsProps) => {
               <DataListItem label="Count" value={shiftPlan.count} />
             </DataList>
           </DrawerContentSection>
-        );
-      case 'timing':
-        return (
+        ),
+      },
+      {
+        id: 'timing',
+        label: 'Timing',
+        icon: ClockIcon,
+        content: (
           <DrawerContentSection
             variant="card"
             title="Timing Details"
@@ -120,9 +122,13 @@ export const ShiftPlanDetails = ({ shiftPlan }: ShiftPlanDetailsProps) => {
               />
             </DataList>
           </DrawerContentSection>
-        );
-      case 'people':
-        return (
+        ),
+      },
+      {
+        id: 'people',
+        label: 'People',
+        icon: UserIcon,
+        content: (
           <DrawerContentSection
             variant="card"
             title="People & Job"
@@ -159,9 +165,13 @@ export const ShiftPlanDetails = ({ shiftPlan }: ShiftPlanDetailsProps) => {
               </div>
             </div>
           </DrawerContentSection>
-        );
-      case 'raw':
-        return (
+        ),
+      },
+      {
+        id: 'raw',
+        label: 'Raw Data',
+        icon: DatabaseIcon,
+        content: (
           <DrawerContentSection
             variant="card"
             title="Raw Document Data"
@@ -173,20 +183,17 @@ export const ShiftPlanDetails = ({ shiftPlan }: ShiftPlanDetailsProps) => {
               </pre>
             </div>
           </DrawerContentSection>
-        );
-      default:
-        return null;
-    }
-  };
+        ),
+      },
+    ],
+    [shiftPlan]
+  );
 
   return (
-    <CategorizedDrawerLayout
+    <SectionedScrollLayout
       title="Shift Plan Details"
       description="Full inspection of the shift plan document from MongoDB."
-      categories={categories}
-      activeCategory={activeCategory}
-      onCategoryChange={setActiveCategory}
-      renderContent={renderContent}
+      sections={sections}
     />
   );
 };

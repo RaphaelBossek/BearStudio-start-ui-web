@@ -6,8 +6,7 @@
 - [x] The table MUST support server-side sorting by `id`, `bookNumber`, `state`, `dateStart`, and `dateCreated`.
 - [x] The table MUST allow searching by `bookNumber`, `jNumber`, `customer.name`, `location.name`, and `assigned.name`.
 - [x] The table MUST allow users to toggle the visibility of columns (15+ fields require "more..." drawer).
-- [x] Clicking on an "Inspect" (eye icon) button MUST open a sidebar (Drawer) showing categorized treatment details.
-- [x] Clicking on a "Calendar" icon MUST fetch and display associated appointments for the treatment.
+- [x] Clicking a row MUST open the treatment detail pane in the `ResizablePanel` using the `SectionedScrollLayout` component.
 - [x] The table MUST display treatment progress as `finished/total` count.
 
 ## UI/UX Criteria
@@ -36,7 +35,7 @@
 - [x] `TreatmentPosition` MUST expose `report` (type `TreatmentReport`) with `date`, `type`, `consultationId`, `dateStart`, `dateEnd`, `job`.
 - [x] `zTreatmentSchema` Zod schema MUST be the wire contract — no `as any[]` cast at the router boundary.
 - [x] `TreatmentDetails` component MUST use the typed `Treatment` type (not `any`).
-- [x] Inspect drawer MUST include a "Positions" tab showing all positions with their report details in a scrollable container.
+- [x] The detail pane MUST include a "Positions" section showing all positions with their report details in a scrollable container.
 
 ## Further Suggestions for Acceptance Criteria
 - [ ] Filter by date range (dateStart/dateCreated).
