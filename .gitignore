@@ -166,6 +166,7 @@ http-client.private.env.json
 .kilo
 .kilocode
 .claude
+.dmux
 
 # TanStack Router/Start (Vite plugin)
 src/routeTree.gen.ts
