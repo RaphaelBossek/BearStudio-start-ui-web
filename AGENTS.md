@@ -12,6 +12,31 @@ Key takeaways for table views:
 - Pass `pageCount` explicitly to `DataTablePagination` — never derive it from `table.getPageCount()`
 - Avoid nesting Drawers inside DropdownMenus — render as siblings with programmatic state control
 
+## Detail View Implementation (SectionedScrollLayout)
+
+For all multi-section detail views (Consultations, Treatments, Appointments, Users, etc.), use the `SectionedScrollLayout` component. This provides a unified continuous-scroll experience with a responsive sticky nav sidebar and scroll-spy.
+
+### Required Patterns
+
+1. **Memoize the `sections` prop (CRITICAL)**
+   - The `sections` array passed to `SectionedScrollLayout` **must** be wrapped in `useMemo`.
+   - Failing to memoize causes the internal `IntersectionObserver` to be destroyed and recreated on every render of the parent, leading to "flickering" active states in the navigation and performance issues.
+
+2. **Section Configuration (`SectionConfig`)**
+   - Use stable `id` strings for sections (derived from their purpose, not random).
+   - Use `LucideIcon` components for the `icon` property.
+   - The `content` property should usually contain a `DrawerContentSection` (often with `variant="card"`) to maintain consistent styling.
+
+3. **Conditional Visibility**
+   - If sections are conditionally shown based on data (e.g., consultation type), perform the filtering *before* or *inside* the `useMemo` that produces the `sections` array.
+
+4. **Responsive Sidebar**
+   - `SectionedScrollLayout` automatically handles switching between:
+     - **Full Sidebar**: >= 420px panel width.
+     - **Icon-only Sidebar**: 220px - 419px panel width.
+     - **Hamburger Sheet**: < 220px panel width.
+   - It uses `ResizeObserver` to detect the width of its *container*, making it compatible with `ResizablePanel` layouts.
+
 ## TanStack Router Route Breadcrumbs (Top Bar Navigation)
 
 For app-level breadcrumbs (route hierarchy breadcrumbs, not table page-number breadcrumbs), use TanStack Router `staticData` + `useMatches`.
@@ -52,3 +77,8 @@ For app-level breadcrumbs (route hierarchy breadcrumbs, not table page-number br
 - Without `useMatches`, breadcrumb trees drift from real route hierarchy.
 - Dynamic labels (params/search) break if not resolved from `match`.
 - Mixing route breadcrumbs and table-pagination UI causes UX confusion and state bugs.
+
+## Prisma Migrate Drift Note
+
+- Running `prisma migrate dev` against the current Neon development database can fail with **drift detected** and request a full schema reset.
+- In this repository state, prefer updating `prisma/schema.prisma` + `prisma generate` first, and coordinate migration execution/reset strategy with the developer before applying destructive reset commands.
