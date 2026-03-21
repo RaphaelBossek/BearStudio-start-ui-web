@@ -4,6 +4,7 @@ import {
   BriefcaseMedicalIcon,
   CalendarIcon,
   ClockIcon,
+  HeartPulseIcon,
   LayoutDashboardIcon,
   PanelLeftIcon,
   UsersIcon,
@@ -169,6 +170,21 @@ export const NavSidebar = (props: { children?: ReactNode }) => {
                           <span>
                             <BriefcaseMedicalIcon />
                             <span>{t('layout:nav.treatmentsMongo')}</span>
+                          </span>
+                        }
+                      />
+                    )}
+                  </Link>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <Link to="/manager/consultations-mongo">
+                    {({ isActive }) => (
+                      <SidebarMenuButton
+                        isActive={isActive}
+                        render={
+                          <span>
+                            <HeartPulseIcon />
+                            <span>{t('layout:nav.consultations')}</span>
                           </span>
                         }
                       />
