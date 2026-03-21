@@ -57,6 +57,8 @@ export const ModelName = {
   Appointment: 'Appointment',
   ShiftPlan: 'ShiftPlan',
   Treatment: 'Treatment',
+  Consultation: 'Consultation',
+  ConsultationData: 'ConsultationData',
 } as const;
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
@@ -251,6 +253,69 @@ export const TreatmentScalarFieldEnum = {
 
 export type TreatmentScalarFieldEnum =
   (typeof TreatmentScalarFieldEnum)[keyof typeof TreatmentScalarFieldEnum];
+
+export const ConsultationScalarFieldEnum = {
+  id: 'id',
+  date: 'date',
+  timeStart: 'timeStart',
+  timeEnd: 'timeEnd',
+  type: 'type',
+  state: 'state',
+  bookNumber: 'bookNumber',
+  period: 'period',
+  appointmentType: 'appointmentType',
+  paymentType: 'paymentType',
+  archived: 'archived',
+  location: 'location',
+  customer: 'customer',
+  doctor: 'doctor',
+  job: 'job',
+  class: 'class',
+} as const;
+
+export type ConsultationScalarFieldEnum =
+  (typeof ConsultationScalarFieldEnum)[keyof typeof ConsultationScalarFieldEnum];
+
+export const ConsultationDataScalarFieldEnum = {
+  id: 'id',
+  version: 'version',
+  date: 'date',
+  timeStart: 'timeStart',
+  timeEnd: 'timeEnd',
+  dateSignedOff: 'dateSignedOff',
+  archived: 'archived',
+  type: 'type',
+  state: 'state',
+  base: 'base',
+  body: 'body',
+  warnings: 'warnings',
+  onboarding: 'onboarding',
+  standard: 'standard',
+  signedOffBy: 'signedOffBy',
+  appointment: 'appointment',
+  location: 'location',
+  period: 'period',
+  appointmentType: 'appointmentType',
+  customer: 'customer',
+  job: 'job',
+  paymentType: 'paymentType',
+  doctor: 'doctor',
+  history: 'history',
+  document: 'document',
+  incarceration: 'incarceration',
+  referral: 'referral',
+  psych: 'psych',
+  treatment: 'treatment',
+  noWarnings: 'noWarnings',
+  comment: 'comment',
+  requireReporting: 'requireReporting',
+  bookNumber: 'bookNumber',
+  basisWebDataId: 'basisWebDataId',
+  class: 'class',
+} as const;
+
+export type ConsultationDataScalarFieldEnum =
+  (typeof ConsultationDataScalarFieldEnum)[keyof typeof ConsultationDataScalarFieldEnum];
 
 export const SortOrder = {
   asc: 'asc',

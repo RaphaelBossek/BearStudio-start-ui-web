@@ -392,6 +392,8 @@ export const ModelName = {
   Appointment: 'Appointment',
   ShiftPlan: 'ShiftPlan',
   Treatment: 'Treatment',
+  Consultation: 'Consultation',
+  ConsultationData: 'ConsultationData',
 } as const;
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
@@ -412,7 +414,14 @@ export type TypeMap<
     omit: GlobalOmitOptions;
   };
   meta: {
-    modelProps: 'expertWeek' | 'userMongo' | 'appointment' | 'shiftPlan' | 'treatment';
+    modelProps:
+      | 'expertWeek'
+      | 'userMongo'
+      | 'appointment'
+      | 'shiftPlan'
+      | 'treatment'
+      | 'consultation'
+      | 'consultationData';
     txIsolationLevel: never;
   };
   model: {
@@ -786,6 +795,158 @@ export type TypeMap<
         };
       };
     };
+    Consultation: {
+      payload: Prisma.$ConsultationPayload<ExtArgs>;
+      fields: Prisma.ConsultationFieldRefs;
+      operations: {
+        findUnique: {
+          args: Prisma.ConsultationFindUniqueArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConsultationPayload> | null;
+        };
+        findUniqueOrThrow: {
+          args: Prisma.ConsultationFindUniqueOrThrowArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConsultationPayload>;
+        };
+        findFirst: {
+          args: Prisma.ConsultationFindFirstArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConsultationPayload> | null;
+        };
+        findFirstOrThrow: {
+          args: Prisma.ConsultationFindFirstOrThrowArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConsultationPayload>;
+        };
+        findMany: {
+          args: Prisma.ConsultationFindManyArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConsultationPayload>[];
+        };
+        create: {
+          args: Prisma.ConsultationCreateArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConsultationPayload>;
+        };
+        createMany: {
+          args: Prisma.ConsultationCreateManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        delete: {
+          args: Prisma.ConsultationDeleteArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConsultationPayload>;
+        };
+        update: {
+          args: Prisma.ConsultationUpdateArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConsultationPayload>;
+        };
+        deleteMany: {
+          args: Prisma.ConsultationDeleteManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        updateMany: {
+          args: Prisma.ConsultationUpdateManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        upsert: {
+          args: Prisma.ConsultationUpsertArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConsultationPayload>;
+        };
+        aggregate: {
+          args: Prisma.ConsultationAggregateArgs<ExtArgs>;
+          result: runtime.Types.Utils.Optional<Prisma.AggregateConsultation>;
+        };
+        groupBy: {
+          args: Prisma.ConsultationGroupByArgs<ExtArgs>;
+          result: runtime.Types.Utils.Optional<Prisma.ConsultationGroupByOutputType>[];
+        };
+        findRaw: {
+          args: Prisma.ConsultationFindRawArgs<ExtArgs>;
+          result: Prisma.JsonObject;
+        };
+        aggregateRaw: {
+          args: Prisma.ConsultationAggregateRawArgs<ExtArgs>;
+          result: Prisma.JsonObject;
+        };
+        count: {
+          args: Prisma.ConsultationCountArgs<ExtArgs>;
+          result:
+            | runtime.Types.Utils.Optional<Prisma.ConsultationCountAggregateOutputType>
+            | number;
+        };
+      };
+    };
+    ConsultationData: {
+      payload: Prisma.$ConsultationDataPayload<ExtArgs>;
+      fields: Prisma.ConsultationDataFieldRefs;
+      operations: {
+        findUnique: {
+          args: Prisma.ConsultationDataFindUniqueArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConsultationDataPayload> | null;
+        };
+        findUniqueOrThrow: {
+          args: Prisma.ConsultationDataFindUniqueOrThrowArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConsultationDataPayload>;
+        };
+        findFirst: {
+          args: Prisma.ConsultationDataFindFirstArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConsultationDataPayload> | null;
+        };
+        findFirstOrThrow: {
+          args: Prisma.ConsultationDataFindFirstOrThrowArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConsultationDataPayload>;
+        };
+        findMany: {
+          args: Prisma.ConsultationDataFindManyArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConsultationDataPayload>[];
+        };
+        create: {
+          args: Prisma.ConsultationDataCreateArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConsultationDataPayload>;
+        };
+        createMany: {
+          args: Prisma.ConsultationDataCreateManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        delete: {
+          args: Prisma.ConsultationDataDeleteArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConsultationDataPayload>;
+        };
+        update: {
+          args: Prisma.ConsultationDataUpdateArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConsultationDataPayload>;
+        };
+        deleteMany: {
+          args: Prisma.ConsultationDataDeleteManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        updateMany: {
+          args: Prisma.ConsultationDataUpdateManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        upsert: {
+          args: Prisma.ConsultationDataUpsertArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConsultationDataPayload>;
+        };
+        aggregate: {
+          args: Prisma.ConsultationDataAggregateArgs<ExtArgs>;
+          result: runtime.Types.Utils.Optional<Prisma.AggregateConsultationData>;
+        };
+        groupBy: {
+          args: Prisma.ConsultationDataGroupByArgs<ExtArgs>;
+          result: runtime.Types.Utils.Optional<Prisma.ConsultationDataGroupByOutputType>[];
+        };
+        findRaw: {
+          args: Prisma.ConsultationDataFindRawArgs<ExtArgs>;
+          result: Prisma.JsonObject;
+        };
+        aggregateRaw: {
+          args: Prisma.ConsultationDataAggregateRawArgs<ExtArgs>;
+          result: Prisma.JsonObject;
+        };
+        count: {
+          args: Prisma.ConsultationDataCountArgs<ExtArgs>;
+          result:
+            | runtime.Types.Utils.Optional<Prisma.ConsultationDataCountAggregateOutputType>
+            | number;
+        };
+      };
+    };
   };
 } & {
   other: {
@@ -990,6 +1151,69 @@ export const TreatmentScalarFieldEnum = {
 export type TreatmentScalarFieldEnum =
   (typeof TreatmentScalarFieldEnum)[keyof typeof TreatmentScalarFieldEnum];
 
+export const ConsultationScalarFieldEnum = {
+  id: 'id',
+  date: 'date',
+  timeStart: 'timeStart',
+  timeEnd: 'timeEnd',
+  type: 'type',
+  state: 'state',
+  bookNumber: 'bookNumber',
+  period: 'period',
+  appointmentType: 'appointmentType',
+  paymentType: 'paymentType',
+  archived: 'archived',
+  location: 'location',
+  customer: 'customer',
+  doctor: 'doctor',
+  job: 'job',
+  class: 'class',
+} as const;
+
+export type ConsultationScalarFieldEnum =
+  (typeof ConsultationScalarFieldEnum)[keyof typeof ConsultationScalarFieldEnum];
+
+export const ConsultationDataScalarFieldEnum = {
+  id: 'id',
+  version: 'version',
+  date: 'date',
+  timeStart: 'timeStart',
+  timeEnd: 'timeEnd',
+  dateSignedOff: 'dateSignedOff',
+  archived: 'archived',
+  type: 'type',
+  state: 'state',
+  base: 'base',
+  body: 'body',
+  warnings: 'warnings',
+  onboarding: 'onboarding',
+  standard: 'standard',
+  signedOffBy: 'signedOffBy',
+  appointment: 'appointment',
+  location: 'location',
+  period: 'period',
+  appointmentType: 'appointmentType',
+  customer: 'customer',
+  job: 'job',
+  paymentType: 'paymentType',
+  doctor: 'doctor',
+  history: 'history',
+  document: 'document',
+  incarceration: 'incarceration',
+  referral: 'referral',
+  psych: 'psych',
+  treatment: 'treatment',
+  noWarnings: 'noWarnings',
+  comment: 'comment',
+  requireReporting: 'requireReporting',
+  bookNumber: 'bookNumber',
+  basisWebDataId: 'basisWebDataId',
+  class: 'class',
+} as const;
+
+export type ConsultationDataScalarFieldEnum =
+  (typeof ConsultationDataScalarFieldEnum)[keyof typeof ConsultationDataScalarFieldEnum];
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc',
@@ -1163,6 +1387,8 @@ export type GlobalOmitConfig = {
   appointment?: Prisma.AppointmentOmit;
   shiftPlan?: Prisma.ShiftPlanOmit;
   treatment?: Prisma.TreatmentOmit;
+  consultation?: Prisma.ConsultationOmit;
+  consultationData?: Prisma.ConsultationDataOmit;
 };
 
 /* Types for Logging */

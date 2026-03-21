@@ -161,3 +161,13 @@ export type ShiftPlan = Prisma.ShiftPlanModel;
  *
  */
 export type Treatment = Prisma.TreatmentModel;
+/**
+ * Model Consultation
+ *
+ */
+export type Consultation = Prisma.ConsultationModel;
+/**
+ * Model ConsultationData
+ *
+ */
+export type ConsultationData = Prisma.ConsultationDataModel;
