@@ -23,7 +23,25 @@ function createPrisma() {
         async $allOperations({ query, args, model, operation }) {
           const start = performance.now();
 
-          const result = await query(args);
+          let result: unknown;
+          try {
+            result = await query(args);
+          } catch (error: unknown) {
+            // Better Auth's sign-out calls session.delete() unconditionally.
+            // If the session is already gone (expired/cleaned up), Prisma throws P2025.
+            // Swallow this specific case to avoid crashing the sign-out flow.
+            if (
+              model === 'Session' &&
+              operation === 'delete' &&
+              error instanceof Error &&
+              'code' in error &&
+              (error as { code: string }).code === 'P2025'
+            ) {
+              result = null;
+            } else {
+              throw error;
+            }
+          }
 
           const duration = performance.now() - start;
 
