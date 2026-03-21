@@ -380,6 +380,67 @@ model Treatment {
   @@map("treatment")
 }
 
+model Consultation {
+  id              BigInt    @id @map("_id")
+  date            DateTime?
+  timeStart       Int?
+  timeEnd         Int?
+  type            String?
+  state           String?
+  bookNumber      String?
+  period          Int?
+  appointmentType String?
+  paymentType     String?
+  archived        Boolean?
+  location        Json?
+  customer        Json?
+  doctor          Json?
+  job             Json?
+  class           String?   @map("_class")
+
+  @@map("consultation")
+}
+
+model ConsultationData {
+  id               BigInt    @id @map("_id")
+  version          BigInt?
+  date             DateTime?
+  timeStart        Int?
+  timeEnd          Int?
+  dateSignedOff    DateTime?
+  archived         Boolean?
+  type             String?
+  state            String?
+  base             Json?
+  body             Json?
+  warnings         Json?
+  onboarding       Json?
+  standard         Json?
+  signedOffBy      Json?
+  appointment      Json?
+  location         Json?
+  period           Int?
+  appointmentType  String?
+  customer         Json?
+  job              Json?
+  paymentType      String?
+  doctor           Json?
+  history          Json?
+  document         Json?
+  incarceration    Json?
+  referral         Json?
+  psych            Json?
+  treatment        Json?
+  noWarnings       Boolean?
+  comment          String?
+  requireReporting Boolean?
+  bookNumber       String?
+  basisWebDataId   BigInt?
+  class            String?   @map("_class")
+
+  @@map("consultationData")
+}
+
 type TreatmentUser {
   id                BigInt? @map("_id")
   email             String?

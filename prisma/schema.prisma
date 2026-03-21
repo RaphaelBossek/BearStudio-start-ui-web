@@ -103,10 +103,64 @@ model User {
   banExpires  DateTime?
   onboardedAt DateTime?
 
+  consultationAnnotationsCreated ConsultationAnnotation[] @relation("ConsAnnotationCreatedBy")
+  consultationAnnotationsUpdated ConsultationAnnotation[] @relation("ConsAnnotationUpdatedBy")
+
   expertProfile ExpertProfile?
 
   @@unique([email])
   @@map("user")
+}
+
+model ConsultationAnnotation {
+  id                  String   @id @default(cuid())
+  consultationMongoId String   @unique
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+  createdById         String
+  updatedById         String
+
+  // Existing scalar overrides
+  commentOverride          String?
+  requireReportingOverride Boolean?
+
+  // Top-level scalar overrides
+  bookNumberOverride  String?
+  dateOverride        DateTime?
+  typeOverride        String?
+  noWarningsOverride  Boolean?
+  archivedOverride    Boolean?
+
+  // Section-level JSONB overrides
+  bodyOverride          Json?   @db.JsonB
+  baseOverride          Json?   @db.JsonB
+  onboardingOverride    Json?   @db.JsonB
+  incarcerationOverride Json?   @db.JsonB
+  treatmentOverride     Json?   @db.JsonB
+  standardOverride      Json?   @db.JsonB
+  referralOverride      Json?   @db.JsonB
+  warningsOverride      Json?   @db.JsonB
+
+  createdBy User @relation("ConsAnnotationCreatedBy", fields: [createdById], references: [id])
+  updatedBy User @relation("ConsAnnotationUpdatedBy", fields: [updatedById], references: [id])
+
+  @@index([consultationMongoId])
+  @@map("consultation_annotation")
+}
+
+model ConsultationAuditLog {
+  id               String   @id @default(cuid())
+  consultationId   String
+  userId           String
+  userName         String
+  action           String   // CREATE, UPDATE, ARCHIVE, UNARCHIVE
+  fieldPath        String?  // e.g. "onboarding.generalState"
+  oldValue         String?  // JSON-serialized
+  newValue         String?  // JSON-serialized
+  createdAt        DateTime @default(now())
+
+  @@index([consultationId, createdAt])
+  @@map("consultation_audit_log")
 }
 
 model ExpertProfile {
