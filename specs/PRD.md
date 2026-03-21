@@ -42,6 +42,7 @@ The goal of this project is to build a high-quality, maintainable software produ
 | performance | Database Optimization | [performance/database-optimization](features/performance/database-optimization/requirements.md) | 2026-02-22 |
 | security | Rate Limiting | [security/rate-limiting](features/security/rate-limiting/requirements.md) | 2026-02-22 |
 | reliability | Error Tracking | [reliability/error-tracking](features/reliability/error-tracking/requirements.md) | 2026-02-22 |
+| compliance | Consultation Details | [compliance/consultation-details](features/compliance/consultation-details/requirements.md) | 2026-03-21 |
 
 <!-- Add in-progress features above this line -->
 

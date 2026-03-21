@@ -463,7 +463,7 @@ Körperliche Basisdaten des Patienten zum Zeitpunkt der Konsultation.
 | Column | Type | Field Type | Description |
 | :--- | :--- | :--- | :--- |
 | `_id` | `String` | inferred | Internal identifier |
-| `gender` | `String` | schema | Geschlecht:<br>• `MALE` (Used)<br>• `FEMALE` (Used) |
+| `gender` | `String` | schema | Geschlecht:<br>• `MALE` (Used)<br>• `FEMALE` (Used)<br>• `OTHER` (Used) |
 | `age` | `Number` | inferred | Alter |
 | `birthday` | `Date` | schema | Geburtsdatum |
 | `bodyHeight` | `Number` | schema | Körpergröße |
@@ -506,9 +506,13 @@ Detaillierte medizinische Daten für die Erstuntersuchung (Zugangsuntersuchung).
 | `hepatitis` | `String` | schema | Hepatitis Status:<br>• `UNKNOWN` (Used)<br>• `SURE` (Used)<br>• `EXCLUDED` (Used) |
 | `std` | `String` | schema | STD Status |
 | `hiv` | `String` | schema | HIV Status |
+| `lungTuberculosis` | `String` | schema | Lungentuberkulose |
+| `lungTuberculosis` | `String` | schema | Lungentuberkulose |
 | `generalState` | `String` | schema | Allgemeinzustand:<br>• `WELL` (Used)<br>• `REDUCED` (Used)<br>• `OVER` (Used)<br>• `MEDIUM` (Legacy/Orphan — 266 records) |
 | `weightState` | `String` | schema | Ernährungszustand:<br>• `WELL` (Used)<br>• `REDUCED` (Used)<br>• `OBESE` (Used)<br>• `CACHECTIC` (Used)<br>• `MEDIUM` (Legacy/Orphan — 335 records)<br>• `OVER` (Legacy/Orphan — 223 records) |
 | `workSuitability` | `String` | schema | Arbeitsfähigkeit:<br>• `UNKNOWN` (Used)<br>• `YES` (Used)<br>• `PARTLY` (Used)<br>• `NO` (Used) |
+| `outDoorWorkSuitability` | `Boolean` | schema | Außenarbeitseignung |
+| `outDoorWorkSuitability` | `Boolean` | schema | Außenarbeitseignung |
 | `sportSuitability` | `String` | schema | Sporttauglichkeit:<br>• `UNKNOWN` (Used)<br>• `YES` (Used)<br>• `PARTLY` (Used)<br>• `NO` (Used) |
 | `skinCondition` | `String` | schema | Hautbefund |
 | `alcoholUsage` | `String` | schema | Alkoholkonsum |
@@ -516,6 +520,10 @@ Detaillierte medizinische Daten für die Erstuntersuchung (Zugangsuntersuchung).
 | `suicidal` | `Boolean` | schema | Suizidalität |
 | `dangerous` | `Boolean` | schema | Fremdgefährdung |
 | `incarcerationSuitability` | `Boolean` | schema | Gewahrsamstauglichkeit |
+| `singleRoomSuitability` | `Boolean` | schema | Einzelraumunterbringung |
+| `requireTreatment` | `Boolean` | schema | Behandlungsbedürftigkeit |
+| `singleRoomSuitability` | `Boolean` | schema | Einzelraumunterbringung |
+| `requireTreatment` | `Boolean` | schema | Behandlungsbedürftigkeit |
 
 The `ConsultationOnboarding` sub-entity is used within:
 - [`consultationData`](#entity-konsultationsdaten-consultation-data) (as `onboarding` field)
@@ -653,6 +661,9 @@ Daten der Gewahrsamstauglichkeit.
 | `requireVideo` | `Boolean` | schema | Videoüberwachung erforderlich |
 | `consumedAlcohol` | `Boolean` | schema | Alkohol konsumiert |
 | `consumedMedication` | `Boolean` | schema | Medikamente konsumiert |
+| `skinColor` | `String` | schema | Hautfarbe:<br>• `ROSY` (Used)<br>• `PALE` (Used) |
+| `respiratoryTract` | `String` | schema | Atemwege:<br>• `FREE` (Used)<br>• `OCCUPIED` (Used) |
+| `respiratoryFrequency` | `String` | schema | Atemfrequenz:<br>• `APNOE` (Used)<br>• `BRADYPNOE` (Used)<br>• `EUPNOE` (Used)<br>• `TACHYPNOE` (Used) |
 | `documentation` | `String` | schema | Freitextdokumentation |
 
 The `ConsultationIncarceration` sub-entity is used within:
