@@ -141,7 +141,7 @@
 ## Functional Requirements
 
 ### Data Model (from ShiftPlan entity)
-Based on [db-mapping.md](../../../draft/db-mapping.md#entity-schichtplan-shift-plan):
+Based on [planning.md](../../../mongodb-mapping/planning.md#entity-schichtplan-shift-plan):
 
 | Field | Type | Description | Display Format |
 |-------|------|-------------|----------------|

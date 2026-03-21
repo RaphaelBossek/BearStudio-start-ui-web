@@ -32,7 +32,7 @@ This document defines the general requirements and UI principles for all data ta
   - **Overflow (> 9 columns)**: If more than 9 columns exist, add a "more..." option at the bottom of the dropdown.
   - **"more..." Action**: Selecting "more..." opens a **Drawer** (or Modal) containing a checklist of all available columns.
 - **No Page Reloads**: Column toggling and other table interactions must happen without full page refreshes.
-- **Detail Inspection**: Rows are clickable — clicking a row opens the detail pane in the `ResizablePanel`. No dedicated inspect/eye button column is needed.
+- **Detail Inspection**: Rows are clickable — clicking a row opens the detail pane in the `ResizablePanel` using the `SectionedScrollLayout` pattern. No dedicated inspect/eye button column is needed.
 
 ## Data Presentation Principles
 

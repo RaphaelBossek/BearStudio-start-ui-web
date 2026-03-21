@@ -36,4 +36,4 @@
 
 - [ ] Unit tests for data transformation logic.
 - [ ] Manual verification of column toggling and detail view.
-- [ ] PRD and `db-mapping.md` updated if necessary.
+- [ ] PRD and `specs/mongodb-mapping/` updated if necessary.
