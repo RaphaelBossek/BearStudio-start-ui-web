@@ -21,6 +21,11 @@
       "sourceType": "github",
       "computedHash": "e759be044438491501a43be0040e43e6c9d7daf1f8577264df0f3eb81e36239a"
     },
+    "mermaid-diagrams": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "computedHash": "6d36e69adad781f106a2fb4b19ebc22bf0c211babdc0d1ae5822fa65abb48bd8"
+    },
     "neon-postgres": {
       "source": "neondatabase/agent-skills",
       "sourceType": "github",
