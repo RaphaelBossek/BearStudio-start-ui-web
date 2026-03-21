@@ -38,7 +38,7 @@ export function DataTableColumnToggle<TData>({ table }: DataTableColumnTogglePro
   // even if the parent doesn't propagate the reference change properly in edge cases
   React.useEffect(() => {
     forceUpdate();
-  }, [table.getState().columnVisibility]);
+  }, []);
 
   return (
     <div className="flex items-center gap-2">
