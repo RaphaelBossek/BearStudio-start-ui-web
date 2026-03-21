@@ -4,6 +4,10 @@ import accountRouter from './routers/account';
 import appointmentMongoRouter from './routers/appointment-mongo';
 import bookRouter from './routers/book';
 import configRouter from './routers/config';
+import consultationAnnotationRouter from './routers/consultation-annotation';
+import consultationAuditLogRouter from './routers/consultation-audit-log';
+import consultationDataMongoRouter from './routers/consultation-data-mongo';
+import consultationListMongoRouter from './routers/consultation-list-mongo';
 import expertWeekRouter from './routers/expert-week';
 import genreRouter from './routers/genre';
 import medicalManagementRouter from './routers/medical-management';
@@ -27,4 +31,8 @@ export const router = {
   appointmentMongo: appointmentMongoRouter,
   shiftPlanMongo: shiftPlanMongoRouter,
   treatmentMongo: treatmentMongoRouter,
+  consultationDataMongo: consultationDataMongoRouter,
+  consultationListMongo: consultationListMongoRouter,
+  consultationAnnotation: consultationAnnotationRouter,
+  consultationAuditLog: consultationAuditLogRouter,
 };
