@@ -2,13 +2,13 @@
 
 [← Back to Index](./README.md)
 
-This file covers the Customer category: entities related to customers, locations, and sites.
+This file covers the Customer category: entities related to customers, locations, sites, rooms, equipment, and location snapshots.
 
 ---
 
 ## ER Diagram
 
-Customer accounts, consultation sites, and room inventory.
+Customer accounts, consultation sites, room inventory, equipment, and location snapshots.
 
 ```mermaid
 erDiagram
@@ -43,6 +43,22 @@ erDiagram
         bigint location_id FK
         string name
     }
+    locationRoomsDto {
+        bigint _id PK
+        string name
+        string address
+    }
+    equipmentGroup {
+        bigint _id PK
+        string code
+        string description
+        number prio
+    }
+    equipment {
+        bigint _id PK
+        string name
+        string description
+    }
     CustomerDiscount {
         bigint job_id FK
         number discount
@@ -60,6 +76,8 @@ erDiagram
     location }o--|| customer : "references"
     location }o--o| locationType : "DBRef"
     room }o--|| location : "references"
+    locationRoomsDto }o--|| customer : "DBRef"
+    equipmentGroup ||--o{ equipment : "groups"
 ```
 
 ---
@@ -72,6 +90,10 @@ erDiagram
 | [`location`](#entity-standorte-locations) | Standorte (Locations) | Definition of consultation sites, including room configurations and contact details. |
 | [`locationType`](#entity-standorttypen-location-types) | Standorttypen (Location Types) | Classification for different types of consultation locations. |
 | [`site`](#entity-seiten-standorte-sites) | Seiten/Standorte (Sites) | Physical locations or digital sites associated with the system. |
+| [`room`](#entity-räume-rooms) | Räume (Rooms) | Individual consultation or treatment rooms within a location. |
+| [`locationRoomsDto`](#entity-standort-snapshots-location-rooms-dto) | Standort-Snapshots (Location Rooms DTO) | Snapshots of location and room configurations at a specific point in time. |
+| [`equipmentGroup`](#entity-ausrüstungsgruppen-equipment-groups) | Ausrüstungsgruppen (Equipment Groups) | Grouping of equipment for easier management and assignment. |
+| [`equipment`](#entity-ausrüstung-equipment) | Ausrüstung (Equipment) | Inventory of medical or technical equipment used in consultations. |
 
 ---
 
@@ -123,7 +145,7 @@ The `customer` entity is referenced by:
 - [`location`](#entity-standorte-locations)
 - [`project`](./deprecated.md#entity-projekte-projects)
 - [`treatment`](./treatment.md#entity-behandlungsverlauf-treatment)
-- [`locationRoomsDto`](./treatment.md#entity-standort-snapshots-location-rooms-dto)
+- [`locationRoomsDto`](#entity-standort-snapshots-location-rooms-dto)
 
 ### Sub-entities for customer
 
@@ -209,7 +231,7 @@ The `location` entity is referenced by:
 - [`basisWebAppointment`](./interfaces.md#entity-web-terminanfragen-basis-web-appointment)
 - [`onboardingHistory`](./user-management.md#entity-onboarding-verlauf-onboarding-history)
 - [`cDRCallAssignment`](./external-data.md#entity-cdr-call-zuweisungen-cdr-call-assignment)
-- [`room`](./planning.md#entity-r-ume-rooms)
+- [`room`](#entity-räume-rooms)
 - [`patientData`](./treatment.md#entity-patientenerg-nzungsdaten-patient-data)
 
 ### Sub-entities for location
@@ -273,3 +295,66 @@ Allgemeine Informationen zu physischen Standorten oder Web-Präsenzen.
 
 The `site` entity is used for:
 - (Organizational structure and location grouping)
+
+## Entity: Räume (Rooms)
+Definition von physischen Räumen an den Standorten.
+
+### Table: room
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `location` | `DBRef` | schema | Reference to [location](#entity-standorte-locations) |
+| `name` | `String` | inferred | Raumname |
+| `number` | `String` | inferred | Raumnummer |
+| `available` | `Boolean` | schema | Verfügbarkeit |
+| `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.Room` |
+
+The `room` entity references:
+- [`location`](#entity-standorte-locations)
+
+## Entity: Standort-Snapshots (Location Rooms DTO)
+Snapshots von Standortdaten inklusive Raum-Informationen für die Web-Oberfläche.
+
+### Table: locationRoomsDto
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `name` | `String` | schema | Name des Standorts |
+| `address` | `String` | inferred | Adresse |
+| `customer` | `DBRef` | schema | Reference to [customer](#entity-kunden-customers) |
+| `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.LocationRoomsDto` (Used) |
+
+The `locationRoomsDto` entity is used for:
+- (UI snapshots of location data)
+
+## Entity: Ausrüstungsgruppen (Equipment Groups)
+Kategorisierung von medizinischer Ausrüstung.
+
+### Table: equipmentGroup
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `version` | `Long` | schema | Versionsnummer |
+| `code` | `String` | schema | Gruppen-Code |
+| `description` | `String` | schema | Beschreibung |
+| `prio` | `Number` | schema | Priorität |
+| `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.EquipmentGroup` (Used) |
+
+The `equipmentGroup` entity is referenced by:
+- [`equipment`](#entity-ausrüstung-equipment) (conceptually, to group inventory items)
+
+## Entity: Ausrüstung (Equipment)
+Verzeichnis von medizinischem Equipment, das an Standorten vorhanden sein kann.
+
+### Table: equipment
+| Column | Type | Field Type | Description |
+| :--- | :--- | :--- | :--- |
+| `_id` | `Long` | schema | Interner Bezeichner |
+| `name` | `String` | inferred | Name des Equipments |
+| `description` | `String` | schema | Beschreibung |
+| `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.Equipment` (Used) |
+
+The `equipment` entity is referenced by:
+- [`questionaire`](./treatment.md#entity-qualitätsumfragen-questionaires) (implicitly via quality ratings)

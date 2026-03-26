@@ -133,7 +133,7 @@ erDiagram
 | [`appointmentAssignmentHistory`](#entity-terminzuweisungs-historie-appointment-assignment-history) | Terminzuweisungs-Historie (Appointment Assignment History) | Audit trail for changes to appointment assignments. |
 | [`shiftPlan`](#entity-schichtplan-shift-plan) | Schichtplan (Shift Plan) | Recurring shift schedule for expert on-call duties. |
 | [`holiday`](#entity-abwesenheiten-urlaub-holidays) | Abwesenheiten/Urlaub (Holidays) | Individual expert absences, vacations, or sick leave. |
-| [`room`](#entity-r-ume-rooms) | Räume (Rooms) | Individual consultation or treatment rooms within a location. |
+
 
 ---
 
@@ -502,19 +502,4 @@ Manuell eingetragene Abwesenheiten oder Urlaubszeiten von Experten.
 The `holiday` entity is used by:
 - (Planning tools to show expert unavailability)
 
-## Entity: Räume (Rooms)
-Definition von physischen Räumen an den Standorten.
 
-### Table: room
-| Column | Type | Field Type | Description |
-| :--- | :--- | :--- | :--- |
-| `_id` | `Long` | schema | Interner Bezeichner |
-| `version` | `Long` | schema | Versionsnummer |
-| `location` | `DBRef` | schema | Reference to [location](./customer.md#entity-standorte-locations) |
-| `name` | `String` | inferred | Raumname |
-| `number` | `String` | inferred | Raumnummer |
-| `available` | `Boolean` | schema | Verfügbarkeit |
-| `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.Room` |
-
-The `room` entity references:
-- [`location`](./customer.md#entity-standorte-locations)

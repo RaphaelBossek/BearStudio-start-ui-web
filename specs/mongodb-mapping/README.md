@@ -23,7 +23,7 @@ Definition of consultation schedules, shifts, and expert availability.
 | [`appointmentAssignmentHistory`](./planning.md#entity-terminzuweisungs-historie-appointment-assignment-history) | Terminzuweisungs-Historie (Appointment Assignment History) | Audit trail for changes to appointment assignments. |
 | [`shiftPlan`](./planning.md#entity-schichtplan-shift-plan) | Schichtplan (Shift Plan) | Recurring shift schedule for expert on-call duties. |
 | [`holiday`](./planning.md#entity-abwesenheiten-urlaub-holidays) | Abwesenheiten/Urlaub (Holidays) | Individual expert absences, vacations, or sick leave. |
-| [`room`](./planning.md#entity-r-ume-rooms) | Räume (Rooms) | Individual consultation or treatment rooms within a location. |
+
 
 ### Capabilities
 Definition of expert skills and required qualifications for services.
@@ -62,9 +62,7 @@ Core medical data, consultations, treatments, and patient information.
 | [`patientAlerts`](./treatment.md#entity-patientenbezogene-risikofaktoren--warnhinweise-patient-alerts) | Patientenbezogene Risikofaktoren / Warnhinweise (Patient Alerts) | Exclusion criteria (warnings) consisting of name, description, weight, and status. |
 | [`serviceQm`](./treatment.md#entity-service-qualit-tsmanagement-service-qm) | Service-Qualitätsmanagement (Service QM) | Data related to quality assurance and management of medical services. |
 | [`questionaire`](./treatment.md#entity-qualit-tsumfragen-questionaires) | Qualitätsumfragen (Questionaires) | Quality management surveys and results. |
-| [`equipment`](./treatment.md#entity-ausr-stung-equipment) | Ausrüstung (Equipment) | Inventory of medical or technical equipment used in consultations. |
-| [`equipmentGroup`](./treatment.md#entity-ausr-stungsgruppen-equipment-groups) | Ausrüstungsgruppen (Equipment Groups) | Grouping of equipment for easier management and assignment. |
-| [`locationRoomsDto`](./treatment.md#entity-standort-snapshots-location-rooms-dto) | Standort-Snapshots (Location Rooms DTO) | Snapshots of location and room configurations at a specific point in time. |
+
 
 ### Academy (Training)
 Educational resources and training materials for users.
@@ -114,6 +112,10 @@ Entities related to customers, locations, and sites.
 | [`location`](./customer.md#entity-standorte-locations) | Standorte (Locations) | Definition of consultation sites, including room configurations and contact details. |
 | [`locationType`](./customer.md#entity-standorttypen-location-types) | Standorttypen (Location Types) | Classification for different types of consultation locations. |
 | [`site`](./customer.md#entity-seiten-standorte-sites) | Seiten/Standorte (Sites) | Physical locations or digital sites associated with the system. |
+| [`room`](./customer.md#entity-räume-rooms) | Räume (Rooms) | Individual consultation or treatment rooms within a location. |
+| [`locationRoomsDto`](./customer.md#entity-standort-snapshots-location-rooms-dto) | Standort-Snapshots (Location Rooms DTO) | Snapshots of location and room configurations at a specific point in time. |
+| [`equipmentGroup`](./customer.md#entity-ausrüstungsgruppen-equipment-groups) | Ausrüstungsgruppen (Equipment Groups) | Grouping of equipment for easier management and assignment. |
+| [`equipment`](./customer.md#entity-ausrüstung-equipment) | Ausrüstung (Equipment) | Inventory of medical or technical equipment used in consultations. |
 
 ### Accounting
 Entities related to billing, customers, pricing, and financial tracking.
@@ -161,7 +163,7 @@ Tables that are no longer in use or not yet implemented.
 
 | File | Description |
 | :--- | :--- |
-| [planning.md](./planning.md) | Planning entities: appointment plans, expert schedules, shift plans, holidays, and rooms. |
+| [planning.md](./planning.md) | Planning entities: appointment plans, expert schedules, shift plans, and holidays. |
 | [capabilities.md](./capabilities.md) | Capabilities entities: skill definitions and qualifications. |
 | [user-management.md](./user-management.md) | User Management entities: experts, groups, access rights, sessions, and onboarding. |
 | [treatment.md](./treatment.md) | Treatment entities: treatments, consultations, patients, and quality management. |
@@ -169,7 +171,7 @@ Tables that are no longer in use or not yet implemented.
 | [news.md](./news.md) | News entities: notifications, notification templates, and messages of the day. |
 | [interfaces.md](./interfaces.md) | Interfaces entities: BasisWeb data and appointment requests from external JVA systems. |
 | [external-data.md](./external-data.md) | External Data entities: ICD-10, medications, geographic lookups, and call records. |
-| [customer.md](./customer.md) | Customer entities: customers, locations, location types, and sites. |
+| [customer.md](./customer.md) | Customer entities: customers, locations, location types, sites, rooms, equipment, and location snapshots. |
 | [accounting.md](./accounting.md) | Accounting entities: invoices, services, price lists, products, and financial tracking. |
 | [system.md](./system.md) | System entities: logs, async jobs, export templates, sequences, and system config. |
 | [deprecated.md](./deprecated.md) | Deprecated entities: tags, projects, and departments (not implemented). |

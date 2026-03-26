@@ -237,9 +237,7 @@ erDiagram
 | [`patientAlerts`](#entity-patientenbezogene-risikofaktoren--warnhinweise-patient-alerts) | Patientenbezogene Risikofaktoren / Warnhinweise (Patient Alerts) | Exclusion criteria (warnings) consisting of name, description, weight, and status. |
 | [`serviceQm`](#entity-service-qualitätsmanagement-service-qm) | Service-Qualitätsmanagement (Service QM) | Data related to quality assurance and management of medical services. |
 | [`questionaire`](#entity-qualitätsumfragen-questionaires) | Qualitätsumfragen (Questionaires) | Quality management surveys and results. |
-| [`equipment`](#entity-ausrüstung-equipment) | Ausrüstung (Equipment) | Inventory of medical or technical equipment used in consultations. |
-| [`equipmentGroup`](#entity-ausrüstungsgruppen-equipment-groups) | Ausrüstungsgruppen (Equipment Groups) | Grouping of equipment for easier management and assignment. |
-| [`locationRoomsDto`](#entity-standort-snapshots-location-rooms-dto) | Standort-Snapshots (Location Rooms DTO) | Snapshots of location and room configurations at a specific point in time. |
+
 
 ---
 
@@ -921,48 +919,4 @@ Fragebögen zur Bewertung der Qualität von Konsultationen und Dienstleistungen.
 The `questionaire` entity is referenced by:
 - (Internal quality management reports)
 
-## Entity: Ausrüstung (Equipment)
-Verzeichnis von medizinischem Equipment, das an Standorten vorhanden sein kann.
 
-### Table: equipment
-| Column | Type | Field Type | Description |
-| :--- | :--- | :--- | :--- |
-| `_id` | `Long` | schema | Interner Bezeichner |
-| `name` | `String` | inferred | Name des Equipments |
-| `description` | `String` | schema | Beschreibung |
-| `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.Equipment` (Used) |
-
-The `equipment` entity is referenced by:
-- [`questionaire`](#entity-qualitätsumfragen-questionaires) (implicitly via quality ratings)
-
-## Entity: Ausrüstungsgruppen (Equipment Groups)
-Kategorisierung von medizinischer Ausrüstung.
-
-### Table: equipmentGroup
-| Column | Type | Field Type | Description |
-| :--- | :--- | :--- | :--- |
-| `_id` | `Long` | schema | Interner Bezeichner |
-| `version` | `Long` | schema | Versionsnummer |
-| `code` | `String` | schema | Gruppen-Code |
-| `description` | `String` | schema | Beschreibung |
-| `prio` | `Number` | schema | Priorität |
-| `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.EquipmentGroup` (Used) |
-
-The `equipmentGroup` entity is referenced by:
-- [`equipment`](#entity-ausrüstung-equipment) (conceptually, to group inventory items)
-
-## Entity: Standort-Snapshots (Location Rooms DTO)
-Snapshots von Standortdaten inklusive Raum-Informationen für die Web-Oberfläche.
-
-### Table: locationRoomsDto
-| Column | Type | Field Type | Description |
-| :--- | :--- | :--- | :--- |
-| `_id` | `Long` | schema | Interner Bezeichner |
-| `version` | `Long` | schema | Versionsnummer |
-| `name` | `String` | schema | Name des Standorts |
-| `address` | `String` | inferred | Adresse |
-| `customer` | `DBRef` | schema | Reference to [customer](./customer.md#entity-kunden-customers) |
-| `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.LocationRoomsDto` (Used) |
-
-The `locationRoomsDto` entity is used for:
-- (UI snapshots of location data)
