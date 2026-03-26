@@ -1,0 +1,33 @@
+> Resume Batch 3 wireframe generation for Treatment domain. Workflows and wireframe plans are complete (Steps 1-5 done). Proceed directly to Task 3: creating 8 .pen wireframe files.
+>
+> Files already completed:
+> - specs/analysis/treatment/questionnaire/wireframe-plan.md — expanded with Shadcn mapping
+> - specs/analysis/treatment/dashboard/wireframe-plan-treatment.md — expanded to full plan  
+> - specs/wireframes/treatment/workflows.md — all 4 workflow areas with Mermaid diagrams
+> - specs/analysis/wireframes-index.md — wireframe plans + workflows marked [x]
+>
+> Design system reference (from Batch 1):
+> - Variables: $--bg (#FFFFFF), $--fg (#0A0A0A), $--fg-muted (#737373), $--border (#E5E5E5), $--primary (#171717), $--primary-fg (#FAFAFA), $--secondary (#F5F5F5), $--secondary-fg (#171717), $--input-border (#D4D4D4), $--info-bg (#EFF6FF), $--info-fg (#1D4ED8), $--danger-bg (#FEF2F2), $--destructive (#DC2626), $--warning-bg (#FFFBEB), $--warning (#F59E0B), $--success-bg (#F0FDF4), $--success-fg (#166534), $--card (#FAFAFA), $--header-bg (#F98E33), $--header-fg (#FFFFFF)
+> - Font: Inter, sizes 13-20px, weights 400-700
+> - Dialog frames: 600px width, cornerRadius 12, shadow effect, $--bg fill, $--border stroke
+> - Headers: padding 20,24, bottom border, Inter 20px bold
+> - Body: padding 24, vertical layout, gap 16
+> - Footer: top border, justify end, gap 12, Cancel (secondary) + primary button
+> - Notes: type: "note" for annotations (dashed orange border)
+> - Input fields: frame with $--input-border stroke, cornerRadius 8, padding 10,14
+> - Alerts: fill $--info-bg/$--danger-bg/$--warning-bg, cornerRadius 8, padding 16
+>
+> 8 wireframes to create (in order):
+> 1. W1: specs/wireframes/treatment/questionnaire/questionnaire-list.pen — 1440px full page, 24-col grid subset + inline detail
+> 2. W2: specs/wireframes/treatment/questionnaire/questionnaire-detail.pen — 800px detail, rating scales + equipment + comment
+> 3. W5: specs/wireframes/treatment/dashboard/consultation-wizard.pen — 4 step frames at 600px each
+> 4. W7: specs/wireframes/treatment/dashboard/consultation-location-wizard.pen — single 600px dialog
+> 5. W9: specs/wireframes/treatment/dashboard/consultation-template.pen — 400px list panel + create dialog
+> 6. W11: specs/wireframes/treatment/dashboard/summarize-appointment.pen — 1000px dialog with QM embed
+> 7. W12: specs/wireframes/treatment/dashboard/incarceration-dialogs.pen — 2 frames (check + retrieval)
+> 8. W13b: specs/wireframes/treatment/dashboard/end-appointment.pen — 900px dialog with QM embed
+>
+> After wireframes: Export PNGs, embed screenshots in specs/wireframes/treatment/workflows.md, update specs/analysis/wireframes-index.md with [x] status.
+>
+> Reference template: specs/wireframes/interfaces/dashboard/basisweb-wizard.pen — study its structure first with batch_get(readDepth:3) on node QMGzX to match exact conventions.
+
