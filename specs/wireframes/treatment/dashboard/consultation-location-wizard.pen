@@ -1,0 +1,324 @@
+{
+  "version": "2.9",
+  "children": [
+    {
+      "type": "frame",
+      "id": "Bf8gk",
+      "x": 0,
+      "y": 0,
+      "name": "W7: Location Wizard — 600px @shadcn/dialog",
+      "width": 600,
+      "fill": "$--bg",
+      "cornerRadius": 8,
+      "stroke": {
+        "align": "inside",
+        "thickness": 1,
+        "fill": "$--border"
+      },
+      "effect": {
+        "type": "shadow",
+        "shadowType": "outer",
+        "color": "#0000001a",
+        "offset": {
+          "x": 0,
+          "y": 2
+        },
+        "blur": 4
+      },
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "rQY4K",
+          "name": "Dialog Header",
+          "width": "fill_container",
+          "fill": "$--header-bg",
+          "cornerRadius": [
+            8,
+            8,
+            0,
+            0
+          ],
+          "gap": 12,
+          "padding": [
+            12,
+            24
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "HL9lj",
+              "name": "hi",
+              "width": 20,
+              "height": 20,
+              "iconFontName": "file-text",
+              "iconFontFamily": "lucide",
+              "fill": "$--header-fg"
+            },
+            {
+              "type": "text",
+              "id": "hKChi",
+              "name": "ht",
+              "fill": "$--header-fg",
+              "content": "Start Consultation — Select Location",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "4WlQN",
+              "name": "ha",
+              "fill": "#FFFFFFAA",
+              "content": "@shadcn/dialog — consultationLocationWizard",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "UdSLR",
+          "name": "Dialog Body",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": 24,
+          "children": [
+            {
+              "type": "text",
+              "id": "phR3h",
+              "name": "trigger",
+              "fill": "$--fg-muted",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Triggered when: appointment has no location (location is falsy or has no id). After selection, re-evaluates routing (may redirect to BasisWeb Wizard).",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "evxjn",
+              "name": "Location — @shadcn/command (combobox)",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 6,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "JOvy2",
+                  "name": "ll",
+                  "fill": "$--fg",
+                  "content": "Location *",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "QlCqn",
+                  "name": "la",
+                  "fill": "$--fg-muted",
+                  "content": "[autocomplete: LocationService.autocomplete] — data.location — displays name",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "1SYtS",
+                  "name": "Combobox Input",
+                  "width": "fill_container",
+                  "fill": "$--bg",
+                  "cornerRadius": 6,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$--input-border"
+                  },
+                  "gap": 8,
+                  "padding": [
+                    10,
+                    14
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "sY6lm",
+                      "name": "ic",
+                      "width": 16,
+                      "height": 16,
+                      "iconFontName": "compass",
+                      "iconFontFamily": "lucide",
+                      "fill": "$--fg-muted"
+                    },
+                    {
+                      "type": "text",
+                      "id": "BkZ6H",
+                      "name": "it",
+                      "fill": "$--fg-muted",
+                      "content": "Search location...",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "icon_font",
+                      "id": "sBY28",
+                      "name": "ic2",
+                      "width": 16,
+                      "height": 16,
+                      "iconFontName": "chevron-down",
+                      "iconFontFamily": "lucide",
+                      "fill": "$--fg-muted"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "bL7sV",
+          "name": "Dialog Footer",
+          "width": "fill_container",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "top": 1
+            },
+            "fill": "$--border"
+          },
+          "gap": 12,
+          "padding": [
+            12,
+            24
+          ],
+          "justifyContent": "end",
+          "children": [
+            {
+              "type": "frame",
+              "id": "GtGz4",
+              "name": "fc",
+              "fill": "$--secondary",
+              "cornerRadius": 6,
+              "padding": [
+                8,
+                16
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "mfMV1",
+                  "fill": "$--secondary-fg",
+                  "content": "Cancel",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Mp9cX",
+              "name": "fn",
+              "fill": "$--primary",
+              "cornerRadius": 6,
+              "gap": 6,
+              "padding": [
+                8,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "FJURl",
+                  "name": "fnt",
+                  "fill": "$--primary-fg",
+                  "content": "Next",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "icon_font",
+                  "id": "drf18",
+                  "name": "fni",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "chevron-right",
+                  "iconFontFamily": "lucide",
+                  "fill": "$--primary-fg"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "--bg": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--border": {
+      "type": "color",
+      "value": "#E5E5E5"
+    },
+    "--fg": {
+      "type": "color",
+      "value": "#0A0A0A"
+    },
+    "--fg-muted": {
+      "type": "color",
+      "value": "#737373"
+    },
+    "--header-bg": {
+      "type": "color",
+      "value": "#3B82F6"
+    },
+    "--header-fg": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--info-bg": {
+      "type": "color",
+      "value": "#EFF6FF"
+    },
+    "--info-fg": {
+      "type": "color",
+      "value": "#1D4ED8"
+    },
+    "--input-border": {
+      "type": "color",
+      "value": "#D4D4D4"
+    },
+    "--primary": {
+      "type": "color",
+      "value": "#171717"
+    },
+    "--primary-fg": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "--secondary": {
+      "type": "color",
+      "value": "#F5F5F5"
+    },
+    "--secondary-fg": {
+      "type": "color",
+      "value": "#171717"
+    },
+    "--warning": {
+      "type": "color",
+      "value": "#F59E0B"
+    }
+  }
+}

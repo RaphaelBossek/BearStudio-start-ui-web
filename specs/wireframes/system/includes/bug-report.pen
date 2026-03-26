@@ -1,0 +1,694 @@
+{
+  "version": "2.9",
+  "children": [
+    {
+      "type": "frame",
+      "id": "dxNjK",
+      "x": 0,
+      "y": 0,
+      "name": "W5: Bug Report Dialog",
+      "width": 600,
+      "fill": "$--bg",
+      "cornerRadius": 8,
+      "stroke": {
+        "align": "inside",
+        "thickness": 1,
+        "fill": "$--border"
+      },
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "2oBu3",
+          "name": "Bug Report Content",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": [
+            24,
+            32
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "zfUcr",
+              "name": "hdr",
+              "fill": "$--fg",
+              "content": "Bug Report Dialog",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "ng2aP",
+              "name": "desc",
+              "fill": "$--fg-muted",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Modal dialog for submitting bug reports with screenshot annotation.",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "nPSZO",
+              "name": "Bug Report Modal",
+              "clip": true,
+              "width": 480,
+              "fill": "$--bg",
+              "cornerRadius": 12,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$--border"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "#00000022",
+                "offset": {
+                  "x": 0,
+                  "y": 4
+                },
+                "blur": 24
+              },
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "eD4Ze",
+                  "name": "dialogHeader",
+                  "width": "fill_container",
+                  "fill": "$--header-bg",
+                  "gap": 10,
+                  "padding": [
+                    14,
+                    20
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "IsgDc",
+                      "name": "camIcon",
+                      "width": 20,
+                      "height": 20,
+                      "iconFontName": "camera",
+                      "iconFontFamily": "lucide",
+                      "fill": "$--header-fg"
+                    },
+                    {
+                      "type": "text",
+                      "id": "EUVv4",
+                      "name": "dialogTitle",
+                      "fill": "$--header-fg",
+                      "content": "Bug Report",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "hZBg8",
+                  "name": "dialogBody",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "padding": 20,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "dnBGC",
+                      "name": "subjectLabel",
+                      "fill": "$--fg",
+                      "content": "Subject *",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "lCMH6",
+                      "name": "subjectInput",
+                      "width": "fill_container",
+                      "height": 38,
+                      "fill": "$--bg",
+                      "cornerRadius": 6,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "$--input-border"
+                      },
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "1rwd0",
+                          "name": "subjectVal",
+                          "fill": "$--fg",
+                          "content": "Problem",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "nDJz0",
+                      "name": "msgLabel",
+                      "fill": "$--fg",
+                      "content": "Message * (Markdown supported, min. 3 chars)",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "aqQJP",
+                      "name": "msgInput",
+                      "width": "fill_container",
+                      "height": 100,
+                      "fill": "$--bg",
+                      "cornerRadius": 6,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "$--input-border"
+                      },
+                      "layout": "vertical",
+                      "padding": [
+                        10,
+                        12
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "reMxY",
+                          "name": "msgPlaceholder",
+                          "fill": "$--fg-muted",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Describe the issue you encountered...",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "xszLv",
+                      "name": "ssLabel",
+                      "fill": "$--fg",
+                      "content": "Screenshot",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "cTI7R",
+                      "name": "Screenshot Area",
+                      "width": "fill_container",
+                      "gap": 16,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "ADH2q",
+                          "name": "thumbnail",
+                          "width": 100,
+                          "height": 100,
+                          "fill": "$--secondary",
+                          "cornerRadius": 8,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1,
+                            "fill": "$--border"
+                          },
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "jB4e1",
+                              "name": "thumbIcon",
+                              "width": 32,
+                              "height": 32,
+                              "iconFontName": "image",
+                              "iconFontFamily": "lucide",
+                              "fill": "$--fg-muted"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "UL9M7",
+                          "name": "Annotation Toolbar",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 8,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "u3HLE",
+                              "name": "toolbarLabel",
+                              "fill": "$--fg-muted",
+                              "content": "Annotation Tools",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "600"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "5gHwX",
+                              "name": "toolbarRow",
+                              "width": "fill_container",
+                              "gap": 4,
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "TioQ5",
+                                  "name": "tReset",
+                                  "height": 30,
+                                  "fill": "$--secondary",
+                                  "cornerRadius": 4,
+                                  "stroke": {
+                                    "align": "inside",
+                                    "thickness": 1,
+                                    "fill": "$--border"
+                                  },
+                                  "padding": [
+                                    4,
+                                    10
+                                  ],
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "wTbNU",
+                                      "name": "tResetT",
+                                      "fill": "$--fg",
+                                      "content": "Reset",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 11,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "C3beU",
+                                  "name": "tSelect",
+                                  "height": 30,
+                                  "fill": "$--primary",
+                                  "cornerRadius": 4,
+                                  "padding": [
+                                    4,
+                                    10
+                                  ],
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "jbQGw",
+                                      "name": "tSelectT",
+                                      "fill": "$--primary-fg",
+                                      "content": "Selection",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 11,
+                                      "fontWeight": "600"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "FVX9X",
+                                  "name": "tPencil",
+                                  "height": 30,
+                                  "fill": "$--secondary",
+                                  "cornerRadius": 4,
+                                  "stroke": {
+                                    "align": "inside",
+                                    "thickness": 1,
+                                    "fill": "$--border"
+                                  },
+                                  "padding": [
+                                    4,
+                                    10
+                                  ],
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "pWWh9",
+                                      "name": "tPencilT",
+                                      "fill": "$--fg",
+                                      "content": "Pencil",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 11,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "wxYj4",
+                                  "name": "tColor",
+                                  "height": 30,
+                                  "fill": "$--secondary",
+                                  "cornerRadius": 4,
+                                  "stroke": {
+                                    "align": "inside",
+                                    "thickness": 1,
+                                    "fill": "$--border"
+                                  },
+                                  "gap": 6,
+                                  "padding": [
+                                    4,
+                                    10
+                                  ],
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "qmIVU",
+                                      "name": "tColorDot",
+                                      "fill": "$--destructive",
+                                      "width": 12,
+                                      "height": 12
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "4N8L7",
+                                      "name": "tColorT",
+                                      "fill": "$--fg",
+                                      "content": "Color",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 11,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "RCnIs",
+                              "name": "toolbarRow2",
+                              "gap": 4,
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "W7D2J",
+                                  "name": "tDelete",
+                                  "height": 30,
+                                  "fill": "$--danger-bg",
+                                  "cornerRadius": 4,
+                                  "stroke": {
+                                    "align": "inside",
+                                    "thickness": 1,
+                                    "fill": "$--destructive"
+                                  },
+                                  "padding": [
+                                    4,
+                                    10
+                                  ],
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "f38BF",
+                                      "name": "tDeleteT",
+                                      "fill": "$--destructive",
+                                      "content": "Delete",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 11,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "0pHXj",
+                                  "name": "tConfirm",
+                                  "height": 30,
+                                  "fill": "$--success-bg",
+                                  "cornerRadius": 4,
+                                  "stroke": {
+                                    "align": "inside",
+                                    "thickness": 1,
+                                    "fill": "$--success-fg"
+                                  },
+                                  "padding": [
+                                    4,
+                                    10
+                                  ],
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "LoNvS",
+                                      "name": "tConfirmT",
+                                      "fill": "$--success-fg",
+                                      "content": "Confirm",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 11,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "fgaZW",
+                  "name": "footer",
+                  "width": "fill_container",
+                  "fill": "$--card",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": {
+                      "top": 1
+                    },
+                    "fill": "$--border"
+                  },
+                  "gap": 10,
+                  "padding": [
+                    14,
+                    20
+                  ],
+                  "justifyContent": "end",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "eaz3u",
+                      "name": "cancelBtn",
+                      "height": 36,
+                      "fill": "$--bg",
+                      "cornerRadius": 6,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "$--border"
+                      },
+                      "padding": [
+                        6,
+                        16
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "gS2CE",
+                          "name": "cancelT",
+                          "fill": "$--fg",
+                          "content": "Cancel",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "t3bFe",
+                      "name": "submitBtn",
+                      "height": 36,
+                      "fill": "$--primary",
+                      "cornerRadius": 6,
+                      "padding": [
+                        6,
+                        16
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "U4wia",
+                          "name": "submitT",
+                          "fill": "$--primary-fg",
+                          "content": "Submit Report",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Cyz9h",
+              "name": "annotation-bug",
+              "width": "fill_container",
+              "fill": "$--info-bg",
+              "cornerRadius": 6,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$--info-fg"
+              },
+              "layout": "vertical",
+              "gap": 4,
+              "padding": [
+                10,
+                14
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "dzEMe",
+                  "name": "annotT",
+                  "fill": "$--info-fg",
+                  "content": "Annotation",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "mJU5u",
+                  "name": "annotB",
+                  "fill": "$--info-fg",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "[HARDCODED] German strings in submission body and email template. html2canvas captures current page as screenshot. 3-layer canvas annotation system: base screenshot layer, selection/crop layer, and freehand drawing layer. Color picker for annotation pen. Screenshot is sent as base64-encoded image attachment.",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "--bg": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--border": {
+      "type": "color",
+      "value": "#E5E5E5"
+    },
+    "--card": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "--danger-bg": {
+      "type": "color",
+      "value": "#FEF2F2"
+    },
+    "--destructive": {
+      "type": "color",
+      "value": "#DC2626"
+    },
+    "--fg": {
+      "type": "color",
+      "value": "#0A0A0A"
+    },
+    "--fg-muted": {
+      "type": "color",
+      "value": "#737373"
+    },
+    "--header-bg": {
+      "type": "color",
+      "value": "#449DD5"
+    },
+    "--header-fg": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--info-bg": {
+      "type": "color",
+      "value": "#EFF6FF"
+    },
+    "--info-fg": {
+      "type": "color",
+      "value": "#1D4ED8"
+    },
+    "--input-border": {
+      "type": "color",
+      "value": "#D4D4D4"
+    },
+    "--primary": {
+      "type": "color",
+      "value": "#171717"
+    },
+    "--primary-fg": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "--secondary": {
+      "type": "color",
+      "value": "#F5F5F5"
+    },
+    "--secondary-fg": {
+      "type": "color",
+      "value": "#171717"
+    },
+    "--success-bg": {
+      "type": "color",
+      "value": "#F0FDF4"
+    },
+    "--success-fg": {
+      "type": "color",
+      "value": "#166534"
+    },
+    "--warning": {
+      "type": "color",
+      "value": "#F59E0B"
+    },
+    "--warning-bg": {
+      "type": "color",
+      "value": "#FFFBEB"
+    }
+  }
+}

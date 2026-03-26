@@ -1,0 +1,391 @@
+{
+  "version": "2.9",
+  "children": [
+    {
+      "type": "frame",
+      "id": "aa0mc",
+      "x": 0,
+      "y": 0,
+      "name": "Send Message Dialog",
+      "clip": true,
+      "width": 500,
+      "fill": "$--bg",
+      "cornerRadius": 8,
+      "stroke": {
+        "thickness": 1,
+        "fill": "$--border"
+      },
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "umx3L",
+          "name": "Header",
+          "width": "fill_container",
+          "height": 44,
+          "fill": "$--header-bg",
+          "gap": 8,
+          "padding": [
+            0,
+            16
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "cftUu",
+              "name": "hIcon",
+              "width": 20,
+              "height": 20,
+              "iconFontName": "message-square",
+              "iconFontFamily": "lucide",
+              "fill": "$--header-fg"
+            },
+            {
+              "type": "text",
+              "id": "jip1v",
+              "name": "hText",
+              "fill": "$--header-fg",
+              "content": "Message",
+              "fontFamily": "Inter",
+              "fontSize": 17,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "0oSSB",
+          "name": "Form Body",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": 20,
+          "children": [
+            {
+              "type": "frame",
+              "id": "4S9tW",
+              "name": "inputRow",
+              "width": "fill_container",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "wSCDw",
+                  "name": "subjCol",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "aopiJ",
+                      "name": "subjLbl",
+                      "fill": "$--fg",
+                      "content": "Subject",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "3kyr0",
+                      "name": "subjInp",
+                      "width": "fill_container",
+                      "height": 36,
+                      "cornerRadius": 4,
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "$--input-border"
+                      },
+                      "padding": [
+                        0,
+                        10
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "uKc8X",
+                          "name": "subjText",
+                          "fill": "$--fg-muted",
+                          "content": "Subject",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Bfl2M",
+                  "name": "recipCol",
+                  "width": 180,
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "G1Yeo",
+                      "name": "recipLbl",
+                      "fill": "$--fg",
+                      "content": "Recipient",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Pfx1h",
+                      "name": "recipInp",
+                      "width": "fill_container",
+                      "height": 36,
+                      "cornerRadius": 4,
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "$--input-border"
+                      },
+                      "gap": 6,
+                      "padding": [
+                        0,
+                        10
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "AX6Sc",
+                          "name": "recipIcon",
+                          "width": 14,
+                          "height": 14,
+                          "iconFontName": "user",
+                          "iconFontFamily": "lucide",
+                          "fill": "$--fg-muted"
+                        },
+                        {
+                          "type": "text",
+                          "id": "CxNek",
+                          "name": "recipText",
+                          "fill": "$--fg-muted",
+                          "content": "Search...",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "x9RKh",
+              "name": "msgLbl",
+              "fill": "$--fg",
+              "content": "Message (plain text)",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "600"
+            },
+            {
+              "type": "frame",
+              "id": "vO9Cq",
+              "name": "textarea",
+              "width": "fill_container",
+              "height": 120,
+              "cornerRadius": 4,
+              "stroke": {
+                "thickness": 1,
+                "fill": "$--input-border"
+              },
+              "padding": 10,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "g6pQk",
+                  "name": "taText",
+                  "fill": "$--fg-muted",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Type your message here...",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "H64kX",
+              "name": "btnRow",
+              "width": "fill_container",
+              "gap": 8,
+              "justifyContent": "end",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "fn6PX",
+                  "name": "btnCancel",
+                  "height": 34,
+                  "cornerRadius": 4,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$--input-border"
+                  },
+                  "padding": [
+                    0,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "NdRk8",
+                      "name": "btnCancelText",
+                      "fill": "$--fg",
+                      "content": "Cancel",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "MlYIG",
+                  "name": "btnSend",
+                  "height": 34,
+                  "fill": "$--header-bg",
+                  "cornerRadius": 4,
+                  "gap": 6,
+                  "padding": [
+                    0,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "V8YxE",
+                      "name": "btnSendIcon",
+                      "width": 14,
+                      "height": 14,
+                      "iconFontName": "send",
+                      "iconFontFamily": "lucide",
+                      "fill": "$--header-fg"
+                    },
+                    {
+                      "type": "text",
+                      "id": "4lx6Y",
+                      "name": "btnSendText",
+                      "fill": "$--header-fg",
+                      "content": "Send",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "note",
+      "id": "8melY",
+      "x": 520,
+      "y": 50,
+      "name": "annotation",
+      "width": 260,
+      "height": 100,
+      "content": "Dashboard-included quick compose. Can be pre-filled from context (e.g., birthday card: subject='Happy Birthday', message=greeting template). Focus goes to textarea if recipient pre-filled, otherwise to recipient input."
+    }
+  ],
+  "variables": {
+    "--bg": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--border": {
+      "type": "color",
+      "value": "#E5E5E5"
+    },
+    "--card": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "--danger-bg": {
+      "type": "color",
+      "value": "#FEF2F2"
+    },
+    "--destructive": {
+      "type": "color",
+      "value": "#DC2626"
+    },
+    "--fg": {
+      "type": "color",
+      "value": "#0A0A0A"
+    },
+    "--fg-muted": {
+      "type": "color",
+      "value": "#737373"
+    },
+    "--header-bg": {
+      "type": "color",
+      "value": "#2EC1CC"
+    },
+    "--header-fg": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--info-bg": {
+      "type": "color",
+      "value": "#EFF6FF"
+    },
+    "--info-fg": {
+      "type": "color",
+      "value": "#1D4ED8"
+    },
+    "--input-border": {
+      "type": "color",
+      "value": "#D4D4D4"
+    },
+    "--primary": {
+      "type": "color",
+      "value": "#171717"
+    },
+    "--primary-fg": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "--secondary": {
+      "type": "color",
+      "value": "#F5F5F5"
+    },
+    "--secondary-fg": {
+      "type": "color",
+      "value": "#171717"
+    },
+    "--success-bg": {
+      "type": "color",
+      "value": "#F0FDF4"
+    },
+    "--success-fg": {
+      "type": "color",
+      "value": "#166534"
+    },
+    "--warning": {
+      "type": "color",
+      "value": "#F59E0B"
+    },
+    "--warning-bg": {
+      "type": "color",
+      "value": "#FFFBEB"
+    }
+  }
+}

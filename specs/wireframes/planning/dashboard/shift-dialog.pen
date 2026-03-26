@@ -1,0 +1,820 @@
+{
+  "version": "2.9",
+  "children": [
+    {
+      "type": "frame",
+      "id": "5BCi0",
+      "x": 0,
+      "y": 0,
+      "name": "W8-A: Shift Detail Dialog",
+      "width": 600,
+      "fill": "$--bg",
+      "cornerRadius": 8,
+      "stroke": {
+        "align": "inside",
+        "thickness": 1,
+        "fill": "$--border"
+      },
+      "effect": {
+        "type": "shadow",
+        "shadowType": "outer",
+        "color": "#0000001a",
+        "offset": {
+          "x": 0,
+          "y": 2
+        },
+        "blur": 4
+      },
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "cfLUN",
+          "name": "Dialog Header",
+          "width": "fill_container",
+          "fill": "$--header-bg",
+          "cornerRadius": [
+            8,
+            8,
+            0,
+            0
+          ],
+          "gap": 12,
+          "padding": [
+            12,
+            24
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "lUtYL",
+              "name": "h1Icon",
+              "width": 20,
+              "height": 20,
+              "iconFontName": "timer",
+              "iconFontFamily": "lucide",
+              "fill": "$--header-fg"
+            },
+            {
+              "type": "text",
+              "id": "IH7sh",
+              "name": "h1Title",
+              "fill": "$--header-fg",
+              "content": "Shift",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "jYpBr",
+              "name": "h1Annot",
+              "fill": "#FFFFFFAA",
+              "content": "@shadcn/dialog — 600px — shiftDlg",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "I2LLq",
+          "name": "Card Header",
+          "width": "fill_container",
+          "fill": "$--card",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "bottom": 1
+            },
+            "fill": "$--border"
+          },
+          "gap": 8,
+          "padding": [
+            12,
+            24
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "tGD0f",
+              "name": "shiftName",
+              "fill": "$--fg",
+              "content": "Morning Shift",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "TpWtk",
+              "name": "shiftLoc",
+              "fill": "$--fg-muted",
+              "content": "Berlin Clinic",
+              "fontFamily": "Inter",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "shW6V",
+              "name": "shiftDate",
+              "fill": "$--fg-muted",
+              "content": "01.03.2026",
+              "fontFamily": "Inter",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "5VnXF",
+              "name": "shiftCust",
+              "fill": "$--fg-muted",
+              "content": "(JVA Berlin)",
+              "fontFamily": "Inter",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "RAQuN",
+          "name": "Leaflet Map Area — react-leaflet",
+          "width": "fill_container",
+          "height": 200,
+          "fill": "#E8F4F8",
+          "layout": "vertical",
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "NkiGo",
+              "name": "mapLabel",
+              "fill": "$--fg-muted",
+              "textGrowth": "fixed-width",
+              "width": 300,
+              "content": "Leaflet Map — 200px height\ndata.location.latitude / longitude\nZoom: 20, Marker at location",
+              "textAlign": "center",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "icon_font",
+              "id": "9Uxrq",
+              "name": "mapIcon",
+              "width": 32,
+              "height": 32,
+              "iconFontName": "map-pin",
+              "iconFontFamily": "lucide",
+              "fill": "$--info-fg"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "fgIu3",
+          "name": "Actions Section",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 12,
+          "padding": [
+            16,
+            24
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "TQSk8",
+              "name": "actTitle",
+              "fill": "$--fg",
+              "content": "Actions",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "600"
+            },
+            {
+              "type": "frame",
+              "id": "QlxZl",
+              "name": "Actions Table — @shadcn/table [repeats] data.actions",
+              "clip": true,
+              "width": "fill_container",
+              "cornerRadius": 6,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$--border"
+              },
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "117Rh",
+                  "name": "actHdr",
+                  "width": "fill_container",
+                  "fill": "$--secondary",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": {
+                      "bottom": 1
+                    },
+                    "fill": "$--border"
+                  },
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "xzwIK",
+                      "name": "ah1",
+                      "fill": "$--fg",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Job ID",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "SQ9ay",
+                      "name": "ah2",
+                      "fill": "$--fg",
+                      "textGrowth": "fixed-width",
+                      "width": 100,
+                      "content": "Start",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "3dMcJ",
+                      "name": "ah3",
+                      "fill": "$--fg",
+                      "textGrowth": "fixed-width",
+                      "width": 80,
+                      "content": "End",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "10110",
+                      "name": "ah4",
+                      "fill": "$--fg",
+                      "textGrowth": "fixed-width",
+                      "width": 80,
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "CJ8CD",
+                  "name": "actRow1",
+                  "width": "fill_container",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": {
+                      "bottom": 1
+                    },
+                    "fill": "$--border"
+                  },
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "lZROj",
+                      "name": "ar1job",
+                      "fill": "$--fg",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "GENMED — General Medicine",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "duhMF",
+                      "name": "ar1start",
+                      "fill": "$--fg",
+                      "textGrowth": "fixed-width",
+                      "width": 100,
+                      "content": "01.03 08:00",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "ZQRrF",
+                      "name": "ar1end",
+                      "fill": "$--fg",
+                      "textGrowth": "fixed-width",
+                      "width": 80,
+                      "content": "12:00",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "X7Pmq",
+                      "name": "ar1btn",
+                      "width": 80,
+                      "fill": "$--primary",
+                      "cornerRadius": 4,
+                      "padding": [
+                        4,
+                        10
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "jhcCy",
+                          "name": "ar1btnTxt",
+                          "fill": "$--primary-fg",
+                          "content": "Request",
+                          "fontFamily": "Inter",
+                          "fontSize": 11,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "KBqhv",
+      "x": 700,
+      "y": 0,
+      "name": "W8-B: Request Action Dialog",
+      "width": 600,
+      "fill": "$--bg",
+      "cornerRadius": 8,
+      "stroke": {
+        "align": "inside",
+        "thickness": 1,
+        "fill": "$--border"
+      },
+      "effect": {
+        "type": "shadow",
+        "shadowType": "outer",
+        "color": "#0000001a",
+        "offset": {
+          "x": 0,
+          "y": 2
+        },
+        "blur": 4
+      },
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "x2wk6",
+          "name": "Dialog Header",
+          "width": "fill_container",
+          "fill": "$--header-bg",
+          "cornerRadius": [
+            8,
+            8,
+            0,
+            0
+          ],
+          "gap": 12,
+          "padding": [
+            12,
+            24
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "BkkE5",
+              "name": "h2Icon",
+              "width": 20,
+              "height": 20,
+              "iconFontName": "timer",
+              "iconFontFamily": "lucide",
+              "fill": "$--header-fg"
+            },
+            {
+              "type": "text",
+              "id": "rMycj",
+              "name": "h2Title",
+              "fill": "$--header-fg",
+              "content": "Action",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "85d13",
+              "name": "h2Annot",
+              "fill": "#FFFFFFAA",
+              "content": "@shadcn/dialog — 600px — requestActionDlg",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ULSZL",
+          "name": "Dialog Body (actionDetailsView)",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": 24,
+          "children": [
+            {
+              "type": "frame",
+              "id": "BXr8v",
+              "name": "Row 1: Date/Time",
+              "width": "fill_container",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "1dyfn",
+                  "name": "dateF",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "CGxM0",
+                      "name": "dateLbl",
+                      "fill": "$--fg",
+                      "content": "Date",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "8na6r",
+                      "name": "dateVal",
+                      "fill": "$--fg-muted",
+                      "content": "01.03.2026",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "44P2c",
+                  "name": "startF",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "aGWFc",
+                      "name": "startLbl",
+                      "fill": "$--fg",
+                      "content": "Start",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "N1UEe",
+                      "name": "startVal",
+                      "fill": "$--fg-muted",
+                      "content": "08:00",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "nTRr1",
+                  "name": "endF",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "bOWkr",
+                      "name": "endLbl",
+                      "fill": "$--fg",
+                      "content": "End",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Jxfs0",
+                      "name": "endVal",
+                      "fill": "$--fg-muted",
+                      "content": "12:00",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "wKVGe",
+              "name": "Row 2: Job + Contact",
+              "width": "fill_container",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "eXZRP",
+                  "name": "jobF",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "SoZaI",
+                      "name": "jobLbl",
+                      "fill": "$--fg",
+                      "content": "Job Title",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "aqZqh",
+                      "name": "jobVal",
+                      "fill": "$--fg-muted",
+                      "content": "General Medicine",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "exhYN",
+                  "name": "contactF",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "zpJpa",
+                      "name": "contactLbl",
+                      "fill": "$--fg",
+                      "content": "Internal Contact",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "PjOJX",
+                      "name": "contactRow",
+                      "gap": 8,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "6JfNJ",
+                          "name": "contactName",
+                          "fill": "$--fg",
+                          "content": "Dr. Weber",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "icon_font",
+                          "id": "rzZcE",
+                          "name": "msgIcon",
+                          "width": 14,
+                          "height": 14,
+                          "iconFontName": "message-circle",
+                          "iconFontFamily": "lucide",
+                          "fill": "$--info-fg"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Fh0YY",
+                      "name": "phoneRow",
+                      "gap": 6,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "TDb3R",
+                          "name": "phoneIcon",
+                          "width": 12,
+                          "height": 12,
+                          "iconFontName": "phone",
+                          "iconFontFamily": "lucide",
+                          "fill": "$--info-fg"
+                        },
+                        {
+                          "type": "text",
+                          "id": "Yu7SG",
+                          "name": "phoneTxt",
+                          "fill": "$--info-fg",
+                          "content": "+49 30 1234567",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "vGEzu",
+              "name": "successNote",
+              "width": "fill_container",
+              "fill": "$--info-bg",
+              "cornerRadius": 6,
+              "gap": 8,
+              "padding": [
+                8,
+                12
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "y9hRv",
+                  "name": "successIcon",
+                  "width": 14,
+                  "height": 14,
+                  "iconFontName": "info",
+                  "iconFontFamily": "lucide",
+                  "fill": "$--info-fg"
+                },
+                {
+                  "type": "text",
+                  "id": "d4n4J",
+                  "name": "successTxt",
+                  "fill": "$--info-fg",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "OK callback: ActionService.apply(action.id) → 'The request has been sent and will be processed.'",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "hx4kC",
+          "name": "Dialog Footer",
+          "width": "fill_container",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "top": 1
+            },
+            "fill": "$--border"
+          },
+          "gap": 12,
+          "padding": [
+            16,
+            24
+          ],
+          "justifyContent": "end",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "3DYMB",
+              "name": "okBtn",
+              "fill": "$--primary",
+              "cornerRadius": 6,
+              "padding": [
+                8,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "hGxvr",
+                  "name": "okTxt",
+                  "fill": "$--primary-fg",
+                  "content": "OK",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "--bg": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--border": {
+      "type": "color",
+      "value": "#E5E5E5"
+    },
+    "--card": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "--fg": {
+      "type": "color",
+      "value": "#0A0A0A"
+    },
+    "--fg-muted": {
+      "type": "color",
+      "value": "#737373"
+    },
+    "--header-bg": {
+      "type": "color",
+      "value": "#7C3AED"
+    },
+    "--header-fg": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--info-bg": {
+      "type": "color",
+      "value": "#EFF6FF"
+    },
+    "--info-fg": {
+      "type": "color",
+      "value": "#1D4ED8"
+    },
+    "--input-border": {
+      "type": "color",
+      "value": "#D4D4D4"
+    },
+    "--primary": {
+      "type": "color",
+      "value": "#171717"
+    },
+    "--primary-fg": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "--secondary": {
+      "type": "color",
+      "value": "#F5F5F5"
+    },
+    "--secondary-fg": {
+      "type": "color",
+      "value": "#171717"
+    }
+  }
+}

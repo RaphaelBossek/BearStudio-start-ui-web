@@ -1,0 +1,530 @@
+{
+  "version": "2.9",
+  "children": [
+    {
+      "type": "frame",
+      "id": "i9z2A",
+      "x": 0,
+      "y": 0,
+      "name": "W10: Ad-Hoc Appointment Dialog",
+      "width": 600,
+      "fill": "$--bg",
+      "cornerRadius": 8,
+      "stroke": {
+        "align": "inside",
+        "thickness": 1,
+        "fill": "$--border"
+      },
+      "effect": {
+        "type": "shadow",
+        "shadowType": "outer",
+        "color": "#0000001a",
+        "offset": {
+          "x": 0,
+          "y": 2
+        },
+        "blur": 4
+      },
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "GaBLk",
+          "name": "Dialog Header",
+          "width": "fill_container",
+          "fill": "$--header-bg",
+          "cornerRadius": [
+            8,
+            8,
+            0,
+            0
+          ],
+          "gap": 12,
+          "padding": [
+            12,
+            24
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "9otI9",
+              "name": "hdrIcon",
+              "width": 20,
+              "height": 20,
+              "iconFontName": "calendar-plus",
+              "iconFontFamily": "lucide",
+              "fill": "$--header-fg"
+            },
+            {
+              "type": "text",
+              "id": "0Wu0f",
+              "name": "hdrTitle",
+              "fill": "$--header-fg",
+              "content": "Create Ad-hoc Appointment",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "91p5g",
+              "name": "hdrAnnot",
+              "fill": "#FFFFFFAA",
+              "content": "@shadcn/dialog [PERM: APPOINTMENT_ADHOC]",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "9X6I7",
+          "name": "Dialog Body",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": 24,
+          "children": [
+            {
+              "type": "frame",
+              "id": "nGC3f",
+              "name": "Location * — @shadcn/combobox",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 4,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "QHvI9",
+                  "name": "locLbl",
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "ZIF0b",
+                      "name": "locIcon",
+                      "width": 14,
+                      "height": 14,
+                      "iconFontName": "compass",
+                      "iconFontFamily": "lucide",
+                      "fill": "$--fg-muted"
+                    },
+                    {
+                      "type": "text",
+                      "id": "ffxYr",
+                      "name": "locLblTxt",
+                      "fill": "$--fg",
+                      "content": "Location *",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "gREva",
+                  "name": "locInput",
+                  "width": "fill_container",
+                  "fill": "$--bg",
+                  "cornerRadius": 6,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$--input-border"
+                  },
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "qEwgE",
+                      "name": "locTxt",
+                      "fill": "$--fg-muted",
+                      "content": "Search location...",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "icon_font",
+                      "id": "EzwqR",
+                      "name": "locChev",
+                      "width": 14,
+                      "height": 14,
+                      "iconFontName": "chevron-down",
+                      "iconFontFamily": "lucide",
+                      "fill": "$--fg-muted"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "oOouu",
+              "name": "Type * — @shadcn/select",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 4,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "kjDgp",
+                  "name": "typeLbl",
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "Ni1aT",
+                      "name": "typeIcon",
+                      "width": 14,
+                      "height": 14,
+                      "iconFontName": "briefcase",
+                      "iconFontFamily": "lucide",
+                      "fill": "$--fg-muted"
+                    },
+                    {
+                      "type": "text",
+                      "id": "6Q4QU",
+                      "name": "typeLblTxt",
+                      "fill": "$--fg",
+                      "content": "Type *",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "4oLlP",
+                  "name": "typeSelect",
+                  "width": "fill_container",
+                  "fill": "$--bg",
+                  "cornerRadius": 6,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$--input-border"
+                  },
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "BtLMQ",
+                      "name": "typeTxt",
+                      "fill": "$--fg",
+                      "content": "Appointment",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "icon_font",
+                      "id": "96HsQ",
+                      "name": "typeChev",
+                      "width": 14,
+                      "height": 14,
+                      "iconFontName": "chevron-down",
+                      "iconFontFamily": "lucide",
+                      "fill": "$--fg-muted"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "fsOwg",
+                  "name": "typeAnnot",
+                  "fill": "$--fg-muted",
+                  "content": "Options: Appointment | Shift | Council",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "RkQd5",
+              "name": "Job * — @shadcn/combobox (filtered by type)",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 4,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "lkcFJ",
+                  "name": "jobLbl",
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "H2mmH",
+                      "name": "jobIcon",
+                      "width": 14,
+                      "height": 14,
+                      "iconFontName": "graduation-cap",
+                      "iconFontFamily": "lucide",
+                      "fill": "$--fg-muted"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Ph4DD",
+                      "name": "jobLblTxt",
+                      "fill": "$--fg",
+                      "content": "Job * (filtered by selected type)",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "eGD5J",
+                  "name": "jobInput",
+                  "width": "fill_container",
+                  "fill": "$--bg",
+                  "cornerRadius": 6,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$--input-border"
+                  },
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "7xfcw",
+                      "name": "jobTxt",
+                      "fill": "$--fg-muted",
+                      "content": "Search job...",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "icon_font",
+                      "id": "SW9SS",
+                      "name": "jobChev",
+                      "width": 14,
+                      "height": 14,
+                      "iconFontName": "chevron-down",
+                      "iconFontFamily": "lucide",
+                      "fill": "$--fg-muted"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "uKZnB",
+                  "name": "jobAnnot",
+                  "fill": "$--fg-muted",
+                  "content": "Enabled after type selected. Filter: adHocAutocompleteType. minlength=0",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "PcGPh",
+              "name": "collisionNote",
+              "width": "fill_container",
+              "fill": "$--warning-bg",
+              "cornerRadius": 6,
+              "gap": 8,
+              "padding": [
+                8,
+                12
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "wwtbp",
+                  "name": "collisionIcon",
+                  "width": 14,
+                  "height": 14,
+                  "iconFontName": "triangle-alert",
+                  "iconFontFamily": "lucide",
+                  "fill": "$--warning"
+                },
+                {
+                  "type": "text",
+                  "id": "Q628o",
+                  "name": "collisionTxt",
+                  "fill": "$--fg",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Double booking → confirm dialog → retry with force=true. On success with state=READY → opens detail dialog.",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "o8HyR",
+          "name": "Dialog Footer",
+          "width": "fill_container",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "top": 1
+            },
+            "fill": "$--border"
+          },
+          "gap": 12,
+          "padding": [
+            16,
+            24
+          ],
+          "justifyContent": "end",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "Opns9",
+              "name": "cancelBtn",
+              "fill": "$--secondary",
+              "cornerRadius": 6,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$--border"
+              },
+              "padding": [
+                8,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "T3TFR",
+                  "name": "cancelTxt",
+                  "fill": "$--secondary-fg",
+                  "content": "Cancel",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "x892b",
+              "name": "saveBtn",
+              "fill": "$--primary",
+              "cornerRadius": 6,
+              "padding": [
+                8,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "DceTl",
+                  "name": "saveTxt",
+                  "fill": "$--primary-fg",
+                  "content": "Create",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "--bg": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--border": {
+      "type": "color",
+      "value": "#E5E5E5"
+    },
+    "--fg": {
+      "type": "color",
+      "value": "#0A0A0A"
+    },
+    "--fg-muted": {
+      "type": "color",
+      "value": "#737373"
+    },
+    "--header-bg": {
+      "type": "color",
+      "value": "#4CAF50"
+    },
+    "--header-fg": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--info-bg": {
+      "type": "color",
+      "value": "#EFF6FF"
+    },
+    "--info-fg": {
+      "type": "color",
+      "value": "#1D4ED8"
+    },
+    "--input-border": {
+      "type": "color",
+      "value": "#D4D4D4"
+    },
+    "--primary": {
+      "type": "color",
+      "value": "#171717"
+    },
+    "--primary-fg": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "--secondary": {
+      "type": "color",
+      "value": "#F5F5F5"
+    },
+    "--secondary-fg": {
+      "type": "color",
+      "value": "#171717"
+    },
+    "--warning": {
+      "type": "color",
+      "value": "#F59E0B"
+    },
+    "--warning-bg": {
+      "type": "color",
+      "value": "#FFFBEB"
+    }
+  }
+}

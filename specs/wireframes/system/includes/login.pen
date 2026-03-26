@@ -1,0 +1,1437 @@
+{
+  "version": "2.9",
+  "children": [
+    {
+      "type": "frame",
+      "id": "3gDmA",
+      "x": 0,
+      "y": 0,
+      "name": "W4: Login — Authentication Flows",
+      "width": 600,
+      "fill": "$--bg",
+      "cornerRadius": 8,
+      "stroke": {
+        "align": "inside",
+        "thickness": 1,
+        "fill": "$--border"
+      },
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "btYo7",
+          "name": "Section 1: Standard Login",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": [
+            24,
+            32
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "HHzrg",
+              "name": "hdr1",
+              "fill": "$--fg",
+              "content": "1. Standard Login",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "QuPX4",
+              "name": "Login Card",
+              "width": 360,
+              "fill": "$--bg",
+              "cornerRadius": 12,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$--border"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "#00000011",
+                "offset": {
+                  "x": 0,
+                  "y": 2
+                },
+                "blur": 12
+              },
+              "layout": "vertical",
+              "gap": 20,
+              "padding": [
+                32,
+                28
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Ash1p",
+                  "name": "logo",
+                  "width": 48,
+                  "height": 48,
+                  "fill": "$--header-bg",
+                  "cornerRadius": 24,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "sFAsS",
+                      "name": "logoIcon",
+                      "width": 24,
+                      "height": 24,
+                      "iconFontName": "lock",
+                      "iconFontFamily": "lucide",
+                      "fill": "$--header-fg"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "5KbAc",
+                  "name": "cardTitle",
+                  "fill": "$--fg",
+                  "content": "Sign In",
+                  "fontFamily": "Inter",
+                  "fontSize": 20,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "frame",
+                  "id": "nze52",
+                  "name": "formArea",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 14,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ROlHT",
+                      "name": "emailLabel",
+                      "fill": "$--fg",
+                      "content": "Email",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "RC1QU",
+                      "name": "emailInput",
+                      "width": "fill_container",
+                      "height": 38,
+                      "fill": "$--bg",
+                      "cornerRadius": 6,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "$--input-border"
+                      },
+                      "gap": 8,
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "72CjS",
+                          "name": "emailIcon",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "mail",
+                          "iconFontFamily": "lucide",
+                          "fill": "$--fg-muted"
+                        },
+                        {
+                          "type": "text",
+                          "id": "6K9vB",
+                          "name": "emailPlaceholder",
+                          "fill": "$--fg-muted",
+                          "content": "you@example.com",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "1rSWB",
+                      "name": "pwLabel",
+                      "fill": "$--fg",
+                      "content": "Password",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "c4elW",
+                      "name": "pwInput",
+                      "width": "fill_container",
+                      "height": 38,
+                      "fill": "$--bg",
+                      "cornerRadius": 6,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "$--input-border"
+                      },
+                      "gap": 8,
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "hs3G4",
+                          "name": "pwIcon",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "key-round",
+                          "iconFontFamily": "lucide",
+                          "fill": "$--fg-muted"
+                        },
+                        {
+                          "type": "text",
+                          "id": "rucjv",
+                          "name": "pwPlaceholder",
+                          "fill": "$--fg-muted",
+                          "content": "Enter password",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "ffVAX",
+                      "name": "rememberRow",
+                      "width": "fill_container",
+                      "justifyContent": "space_between",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "bcb2W",
+                          "name": "checkRow",
+                          "gap": 8,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "JAbBx",
+                              "name": "checkbox",
+                              "width": 16,
+                              "height": 16,
+                              "fill": "$--bg",
+                              "cornerRadius": 3,
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1.5,
+                                "fill": "$--input-border"
+                              }
+                            },
+                            {
+                              "type": "text",
+                              "id": "XgBus",
+                              "name": "remLabel",
+                              "fill": "$--fg",
+                              "content": "Remember me",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "eEBXw",
+                          "name": "forgotLink",
+                          "fill": "$--header-bg",
+                          "content": "Forgot Password?",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "jGXqe",
+                  "name": "loginBtn",
+                  "width": "fill_container",
+                  "height": 40,
+                  "fill": "$--primary",
+                  "cornerRadius": 8,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "4ov7d",
+                      "name": "loginBtnText",
+                      "fill": "$--primary-fg",
+                      "content": "Sign In",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "rectangle",
+          "id": "VmvvZ",
+          "name": "divider1",
+          "fill": "$--border",
+          "width": "fill_container",
+          "height": 1
+        },
+        {
+          "type": "frame",
+          "id": "J5kAq",
+          "name": "Section 2: TOTP Onboarding",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": [
+            24,
+            32
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "pIckx",
+              "name": "hdr2",
+              "fill": "$--fg",
+              "content": "2. TOTP Onboarding (First-Time 2FA Setup)",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "iBdfW",
+              "name": "TOTP Setup Card",
+              "width": 360,
+              "fill": "$--bg",
+              "cornerRadius": 12,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$--border"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "#00000011",
+                "offset": {
+                  "x": 0,
+                  "y": 2
+                },
+                "blur": 12
+              },
+              "layout": "vertical",
+              "gap": 18,
+              "padding": [
+                28,
+                24
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "OXpIY",
+                  "name": "totpTitle",
+                  "fill": "$--fg",
+                  "content": "Set Up Two-Factor Authentication",
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "Mnj3l",
+                  "name": "totpDesc",
+                  "fill": "$--fg-muted",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Scan the QR code with your authenticator app",
+                  "textAlign": "center",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "OJVzj",
+                  "name": "qrPlaceholder",
+                  "width": 128,
+                  "height": 128,
+                  "fill": "$--secondary",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$--border"
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "5EF3B",
+                      "name": "qrIcon",
+                      "width": 48,
+                      "height": 48,
+                      "iconFontName": "qr-code",
+                      "iconFontFamily": "lucide",
+                      "fill": "$--fg-muted"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "6aABW",
+                  "name": "secretWrap",
+                  "width": "fill_container",
+                  "fill": "$--card",
+                  "cornerRadius": 6,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$--border"
+                  },
+                  "gap": 8,
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "4AcDk",
+                      "name": "secretIcon",
+                      "width": 14,
+                      "height": 14,
+                      "iconFontName": "copy",
+                      "iconFontFamily": "lucide",
+                      "fill": "$--fg-muted"
+                    },
+                    {
+                      "type": "text",
+                      "id": "SbNuI",
+                      "name": "secretText",
+                      "fill": "$--fg",
+                      "content": "JBSWY3DPEHPK3PXP",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "500",
+                      "letterSpacing": 1
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "kr4bP",
+                  "name": "secretLabel",
+                  "fill": "$--fg-muted",
+                  "content": "Or enter this secret manually",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "bESrB",
+                  "name": "digitLabel",
+                  "fill": "$--fg",
+                  "content": "Enter 6-digit code",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "frame",
+                  "id": "jtfTe",
+                  "name": "digitRow",
+                  "gap": 8,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "hM5Pq",
+                      "name": "d1",
+                      "width": 40,
+                      "height": 44,
+                      "fill": "$--bg",
+                      "cornerRadius": 6,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1.5,
+                        "fill": "$--input-border"
+                      },
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Rtd81",
+                          "name": "d1T",
+                          "fill": "$--fg",
+                          "content": "4",
+                          "fontFamily": "Inter",
+                          "fontSize": 20,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "wJGv5",
+                      "name": "d2",
+                      "width": 40,
+                      "height": 44,
+                      "fill": "$--bg",
+                      "cornerRadius": 6,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1.5,
+                        "fill": "$--input-border"
+                      },
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "CYVbz",
+                          "name": "d2T",
+                          "fill": "$--fg",
+                          "content": "7",
+                          "fontFamily": "Inter",
+                          "fontSize": 20,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "GpWtW",
+                      "name": "d3",
+                      "width": 40,
+                      "height": 44,
+                      "fill": "$--bg",
+                      "cornerRadius": 6,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1.5,
+                        "fill": "$--input-border"
+                      },
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "To5rv",
+                          "name": "d3T",
+                          "fill": "$--fg",
+                          "content": "2",
+                          "fontFamily": "Inter",
+                          "fontSize": 20,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "xYkEU",
+                      "name": "d4",
+                      "width": 40,
+                      "height": 44,
+                      "fill": "$--bg",
+                      "cornerRadius": 6,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1.5,
+                        "fill": "$--input-border"
+                      },
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "W8TTW",
+                          "name": "d4T",
+                          "fill": "$--fg",
+                          "content": "9",
+                          "fontFamily": "Inter",
+                          "fontSize": 20,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "ph3Ta",
+                      "name": "d5",
+                      "width": 40,
+                      "height": 44,
+                      "fill": "$--bg",
+                      "cornerRadius": 6,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1.5,
+                        "fill": "$--input-border"
+                      },
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "BJpzm",
+                          "name": "d5T",
+                          "fill": "$--fg",
+                          "content": "0",
+                          "fontFamily": "Inter",
+                          "fontSize": 20,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "ut5Hn",
+                      "name": "d6",
+                      "width": 40,
+                      "height": 44,
+                      "fill": "$--bg",
+                      "cornerRadius": 6,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 2,
+                        "fill": "$--header-bg"
+                      },
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "3vY2H",
+                          "name": "d6T",
+                          "fill": "$--header-bg",
+                          "content": "|",
+                          "fontFamily": "Inter",
+                          "fontSize": 20,
+                          "fontWeight": "300"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "bMPoA",
+                  "name": "setupBtn",
+                  "width": "fill_container",
+                  "height": 40,
+                  "fill": "$--primary",
+                  "cornerRadius": 8,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ILp2g",
+                      "name": "setupBtnT",
+                      "fill": "$--primary-fg",
+                      "content": "Verify & Enable 2FA",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "JZ6Vx",
+              "name": "annotation-totp-setup",
+              "width": "fill_container",
+              "fill": "$--info-bg",
+              "cornerRadius": 6,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$--info-fg"
+              },
+              "layout": "vertical",
+              "gap": 4,
+              "padding": [
+                10,
+                14
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "3Q3yz",
+                  "name": "at2",
+                  "fill": "$--info-fg",
+                  "content": "Annotation",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "wYCVN",
+                  "name": "ab2",
+                  "fill": "$--info-fg",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Server-triggered on first login after admin enables 2FA. QR code generated server-side. Secret key displayed for manual entry. Once verified, 2FA is permanently enabled for the account.",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "rectangle",
+          "id": "EImvM",
+          "name": "div2",
+          "fill": "$--border",
+          "width": "fill_container",
+          "height": 1
+        },
+        {
+          "type": "frame",
+          "id": "lk4sT",
+          "name": "Section 3: TOTP Entry",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": [
+            24,
+            32
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "PxgsX",
+              "name": "hdr3",
+              "fill": "$--fg",
+              "content": "3. TOTP Entry (Returning User)",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "YJiee",
+              "name": "OTP Card",
+              "width": 360,
+              "fill": "$--bg",
+              "cornerRadius": 12,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$--border"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "#00000011",
+                "offset": {
+                  "x": 0,
+                  "y": 2
+                },
+                "blur": 12
+              },
+              "layout": "vertical",
+              "gap": 18,
+              "padding": [
+                28,
+                24
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "aStkX",
+                  "name": "otpIcon",
+                  "width": 48,
+                  "height": 48,
+                  "fill": "$--secondary",
+                  "cornerRadius": 24,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "M9gu2",
+                      "name": "otpIconInner",
+                      "width": 24,
+                      "height": 24,
+                      "iconFontName": "shield-check",
+                      "iconFontFamily": "lucide",
+                      "fill": "$--fg"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "lmIMQ",
+                  "name": "otpTitle",
+                  "fill": "$--fg",
+                  "content": "Two-Factor Authentication",
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "Rhr9M",
+                  "name": "otpDesc",
+                  "fill": "$--fg-muted",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Enter the 6-digit code from your authenticator app",
+                  "textAlign": "center",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "7CiE6",
+                  "name": "otpDigits",
+                  "gap": 8,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "qu23f",
+                      "name": "od1",
+                      "width": 40,
+                      "height": 44,
+                      "fill": "$--bg",
+                      "cornerRadius": 6,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1.5,
+                        "fill": "$--input-border"
+                      },
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Zfo0t",
+                          "name": "od1T",
+                          "fill": "$--fg",
+                          "fontFamily": "Inter",
+                          "fontSize": 20,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "nX2kg",
+                      "name": "od2",
+                      "width": 40,
+                      "height": 44,
+                      "fill": "$--bg",
+                      "cornerRadius": 6,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1.5,
+                        "fill": "$--input-border"
+                      },
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "X0KK6",
+                          "name": "od2T",
+                          "fill": "$--fg",
+                          "fontFamily": "Inter",
+                          "fontSize": 20,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "smBs3",
+                      "name": "od3",
+                      "width": 40,
+                      "height": 44,
+                      "fill": "$--bg",
+                      "cornerRadius": 6,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1.5,
+                        "fill": "$--input-border"
+                      },
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "oYp80",
+                          "name": "od3T",
+                          "fill": "$--fg",
+                          "fontFamily": "Inter",
+                          "fontSize": 20,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "QiM0n",
+                      "name": "sep",
+                      "fill": "$--fg-muted",
+                      "content": "-",
+                      "fontFamily": "Inter",
+                      "fontSize": 20,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "NHw6s",
+                      "name": "od4",
+                      "width": 40,
+                      "height": 44,
+                      "fill": "$--bg",
+                      "cornerRadius": 6,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1.5,
+                        "fill": "$--input-border"
+                      },
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "v3qf6",
+                          "name": "od4T",
+                          "fill": "$--fg",
+                          "fontFamily": "Inter",
+                          "fontSize": 20,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "qqMyH",
+                      "name": "od5",
+                      "width": 40,
+                      "height": 44,
+                      "fill": "$--bg",
+                      "cornerRadius": 6,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1.5,
+                        "fill": "$--input-border"
+                      },
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "tWoMq",
+                          "name": "od5T",
+                          "fill": "$--fg",
+                          "fontFamily": "Inter",
+                          "fontSize": 20,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "5U2Qz",
+                      "name": "od6",
+                      "width": 40,
+                      "height": 44,
+                      "fill": "$--bg",
+                      "cornerRadius": 6,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1.5,
+                        "fill": "$--input-border"
+                      },
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "GStUH",
+                          "name": "od6T",
+                          "fill": "$--fg",
+                          "fontFamily": "Inter",
+                          "fontSize": 20,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "yAsL8",
+                  "name": "otpBtn",
+                  "width": "fill_container",
+                  "height": 40,
+                  "fill": "$--primary",
+                  "cornerRadius": 8,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Ul8KY",
+                      "name": "otpBtnT",
+                      "fill": "$--primary-fg",
+                      "content": "Verify",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "2RI9Q",
+              "name": "annotation-totp-entry",
+              "width": "fill_container",
+              "fill": "$--info-bg",
+              "cornerRadius": 6,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$--info-fg"
+              },
+              "layout": "vertical",
+              "gap": 4,
+              "padding": [
+                10,
+                14
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "0RWVZ",
+                  "name": "at3",
+                  "fill": "$--info-fg",
+                  "content": "Annotation",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "6tJQM",
+                  "name": "ab3",
+                  "fill": "$--info-fg",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Auto-submit on last digit. Arrow keys navigate between digit inputs. @shadcn/input-otp component. Backspace clears current digit and moves focus left.",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "rectangle",
+          "id": "GIJmh",
+          "name": "div3",
+          "fill": "$--border",
+          "width": "fill_container",
+          "height": 1
+        },
+        {
+          "type": "frame",
+          "id": "WKH8t",
+          "name": "Section 4: Password Recovery",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": [
+            24,
+            32
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "z9pk1",
+              "name": "hdr4",
+              "fill": "$--fg",
+              "content": "4. Password Recovery",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "9XQfM",
+              "name": "Recovery Card",
+              "width": 360,
+              "fill": "$--bg",
+              "cornerRadius": 12,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$--border"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "#00000011",
+                "offset": {
+                  "x": 0,
+                  "y": 2
+                },
+                "blur": 12
+              },
+              "layout": "vertical",
+              "gap": 18,
+              "padding": [
+                28,
+                24
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "znh0v",
+                  "name": "recIcon",
+                  "width": 48,
+                  "height": 48,
+                  "fill": "$--warning-bg",
+                  "cornerRadius": 24,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "3prA7",
+                      "name": "recIconInner",
+                      "width": 24,
+                      "height": 24,
+                      "iconFontName": "key-round",
+                      "iconFontFamily": "lucide",
+                      "fill": "$--warning"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "3nsqI",
+                  "name": "recTitle",
+                  "fill": "$--fg",
+                  "content": "Forgot Password",
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "8NWJj",
+                  "name": "recDesc",
+                  "fill": "$--fg-muted",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Enter your username to receive a recovery email",
+                  "textAlign": "center",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "nSCWq",
+                  "name": "recForm",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 10,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "AT8Ah",
+                      "name": "recLabel",
+                      "fill": "$--fg",
+                      "content": "Username (min. 3 characters)",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "n11ip",
+                      "name": "recInput",
+                      "width": "fill_container",
+                      "height": 38,
+                      "fill": "$--bg",
+                      "cornerRadius": 6,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "$--input-border"
+                      },
+                      "gap": 8,
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "Kk01Q",
+                          "name": "recInputIcon",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "user",
+                          "iconFontFamily": "lucide",
+                          "fill": "$--fg-muted"
+                        },
+                        {
+                          "type": "text",
+                          "id": "Mpszm",
+                          "name": "recInputPH",
+                          "fill": "$--fg-muted",
+                          "content": "Enter username",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "a1Bpi",
+                  "name": "recBtn",
+                  "width": "fill_container",
+                  "height": 40,
+                  "fill": "$--primary",
+                  "cornerRadius": 8,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "spG4w",
+                      "name": "recBtnT",
+                      "fill": "$--primary-fg",
+                      "content": "Send Recovery Email",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "N8Ss1",
+                  "name": "recInfo",
+                  "width": "fill_container",
+                  "fill": "$--info-bg",
+                  "cornerRadius": 6,
+                  "gap": 8,
+                  "padding": [
+                    10,
+                    14
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "joN1T",
+                      "name": "recInfoIcon",
+                      "width": 14,
+                      "height": 14,
+                      "iconFontName": "info",
+                      "iconFontFamily": "lucide",
+                      "fill": "$--info-fg"
+                    },
+                    {
+                      "type": "text",
+                      "id": "r5lhT",
+                      "name": "recInfoText",
+                      "fill": "$--info-fg",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "A recovery email will be sent to the address associated with your account.",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "RDPRx",
+              "name": "annotation-recovery",
+              "width": "fill_container",
+              "fill": "$--info-bg",
+              "cornerRadius": 6,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$--info-fg"
+              },
+              "layout": "vertical",
+              "gap": 4,
+              "padding": [
+                10,
+                14
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "bJig1",
+                  "name": "at4",
+                  "fill": "$--info-fg",
+                  "content": "Annotation",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "k6uJb",
+                  "name": "ab4",
+                  "fill": "$--info-fg",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "[HARDCODED] error messages in German. Username field requires minimum 3 characters. Submit triggers server-side email with password reset link containing a unique token. Page reloads to login after submission.",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "--bg": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--border": {
+      "type": "color",
+      "value": "#E5E5E5"
+    },
+    "--card": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "--danger-bg": {
+      "type": "color",
+      "value": "#FEF2F2"
+    },
+    "--destructive": {
+      "type": "color",
+      "value": "#DC2626"
+    },
+    "--fg": {
+      "type": "color",
+      "value": "#0A0A0A"
+    },
+    "--fg-muted": {
+      "type": "color",
+      "value": "#737373"
+    },
+    "--header-bg": {
+      "type": "color",
+      "value": "#449DD5"
+    },
+    "--header-fg": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--info-bg": {
+      "type": "color",
+      "value": "#EFF6FF"
+    },
+    "--info-fg": {
+      "type": "color",
+      "value": "#1D4ED8"
+    },
+    "--input-border": {
+      "type": "color",
+      "value": "#D4D4D4"
+    },
+    "--primary": {
+      "type": "color",
+      "value": "#171717"
+    },
+    "--primary-fg": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "--secondary": {
+      "type": "color",
+      "value": "#F5F5F5"
+    },
+    "--secondary-fg": {
+      "type": "color",
+      "value": "#171717"
+    },
+    "--success-bg": {
+      "type": "color",
+      "value": "#F0FDF4"
+    },
+    "--success-fg": {
+      "type": "color",
+      "value": "#166534"
+    },
+    "--warning": {
+      "type": "color",
+      "value": "#F59E0B"
+    },
+    "--warning-bg": {
+      "type": "color",
+      "value": "#FFFBEB"
+    }
+  }
+}

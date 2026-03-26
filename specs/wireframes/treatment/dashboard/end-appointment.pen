@@ -1,0 +1,432 @@
+{
+  "version": "2.9",
+  "children": [
+    {
+      "type": "frame",
+      "id": "cozx2",
+      "x": 0,
+      "y": 0,
+      "name": "W13b: End Appointment — 900px @shadcn/dialog",
+      "width": 900,
+      "fill": "$--bg",
+      "cornerRadius": 8,
+      "stroke": {
+        "align": "inside",
+        "thickness": 1,
+        "fill": "$--border"
+      },
+      "effect": {
+        "type": "shadow",
+        "shadowType": "outer",
+        "color": "#0000001a",
+        "offset": {
+          "x": 0,
+          "y": 2
+        },
+        "blur": 4
+      },
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "4AYzT",
+          "name": "Dialog Header",
+          "width": "fill_container",
+          "fill": "$--header-bg",
+          "cornerRadius": [
+            8,
+            8,
+            0,
+            0
+          ],
+          "gap": 12,
+          "padding": [
+            12,
+            24
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "O6k3h",
+              "name": "hi",
+              "width": 20,
+              "height": 20,
+              "iconFontName": "briefcase",
+              "iconFontFamily": "lucide",
+              "fill": "$--header-fg"
+            },
+            {
+              "type": "text",
+              "id": "EuYAE",
+              "name": "ht",
+              "fill": "$--header-fg",
+              "content": "End Appointment",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "5DNL0",
+              "name": "ha",
+              "fill": "#FFFFFFAA",
+              "content": "@shadcn/dialog — endAppointmentDlg — 900px — for standard (non-shift) appointments",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "X594Y",
+          "name": "Dialog Body",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": 24,
+          "children": [
+            {
+              "type": "text",
+              "id": "syr06",
+              "name": "confTxt",
+              "fill": "$--fg",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Should the operation be ended? — i18n.operation.ended.text",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "ILkJX",
+              "name": "confSub",
+              "fill": "$--fg-muted",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Please correct the time if necessary — i18n.correct.the.time.text",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "pDGAs",
+              "name": "Adjusted Times",
+              "width": "fill_container",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "DLoC8",
+                  "name": "Start Time — @shadcn/input (time) *",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Gs53Y",
+                      "name": "t1l",
+                      "fill": "$--fg",
+                      "content": "Start Time * — data.timeStart",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "iFkry",
+                      "name": "t1i",
+                      "width": "fill_container",
+                      "fill": "$--bg",
+                      "cornerRadius": 6,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "$--input-border"
+                      },
+                      "padding": [
+                        10,
+                        14
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Sl71q",
+                          "fill": "$--fg",
+                          "content": "14:00",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "7c8zA",
+                  "name": "End Time — @shadcn/input (time) *",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "dwtG7",
+                      "name": "t2l",
+                      "fill": "$--fg",
+                      "content": "End Time * — data.timeEnd",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "5yAql",
+                      "name": "t2i",
+                      "width": "fill_container",
+                      "fill": "$--bg",
+                      "cornerRadius": 6,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "$--input-border"
+                      },
+                      "padding": [
+                        10,
+                        14
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "7318z",
+                          "fill": "$--fg",
+                          "content": "15:30",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Fywt4",
+              "name": "sep",
+              "width": "fill_container",
+              "height": 1,
+              "fill": "$--border"
+            },
+            {
+              "type": "text",
+              "id": "ePo9s",
+              "name": "qmHdr",
+              "fill": "$--fg",
+              "content": "QM Questionnaire [embed: W2 questionnaire detail]",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "600"
+            },
+            {
+              "type": "frame",
+              "id": "EgUwl",
+              "name": "QM Embed Placeholder",
+              "width": "fill_container",
+              "fill": "$--card",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$--border"
+              },
+              "layout": "vertical",
+              "gap": 8,
+              "padding": 16,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "5QhaA",
+                  "name": "qmT",
+                  "fill": "$--fg-muted",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "[embed: QM questionnaire] — Same QM form as W11 (Summarize). filterQm() applied. Preserves QM data on error-retry cycles (dialog reopens with previous data intact).",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "z3npG",
+                  "name": "qmI",
+                  "width": "fill_container",
+                  "fill": "$--info-bg",
+                  "cornerRadius": 6,
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "aknGo",
+                      "fill": "$--info-fg",
+                      "content": "See W2 for full QM form layout",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "jyzDX",
+          "name": "Dialog Footer",
+          "width": "fill_container",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "top": 1
+            },
+            "fill": "$--border"
+          },
+          "gap": 12,
+          "padding": [
+            12,
+            24
+          ],
+          "justifyContent": "end",
+          "children": [
+            {
+              "type": "text",
+              "id": "sf0FV",
+              "name": "fNote",
+              "fill": "$--fg-muted",
+              "content": "AppointmentService.done() — re-opens on error with QM data preserved",
+              "fontFamily": "Inter",
+              "fontSize": 10,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "H1q3F",
+              "name": "fc",
+              "fill": "$--secondary",
+              "cornerRadius": 6,
+              "padding": [
+                8,
+                16
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "fygUV",
+                  "fill": "$--secondary-fg",
+                  "content": "Cancel",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "HtqgO",
+              "name": "fn",
+              "fill": "$--primary",
+              "cornerRadius": 6,
+              "padding": [
+                8,
+                16
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "vrpOi",
+                  "fill": "$--primary-fg",
+                  "content": "Save",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "--bg": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--border": {
+      "type": "color",
+      "value": "#E5E5E5"
+    },
+    "--card": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "--fg": {
+      "type": "color",
+      "value": "#0A0A0A"
+    },
+    "--fg-muted": {
+      "type": "color",
+      "value": "#737373"
+    },
+    "--header-bg": {
+      "type": "color",
+      "value": "#F98E33"
+    },
+    "--header-fg": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--info-bg": {
+      "type": "color",
+      "value": "#EFF6FF"
+    },
+    "--info-fg": {
+      "type": "color",
+      "value": "#1D4ED8"
+    },
+    "--input-border": {
+      "type": "color",
+      "value": "#D4D4D4"
+    },
+    "--primary": {
+      "type": "color",
+      "value": "#171717"
+    },
+    "--primary-fg": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "--secondary": {
+      "type": "color",
+      "value": "#F5F5F5"
+    },
+    "--secondary-fg": {
+      "type": "color",
+      "value": "#171717"
+    },
+    "--warning": {
+      "type": "color",
+      "value": "#F59E0B"
+    }
+  }
+}

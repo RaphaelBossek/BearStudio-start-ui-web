@@ -1,0 +1,1098 @@
+{
+  "version": "2.9",
+  "children": [
+    {
+      "type": "frame",
+      "id": "n14Fo",
+      "x": 0,
+      "y": 0,
+      "name": "W12-A: Incarceration Check — @shadcn/dialog",
+      "width": 500,
+      "fill": "$--bg",
+      "cornerRadius": 8,
+      "stroke": {
+        "align": "inside",
+        "thickness": 1,
+        "fill": "$--border"
+      },
+      "effect": {
+        "type": "shadow",
+        "shadowType": "outer",
+        "color": "#0000001a",
+        "offset": {
+          "x": 0,
+          "y": 2
+        },
+        "blur": 4
+      },
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "kC9zq",
+          "name": "Dialog Header",
+          "width": "fill_container",
+          "fill": "$--header-bg",
+          "cornerRadius": [
+            8,
+            8,
+            0,
+            0
+          ],
+          "gap": 12,
+          "padding": [
+            12,
+            24
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "Fo5nh",
+              "name": "chi",
+              "width": 20,
+              "height": 20,
+              "iconFontName": "hard-hat",
+              "iconFontFamily": "lucide",
+              "fill": "$--header-fg"
+            },
+            {
+              "type": "text",
+              "id": "c1ALY",
+              "name": "cht",
+              "fill": "$--header-fg",
+              "content": "Patient Query — Check",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "uD3hK",
+              "name": "cha",
+              "fill": "#FFFFFFAA",
+              "content": "@shadcn/dialog — consultationIncarcerationCheck",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "JRedK",
+          "name": "Dialog Body",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": 24,
+          "children": [
+            {
+              "type": "frame",
+              "id": "TNfbt",
+              "name": "Book Number — @shadcn/input *",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 6,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "amII9",
+                  "name": "f1l",
+                  "fill": "$--fg",
+                  "content": "Book Number *",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "frame",
+                  "id": "0oZT0",
+                  "name": "f1i",
+                  "width": "fill_container",
+                  "fill": "$--bg",
+                  "cornerRadius": 6,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$--input-border"
+                  },
+                  "gap": 8,
+                  "padding": [
+                    10,
+                    14
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "BCqQi",
+                      "name": "f1ic",
+                      "width": 16,
+                      "height": 16,
+                      "iconFontName": "user",
+                      "iconFontFamily": "lucide",
+                      "fill": "$--fg-muted"
+                    },
+                    {
+                      "type": "text",
+                      "id": "zOc7c",
+                      "name": "f1it",
+                      "fill": "$--fg-muted",
+                      "content": "Enter book number...",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "dUUdE",
+              "name": "Code — @shadcn/input *",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 6,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "htOpH",
+                  "name": "f2l",
+                  "fill": "$--fg",
+                  "content": "Code *",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "frame",
+                  "id": "Q5ngS",
+                  "name": "f2i",
+                  "width": "fill_container",
+                  "fill": "$--bg",
+                  "cornerRadius": 6,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$--input-border"
+                  },
+                  "gap": 8,
+                  "padding": [
+                    10,
+                    14
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "LSLmh",
+                      "name": "f2ic",
+                      "width": 16,
+                      "height": 16,
+                      "iconFontName": "key",
+                      "iconFontFamily": "lucide",
+                      "fill": "$--fg-muted"
+                    },
+                    {
+                      "type": "text",
+                      "id": "qeRWy",
+                      "name": "f2it",
+                      "fill": "$--fg-muted",
+                      "content": "Enter code...",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "R7Hyu",
+              "name": "f2a",
+              "fill": "$--fg-muted",
+              "content": "ConsultationService.checkCustomer(bookNumber, code) — on success opens retrieval dialog.",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "OGUtJ",
+          "name": "Dialog Footer",
+          "width": "fill_container",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "top": 1
+            },
+            "fill": "$--border"
+          },
+          "gap": 12,
+          "padding": [
+            12,
+            24
+          ],
+          "justifyContent": "end",
+          "children": [
+            {
+              "type": "frame",
+              "id": "bJNII",
+              "name": "cfc",
+              "fill": "$--secondary",
+              "cornerRadius": 6,
+              "padding": [
+                8,
+                16
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "rvxRo",
+                  "fill": "$--secondary-fg",
+                  "content": "Cancel",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "7IpE0",
+              "name": "cfn",
+              "fill": "$--primary",
+              "cornerRadius": 6,
+              "padding": [
+                8,
+                16
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Jw5oP",
+                  "fill": "$--primary-fg",
+                  "content": "Save",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "r8N1k",
+      "x": 550,
+      "y": 0,
+      "name": "W12-B: Incarceration Retrieval — @shadcn/dialog",
+      "width": 550,
+      "fill": "$--bg",
+      "cornerRadius": 8,
+      "stroke": {
+        "align": "inside",
+        "thickness": 1,
+        "fill": "$--border"
+      },
+      "effect": {
+        "type": "shadow",
+        "shadowType": "outer",
+        "color": "#0000001a",
+        "offset": {
+          "x": 0,
+          "y": 2
+        },
+        "blur": 4
+      },
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "1dU8X",
+          "name": "Dialog Header",
+          "width": "fill_container",
+          "fill": "$--header-bg",
+          "cornerRadius": [
+            8,
+            8,
+            0,
+            0
+          ],
+          "gap": 12,
+          "padding": [
+            12,
+            24
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "YsB1u",
+              "name": "rhi",
+              "width": 20,
+              "height": 20,
+              "iconFontName": "hard-hat",
+              "iconFontFamily": "lucide",
+              "fill": "$--header-fg"
+            },
+            {
+              "type": "text",
+              "id": "xHkOS",
+              "name": "rht",
+              "fill": "$--header-fg",
+              "content": "Incarceration — Retrieval",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "ALXra",
+              "name": "rha",
+              "fill": "#FFFFFFAA",
+              "content": "@shadcn/dialog — [HARDCODED title] consultationIncarceration",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "YcaZe",
+          "name": "Dialog Body",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 12,
+          "padding": 24,
+          "children": [
+            {
+              "type": "frame",
+              "id": "Ou1ep",
+              "name": "Read-only Verified Fields",
+              "width": "fill_container",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "4pJwY",
+                  "name": "Book Number [RO]",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "scBqk",
+                      "name": "ro1l",
+                      "fill": "$--fg",
+                      "content": "Book Number [RO]",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "XVm9g",
+                      "name": "ro1i",
+                      "width": "fill_container",
+                      "fill": "$--secondary",
+                      "cornerRadius": 6,
+                      "gap": 6,
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "4gR4d",
+                          "name": "ro1ic",
+                          "width": 14,
+                          "height": 14,
+                          "iconFontName": "user",
+                          "iconFontFamily": "lucide",
+                          "fill": "$--fg-muted"
+                        },
+                        {
+                          "type": "text",
+                          "id": "ZmeZ1",
+                          "name": "ro1t",
+                          "fill": "$--fg",
+                          "content": "J-1234",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "8czGz",
+                  "name": "Code [RO]",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "jBkNZ",
+                      "name": "ro2l",
+                      "fill": "$--fg",
+                      "content": "Code [RO]",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "W3D9d",
+                      "name": "ro2i",
+                      "width": "fill_container",
+                      "fill": "$--secondary",
+                      "cornerRadius": 6,
+                      "gap": 6,
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "ikYOA",
+                          "name": "ro2ic",
+                          "width": 14,
+                          "height": 14,
+                          "iconFontName": "key",
+                          "iconFontFamily": "lucide",
+                          "fill": "$--fg-muted"
+                        },
+                        {
+                          "type": "text",
+                          "id": "gLWIv",
+                          "name": "ro2t",
+                          "fill": "$--fg",
+                          "content": "ABC-123",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "qj998",
+              "name": "Previous Retrieval Warning — @shadcn/alert [cond: data.dateRetrieved]",
+              "width": "fill_container",
+              "fill": "$--danger-bg",
+              "cornerRadius": 8,
+              "gap": 8,
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "qf4Tf",
+                  "name": "wI",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "triangle-alert",
+                  "iconFontFamily": "lucide",
+                  "fill": "$--destructive"
+                },
+                {
+                  "type": "text",
+                  "id": "5VWLB",
+                  "name": "wT",
+                  "fill": "$--destructive",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "[HARDCODED] This record was already retrieved on 10.03.2026! — [cond: data.dateRetrieved is truthy]",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "rgg6p",
+              "name": "sep",
+              "width": "fill_container",
+              "height": 1,
+              "fill": "$--border"
+            },
+            {
+              "type": "text",
+              "id": "GkkG4",
+              "name": "aHdr",
+              "fill": "$--fg",
+              "content": "Delivery Address — @shadcn/input fields",
+              "fontFamily": "Inter",
+              "fontSize": 13,
+              "fontWeight": "600"
+            },
+            {
+              "type": "frame",
+              "id": "S5dnL",
+              "name": "Name — data.target.name *",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 4,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "LEI4L",
+                  "name": "aNl",
+                  "fill": "$--fg",
+                  "content": "Name *",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "frame",
+                  "id": "Qpsy3",
+                  "name": "aNi",
+                  "width": "fill_container",
+                  "fill": "$--bg",
+                  "cornerRadius": 6,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$--input-border"
+                  },
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "801Cg",
+                      "fill": "$--fg-muted",
+                      "content": "First name Last name",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "YbPlD",
+              "name": "Street — data.target.address *",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 4,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "lFvzU",
+                  "name": "aSl",
+                  "fill": "$--fg",
+                  "content": "Street *",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "frame",
+                  "id": "cS2UE",
+                  "name": "aSi",
+                  "width": "fill_container",
+                  "fill": "$--bg",
+                  "cornerRadius": 6,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$--input-border"
+                  },
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "EBe1T",
+                      "fill": "$--fg-muted",
+                      "content": "Street address",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "sZ1Y6",
+              "name": "Street 2 — data.target.address2",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 4,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "2gnyC",
+                  "name": "aS2l",
+                  "fill": "$--fg-muted",
+                  "content": "Street 2 (optional)",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "ft5lv",
+                  "name": "aS2i",
+                  "width": "fill_container",
+                  "fill": "$--bg",
+                  "cornerRadius": 6,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$--input-border"
+                  },
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "THexo",
+                      "fill": "$--fg-muted",
+                      "content": "Additional address",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "wJ6vX",
+              "name": "Zip + State + City row",
+              "width": "fill_container",
+              "gap": 8,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "kpAV1",
+                  "name": "aZ",
+                  "width": 100,
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "7D25R",
+                      "name": "aZl",
+                      "fill": "$--fg",
+                      "content": "Zip * [auto]",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "qjaGA",
+                      "name": "aZi",
+                      "width": "fill_container",
+                      "fill": "$--bg",
+                      "cornerRadius": 6,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "$--input-border"
+                      },
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "aA5W9",
+                          "fill": "$--fg-muted",
+                          "content": "10115",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "RwmeY",
+                  "name": "aSt",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "O9gtf",
+                      "name": "aStl",
+                      "fill": "$--fg-muted",
+                      "content": "State",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Nu93h",
+                      "name": "aSti",
+                      "width": "fill_container",
+                      "fill": "$--bg",
+                      "cornerRadius": 6,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "$--input-border"
+                      },
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "djZ5j",
+                          "fill": "$--fg-muted",
+                          "content": "Berlin",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "essi3",
+                  "name": "aCt",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "3foxI",
+                      "name": "aCtl",
+                      "fill": "$--fg",
+                      "content": "City *",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "BGM0a",
+                      "name": "aCti",
+                      "width": "fill_container",
+                      "fill": "$--bg",
+                      "cornerRadius": 6,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "$--input-border"
+                      },
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "ou7Rf",
+                          "fill": "$--fg-muted",
+                          "content": "Berlin",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "GLNWx",
+              "name": "Country — data.target.country",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 4,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "CAi8S",
+                  "name": "aCol",
+                  "fill": "$--fg-muted",
+                  "content": "Country (optional)",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "p9A9C",
+                  "name": "aCoi",
+                  "width": "fill_container",
+                  "fill": "$--bg",
+                  "cornerRadius": 6,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$--input-border"
+                  },
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "SxC65",
+                      "fill": "$--fg-muted",
+                      "content": "Germany",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Anx88",
+              "name": "Additional Text — data.target.addressInfo",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 4,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Fw7VM",
+                  "name": "aIl",
+                  "fill": "$--fg-muted",
+                  "content": "Additional Text [HARDCODED: Zusatztext Adresse]",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "zZAAV",
+                  "name": "aIi",
+                  "width": "fill_container",
+                  "height": 60,
+                  "fill": "$--bg",
+                  "cornerRadius": 6,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$--input-border"
+                  },
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "h8LNg",
+                      "fill": "$--fg-muted",
+                      "content": "Additional address info...",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "Z4v21",
+              "name": "rfA",
+              "fill": "$--fg-muted",
+              "content": "ConsultationService.prepareCustomer() → opens Job Status dialog with PDF download link.",
+              "fontFamily": "Inter",
+              "fontSize": 10,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "XMHKU",
+          "name": "Dialog Footer",
+          "width": "fill_container",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "top": 1
+            },
+            "fill": "$--border"
+          },
+          "gap": 12,
+          "padding": [
+            12,
+            24
+          ],
+          "justifyContent": "end",
+          "children": [
+            {
+              "type": "frame",
+              "id": "EDyk4",
+              "name": "rfc",
+              "fill": "$--secondary",
+              "cornerRadius": 6,
+              "padding": [
+                8,
+                16
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Tdiqk",
+                  "fill": "$--secondary-fg",
+                  "content": "Cancel",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "patuN",
+              "name": "rfn",
+              "fill": "$--primary",
+              "cornerRadius": 6,
+              "padding": [
+                8,
+                16
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "IPOnG",
+                  "fill": "$--primary-fg",
+                  "content": "Save",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "--bg": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--border": {
+      "type": "color",
+      "value": "#E5E5E5"
+    },
+    "--card": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "--danger-bg": {
+      "type": "color",
+      "value": "#FEF2F2"
+    },
+    "--destructive": {
+      "type": "color",
+      "value": "#DC2626"
+    },
+    "--fg": {
+      "type": "color",
+      "value": "#0A0A0A"
+    },
+    "--fg-muted": {
+      "type": "color",
+      "value": "#737373"
+    },
+    "--header-bg": {
+      "type": "color",
+      "value": "#F98E33"
+    },
+    "--header-fg": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--info-bg": {
+      "type": "color",
+      "value": "#EFF6FF"
+    },
+    "--info-fg": {
+      "type": "color",
+      "value": "#1D4ED8"
+    },
+    "--input-border": {
+      "type": "color",
+      "value": "#D4D4D4"
+    },
+    "--primary": {
+      "type": "color",
+      "value": "#171717"
+    },
+    "--primary-fg": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "--secondary": {
+      "type": "color",
+      "value": "#F5F5F5"
+    },
+    "--secondary-fg": {
+      "type": "color",
+      "value": "#171717"
+    },
+    "--warning": {
+      "type": "color",
+      "value": "#F59E0B"
+    }
+  }
+}

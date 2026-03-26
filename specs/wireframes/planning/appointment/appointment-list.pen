@@ -1,0 +1,1517 @@
+{
+  "version": "2.9",
+  "children": [
+    {
+      "type": "frame",
+      "id": "qQxJZ",
+      "x": 0,
+      "y": 0,
+      "name": "W1: Appointment List (MonthTable)",
+      "width": 1440,
+      "fill": "$--bg",
+      "cornerRadius": 8,
+      "stroke": {
+        "align": "inside",
+        "thickness": 1,
+        "fill": "$--border"
+      },
+      "effect": {
+        "type": "shadow",
+        "shadowType": "outer",
+        "color": "#0000001a",
+        "offset": {
+          "x": 0,
+          "y": 2
+        },
+        "blur": 4
+      },
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "F95FW",
+          "name": "Page Header",
+          "width": "fill_container",
+          "fill": "$--header-bg",
+          "gap": 16,
+          "padding": [
+            12,
+            24
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "3xvr5",
+              "name": "headerIcon",
+              "width": 22,
+              "height": 22,
+              "iconFontName": "calendar-days",
+              "iconFontFamily": "lucide",
+              "fill": "$--header-fg"
+            },
+            {
+              "type": "text",
+              "id": "U3YxM",
+              "name": "headerTitle",
+              "fill": "$--header-fg",
+              "content": "Appointments",
+              "fontFamily": "Inter",
+              "fontSize": 18,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "WFpZH",
+              "name": "headerAnnot",
+              "fill": "#FFFFFFAA",
+              "content": "MonthTable — NOT DataTables. Rows = days, Cols = jobs.",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "HQBCy",
+          "name": "Toolbar",
+          "width": "fill_container",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "bottom": 1
+            },
+            "fill": "$--border"
+          },
+          "gap": 8,
+          "padding": [
+            8,
+            24
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "2qLmn",
+              "name": "Month Navigation",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "O3xhF",
+                  "name": "Prev",
+                  "fill": "$--secondary",
+                  "cornerRadius": 6,
+                  "padding": [
+                    6,
+                    10
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "gU1lj",
+                      "name": "prevIcon",
+                      "width": 16,
+                      "height": 16,
+                      "iconFontName": "chevron-left",
+                      "iconFontFamily": "lucide",
+                      "fill": "$--secondary-fg"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "kL5nG",
+                  "name": "monthLabel",
+                  "fill": "$--fg",
+                  "content": "March 2026",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "frame",
+                  "id": "HTaLF",
+                  "name": "Next",
+                  "fill": "$--secondary",
+                  "cornerRadius": 6,
+                  "padding": [
+                    6,
+                    10
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "9FNcy",
+                      "name": "nextIcon",
+                      "width": 16,
+                      "height": 16,
+                      "iconFontName": "chevron-right",
+                      "iconFontFamily": "lucide",
+                      "fill": "$--secondary-fg"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Yp2rj",
+              "name": "spacer1",
+              "width": "fill_container",
+              "height": 1
+            },
+            {
+              "type": "frame",
+              "id": "AIJus",
+              "name": "Reload — @shadcn/button",
+              "fill": "$--secondary",
+              "cornerRadius": 6,
+              "gap": 6,
+              "padding": [
+                6,
+                10
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "zPemG",
+                  "name": "reloadIcon",
+                  "width": 14,
+                  "height": 14,
+                  "iconFontName": "refresh-cw",
+                  "iconFontFamily": "lucide",
+                  "fill": "$--secondary-fg"
+                },
+                {
+                  "type": "text",
+                  "id": "7QdRQ",
+                  "name": "reloadTxt",
+                  "fill": "$--secondary-fg",
+                  "content": "Reload",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "3Q4AH",
+              "name": "Add — @shadcn/button",
+              "fill": "$--primary",
+              "cornerRadius": 6,
+              "gap": 6,
+              "padding": [
+                6,
+                10
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "LUdOL",
+                  "name": "addIcon",
+                  "width": 14,
+                  "height": 14,
+                  "iconFontName": "plus",
+                  "iconFontFamily": "lucide",
+                  "fill": "$--primary-fg"
+                },
+                {
+                  "type": "text",
+                  "id": "qvzmt",
+                  "name": "addTxt",
+                  "fill": "$--primary-fg",
+                  "content": "Add",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "n1P16",
+              "name": "Edit — @shadcn/button (disabled)",
+              "opacity": 0.4,
+              "fill": "$--secondary",
+              "cornerRadius": 6,
+              "gap": 6,
+              "padding": [
+                6,
+                10
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "Uq54t",
+                  "name": "editIcon",
+                  "width": 14,
+                  "height": 14,
+                  "iconFontName": "pencil",
+                  "iconFontFamily": "lucide",
+                  "fill": "$--secondary-fg"
+                },
+                {
+                  "type": "text",
+                  "id": "mWEOZ",
+                  "name": "editTxt",
+                  "fill": "$--secondary-fg",
+                  "content": "Edit",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "4SNym",
+              "name": "Export — @shadcn/button",
+              "fill": "$--secondary",
+              "cornerRadius": 6,
+              "gap": 6,
+              "padding": [
+                6,
+                10
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "9P0yY",
+                  "name": "exportIcon",
+                  "width": 14,
+                  "height": 14,
+                  "iconFontName": "file-spreadsheet",
+                  "iconFontFamily": "lucide",
+                  "fill": "$--secondary-fg"
+                },
+                {
+                  "type": "text",
+                  "id": "igQT8",
+                  "name": "exportTxt",
+                  "fill": "$--secondary-fg",
+                  "content": "Export",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "qrLix",
+              "name": "Filter — @shadcn/button",
+              "fill": "$--secondary",
+              "cornerRadius": 6,
+              "gap": 6,
+              "padding": [
+                6,
+                10
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "FDRRW",
+                  "name": "filterIcon",
+                  "width": 14,
+                  "height": 14,
+                  "iconFontName": "filter",
+                  "iconFontFamily": "lucide",
+                  "fill": "$--secondary-fg"
+                },
+                {
+                  "type": "text",
+                  "id": "qdpbk",
+                  "name": "filterTxt",
+                  "fill": "$--secondary-fg",
+                  "content": "Filter",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "0xiA0",
+          "name": "MonthTable Grid",
+          "width": "fill_container",
+          "layout": "vertical",
+          "padding": [
+            0,
+            24,
+            24,
+            24
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "GqQNt",
+              "name": "Calendar Grid Table",
+              "clip": true,
+              "width": "fill_container",
+              "cornerRadius": 6,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$--border"
+              },
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Q3MwO",
+                  "name": "Grid Header Row",
+                  "width": "fill_container",
+                  "fill": "$--secondary",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": {
+                      "bottom": 1
+                    },
+                    "fill": "$--border"
+                  },
+                  "padding": [
+                    8,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "B26nN",
+                      "name": "Day Col",
+                      "width": 60,
+                      "padding": [
+                        0,
+                        8
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "lprpF",
+                          "name": "dayColTxt",
+                          "fill": "$--fg",
+                          "content": "Day",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "z8r2p",
+                      "name": "Job: General Medicine",
+                      "width": "fill_container",
+                      "padding": [
+                        0,
+                        8
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "py8HD",
+                          "name": "job1Txt",
+                          "fill": "$--fg",
+                          "content": "General Medicine",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "7YRZo",
+                      "name": "Job: Psychiatry",
+                      "width": "fill_container",
+                      "padding": [
+                        0,
+                        8
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "ohMP1",
+                          "name": "job2Txt",
+                          "fill": "$--fg",
+                          "content": "Psychiatry",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Wb0MB",
+                      "name": "Job: Dental Care",
+                      "width": "fill_container",
+                      "padding": [
+                        0,
+                        8
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "9jv5J",
+                          "name": "job3Txt",
+                          "fill": "$--fg",
+                          "content": "Dental Care",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "kEXQ7",
+                      "name": "Job: Physiotherapy",
+                      "width": "fill_container",
+                      "padding": [
+                        0,
+                        8
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "WPMbb",
+                          "name": "job4Txt",
+                          "fill": "$--fg",
+                          "content": "Physiotherapy",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Mil7n",
+                  "name": "Day Row: 1 Mon",
+                  "width": "fill_container",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": {
+                      "bottom": 1
+                    },
+                    "fill": "$--border"
+                  },
+                  "padding": [
+                    4,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "WlxYn",
+                      "name": "r1day",
+                      "width": 60,
+                      "padding": [
+                        4,
+                        8
+                      ],
+                      "justifyContent": "end",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "RGBSR",
+                          "name": "r1dayTxt",
+                          "fill": "$--fg",
+                          "content": "1 Mo",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "bDafO",
+                      "name": "Cell: Ready Appt",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "padding": [
+                        4,
+                        8
+                      ],
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "TxaqS",
+                          "name": "r1c1entry",
+                          "fill": "$--ap-ready",
+                          "cornerRadius": 4,
+                          "gap": 4,
+                          "padding": [
+                            2,
+                            4
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "QaYdI",
+                              "name": "r1c1icon",
+                              "width": 12,
+                              "height": 12,
+                              "iconFontName": "folder-open",
+                              "iconFontFamily": "lucide",
+                              "fill": "$--fg"
+                            },
+                            {
+                              "type": "text",
+                              "id": "QNN9u",
+                              "name": "r1c1name",
+                              "fill": "$--fg",
+                              "content": "Dr. Müller",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "9b4ej",
+                          "name": "r1c1sub1",
+                          "gap": 4,
+                          "padding": [
+                            1,
+                            4,
+                            1,
+                            12
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "d4NKU",
+                              "name": "r1c1subIcon",
+                              "width": 10,
+                              "height": 10,
+                              "iconFontName": "search",
+                              "iconFontFamily": "lucide",
+                              "fill": "$--state-added"
+                            },
+                            {
+                              "type": "text",
+                              "id": "ChL94",
+                              "name": "r1c1subName",
+                              "fill": "$--fg-muted",
+                              "content": "1. Dr. Weber (Added)",
+                              "fontFamily": "Inter",
+                              "fontSize": 10,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Tz0kR",
+                      "name": "Cell: Lockedin Appt",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "padding": [
+                        4,
+                        8
+                      ],
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "iN2fO",
+                          "name": "r1c2entry",
+                          "fill": "$--ap-lockedin",
+                          "cornerRadius": 4,
+                          "gap": 4,
+                          "padding": [
+                            2,
+                            4
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "tcJL5",
+                              "name": "r1c2icon",
+                              "width": 12,
+                              "height": 12,
+                              "iconFontName": "check",
+                              "iconFontFamily": "lucide",
+                              "fill": "$--fg"
+                            },
+                            {
+                              "type": "text",
+                              "id": "vImmg",
+                              "name": "r1c2name",
+                              "fill": "$--fg",
+                              "content": "Team A",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "yDSuB",
+                          "name": "r1c2sub1",
+                          "gap": 4,
+                          "padding": [
+                            1,
+                            4,
+                            1,
+                            12
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "coVgN",
+                              "name": "r1c2subIcon",
+                              "width": 10,
+                              "height": 10,
+                              "iconFontName": "user",
+                              "iconFontFamily": "lucide",
+                              "fill": "$--state-accepted"
+                            },
+                            {
+                              "type": "text",
+                              "id": "CCIDw",
+                              "name": "r1c2subName",
+                              "fill": "$--fg-muted",
+                              "content": "1. Dr. Fischer (Accepted)",
+                              "fontFamily": "Inter",
+                              "fontSize": 10,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "3FvRq",
+                      "name": "Cell: Empty",
+                      "width": "fill_container",
+                      "height": "fit_content(0)",
+                      "padding": [
+                        4,
+                        8
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "g4A4Y",
+                      "name": "Cell: Active Appt",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "padding": [
+                        4,
+                        8
+                      ],
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "Q1QIC",
+                          "name": "r1c4entry",
+                          "fill": "$--ap-active",
+                          "cornerRadius": 4,
+                          "gap": 4,
+                          "padding": [
+                            2,
+                            4
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "oQ5O9",
+                              "name": "r1c4icon",
+                              "width": 12,
+                              "height": 12,
+                              "iconFontName": "play",
+                              "iconFontFamily": "lucide",
+                              "fill": "$--fg"
+                            },
+                            {
+                              "type": "text",
+                              "id": "nZ2xx",
+                              "name": "r1c4name",
+                              "fill": "$--fg",
+                              "content": "Physio PM",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "FT3Dw",
+                  "name": "Day Row: 2 Tue",
+                  "width": "fill_container",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": {
+                      "bottom": 1
+                    },
+                    "fill": "$--border"
+                  },
+                  "padding": [
+                    4,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "hrqMT",
+                      "name": "r2day",
+                      "width": 60,
+                      "padding": [
+                        4,
+                        8
+                      ],
+                      "justifyContent": "end",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "ijjGa",
+                          "name": "r2dayTxt",
+                          "fill": "$--fg",
+                          "content": "2 Tu",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "cM1uH",
+                      "name": "Cell: Done Appt",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "padding": [
+                        4,
+                        8
+                      ],
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "JvUa3",
+                          "name": "r2c1entry",
+                          "fill": "$--ap-done",
+                          "cornerRadius": 4,
+                          "gap": 4,
+                          "padding": [
+                            2,
+                            4
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "p1Ra3",
+                              "name": "r2c1icon",
+                              "width": 12,
+                              "height": 12,
+                              "iconFontName": "circle-stop",
+                              "iconFontFamily": "lucide",
+                              "fill": "#FFFFFF"
+                            },
+                            {
+                              "type": "text",
+                              "id": "iO10d",
+                              "name": "r2c1name",
+                              "fill": "#FFFFFF",
+                              "content": "Dr. Schmidt",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "0AiTk",
+                          "name": "r2c1sub1",
+                          "gap": 4,
+                          "padding": [
+                            1,
+                            4,
+                            1,
+                            12
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "NcSVv",
+                              "name": "r2c1subIcon",
+                              "width": 10,
+                              "height": 10,
+                              "iconFontName": "check",
+                              "iconFontFamily": "lucide",
+                              "fill": "$--state-agreed"
+                            },
+                            {
+                              "type": "text",
+                              "id": "nVYB0",
+                              "name": "r2c1subName",
+                              "fill": "$--fg-muted",
+                              "content": "1. Dr. Braun (Agreed)",
+                              "fontFamily": "Inter",
+                              "fontSize": 10,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "D7Of5",
+                      "name": "Cell: Requested",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "padding": [
+                        4,
+                        8
+                      ],
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "MrOiv",
+                          "name": "r2c2entry",
+                          "fill": "$--ap-requested",
+                          "cornerRadius": 4,
+                          "gap": 4,
+                          "padding": [
+                            2,
+                            4
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "nqfYf",
+                              "name": "r2c2icon",
+                              "width": 12,
+                              "height": 12,
+                              "iconFontName": "tag",
+                              "iconFontFamily": "lucide",
+                              "fill": "$--fg"
+                            },
+                            {
+                              "type": "text",
+                              "id": "BhGYH",
+                              "name": "r2c2name",
+                              "fill": "$--fg",
+                              "content": "Evening Shift",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "6YhYv",
+                      "name": "Cell: Storno",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "padding": [
+                        4,
+                        8
+                      ],
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "l1087",
+                          "name": "r2c3entry",
+                          "fill": "$--ap-storno",
+                          "cornerRadius": 4,
+                          "gap": 4,
+                          "padding": [
+                            2,
+                            4
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "cXzqF",
+                              "name": "r2c3icon",
+                              "width": 12,
+                              "height": 12,
+                              "iconFontName": "ban",
+                              "iconFontFamily": "lucide",
+                              "fill": "$--fg"
+                            },
+                            {
+                              "type": "text",
+                              "id": "dFD0J",
+                              "name": "r2c3name",
+                              "fill": "$--fg",
+                              "content": "Cancelled",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "N8P9N",
+                      "name": "Cell: Empty",
+                      "width": "fill_container",
+                      "height": 20,
+                      "padding": [
+                        4,
+                        8
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "CbHzo",
+                  "name": "Day Row: 3 Wed",
+                  "width": "fill_container",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": {
+                      "bottom": 1
+                    },
+                    "fill": "$--border"
+                  },
+                  "padding": [
+                    4,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "4yGqZ",
+                      "name": "r3day",
+                      "width": 60,
+                      "padding": [
+                        4,
+                        8
+                      ],
+                      "justifyContent": "end",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "R96O7",
+                          "name": "r3dayTxt",
+                          "fill": "$--fg",
+                          "content": "3 We",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "bjoPS",
+                      "name": "Cell: Closed",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "padding": [
+                        4,
+                        8
+                      ],
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "8yUwe",
+                          "name": "r3c1entry",
+                          "fill": "$--ap-closed",
+                          "cornerRadius": 4,
+                          "gap": 4,
+                          "padding": [
+                            2,
+                            4
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "pS0vK",
+                              "name": "r3c1icon",
+                              "width": 12,
+                              "height": 12,
+                              "iconFontName": "door-closed",
+                              "iconFontFamily": "lucide",
+                              "fill": "#FFFFFF"
+                            },
+                            {
+                              "type": "text",
+                              "id": "EVgtO",
+                              "name": "r3c1name",
+                              "fill": "#FFFFFF",
+                              "content": "Dr. Lang",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Pg4cv",
+                      "name": "Cell: Empty",
+                      "width": "fill_container",
+                      "height": 20,
+                      "padding": [
+                        4,
+                        8
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "VttUi",
+                      "name": "Cell: Ready + 2 staff",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "padding": [
+                        4,
+                        8
+                      ],
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "MvPHZ",
+                          "name": "r3c3entry",
+                          "fill": "$--ap-ready",
+                          "cornerRadius": 4,
+                          "gap": 4,
+                          "padding": [
+                            2,
+                            4
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "B2QS0",
+                              "name": "r3c3icon",
+                              "width": 12,
+                              "height": 12,
+                              "iconFontName": "folder-open",
+                              "iconFontFamily": "lucide",
+                              "fill": "$--fg"
+                            },
+                            {
+                              "type": "text",
+                              "id": "fGF50",
+                              "name": "r3c3name",
+                              "fill": "$--fg",
+                              "content": "Checkup AM",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "4dNKp",
+                          "name": "r3c3sub1",
+                          "gap": 4,
+                          "padding": [
+                            1,
+                            4,
+                            1,
+                            12
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "NfT5w",
+                              "name": "r3c3sub1Icon",
+                              "width": 10,
+                              "height": 10,
+                              "iconFontName": "check",
+                              "iconFontFamily": "lucide",
+                              "fill": "$--state-accepted"
+                            },
+                            {
+                              "type": "text",
+                              "id": "yN5qF",
+                              "name": "r3c3sub1Name",
+                              "fill": "$--fg-muted",
+                              "content": "1. Dr. Klein (Accepted)",
+                              "fontFamily": "Inter",
+                              "fontSize": 10,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "Fr8KM",
+                          "name": "r3c3sub2",
+                          "gap": 4,
+                          "padding": [
+                            1,
+                            4,
+                            1,
+                            12
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "5Yplq",
+                              "name": "r3c3sub2Icon",
+                              "width": 10,
+                              "height": 10,
+                              "iconFontName": "octagon",
+                              "iconFontFamily": "lucide",
+                              "fill": "$--state-missing"
+                            },
+                            {
+                              "type": "text",
+                              "id": "mmsZl",
+                              "name": "r3c3sub2Name",
+                              "fill": "$--state-missing",
+                              "content": "2. --- (Missing)",
+                              "fontFamily": "Inter",
+                              "fontSize": 10,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "xD4h2",
+                      "name": "Cell: Canceled",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "padding": [
+                        4,
+                        8
+                      ],
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "SJoa9",
+                          "name": "r3c4entry",
+                          "fill": "$--ap-canceled",
+                          "cornerRadius": 4,
+                          "gap": 4,
+                          "padding": [
+                            2,
+                            4
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "PvP5M",
+                              "name": "r3c4icon",
+                              "width": 12,
+                              "height": 12,
+                              "iconFontName": "slash",
+                              "iconFontFamily": "lucide",
+                              "fill": "$--fg"
+                            },
+                            {
+                              "type": "text",
+                              "id": "UWpG7",
+                              "name": "r3c4name",
+                              "fill": "$--fg",
+                              "content": "Session B",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "RP0m5",
+                  "name": "Day Row: ...",
+                  "width": "fill_container",
+                  "padding": [
+                    6,
+                    0
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "orxaN",
+                      "name": "moreTxt",
+                      "fill": "$--fg-muted",
+                      "content": "... rows 4–31 ...",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal",
+                      "fontStyle": "italic"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "kXH3e",
+          "name": "Annotations",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            16,
+            24
+          ],
+          "children": [
+            {
+              "type": "note",
+              "id": "ey7Ze",
+              "name": "Grid Structure Note",
+              "width": 700,
+              "height": 60,
+              "content": "MonthTable: rows = days of month (1–31), columns = jobs/services from AppointmentService. Cells contain state-colored appointment entries with nested sub-rows for assigned staff. NOT a standard DataTables table."
+            },
+            {
+              "type": "note",
+              "id": "eVMvr",
+              "name": "Cell Rendering Note",
+              "width": 700,
+              "height": 50,
+              "content": "Each cell: <span class='ap-{state}'> with state icon + name. Sub-rows: assigned staff with assignedState color + displayName. Missing staff shown as '--- (Missing)' with octagon icon. Referenced appointments show time range + location."
+            },
+            {
+              "type": "note",
+              "id": "Tt6bf",
+              "name": "Filter Panel Note",
+              "width": 700,
+              "height": 50,
+              "content": "Filter Panel (@shadcn/sheet, side='right'): filterDay (number input, filters rows), filterJob (text input, filters columns), filterState (select from AppointmentState enum, filters cells), Reset button. Opens via Filter toolbar button."
+            },
+            {
+              "type": "note",
+              "id": "4KWqT",
+              "name": "Actions Note",
+              "width": 700,
+              "height": 40,
+              "content": "Cell click → opens detail dialog (W2). Add → creates READY appointment with defaults. Edit → disabled until selection. Export → downloads .xls for current month. Reload → triggers reloadGrid event."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "--ap-active": {
+      "type": "color",
+      "value": "#ffff00"
+    },
+    "--ap-archived": {
+      "type": "color",
+      "value": "#DAD8D8"
+    },
+    "--ap-canceled": {
+      "type": "color",
+      "value": "#ffc000"
+    },
+    "--ap-closed": {
+      "type": "color",
+      "value": "#ff0000"
+    },
+    "--ap-done": {
+      "type": "color",
+      "value": "#228dae"
+    },
+    "--ap-lockedin": {
+      "type": "color",
+      "value": "#c6e0b4"
+    },
+    "--ap-ready": {
+      "type": "color",
+      "value": "#fff2cc"
+    },
+    "--ap-requested": {
+      "type": "color",
+      "value": "#c093f1"
+    },
+    "--ap-started": {
+      "type": "color",
+      "value": "#ded8fc"
+    },
+    "--ap-storno": {
+      "type": "color",
+      "value": "#cec5fa"
+    },
+    "--bg": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--border": {
+      "type": "color",
+      "value": "#E5E5E5"
+    },
+    "--card": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "--danger-bg": {
+      "type": "color",
+      "value": "#FEF2F2"
+    },
+    "--destructive": {
+      "type": "color",
+      "value": "#DC2626"
+    },
+    "--destructive-fg": {
+      "type": "color",
+      "value": "#FEF2F2"
+    },
+    "--fg": {
+      "type": "color",
+      "value": "#0A0A0A"
+    },
+    "--fg-muted": {
+      "type": "color",
+      "value": "#737373"
+    },
+    "--header-bg": {
+      "type": "color",
+      "value": "#3B82F6"
+    },
+    "--header-fg": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--info-bg": {
+      "type": "color",
+      "value": "#EFF6FF"
+    },
+    "--info-fg": {
+      "type": "color",
+      "value": "#1D4ED8"
+    },
+    "--input-border": {
+      "type": "color",
+      "value": "#D4D4D4"
+    },
+    "--primary": {
+      "type": "color",
+      "value": "#171717"
+    },
+    "--primary-fg": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "--secondary": {
+      "type": "color",
+      "value": "#F5F5F5"
+    },
+    "--secondary-fg": {
+      "type": "color",
+      "value": "#171717"
+    },
+    "--state-accepted": {
+      "type": "color",
+      "value": "#fcaf3e"
+    },
+    "--state-added": {
+      "type": "color",
+      "value": "#b0d400"
+    },
+    "--state-agreed": {
+      "type": "color",
+      "value": "#d4edda"
+    },
+    "--state-missing": {
+      "type": "color",
+      "value": "#999999"
+    },
+    "--state-rejected": {
+      "type": "color",
+      "value": "#f8d7da"
+    },
+    "--state-reserved": {
+      "type": "color",
+      "value": "#edd400"
+    },
+    "--success-bg": {
+      "type": "color",
+      "value": "#F0FDF4"
+    },
+    "--success-fg": {
+      "type": "color",
+      "value": "#166534"
+    },
+    "--warning": {
+      "type": "color",
+      "value": "#F59E0B"
+    },
+    "--warning-bg": {
+      "type": "color",
+      "value": "#FFFBEB"
+    }
+  }
+}

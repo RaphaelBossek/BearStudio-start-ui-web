@@ -1,0 +1,326 @@
+{
+  "version": "2.9",
+  "children": [
+    {
+      "type": "frame",
+      "id": "GJn7M",
+      "x": 0,
+      "y": 0,
+      "name": "Login Notification Modal",
+      "width": 600,
+      "fill": "$--bg",
+      "cornerRadius": 12,
+      "stroke": {
+        "thickness": 1,
+        "fill": "$--border"
+      },
+      "effect": {
+        "type": "shadow",
+        "shadowType": "outer",
+        "color": "#00000033",
+        "offset": {
+          "x": 0,
+          "y": 4
+        },
+        "blur": 24
+      },
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "Keebj",
+          "name": "header",
+          "width": "fill_container",
+          "stroke": {
+            "thickness": {
+              "bottom": 1
+            },
+            "fill": "$--border"
+          },
+          "padding": [
+            20,
+            24
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "46C5Z",
+              "name": "headerTxt",
+              "fill": "$--fg",
+              "content": "Important News [HARDCODED]",
+              "fontFamily": "Inter",
+              "fontSize": 20,
+              "fontWeight": "700"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "NSkfZ",
+          "name": "body",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": 24,
+          "children": [
+            {
+              "type": "frame",
+              "id": "3WPne",
+              "name": "notif1",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "lSDZ3",
+                  "name": "n1Title",
+                  "fill": "$--fg",
+                  "content": "System Update Notice",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "czE9P",
+                  "name": "n1Body",
+                  "fill": "$--fg-muted",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "The system has been updated to version 4.2.0. New features include improved scheduling, enhanced reporting capabilities, and performance optimizations. Please review the changelog for full details.",
+                  "lineHeight": 1.5,
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "note",
+                  "id": "uyPVV",
+                  "name": "n1Annot",
+                  "width": 520,
+                  "height": 20,
+                  "content": "[markdown] rendered body content"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "JU1I4",
+              "name": "sep",
+              "width": "fill_container",
+              "height": 1,
+              "fill": "$--border"
+            },
+            {
+              "type": "frame",
+              "id": "h1gRa",
+              "name": "notif2",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "sjUjE",
+                  "name": "n2Title",
+                  "fill": "$--fg",
+                  "content": "Privacy Policy Update",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "wY2Ga",
+                  "name": "n2Body",
+                  "fill": "$--fg-muted",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Our privacy policy has been updated effective March 15, 2026. Key changes include updated data retention periods and new provisions for cross-border data transfers. Your continued use constitutes acceptance.",
+                  "lineHeight": 1.5,
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "note",
+              "id": "oV0ti",
+              "name": "sepAnnot",
+              "width": 520,
+              "height": 20,
+              "content": "Multiple notifications joined with '---' separators"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Acb6X",
+          "name": "footer",
+          "width": "fill_container",
+          "stroke": {
+            "thickness": {
+              "top": 1
+            },
+            "fill": "$--border"
+          },
+          "gap": 12,
+          "padding": [
+            16,
+            24
+          ],
+          "justifyContent": "end",
+          "children": [
+            {
+              "type": "frame",
+              "id": "SeVPH",
+              "name": "cancelBtn",
+              "fill": "$--secondary",
+              "cornerRadius": 8,
+              "padding": [
+                10,
+                20
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "z71y5",
+                  "name": "cancelTxt",
+                  "fill": "$--secondary-fg",
+                  "content": "Cancel",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "lusrc",
+              "name": "acceptBtn",
+              "fill": "$--primary",
+              "cornerRadius": 8,
+              "padding": [
+                10,
+                20
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "5rMiN",
+                  "name": "acceptTxt",
+                  "fill": "$--primary-fg",
+                  "content": "Accept [HARDCODED]",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "note",
+              "id": "3crhW",
+              "name": "cancelAnnot",
+              "width": 100,
+              "height": 20,
+              "content": "Cancel → logout"
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "id": "GhHAB",
+          "name": "mainAnnot",
+          "width": 560,
+          "height": 50,
+          "content": "Non-dismissible Bootstrap modal (data-bs-backdrop=static). Shown after login if pending notifications exist. Decline (Cancel) → immediate logout. Blocks ALL dashboard interaction until resolved."
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "--bg": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--border": {
+      "type": "color",
+      "value": "#E5E5E5"
+    },
+    "--card": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "--danger-bg": {
+      "type": "color",
+      "value": "#FEF2F2"
+    },
+    "--destructive": {
+      "type": "color",
+      "value": "#DC2626"
+    },
+    "--fg": {
+      "type": "color",
+      "value": "#0A0A0A"
+    },
+    "--fg-muted": {
+      "type": "color",
+      "value": "#737373"
+    },
+    "--header-bg": {
+      "type": "color",
+      "value": "#F98E33"
+    },
+    "--header-fg": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--info-bg": {
+      "type": "color",
+      "value": "#EFF6FF"
+    },
+    "--info-fg": {
+      "type": "color",
+      "value": "#1D4ED8"
+    },
+    "--input-border": {
+      "type": "color",
+      "value": "#D4D4D4"
+    },
+    "--primary": {
+      "type": "color",
+      "value": "#171717"
+    },
+    "--primary-fg": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "--secondary": {
+      "type": "color",
+      "value": "#F5F5F5"
+    },
+    "--secondary-fg": {
+      "type": "color",
+      "value": "#171717"
+    },
+    "--success-bg": {
+      "type": "color",
+      "value": "#F0FDF4"
+    },
+    "--success-fg": {
+      "type": "color",
+      "value": "#166534"
+    },
+    "--warning": {
+      "type": "color",
+      "value": "#F59E0B"
+    },
+    "--warning-bg": {
+      "type": "color",
+      "value": "#FFFBEB"
+    }
+  }
+}

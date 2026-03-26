@@ -1,0 +1,3073 @@
+{
+  "version": "2.9",
+  "children": [
+    {
+      "type": "frame",
+      "id": "QMGzX",
+      "x": 0,
+      "y": 0,
+      "name": "W6-1: Step 1 — Start (JNumber Search)",
+      "width": 600,
+      "fill": "$--bg",
+      "cornerRadius": 8,
+      "stroke": {
+        "align": "inside",
+        "thickness": 1,
+        "fill": "$--border"
+      },
+      "effect": {
+        "type": "shadow",
+        "shadowType": "outer",
+        "color": "#0000001a",
+        "offset": {
+          "x": 0,
+          "y": 2
+        },
+        "blur": 4
+      },
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "jLaJf",
+          "name": "Dialog Header",
+          "width": "fill_container",
+          "fill": "$--header-bg",
+          "cornerRadius": [
+            8,
+            8,
+            0,
+            0
+          ],
+          "gap": 12,
+          "padding": [
+            12,
+            24
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "T160P",
+              "name": "icon1",
+              "width": 20,
+              "height": 20,
+              "iconFontName": "file-text",
+              "iconFontFamily": "lucide",
+              "fill": "$--header-fg"
+            },
+            {
+              "type": "text",
+              "id": "yqg7J",
+              "name": "title1",
+              "fill": "$--header-fg",
+              "content": "Start Consultation",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "Q6bZB",
+              "name": "annot1",
+              "fill": "#FFFFFFAA",
+              "content": "@shadcn/dialog",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "WSOga",
+          "name": "Dialog Body",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": 24,
+          "children": [
+            {
+              "type": "text",
+              "id": "mqRb5",
+              "name": "heading1",
+              "fill": "$--fg",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Please enter the J-Number of the patient:",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "500"
+            },
+            {
+              "type": "frame",
+              "id": "9IfLg",
+              "name": "Consultation Type — @shadcn/select",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 6,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "zAJz7",
+                  "name": "typeLbl",
+                  "fill": "$--fg",
+                  "content": "Consultation Type *",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "v27SR",
+                  "name": "typeAnnot",
+                  "fill": "$--fg-muted",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "[cond: job.consultationStandard, job.consultationOnboarding, ...] — data.type",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "f53Rv",
+                  "name": "Select Trigger",
+                  "width": "fill_container",
+                  "fill": "$--bg",
+                  "cornerRadius": 6,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$--input-border"
+                  },
+                  "padding": [
+                    10,
+                    12
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "gijtq",
+                      "name": "typeText",
+                      "fill": "$--fg",
+                      "content": "STANDARD",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "icon_font",
+                      "id": "HY5jk",
+                      "name": "typeChev",
+                      "width": 16,
+                      "height": 16,
+                      "iconFontName": "chevron-down",
+                      "iconFontFamily": "lucide",
+                      "fill": "$--fg-muted"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "hZSYS",
+              "name": "JNumber Search — @shadcn/input + @shadcn/button",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 6,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "X1Ppe",
+                  "name": "searchLbl",
+                  "fill": "$--fg",
+                  "content": "Inmate Number (J-Number) *",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "SALhQ",
+                  "name": "searchAnnot",
+                  "fill": "$--fg-muted",
+                  "content": "requireInput — bwwjnumberselect",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "3S8qu",
+                  "name": "Search Row",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "Tx1b2",
+                      "name": "Input",
+                      "width": "fill_container",
+                      "fill": "$--bg",
+                      "cornerRadius": 6,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "$--input-border"
+                      },
+                      "padding": [
+                        10,
+                        12
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "HZGcg",
+                          "name": "searchPlaceholder",
+                          "fill": "$--fg-muted",
+                          "content": "Search J-Number...",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "2dpdi",
+                      "name": "Search Button",
+                      "fill": "$--primary",
+                      "cornerRadius": 6,
+                      "padding": 10,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "GfxRT",
+                          "name": "searchIcon",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "search",
+                          "iconFontFamily": "lucide",
+                          "fill": "$--primary-fg"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "8fREv",
+                      "name": "Reload Button",
+                      "fill": "$--secondary",
+                      "cornerRadius": 6,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "$--border"
+                      },
+                      "padding": 10,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "yljc5",
+                          "name": "reloadIcon",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "refresh-cw",
+                          "iconFontFamily": "lucide",
+                          "fill": "$--secondary-fg"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "Muef8",
+                  "name": "searchHint",
+                  "fill": "$--warning",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "[HARDCODED] Search / Reload tooltips need i18n",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "eq7bA",
+              "name": "Results Table — @shadcn/table [repeats] anmeldungen.list",
+              "clip": true,
+              "width": "fill_container",
+              "cornerRadius": 6,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$--border"
+              },
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "ny4jD",
+                  "name": "Table Header Row",
+                  "width": "fill_container",
+                  "fill": "$--secondary",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": {
+                      "bottom": 1
+                    },
+                    "fill": "$--border"
+                  },
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "qxY8r",
+                      "name": "th1",
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "cOT0D",
+                          "name": "th1t",
+                          "fill": "$--fg-muted",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Wib2K",
+                      "name": "th2",
+                      "width": "fill_container",
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "uRUY5",
+                          "name": "th2t",
+                          "fill": "$--fg-muted",
+                          "content": "J-Number",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "ZNJVW",
+                      "name": "th3",
+                      "width": "fill_container",
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "WwSik",
+                          "name": "th3t",
+                          "fill": "$--fg-muted",
+                          "content": "UUID",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "908Li",
+                      "name": "th4",
+                      "width": "fill_container",
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "T19sd",
+                          "name": "th4t",
+                          "fill": "$--fg-muted",
+                          "content": "Remote Code",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "fDX76",
+                  "name": "Table Row (selected)",
+                  "width": "fill_container",
+                  "fill": "$--info-bg",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": {
+                      "bottom": 1
+                    },
+                    "fill": "$--border"
+                  },
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "kMU7V",
+                      "name": "r1radio",
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "ellipse",
+                          "id": "WU8LP",
+                          "name": "r1dot",
+                          "fill": "$--bg",
+                          "width": 14,
+                          "height": 14,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 2,
+                            "fill": "$--primary"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "sVSlu",
+                      "name": "r1c2",
+                      "width": "fill_container",
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "w9v6Q",
+                          "name": "r1t2",
+                          "fill": "$--fg",
+                          "content": "J-1234",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "eea31",
+                      "name": "r1c3",
+                      "width": "fill_container",
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "wZuTZ",
+                          "name": "r1t3",
+                          "fill": "$--fg",
+                          "content": "abc-def-123",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "a2cUM",
+                      "name": "r1c4",
+                      "width": "fill_container",
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "I2g9B",
+                          "name": "r1t4",
+                          "fill": "$--fg",
+                          "content": "RC-001",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "eA1CF",
+                  "name": "Table Row",
+                  "width": "fill_container",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": {
+                      "bottom": 1
+                    },
+                    "fill": "$--border"
+                  },
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "mHzUq",
+                      "name": "r2radio",
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "ellipse",
+                          "id": "cmI4p",
+                          "name": "r2dot",
+                          "fill": "$--bg",
+                          "width": 14,
+                          "height": 14,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1.5,
+                            "fill": "$--input-border"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "nc6ny",
+                      "name": "r2c2",
+                      "width": "fill_container",
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "JJ2HJ",
+                          "name": "r2t2",
+                          "fill": "$--fg",
+                          "content": "J-5678",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "BjoyV",
+                      "name": "r2c3",
+                      "width": "fill_container",
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "r0fFk",
+                          "name": "r2t3",
+                          "fill": "$--fg",
+                          "content": "xyz-uvw-456",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "UI0mX",
+                      "name": "r2c4",
+                      "width": "fill_container",
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "uhOT6",
+                          "name": "r2t4",
+                          "fill": "$--fg",
+                          "content": "RC-002",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "DK98z",
+              "name": "Info Alert — @shadcn/alert",
+              "width": "fill_container",
+              "fill": "$--info-bg",
+              "cornerRadius": 6,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$--info-fg"
+              },
+              "gap": 12,
+              "padding": 12,
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "yB4ME",
+                  "name": "alertIcon",
+                  "width": 18,
+                  "height": 18,
+                  "iconFontName": "info",
+                  "iconFontFamily": "lucide",
+                  "fill": "$--info-fg"
+                },
+                {
+                  "type": "frame",
+                  "id": "sQ48W",
+                  "name": "alertText",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "GcNVC",
+                      "name": "alertTitle",
+                      "fill": "$--info-fg",
+                      "content": "J-Number Lookup Info",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "eoMfN",
+                      "name": "alertDesc",
+                      "fill": "$--info-fg",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "The JNumber can be found in the BasisWeb system. The last 4 digits are sufficient. Check the UID with Basis-Web.",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "QvsK9",
+          "name": "Dialog Footer",
+          "width": "fill_container",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "top": 1
+            },
+            "fill": "$--border"
+          },
+          "gap": 12,
+          "padding": [
+            16,
+            24
+          ],
+          "justifyContent": "end",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "YwGOX",
+              "name": "Cancel Button — @shadcn/button secondary",
+              "fill": "$--secondary",
+              "cornerRadius": 6,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$--border"
+              },
+              "padding": [
+                8,
+                16
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "4TD9u",
+                  "name": "cancelTxt1",
+                  "fill": "$--secondary-fg",
+                  "content": "Cancel",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "xTaGT",
+              "name": "Next Button — @shadcn/button primary",
+              "fill": "$--primary",
+              "cornerRadius": 6,
+              "gap": 6,
+              "padding": [
+                8,
+                16
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "c4Xkq",
+                  "name": "nextTxt1",
+                  "fill": "$--primary-fg",
+                  "content": "Next",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "icon_font",
+                  "id": "l0NSN",
+                  "name": "nextIcon1",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "chevron-right",
+                  "iconFontFamily": "lucide",
+                  "fill": "$--primary-fg"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "7auJf",
+      "x": 700,
+      "y": 0,
+      "name": "W6-2: Step 2 — Not Available (Book Number)",
+      "width": 600,
+      "fill": "$--bg",
+      "cornerRadius": 8,
+      "stroke": {
+        "align": "inside",
+        "thickness": 1,
+        "fill": "$--border"
+      },
+      "effect": {
+        "type": "shadow",
+        "shadowType": "outer",
+        "color": "#0000001a",
+        "offset": {
+          "x": 0,
+          "y": 2
+        },
+        "blur": 4
+      },
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "5kPEa",
+          "name": "Dialog Header",
+          "width": "fill_container",
+          "fill": "$--header-bg",
+          "cornerRadius": [
+            8,
+            8,
+            0,
+            0
+          ],
+          "gap": 12,
+          "padding": [
+            12,
+            24
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "Q1T8C",
+              "name": "ico2",
+              "width": 20,
+              "height": 20,
+              "iconFontName": "file-text",
+              "iconFontFamily": "lucide",
+              "fill": "$--header-fg"
+            },
+            {
+              "type": "text",
+              "id": "kzk3l",
+              "name": "ttl2",
+              "fill": "$--header-fg",
+              "content": "Start Consultation",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "DLYYg",
+          "name": "Dialog Body",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": 24,
+          "children": [
+            {
+              "type": "text",
+              "id": "ubE4d",
+              "name": "head2",
+              "fill": "$--fg",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Please enter the book-number of the patient:",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "500"
+            },
+            {
+              "type": "frame",
+              "id": "MSMOL",
+              "name": "Danger Alert — @shadcn/alert destructive",
+              "width": "fill_container",
+              "fill": "$--danger-bg",
+              "cornerRadius": 6,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$--destructive"
+              },
+              "gap": 12,
+              "padding": 12,
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "sG9G1",
+                  "name": "dangerIco",
+                  "width": 18,
+                  "height": 18,
+                  "iconFontName": "circle-alert",
+                  "iconFontFamily": "lucide",
+                  "fill": "$--destructive"
+                },
+                {
+                  "type": "text",
+                  "id": "d3mIY",
+                  "name": "dangerTxt",
+                  "fill": "$--destructive",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Since the J-Number was not found, you can proceed with a book number instead. No patient history from BasisWeb will be available.",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "1t6YJ",
+              "name": "Warning Alert — @shadcn/alert",
+              "width": "fill_container",
+              "fill": "$--warning-bg",
+              "cornerRadius": 6,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$--warning"
+              },
+              "gap": 12,
+              "padding": 12,
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "sI060",
+                  "name": "warnIco",
+                  "width": 18,
+                  "height": 18,
+                  "iconFontName": "triangle-alert",
+                  "iconFontFamily": "lucide",
+                  "fill": "$--warning"
+                },
+                {
+                  "type": "text",
+                  "id": "lWz3Q",
+                  "name": "warnTxt",
+                  "fill": "#92400E",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "The treatment can be performed using the booking number. BasisWeb data transmission will be skipped.",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "LiQBe",
+              "name": "Book Number — @shadcn/input",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 6,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "2gCEi",
+                  "name": "bookLbl",
+                  "fill": "$--fg",
+                  "content": "Book Number *",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "gq5sf",
+                  "name": "bookAnnot",
+                  "fill": "$--fg-muted",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "mandatory, min-length 3 — bwwbooknumber — data.booknumber",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "vS9it",
+                  "name": "Input",
+                  "width": "fill_container",
+                  "fill": "$--bg",
+                  "cornerRadius": 6,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$--input-border"
+                  },
+                  "padding": [
+                    10,
+                    12
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "X4wmu",
+                      "name": "bookPlc",
+                      "fill": "$--fg-muted",
+                      "content": "Enter book number...",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "i3zeY",
+              "name": "hardcode2",
+              "fill": "$--warning",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "[HARDCODED] 'Ungültige Buchnummer' alert if < 3 chars",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "BWP59",
+          "name": "Dialog Footer",
+          "width": "fill_container",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "top": 1
+            },
+            "fill": "$--border"
+          },
+          "gap": 12,
+          "padding": [
+            16,
+            24
+          ],
+          "justifyContent": "end",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "TbHLq",
+              "name": "canBtn2",
+              "fill": "$--secondary",
+              "cornerRadius": 6,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$--border"
+              },
+              "padding": [
+                8,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "B3sNY",
+                  "name": "canTxt2",
+                  "fill": "$--secondary-fg",
+                  "content": "Cancel",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "kzfbv",
+              "name": "nxtBtn2",
+              "fill": "$--primary",
+              "cornerRadius": 6,
+              "gap": 6,
+              "padding": [
+                8,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "XRKvm",
+                  "name": "nxtTxt2",
+                  "fill": "$--primary-fg",
+                  "content": "Next",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "icon_font",
+                  "id": "woW1f",
+                  "name": "nxtIco2",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "chevron-right",
+                  "iconFontFamily": "lucide",
+                  "fill": "$--primary-fg"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "q6xuq",
+      "x": 1400,
+      "y": 0,
+      "name": "W6-3a: Step 3 — Getting (Loading)",
+      "width": 600,
+      "fill": "$--bg",
+      "cornerRadius": 8,
+      "stroke": {
+        "align": "inside",
+        "thickness": 1,
+        "fill": "$--border"
+      },
+      "effect": {
+        "type": "shadow",
+        "shadowType": "outer",
+        "color": "#0000001a",
+        "offset": {
+          "x": 0,
+          "y": 2
+        },
+        "blur": 4
+      },
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "U46ZB",
+          "name": "Dialog Header",
+          "width": "fill_container",
+          "fill": "$--header-bg",
+          "cornerRadius": [
+            8,
+            8,
+            0,
+            0
+          ],
+          "gap": 12,
+          "padding": [
+            12,
+            24
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "SMPk3",
+              "name": "ico3a",
+              "width": 20,
+              "height": 20,
+              "iconFontName": "file-text",
+              "iconFontFamily": "lucide",
+              "fill": "$--header-fg"
+            },
+            {
+              "type": "text",
+              "id": "db6O4",
+              "name": "ttl3a",
+              "fill": "$--header-fg",
+              "content": "Start Consultation",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ZGxBl",
+          "name": "Dialog Body",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": 24,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "Ig8I7",
+              "name": "head3a",
+              "fill": "$--fg",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Emergency form is loading...",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "7RBUp",
+              "name": "annot3a",
+              "fill": "$--fg-muted",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "[async: poll 500ms] [next=hidden] — data-next=false",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "tG0vn",
+              "name": "infoRow3a",
+              "width": "fill_container",
+              "fill": "$--secondary",
+              "cornerRadius": 6,
+              "layout": "vertical",
+              "gap": 8,
+              "padding": [
+                12,
+                16
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "f1wW0",
+                  "name": "jnLabel",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "RpMrX",
+                      "name": "jnLbl",
+                      "fill": "$--fg",
+                      "content": "Inmate Number:",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "I2xvE",
+                      "name": "jnVal",
+                      "fill": "$--fg",
+                      "content": "J-1234",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "tJ4yx",
+                  "name": "uuidRow",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "yxy4d",
+                      "name": "uuidLbl",
+                      "fill": "$--fg",
+                      "content": "UUID:",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "fmVZm",
+                      "name": "uuidVal",
+                      "fill": "$--fg",
+                      "content": "abc-def-123",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "icon_font",
+              "id": "aKbeV",
+              "name": "spinner3a",
+              "width": 32,
+              "height": 32,
+              "iconFontName": "loader",
+              "iconFontFamily": "lucide",
+              "fill": "$--fg-muted"
+            },
+            {
+              "type": "text",
+              "id": "R4X9V",
+              "name": "spinAnnot",
+              "fill": "$--fg-muted",
+              "content": "Loader2 spinner (lucide-react) — animated rotation",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "p3NlI",
+          "name": "Dialog Footer",
+          "width": "fill_container",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "top": 1
+            },
+            "fill": "$--border"
+          },
+          "gap": 12,
+          "padding": [
+            16,
+            24
+          ],
+          "justifyContent": "end",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "cBULt",
+              "name": "canBtn3a",
+              "fill": "$--secondary",
+              "cornerRadius": 6,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$--border"
+              },
+              "padding": [
+                8,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "ZxSmG",
+                  "name": "canTxt3a",
+                  "fill": "$--secondary-fg",
+                  "content": "Cancel",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "OYwGY",
+      "x": 2100,
+      "y": 0,
+      "name": "W6-3b: Step 3 — Getting (Error)",
+      "width": 600,
+      "fill": "$--bg",
+      "cornerRadius": 8,
+      "stroke": {
+        "align": "inside",
+        "thickness": 1,
+        "fill": "$--border"
+      },
+      "effect": {
+        "type": "shadow",
+        "shadowType": "outer",
+        "color": "#0000001a",
+        "offset": {
+          "x": 0,
+          "y": 2
+        },
+        "blur": 4
+      },
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "HvcZ4",
+          "name": "Dialog Header",
+          "width": "fill_container",
+          "fill": "$--header-bg",
+          "cornerRadius": [
+            8,
+            8,
+            0,
+            0
+          ],
+          "gap": 12,
+          "padding": [
+            12,
+            24
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "xoJQz",
+              "name": "ico3b",
+              "width": 20,
+              "height": 20,
+              "iconFontName": "file-text",
+              "iconFontFamily": "lucide",
+              "fill": "$--header-fg"
+            },
+            {
+              "type": "text",
+              "id": "bEzEO",
+              "name": "ttl3b",
+              "fill": "$--header-fg",
+              "content": "Start Consultation",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "VmVul",
+          "name": "Dialog Body",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": 24,
+          "children": [
+            {
+              "type": "text",
+              "id": "dsi9f",
+              "name": "head3b",
+              "fill": "$--fg",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Emergency form is loading...",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "3F5NO",
+              "name": "annot3b",
+              "fill": "$--fg-muted",
+              "content": "[next=hidden] — Error state",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "CbSqp",
+              "name": "info3b",
+              "width": "fill_container",
+              "fill": "$--secondary",
+              "cornerRadius": 6,
+              "layout": "vertical",
+              "gap": 8,
+              "padding": [
+                12,
+                16
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "wVAUN",
+                  "name": "jn3b",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ZK3pd",
+                      "name": "jnL3b",
+                      "fill": "$--fg",
+                      "content": "Inmate Number:",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "pDnGT",
+                      "name": "jnV3b",
+                      "fill": "$--fg",
+                      "content": "J-1234",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "sP4Z7",
+                  "name": "uuid3b",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "pSep1",
+                      "name": "uL3b",
+                      "fill": "$--fg",
+                      "content": "UUID:",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "JepOL",
+                      "name": "uV3b",
+                      "fill": "$--fg",
+                      "content": "abc-def-123",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "WiHmj",
+              "name": "Error Alert — @shadcn/alert destructive",
+              "width": "fill_container",
+              "fill": "$--danger-bg",
+              "cornerRadius": 6,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$--destructive"
+              },
+              "gap": 12,
+              "padding": 12,
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "ycF3J",
+                  "name": "errIco",
+                  "width": 18,
+                  "height": 18,
+                  "iconFontName": "circle-x",
+                  "iconFontFamily": "lucide",
+                  "fill": "$--destructive"
+                },
+                {
+                  "type": "frame",
+                  "id": "sWpml",
+                  "name": "errTxtC",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "n3PPM",
+                      "name": "errMsg",
+                      "fill": "$--destructive",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "The emergency form could not be found.",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "VNON9",
+                      "name": "errDetail",
+                      "fill": "$--destructive",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "[HARDCODED] Please copy the error message and send it to office@videoclinic.de",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "i3n6g",
+          "name": "Dialog Footer",
+          "width": "fill_container",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "top": 1
+            },
+            "fill": "$--border"
+          },
+          "gap": 12,
+          "padding": [
+            16,
+            24
+          ],
+          "justifyContent": "end",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "E6jmG",
+              "name": "canBtn3b",
+              "fill": "$--secondary",
+              "cornerRadius": 6,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$--border"
+              },
+              "padding": [
+                8,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Q7FDg",
+                  "name": "canTxt3b",
+                  "fill": "$--secondary-fg",
+                  "content": "Cancel",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "W0dDx",
+              "name": "Error Button — fallback to manual",
+              "fill": "$--primary",
+              "cornerRadius": 6,
+              "gap": 6,
+              "padding": [
+                8,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "SE70I",
+                  "name": "errBtnTxt",
+                  "fill": "$--primary-fg",
+                  "content": "Continue Manually",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "icon_font",
+                  "id": "86i3L",
+                  "name": "errBtnIco",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "chevron-right",
+                  "iconFontFamily": "lucide",
+                  "fill": "$--primary-fg"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "TgT4b",
+      "x": 0,
+      "y": 700,
+      "name": "W6-4: Step 4 — PIN Entry",
+      "width": 600,
+      "fill": "$--bg",
+      "cornerRadius": 8,
+      "stroke": {
+        "align": "inside",
+        "thickness": 1,
+        "fill": "$--border"
+      },
+      "effect": {
+        "type": "shadow",
+        "shadowType": "outer",
+        "color": "#0000001a",
+        "offset": {
+          "x": 0,
+          "y": 2
+        },
+        "blur": 4
+      },
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "YQqIM",
+          "name": "Dialog Header",
+          "width": "fill_container",
+          "fill": "$--header-bg",
+          "cornerRadius": [
+            8,
+            8,
+            0,
+            0
+          ],
+          "gap": 12,
+          "padding": [
+            12,
+            24
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "bfyYJ",
+              "name": "ico4",
+              "width": 20,
+              "height": 20,
+              "iconFontName": "file-text",
+              "iconFontFamily": "lucide",
+              "fill": "$--header-fg"
+            },
+            {
+              "type": "text",
+              "id": "n3cpQ",
+              "name": "ttl4",
+              "fill": "$--header-fg",
+              "content": "Start Consultation",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "2jR5h",
+          "name": "Dialog Body",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": 24,
+          "children": [
+            {
+              "type": "text",
+              "id": "OMWhW",
+              "name": "head4",
+              "fill": "$--fg",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Enter pin",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "500"
+            },
+            {
+              "type": "frame",
+              "id": "iObAE",
+              "name": "info4",
+              "width": "fill_container",
+              "fill": "$--secondary",
+              "cornerRadius": 6,
+              "layout": "vertical",
+              "gap": 8,
+              "padding": [
+                12,
+                16
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "5an9S",
+                  "name": "jn4",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "56rEO",
+                      "name": "jnL4",
+                      "fill": "$--fg",
+                      "content": "Inmate Number:",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "drmuI",
+                      "name": "jnV4",
+                      "fill": "$--fg",
+                      "content": "J-1234",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "WEmD3",
+                  "name": "uuid4",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "YWcIt",
+                      "name": "uL4",
+                      "fill": "$--fg",
+                      "content": "UUID:",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "aHaNY",
+                      "name": "uV4",
+                      "fill": "$--fg",
+                      "content": "abc-def-123",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "gpcsc",
+              "name": "PIN Input — @shadcn/input",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 6,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Uc6bU",
+                  "name": "pinLbl",
+                  "fill": "$--fg",
+                  "content": "PIN *",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "Gwagf",
+                  "name": "pinAnnot",
+                  "fill": "$--fg-muted",
+                  "content": "mandatory — data.pin — cleared on step show",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "aj5Ol",
+                  "name": "pinRow",
+                  "width": "fill_container",
+                  "fill": "$--bg",
+                  "cornerRadius": 6,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$--input-border"
+                  },
+                  "gap": 8,
+                  "padding": [
+                    10,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "EajOZ",
+                      "name": "pinIco",
+                      "width": 16,
+                      "height": 16,
+                      "iconFontName": "key-round",
+                      "iconFontFamily": "lucide",
+                      "fill": "$--fg-muted"
+                    },
+                    {
+                      "type": "text",
+                      "id": "nS6jr",
+                      "name": "pinPlc",
+                      "fill": "$--fg-muted",
+                      "content": "Pin [HARDCODED]",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "ivAZ6",
+              "name": "helpTxt",
+              "fill": "$--fg-muted",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "The PIN can be found in the basic web system under the patient's record.",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "WlHXE",
+          "name": "Dialog Footer",
+          "width": "fill_container",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "top": 1
+            },
+            "fill": "$--border"
+          },
+          "gap": 12,
+          "padding": [
+            16,
+            24
+          ],
+          "justifyContent": "end",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "TgqPW",
+              "name": "canBtn4",
+              "fill": "$--secondary",
+              "cornerRadius": 6,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$--border"
+              },
+              "padding": [
+                8,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Rjzr8",
+                  "name": "canTxt4",
+                  "fill": "$--secondary-fg",
+                  "content": "Cancel",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "nCVk2",
+              "name": "nxtBtn4",
+              "fill": "$--primary",
+              "cornerRadius": 6,
+              "gap": 6,
+              "padding": [
+                8,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "3YRIJ",
+                  "name": "nxtTxt4",
+                  "fill": "$--primary-fg",
+                  "content": "Next",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "icon_font",
+                  "id": "Xwr9G",
+                  "name": "nxtIco4",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "chevron-right",
+                  "iconFontFamily": "lucide",
+                  "fill": "$--primary-fg"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "W6BSY",
+      "x": 700,
+      "y": 700,
+      "name": "W6-5a: Step 5 — Loading (Decryption)",
+      "width": 600,
+      "fill": "$--bg",
+      "cornerRadius": 8,
+      "stroke": {
+        "align": "inside",
+        "thickness": 1,
+        "fill": "$--border"
+      },
+      "effect": {
+        "type": "shadow",
+        "shadowType": "outer",
+        "color": "#0000001a",
+        "offset": {
+          "x": 0,
+          "y": 2
+        },
+        "blur": 4
+      },
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "OjVyd",
+          "name": "Dialog Header",
+          "width": "fill_container",
+          "fill": "$--header-bg",
+          "cornerRadius": [
+            8,
+            8,
+            0,
+            0
+          ],
+          "gap": 12,
+          "padding": [
+            12,
+            24
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "4F38c",
+              "name": "ico5a",
+              "width": 20,
+              "height": 20,
+              "iconFontName": "file-text",
+              "iconFontFamily": "lucide",
+              "fill": "$--header-fg"
+            },
+            {
+              "type": "text",
+              "id": "2MZfV",
+              "name": "ttl5a",
+              "fill": "$--header-fg",
+              "content": "Start Consultation",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ZC4VW",
+          "name": "Dialog Body",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": 24,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "dYlDy",
+              "name": "head5a",
+              "fill": "$--fg",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Emergency form is loaded and decrypted",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "pXvOt",
+              "name": "annot5a",
+              "fill": "$--fg-muted",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "[async: ConsultationService.start] [next=hidden] — data-next=false",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "rpWln",
+              "name": "info5a",
+              "width": "fill_container",
+              "fill": "$--secondary",
+              "cornerRadius": 6,
+              "layout": "vertical",
+              "gap": 8,
+              "padding": [
+                12,
+                16
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Pxk7T",
+                  "name": "jn5a",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "hHpus",
+                      "name": "jnL5a",
+                      "fill": "$--fg",
+                      "content": "Inmate Number:",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "5HmD1",
+                      "name": "jnV5a",
+                      "fill": "$--fg",
+                      "content": "J-1234",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Va1yD",
+                  "name": "uuid5a",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "86f65",
+                      "name": "uL5a",
+                      "fill": "$--fg",
+                      "content": "UUID:",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "VqGZ6",
+                      "name": "uV5a",
+                      "fill": "$--fg",
+                      "content": "abc-def-123",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "icon_font",
+              "id": "jytlh",
+              "name": "spin5a",
+              "width": 32,
+              "height": 32,
+              "iconFontName": "loader",
+              "iconFontFamily": "lucide",
+              "fill": "$--fg-muted"
+            },
+            {
+              "type": "text",
+              "id": "6LQZN",
+              "name": "spinA5a",
+              "fill": "$--fg-muted",
+              "content": "Decrypting patient data...",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "zQJa5",
+          "name": "Dialog Footer",
+          "width": "fill_container",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "top": 1
+            },
+            "fill": "$--border"
+          },
+          "gap": 12,
+          "padding": [
+            16,
+            24
+          ],
+          "justifyContent": "end",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "E9qBw",
+              "name": "canBtn5a",
+              "fill": "$--secondary",
+              "cornerRadius": 6,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$--border"
+              },
+              "padding": [
+                8,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "YLiNU",
+                  "name": "canTxt5a",
+                  "fill": "$--secondary-fg",
+                  "content": "Cancel",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "z9159",
+      "x": 1400,
+      "y": 700,
+      "name": "W6-5b: Step 5 — Loading (Error)",
+      "width": 600,
+      "fill": "$--bg",
+      "cornerRadius": 8,
+      "stroke": {
+        "align": "inside",
+        "thickness": 1,
+        "fill": "$--border"
+      },
+      "effect": {
+        "type": "shadow",
+        "shadowType": "outer",
+        "color": "#0000001a",
+        "offset": {
+          "x": 0,
+          "y": 2
+        },
+        "blur": 4
+      },
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "MZdmp",
+          "name": "Dialog Header",
+          "width": "fill_container",
+          "fill": "$--header-bg",
+          "cornerRadius": [
+            8,
+            8,
+            0,
+            0
+          ],
+          "gap": 12,
+          "padding": [
+            12,
+            24
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "6Sp9J",
+              "name": "ico5b",
+              "width": 20,
+              "height": 20,
+              "iconFontName": "file-text",
+              "iconFontFamily": "lucide",
+              "fill": "$--header-fg"
+            },
+            {
+              "type": "text",
+              "id": "g6lBW",
+              "name": "ttl5b",
+              "fill": "$--header-fg",
+              "content": "Start Consultation",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "qGqjz",
+          "name": "Dialog Body",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": 24,
+          "children": [
+            {
+              "type": "text",
+              "id": "RD64E",
+              "name": "head5b",
+              "fill": "$--fg",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Emergency form is loaded and decrypted",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "sYFhy",
+              "name": "annot5b",
+              "fill": "$--fg-muted",
+              "content": "[next=hidden] — Decryption error state",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "6gqav",
+              "name": "info5b",
+              "width": "fill_container",
+              "fill": "$--secondary",
+              "cornerRadius": 6,
+              "layout": "vertical",
+              "gap": 8,
+              "padding": [
+                12,
+                16
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "gkRSx",
+                  "name": "jn5b",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "VLESl",
+                      "name": "jnL5b",
+                      "fill": "$--fg",
+                      "content": "Inmate Number:",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "ZT1bE",
+                      "name": "jnV5b",
+                      "fill": "$--fg",
+                      "content": "J-1234",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "lVM3j",
+                  "name": "uuid5b",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "nvmwr",
+                      "name": "uL5b",
+                      "fill": "$--fg",
+                      "content": "UUID:",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "d71Kk",
+                      "name": "uV5b",
+                      "fill": "$--fg",
+                      "content": "abc-def-123",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Py3ZK",
+              "name": "Error Alert — @shadcn/alert destructive",
+              "width": "fill_container",
+              "fill": "$--danger-bg",
+              "cornerRadius": 6,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$--destructive"
+              },
+              "gap": 12,
+              "padding": 12,
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "CFa6o",
+                  "name": "errIco5",
+                  "width": 18,
+                  "height": 18,
+                  "iconFontName": "circle-x",
+                  "iconFontFamily": "lucide",
+                  "fill": "$--destructive"
+                },
+                {
+                  "type": "text",
+                  "id": "5F4d1",
+                  "name": "errTxt5",
+                  "fill": "$--destructive",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "[HARDCODED] The treatment could not be started. Please re-enter your PIN and try again.",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "15Bnb",
+          "name": "Dialog Footer",
+          "width": "fill_container",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "top": 1
+            },
+            "fill": "$--border"
+          },
+          "gap": 12,
+          "padding": [
+            16,
+            24
+          ],
+          "justifyContent": "end",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "1Vbw9",
+              "name": "canBtn5b",
+              "fill": "$--secondary",
+              "cornerRadius": 6,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$--border"
+              },
+              "padding": [
+                8,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "yJXah",
+                  "name": "canTxt5b",
+                  "fill": "$--secondary-fg",
+                  "content": "Cancel",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "1f2dj",
+              "name": "Retry Button — back to PIN",
+              "fill": "$--primary",
+              "cornerRadius": 6,
+              "gap": 6,
+              "padding": [
+                8,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "BUA9C",
+                  "name": "retryTxt",
+                  "fill": "$--primary-fg",
+                  "content": "Retry",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "icon_font",
+                  "id": "SkPzI",
+                  "name": "retryIco",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "rotate-ccw",
+                  "iconFontFamily": "lucide",
+                  "fill": "$--primary-fg"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "XRn43",
+      "x": 2100,
+      "y": 700,
+      "name": "W6-6: Step 6 — Success (Summary)",
+      "width": 600,
+      "fill": "$--bg",
+      "cornerRadius": 8,
+      "stroke": {
+        "align": "inside",
+        "thickness": 1,
+        "fill": "$--border"
+      },
+      "effect": {
+        "type": "shadow",
+        "shadowType": "outer",
+        "color": "#0000001a",
+        "offset": {
+          "x": 0,
+          "y": 2
+        },
+        "blur": 4
+      },
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "CeTWZ",
+          "name": "Dialog Header",
+          "width": "fill_container",
+          "fill": "$--header-bg",
+          "cornerRadius": [
+            8,
+            8,
+            0,
+            0
+          ],
+          "gap": 12,
+          "padding": [
+            12,
+            24
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "LqH8T",
+              "name": "ico6",
+              "width": 20,
+              "height": 20,
+              "iconFontName": "file-text",
+              "iconFontFamily": "lucide",
+              "fill": "$--header-fg"
+            },
+            {
+              "type": "text",
+              "id": "GCTbD",
+              "name": "ttl6",
+              "fill": "$--header-fg",
+              "content": "Start Consultation",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "L6Z0N",
+          "name": "Dialog Body",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": 24,
+          "children": [
+            {
+              "type": "frame",
+              "id": "Hye9s",
+              "name": "Success Header",
+              "width": "fill_container",
+              "fill": "$--success-bg",
+              "cornerRadius": 6,
+              "gap": 8,
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "jbaGt",
+                  "name": "successIco",
+                  "width": 20,
+                  "height": 20,
+                  "iconFontName": "circle-check",
+                  "iconFontFamily": "lucide",
+                  "fill": "$--success-fg"
+                },
+                {
+                  "type": "text",
+                  "id": "K8VCl",
+                  "name": "successTxt",
+                  "fill": "$--success-fg",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Emergency form for J-1234 was successfully decrypted",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "KSOgp",
+              "name": "Summary Fields [RO]",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "2fQiP",
+                  "name": "fldAppt",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "KzJlJ",
+                      "name": "fldApptL",
+                      "fill": "$--fg",
+                      "content": "Appointment:",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "O5N3L",
+                      "name": "fldApptV",
+                      "fill": "$--fg-muted",
+                      "content": "Dr. Smith — Cardiology [RO]",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "iOMUD",
+                  "name": "fldLoc",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "TxNbl",
+                      "name": "fldLocL",
+                      "fill": "$--fg",
+                      "content": "Location:",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "4TwCZ",
+                      "name": "fldLocV",
+                      "fill": "$--fg-muted",
+                      "content": "JVA Berlin-Moabit [RO]",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "CABYS",
+                  "name": "fldBook",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "aakew",
+                      "name": "fldBookL",
+                      "fill": "$--fg",
+                      "content": "Book Number:",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "bLek3",
+                      "name": "fldBookV",
+                      "fill": "$--fg-muted",
+                      "content": "BK-12345 [RO]",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "PnZzY",
+                  "name": "fldJn",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "NdOmS",
+                      "name": "fldJnL",
+                      "fill": "$--fg",
+                      "content": "Inmate Number:",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "6eTT1",
+                      "name": "fldJnV",
+                      "fill": "$--fg-muted",
+                      "content": "J-1234 / abc-def-123 [RO]",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "T9XtP",
+              "name": "Consultation Type — @shadcn/select (disabled)",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 6,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Xi6dH",
+                  "name": "typeLbl6",
+                  "fill": "$--fg",
+                  "content": "Consultation Type [RO]",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "3rmsK",
+                  "name": "typeAnnot6",
+                  "fill": "$--fg-muted",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "disabled select — includes ONBOARDING_SHORT — data.type",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "DZSEf",
+                  "name": "typeSel6",
+                  "opacity": 0.6,
+                  "width": "fill_container",
+                  "fill": "$--secondary",
+                  "cornerRadius": 6,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$--border"
+                  },
+                  "padding": [
+                    10,
+                    12
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "x4Xie",
+                      "name": "typeTxt6",
+                      "fill": "$--fg-muted",
+                      "content": "ONBOARDING_SHORT",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "icon_font",
+                      "id": "bokPg",
+                      "name": "typeChv6",
+                      "width": 16,
+                      "height": 16,
+                      "iconFontName": "chevron-down",
+                      "iconFontFamily": "lucide",
+                      "fill": "$--fg-muted"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ZnurU",
+          "name": "Dialog Footer",
+          "width": "fill_container",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "top": 1
+            },
+            "fill": "$--border"
+          },
+          "gap": 12,
+          "padding": [
+            16,
+            24
+          ],
+          "justifyContent": "end",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "igu7p",
+              "name": "canBtn6",
+              "fill": "$--secondary",
+              "cornerRadius": 6,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$--border"
+              },
+              "padding": [
+                8,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "HrSll",
+                  "name": "canTxt6",
+                  "fill": "$--secondary-fg",
+                  "content": "Cancel",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "PYjS9",
+              "name": "Next Button — opens ConsultationDetails",
+              "fill": "$--primary",
+              "cornerRadius": 6,
+              "gap": 6,
+              "padding": [
+                8,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "e9ODh",
+                  "name": "nxtTxt6",
+                  "fill": "$--primary-fg",
+                  "content": "Next",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "icon_font",
+                  "id": "ta14p",
+                  "name": "nxtIco6",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "chevron-right",
+                  "iconFontFamily": "lucide",
+                  "fill": "$--primary-fg"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "--bg": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--border": {
+      "type": "color",
+      "value": "#E5E5E5"
+    },
+    "--card": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "--danger-bg": {
+      "type": "color",
+      "value": "#FEF2F2"
+    },
+    "--destructive": {
+      "type": "color",
+      "value": "#DC2626"
+    },
+    "--destructive-fg": {
+      "type": "color",
+      "value": "#FEF2F2"
+    },
+    "--fg": {
+      "type": "color",
+      "value": "#0A0A0A"
+    },
+    "--fg-muted": {
+      "type": "color",
+      "value": "#737373"
+    },
+    "--header-bg": {
+      "type": "color",
+      "value": "#3B82F6"
+    },
+    "--header-fg": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--info-bg": {
+      "type": "color",
+      "value": "#EFF6FF"
+    },
+    "--info-fg": {
+      "type": "color",
+      "value": "#1D4ED8"
+    },
+    "--input-border": {
+      "type": "color",
+      "value": "#D4D4D4"
+    },
+    "--primary": {
+      "type": "color",
+      "value": "#171717"
+    },
+    "--primary-fg": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "--secondary": {
+      "type": "color",
+      "value": "#F5F5F5"
+    },
+    "--secondary-fg": {
+      "type": "color",
+      "value": "#171717"
+    },
+    "--success-bg": {
+      "type": "color",
+      "value": "#F0FDF4"
+    },
+    "--success-fg": {
+      "type": "color",
+      "value": "#166534"
+    },
+    "--warning": {
+      "type": "color",
+      "value": "#F59E0B"
+    },
+    "--warning-bg": {
+      "type": "color",
+      "value": "#FFFBEB"
+    }
+  }
+}
