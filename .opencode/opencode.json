@@ -1,0 +1,33 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "DeepWiki": {
+      "type": "remote",
+      "url": "https://mcp.deepwiki.com/mcp",
+      "enabled": true
+    },
+    "Context7": {
+      "type": "local",
+      "enabled": true,
+      "command": ["npx", "-y", "@upstash/context7-mcp"]
+    },
+    "MongoDB": {
+      "type": "local",
+      "enabled": true,
+      "command": ["npx", "-y", "mongodb-mcp-server@latest", "--readOnly"],
+      "environment": {
+        "MDB_MCP_CONNECTION_STRING": "mongodb://dev:pwd@localhost:27018/videoclinic?tls=true&tlsInsecure=true"
+      }
+    },
+    "Shadcn": {
+      "type": "local",
+      "enabled": true,
+      "command": ["npx", "-y", "shadcn@latest", "mcp"]
+    },
+    "tmux": {
+      "type": "local",
+      "enabled": false,
+      "command": ["npx", "-y", "tmux-mcp", "--shell-type=zsh"]
+    }
+  }
+}
