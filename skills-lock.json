@@ -21,6 +21,11 @@
       "sourceType": "github",
       "computedHash": "e759be044438491501a43be0040e43e6c9d7daf1f8577264df0f3eb81e36239a"
     },
+    "mcp2cli": {
+      "source": "knowsuchagency/mcp2cli",
+      "sourceType": "github",
+      "computedHash": "2541d741245568317d2ac5c28f8ba013ac911b779aae1f0bdf48fc1e413082e6"
+    },
     "mermaid-diagrams": {
       "source": "softaworks/agent-toolkit",
       "sourceType": "github",
