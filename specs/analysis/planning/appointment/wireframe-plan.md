@@ -1,5 +1,6 @@
 # Wireframe Creation Plan — Appointment Module
 
+> **Status**: COMPLETED
 > **Self-contained wireframe plan** — expanded for Batch 4 execution.
 > Wireframes are created as `.pen` files using the Pencil MCP tools.
 > Target directory: `specs/wireframes/planning/appointment/`
@@ -87,17 +88,28 @@ Wireframes use English translations. Mark hardcoded strings with `[HARDCODED]`.
 
 ### Phase 1: Core wireframes
 
-| ID | Wireframe | Source doc(s) | Complexity | Description |
-|:---|:---|:---|:---|:---|
-| W1 | `appointment-list.pen` | 01 | High | MonthTable calendar grid with toolbar, filter panel, state-colored cells |
-| W2 | `appointment-details.pen` | 02 | High | 5-tab detail dialog with type-specific visibility, state machine actions |
+| ID | Wireframe | Source doc(s) | Complexity | Status |Description |
+|:---|:---|:---|:---|:---|:---|
+| W1 | `appointment-list.pen` | 01 | High | Done | MonthTable calendar grid with toolbar, filter panel, state-colored cells |
+| W2 | `appointment-details.pen` | 02 | High | Done | 5-tab detail dialog — Info tab with type-specific visibility, state machine actions |
+
+### Phase 1a: Tab-specific detail wireframes (expanded from W2)
+
+During execution, W2's 5-tab dialog required separate per-tab wireframes to capture the full complexity of each tab's content, sub-dialogs, and conditional visibility rules.
+
+| ID | Wireframe | Source doc(s) | Complexity | Status | Description |
+|:---|:---|:---|:---|:---|:---|
+| W2a | `appointment-details-referenced.pen` | 02 | Medium | Done | Referenced (Patient Appointments) tab — location toolbar, table, edit sub-dialog. Cond: `expertOnly=true` |
+| W2b | `appointment-details-patients.pen` | 02 | Medium | Done | Patients tab — add patient toolbar, patients table, treatments sub-table, Patient Data sub-dialog with attachments |
+| W2c | `appointment-details-assigned.pen` | 02 | Medium | Done | Assigned (Expert Confirm) tab — doctor autocomplete, assignment table with 7 action buttons, state-dependent disable rules |
+| W2d | `appointment-details-suggestions.pen` | 02 | Medium | Done | Suggestions (Add Expert) tab — text filter, suggestions table with preference icons, skills, Add button. Cond: state READY–LOCKEDIN |
 
 ### Phase 2: Supporting wireframes
 
-| ID | Wireframe | Source doc(s) | Complexity | Description |
-|:---|:---|:---|:---|:---|
-| W3 | `appointment-assign-user.pen` | 03 | Low | Collision resolution modal with assignments table |
-| W4 | `appointment-state-legend.pen` | 01, 02 | Low | Visual legend: 13 appointment states + 12 assignment states with colors |
+| ID | Wireframe | Source doc(s) | Complexity | Status | Description |
+|:---|:---|:---|:---|:---|:---|
+| W3 | `appointment-assign-user.pen` | 03 | Low | Done | Collision resolution modal with assignments table |
+| W4 | `appointment-state-legend.pen` | 01, 02 | Low | Done | Visual legend: 13 appointment states + 12 assignment states with colors |
 
 ## Execution Steps
 
@@ -133,6 +145,34 @@ For each wireframe:
 - State transition sub-dialog: next state select, date [cond: STORNO], time [cond: STORNO], admin delete button
 - Type-driven visibility annotations on all type-specific fields
 
+### W2a — Appointment Details: Referenced Tab
+- Frame width: **600px** (tab content panel)
+- Visibility condition: `expertOnly=true`
+- Toolbar: Location autocomplete + Delete button
+- Table: Time range | Location | Book number | Job code | State badge (clickable)
+- Sub-dialog (800px): Edit referenced appointment — time, state, job, location fields
+
+### W2b — Appointment Details: Patients Tab
+- Frame width: **600px** (tab content panel)
+- Always visible
+- Toolbar: Book number input + Add button
+- Patients table: Title | Documentation-only flag | Closed date | Location | Edit/Remove/Sort actions
+- Treatments sub-table below patients
+- Sub-dialog: Patient Data Dialog with attachments management (add/view/delete)
+
+### W2c — Appointment Details: Assigned Tab
+- Frame width: **600px** (tab content panel)
+- Always visible; toolbar only in READY–LOCKEDIN states
+- Toolbar: Doctor autocomplete + Delete button
+- Table rows: Avatar | Role icon (support/main/doctor) + Name + Message icon | Phone link | State badge | 7 action buttons (Accept, Reserve, Override, Reject, Abort, Send Reminder, History)
+- State-dependent button disable rules annotated
+
+### W2d — Appointment Details: Suggestions Tab
+- Frame width: **600px** (tab content panel)
+- Visibility: states READY, STARTED, REOPENED, REQUESTED, LOCKEDIN
+- Text filter on firstName/lastName
+- Table: Avatar | Role icon + Name + Preference icon (thumbs-up if wantFlag) | Skills (comma-separated) | Phone link | Add button
+
 ### W3 — Assign User (Collision Modal)
 - Frame width: **600px** (dialog)
 - Warning text: "The following appointments overlap..." [HARDCODED]
@@ -148,8 +188,8 @@ For each wireframe:
 
 6. **Validate** with `get_screenshot()`
 7. **Export** to PNG in `specs/wireframes/planning/appointment/`
-8. **Embed screenshots** in `specs/wireframes/planning/workflows.md`
-9. **Log completion** in `specs/analysis/wireframes-index.md`
+8. **Embed screenshots** in `specs/wireframes/planning/workflows.md` — Done
+9. **Log completion** in `specs/analysis/wireframes-index.md` — Done
 
 ## Annotation Legend
 
