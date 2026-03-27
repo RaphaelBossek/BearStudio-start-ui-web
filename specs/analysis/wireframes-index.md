@@ -6,8 +6,8 @@
 
 All wireframes are `.pen` files created with Pencil MCP tools, exported to `.png` for documentation embedding. Each domain has a `workflows.md` file with embedded screenshots and Mermaid diagrams describing user journeys.
 
-- **Total wireframe files**: 60 `.pen` files
-- **Total exported PNGs**: 90+ `.png` files
+- **Total wireframe files**: 65 `.pen` files
+- **Total exported PNGs**: 95+ `.png` files
 
 ## Domain Index
 
@@ -27,6 +27,11 @@ All wireframes are `.pen` files created with Pencil MCP tools, exported to `.png
 | Notification List | `system/notification/notification-list.pen` | `notification-list.png` | Done |
 | Notification Compose | `system/notification/notification-compose.pen` | `notification-compose.png` | Done |
 | Send Message | `system/notification/send-message.pen` | `send-message.png` | Done |
+| Sysconfig — Basis Web | `system/admin/sysconfig-basis-web.pen` | `sysconfig-basis-web.png` | Done |
+| Sysconfig — Cache | `system/admin/sysconfig-cache.pen` | `sysconfig-cache.png` | Done |
+| Sysconfig — Data Update | `system/admin/sysconfig-data-update.pen` | `sysconfig-data-update.png` | Done |
+| Sysconfig — Data Cleanup | `system/admin/sysconfig-data-cleanup.pen` | `sysconfig-data-cleanup.png` | Done |
+| Sysconfig — Training | `system/admin/sysconfig-training.pen` | `sysconfig-training.png` | Done |
 
 ### Interfaces
 
@@ -38,18 +43,14 @@ All wireframes are `.pen` files created with Pencil MCP tools, exported to `.png
 
 | Wireframe | File | PNG Export(s) | Status |
 |:---|:---|:---|:---|
-| User Management (new) | `user-management/new.pen` | — | Done |
-| User Stats Dashboard | — | `dashboard/user-stats.png` | Done |
-| Profile Form — Tab Overview | — | `profile/profile-form-tab-overview.png` | Done |
-| Profile Form — Personal Data | — | `profile/profile-form-personal-data.png` | Done |
-| Profile Form — Business Data | — | `profile/profile-form-business-data.png` | Done |
-| Profile — Staff List | — | `profile/profile-staff-list.png` | Done |
-| Profile — Expert Search | — | `profile/profile-expert-search.png` | Done |
-| Profile — Assignment Dialog | — | `profile/profile-assignment-dialog.png` | Done |
-| Profile — Password Dialog | — | `profile/profile-password-dialog.png` | Done |
-| Profile — Signature Pad | — | `profile/profile-signature-pad.png` | Done |
-| Profile — Expert Availability Week | — | `profile/profile-expert-availability-week.png` | Done |
-| Profile — Expert Availability Month | — | `profile/profile-expert-availability-month.png` | Done |
+| Profile Form (3 frames: Tab Overview, Personal Data, Business Data) | `user-management/profile/profile-form.pen` | `profile-form-tab-overview.png`, `profile-form-personal-data.png`, `profile-form-business-data.png` | Done |
+| Staff List | `user-management/profile/profile-staff-list.pen` | `profile-staff-list.png` | Done |
+| Expert Search Dialog | `user-management/profile/profile-expert-search.pen` | `profile-expert-search.png` | Done |
+| Assignment Dialog | `user-management/profile/profile-assignment-dialog.pen` | `profile-assignment-dialog.png` | Done |
+| Password Dialog | `user-management/profile/profile-password-dialog.pen` | `profile-password-dialog.png` | Done |
+| Signature Pad | `user-management/profile/profile-signature-pad.pen` | `profile-signature-pad.png` | Done |
+| Expert Availability (2 frames: Month + Week) | `user-management/profile/profile-expert-availability.pen` | `profile-expert-availability-month.png`, `profile-expert-availability-week.png` | Done |
+| User Stats Dashboard | `user-management/dashboard/user-stats.pen` | `user-stats.png` | Done |
 
 ### Customer
 
@@ -134,6 +135,7 @@ Each domain has a `workflows.md` file with embedded wireframe screenshots and Me
 | Domain | Workflows File | Areas Covered |
 |:---|:---|:---|
 | Planning | [`planning/workflows.md`](../wireframes/planning/workflows.md) | Appointment lifecycle, Self-service dashboard, Calendar view, Expert availability, Shift detail, Ad-hoc appointment, End shift |
+| System (Sysconfig) | [`system/admin/workflows.md`](../wireframes/system/admin/workflows.md) | Sysconfig tab navigation, BasisWeb sync, Cache management, Data update, Data cleanup, Training |
 
 ## Completion Log
 
@@ -141,3 +143,5 @@ Each domain has a `workflows.md` file with embedded wireframe screenshots and Me
 |:---|:---|:---|:---|
 | 2026-03-26 | Planning / Appointment | W1, W2, W2a–W2d, W3, W4 | 8 `.pen` files, 14 `.png` exports, embedded in `workflows.md` |
 | 2026-03-26 | Planning / Dashboard | Calendar, Expert Availability, Shift Dialog, Ad-Hoc, End Shift | 5 `.pen` files, 7 `.png` exports, embedded in `workflows.md` |
+| 2026-03-27 | System / Sysconfig (Batch 2b) | Basis Web, Cache, Data Update, Data Cleanup, Training | 5 `.pen` files (5–13 KB), 5 `.png` exports, embedded in `workflows.md` |
+| 2026-03-27 | User Management (Batch 6 fix) | Split `new.pen` into 8 individual files | 8 `.pen` files (4–28 KB), PNG exports already existed |

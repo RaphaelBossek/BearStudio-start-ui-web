@@ -343,7 +343,7 @@ All 79 wireframes across 10 batches are grouped as above, ordered by complexity 
 5. Embed in `workflows.md`
 6. Update `wireframes-index.md`
 
-**Status:** ❌ Not started (0/5 wireframes + missing `workflows.md`)
+**Status:** ✅ Complete (5/5 wireframes, 5 .pen files, 5–13 KB each)
 
 ---
 
@@ -465,7 +465,7 @@ All 79 wireframes across 10 batches are grouped as above, ordered by complexity 
 6. Generate ASCII representations in analysis docs
 7. Update `specs/analysis/wireframes-index.md`
 
-**Status:** ⚠️ Content exists but needs splitting — All 8 wireframes were created as frames inside `user-management/new.pen` (180 KB, 11 children). PNG exports exist under `profile/` and `dashboard/` subdirectories. Individual `.pen` files per the plan above do NOT exist on disk. See [Fix Plan: Batch 6](#fix-plan-batch-6) below.
+**Status:** ✅ Complete (8/8 wireframes, 8 .pen files split from `new.pen`, 4–28 KB each)
 
 ---
 
@@ -550,15 +550,15 @@ All 79 wireframes across 10 batches are grouped as above, ordered by complexity 
 |:---|:---|:---|:---|:---|:---|
 | **Batch 1** | Interfaces | 8 | Low | ✅ 8/8 | 1 file (8 frames), 93 KB |
 | **Batch 2** | System | 12 | Low–Medium | ✅ 12/12 | 12 files, 9–61 KB |
-| **Batch 2b** | System (Sysconfig) | 5 | Medium | ❌ 0/5 | Missing: 5 .pen + workflows.md |
+| **Batch 2b** | System (Sysconfig) | 5 | Medium | ✅ 5/5 | 5 files, 5–13 KB |
 | **Batch 3** | Treatment (QM + dialogs) | 8 | Low–Medium | ✅ 8/8 | 8 files, 9–76 KB |
 | **Batch 4** | Planning | 13 | High | ✅ 13/13 | 9 files (appointment-details has 4 sub-frames) |
 | **Batch 5** | Treatment (consultation) | 10 | Very High | ✅ 10/10 | 10 files |
-| **Batch 6** | User Management | 8 | High | ⚠️ 8/8 content | 1 file (`new.pen`, 180 KB) — needs split |
+| **Batch 6** | User Management | 8 | High | ✅ 8/8 | 8 files, 4–28 KB (split from `new.pen`) |
 | **Batch 7** | Accounting | 6 | Medium | ✅ 6/6 | 6 files, 35–94 KB |
 | **Batch 8** | Customer | 5 | Medium | ✅ 5/5 | 5 files, 27–45 KB |
 | **Batch 9** | Academy | 4 | Low–Medium | ✅ 4/4 | 4 files, 33–72 KB |
-| **TOTAL** | — | **79** | — | **73 done, 6 missing** | **45 files + 1 multi-frame + 6 missing** |
+| **TOTAL** | — | **79** | — | **79 done** | **58 files** |
 
 ---
 
