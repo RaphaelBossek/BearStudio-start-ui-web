@@ -199,6 +199,27 @@ flowchart LR
 - **Overcomplexity** - Split complex diagrams into multiple focused views
 - **Missing relationships** - Document all important connections between entities
 
+## Text Formatting
+
+**Line breaks in node labels and text:**
+
+Use `<br>` (HTML line break tag) to create multi-line text within nodes, labels, and titles:
+
+```mermaid
+flowchart TD
+    A[Start<br>Middle<br>End] --> B[Line 1<br>Line 2]
+    A -->|Flow| C["Title<br>Subtitle"]
+```
+
+**In Markdown contexts where `<` may be escaped**, use `&lt;br&gt;` instead:
+
+```mermaid
+flowchart TD
+    A[First line&lt;br&gt;Second line]
+```
+
+**Note:** The `\n` escape sequence does **not** work for line breaks in Mermaid diagrams. Always use `<br>` or `&lt;br&gt;`.
+
 ## When to Create Diagrams
 
 **Always diagram when:**

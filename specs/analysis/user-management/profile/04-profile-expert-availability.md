@@ -551,13 +551,13 @@ stateDiagram-v2
     Unavailable --> Null: click (cycleState)
 
     state Null {
-        note: "icon: outline circle (fal fa-circle)\nno color class"
+        note: "icon: outline circle (fal fa-circle)<br>no color class"
     }
     state Available {
-        note: "icon: checkmark (fa fa-check)\ncss: green"
+        note: "icon: checkmark (fa fa-check)<br>css: green"
     }
     state Unavailable {
-        note: "icon: X mark (fa fa-times)\ncss: red"
+        note: "icon: X mark (fa fa-times)<br>css: red"
     }
 ```
 
@@ -570,10 +570,10 @@ stateDiagram-v2
     On --> Off: click (cycleState)
 
     state Off {
-        note: "icon: X mark (fa fa-times)\nno color class"
+        note: "icon: X mark (fa fa-times)<br>no color class"
     }
     state On {
-        note: "icon: checkmark (fa fa-check)\ncss: green"
+        note: "icon: checkmark (fa fa-check)<br>css: green"
     }
 ```
 

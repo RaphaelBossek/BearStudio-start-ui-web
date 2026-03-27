@@ -22,30 +22,30 @@ This diagram shows the high-level decision flow as the user experiences it. Each
 
 ```mermaid
 flowchart TD
-    A["Treatment Dashboard\n(Appointment Context)"] -->|"Start Consultation"| B["Step 1: Select Consultation Type\n& Search Patient by J-Number"]
+    A["Treatment Dashboard<br>(Appointment Context)"] -->|"Start Consultation"| B["Step 1: Select Consultation Type<br>& Search Patient by J-Number"]
 
-    B -->|"Patient found → Select row → Next"| C["Step 3: Fetching Patient Data\n(Loading spinner)"]
-    B -->|"No patient found / Skip"| D{"Confirmation Dialog:\nProceed without\npatient history?"}
+    B -->|"Patient found → Select row → Next"| C["Step 3: Fetching Patient Data<br>(Loading spinner)"]
+    B -->|"No patient found / Skip"| D{"Confirmation Dialog:<br>Proceed without<br>patient history?"}
 
     D -->|"Yes"| E["Step 2: Enter Book Number Manually"]
     D -->|"No"| B
 
-    E -->|"Submit"| EXIT_MANUAL["Consultation Details\n(No BasisWeb data)"]
+    E -->|"Submit"| EXIT_MANUAL["Consultation Details<br>(No BasisWeb data)"]
 
-    C -->|"Data needs decryption"| F["Step 4: Enter PIN\nto Decrypt Data"]
+    C -->|"Data needs decryption"| F["Step 4: Enter PIN<br>to Decrypt Data"]
     C -->|"Data ready (no encryption)"| H["Step 6: Review Summary"]
-    C -->|"Error"| G{"Error Displayed\n(Support email shown)"}
+    C -->|"Error"| G{"Error Displayed<br>(Support email shown)"}
 
     G -->|"Error button → Manual fallback"| E
 
-    F -->|"Next"| I["Step 5: Decrypting Data\n(Loading spinner)"]
+    F -->|"Next"| I["Step 5: Decrypting Data<br>(Loading spinner)"]
 
     I -->|"Success"| H
-    I -->|"Error"| J{"Decryption Failed\n(Error displayed)"}
+    I -->|"Error"| J{"Decryption Failed<br>(Error displayed)"}
 
     J -->|"Retry"| F
 
-    H -->|"Next"| EXIT_BASIS["Consultation Details\n(Pre-populated with BasisWeb data)"]
+    H -->|"Next"| EXIT_BASIS["Consultation Details<br>(Pre-populated with BasisWeb data)"]
 
     style A fill:#e8f4f8,stroke:#2c7bb6
     style EXIT_MANUAL fill:#fff3cd,stroke:#856404
@@ -83,20 +83,6 @@ stateDiagram-v2
     SelectTypeAndSearch --> ConfirmSkip: No patient / Skip
     ConfirmSkip --> ManualEntry: User confirms skip
     ConfirmSkip --> SelectTypeAndSearch: User cancels
-
-    FetchingData --> EnterPIN: Data requires decryption
-    FetchingData --> ReviewSummary: Data ready (unencrypted)
-    FetchingData --> FetchError: Fetch failed
-
-    FetchError --> ManualEntry: User chooses manual fallback
-
-    EnterPIN --> Decrypting: PIN entered → Next
-    Decrypting --> ReviewSummary: Decryption succeeded
-    Decrypting --> DecryptError: Decryption failed
-    DecryptError --> EnterPIN: User retries with new PIN
-
-    ManualEntry --> [*]: Consultation starts (manual)
-    ReviewSummary --> [*]: Consultation starts (BasisWeb data)
 
     state ConfirmSkip <<choice>>
     state FetchError <<choice>>

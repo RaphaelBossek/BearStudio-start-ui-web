@@ -30,10 +30,10 @@ flowchart TD
     CLW_NEXT --> TRIGGER2["Re-trigger loadConsultation(appointment, selectedLocation)"]
     TRIGGER2 --> LOC_CHECK
 
-    HAS_LOC -- "location.patientDataType == EXTERNAL_BASISWEB\n&& appointment.state != LOCKEDIN" --> BWW["Trigger loadBasisweb event\n(see basisWebWizard.js)"]
+    HAS_LOC -- "location.patientDataType == EXTERNAL_BASISWEB<br>&& appointment.state != LOCKEDIN" --> BWW["Trigger loadBasisweb event<br>(see basisWebWizard.js)"]
 
     HAS_LOC -- "Otherwise" --> FETCH_APT["AppointmentService.get(appointment.id)"]
-    FETCH_APT --> CW["Open #consultationWizard\ncwShow('start')"]
+    FETCH_APT --> CW["Open #consultationWizard<br>cwShow('start')"]
 ```
 
 ---
@@ -42,27 +42,27 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    START["Step 1: cw-start\n(Patient select dropdown)"] --> HAS_PATIENTS{appointment.patients\nexists & length > 0?}
-    HAS_PATIENTS -- "No" --> BOOK["Step 2: cw-booknumber\n(Manual input)"]
+    START["Step 1: cw-start<br>(Patient select dropdown)"] --> HAS_PATIENTS{appointment.patients<br>exists & length > 0?}
+    HAS_PATIENTS -- "No" --> BOOK["Step 2: cw-booknumber<br>(Manual input)"]
     HAS_PATIENTS -- "Yes" --> SHOW_SELECT["Show patient dropdown"]
     SHOW_SELECT --> NEXT1["User clicks Next"]
-    NEXT1 --> SEL_VALID{Selected value\nlength > 3?}
-    SEL_VALID -- "Yes" --> TYPE["Step 3: cw-type\n(Consultation type select)"]
+    NEXT1 --> SEL_VALID{Selected value<br>length > 3?}
+    SEL_VALID -- "Yes" --> TYPE["Step 3: cw-type<br>(Consultation type select)"]
     SEL_VALID -- "No" --> BOOK
 
     BOOK --> NEXT2["User clicks Next"]
-    NEXT2 --> BOOK_VALID{Input value\nlength > 3?}
+    NEXT2 --> BOOK_VALID{Input value<br>length > 3?}
     BOOK_VALID -- "No" --> ALERT["Alert: 'Bitte eine gültige Buchnummber eingeben'"]
     ALERT --> BOOK
     BOOK_VALID -- "Yes" --> TYPE
 
     TYPE --> NEXT3["User clicks Next"]
-    NEXT3 --> TYPE_VALID{Type selected\n& not empty?}
+    NEXT3 --> TYPE_VALID{Type selected<br>& not empty?}
     TYPE_VALID -- "No" --> TYPE
-    TYPE_VALID -- "Yes" --> SUCCESS["Step 4: cw-success\n(Summary + confirm)"]
+    TYPE_VALID -- "Yes" --> SUCCESS["Step 4: cw-success<br>(Summary + confirm)"]
 
     SUCCESS --> NEXT4["User clicks Next"]
-    NEXT4 --> SUBMIT["ConsultationService.start(\n  appointment.id,\n  location,\n  job,\n  booknumber,\n  null,\n  type\n)"]
+    NEXT4 --> SUBMIT["ConsultationService.start(<br>  appointment.id,<br>  location,<br>  job,<br>  booknumber,<br>  null,<br>  type<br>)"]
     SUBMIT --> CLOSE["Close wizard"]
     CLOSE --> OPEN_DETAIL["ConsultationDetails.open(data)"]
     OPEN_DETAIL --> RELOAD["Trigger document reload"]

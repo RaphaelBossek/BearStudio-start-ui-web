@@ -581,24 +581,24 @@ The template renders a printable invoice with these sections:
 
 ```mermaid
 flowchart TD
-    A["Invoice List View"] -->|"click row"| B["Invoice Detail Dialog\n#invoiceDlg\n(create/change mode)"]
-    A -->|"create monthly"| C["Create Invoice Dialog\n#createInvoiceDlg\n(modal)"]
+    A["Invoice List View"] -->|"click row"| B["Invoice Detail Dialog<br>#invoiceDlg<br>(create/change mode)"]
+    A -->|"create monthly"| C["Create Invoice Dialog<br>#createInvoiceDlg<br>(modal)"]
 
-    C -->|"prepare invoices"| D{"Multiple\ninvoices?"}
-    D -->|"yes"| E["Multi-invoice switch\n#multiInvoice"]
+    C -->|"prepare invoices"| D{"Multiple<br>invoices?"}
+    D -->|"yes"| E["Multi-invoice switch<br>#multiInvoice"]
     D -->|"no"| B
     E --> B
 
-    C -->|"opens secondary"| F["Appointment Work Log\n#appointmentVKDlg"]
+    C -->|"opens secondary"| F["Appointment Work Log<br>#appointmentVKDlg"]
 
-    B -->|"OK (save + close)"| G["Print Preview Dialog\n#printInvoiceDlg"]
+    B -->|"OK (save + close)"| G["Print Preview Dialog<br>#printInvoiceDlg"]
     B -->|"Save (keep open)"| B
     B -->|"Cancel"| A
 
-    G -->|"Print"| H["PDF Download\n/get/InvoiceService/download/..."]
-    G -->|"Send Email"| I["Email Dialog\n#emailDialog\n(modal)"]
-    G -->|"Mark Paid"| J["Date Picker\n(paid date + comment)"]
-    G -->|"Storno"| K["Storno Dialog\n#invoiceStornoDlg\n(modal)"]
+    G -->|"Print"| H["PDF Download<br>/get/InvoiceService/download/..."]
+    G -->|"Send Email"| I["Email Dialog<br>#emailDialog<br>(modal)"]
+    G -->|"Mark Paid"| J["Date Picker<br>(paid date + comment)"]
+    G -->|"Storno"| K["Storno Dialog<br>#invoiceStornoDlg<br>(modal)"]
     G -->|"Remove"| L["Confirm Delete"]
     G -->|"Submit"| M["External Submission"]
     G -->|"OK"| A

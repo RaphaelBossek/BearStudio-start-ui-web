@@ -47,7 +47,7 @@ flowchart TD
 ```mermaid
 flowchart LR
     Tabs["Sysconfig Tabs"]
-    Tabs --> T1["BasisWeb\n(active default)"]
+    Tabs --> T1["BasisWeb<br>(active default)"]
     Tabs --> T2["Cache"]
     Tabs --> T3["Daten Updaten"]
     Tabs --> T4["Daten Saeubern"]

@@ -22,31 +22,31 @@ This diagram shows the complete flow an admin experiences when managing customer
 
 ```mermaid
 flowchart TD
-    A["Customer List Page\n(Paginated Grid)"] -->|"Click Add"| B["New Customer Form\n(3-Tab Dialog)"]
-    A -->|"Click row"| C["Edit Customer Form\n(3-Tab Dialog)"]
+    A["Customer List Page<br>(Paginated Grid)"] -->|"Click Add"| B["New Customer Form<br>(3-Tab Dialog)"]
+    A -->|"Click row"| C["Edit Customer Form<br>(3-Tab Dialog)"]
     A -->|"Click Delete"| D{"Confirm Delete?"}
 
     D -->|"Yes"| A
     D -->|"No"| A
 
-    B --> TAB1["Tab 1: Contact\nName (required), Email,\nWebpage, UID, IBAN,\nBank, BIC, Representative,\nPhones"]
-    B --> TAB2["Tab 2: Home/Private\nAddress with Zip Lookup"]
-    B --> TAB3["Tab 3: Billing\n(Admin Only)"]
+    B --> TAB1["Tab 1: Contact<br>Name (required), Email,<br>Webpage, UID, IBAN,<br>Bank, BIC, Representative,<br>Phones"]
+    B --> TAB2["Tab 2: Home/Private<br>Address with Zip Lookup"]
+    B --> TAB3["Tab 3: Billing<br>(Admin Only)"]
 
     C --> TAB1
     C --> TAB2
     C --> TAB3
 
-    TAB2 -->|"Enter zip code"| ZIP["ZipCodeService Lookup\n→ Auto-fills City,\nState, Country"]
+    TAB2 -->|"Enter zip code"| ZIP["ZipCodeService Lookup<br>→ Auto-fills City,<br>State, Country"]
 
     TAB3 --> PL["Price Lists Collection"]
     TAB3 --> DISC["Discounts Collection"]
 
-    PL -->|"Add Price List"| PL_ADD["Autocomplete Search\n(JobPriceListService)\n→ Auto-sets Start Date"]
+    PL -->|"Add Price List"| PL_ADD["Autocomplete Search<br>(JobPriceListService)<br>→ Auto-sets Start Date"]
     PL -->|"Edit"| PL_EDIT["Edit Dates / Comments"]
     PL -->|"Delete"| PL_DEL["Remove Price List Entry"]
 
-    DISC -->|"Add Discount"| DISC_ADD["Select Job → Set\nDiscount %, Date Range,\nComment"]
+    DISC -->|"Add Discount"| DISC_ADD["Select Job → Set<br>Discount %, Date Range,<br>Comment"]
     DISC -->|"Delete"| DISC_DEL["Remove Discount Entry"]
 
     B -->|"Save"| A
@@ -74,41 +74,41 @@ Locations are the most complex entity in the customer domain, involving patient 
 
 ```mermaid
 flowchart TD
-    A["Location List Page\n(Grid: 12 columns incl.\npatientDataType icons &\npatientDataAccess status)"] -->|"Click Filter"| FILT["Offcanvas Filter Panel\nName / Address / Phone"]
-    A -->|"Click row"| EDIT["Edit Location Form\n(3-Tab Dialog)"]
-    A -->|"Click Add"| NEW["New Location Form\n(3-Tab Dialog)"]
+    A["Location List Page<br>(Grid: 12 columns incl.<br>patientDataType icons &<br>patientDataAccess status)"] -->|"Click Filter"| FILT["Offcanvas Filter Panel<br>Name / Address / Phone"]
+    A -->|"Click row"| EDIT["Edit Location Form<br>(3-Tab Dialog)"]
+    A -->|"Click Add"| NEW["New Location Form<br>(3-Tab Dialog)"]
 
     FILT -->|"Apply"| A
 
     EDIT --> L_TAB1["Tab 1: Contact"]
     EDIT --> L_TAB2["Tab 2: Address"]
-    EDIT --> L_TAB3["Tab 3: Rooms\n(Read-Only Collection)"]
+    EDIT --> L_TAB3["Tab 3: Rooms<br>(Read-Only Collection)"]
 
     NEW --> L_TAB1
     NEW --> L_TAB2
     NEW --> L_TAB3
 
-    L_TAB1 --> TYPE["Select Location Type\n(Autocomplete)"]
-    L_TAB1 --> CUST["Select Customer\n(Required, Autocomplete)"]
-    L_TAB1 --> PDA["Configure Patient\nData Access"]
-    L_TAB1 --> SIP["SIP Accounts\n(Dynamic Collection)"]
-    L_TAB1 --> MED["Medical Contact\n& Banking Fields"]
+    L_TAB1 --> TYPE["Select Location Type<br>(Autocomplete)"]
+    L_TAB1 --> CUST["Select Customer<br>(Required, Autocomplete)"]
+    L_TAB1 --> PDA["Configure Patient<br>Data Access"]
+    L_TAB1 --> SIP["SIP Accounts<br>(Dynamic Collection)"]
+    L_TAB1 --> MED["Medical Contact<br>& Banking Fields"]
 
-    PDA -->|"patientDataType selected"| PDA_CHECK{"patientDataType\nvalue?"}
-    PDA_CHECK -->|"INTERNAL_SECUREBOX\nor INTERNAL_VCCLOUD"| HIDE["Host/User/Password\nfields HIDDEN"]
-    PDA_CHECK -->|"Other types"| SHOW["Host/User/Password\nfields VISIBLE"]
+    PDA -->|"patientDataType selected"| PDA_CHECK{"patientDataType<br>value?"}
+    PDA_CHECK -->|"INTERNAL_SECUREBOX<br>or INTERNAL_VCCLOUD"| HIDE["Host/User/Password<br>fields HIDDEN"]
+    PDA_CHECK -->|"Other types"| SHOW["Host/User/Password<br>fields VISIBLE"]
     SHOW --> TEST_CONN["Test Connection Button"]
-    TEST_CONN -->|"Success"| FOLDERS["Path autocomplete\npopulated with folders"]
-    TEST_CONN -->|"Failure"| CONN_ERR["Connection error\nmessage shown"]
+    TEST_CONN -->|"Success"| FOLDERS["Path autocomplete<br>populated with folders"]
+    TEST_CONN -->|"Failure"| CONN_ERR["Connection error<br>message shown"]
     FOLDERS --> TEST_UP["Test Upload Button"]
-    SHOW --> TEST_BACKUP["Test Backup\nConnection Button"]
+    SHOW --> TEST_BACKUP["Test Backup<br>Connection Button"]
 
-    L_TAB2 --> ADDR["Street / Zip / City /\nState / Country"]
-    ADDR -->|"Enter zip"| ZIP2["Zip auto-lookup\n→ fills City/State/Country"]
+    L_TAB2 --> ADDR["Street / Zip / City /<br>State / Country"]
+    ADDR -->|"Enter zip"| ZIP2["Zip auto-lookup<br>→ fills City/State/Country"]
     L_TAB2 --> BLDG["Building Field"]
-    L_TAB2 --> MAP["Leaflet Map\nwith Lat/Lng"]
-    MAP -->|"Double-click map"| COORDS["Sets Lat/Lng\ncoordinates"]
-    MAP -->|"Search button"| GEOCODE["Reverse Geocoding\n→ address from coords"]
+    L_TAB2 --> MAP["Leaflet Map<br>with Lat/Lng"]
+    MAP -->|"Double-click map"| COORDS["Sets Lat/Lng<br>coordinates"]
+    MAP -->|"Search button"| GEOCODE["Reverse Geocoding<br>→ address from coords"]
 
     EDIT -->|"Save"| A
     EDIT -->|"Cancel"| A
@@ -186,25 +186,25 @@ Contacts feature a unique A-Z quick filter and support import/export operations 
 
 ```mermaid
 flowchart TD
-    A["Contact List Page"] -->|"Click letter button"| AZ["A-Z Quick Filter\nA B C D … Z #\n(# = non-alpha names)"]
-    A -->|"Click compact range"| AZ_COMPACT["Compact Ranges\nA-D / E-H / I-L /\nM-P / Q-T / U-X / Y-Z#"]
+    A["Contact List Page"] -->|"Click letter button"| AZ["A-Z Quick Filter<br>A B C D … Z #<br>(# = non-alpha names)"]
+    A -->|"Click compact range"| AZ_COMPACT["Compact Ranges<br>A-D / E-H / I-L /<br>M-P / Q-T / U-X / Y-Z#"]
     AZ --> A_FILTERED["Filtered Contact List"]
     AZ_COMPACT --> A_FILTERED
 
-    A -->|"Click Filter icon"| FILT["Offcanvas Filter Panel\nName, Email, Max Results"]
+    A -->|"Click Filter icon"| FILT["Offcanvas Filter Panel<br>Name, Email, Max Results"]
     FILT -->|"Apply"| A_FILTERED
 
-    A -->|"Click Add"| NEW["New Contact Form\n(4-Tab Dialog)"]
-    A -->|"Click row"| EDIT["Edit Contact Form\n(4-Tab Dialog)"]
+    A -->|"Click Add"| NEW["New Contact Form<br>(4-Tab Dialog)"]
+    A -->|"Click row"| EDIT["Edit Contact Form<br>(4-Tab Dialog)"]
     A -->|"Click Delete"| DEL{"Confirm Delete?"}
 
     DEL -->|"Yes"| A
     DEL -->|"No"| A
 
-    NEW --> CT1["Tab 1: Personal Info\nName, Company (autocomplete),\nPosition, Categories (multi-tag),\nEmails, Phones, Birthday"]
+    NEW --> CT1["Tab 1: Personal Info<br>Name, Company (autocomplete),<br>Position, Categories (multi-tag),<br>Emails, Phones, Birthday"]
     NEW --> CT2["Tab 2: Private Address"]
     NEW --> CT3["Tab 3: Work Address"]
-    NEW --> CT4["Tab 4: Other\n4 Custom Fields + Notes"]
+    NEW --> CT4["Tab 4: Other<br>4 Custom Fields + Notes"]
 
     CT1 -->|"Generate"| QR["QR Code Generation"]
 
@@ -213,9 +213,9 @@ flowchart TD
     EDIT --> CT3
     EDIT --> CT4
 
-    A -->|"Click Import"| IMP["Import Dialog\nUpload File +\n☑ Update Existing Contacts"]
+    A -->|"Click Import"| IMP["Import Dialog<br>Upload File +<br>☑ Update Existing Contacts"]
     A -->|"Click Export"| EXP["Download Contacts File"]
-    A -->|"Select contact → Reset Password"| RESET["Send Password\nReset Email"]
+    A -->|"Select contact → Reset Password"| RESET["Send Password<br>Reset Email"]
 
     NEW -->|"Save"| A
     EDIT -->|"Save"| A
@@ -243,37 +243,37 @@ Rooms combine basic CRUD with a calendar-based planning interface and equipment 
 
 ```mermaid
 flowchart TD
-    A["Room List Page\n(Client-Side Search:\nName / Number / Location)"] -->|"Click Add"| NEW["New Room Form\n(3-Tab Dialog)"]
-    A -->|"Click row"| EDIT["Edit Room Form\n(3-Tab Dialog)"]
+    A["Room List Page<br>(Client-Side Search:<br>Name / Number / Location)"] -->|"Click Add"| NEW["New Room Form<br>(3-Tab Dialog)"]
+    A -->|"Click row"| EDIT["Edit Room Form<br>(3-Tab Dialog)"]
     A -->|"Click Delete"| DEL{"Confirm Delete?"}
 
     DEL -->|"Yes"| A
     DEL -->|"No"| A
 
-    NEW --> RT1["Tab 1: Info\nLocation (autocomplete),\nName (required),\nNumber (required),\nAvailable toggle,\nDescription"]
-    NEW --> RT2["Tab 2: Planning\n(FullCalendar View)"]
-    NEW --> RT3["Tab 3: Equipment\n(Search & Associate)"]
+    NEW --> RT1["Tab 1: Info<br>Location (autocomplete),<br>Name (required),<br>Number (required),<br>Available toggle,<br>Description"]
+    NEW --> RT2["Tab 2: Planning<br>(FullCalendar View)"]
+    NEW --> RT3["Tab 3: Equipment<br>(Search & Associate)"]
 
     EDIT --> RT1
     EDIT --> RT2
     EDIT --> RT3
 
-    RT2 --> CAL["Calendar Display\nMonth / Week / Day Views"]
-    CAL --> AVAIL["Availability Slots\n(Colored blocks from plans)"]
-    CAL --> APPTS["Appointments\n(Background events,\nstate-based coloring)"]
+    RT2 --> CAL["Calendar Display<br>Month / Week / Day Views"]
+    CAL --> AVAIL["Availability Slots<br>(Colored blocks from plans)"]
+    CAL --> APPTS["Appointments<br>(Background events,<br>state-based coloring)"]
 
-    RT2 --> SIDEBAR["Plan Sidebar\n(List of Plans)"]
+    RT2 --> SIDEBAR["Plan Sidebar<br>(List of Plans)"]
     SIDEBAR -->|"Click Add Plan"| PLAN_DLG["Room Plan Sub-Dialog"]
     SIDEBAR -->|"Click Edit"| PLAN_DLG
     SIDEBAR -->|"Click Delete"| PLAN_DEL{"Confirm Delete Plan?"}
     PLAN_DEL -->|"Yes"| SIDEBAR
     PLAN_DEL -->|"No"| SIDEBAR
 
-    PLAN_DLG --> PLAN_FIELDS["Title (required)\nDate Range (start/until)\nEmpty until = open-ended\nActive toggle\nWeekday toggles (Mon-Sun)\nStart/End Time (required)\nDescription"]
+    PLAN_DLG --> PLAN_FIELDS["Title (required)<br>Date Range (start/until)<br>Empty until = open-ended<br>Active toggle<br>Weekday toggles (Mon-Sun)<br>Start/End Time (required)<br>Description"]
     PLAN_DLG -->|"Save Plan"| SIDEBAR
 
     RT3 -->|"Search equipment"| EQ_SEARCH["Equipment Autocomplete"]
-    EQ_SEARCH -->|"Select"| EQ_TABLE["Equipment Collection Table\nName / Serial / Status /\nDescription"]
+    EQ_SEARCH -->|"Select"| EQ_TABLE["Equipment Collection Table<br>Name / Serial / Status /<br>Description"]
     EQ_TABLE -->|"Remove"| EQ_TABLE
 
     NEW -->|"Save"| A
@@ -348,32 +348,32 @@ Equipment has the most complex filtering (cascading location→room dependency) 
 
 ```mermaid
 flowchart TD
-    A["Equipment List Page\n(Grid with Status Formatter:\nWORKING / DEFECT / INREPAIR /\nRESERVED / UNKNOWN / SENT)"] -->|"Click Filter"| FILT["Offcanvas Filter Panel"]
-    A -->|"Click Add"| NEW["New Equipment Form\n(2-Tab Dialog)"]
-    A -->|"Click row"| EDIT["Edit Equipment Form\n(2-Tab Dialog)"]
+    A["Equipment List Page<br>(Grid with Status Formatter:<br>WORKING / DEFECT / INREPAIR /<br>RESERVED / UNKNOWN / SENT)"] -->|"Click Filter"| FILT["Offcanvas Filter Panel"]
+    A -->|"Click Add"| NEW["New Equipment Form<br>(2-Tab Dialog)"]
+    A -->|"Click row"| EDIT["Edit Equipment Form<br>(2-Tab Dialog)"]
     A -->|"Click Delete"| DEL{"Confirm Delete?"}
 
     DEL -->|"Yes"| A
     DEL -->|"No"| A
 
     FILT --> FILT_LOC["Location Select"]
-    FILT_LOC -->|"Location chosen"| FILT_ROOM["Room Select\n(NOW unlocked)"]
+    FILT_LOC -->|"Location chosen"| FILT_ROOM["Room Select<br>(NOW unlocked)"]
     FILT --> FILT_CUST["Customer Select"]
     FILT --> FILT_STATUS["Status Select"]
     FILT --> FILT_MAX["Max Results"]
     FILT -->|"Apply"| A
 
-    NEW --> ET1["Tab 1: Info\n(3-Column Layout, 15 fields)"]
+    NEW --> ET1["Tab 1: Info<br>(3-Column Layout, 15 fields)"]
     EDIT --> ET1
-    NEW --> ET2["Tab 2: Comments /\nStatus Change"]
+    NEW --> ET2["Tab 2: Comments /<br>Status Change"]
     EDIT --> ET2
 
-    ET1 --> FIELDS["Inventory Number, Name,\nSerial, Manufacturer,\nAccess/Initial User (autocomplete),\nActive toggle,\nLocation → Room (cascading),\nInitial Password,\nStatus (read-only),\nProduct (filtered by EQUIPMENT),\n3 Date Fields, Description"]
+    ET1 --> FIELDS["Inventory Number, Name,<br>Serial, Manufacturer,<br>Access/Initial User (autocomplete),<br>Active toggle,<br>Location → Room (cascading),<br>Initial Password,<br>Status (read-only),<br>Product (filtered by EQUIPMENT),<br>3 Date Fields, Description"]
 
-    ET2 -->|"Equipment NOT\nyet saved"| DISABLED["Status/Comment\ncontrols disabled\n(Save equipment first)"]
-    ET2 -->|"Equipment saved"| STATUS_FORM["Current Status Select\n+ Comment Textarea\n(min 4 chars)"]
-    STATUS_FORM -->|"Submit"| STATUS_CHANGE["Status changed +\nComment entry added"]
-    ET2 --> HISTORY["Comment History Table\nUser / Timestamp /\nStatus / Comment"]
+    ET2 -->|"Equipment NOT<br>yet saved"| DISABLED["Status/Comment<br>controls disabled<br>(Save equipment first)"]
+    ET2 -->|"Equipment saved"| STATUS_FORM["Current Status Select<br>+ Comment Textarea<br>(min 4 chars)"]
+    STATUS_FORM -->|"Submit"| STATUS_CHANGE["Status changed +<br>Comment entry added"]
+    ET2 --> HISTORY["Comment History Table<br>User / Timestamp /<br>Status / Comment"]
 
     NEW -->|"Save"| A
     EDIT -->|"Save"| A
@@ -485,28 +485,28 @@ Customer users are managed from a dedicated page filtered by `type=CUSTOMER`, wi
 
 ```mermaid
 flowchart TD
-    A["Customer Users Page\n(Grid: 8 columns,\nDefault filter: type=CUSTOMER,\nMax 500 results)"] -->|"Click Add"| NEW["New Customer User Form\n(3-Tab Dialog)"]
-    A -->|"Click row"| EDIT["Edit Customer User Form\n(3-Tab Dialog)"]
+    A["Customer Users Page<br>(Grid: 8 columns,<br>Default filter: type=CUSTOMER,<br>Max 500 results)"] -->|"Click Add"| NEW["New Customer User Form<br>(3-Tab Dialog)"]
+    A -->|"Click row"| EDIT["Edit Customer User Form<br>(3-Tab Dialog)"]
     A -->|"Click Delete"| DEL{"Confirm Delete?"}
-    A -->|"Select user → Reset Password"| RESET["Send Password\nReset Email"]
+    A -->|"Select user → Reset Password"| RESET["Send Password<br>Reset Email"]
 
     DEL -->|"Yes"| A
     DEL -->|"No"| A
 
-    NEW --> UT1["Tab 1: Main\nUsername (read-only on edit),\nCustomer Collection,\nEmail (required),\nNotification Toggle,\nName, Phone"]
-    NEW --> UT2["Tab 2: Address\nSSN + Address with Zip Lookup"]
-    NEW --> UT3["Tab 3: Admin\n(Admin-Only)\nRole Select, Enabled Select,\nLocked Select"]
+    NEW --> UT1["Tab 1: Main<br>Username (read-only on edit),<br>Customer Collection,<br>Email (required),<br>Notification Toggle,<br>Name, Phone"]
+    NEW --> UT2["Tab 2: Address<br>SSN + Address with Zip Lookup"]
+    NEW --> UT3["Tab 3: Admin<br>(Admin-Only)<br>Role Select, Enabled Select,<br>Locked Select"]
 
     EDIT --> UT1
     EDIT --> UT2
     EDIT --> UT3
 
     UT2 -->|"Enter SSN"| SSN_CHECK{"SSN Format?"}
-    SSN_CHECK -->|"Austrian format"| AT["Austrian SSN Validation\n→ Auto-fills Birthday"]
-    SSN_CHECK -->|"German format"| DE["German SSN Validation\n→ Auto-fills Birthday"]
+    SSN_CHECK -->|"Austrian format"| AT["Austrian SSN Validation<br>→ Auto-fills Birthday"]
+    SSN_CHECK -->|"German format"| DE["German SSN Validation<br>→ Auto-fills Birthday"]
     SSN_CHECK -->|"Other/Invalid"| SSN_ERR["Validation Error"]
 
-    UT2 -->|"Enter zip code"| ZIP3["Zip Auto-Lookup\n→ fills City/State/Country"]
+    UT2 -->|"Enter zip code"| ZIP3["Zip Auto-Lookup<br>→ fills City/State/Country"]
 
     NEW -->|"Save"| A
     EDIT -->|"Save"| A

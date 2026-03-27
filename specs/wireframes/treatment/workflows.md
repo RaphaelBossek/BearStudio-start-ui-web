@@ -24,36 +24,36 @@ This diagram shows the 3-way routing decision and the full consultation wizard f
 
 ```mermaid
 flowchart TD
-    A["Treatment Dashboard\n(Active Appointment)"] -->|"Start Consultation"| B{"Does appointment\nhave a location?"}
+    A["Treatment Dashboard<br>(Active Appointment)"] -->|"Start Consultation"| B{"Does appointment<br>have a location?"}
 
-    B -->|"No location"| C["Location Wizard\n(Single-Step: Select Location)"]
+    B -->|"No location"| C["Location Wizard<br>(Single-Step: Select Location)"]
     C -->|"User selects location → Next"| B
 
-    B -->|"Location exists"| D{"Location type =\nEXTERNAL_BASISWEB\nAND state ≠ LOCKEDIN?"}
+    B -->|"Location exists"| D{"Location type =<br>EXTERNAL_BASISWEB<br>AND state ≠ LOCKEDIN?"}
 
-    D -->|"Yes"| E["BasisWeb Wizard\n(6-step, see Batch 1)"]
-    D -->|"No"| F["Consultation Wizard\nStep 1: Select Patient"]
+    D -->|"Yes"| E["BasisWeb Wizard<br>(6-step, see Batch 1)"]
+    D -->|"No"| F["Consultation Wizard<br>Step 1: Select Patient"]
 
-    F --> G{"Appointment has\npatients list?"}
-    G -->|"Yes"| H["Dropdown populated\nwith patient book numbers"]
-    G -->|"No patients"| I["Step 2: Enter Book Number\n(Manual Input)"]
+    F --> G{"Appointment has<br>patients list?"}
+    G -->|"Yes"| H["Dropdown populated<br>with patient book numbers"]
+    G -->|"No patients"| I["Step 2: Enter Book Number<br>(Manual Input)"]
 
-    H -->|"User selects patient → Next"| J{"Selection\nlength > 3?"}
+    H -->|"User selects patient → Next"| J{"Selection<br>length > 3?"}
     J -->|"Yes"| K["Step 3: Select Consultation Type"]
     J -->|"No / Skip"| I
 
-    I -->|"User enters book number → Next"| L{"Input\nlength > 3?"}
-    L -->|"No"| M["Validation Error Alert:\nPlease enter valid book number"]
+    I -->|"User enters book number → Next"| L{"Input<br>length > 3?"}
+    L -->|"No"| M["Validation Error Alert:<br>Please enter valid book number"]
     M --> I
     L -->|"Yes"| K
 
-    K -->|"Types filtered by job capabilities\n+ location properties"| K
-    K -->|"User selects type → Next"| N{"Type selected\n(non-empty)?"}
+    K -->|"Types filtered by job capabilities<br>+ location properties"| K
+    K -->|"User selects type → Next"| N{"Type selected<br>(non-empty)?"}
     N -->|"No"| K
-    N -->|"Yes"| O["Step 4: Summary & Confirm\n(Expert, Location, Book Number, Type)"]
+    N -->|"Yes"| O["Step 4: Summary & Confirm<br>(Expert, Location, Book Number, Type)"]
 
-    O -->|"User confirms → Next"| P["ConsultationService.start()\nWizard Closes"]
-    P --> EXIT_DETAIL["Consultation Details\n(Pre-populated with\nselected data)"]
+    O -->|"User confirms → Next"| P["ConsultationService.start()<br>Wizard Closes"]
+    P --> EXIT_DETAIL["Consultation Details<br>(Pre-populated with<br>selected data)"]
 
     style A fill:#e8f4f8,stroke:#2c7bb6
     style C fill:#fff3cd,stroke:#856404
@@ -219,27 +219,27 @@ Both dialogs embed the same QM questionnaire form, making quality management dat
 
 ```mermaid
 flowchart TD
-    A["Treatment Dashboard\n(Active Appointment)"] --> B{"Appointment Context?"}
+    A["Treatment Dashboard<br>(Active Appointment)"] --> B{"Appointment Context?"}
 
-    B -->|"External location\n(EXTERNAL patientDataType)\n+ control active\n+ not shift"| C["Summarize Dialog\n(1000px, dynamic title)"]
-    B -->|"Standard appointment\n(non-shift)"| D["End Appointment Dialog\n(900px)"]
+    B -->|"External location<br>(EXTERNAL patientDataType)<br>+ control active<br>+ not shift"| C["Summarize Dialog<br>(1000px, dynamic title)"]
+    B -->|"Standard appointment<br>(non-shift)"| D["End Appointment Dialog<br>(900px)"]
 
-    C --> C1["Display: Weekday, Date,\nOriginal Times, Location"]
-    C1 --> C2["Edit: Adjusted Start/End Times,\nCommunication Type"]
-    C2 --> C3["Edit: Further Treatment Counters\n(Referral, WV, Follow-up, Other)\n+ Live Total"]
-    C3 --> C4["Fill: QM Questionnaire\n(Rating Scales + Comment)"]
-    C4 -->|"Save"| C5{"Confirm:\n'You confirm correctness\nof {total} treatments'"}
-    C5 -->|"Yes"| C6["AppointmentService.summarize()\nDialog Closes"]
+    C --> C1["Display: Weekday, Date,<br>Original Times, Location"]
+    C1 --> C2["Edit: Adjusted Start/End Times,<br>Communication Type"]
+    C2 --> C3["Edit: Further Treatment Counters<br>(Referral, WV, Follow-up, Other)<br>+ Live Total"]
+    C3 --> C4["Fill: QM Questionnaire<br>(Rating Scales + Comment)"]
+    C4 -->|"Save"| C5{"Confirm:<br>'You confirm correctness<br>of {total} treatments'"}
+    C5 -->|"Yes"| C6["AppointmentService.summarize()<br>Dialog Closes"]
     C5 -->|"No"| C4
-    C6 --> EXIT_REFRESH["Dashboard Refreshes\n(Appointment Completed)"]
+    C6 --> EXIT_REFRESH["Dashboard Refreshes<br>(Appointment Completed)"]
 
-    D --> D1["Display: Confirmation Text\n'Should the operation be ended?'"]
+    D --> D1["Display: Confirmation Text<br>'Should the operation be ended?'"]
     D1 --> D2["Edit: Adjusted Start/End Times"]
-    D2 --> D3["Fill: QM Questionnaire\n(Rating Scales + Comment)"]
-    D3 -->|"Save"| D4["AppointmentService.done()\nDialog Closes"]
+    D2 --> D3["Fill: QM Questionnaire<br>(Rating Scales + Comment)"]
+    D3 -->|"Save"| D4["AppointmentService.done()<br>Dialog Closes"]
     D4 --> EXIT_REFRESH
 
-    D4 -->|"Error"| D5["Dialog Re-opens\nwith Previous QM Data Preserved"]
+    D4 -->|"Error"| D5["Dialog Re-opens<br>with Previous QM Data Preserved"]
     D5 --> D2
 
     style A fill:#e8f4f8,stroke:#2c7bb6
@@ -266,12 +266,12 @@ This diagram models the QM questionnaire sub-flow that is embedded in both the S
 stateDiagram-v2
     [*] --> FilterApplied: Dialog opens with appointment context
 
-    FilterApplied: QM Form Filtered\n(filterQm applied)
-    GeneralRatings: General Ratings Visible\n(Room, Video, Communication, etc.)
-    EquipmentRatings: Equipment Ratings Section\n(Dermatoscope, Otoscope, etc.)
+    FilterApplied: QM Form Filtered<br>(filterQm applied)
+    GeneralRatings: General Ratings Visible<br>(Room, Video, Communication, etc.)
+    EquipmentRatings: Equipment Ratings Section<br>(Dermatoscope, Otoscope, etc.)
     ReferralQuestion: Referral Probability Question
-    BooleanQuestions: Yes/No Questions\n(Translator, Reporting)
-    CommentRequired: Comment Becomes Mandatory\n(min 3 chars)
+    BooleanQuestions: Yes/No Questions<br>(Translator, Reporting)
+    CommentRequired: Comment Becomes Mandatory<br>(min 3 chars)
     FormComplete: All Required Ratings Filled
 
     FilterApplied --> GeneralRatings: Always visible ratings shown
@@ -284,7 +284,7 @@ stateDiagram-v2
     EquipmentCheck --> EquipmentRatings: Equipment has saved values > 0
     EquipmentCheck --> EquipmentCollapsed: No saved equipment values
 
-    EquipmentCollapsed: Equipment Section Hidden\n(can be manually expanded)
+    EquipmentCollapsed: Equipment Section Hidden<br>(can be manually expanded)
     EquipmentCollapsed --> EquipmentRatings: User expands equipment section
 
     GeneralRatings --> BooleanQuestions: Ratings selected
@@ -335,23 +335,23 @@ The incarceration retrieval flow allows staff to look up and retrieve medical ex
 
 ```mermaid
 flowchart TD
-    A["Treatment Dashboard"] -->|"Click 'Retrieve Consultation'"| B["Step 1: Check Dialog\n(Book Number + Code)"]
+    A["Treatment Dashboard"] -->|"Click 'Retrieve Consultation'"| B["Step 1: Check Dialog<br>(Book Number + Code)"]
 
-    B -->|"User enters book number + code\n→ Save"| C{"ConsultationService\n.checkCustomer()"}
+    B -->|"User enters book number + code<br>→ Save"| C{"ConsultationService<br>.checkCustomer()"}
 
-    C -->|"Valid — customer found"| D["Step 2: Retrieval Dialog\n(Address Form)"]
-    C -->|"Invalid — error"| E["Error Message\n(Dialog stays open)"]
+    C -->|"Valid — customer found"| D["Step 2: Retrieval Dialog<br>(Address Form)"]
+    C -->|"Invalid — error"| E["Error Message<br>(Dialog stays open)"]
     E --> B
 
-    D --> D1["Read-only:\nBook Number + Code"]
-    D1 --> D2{"Previous retrieval\nexists?"}
-    D2 -->|"Yes"| D3["Warning Alert:\n'This record was already\nretrieved on {date}!'"]
+    D --> D1["Read-only:<br>Book Number + Code"]
+    D1 --> D2{"Previous retrieval<br>exists?"}
+    D2 -->|"Yes"| D3["Warning Alert:<br>'This record was already<br>retrieved on {date}!'"]
     D2 -->|"No"| D4["Address Form Clean"]
-    D3 --> D5["User fills address form:\nName*, Street*, Street2,\nZip*+State+City*, Country,\nAdditional Text"]
+    D3 --> D5["User fills address form:<br>Name*, Street*, Street2,<br>Zip*+State+City*, Country,<br>Additional Text"]
     D4 --> D5
 
-    D5 -->|"Save"| F["ConsultationService\n.prepareCustomer()"]
-    F --> G["Job Status Dialog\n(PDF Download Link)"]
+    D5 -->|"Save"| F["ConsultationService<br>.prepareCustomer()"]
+    F --> G["Job Status Dialog<br>(PDF Download Link)"]
 
     style A fill:#e8f4f8,stroke:#2c7bb6
     style G fill:#d4edda,stroke:#155724
@@ -423,23 +423,23 @@ Consultation templates allow clinical staff to save and reuse pre-configured con
 
 ```mermaid
 flowchart TD
-    A["Treatment Dashboard"] -->|"Click Templates button"| B["Template List Panel\n(400px side panel)"]
+    A["Treatment Dashboard"] -->|"Click Templates button"| B["Template List Panel<br>(400px side panel)"]
 
-    B --> B1["Toolbar: Text Filter\n+ Create Button"]
-    B1 --> C["Table: Template Name,\nDescription, Edit, Remove"]
+    B --> B1["Toolbar: Text Filter<br>+ Create Button"]
+    B1 --> C["Table: Template Name,<br>Description, Edit, Remove"]
 
-    C -->|"Type in filter"| D["Client-side prefix filter\n(names starting with input)"]
+    C -->|"Type in filter"| D["Client-side prefix filter<br>(names starting with input)"]
     D --> C
 
     C -->|"Click Edit on row"| E["Load Template Data"]
-    E --> F["ConsultationDetails.open()\n(template mode = true)"]
+    E --> F["ConsultationDetails.open()<br>(template mode = true)"]
 
-    C -->|"Click Remove on row"| G{"Confirm:\n'Delete this template?'"}
-    G -->|"Yes"| H["Template Removed\n(List Refreshes)"]
+    C -->|"Click Remove on row"| G{"Confirm:<br>'Delete this template?'"}
+    G -->|"Yes"| H["Template Removed<br>(List Refreshes)"]
     G -->|"No"| C
 
-    B1 -->|"Click Create"| I["Create Dialog (Modal)\nName* + Description"]
-    I -->|"Save"| J["Template Created\n(List Refreshes)"]
+    B1 -->|"Click Create"| I["Create Dialog (Modal)<br>Name* + Description"]
+    I -->|"Save"| J["Template Created<br>(List Refreshes)"]
     J --> F
 
     style A fill:#e8f4f8,stroke:#2c7bb6

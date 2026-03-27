@@ -25,32 +25,32 @@ This diagram shows the high-level flow when an administrator onboards a new staf
 
 ```mermaid
 flowchart TD
-    A["Staff List Page\n(Administrator View)"] -->|"Click Add (+)"| B["New Employee Record\n(Profile Form Opens)"]
+    A["Staff List Page<br>(Administrator View)"] -->|"Click Add (+)"| B["New Employee Record<br>(Profile Form Opens)"]
 
-    B --> C["Fill Personal Data Tab\n(Name*, Email*, Mobile, Birthday)"]
-    C --> D["Fill Business Data Tab\n(Active Since, Contract Type,\nQualification Level)"]
-    D --> E["Fill Address Tab\n(Main Address: Street*, ZIP*, City*)"]
+    B --> C["Fill Personal Data Tab<br>(Name*, Email*, Mobile, Birthday)"]
+    C --> D["Fill Business Data Tab<br>(Active Since, Contract Type,<br>Qualification Level)"]
+    D --> E["Fill Address Tab<br>(Main Address: Street*, ZIP*, City*)"]
     E --> F["Save Employee Record"]
 
-    F --> G{"Account Created\nSuccessfully?"}
-    G -->|"Yes"| H["Employee Appears in Staff List\n(State: UNCONFIRMED)"]
-    G -->|"No"| I["Validation Error\n(Missing required fields)"]
+    F --> G{"Account Created<br>Successfully?"}
+    G -->|"Yes"| H["Employee Appears in Staff List<br>(State: UNCONFIRMED)"]
+    G -->|"No"| I["Validation Error<br>(Missing required fields)"]
     I --> C
 
     H --> J{"Start Onboarding?"}
-    J -->|"Click Onboarding button"| K["Onboarding Dialog Opens\n(Checklist of steps)"]
+    J -->|"Click Onboarding button"| K["Onboarding Dialog Opens<br>(Checklist of steps)"]
     J -->|"Skip for now"| L["Employee stays UNCONFIRMED"]
 
-    K --> M["Work Through Steps\n(Documents, Contracts, Checks)"]
+    K --> M["Work Through Steps<br>(Documents, Contracts, Checks)"]
     M --> N{"All Steps Complete?"}
-    N -->|"Yes"| O["Change State to ACTIVE\n(Business Data Tab)"]
-    N -->|"Not yet"| P["Save Progress\n(Partial completion tracked)"]
+    N -->|"Yes"| O["Change State to ACTIVE<br>(Business Data Tab)"]
+    N -->|"Not yet"| P["Save Progress<br>(Partial completion tracked)"]
     P --> L
 
-    O --> Q["Set Up 2FA\n(Require TOTP checkbox)"]
-    Q --> R["Configure Availability\n(Expert Days + Expert Week tabs)"]
-    R --> S["Assign Skills\n(Education Tab)"]
-    S --> T["Upload Documents\n(Documents Tab)"]
+    O --> Q["Set Up 2FA<br>(Require TOTP checkbox)"]
+    Q --> R["Configure Availability<br>(Expert Days + Expert Week tabs)"]
+    R --> S["Assign Skills<br>(Education Tab)"]
+    S --> T["Upload Documents<br>(Documents Tab)"]
     T --> U["Employee Fully Operational"]
 
     style A fill:#e8f4f8,stroke:#2c7bb6
@@ -216,40 +216,40 @@ This diagram shows how an administrator finds and assigns experts to appointment
 
 ```mermaid
 flowchart TD
-    A["Staff List Page\n(10-column grid)"] -->|"Expert Test Search button\n(always enabled)"| B["Expert Search Dialog"]
-    A -->|"Select row → Appointment Requests\n(enabled on selection)"| C["Assignment Dialog"]
+    A["Staff List Page<br>(10-column grid)"] -->|"Expert Test Search button<br>(always enabled)"| B["Expert Search Dialog"]
+    A -->|"Select row → Appointment Requests<br>(enabled on selection)"| C["Assignment Dialog"]
 
     subgraph "Expert Search Flow"
-        B --> D["Select Job Filter\n(autocomplete)"]
+        B --> D["Select Job Filter<br>(autocomplete)"]
         D --> E["Toggle Active Filter"]
         E --> F["Click Search"]
-        F --> G["Results Table Appears\n(Name, Skills, Exclusion Criteria,\nQualification Level)"]
+        F --> G["Results Table Appears<br>(Name, Skills, Exclusion Criteria,<br>Qualification Level)"]
 
         G --> H{"Refine Results?"}
-        H -->|"Add Skill filter"| I["Add to Skills Collection\n(autocomplete + insert)"]
-        I --> J["Client-side AND filter\napplied automatically"]
+        H -->|"Add Skill filter"| I["Add to Skills Collection<br>(autocomplete + insert)"]
+        I --> J["Client-side AND filter<br>applied automatically"]
         J --> G
 
-        H -->|"Add Exclusion Criteria"| K["Add to Exclusion Collection\n(autocomplete + insert)"]
-        K --> L["Client-side exclusion filter\napplied automatically"]
+        H -->|"Add Exclusion Criteria"| K["Add to Exclusion Collection<br>(autocomplete + insert)"]
+        K --> L["Client-side exclusion filter<br>applied automatically"]
         L --> G
 
         H -->|"Found expert"| M{"Expert has appointment link?"}
-        M -->|"Yes"| N["Navigate to\nappointment.html#id"]
-        M -->|"No"| O["Note expert for manual\nassignment elsewhere"]
+        M -->|"Yes"| N["Navigate to<br>appointment.html#id"]
+        M -->|"No"| O["Note expert for manual<br>assignment elsewhere"]
     end
 
     subgraph "Assignment Request Flow"
-        C --> P["Filter: Year / Month\n(pre-filled: previous month)"]
+        C --> P["Filter: Year / Month<br>(pre-filled: previous month)"]
         P --> Q["Shows User: display name"]
-        Q --> R["Appointment List\n(Type, Weekday, Date, Time,\nJob Code, Location)"]
+        Q --> R["Appointment List<br>(Type, Weekday, Date, Time,<br>Job Code, Location)"]
 
         R --> S{"For each appointment:"}
         S -->|"Accept"| T["Confirm: 'Accept user?'"]
-        T --> U["AppointmentService.adjustUser\n(AGREED)"]
+        T --> U["AppointmentService.adjustUser<br>(AGREED)"]
         S -->|"Reject"| V["Confirm: 'Reject user?'"]
-        V --> W["AppointmentService.adjustUser\n(REJECTED)"]
-        S -->|"Export"| X["Download .xls\nfor selected user/period"]
+        V --> W["AppointmentService.adjustUser<br>(REJECTED)"]
+        S -->|"Export"| X["Download .xls<br>for selected user/period"]
     end
 
     style A fill:#e8f4f8,stroke:#2c7bb6
@@ -271,15 +271,15 @@ This diagram shows how an administrator manages an expert's monthly and weekly a
 ```mermaid
 flowchart TD
     subgraph "Month Grid (Expert Days Tab)"
-        A1["Select Year/Month\n(defaults to next month)"] --> A2["Grid Loads:\n31 rows x 6 slot columns"]
+        A1["Select Year/Month<br>(defaults to next month)"] --> A2["Grid Loads:<br>31 rows x 6 slot columns"]
         A2 --> A3{"Interaction:"}
 
-        A3 -->|"Click single cell"| A4["Tri-state cycle:\nnull (circle) -> true (green check)\n-> false (red X) -> null"]
-        A3 -->|"Click day number"| A5["Equalize all 6 slots\nfor that day, then cycle"]
-        A3 -->|"Click weekday name\n(e.g., 'Mon')"| A6["Copy current day's slots\nto ALL same-weekday rows\n(Mon 7 -> Mon 14, 21, 28)"]
-        A3 -->|"Click column header\n(e.g., 'Morning')"| A7["Equalize entire column,\nthen cycle"]
+        A3 -->|"Click single cell"| A4["Tri-state cycle:<br>null (circle) -> true (green check)<br>-> false (red X) -> null"]
+        A3 -->|"Click day number"| A5["Equalize all 6 slots<br>for that day, then cycle"]
+        A3 -->|"Click weekday name<br>(e.g., 'Mon')"| A6["Copy current day's slots<br>to ALL same-weekday rows<br>(Mon 7 -> Mon 14, 21, 28)"]
+        A3 -->|"Click column header<br>(e.g., 'Morning')"| A7["Equalize entire column,<br>then cycle"]
 
-        A4 & A5 & A6 & A7 --> A8["Visual update:\nIcons + colors refresh"]
+        A4 & A5 & A6 & A7 --> A8["Visual update:<br>Icons + colors refresh"]
 
         A8 --> A9{"Change year/month?"}
         A9 -->|"Yes, unsaved changes"| A10["Prompt: Save first?"]
@@ -289,12 +289,12 @@ flowchart TD
     end
 
     subgraph "Week Grid (Expert Week Tab)"
-        B1["Select Week Type\n(only: TREATMENT)"] --> B2["Grid Loads:\n24 rows (hours) x 7 day columns"]
+        B1["Select Week Type<br>(only: TREATMENT)"] --> B2["Grid Loads:<br>24 rows (hours) x 7 day columns"]
         B2 --> B3{"Interaction:"}
 
-        B3 -->|"Click single cell"| B4["Binary cycle:\nnull (X) -> true (green check)\n-> null"]
-        B3 -->|"Click hour label"| B5["Equalize all 7 days\nfor that hour, then cycle"]
-        B3 -->|"Click column header\n(e.g., 'Monday')"| B6["Equalize entire column,\nthen cycle"]
+        B3 -->|"Click single cell"| B4["Binary cycle:<br>null (X) -> true (green check)<br>-> null"]
+        B3 -->|"Click hour label"| B5["Equalize all 7 days<br>for that hour, then cycle"]
+        B3 -->|"Click column header<br>(e.g., 'Monday')"| B6["Equalize entire column,<br>then cycle"]
 
         B4 & B5 & B6 --> B7["Visual update"]
         B7 --> B8["Click Save (navbar)"]
@@ -302,8 +302,8 @@ flowchart TD
     end
 
     subgraph "Lock Behavior (Month Grid Only)"
-        A13 --> L1{"Month locked\nby planning?"}
-        L1 -->|"Yes + not ADMIN"| L2["Grid disabled,\nalert shown:\n'Month is in planning'"]
+        A13 --> L1{"Month locked<br>by planning?"}
+        L1 -->|"Yes + not ADMIN"| L2["Grid disabled,<br>alert shown:<br>'Month is in planning'"]
         L1 -->|"No or ADMIN"| L3["Grid remains editable"]
     end
 

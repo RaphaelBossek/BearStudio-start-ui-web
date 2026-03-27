@@ -14,28 +14,28 @@ This analysis covers the **Treatment Plan** page (`treatmentPlan/index.htmlm` + 
 flowchart TD
     List["Treatment Plan List (SlickerGrid, 17 cols)"]
 
-    List -->|"createTreatmentBtn click"| CreateDlg["createTreatmentDlg (1100px)\nPrefill: countPlanned=65, countInitial=5,\nreportCountInitial=5, reportCountRhytm=20"]
-    List -->|"editTreatmentBtn click\n(row selected)"| EditCheck{"dateStarted\nexists?"}
+    List -->|"createTreatmentBtn click"| CreateDlg["createTreatmentDlg (1100px)<br>Prefill: countPlanned=65, countInitial=5,<br>reportCountInitial=5, reportCountRhytm=20"]
+    List -->|"editTreatmentBtn click<br>(row selected)"| EditCheck{"dateStarted<br>exists?"}
     EditCheck -->|"No (not started)"| CreateDlg
-    EditCheck -->|"Yes (started)"| EditDlg["editTreatmentDlg (1300px)\n3-column layout + positions table"]
+    EditCheck -->|"Yes (started)"| EditDlg["editTreatmentDlg (1300px)<br>3-column layout + positions table"]
     List -->|"deleteMenuBtn click"| DeleteAction["Core.initCrud delete"]
-    List -->|"createNextBtn click"| SelectNextDlg["selectNextDlg (220px)\nDate picker: generate until date"]
+    List -->|"createNextBtn click"| SelectNextDlg["selectNextDlg (220px)<br>Date picker: generate until date"]
     List -->|"downloadTherapyButton click"| ExportCSV["GET /get/TreatmentService/download/"]
 
-    CreateDlg -->|"startTreatment event"| StartAPI["TreatmentService.start(data)\n+ asyncExecutorProgress"]
+    CreateDlg -->|"startTreatment event"| StartAPI["TreatmentService.start(data)<br>+ asyncExecutorProgress"]
     CreateDlg -->|"save (dialog callback)"| SaveAPI["TreatmentService.save(data)"]
     StartAPI -->|"done"| ReopenEdit["Reload grid + reopen in editTreatmentDlg"]
 
     EditDlg -->|"saveTreatement event"| SaveAPI2["TreatmentService.save(data)"]
-    EditDlg -->|"stornoTreatment event"| StornoAPI["TreatmentService.storno(id)\nconfirm: 'Wirklich stornieren?'"]
-    EditDlg -->|"cancelTreatment event"| CancelAPI["TreatmentService.cancel(id)\nconfirm: 'Wirklich durch Arzt abbrechen?'"]
+    EditDlg -->|"stornoTreatment event"| StornoAPI["TreatmentService.storno(id)<br>confirm: 'Wirklich stornieren?'"]
+    EditDlg -->|"cancelTreatment event"| CancelAPI["TreatmentService.cancel(id)<br>confirm: 'Wirklich durch Arzt abbrechen?'"]
     EditDlg -->|"cancel event"| CloseDialog["Close dialog"]
 
-    EditDlg -->|"showReport click\n(position row)"| ConsultViewDlg["consultationDetailsViewDlg\n(consultation/viewDetails.html)"]
-    EditDlg -->|"addTreatmentFiles click"| FileUpload["TreatmentService.upload\n(jsfileupload)"]
+    EditDlg -->|"showReport click<br>(position row)"| ConsultViewDlg["consultationDetailsViewDlg<br>(consultation/viewDetails.html)"]
+    EditDlg -->|"addTreatmentFiles click"| FileUpload["TreatmentService.upload<br>(jsfileupload)"]
 
     SelectNextDlg -->|"submit"| PublishNext["TreatmentService.publishNext(date)"]
-    PublishNext -->|"returns jobId"| JobStatusDlg["jobStatusDlg\n(_include/jobStatusDlg.html)"]
+    PublishNext -->|"returns jobId"| JobStatusDlg["jobStatusDlg<br>(_include/jobStatusDlg.html)"]
 
     StornoAPI -->|"done"| ReloadClose["Reload grid + close dialog"]
     CancelAPI -->|"done"| ReloadClose
@@ -46,20 +46,20 @@ flowchart TD
 ```mermaid
 flowchart TD
     Start["Open createTreatmentDlg"]
-    Start --> FillLeft["Left Column (col-4):\nJob autocomplete, Room, Location,\nBookNumber, jNumber,\ncountPlanned, dateInitial,\nDay+Hour+Minute selects,\nComment, Report config, Dates"]
-    Start --> FillRight["Right Column (col-8):\nExpert autocomplete\n+ Expert Week Calendar"]
+    Start --> FillLeft["Left Column (col-4):<br>Job autocomplete, Room, Location,<br>BookNumber, jNumber,<br>countPlanned, dateInitial,<br>Day+Hour+Minute selects,<br>Comment, Report config, Dates"]
+    Start --> FillRight["Right Column (col-8):<br>Expert autocomplete<br>+ Expert Week Calendar"]
 
-    FillRight -->|"expert selected"| LoadWeek["Load expertWeekTable\nvia profile/expertWeek.js"]
-    LoadWeek --> WeekGrid["7-day week grid\nMO-SU with hourly slots"]
+    FillRight -->|"expert selected"| LoadWeek["Load expertWeekTable<br>via profile/expertWeek.js"]
+    LoadWeek --> WeekGrid["7-day week grid<br>MO-SU with hourly slots"]
 
-    WeekGrid -->|"cell click"| SyncDropdowns["Auto-sync Day + Hour\ndropdowns from clicked cell"]
+    WeekGrid -->|"cell click"| SyncDropdowns["Auto-sync Day + Hour<br>dropdowns from clicked cell"]
     SyncDropdowns -->|"statusTrue visible"| ValidSlot["Green: slot available"]
-    SyncDropdowns -->|"statusTrue NOT visible"| InvalidSlot["Mark Day+Hour as .missing\n(yellow warning)"]
+    SyncDropdowns -->|"statusTrue NOT visible"| InvalidSlot["Mark Day+Hour as .missing<br>(yellow warning)"]
 
-    FillLeft -->|"minute != 00"| MinuteWarning["Show warning:\n'Stellen Sie sicher, dass die\nUhrzeit mit dem Arzt abgeklaert ist.'"]
+    FillLeft -->|"minute != 00"| MinuteWarning["Show warning:<br>'Stellen Sie sicher, dass die<br>Uhrzeit mit dem Arzt abgeklaert ist.'"]
 
-    Start --> SaveBtn["Save button (dialog callback)\n-> TreatmentService.save"]
-    Start --> StartBtn["Start button (startTreatment event)\n-> confirm -> TreatmentService.start\n-> appointments created"]
+    Start --> SaveBtn["Save button (dialog callback)<br>-> TreatmentService.save"]
+    Start --> StartBtn["Start button (startTreatment event)<br>-> confirm -> TreatmentService.start<br>-> appointments created"]
 ```
 
 ### TreatmentState State Machine

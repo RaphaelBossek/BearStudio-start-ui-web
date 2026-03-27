@@ -735,7 +735,7 @@ stateDiagram-v2
     note right of NoReporting: Shows only "Begutachtung Starten" button
 
     ReviewStarted --> ReviewStarted: Click "Save Review"
-    note right of ReviewStarted: Shows markdown editor\n+ Save/Download/Submit buttons
+    note right of ReviewStarted: Shows markdown editor<br>+ Save/Download/Submit buttons
 
     ReviewStarted --> ReviewCompleted: Click "Submit Review"
 
@@ -743,12 +743,12 @@ stateDiagram-v2
 
     state NoReporting {
         [*] --> ShowStartButton
-        ShowStartButton: #startReview visible\n#reviewData hidden
+        ShowStartButton: #startReview visible<br>#reviewData hidden
     }
 
     state ReviewStarted {
         [*] --> EditingMarkdown
-        EditingMarkdown: Expert name + date shown\nMarkdown textarea active\nSave/Download/Submit visible
+        EditingMarkdown: Expert name + date shown<br>Markdown textarea active<br>Save/Download/Submit visible
         EditingMarkdown --> Saving: saveReview click
         Saving --> EditingMarkdown: ConsultationService.saveReporting()
         EditingMarkdown --> Downloading: downloadReview click
@@ -757,7 +757,7 @@ stateDiagram-v2
 
     state ReviewCompleted {
         [*] --> Verified
-        Verified: ConsultationService.verify() called\nDocument reload triggered\nDialog closed
+        Verified: ConsultationService.verify() called<br>Document reload triggered<br>Dialog closed
     }
 ```
 

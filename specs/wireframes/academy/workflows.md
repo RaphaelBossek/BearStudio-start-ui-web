@@ -33,19 +33,19 @@ This diagram shows the end-to-end flow a user follows to create a new support ti
 
 ```mermaid
 flowchart TD
-    A["Support Ticket List Page\n(Grid: id, number, title, queue, priority, state)"] -->|"Create New Ticket"| B["Step 1: Select Level 1 Category\n(Top-level category dropdown)"]
+    A["Support Ticket List Page<br>(Grid: id, number, title, queue, priority, state)"] -->|"Create New Ticket"| B["Step 1: Select Level 1 Category<br>(Top-level category dropdown)"]
 
-    B -->|"Category selected"| C["Step 2: Select Level 2 Category\n(Populated from Level 1 children)"]
+    B -->|"Category selected"| C["Step 2: Select Level 2 Category<br>(Populated from Level 1 children)"]
     C -->|"Category selected"| D{"Level 3 Available?"}
 
-    D -->|"Yes"| E["Step 3: Select Level 3 Category\n(Populated from Level 2 children)"]
-    D -->|"No"| F["Title & Queue Auto-Filled\nfrom concatenated category titles"]
+    D -->|"Yes"| E["Step 3: Select Level 3 Category<br>(Populated from Level 2 children)"]
+    D -->|"No"| F["Title & Queue Auto-Filled<br>from concatenated category titles"]
 
     E -->|"Category selected"| F
 
-    F --> G["Set Priority\n(Default: NORMAL)"]
-    G --> H["Write Message Body\n(Textarea)"]
-    H -->|"Submit"| I["Ticket Created\nRedirect to Ticket List"]
+    F --> G["Set Priority<br>(Default: NORMAL)"]
+    G --> H["Write Message Body<br>(Textarea)"]
+    H -->|"Submit"| I["Ticket Created<br>Redirect to Ticket List"]
 
     B -->|"No selection / Cancel"| A
 
@@ -159,25 +159,25 @@ This diagram shows how an end user navigates the card-based video library, from 
 
 ```mermaid
 flowchart TD
-    A["Video Library Page\n(Category Cards)"] -->|"Browse"| B["Category Card\n(thumbnail, title, total time,\ndescription, watched indicator)"]
+    A["Video Library Page<br>(Category Cards)"] -->|"Browse"| B["Category Card<br>(thumbnail, title, total time,<br>description, watched indicator)"]
 
-    B -->|"Click 'View'"| C["URL Hash Updates\n→ Subcategories & Videos Shown"]
-    C -->|"Has subcategories"| D["Deeper Category Cards\n(hash: ;categoryId segments)"]
+    B -->|"Click 'View'"| C["URL Hash Updates<br>→ Subcategories & Videos Shown"]
+    C -->|"Has subcategories"| D["Deeper Category Cards<br>(hash: ;categoryId segments)"]
     D -->|"Click 'View'"| C
 
     C -->|"Has videos"| E{"Video Type?"}
 
-    E -->|"VIDEO"| F["Full-Viewport Player\nvideo.js (100% width, 91vh)\nNo download, right-click disabled"]
-    E -->|"STREAM"| G["Full-Viewport Iframe\nExternal URL embed"]
-    E -->|"PDF"| H["Opens in New Tab\nImmediate watch time logged"]
+    E -->|"VIDEO"| F["Full-Viewport Player<br>video.js (100% width, 91vh)<br>No download, right-click disabled"]
+    E -->|"STREAM"| G["Full-Viewport Iframe<br>External URL embed"]
+    E -->|"PDF"| H["Opens in New Tab<br>Immediate watch time logged"]
 
-    F -->|"Watch time tracked\nevery 20s + pause/end"| I["Progress Updated\n(Video card: watched indicator)"]
-    G -->|"Watch time tracked\nvia playbackStatusUpdate events"| I
-    H -->|"Immediate tracking\n(position: 0)"| I
+    F -->|"Watch time tracked<br>every 20s + pause/end"| I["Progress Updated<br>(Video card: watched indicator)"]
+    G -->|"Watch time tracked<br>via playbackStatusUpdate events"| I
+    H -->|"Immediate tracking<br>(position: 0)"| I
 
-    I -->|"All videos in category watched"| J["Category Card\nShows Watched Checkmark"]
+    I -->|"All videos in category watched"| J["Category Card<br>Shows Watched Checkmark"]
 
-    C -->|"Back button"| K["Strip Last Hash Segment\n→ Navigate Up"]
+    C -->|"Back button"| K["Strip Last Hash Segment<br>→ Navigate Up"]
     K --> A
 
     style A fill:#e8f4f8,stroke:#2c7bb6
@@ -371,28 +371,28 @@ This diagram shows the admin flow for managing video categories, including the h
 
 ```mermaid
 flowchart TD
-    A["Video Category Management Page\n(Grid: id, title, description, priority)"] -->|"Create / Edit Category"| B["Category Form"]
+    A["Video Category Management Page<br>(Grid: id, title, description, priority)"] -->|"Create / Edit Category"| B["Category Form"]
 
     B --> C["Set Title"]
-    B --> D["Select Parent Category\n(Self-referential autocomplete)"]
+    B --> D["Select Parent Category<br>(Self-referential autocomplete)"]
     B --> E["Set Priority Number"]
-    B --> F["Upload Thumbnail\n(File upload → preview refreshes)"]
-    B --> G["Write Description\n(Textarea)"]
-    B --> H["Manage Jobs Collection\n(JobService autocomplete)"]
+    B --> F["Upload Thumbnail<br>(File upload → preview refreshes)"]
+    B --> G["Write Description<br>(Textarea)"]
+    B --> H["Manage Jobs Collection<br>(JobService autocomplete)"]
 
     H -->|"Add job"| I["Job appears: code + delete icon"]
     I -->|"Delete job"| H
 
-    B -->|"Save"| J["Category Saved\nGrid Refreshes"]
+    B -->|"Save"| J["Category Saved<br>Grid Refreshes"]
 
     A -->|"Open Category"| K["Manage Videos in Category"]
     K --> L["Add Video/Stream Dialog"]
 
-    L --> M["Left: Upload Video\n(Chunked upload flow)"]
-    L --> N["Right: Add Stream\n(Title, length, desc, preview, URL)"]
-    L --> O["Bottom: Video List\n(Thumbnail + title + delete)"]
+    L --> M["Left: Upload Video<br>(Chunked upload flow)"]
+    L --> N["Right: Add Stream<br>(Title, length, desc, preview, URL)"]
+    L --> O["Bottom: Video List<br>(Thumbnail + title + delete)"]
 
-    A -->|"Recalculate Watched"| P["Refresh Watched Status\nfor All Users & Categories"]
+    A -->|"Recalculate Watched"| P["Refresh Watched Status<br>for All Users & Categories"]
 
     style A fill:#e8f4f8,stroke:#2c7bb6
     style J fill:#d4edda,stroke:#155724

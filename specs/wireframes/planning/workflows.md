@@ -22,31 +22,31 @@ The appointment lifecycle is the core flow in the Planning domain. A manager or 
 
 ```mermaid
 flowchart TD
-    A["Appointment List\n(MonthTable Grid)"] -->|"Click + button"| B["Create New Appointment\nDefaults: READY state, type=APPOINTMENT"]
-    A -->|"Click cell"| C["Open Appointment Detail\n(5-tab Dialog)"]
-    A -->|"Click sub-row\n(assigned staff)"| C
-    A -->|"Click filter icon"| D["Filter Panel (Sheet)\nDay / Job / State filters"]
-    A -->|"Click export"| E["Download .xls\nfor Current Month"]
+    A["Appointment List<br>(MonthTable Grid)"] -->|"Click + button"| B["Create New Appointment<br>Defaults: READY state, type=APPOINTMENT"]
+    A -->|"Click cell"| C["Open Appointment Detail<br>(5-tab Dialog)"]
+    A -->|"Click sub-row<br>(assigned staff)"| C
+    A -->|"Click filter icon"| D["Filter Panel (Sheet)<br>Day / Job / State filters"]
+    A -->|"Click export"| E["Download .xls<br>for Current Month"]
 
     B --> C
 
     C --> F{"Which tab?"}
-    F -->|"Info"| G["Edit Details\nDate, Time, Location,\nRoom, Job, Staff Count"]
-    F -->|"Referenced"| H["Manage Patient\nAppointments\n[cond: expertOnly=true]"]
-    F -->|"Patients"| I["Add/Edit/Remove\nPatient Records"]
-    F -->|"Assigned"| J["View Assigned Experts\n+ Action Buttons"]
-    F -->|"Suggestions"| K["Browse Expert Suggestions\n+ Add to Assignment\n[state: READY-LOCKEDIN]"]
+    F -->|"Info"| G["Edit Details<br>Date, Time, Location,<br>Room, Job, Staff Count"]
+    F -->|"Referenced"| H["Manage Patient<br>Appointments<br>[cond: expertOnly=true]"]
+    F -->|"Patients"| I["Add/Edit/Remove<br>Patient Records"]
+    F -->|"Assigned"| J["View Assigned Experts<br>+ Action Buttons"]
+    F -->|"Suggestions"| K["Browse Expert Suggestions<br>+ Add to Assignment<br>[state: READY-LOCKEDIN]"]
 
-    J -->|"Accept/Reserve/\nOverride/Reject/Abort"| L{"Collision\nDetected?"}
+    J -->|"Accept/Reserve/<br>Override/Reject/Abort"| L{"Collision<br>Detected?"}
     L -->|"No"| M["Assignment Updated"]
-    L -->|"Yes"| N["Collision Dialog\nResolve each overlap"]
+    L -->|"Yes"| N["Collision Dialog<br>Resolve each overlap"]
     N --> M
 
     K -->|"Click Add"| L
 
-    G -->|"Click state badge"| O["State Transition Dialog\nSelect next valid state"]
-    O -->|"Admin: Delete"| P["Appointment Deleted\n→ Grid Reloads"]
-    O -->|"Confirm transition"| Q["State Updated\n→ Dialog Refreshes"]
+    G -->|"Click state badge"| O["State Transition Dialog<br>Select next valid state"]
+    O -->|"Admin: Delete"| P["Appointment Deleted<br>→ Grid Reloads"]
+    O -->|"Confirm transition"| Q["State Updated<br>→ Dialog Refreshes"]
 
     D -->|"Filter day/job/state"| A
     D -->|"Reset"| A
@@ -122,10 +122,10 @@ stateDiagram-v2
     CANCELED --> READY
     STORNO --> READY
 
-    note right of READY: Initial state\nAll creation defaults
-    note right of ACTIVE: Running appointment\nStarted by system
-    note right of STORNO: Requires date/time\nin transition dialog
-    note left of ARCHIVED: Terminal state\n(reversible to CLOSED/DONE)
+    note right of READY: Initial state<br>All creation defaults
+    note right of ACTIVE: Running appointment<br>Started by system
+    note right of STORNO: Requires date/time<br>in transition dialog
+    note left of ARCHIVED: Terminal state<br>(reversible to CLOSED/DONE)
 ```
 
 **Key observations:**
@@ -195,16 +195,16 @@ This diagram shows how the appointment type affects what the user sees in the de
 flowchart TD
     Open["Detail Dialog Opens"] --> TypeCheck{"data.type?"}
 
-    TypeCheck -->|"APPOINTMENT"| AP["Show:\n• Expert Only checkbox\n• Location/Room fields\nJob filter = APPOINTMENT\nIcon = stethoscope"]
-    TypeCheck -->|"TREATMENT"| TR["Show:\n• Expert Only checkbox\n• Location/Room fields\nJob filter = APPOINTMENT\nIcon = people-arrows"]
-    TypeCheck -->|"SHIFT"| SH["Show:\n• Price Type select\n• Min Patients input\nJob filter = SHIFT\nIcon = user-injured"]
-    TypeCheck -->|"COUNCIL"| CO["Show:\n• Job Support checkbox\nJob filter = COUNCIL\nIcon = user-friends"]
+    TypeCheck -->|"APPOINTMENT"| AP["Show:<br>• Expert Only checkbox<br>• Location/Room fields<br>Job filter = APPOINTMENT<br>Icon = stethoscope"]
+    TypeCheck -->|"TREATMENT"| TR["Show:<br>• Expert Only checkbox<br>• Location/Room fields<br>Job filter = APPOINTMENT<br>Icon = people-arrows"]
+    TypeCheck -->|"SHIFT"| SH["Show:<br>• Price Type select<br>• Min Patients input<br>Job filter = SHIFT<br>Icon = user-injured"]
+    TypeCheck -->|"COUNCIL"| CO["Show:<br>• Job Support checkbox<br>Job filter = COUNCIL<br>Icon = user-friends"]
 
-    AP --> Expert{"Expert Only\nchecked?"}
+    AP --> Expert{"Expert Only<br>checked?"}
     TR --> Expert
 
-    Expert -->|"Yes"| HideLoc["Hide Location/Room/Customer\nShow Referenced tab"]
-    Expert -->|"No"| ShowLoc["Show Location/Room/Customer\nHide Referenced tab"]
+    Expert -->|"Yes"| HideLoc["Hide Location/Room/Customer<br>Show Referenced tab"]
+    Expert -->|"No"| ShowLoc["Show Location/Room/Customer<br>Hide Referenced tab"]
 
     style SH fill:#fff3cd,stroke:#856404
     style CO fill:#e8f4f8,stroke:#2c7bb6
@@ -230,32 +230,32 @@ Standard users (non-admin) with the `SELF_ASSIGNMENT` permission see a self-serv
 
 ```mermaid
 flowchart TD
-    DASH["Self-Service Dashboard\n[PERM: SELF_ASSIGNMENT]"]
+    DASH["Self-Service Dashboard<br>[PERM: SELF_ASSIGNMENT]"]
 
-    DASH --> A["Available Actions\n(Appointments needing staff)"]
-    DASH --> B["My Next Schedules\n(Upcoming assignments)"]
-    DASH --> C["Treatments\n(Active treatment consultations)"]
-    DASH --> D["For Confirmation\n(Queued appointments to accept/decline)"]
-    DASH --> E["Waiting Actions\n(Pending requests)"]
-    DASH --> F["Rejected Appointments\n(Declined/aborted)"]
+    DASH --> A["Available Actions<br>(Appointments needing staff)"]
+    DASH --> B["My Next Schedules<br>(Upcoming assignments)"]
+    DASH --> C["Treatments<br>(Active treatment consultations)"]
+    DASH --> D["For Confirmation<br>(Queued appointments to accept/decline)"]
+    DASH --> E["Waiting Actions<br>(Pending requests)"]
+    DASH --> F["Rejected Appointments<br>(Declined/aborted)"]
 
-    A -->|"Click Request"| G{"User currently\nbusy?"}
+    A -->|"Click Request"| G{"User currently<br>busy?"}
     G -->|"No"| H["Confirm: Request this appointment?"]
-    G -->|"Yes"| I["Warning: You have\noverlapping schedule"]
+    G -->|"Yes"| I["Warning: You have<br>overlapping schedule"]
     I -->|"Confirm anyway"| H
     I -->|"Cancel"| A
-    H -->|"Confirm"| J["AppointmentService.request()\n→ Page Reloads"]
+    H -->|"Confirm"| J["AppointmentService.request()<br>→ Page Reloads"]
     H -->|"Cancel"| A
 
-    C -->|"Click Show Report"| K["Open Consultation\nDetails View"]
+    C -->|"Click Show Report"| K["Open Consultation<br>Details View"]
 
-    D -->|"Select rows → Accept"| L["Confirm Modal:\nList of selected appointments"]
-    L -->|"Confirm"| M["agreeAll()\n→ Page Reloads"]
-    D -->|"Select rows → Decline"| N["Decline Modal:\nList of selected appointments"]
-    N -->|"Confirm"| O["disagreeAll()\n→ Page Reloads"]
+    D -->|"Select rows → Accept"| L["Confirm Modal:<br>List of selected appointments"]
+    L -->|"Confirm"| M["agreeAll()<br>→ Page Reloads"]
+    D -->|"Select rows → Decline"| N["Decline Modal:<br>List of selected appointments"]
+    N -->|"Confirm"| O["disagreeAll()<br>→ Page Reloads"]
 
     E -->|"Click Cancel Request"| P["Confirm: Remove request?"]
-    P -->|"Confirm"| Q["AppointmentService.cancel()\n→ Page Reloads"]
+    P -->|"Confirm"| Q["AppointmentService.cancel()<br>→ Page Reloads"]
 
     style DASH fill:#e8f4f8,stroke:#2c7bb6
     style J fill:#d4edda,stroke:#155724
@@ -292,21 +292,21 @@ The calendar view provides a visual weekly overview of all scheduled events acro
 
 ```mermaid
 flowchart TD
-    CAL["Calendar View\n(FullCalendar Weekly)"]
+    CAL["Calendar View<br>(FullCalendar Weekly)"]
 
-    CAL --> EVENTS["Events Loaded\nfrom InfoService.getCalendar()"]
+    CAL --> EVENTS["Events Loaded<br>from InfoService.getCalendar()"]
 
-    EVENTS --> RENDER["Each event rendered with:\n• Entity type icon\n• State-based background color\n• HSP-calculated text color"]
+    EVENTS --> RENDER["Each event rendered with:<br>• Entity type icon<br>• State-based background color<br>• HSP-calculated text color"]
 
-    RENDER --> CLICK{"User clicks\nan event"}
+    RENDER --> CLICK{"User clicks<br>an event"}
 
-    CLICK -->|"BIRTHDAY"| MSG["Send Birthday Message\n(Pre-filled subject + body)"]
-    CLICK -->|"HOLIDAY"| NOOP1["No action\n(empty handler)"]
+    CLICK -->|"BIRTHDAY"| MSG["Send Birthday Message<br>(Pre-filled subject + body)"]
+    CLICK -->|"HOLIDAY"| NOOP1["No action<br>(empty handler)"]
     CLICK -->|"PUBLICHOLIDAY"| NOOP2["No action"]
-    CLICK -->|"APPOINTMENT"| NOOP3["Not wired in legacy\n(detail template included\nbut no handler)"]
-    CLICK -->|"SHIFT"| NOOP4["Commented out\n(was: redirect to shift page)"]
+    CLICK -->|"APPOINTMENT"| NOOP3["Not wired in legacy<br>(detail template included<br>but no handler)"]
+    CLICK -->|"SHIFT"| NOOP4["Commented out<br>(was: redirect to shift page)"]
 
-    MSG -->|"Send"| SENT["Message Sent\nto Birthday Person"]
+    MSG -->|"Send"| SENT["Message Sent<br>to Birthday Person"]
 
     style CAL fill:#e8f4f8,stroke:#2c7bb6
     style MSG fill:#d4edda,stroke:#155724
@@ -353,9 +353,9 @@ Experts manage their availability through two complementary grids: a **week grid
 stateDiagram-v2
     [*] --> Unset: Initial state
 
-    Unset: ○ Outline circle\n(No preference)
-    Available: ✓ Checkmark\n(Available)
-    Unavailable: ✗ X mark\n(Not available)
+    Unset: ○ Outline circle<br>(No preference)
+    Available: ✓ Checkmark<br>(Available)
+    Unavailable: ✗ X mark<br>(Not available)
 
     Unset --> Available: Click
     Available --> Unavailable: Click
@@ -378,7 +378,7 @@ sequenceDiagram
     WeekGrid->>Server: Load week data
     Server-->>WeekGrid: Availability slots + appointment overlays
 
-    WeekGrid-->>Expert: Grid with tri-state icons per cell\n+ appointment indicators (colored type icons)
+    WeekGrid-->>Expert: Grid with tri-state icons per cell<br>+ appointment indicators (colored type icons)
 
     Expert->>WeekGrid: Click a cell
     WeekGrid-->>Expert: Cycle: ○ → ✓ → ✗ → ○
@@ -413,7 +413,7 @@ sequenceDiagram
     Server-->>MonthGrid: Day rows + slot data + locked status
 
     alt Month is locked
-        MonthGrid-->>Expert: Red alert banner\nAll cells dimmed (opacity 0.25)\nClick disabled
+        MonthGrid-->>Expert: Red alert banner<br>All cells dimmed (opacity 0.25)<br>Click disabled
     else Month is open
         MonthGrid-->>Expert: Full grid with tri-state cells + appointment indicators
     end
@@ -477,12 +477,12 @@ sequenceDiagram
     participant Server as ActionService
 
     Expert->>ShiftDlg: Open shift detail
-    ShiftDlg-->>Expert: Card header (name, location, date, customer)\nMap with location marker\nActions table
+    ShiftDlg-->>Expert: Card header (name, location, date, customer)<br>Map with location marker<br>Actions table
 
     Expert->>ShiftDlg: Click "Request" on action row
     ShiftDlg->>RequestDlg: Open with action data
 
-    RequestDlg-->>Expert: Date, Start, End times (read-only)\nJob title\nInternal contact (name + phone + message icon)
+    RequestDlg-->>Expert: Date, Start, End times (read-only)<br>Job title<br>Internal contact (name + phone + message icon)
 
     Expert->>RequestDlg: Click phone link
     Note over Expert: Opens native phone dialer
@@ -513,19 +513,19 @@ Two quick-action dialogs support ad-hoc workflow needs: creating unplanned appoi
 
 ```mermaid
 flowchart TD
-    BTN["Dashboard: Ad-Hoc Button\n[PERM: APPOINTMENT_ADHOC]"] --> DLG["Ad-Hoc Dialog Opens"]
+    BTN["Dashboard: Ad-Hoc Button<br>[PERM: APPOINTMENT_ADHOC]"] --> DLG["Ad-Hoc Dialog Opens"]
 
-    DLG --> LOC["1. Select Location\n(autocomplete)"]
-    LOC --> TYPE["2. Select Type\n(Appointment / Shift / Council)"]
-    TYPE -->|"Type selected"| JOB["3. Select Job\n(autocomplete, filtered by type)"]
+    DLG --> LOC["1. Select Location<br>(autocomplete)"]
+    LOC --> TYPE["2. Select Type<br>(Appointment / Shift / Council)"]
+    TYPE -->|"Type selected"| JOB["3. Select Job<br>(autocomplete, filtered by type)"]
     TYPE -->|"Type changed"| RESET["Job field cleared + re-filtered"]
     RESET --> JOB
 
     JOB --> SAVE["Save"]
-    SAVE --> CHECK{"Double booking\ndetected?"}
+    SAVE --> CHECK{"Double booking<br>detected?"}
 
     CHECK -->|"No"| SUCCESS{"State = READY?"}
-    CHECK -->|"Yes"| CONFIRM["Confirm: Continue despite\ndouble booking?"]
+    CHECK -->|"Yes"| CONFIRM["Confirm: Continue despite<br>double booking?"]
 
     CONFIRM -->|"Yes"| FORCE["Retry with force=true"]
     CONFIRM -->|"No"| DLG
@@ -533,7 +533,7 @@ flowchart TD
     FORCE --> SUCCESS
 
     SUCCESS -->|"Yes (admin-created)"| DETAIL["Open Appointment Detail"]
-    SUCCESS -->|"No"| DONE["Dialog Closes\n→ Grid Reloads"]
+    SUCCESS -->|"No"| DONE["Dialog Closes<br>→ Grid Reloads"]
 
     style BTN fill:#e8f4f8,stroke:#2c7bb6
     style CONFIRM fill:#fff3cd,stroke:#856404
@@ -544,16 +544,16 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    BTN["End Appointment Button\n(shift is active)"] --> DLG["End Shift Dialog"]
+    BTN["End Appointment Button<br>(shift is active)"] --> DLG["End Shift Dialog"]
 
-    DLG --> SHOW["Show:\n• Confirmation question\n• Adjust start/end times"]
+    DLG --> SHOW["Show:<br>• Confirmation question<br>• Adjust start/end times"]
 
     SHOW --> SAVE["User confirms → Save"]
-    SAVE --> API["AppointmentService.done(\nid, timeStart, timeEnd, qm)"]
+    SAVE --> API["AppointmentService.done(<br>id, timeStart, timeEnd, qm)"]
 
     API --> CHECK{"Success?"}
     CHECK -->|"Yes"| RELOAD["Page Reloads"]
-    CHECK -->|"No (error)"| REOPEN["Dialog Re-opens\nfor Correction"]
+    CHECK -->|"No (error)"| REOPEN["Dialog Re-opens<br>for Correction"]
     REOPEN --> SHOW
 
     style BTN fill:#e8f4f8,stroke:#2c7bb6

@@ -334,8 +334,8 @@ flowchart LR
     AD[appointmentDetails Dialog]
 
     CAL -->|BIRTHDAY click| SM
-    CAL -.->|APPOINTMENT click\n(not wired)| AD
-    CAL -.->|ACTION click\n(commented out)| ActionDlg[actionDetailsView Dialog]
+    CAL -.->|APPOINTMENT click<br>(not wired)| AD
+    CAL -.->|ACTION click<br>(commented out)| ActionDlg[actionDetailsView Dialog]
 ```
 
 **Included but not wired from calendar**:
