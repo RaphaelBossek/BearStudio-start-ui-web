@@ -1,0 +1,112 @@
+key|german|english|source|status
+FurtherTreatment.FOLLOW_UP|Folgetermin|follow-up appointment|ApplicationResources|OK
+AppointmentPriceType|Schicht|Shift|ApplicationResources|OK
+FurtherTreatment.REFERRAL|Einweisung|hospital admission|ApplicationResources|OK
+AppointmentState|Status|State|ApplicationResources|OK
+Treatment|Therapie|Treatment|ApplicationResources|OK
+AppointmentState.REQUESTED.action|Anfragen||ApplicationResources|MISSING_EN
+Worklog|Stundenaufstellung|Worklog|ApplicationResources|OK
+FurtherTreatment.FOLLOW_UP|Folgetermin|follow-up appointment|ApplicationResources|OK
+action|Dienst|Action|ApplicationResources|OK
+FurtherTreatment.REFERRAL|Einweisung|hospital admission|ApplicationResources|OK
+action.assignment.reserve|Reserviert/Vorgemerkt|Reserved|ApplicationResources|OK
+Treatment|Therapie|Treatment|ApplicationResources|OK
+action.dateEnd|Endzeit||ApplicationResources|MISSING_EN
+Worklog|Stundenaufstellung|Worklog|ApplicationResources|OK
+action.dateStart|Startdatum|Start Date|ApplicationResources|OK
+action|Dienst|Action|ApplicationResources|OK
+action.jobTitle|Dienstleistung|Job|ApplicationResources|OK
+action.assignment.reserve|Reserviert/Vorgemerkt|Reserved|ApplicationResources|OK
+appointment|Sprechstunde|Appointment|ApplicationResources|OK
+action.dateEnd|Endzeit||ApplicationResources|MISSING_EN
+appointment.agreeAppointments|Sind Sie sicher, dass Sie alle Termine annehmen m\u00F6chten?|Are you sure you want to accept all selected appointments?|ApplicationResources|OK
+action.dateStart|Startdatum|Start Date|ApplicationResources|OK
+appointment.cancellation|Stornierung|Cancellation|ApplicationResources|OK
+action.jobTitle|Dienstleistung|Job|ApplicationResources|OK
+appointment.confirmation.confirm|Annehmen|Accept|ApplicationResources|OK
+appointment|Sprechstunde|Appointment|ApplicationResources|OK
+appointment.confirmation.decline|Ablehnen|Decline|ApplicationResources|OK
+appointment.agreeAppointments|Sind Sie sicher, dass Sie alle Termine annehmen m\u00F6chten?|Are you sure you want to accept all selected appointments?|ApplicationResources|OK
+appointment.disagreeAppointments|Sind Sie sicher, dass Sie alle Termine ablehnen m\u00F6chten?|Are you sure you want to decline all selected appointments?|ApplicationResources|OK
+appointment.cancellation|Stornierung|Cancellation|ApplicationResources|OK
+appointment.firstContact|Erstkontakt|First Contact|ApplicationResources|OK
+appointment.confirmation.confirm|Annehmen|Accept|ApplicationResources|OK
+appointment.prefered|Bevorzugt|Prefered|ApplicationResources|OK
+appointment.confirmation.decline|Ablehnen|Decline|ApplicationResources|OK
+appointment.sendEmail|E-Mail senden|Send email|ApplicationResources|OK
+appointment.disagreeAppointments|Sind Sie sicher, dass Sie alle Termine ablehnen m\u00F6chten?|Are you sure you want to decline all selected appointments?|ApplicationResources|OK
+appointment.transfer|\u00DCberweisung|Transfer|ApplicationResources|OK
+appointment.firstContact|Erstkontakt|First Contact|ApplicationResources|OK
+appointment.unknownfollowup|Unbekannt|Unknown|ApplicationResources|OK
+appointment.prefered|Bevorzugt|Prefered|ApplicationResources|OK
+appointmentPlan.generateUntil|Generieren bis|Generate until|ApplicationResources|OK
+appointment.sendEmail|E-Mail senden|Send email|ApplicationResources|OK
+appointment.transfer|\u00DCberweisung|Transfer|ApplicationResources|OK
+button.apply|Anwenden|Apply|BaseResources|OK
+appointment.unknownfollowup|Unbekannt|Unknown|ApplicationResources|OK
+button.reset|Zur\u00FCcksetzen|Reset|BaseResources|OK
+appointmentPlan.generateUntil|Generieren bis|Generate until|ApplicationResources|OK
+consultation|Patientendokumentation|Consultation|ApplicationResources|OK
+button.apply|Anwenden|Apply|BaseResources|OK
+consultation.booknumber|Buchnummer|Book number|ApplicationResources|OK
+consultation.jnumber|JNummer|Inmate Number|ApplicationResources|OK
+button.reset|Zur\u00FCcksetzen|Reset|BaseResources|OK
+consultation.medicalTrainedJVAPersonnel|medizinisches Personal|medical trained JVA personnel|ApplicationResources|OK
+consultation|Patientendokumentation|Consultation|ApplicationResources|OK
+consultation.booknumber|Buchnummer|Book number|ApplicationResources|OK
+consultation.requireReporting|\u00C4L Vorgelegt||ApplicationResources|MISSING_EN
+consultation.jnumber|JNummer|Inmate Number|ApplicationResources|OK
+correct.the.time.text|Bitte korrigieren Sie die Zeiten mit den tats\u00F6chlich geleisteteten.|Please correct the times with the times actually worked.|ApplicationResources|OK
+consultation.medicalTrainedJVAPersonnel|medizinisches Personal|medical trained JVA personnel|ApplicationResources|OK
+council|Konsil|Council|ApplicationResources|OK
+customer|Kunde|Customer|ApplicationResources|OK
+consultation.requireReporting|\u00C4L Vorgelegt||ApplicationResources|MISSING_EN
+dash.MyNextSchedules|Meine n\u00E4chsten Eins\u00E4tze|My next schedules|ApplicationResources|OK
+correct.the.time.text|Bitte korrigieren Sie die Zeiten mit den tats\u00F6chlich geleisteteten.|Please correct the times with the times actually worked.|ApplicationResources|OK
+dash.abortedSchedules|Abgesagte/Abgelehnte Eins\u00E4tze|Canceled/rejected schedules|ApplicationResources|OK
+council|Konsil|Council|ApplicationResources|OK
+dash.adHocAppointmentCreate|Ad-Hoc Termin Erstellen|Create Ad-hoc appointment|ApplicationResources|OK
+customer|Kunde|Customer|ApplicationResources|OK
+dash.forConfirmation|Zur Best\u00E4tigung|For confirmation|ApplicationResources|OK
+dash.MyNextSchedules|Meine n\u00E4chsten Eins\u00E4tze|My next schedules|ApplicationResources|OK
+dash.scheduleNotFull|Nicht volle Eins\u00E4tze|Unfilled schedules|ApplicationResources|OK
+dash.abortedSchedules|Abgesagte/Abgelehnte Eins\u00E4tze|Canceled/rejected schedules|ApplicationResources|OK
+dash.adHocAppointmentCreate|Ad-Hoc Termin Erstellen|Create Ad-hoc appointment|ApplicationResources|OK
+dialog.nonefound|Keine Daten gefunden.|No Data found.|BaseResources|OK
+dash.forConfirmation|Zur Best\u00E4tigung|For confirmation|ApplicationResources|OK
+end.date|End-Datum|End date|ApplicationResources|OK
+dash.scheduleNotFull|Nicht volle Eins\u00E4tze|Unfilled schedules|ApplicationResources|OK
+holiday.request|Abwesenheit melden|Report absence|ApplicationResources|OK
+jobId|Dienstleistung|Job-Id|ApplicationResources|OK
+dialog.nonefound|Keine Daten gefunden.|No Data found.|BaseResources|OK
+end.date|End-Datum|End date|ApplicationResources|OK
+label.apply|\u00DCbernehmen|Apply|BaseResources|OK
+holiday.request|Abwesenheit melden|Report absence|ApplicationResources|OK
+label.comment|Kommentar|Comment|BaseResources|OK
+jobId|Dienstleistung|Job-Id|ApplicationResources|OK
+location|Ort|Location|ApplicationResources|OK
+label.apply|\u00DCbernehmen|Apply|BaseResources|OK
+log.consultationDlg|Konsultationsprotokolle|Consultation logs|ApplicationResources|OK
+month|Monate|Month|ApplicationResources|OK
+label.comment|Kommentar|Comment|BaseResources|OK
+month.summary.title|Monat|Month|ApplicationResources|OK
+location|Ort|Location|ApplicationResources|OK
+monthClosed.by|"Monat geschlossen von"|Month closed by|ApplicationResources|OK
+log.consultationDlg|Konsultationsprotokolle|Consultation logs|ApplicationResources|OK
+operation.ended.text|Soll der Einsatz wirklich beendet werden? Danach k\u00F6nnen keine weiteren Patientendokumentationen erstellt werden.|Should the operation really be ended? No further patient documentation can be created afterward.|ApplicationResources|OK
+month|Monate|Month|ApplicationResources|OK
+questionaire|Fragebogen|Questionaire|ApplicationResources|OK
+month.summary.title|Monat|Month|ApplicationResources|OK
+request|Anfragen|Request|ApplicationResources|OK
+monthClosed.by|"Monat geschlossen von"|Month closed by|ApplicationResources|OK
+shift|Bereitschaftsdienst|Shift|ApplicationResources|OK
+operation.ended.text|Soll der Einsatz wirklich beendet werden? Danach k\u00F6nnen keine weiteren Patientendokumentationen erstellt werden.|Should the operation really be ended? No further patient documentation can be created afterward.|ApplicationResources|OK
+shiftPlan|Bereitschaftsplan|Shift-Plan|ApplicationResources|OK
+questionaire|Fragebogen|Questionaire|ApplicationResources|OK
+templateExportDlg.title|Exportieren|Export|ApplicationResources|OK
+request|Anfragen|Request|ApplicationResources|OK
+year|Jahr|Year|ApplicationResources|OK
+shift|Bereitschaftsdienst|Shift|ApplicationResources|OK
+shiftPlan|Bereitschaftsplan|Shift-Plan|ApplicationResources|OK
+templateExportDlg.title|Exportieren|Export|ApplicationResources|OK
+year|Jahr|Year|ApplicationResources|OK

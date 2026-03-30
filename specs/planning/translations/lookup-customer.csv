@@ -1,0 +1,220 @@
+key|german|english|source|status
+MedicationType.WALDAPOTHEKE|Waldapotheke|Waldapotheke|ApplicationResources|OK
+EquipmentStatus|Status|Status|ApplicationResources|OK
+PatientDataType.EXTERNAL|Extern|External|ApplicationResources|OK
+MedicationType|Apotheke|Apothecary|ApplicationResources|OK
+PatientDataType.EXTERNAL_BASISWEB|BASIS-Web|BASIS-Web|ApplicationResources|OK
+MedicationType.ROTE_LISTE|Rote Liste|Red List|ApplicationResources|OK
+PatientDataType.INTERNAL|Intern (E-Mail)|Internal (E-Mail)|ApplicationResources|OK
+MedicationType.WALDAPOTHEKE|Waldapotheke|Waldapotheke|ApplicationResources|OK
+PatientDataType.INTERNAL_DAV|Intern (WebDAV)|Internal (Dav)|ApplicationResources|OK
+PatientDataType.EXTERNAL|Extern|External|ApplicationResources|OK
+PatientDataType.INTERNAL_POST|Intern (Web Post)|Internal (Web-Post)|ApplicationResources|OK
+PatientDataType.EXTERNAL_BASISWEB|BASIS-Web|BASIS-Web|ApplicationResources|OK
+PatientDataType.INTERNAL_SECUREBOX|BayernCloud (SecureBox)|BayernCloud (SecureBox)|ApplicationResources|OK
+PatientDataType.INTERNAL|Intern (E-Mail)|Internal (E-Mail)|ApplicationResources|OK
+PatientDataType.INTERNAL_VCCLOUD|VideoClinic OwnCloud|VideoClinic OwnCloud|ApplicationResources|OK
+PatientDataType.INTERNAL_DAV|Intern (WebDAV)|Internal (Dav)|ApplicationResources|OK
+address.bank|Kreditinstitut|Bank|ApplicationResources|OK
+PatientDataType.INTERNAL_POST|Intern (Web Post)|Internal (Web-Post)|ApplicationResources|OK
+address.bic|BIC|BIC|ApplicationResources|OK
+PatientDataType.INTERNAL_SECUREBOX|BayernCloud (SecureBox)|BayernCloud (SecureBox)|ApplicationResources|OK
+address.iban|IBAN|IBAN|ApplicationResources|OK
+PatientDataType.INTERNAL_VCCLOUD|VideoClinic OwnCloud|VideoClinic OwnCloud|ApplicationResources|OK
+address.uid|Umsatzsteuernummer|sales tax id|ApplicationResources|OK
+address.bank|Kreditinstitut|Bank|ApplicationResources|OK
+billing.rebate|Rabatt|Discount|ApplicationResources|OK
+address.bic|BIC|BIC|ApplicationResources|OK
+book.number|Buchnummermaske|Book number mask|ApplicationResources|OK
+address.iban|IBAN|IBAN|ApplicationResources|OK
+button.apply|Anwenden|Apply|BaseResources|OK
+address.uid|Umsatzsteuernummer|sales tax id|ApplicationResources|OK
+billing.rebate|Rabatt|Discount|ApplicationResources|OK
+button.reset|Zur\u00FCcksetzen|Reset|BaseResources|OK
+book.number|Buchnummermaske|Book number mask|ApplicationResources|OK
+contact|Adressbuch|Contact|ApplicationResources|OK
+button.apply|Anwenden|Apply|BaseResources|OK
+contact.address|Stra\u00DFe|Address|ApplicationResources|OK
+contact.apt|T\u00FCr|Door|ApplicationResources|OK
+button.reset|Zur\u00FCcksetzen|Reset|BaseResources|OK
+contact.birthday|Geburtstag|Birthday|ApplicationResources|OK
+contact|Adressbuch|Contact|ApplicationResources|OK
+contact.birthplace|Geburtsort|Birthplace|ApplicationResources|OK
+contact.address|Stra\u00DFe|Address|ApplicationResources|OK
+contact.cellularnumber|Handy|Mobile|ApplicationResources|OK
+contact.apt|T\u00FCr|Door|ApplicationResources|OK
+contact.city|Stadt|City|ApplicationResources|OK
+contact.birthday|Geburtstag|Birthday|ApplicationResources|OK
+contact.country|Land|Country|ApplicationResources|OK
+contact.birthplace|Geburtsort|Birthplace|ApplicationResources|OK
+contact.cellularnumber|Handy|Mobile|ApplicationResources|OK
+contact.email|||ApplicationResources|MISSING_DE
+contact.city|Stadt|City|ApplicationResources|OK
+contact.faxnumber|Fax|Fax|ApplicationResources|OK
+contact.country|Land|Country|ApplicationResources|OK
+contact.house|Nr.|House|ApplicationResources|OK
+contact.level|Stiege|Level|ApplicationResources|OK
+contact.email|||ApplicationResources|MISSING_DE
+contact.nationality|Nationalit\u00E4t|Nationality|ApplicationResources|OK
+contact.faxnumber|Fax|Fax|ApplicationResources|OK
+contact.primaryemail|E-Mail|E-Mail|ApplicationResources|OK
+contact.house|Nr.|House|ApplicationResources|OK
+contact.level|Stiege|Level|ApplicationResources|OK
+contact.private|Privat|Home|ApplicationResources|OK
+contact.nationality|Nationalit\u00E4t|Nationality|ApplicationResources|OK
+contact.ssn|SozVers Nr|Insurance No|ApplicationResources|OK
+contact.primaryemail|E-Mail|E-Mail|ApplicationResources|OK
+contact.state|Bundesland|State|ApplicationResources|OK
+contact.private|Privat|Home|ApplicationResources|OK
+contact.street|Stra\u00DFe|street|ApplicationResources|OK
+contact.ssn|SozVers Nr|Insurance No|ApplicationResources|OK
+contact.street2|Zusatz|Additional|ApplicationResources|OK
+contact.state|Bundesland|State|ApplicationResources|OK
+contact.type|Typ|Type|ApplicationResources|OK
+contact.street|Stra\u00DFe|street|ApplicationResources|OK
+contact.webpage|Homepage|Webpage|ApplicationResources|OK
+contact.street2|Zusatz|Additional|ApplicationResources|OK
+contact.workphone|Telefonnummer|Phone|ApplicationResources|OK
+contact.type|Typ|Type|ApplicationResources|OK
+contact.zipcode|PLZ|Zip|ApplicationResources|OK
+contact.webpage|Homepage|Webpage|ApplicationResources|OK
+customer|Kunde|Customer|ApplicationResources|OK
+contact.workphone|Telefonnummer|Phone|ApplicationResources|OK
+customer.end|Ende|End|ApplicationResources|OK
+contact.zipcode|PLZ|Zip|ApplicationResources|OK
+customer.name|Name|Name|ApplicationResources|OK
+customer|Kunde|Customer|ApplicationResources|OK
+customer.representative|Kontakt|Representative|ApplicationResources|OK
+customer.end|Ende|End|ApplicationResources|OK
+dateFilter.fromDate|Von|from|ApplicationResources|OK
+customer.name|Name|Name|ApplicationResources|OK
+dateFilter.toDate|Bis|to|ApplicationResources|OK
+customer.representative|Kontakt|Representative|ApplicationResources|OK
+equipment.accessUser|Benutzer zugreifen|Access User|ApplicationResources|OK
+dateFilter.fromDate|Von|from|ApplicationResources|OK
+equipment.dateExit|Austrittsdatum|Exit Date|ApplicationResources|OK
+dateFilter.toDate|Bis|to|ApplicationResources|OK
+equipment.dateLastInventory|Inventar letztes Datum|Inventory Last Date |ApplicationResources|OK
+equipment.accessUser|Benutzer zugreifen|Access User|ApplicationResources|OK
+equipment.dateSetup|Einrichtungsdatum|Setup Date|ApplicationResources|OK
+equipment.dateExit|Austrittsdatum|Exit Date|ApplicationResources|OK
+equipment.initialPassword|Anf\u00E4ngliches Passwort|Initial Password|ApplicationResources|OK
+equipment.dateLastInventory|Inventar letztes Datum|Inventory Last Date |ApplicationResources|OK
+equipment.initialUser|Erstbenutzer|Initial User|ApplicationResources|OK
+equipment.dateSetup|Einrichtungsdatum|Setup Date|ApplicationResources|OK
+equipment.inventoryNumber|Inventar Nr.|Inventory Number|ApplicationResources|OK
+equipment.initialPassword|Anf\u00E4ngliches Passwort|Initial Password|ApplicationResources|OK
+equipment.manufacturer|Hersteller|Manufacturer|ApplicationResources|OK
+equipment.initialUser|Erstbenutzer|Initial User|ApplicationResources|OK
+equipment.name|Ger\u00E4tename|Device Name|ApplicationResources|OK
+equipment.inventoryNumber|Inventar Nr.|Inventory Number|ApplicationResources|OK
+equipment.product|Produkt|Product|ApplicationResources|OK
+equipment.manufacturer|Hersteller|Manufacturer|ApplicationResources|OK
+equipment.room|R\u00E4ume|Room|ApplicationResources|OK
+equipment.name|Ger\u00E4tename|Device Name|ApplicationResources|OK
+equipment.serialNumber|Seriennummer|Serial Number|ApplicationResources|OK
+equipment.product|Produkt|Product|ApplicationResources|OK
+jobId|Dienstleistung|Job-Id|ApplicationResources|OK
+equipment.room|R\u00E4ume|Room|ApplicationResources|OK
+jobPriceList|Preisliste|Pricelist|ApplicationResources|OK
+equipment.serialNumber|Seriennummer|Serial Number|ApplicationResources|OK
+label.comment|Kommentar|Comment|BaseResources|OK
+jobId|Dienstleistung|Job-Id|ApplicationResources|OK
+jobPriceList|Preisliste|Pricelist|ApplicationResources|OK
+label.description|Beschreibung|Description|BaseResources|OK
+label.comment|Kommentar|Comment|BaseResources|OK
+label.id|ID|Id|BaseResources|OK
+label.description|Beschreibung|Description|BaseResources|OK
+label.name|Name|Name|BaseResources|OK
+label.no|nein|no|BaseResources|OK
+label.id|ID|Id|BaseResources|OK
+label.start|Start|start|ApplicationResources|OK
+label.name|Name|Name|BaseResources|OK
+label.until|Bis|Until|BaseResources|OK
+label.no|nein|no|BaseResources|OK
+label.yes|ja|yes|BaseResources|OK
+label.start|Start|start|ApplicationResources|OK
+location|Ort|Location|ApplicationResources|OK
+label.until|Bis|Until|BaseResources|OK
+location.address|Adresse|Address|ApplicationResources|OK
+location.building|Geb\u00E4ude|Building|ApplicationResources|OK
+label.yes|ja|yes|BaseResources|OK
+location|Ort|Location|ApplicationResources|OK
+location.check.label|\u00DCbermittlung von Patientendaten aktiv|Active transmission of patient data|ApplicationResources|OK
+location.address|Adresse|Address|ApplicationResources|OK
+location.city|Ort|City|ApplicationResources|OK
+location.contact|Kontakt|Contact|ApplicationResources|OK
+location.building|Geb\u00E4ude|Building|ApplicationResources|OK
+location.contactMedical|Medizinischer Dienst|Medical Contact|ApplicationResources|OK
+location.check.label|\u00DCbermittlung von Patientendaten aktiv|Active transmission of patient data|ApplicationResources|OK
+location.country|Land|Country|ApplicationResources|OK
+location.city|Ort|City|ApplicationResources|OK
+location.contact|Kontakt|Contact|ApplicationResources|OK
+location.externalId|JVA/Externe Id||ApplicationResources|MISSING_EN
+location.latitude|Breitengrad|Latitude|ApplicationResources|OK
+location.contactMedical|Medizinischer Dienst|Medical Contact|ApplicationResources|OK
+location.longitude|L\u00E4ngengrad|Longitude|ApplicationResources|OK
+location.country|Land|Country|ApplicationResources|OK
+location.path|Pfad|Path|ApplicationResources|OK
+location.externalId|JVA/Externe Id||ApplicationResources|MISSING_EN
+location.latitude|Breitengrad|Latitude|ApplicationResources|OK
+location.phone|||ApplicationResources|MISSING_DE
+location.longitude|L\u00E4ngengrad|Longitude|ApplicationResources|OK
+location.representative|Leiter/in|Representative|ApplicationResources|OK
+location.path|Pfad|Path|ApplicationResources|OK
+location.upload.file|Testdatei hochladen |Upload test file |ApplicationResources|OK
+location.zip|PLZ|ZIP|ApplicationResources|OK
+location.phone|||ApplicationResources|MISSING_DE
+login.password|Passwort|Password|ApplicationResources|OK
+location.representative|Leiter/in|Representative|ApplicationResources|OK
+patient.externalDescription|Externe Datenbeschreibung|External data description|ApplicationResources|OK
+location.upload.file|Testdatei hochladen |Upload test file |ApplicationResources|OK
+patientDataAccess|Patientendaten \u00FCbermitteln|Submit patient data|ApplicationResources|OK
+location.zip|PLZ|ZIP|ApplicationResources|OK
+patientDataType|Patientendaten|Patient data type|ApplicationResources|OK
+login.password|Passwort|Password|ApplicationResources|OK
+room|Raum|Room|ApplicationResources|OK
+patient.externalDescription|Externe Datenbeschreibung|External data description|ApplicationResources|OK
+room.description|Bezeichnung|Description|ApplicationResources|OK
+patientDataAccess|Patientendaten \u00FCbermitteln|Submit patient data|ApplicationResources|OK
+room.name|Raumname|Room Name|ApplicationResources|OK
+patientDataType|Patientendaten|Patient data type|ApplicationResources|OK
+room.number|Raumnummer|Room Number|ApplicationResources|OK
+room|Raum|Room|ApplicationResources|OK
+user|Benutzer|User|ApplicationResources|OK
+room.description|Bezeichnung|Description|ApplicationResources|OK
+user.firstName|Vorname|First Name|ApplicationResources|OK
+room.name|Raumname|Room Name|ApplicationResources|OK
+user.lastName|Nachname|Last Name|ApplicationResources|OK
+room.number|Raumnummer|Room Number|ApplicationResources|OK
+user.locked|Ausgesperrt|Locked|ApplicationResources|OK
+user|Benutzer|User|ApplicationResources|OK
+user.notificationPerMail|Nachrichten per E-Mail weiterleiten|Send notifications per mail|ApplicationResources|OK
+user.firstName|Vorname|First Name|ApplicationResources|OK
+user.role|Rolle|Role|ApplicationResources|OK
+user.lastName|Nachname|Last Name|ApplicationResources|OK
+user.role.ADMIN|System-Admin |ADMIN|ApplicationResources|OK
+user.locked|Ausgesperrt|Locked|ApplicationResources|OK
+user.role.ADMIN_INTERN|Interner Admin |ADMIN_INTERN|ApplicationResources|OK
+user.notificationPerMail|Nachrichten per E-Mail weiterleiten|Send notifications per mail|ApplicationResources|OK
+user.role.ADMIN_KUNDE|Kunde Admin |ADMIN_KUNDE|ApplicationResources|OK
+user.role|Rolle|Role|ApplicationResources|OK
+user.role.KUNDE|Kunde Teamleiter/Serviceleiter |KUNDE|ApplicationResources|OK
+user.role.ADMIN|System-Admin |ADMIN|ApplicationResources|OK
+user.role.LEITER_INTERN|Interner Leiter |LEITER_INTERN|ApplicationResources|OK
+user.role.ADMIN_INTERN|Interner Admin |ADMIN_INTERN|ApplicationResources|OK
+user.role.REGISTERED|Neu Registriert|REGISTERED|ApplicationResources|OK
+user.role.ADMIN_KUNDE|Kunde Admin |ADMIN_KUNDE|ApplicationResources|OK
+user.role.STANDARD|Standard|STANDARD|ApplicationResources|OK
+user.role.KUNDE|Kunde Teamleiter/Serviceleiter |KUNDE|ApplicationResources|OK
+user.username|Benutzername|Username|ApplicationResources|OK
+user.role.LEITER_INTERN|Interner Leiter |LEITER_INTERN|ApplicationResources|OK
+userEnabled|Aktiv|Enabled|ApplicationResources|OK
+user.role.REGISTERED|Neu Registriert|REGISTERED|ApplicationResources|OK
+userEnabled.no|Nein|no|ApplicationResources|OK
+user.role.STANDARD|Standard|STANDARD|ApplicationResources|OK
+userEnabled.yes|Ja|yes|ApplicationResources|OK
+user.username|Benutzername|Username|ApplicationResources|OK
+userEnabled|Aktiv|Enabled|ApplicationResources|OK
+userEnabled.no|Nein|no|ApplicationResources|OK
+userEnabled.yes|Ja|yes|ApplicationResources|OK

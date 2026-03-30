@@ -263,6 +263,50 @@ The `wireframe-plan-{domain}.md` in `specs/analysis/` should link to the workflo
 | **padding** | `padding:16` (single), `padding:[10,14]` (horiz/vert) | Both work | Single number = all sides, array = [vertical, horizontal] |
 | **cornerRadius** | `cornerRadius:8` (single), `cornerRadius:[8,8,0,0]` (per-corner) | Both work | Array = [topLeft, topRight, bottomRight, bottomLeft] |
 
+### Critical Requirements (Batch 2 Extension Fix — 2026-03-30)
+
+| Issue | Problem | Solution | Verification |
+|:---|:---|:---|:---|
+| **Background color** | Frames render black when no fill defined | **ALWAYS** set `fill:"$--bg"` on root frame | Screenshot shows white background |
+| **Variable format** | Variables use `--` prefix (not `$--`) in definition | Define as `"--bg":{"type":"color","value":"#FFFFFF"}`; reference as `"$--bg"` | Check `basisweb-wizard.pen` |
+| **Note overlap** | Annotation notes overlap main wireframe frame | Position notes **outside** frame bounds (e.g., x: 1460 for 1440px frame) | Visual inspection of screenshot |
+| **File creation** | Direct JSON write doesn't load variables into Pencil memory | Use Python script to write JSON, then `python3 specs/wireframes/_save_pen.py` to load into Pencil | Round-trip node count verification |
+| **Stroke format** | Missing `align:"inside"` causes border rendering issues | Always use `stroke:{align:"inside",thickness:1,fill:"$--border"}` | Consistent with Batch 1 files |
+
+**Recommended workflow for new .pen files:**
+
+1. **Study reference:** Read `specs/wireframes/interfaces/dashboard/basisweb-wizard.pen` for exact variable format and structure
+2. **Create JSON:** Use Python script to write valid `.pen` JSON with:
+   - Variables using `--` prefix (e.g., `"--bg"`)
+   - Root frame with explicit `fill:"$--bg"`
+   - Proper stroke format with `align:"inside"`
+   - Notes positioned outside frame bounds
+3. **Load into Pencil:** Run `python3 specs/wireframes/_save_pen.py <path>` to extract and reload
+4. **Verify:** Use `pencil_get_screenshot` to confirm white background and no overlap
+5. **Export PNGs:** Use `pencil_export_nodes` with scale=2
+
+### Critical Requirements (Batch 2 Extension Fix — 2026-03-30)
+
+| Issue | Problem | Solution | Verification |
+|:---|:---|:---|:---|
+| **Background color** | Frames render black when no fill defined | **ALWAYS** set `fill:"$--bg"` on root frame | Screenshot shows white background |
+| **Variable format** | Variables use `--` prefix (not `$--`) in definition | Define as `"--bg":{"type":"color","value":"#FFFFFF"}`; reference as `"$--bg"` | Check `basisweb-wizard.pen` |
+| **Note overlap** | Annotation notes overlap main wireframe frame | Position notes **outside** frame bounds (e.g., x: 1460 for 1440px frame) | Visual inspection of screenshot |
+| **File creation** | Direct JSON write doesn't load variables into Pencil memory | Use Python script to write JSON, then `python3 specs/wireframes/_save_pen.py` to load into Pencil | Round-trip node count verification |
+| **Stroke format** | Missing `align:"inside"` causes border rendering issues | Always use `stroke:{align:"inside",thickness:1,fill:"$--border"}` | Consistent with Batch 1 files |
+
+**Recommended workflow for new .pen files:**
+
+1. **Study reference:** Read `specs/wireframes/interfaces/dashboard/basisweb-wizard.pen` for exact variable format and structure
+2. **Create JSON:** Use Python script to write valid `.pen` JSON with:
+   - Variables using `--` prefix (e.g., `"--bg"`)
+   - Root frame with explicit `fill:"$--bg"`
+   - Proper stroke format with `align:"inside"`
+   - Notes positioned outside frame bounds
+3. **Load into Pencil:** Run `python3 specs/wireframes/_save_pen.py <path>` to extract and reload
+4. **Verify:** Use `pencil_get_screenshot` to confirm white background and no overlap
+5. **Export PNGs:** Use `pencil_export_nodes` with scale=2
+
 ---
 
 ## Batched Execution Order
@@ -288,20 +332,23 @@ All 79 wireframes across 10 batches are grouped as above, ordered by complexity 
 
 ---
 
-### Batch 2 — System: Includes & Notification (12 wireframes)
+### Batch 2 — System: Includes & Notification + Application Shell (15 wireframes)
 
 **Complexity:** Low–Medium  
-**Dependencies:** None (shared components, login flow, notifications)  
+**Dependencies:** None (shared components, login flow, notifications, application shell)  
 **Domain plans:**
-- [`specs/analysis/system/includes/wireframe-plan.md`](../analysis/system/includes/wireframe-plan.md) *(complete, expand to add Shadcn mapping)*
+- [`specs/analysis/system/includes/wireframe-plan.md`](../analysis/system/includes/wireframe-plan.md) *(complete, expand to add Shadcn mapping + site.htmlm shell)*
 - [`specs/analysis/system/notification/wireframe-plan.md`](../analysis/system/notification/wireframe-plan.md) *(complete, expand to add Shadcn mapping)*
 - [`specs/analysis/system/dashboard/wireframe-plan-system.md`](../analysis/system/dashboard/wireframe-plan-system.md) *(stub — expand fully)*
 
 **Steps:**
-1. Expand all 3 wireframe plans (add Shadcn mapping, execution steps, annotation legend)
-2. Create `specs/wireframes/system/workflows.md` — user-oriented diagrams (login TOTP flow, notification lifecycle, session timeout recovery)
+1. Expand all 3 wireframe plans (add Shadcn mapping, execution steps, annotation legend, **application shell layout**)
+2. Create `specs/wireframes/system/workflows.md` — user-oriented diagrams (login TOTP flow, notification lifecycle, session timeout recovery, **shell navigation pattern**)
 3. **User review checkpoint** — get approval before proceeding to wireframes
 4. Create `.pen` files:
+   - `specs/wireframes/system/shell/app-shell-layout.pen` ← **NEW: Application shell with sidebar nav, user menu, shared dialogs**
+   - `specs/wireframes/system/shell/global-navigation.pen` ← **NEW: Sitemap-driven sidebar navigation (collapsed/expanded states)**
+   - `specs/wireframes/system/shell/user-menu.pen` ← **NEW: User dropdown with role switch, settings, logout**
    - `specs/wireframes/system/includes/navbar.pen`
    - `specs/wireframes/system/includes/loading-states.pen`
    - `specs/wireframes/system/includes/quick-filter.pen`
@@ -318,7 +365,51 @@ All 79 wireframes across 10 batches are grouped as above, ordered by complexity 
 6. Generate ASCII representations in analysis docs
 7. Update `specs/analysis/wireframes-index.md`
 
-**Status:** ✅ Complete (12/12 wireframes, 12 .pen files, 9–61 KB each)
+**Status:** ✅ Complete (12/12 wireframes, 12 .pen files, 9–61 KB each)  
+**Shell wireframes:** ⏳ Pending (3/3 wireframes — add to Batch 2 as extension)
+
+---
+
+### Batch 2 Extension — Application Shell Wireframes (3 wireframes)
+
+**Complexity:** Medium  
+**Dependencies:** None (foundational layout component)  
+**Domain plan:** [`specs/analysis/system/includes/wireframe-plan.md`](../analysis/system/includes/wireframe-plan.md) (update to include shell section)
+
+**Steps:**
+1. Update wireframe plan to add **Application Shell** section with Shadcn mapping:
+   - Sidebar nav → Shadcn `Sheet` (mobile) + custom sidebar component (desktop)
+   - User menu → Shadcn `DropdownMenu`
+   - Role switch → Shadcn `Dialog` + `Select`
+   - Loading spinner → React Query `isLoading` states (no wireframe needed)
+   - Upload dialog → Shadcn `Dialog` + file input
+   - Maintenance toast → Sonner `Toast`
+2. Create `specs/wireframes/system/shell/workflows.md` — navigation flow, role switch flow, maintenance mode flow
+3. **User review checkpoint**
+4. Create `.pen` files:
+   - `specs/wireframes/system/shell/app-shell-layout.pen` — Full application shell (1440px width) showing:
+     - Sidebar navigation (expanded state, 240px width)
+     - Top bar with search, user menu, version
+     - Main content area placeholder
+     - Maintenance toast (bottom-right)
+     - Loading spinner overlay (centered modal)
+   - `specs/wireframes/system/shell/global-navigation.pen` — Sidebar navigation detail:
+     - Logo area (full + icon variants)
+     - Main nav items with icons, colors, active states
+     - Submenu expansion (accordion pattern)
+     - Collapsed state (icon-only, 64px width)
+   - `specs/wireframes/system/shell/user-menu.pen` — User dropdown dialog:
+     - User display name + role badge
+     - Settings link
+     - Security link
+     - Role switch trigger (if permitted)
+     - Bug report link
+     - Logout link
+5. Export all to PNG
+6. Embed screenshots in `specs/wireframes/system/shell/workflows.md`
+7. Update `specs/analysis/wireframes-index.md`
+
+**Status:** ✅ Complete (3/3 wireframes, 3 .pen files, 4 .png exports, embedded in `workflows.md`)
 
 ---
 
@@ -544,12 +635,125 @@ All 79 wireframes across 10 batches are grouped as above, ordered by complexity 
 
 ---
 
+### Batch 10 — Planning: Appointment Admin, Support, Shift, Council (20 wireframes)
+
+**Complexity:** Medium–High
+**Dependencies:** Wireframe plans exist but need expansion with Shadcn mapping
+**Domain plans:**
+- [`specs/analysis/planning/appointment-admin/wireframe-plan.md`](../analysis/planning/appointment-admin/wireframe-plan.md) *(complete, expand to add Shadcn mapping)*
+- [`specs/analysis/planning/appointment-support/wireframe-plan.md`](../analysis/planning/appointment-support/wireframe-plan.md) *(complete, expand to add Shadcn mapping)*
+- [`specs/analysis/planning/shift/wireframe-plan.md`](../analysis/planning/shift/wireframe-plan.md) *(complete, expand to add Shadcn mapping)*
+- [`specs/analysis/planning/council/wireframe-plan.md`](../analysis/planning/council/wireframe-plan.md) *(complete, expand to add Shadcn mapping)*
+
+**Steps:**
+1. Expand all 4 wireframe plans (add Shadcn mapping, execution steps, annotation legend)
+2. Create `specs/wireframes/planning/workflows.md` — user-oriented diagrams for each subdomain:
+   - **appointment-admin**: Inline consultation flow, calculation workflow, QM integration, export/email/print flows
+   - **appointment-support**: CDR call tracking lifecycle, assignment management, close-month workflow
+   - **shift**: Shift scheduling flow, shift plan creation, apply-plan workflow
+   - **council**: Council scheduling flow, council plan creation, apply-plan workflow
+3. **User review checkpoint** — get approval before proceeding to wireframes
+4. Create `.pen` files in priority order:
+
+   **appointment-admin** (8 wireframes) — High priority:
+   - `specs/wireframes/planning/appointment-admin/inline-consultation.pen`
+   - `specs/wireframes/planning/appointment-admin/calculation.pen`
+   - `specs/wireframes/planning/appointment-admin/qm-dialog.pen`
+   - `specs/wireframes/planning/appointment-admin/export-dialog.pen`
+   - `specs/wireframes/planning/appointment-admin/email-dialog.pen`
+   - `specs/wireframes/planning/appointment-admin/print-preview.pen`
+   - `specs/wireframes/planning/appointment-admin/job-status.pen`
+   - `specs/wireframes/planning/appointment-admin/state-legend.pen`
+
+   **appointment-support** (5 wireframes) — Medium priority:
+   - `specs/wireframes/planning/appointment-support/cdr-call-list.pen`
+   - `specs/wireframes/planning/appointment-support/cdr-call-detail.pen`
+   - `specs/wireframes/planning/appointment-support/cdr-assignment-crud.pen`
+   - `specs/wireframes/planning/appointment-support/close-month.pen`
+   - `specs/wireframes/planning/appointment-support/cdr-status-legend.pen`
+
+   **shift** (4 wireframes) — Medium priority:
+   - `specs/wireframes/planning/shift/shift-list.pen`
+   - `specs/wireframes/planning/shift/shift-plan-detail.pen`
+   - `specs/wireframes/planning/shift/apply-plan.pen`
+   - `specs/wireframes/planning/shift/state-legend.pen`
+
+   **council** (3 wireframes) — Medium priority:
+   - `specs/wireframes/planning/council/council-list.pen`
+   - `specs/wireframes/planning/council/council-plan-detail.pen`
+   - `specs/wireframes/planning/council/apply-plan.pen`
+
+5. Export all to PNG
+6. Embed screenshots in `specs/wireframes/planning/workflows.md`
+7. Update `specs/analysis/wireframes-index.md`
+
+**Status:** ⏳ Pending (0/20 wireframes)
+
+---
+
+### Batch 10 — Planning: Appointment Admin, Support, Shift, Council (20 wireframes)
+
+**Complexity:** Medium–High
+**Dependencies:** Wireframe plans exist but need expansion with Shadcn mapping
+**Domain plans:**
+- [`specs/analysis/planning/appointment-admin/wireframe-plan.md`](../analysis/planning/appointment-admin/wireframe-plan.md) *(complete, expand to add Shadcn mapping)*
+- [`specs/analysis/planning/appointment-support/wireframe-plan.md`](../analysis/planning/appointment-support/wireframe-plan.md) *(complete, expand to add Shadcn mapping)*
+- [`specs/analysis/planning/shift/wireframe-plan.md`](../analysis/planning/shift/wireframe-plan.md) *(complete, expand to add Shadcn mapping)*
+- [`specs/analysis/planning/council/wireframe-plan.md`](../analysis/planning/council/wireframe-plan.md) *(complete, expand to add Shadcn mapping)*
+
+**Steps:**
+1. Expand all 4 wireframe plans (add Shadcn mapping, execution steps, annotation legend)
+2. Create `specs/wireframes/planning/workflows.md` — user-oriented diagrams for each subdomain:
+   - **appointment-admin**: Inline consultation flow, calculation workflow, QM integration, export/email/print flows
+   - **appointment-support**: CDR call tracking lifecycle, assignment management, close-month workflow
+   - **shift**: Shift scheduling flow, shift plan creation, apply-plan workflow
+   - **council**: Council scheduling flow, council plan creation, apply-plan workflow
+3. **User review checkpoint** — get approval before proceeding to wireframes
+4. Create `.pen` files in priority order:
+
+   **appointment-admin** (8 wireframes) — High priority:
+   - `specs/wireframes/planning/appointment-admin/inline-consultation.pen`
+   - `specs/wireframes/planning/appointment-admin/calculation.pen`
+   - `specs/wireframes/planning/appointment-admin/qm-dialog.pen`
+   - `specs/wireframes/planning/appointment-admin/export-dialog.pen`
+   - `specs/wireframes/planning/appointment-admin/email-dialog.pen`
+   - `specs/wireframes/planning/appointment-admin/print-preview.pen`
+   - `specs/wireframes/planning/appointment-admin/job-status.pen`
+   - `specs/wireframes/planning/appointment-admin/state-legend.pen`
+
+   **appointment-support** (5 wireframes) — Medium priority:
+   - `specs/wireframes/planning/appointment-support/cdr-call-list.pen`
+   - `specs/wireframes/planning/appointment-support/cdr-call-detail.pen`
+   - `specs/wireframes/planning/appointment-support/cdr-assignment-crud.pen`
+   - `specs/wireframes/planning/appointment-support/close-month.pen`
+   - `specs/wireframes/planning/appointment-support/cdr-status-legend.pen`
+
+   **shift** (4 wireframes) — Medium priority:
+   - `specs/wireframes/planning/shift/shift-list.pen`
+   - `specs/wireframes/planning/shift/shift-plan-detail.pen`
+   - `specs/wireframes/planning/shift/apply-plan.pen`
+   - `specs/wireframes/planning/shift/state-legend.pen`
+
+   **council** (3 wireframes) — Medium priority:
+   - `specs/wireframes/planning/council/council-list.pen`
+   - `specs/wireframes/planning/council/council-plan-detail.pen`
+   - `specs/wireframes/planning/council/apply-plan.pen`
+
+5. Export all to PNG
+6. Embed screenshots in `specs/wireframes/planning/workflows.md`
+7. Update `specs/analysis/wireframes-index.md`
+
+**Status:** ⏳ Pending (0/20 wireframes)
+
+---
+
 ## Overview: All Batches
 
 | Batch | Domain(s) | Wireframes | Complexity | Status | .pen files on disk |
 |:---|:---|:---|:---|:---|:---|
 | **Batch 1** | Interfaces | 8 | Low | ✅ 8/8 | 1 file (8 frames), 93 KB |
 | **Batch 2** | System | 12 | Low–Medium | ✅ 12/12 | 12 files, 9–61 KB |
+| **Batch 2 Ext** | System (Shell) | 3 | Medium | ✅ 3/3 | 3 files, 5–17 KB |
 | **Batch 2b** | System (Sysconfig) | 5 | Medium | ✅ 5/5 | 5 files, 5–13 KB |
 | **Batch 3** | Treatment (QM + dialogs) | 8 | Low–Medium | ✅ 8/8 | 8 files, 9–76 KB |
 | **Batch 4** | Planning | 13 | High | ✅ 13/13 | 9 files (appointment-details has 4 sub-frames) |
@@ -558,7 +762,8 @@ All 79 wireframes across 10 batches are grouped as above, ordered by complexity 
 | **Batch 7** | Accounting | 6 | Medium | ✅ 6/6 | 6 files, 35–94 KB |
 | **Batch 8** | Customer | 5 | Medium | ✅ 5/5 | 5 files, 27–45 KB |
 | **Batch 9** | Academy | 4 | Low–Medium | ✅ 4/4 | 4 files, 33–72 KB |
-| **TOTAL** | — | **79** | — | **79 done** | **58 files** |
+| **Batch 10** | Planning (admin, support, shift, council) | 20 | Medium–High | ⏳ 0/20 | Pending |
+| **TOTAL** | — | **102** | — | **79 done, 23 pending** | **58 files** |
 
 ---
 

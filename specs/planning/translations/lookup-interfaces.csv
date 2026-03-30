@@ -1,0 +1,10 @@
+key|german|english|source|status
+consultation.jnumber|JNummer|Inmate Number|ApplicationResources|OK
+ConsultationType|Konsultationstyp|Consultation type|ApplicationResources|OK
+consultationWizard.start|Behandlung Starten|Start Consultation|ApplicationResources|OK
+appointment|Sprechstunde|Appointment|ApplicationResources|OK
+location|Ort|Location|ApplicationResources|OK
+consultation.booknumber|Buchnummer|Book number|ApplicationResources|OK
+consultation.jnumber|JNummer|Inmate Number|ApplicationResources|OK
+consultationWizard.start|Behandlung Starten|Start Consultation|ApplicationResources|OK
+location|Ort|Location|ApplicationResources|OK

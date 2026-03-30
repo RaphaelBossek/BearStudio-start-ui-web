@@ -1,0 +1,8 @@
+action.dateDone
+action.dateLast
+action.dateStart
+action.timeWatched
+label.id
+user
+userVideoHistory.sessions
+video

@@ -1,0 +1,36 @@
+key|german|english|source|status
+button.delete|L\u00F6schen|Delete|BaseResources|OK
+action.groups|Gruppen|Groups|ApplicationResources|OK
+button.next|Weiter|Next|BaseResources|OK
+button.delete|L\u00F6schen|Delete|BaseResources|OK
+button.save|Speichern|Save|BaseResources|OK
+contact.cellularnumber|Handy|Mobile|ApplicationResources|OK
+button.next|Weiter|Next|BaseResources|OK
+dialog.changePassword|Passwort \u00C4ndern|Change Password|BaseResources|OK
+button.save|Speichern|Save|BaseResources|OK
+docFinder.physician|Arzt|Physician|ApplicationResources|OK
+contact.cellularnumber|Handy|Mobile|ApplicationResources|OK
+employee|\u00C4rzte|Doctors|ApplicationResources|OK
+dialog.changePassword|Passwort \u00C4ndern|Change Password|BaseResources|OK
+employee.dialogtitle|Experten|Experts|ApplicationResources|OK
+employee.signature|Unterschrift|Signature|ApplicationResources|OK
+docFinder.physician|Arzt|Physician|ApplicationResources|OK
+group.right|Rechte|Right|ApplicationResources|OK
+employee|\u00C4rzte|Doctors|ApplicationResources|OK
+employee.dialogtitle|Experten|Experts|ApplicationResources|OK
+label.name|Name|Name|BaseResources|OK
+employee.signature|Unterschrift|Signature|ApplicationResources|OK
+login.totp.device|||ApplicationResources|MISSING_DE
+group.right|Rechte|Right|ApplicationResources|OK
+login.verifyTOTPCode|||ApplicationResources|MISSING_DE
+label.name|Name|Name|BaseResources|OK
+onboardingStep|Onboarding-Schritt|Onboarding step|ApplicationResources|OK
+login.totp.device|||ApplicationResources|MISSING_DE
+security.start|Aktivierung Starten|Start activation|ApplicationResources|OK
+skill|Skill|Skill|ApplicationResources|OK
+login.verifyTOTPCode|||ApplicationResources|MISSING_DE
+user.doctor|Arzt|Doctor|ApplicationResources|OK
+onboardingStep|Onboarding-Schritt|Onboarding step|ApplicationResources|OK
+security.start|Aktivierung Starten|Start activation|ApplicationResources|OK
+skill|Skill|Skill|ApplicationResources|OK
+user.doctor|Arzt|Doctor|ApplicationResources|OK

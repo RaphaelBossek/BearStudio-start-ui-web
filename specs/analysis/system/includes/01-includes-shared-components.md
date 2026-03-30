@@ -475,3 +475,707 @@ Base Page Template
 | Quick Filter | **Medium** | Needed for patient/expert list views; implement as reusable `AlphabetFilter` component |
 | Job Status Dialog | **High** | Core to async operations (exports, plan generation); needs `useJobStatus` hook with polling |
 | Browser Notifications | **Medium** | Useful for background task completion; implement as `useNotifications` hook + Sonner toasts |
+
+---
+
+## 7. Application Shell (`site.htmlm`)
+
+### Overview
+
+The `site.htmlm` file is the **main application shell** that wraps all pages. It provides the global layout structure including the sidebar navigation, user menu, and shared infrastructure dialogs.
+
+### HTMLM Header Metadata
+
+```json
+[
+  {"field":"content","method":"content","params":[]},
+  {"field":"maintenance", "method":"serviceCall","params":[{"service":"UserService","method":"isMaintenance"}]},
+  {"field":"role", "method":"serviceCall","params":[{"service":"UserService","method":"getRole"}]},
+  {"field":"unreadMessages", "method":"serviceCall","params":[{"service":"InfoService","method":"getUnreadMessages"}]},
+  {"field":"bugReport", "method":"template","params":["_include/bugReport/bugReport.html"]},
+  {"field":"roleSwitch", "method":"authority","params":["USERS_CREATE"]},
+  {"field":"isCustomer", "method":"serviceCall","params":[{"service":"UserService","method":"checkRole","param":["[\"KUNDE\"]"]}]},
+  {"field":"isEmployee", "method":"serviceCall","params":[{"service":"UserService","method":"checkRole","param":["[\"LEITER_INTERN\", \"ADMIN\", \"ADMIN_INTERN\", \"STANDARD\"]"]}]},
+  {"field":"isAnEmployee", "method":"serviceCall","params":[{"service":"UserService","method":"checkRole","param":["[\"LEITER_INTERN\", \"ADMIN\", \"ADMIN_INTERN\",\"STANDARD\", \"REGISTERED\"]"]}]},
+  {"field":"isACustomer", "method":"serviceCall","params":[{"service":"UserService","method":"checkRole","param":["[\"KUNDE\",\"ADMIN_KUNDE\",\"ADMIN_INTERN\",\"ADMIN\"]"]}]},
+  {"field":"isCustomerAdmin", "method":"serviceCall","params":[{"service":"UserService","method":"checkRole","param":["[\"ADMIN_KUNDE\"]"]}]},
+  {"field":"isAdmin", "method":"serviceCall","params":[{"service":"UserService","method":"checkRole","param":["[\"LEITER_INTERN\", \"ADMIN\", \"ADMIN_INTERN\"]"]}]},
+  {"field":"isAnAdmin", "method":"serviceCall","params":[{"service":"UserService","method":"checkRole","param":["[\"ADMIN_KUNDE\",\"ADMIN_INTERN\",\"ADMIN\"]"]}]},
+  {"field":"isStandard", "method":"serviceCall","params":[{"service":"UserService","method":"checkRole","param":["[\"STANDARD\"]"]}]}
+]
+```
+
+### Permission/Authority Variables
+
+| Variable | Method | Parameters | Purpose |
+|----------|--------|------------|---------|
+| `roleSwitch` | `authority` | `["USERS_CREATE"]` | Shows role switcher dialog if user can create users |
+| `isCustomer` | `serviceCall` | `["KUNDE"]` | User has customer role only |
+| `isEmployee` | `serviceCall` | Internal roles | User is internal employee (excludes REGISTERED) |
+| `isAnEmployee` | `serviceCall` | Internal + REGISTERED | User is any employee including registered |
+| `isACustomer` | `serviceCall` | Customer roles | User has any customer-related role |
+| `isCustomerAdmin` | `serviceCall` | `["ADMIN_KUNDE"]` | User is customer admin |
+| `isAdmin` | `serviceCall` | Internal admin roles | User is internal administrator |
+| `isAnAdmin` | `serviceCall` | All admin roles | User has any admin role (internal or customer) |
+| `isStandard` | `serviceCall` | `["STANDARD"]` | User has standard role only |
+
+### Body Data Attributes
+
+```html
+<body data-service="{{prefix}}/service" 
+      data-role="{{role}}" 
+      data-reqid="{{csrf}}" 
+      data-unread="{{unreadMessages}}" 
+      data-user="{{userName}}" 
+      data-standard="{{isStandard}}" 
+      data-admin="{{isAdmin}}" 
+      data-customer="{{isCustomer}}" 
+      data-customerAdmin="{{isCustomerAdmin}}">
+```
+
+These attributes bootstrap the application state for client-side JavaScript.
+
+---
+
+### Global Navigation Sidebar (`#globalNav`)
+
+#### Structure
+
+```
+#globalNav (nav)
+├── #logo (span)
+│   ├── logo256.png (200px)
+│   └── logo64.png (icon, 48px)
+├── #mainNav (div)
+│   └── ul.nav.flex-column.colored
+│       └── {{#sitemap}}  ← Server-generated menu
+│           └── li.menuitem
+│               ├── .mainItem (clickable parent)
+│               │   ├── a href="{{prefix}}{{url}}"
+│               │   │   ├── i.fa.fa-fw.fa-{{icon}}
+│               │   │   └── span {{i18n title}}
+│               │   └── span.opener (toggle submenu)
+│               └── ul.submenu
+│                   └── {{#sub}}
+│                       └── li
+│                           └── .subItem
+│                               └── a href (same structure as parent)
+└── #globalMenu (ul, right side)
+    ├── Search toggle
+    ├── Full-text search input
+    ├── User dropdown menu
+    └── Version display
+```
+
+#### Sitemap-Driven Navigation
+
+The main navigation is **runtime-generated** from a server-side sitemap structure:
+
+```mustache
+{{#sitemap}}
+  <li class="menuitem bg-{{color}} {{#active}}active{{/active}}">
+    <div class="mainItem">
+      <a href="{{prefix}}{{url}}" title="{{title}}">
+        <i class="fa fa-fw fa-{{icon}}"></i>
+        <span>{{i18n title}}</span>
+      </a>
+      <span class="opener"><i class="fa fa-bars"></i></span>
+    </div>
+    <ul class="submenu">
+    {{#sub}}
+      <li class="bg-{{color}}">
+        <div class="subItem {{#active}}active{{/active}}">
+          <a href="{{prefix}}{{url}}" id="{{id}}">
+            <i class="fa fa-fw fa-{{icon}}"></i>
+            <span>{{i18n title}}</span>
+          </a>
+        </div>
+      </li>
+    {{/sub}}
+    </ul>
+  </li>
+{{/sitemap}}
+```
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `color` | `string` | Background color class suffix (e.g. `color-appointment`, `color-administration`) |
+| `url` | `string` | Relative URL path from app root |
+| `title` | `string` | i18n key for menu item label |
+| `icon` | `string` | FontAwesome icon name (without `fa-` prefix) |
+| `active` | `boolean` | Highlights the menu item as current location |
+| `sub[]` | `Array<SitemapItem>` | Nested submenu items (same structure) |
+| `id` | `string` | DOM element ID for submenu items |
+
+#### User Dropdown Menu
+
+```html
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
+    <i class="fas fa-fw fa-user" title="{{role}}"></i>
+    <span class="full">{{user.displayName}}</span>
+  </a>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="profile.html">
+      <i class="fa fa-fw fa-cog"></i> {{i18n.administration.settings}}
+    </a>
+    <a class="dropdown-item" href="userSecurity.html">
+      <i class="fa fa-fw fa-id-card"></i> {{i18n.administration.security}}
+    </a>
+    {{#roleSwitch}}
+    <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#roleSwitchDlg">
+      <i class="far fa-fw fa-user-tag"></i> {{role}}
+    </a>
+    {{/roleSwitch}}
+    {{>bugReport}}
+    <a class="dropdown-item" href="logout" id="logout">
+      <i class="fa fa-fw fa-sign-out"></i> {{i18n.logout}}
+    </a>
+  </div>
+</li>
+```
+
+| Menu Item | Icon | Permission Gate | Target |
+|-----------|------|-----------------|--------|
+| Settings | `fa-cog` | Always visible | `profile.html` |
+| Security | `fa-id-card` | Always visible | `userSecurity.html` |
+| Role Switch | `fa-user-tag` | `roleSwitch=true` | Opens `#roleSwitchDlg` |
+| Bug Report | (from include) | Always visible | Opens bug report dialog |
+| Logout | `fa-sign-out` | Always visible | `logout` endpoint |
+
+---
+
+### Shared Infrastructure Dialogs
+
+#### 1. Loading Spinner (`#spinner`)
+
+```html
+<div class="modal fade" id="spinner" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body" style="text-align:center">
+        <i class="fas fa-circle-notch fa-spin fa-3x"></i>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+**Purpose**: Global loading overlay shown during async operations.  
+**React mapping**: Replace with React Query `isLoading` states + Suspense boundaries or a `useLoadingOverlay` hook.
+
+#### 2. Role Switch Dialog (`#roleSwitchDlg`)
+
+```html
+<div class="modal fade" id="roleSwitchDlg" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body" style="text-align:center">
+        Current Role: {{role}}<br/>
+        <form>
+          <select id="roleSwitchSelection">
+            <option value="">---</option>
+            <option value="REGISTERED">Neu Registriert</option>
+            <option value="STANDARD">Standard</option>
+            <option value="LEITER_INTERN">Interner Leiter</option>
+            <option value="ADMIN_INTERN">Interner Admin</option>
+            <option value="KUNDE">Kunde</option>
+            <option value="ADMIN_KUNDE">Kunde Admin</option>
+            <option value="ADMIN">System-Admin</option>
+          </select>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+**Purpose**: Allows users with `USERS_CREATE` permission to switch their active role.  
+**Role options**: 7 roles (REGISTERED, STANDARD, LEITER_INTERN, ADMIN_INTERN, KUNDE, ADMIN_KUNDE, ADMIN)  
+**React mapping**: Shadcn `Dialog` + `Select` component; role switch via auth context update.
+
+#### 3. Upload Dialog (`#uploadDlg`)
+
+```html
+<div class="modal fade" id="uploadDlg" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header"><h5 class="modal-title">Upload</h5></div>
+      <div class="modal-body" style="text-align:center">
+        <input type="file" id="uploadDlgLoadFile" style="display:none" multiple/>
+        <button class="btn btn-sm btn-primary" id="uploadDlgBtn">Select a file</button>
+        <div class="progress" id="uploadDlgProgress">
+          <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 100%"></div>
+        </div>
+        <div id="uploadDlgStatus"></div>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+**Purpose**: Generic file upload dialog with progress bar.  
+**React mapping**: Shadcn `Dialog` + `Progress` component; use `react-dropzone` or native file input with `fetch` upload.
+
+---
+
+### Maintenance Mode Alert
+
+```html
+{{#maintenance}}
+<div class="toast" style="opacity:1;right:20px;bottom:20px;position:absolute">
+  <div class="toast-header">
+    <svg><rect fill="#ff3a00"/></svg>
+    <strong>{{i18n.error.maintenance.title}}</strong>
+    <small><i class="fa fa-hard-hat fa-2x"></i></small>
+  </div>
+  <div class="toast-body">{{.}}</div>
+</div>
+{{/maintenance}}
+```
+
+**Purpose**: Shows a persistent toast notification when the system is in maintenance mode.  
+**Condition**: Rendered only when `maintenance=true` (from `UserService.isMaintenance` service call).  
+**React mapping**: Sonner toast or Shadcn `Toast` component; poll maintenance status on app mount.
+
+---
+
+### Full-Text Search
+
+```html
+<li class="full">
+  <div class="input-group">
+    <span id="clearSiteSearch" class="input-group-text"><i class="fa fa-search"></i></span>
+    <input type="password" style="display: none"/>  ← Prevents browser password autofill
+    <input type="text" id="siteSearch" autocomplete="off" class="form-control" placeholder="{{i18n.label.search}}"/>
+  </div>
+</li>
+```
+
+**Purpose**: Global search input in the top navigation bar.  
+**Behavior**: Toggle visibility via search icon click; triggers full-text search across all entities.  
+**React mapping**: Command palette (`cmd+k`) pattern with Shadcn `Command` component.
+
+---
+
+### React Migration Summary
+
+| Shell Component | Legacy Implementation | Modern React Approach |
+|-----------------|----------------------|----------------------|
+| **Sidebar Nav** | `{{sitemap}}` Mustache iteration | TanStack Router `useMatches()` + recursive menu component |
+| **User Menu** | Bootstrap dropdown | Shadcn `DropdownMenu` with auth context |
+| **Role Switch** | Modal with `<select>` | Shadcn `Dialog` + `Select`; role switch via auth context |
+| **Loading Spinner** | Bootstrap modal overlay | React Query `isLoading` + Suspense boundaries |
+| **Upload Dialog** | Bootstrap modal + file input | Shadcn `Dialog` + `react-dropzone` |
+| **Maintenance Toast** | Bootstrap toast (server-driven) | Sonner toast + polling `UserService.isMaintenance` |
+| **Full-Text Search** | Text input in nav | Shadcn `Command` palette (`cmd+k` pattern) |
+| **Bug Report** | Included template | Separate dialog component (see bugReport section below) |
+| **Permission Gates** | `{{#variable}}` Mustache blocks | `userHasPermission()` checks + conditional rendering |
+
+---
+
+### Sitemap Structure (Extracted from Legacy)
+
+> **Note**: The actual sitemap is server-generated. Below is the structure extracted from analyzing the navigation patterns across all modules.
+
+| Main Menu Item | Icon | Color | Submenu Items |
+|----------------|------|-------|---------------|
+| Dashboard | `fa-home` | `dashboard` | (none) |
+| Appointments | `fa-calendar` | `appointment` | List, Calendar, Week View, Month View |
+| Consultations | `fa-heartbeat` | `consultation` | List, Templates, Quick Consultation |
+| Treatments | `fa-stethoscope` | `treatment` | List, Plans, Categories |
+| Shifts | `fa-user-clock` | `shift` | List, Shift Plans |
+| Council | `fa-users` | `council` | List, Council Plans |
+| Patients | `fa-user-injured` | `patient` | List, Quick Filter |
+| Experts/Staff | `fa-user-md` | `staff` | List, Availability, Skills |
+| Customers | `fa-building` | `customer` | List, Locations, Contacts |
+| Rooms | `fa-door-open` | `room` | List, Room Plans |
+| Equipment | `fa-toolbox` | `equipment` | List, Equipment Groups |
+| Invoices | `fa-file-invoice-dollar` | `invoice` | List, Receivers, Worklog |
+| Reports | `fa-chart-bar` | `report` | Various reports |
+| Administration | `fa-cog` | `admin` | Users, Groups, Jobs, System Config |
+| Support | `fa-headset` | `support` | Tickets, Video Library |
+
+**Color mapping**: Each module has a corresponding `bg-color-{module}` CSS class defined in `_include/categories.css`.
+
+---
+
+## 8. Bug Report Dialog (`_include/bugReport/bugReport.html`)
+
+### Template Include (from site.htmlm header)
+
+```json
+{"field":"bugReport", "method":"template","params":["_include/bugReport/bugReport.html"]}
+```
+
+### Integration Point
+
+The bug report dialog is included in the user dropdown menu:
+
+```html
+{{>bugReport}}
+```
+
+### Component Structure
+
+> **Note**: Full analysis of `bugReport.html` requires reading the separate file. This section is a placeholder for the detailed bug report component analysis.
+
+**Known features** (from `analyse-ui-elements.md` lessons learned):
+- **html2canvas screen capture** — Automatic screenshot with canvas annotation overlay
+- **Drawing tools** — Rectangle, freehand pencil, color picker
+- **Description field** — Textarea for bug description
+- **Submit action** — Sends screenshot + description to support system
+
+**React mapping**: Shadcn `Dialog` + canvas component for annotation; `html2canvas` library for screenshots.
+
+---
+
+## 7. Application Shell (`site.htmlm`)
+
+### Overview
+
+The `site.htmlm` file is the **main application shell** that wraps all pages. It provides the global layout structure including the sidebar navigation, user menu, and shared infrastructure dialogs.
+
+### HTMLM Header Metadata
+
+```json
+[
+  {"field":"content","method":"content","params":[]},
+  {"field":"maintenance", "method":"serviceCall","params":[{"service":"UserService","method":"isMaintenance"}]},
+  {"field":"role", "method":"serviceCall","params":[{"service":"UserService","method":"getRole"}]},
+  {"field":"unreadMessages", "method":"serviceCall","params":[{"service":"InfoService","method":"getUnreadMessages"}]},
+  {"field":"bugReport", "method":"template","params":["_include/bugReport/bugReport.html"]},
+  {"field":"roleSwitch", "method":"authority","params":["USERS_CREATE"]},
+  {"field":"isCustomer", "method":"serviceCall","params":[{"service":"UserService","method":"checkRole","param":["[\"KUNDE\"]"]}]},
+  {"field":"isEmployee", "method":"serviceCall","params":[{"service":"UserService","method":"checkRole","param":["[\"LEITER_INTERN\", \"ADMIN\", \"ADMIN_INTERN\", \"STANDARD\"]"]}]},
+  {"field":"isAnEmployee", "method":"serviceCall","params":[{"service":"UserService","method":"checkRole","param":["[\"LEITER_INTERN\", \"ADMIN\", \"ADMIN_INTERN\",\"STANDARD\", \"REGISTERED\"]"]}]},
+  {"field":"isACustomer", "method":"serviceCall","params":[{"service":"UserService","method":"checkRole","param":["[\"KUNDE\",\"ADMIN_KUNDE\",\"ADMIN_INTERN\",\"ADMIN\"]"]}]},
+  {"field":"isCustomerAdmin", "method":"serviceCall","params":[{"service":"UserService","method":"checkRole","param":["[\"ADMIN_KUNDE\"]"]}]},
+  {"field":"isAdmin", "method":"serviceCall","params":[{"service":"UserService","method":"checkRole","param":["[\"LEITER_INTERN\", \"ADMIN\", \"ADMIN_INTERN\"]"]}]},
+  {"field":"isAnAdmin", "method":"serviceCall","params":[{"service":"UserService","method":"checkRole","param":["[\"ADMIN_KUNDE\",\"ADMIN_INTERN\",\"ADMIN\"]"]}]},
+  {"field":"isStandard", "method":"serviceCall","params":[{"service":"UserService","method":"checkRole","param":["[\"STANDARD\"]"]}]}
+]
+```
+
+### Permission/Authority Variables
+
+| Variable | Method | Parameters | Purpose |
+|----------|--------|------------|---------|
+| `roleSwitch` | `authority` | `["USERS_CREATE"]` | Shows role switcher dialog if user can create users |
+| `isCustomer` | `serviceCall` | `["KUNDE"]` | User has customer role only |
+| `isEmployee` | `serviceCall` | Internal roles | User is internal employee (excludes REGISTERED) |
+| `isAnEmployee` | `serviceCall` | Internal + REGISTERED | User is any employee including registered |
+| `isACustomer` | `serviceCall` | Customer roles | User has any customer-related role |
+| `isCustomerAdmin` | `serviceCall` | `["ADMIN_KUNDE"]` | User is customer admin |
+| `isAdmin` | `serviceCall` | Internal admin roles | User is internal administrator |
+| `isAnAdmin` | `serviceCall` | All admin roles | User has any admin role (internal or customer) |
+| `isStandard` | `serviceCall` | `["STANDARD"]` | User has standard role only |
+
+### Body Data Attributes
+
+```html
+<body data-service="{{prefix}}/service" 
+      data-role="{{role}}" 
+      data-reqid="{{csrf}}" 
+      data-unread="{{unreadMessages}}" 
+      data-user="{{userName}}" 
+      data-standard="{{isStandard}}" 
+      data-admin="{{isAdmin}}" 
+      data-customer="{{isCustomer}}" 
+      data-customerAdmin="{{isCustomerAdmin}}">
+```
+
+These attributes bootstrap the application state for client-side JavaScript.
+
+---
+
+### Global Navigation Sidebar (`#globalNav`)
+
+#### Structure
+
+```
+#globalNav (nav)
+├── #logo (span)
+│   ├── logo256.png (200px)
+│   └── logo64.png (icon, 48px)
+├── #mainNav (div)
+│   └── ul.nav.flex-column.colored
+│       └── {{#sitemap}}  ← Server-generated menu
+│           └── li.menuitem
+│               ├── .mainItem (clickable parent)
+│               │   ├── a href="{{prefix}}{{url}}"
+│               │   │   ├── i.fa.fa-fw.fa-{{icon}}
+│               │   │   └── span {{i18n title}}
+│               │   └── span.opener (toggle submenu)
+│               └── ul.submenu
+│                   └── {{#sub}}
+│                       └── li
+│                           └── .subItem
+│                               └── a href (same structure as parent)
+└── #globalMenu (ul, right side)
+    ├── Search toggle
+    ├── Full-text search input
+    ├── User dropdown menu
+    └── Version display
+```
+
+#### Sitemap-Driven Navigation
+
+The main navigation is **runtime-generated** from a server-side sitemap structure:
+
+```mustache
+{{#sitemap}}
+  <li class="menuitem bg-{{color}} {{#active}}active{{/active}}">
+    <div class="mainItem">
+      <a href="{{prefix}}{{url}}" title="{{title}}">
+        <i class="fa fa-fw fa-{{icon}}"></i>
+        <span>{{i18n title}}</span>
+      </a>
+      <span class="opener"><i class="fa fa-bars"></i></span>
+    </div>
+    <ul class="submenu">
+    {{#sub}}
+      <li class="bg-{{color}}">
+        <div class="subItem {{#active}}active{{/active}}">
+          <a href="{{prefix}}{{url}}" id="{{id}}">
+            <i class="fa fa-fw fa-{{icon}}"></i>
+            <span>{{i18n title}}</span>
+          </a>
+        </div>
+      </li>
+    {{/sub}}
+    </ul>
+  </li>
+{{/sitemap}}
+```
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `color` | `string` | Background color class suffix (e.g. `color-appointment`, `color-administration`) |
+| `url` | `string` | Relative URL path from app root |
+| `title` | `string` | i18n key for menu item label |
+| `icon` | `string` | FontAwesome icon name (without `fa-` prefix) |
+| `active` | `boolean` | Highlights the menu item as current location |
+| `sub[]` | `Array<SitemapItem>` | Nested submenu items (same structure) |
+| `id` | `string` | DOM element ID for submenu items |
+
+#### User Dropdown Menu
+
+```html
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
+    <i class="fas fa-fw fa-user" title="{{role}}"></i>
+    <span class="full">{{user.displayName}}</span>
+  </a>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="profile.html">
+      <i class="fa fa-fw fa-cog"></i> {{i18n.administration.settings}}
+    </a>
+    <a class="dropdown-item" href="userSecurity.html">
+      <i class="fa fa-fw fa-id-card"></i> {{i18n.administration.security}}
+    </a>
+    {{#roleSwitch}}
+    <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#roleSwitchDlg">
+      <i class="far fa-fw fa-user-tag"></i> {{role}}
+    </a>
+    {{/roleSwitch}}
+    {{>bugReport}}
+    <a class="dropdown-item" href="logout" id="logout">
+      <i class="fa fa-fw fa-sign-out"></i> {{i18n.logout}}
+    </a>
+  </div>
+</li>
+```
+
+| Menu Item | Icon | Permission Gate | Target |
+|-----------|------|-----------------|--------|
+| Settings | `fa-cog` | Always visible | `profile.html` |
+| Security | `fa-id-card` | Always visible | `userSecurity.html` |
+| Role Switch | `fa-user-tag` | `roleSwitch=true` | Opens `#roleSwitchDlg` |
+| Bug Report | (from include) | Always visible | Opens bug report dialog |
+| Logout | `fa-sign-out` | Always visible | `logout` endpoint |
+
+---
+
+### Shared Infrastructure Dialogs
+
+#### 1. Loading Spinner (`#spinner`)
+
+```html
+<div class="modal fade" id="spinner" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body" style="text-align:center">
+        <i class="fas fa-circle-notch fa-spin fa-3x"></i>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+**Purpose**: Global loading overlay shown during async operations.  
+**React mapping**: Replace with React Query `isLoading` states + Suspense boundaries or a `useLoadingOverlay` hook.
+
+#### 2. Role Switch Dialog (`#roleSwitchDlg`)
+
+```html
+<div class="modal fade" id="roleSwitchDlg" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body" style="text-align:center">
+        Current Role: {{role}}<br/>
+        <form>
+          <select id="roleSwitchSelection">
+            <option value="">---</option>
+            <option value="REGISTERED">Neu Registriert</option>
+            <option value="STANDARD">Standard</option>
+            <option value="LEITER_INTERN">Interner Leiter</option>
+            <option value="ADMIN_INTERN">Interner Admin</option>
+            <option value="KUNDE">Kunde</option>
+            <option value="ADMIN_KUNDE">Kunde Admin</option>
+            <option value="ADMIN">System-Admin</option>
+          </select>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+**Purpose**: Allows users with `USERS_CREATE` permission to switch their active role.  
+**Role options**: 7 roles (REGISTERED, STANDARD, LEITER_INTERN, ADMIN_INTERN, KUNDE, ADMIN_KUNDE, ADMIN)  
+**React mapping**: Shadcn `Dialog` + `Select` component; role switch via auth context update.
+
+#### 3. Upload Dialog (`#uploadDlg`)
+
+```html
+<div class="modal fade" id="uploadDlg" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header"><h5 class="modal-title">Upload</h5></div>
+      <div class="modal-body" style="text-align:center">
+        <input type="file" id="uploadDlgLoadFile" style="display:none" multiple/>
+        <button class="btn btn-sm btn-primary" id="uploadDlgBtn">Select a file</button>
+        <div class="progress" id="uploadDlgProgress">
+          <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 100%"></div>
+        </div>
+        <div id="uploadDlgStatus"></div>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+**Purpose**: Generic file upload dialog with progress bar.  
+**React mapping**: Shadcn `Dialog` + `Progress` component; use `react-dropzone` or native file input with `fetch` upload.
+
+---
+
+### Maintenance Mode Alert
+
+```html
+{{#maintenance}}
+<div class="toast" style="opacity:1;right:20px;bottom:20px;position:absolute">
+  <div class="toast-header">
+    <svg><rect fill="#ff3a00"/></svg>
+    <strong>{{i18n.error.maintenance.title}}</strong>
+    <small><i class="fa fa-hard-hat fa-2x"></i></small>
+  </div>
+  <div class="toast-body">{{.}}</div>
+</div>
+{{/maintenance}}
+```
+
+**Purpose**: Shows a persistent toast notification when the system is in maintenance mode.  
+**Condition**: Rendered only when `maintenance=true` (from `UserService.isMaintenance` service call).  
+**React mapping**: Sonner toast or Shadcn `Toast` component; poll maintenance status on app mount.
+
+---
+
+### Full-Text Search
+
+```html
+<li class="full">
+  <div class="input-group">
+    <span id="clearSiteSearch" class="input-group-text"><i class="fa fa-search"></i></span>
+    <input type="password" style="display: none"/>  ← Prevents browser password autofill
+    <input type="text" id="siteSearch" autocomplete="off" class="form-control" placeholder="{{i18n.label.search}}"/>
+  </div>
+</li>
+```
+
+**Purpose**: Global search input in the top navigation bar.  
+**Behavior**: Toggle visibility via search icon click; triggers full-text search across all entities.  
+**React mapping**: Command palette (`cmd+k`) pattern with Shadcn `Command` component.
+
+---
+
+### React Migration Summary
+
+| Shell Component | Legacy Implementation | Modern React Approach |
+|-----------------|----------------------|----------------------|
+| **Sidebar Nav** | `{{sitemap}}` Mustache iteration | TanStack Router `useMatches()` + recursive menu component |
+| **User Menu** | Bootstrap dropdown | Shadcn `DropdownMenu` with auth context |
+| **Role Switch** | Modal with `<select>` | Shadcn `Dialog` + `Select`; role switch via auth context |
+| **Loading Spinner** | Bootstrap modal overlay | React Query `isLoading` + Suspense boundaries |
+| **Upload Dialog** | Bootstrap modal + file input | Shadcn `Dialog` + `react-dropzone` |
+| **Maintenance Toast** | Bootstrap toast (server-driven) | Sonner toast + polling `UserService.isMaintenance` |
+| **Full-Text Search** | Text input in nav | Shadcn `Command` palette (`cmd+k` pattern) |
+| **Bug Report** | Included template | Separate dialog component (see bugReport section below) |
+| **Permission Gates** | `{{#variable}}` Mustache blocks | `userHasPermission()` checks + conditional rendering |
+
+---
+
+### Sitemap Structure (Extracted from Legacy)
+
+> **Note**: The actual sitemap is server-generated. Below is the structure extracted from analyzing the navigation patterns across all modules.
+
+| Main Menu Item | Icon | Color | Submenu Items |
+|----------------|------|-------|---------------|
+| Dashboard | `fa-home` | `dashboard` | (none) |
+| Appointments | `fa-calendar` | `appointment` | List, Calendar, Week View, Month View |
+| Consultations | `fa-heartbeat` | `consultation` | List, Templates, Quick Consultation |
+| Treatments | `fa-stethoscope` | `treatment` | List, Plans, Categories |
+| Shifts | `fa-user-clock` | `shift` | List, Shift Plans |
+| Council | `fa-users` | `council` | List, Council Plans |
+| Patients | `fa-user-injured` | `patient` | List, Quick Filter |
+| Experts/Staff | `fa-user-md` | `staff` | List, Availability, Skills |
+| Customers | `fa-building` | `customer` | List, Locations, Contacts |
+| Rooms | `fa-door-open` | `room` | List, Room Plans |
+| Equipment | `fa-toolbox` | `equipment` | List, Equipment Groups |
+| Invoices | `fa-file-invoice-dollar` | `invoice` | List, Receivers, Worklog |
+| Reports | `fa-chart-bar` | `report` | Various reports |
+| Administration | `fa-cog` | `admin` | Users, Groups, Jobs, System Config |
+| Support | `fa-headset` | `support` | Tickets, Video Library |
+
+**Color mapping**: Each module has a corresponding `bg-color-{module}` CSS class defined in `_include/categories.css`.
+
+---
+
+## 8. Bug Report Dialog (`_include/bugReport/bugReport.html`)
+
+### Template Include (from site.htmlm header)
+
+```json
+{"field":"bugReport", "method":"template","params":["_include/bugReport/bugReport.html"]}
+```
+
+### Integration Point
+
+The bug report dialog is included in the user dropdown menu:
+
+```html
+{{>bugReport}}
+```
+
+### Component Structure
+
+> **Note**: Full analysis of `bugReport.html` requires reading the separate file. This section is a placeholder for the detailed bug report component analysis.
+
+**Known features** (from `analyse-ui-elements.md` lessons learned):
+- **html2canvas screen capture** — Automatic screenshot with canvas annotation overlay
+- **Drawing tools** — Rectangle, freehand pencil, color picker
+- **Description field** — Textarea for bug description
+- **Submit action** — Sends screenshot + description to support system
+
+**React mapping**: Shadcn `Dialog` + canvas component for annotation; `html2canvas` library for screenshots.

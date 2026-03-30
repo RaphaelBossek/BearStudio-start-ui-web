@@ -144,24 +144,31 @@ graph TD
         A --> C[Admin]
         A --> D[Notifications]
         A --> E[UI Components]
+        A --> F[Application Shell]
         
-        B --> F[Profile Form]
-        B --> G[Staff List]
-        B --> H[Expert Search]
-        B --> I[Assignments]
+        B --> G[Profile Form]
+        B --> H[Staff List]
+        B --> I[Expert Search]
+        B --> J[Assignments]
         
-        C --> J[Cache]
-        C --> K[Data Cleanup]
-        C --> L[Data Update]
-        C --> M[Training]
+        C --> K[Cache]
+        C --> L[Data Cleanup]
+        C --> M[Data Update]
+        C --> N[Training]
         
-        D --> N[Compose]
-        D --> O[Send]
+        D --> O[Compose]
+        D --> P[Send]
         
-        E --> P[Navbar]
-        E --> Q[Login]
-        E --> R[Filters]
-        E --> S[Loading States]
+        E --> Q[Navbar]
+        E --> R[Login]
+        E --> S[Filters]
+        E --> T[Loading States]
+        E --> U[Bug Report]
+        
+        F --> V[Sidebar Navigation]
+        F --> W[User Menu]
+        F --> X[Role Switch]
+        F --> Y[Maintenance Mode]
     end
 ```
 
@@ -348,6 +355,25 @@ flowchart TD
 
 ## Cross-Cutting Documentation Areas
 
+### Application Shell Reference
+
+**Target Path:** `docs/src/content/docs/system/shell/`
+
+The application shell (`site.htmlm`) is the main layout wrapper that contains the global navigation, user menu, and shared infrastructure. It should be documented as a foundational component.
+
+| Source File | Target Doc | Description |
+|-------------|------------|-------------|
+| `specs/analysis/system/includes/01-includes-shared-components.md` (Section 7) | `shell/overview.md` | Application shell overview with HTMLM header metadata |
+| `specs/analysis/system/includes/01-includes-shared-components.md` (Section 8) | `shell/bug-report.md` | Bug report dialog with html2canvas integration |
+| _Extract from legacy code_ | `shell/sitemap.md` | **Full sitemap structure** — all menu items, icons, colors, hierarchy |
+| `wireframes/system/shell/app-shell-layout.*` | `shell/layout.md` | Full shell layout wireframe with annotations |
+| `wireframes/system/shell/global-navigation.*` | `shell/navigation.md` | Sidebar navigation pattern (collapsed/expanded states) |
+| `wireframes/system/shell/user-menu.*` | `shell/user-menu.md` | User dropdown with role switch, settings, logout |
+
+**Sitemap extraction task**: Analyze the legacy codebase to extract the complete navigation structure (main menu items, submenu items, icons, colors, URLs, permission gates). Document as a reference table in `shell/sitemap.md`.
+
+---
+
 ### System & Administration
 
 **Target Path:** `docs/src/content/docs/system/`
@@ -395,7 +421,10 @@ flowchart TD
 #### Common UI Components
 | Source File | Target Doc | Description |
 |-------------|------------|-------------|
-| `wireframes/system/includes/navbar.*` | `components/navbar.md` | Navigation bar |
+| `wireframes/system/shell/app-shell-layout.*` | `components/app-shell.md` | Application shell layout |
+| `wireframes/system/shell/global-navigation.*` | `components/global-navigation.md` | Sitemap-driven sidebar navigation |
+| `wireframes/system/shell/user-menu.*` | `components/user-menu.md` | User dropdown with role switch |
+| `wireframes/system/includes/navbar.*` | `components/navbar.md` | Module navigation bar |
 | `wireframes/system/includes/login.*` | `components/login.md` | Login UI |
 | `wireframes/system/includes/quick-filter.*` | `components/quick-filter.md` | Quick filter |
 | `wireframes/system/includes/loading-states.*` | `components/loading-states.md` | Loading states |
@@ -506,7 +535,8 @@ flowchart TD
   - [ ] User management (13 files)
   - [ ] System configuration (5 files)
   - [ ] Notifications (3 files)
-  - [ ] Common UI components (6 files)
+  - [ ] Common UI components (9 files) ← **Updated: +3 app shell docs**
+  - [ ] Application shell (3 files) ← **NEW: Shell layout, navigation, user menu**
 
 ### Phase 4: Reference Documentation
 

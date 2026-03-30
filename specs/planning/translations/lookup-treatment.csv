@@ -1,0 +1,308 @@
+key|german|english|source|status
+AppointmentType.COUNCIL|Konsil|Council|ApplicationResources|OK
+AnamnesisType.MEDICATION|Medikamentenanamnese|Medication history|ApplicationResources|OK
+AppointmentType.SHIFT|Bereitschaft|Shift|ApplicationResources|OK
+AppointmentState|Status|State|ApplicationResources|OK
+CommunicationType|Verbindungsart|connection type|ApplicationResources|OK
+AppointmentType.APPOINTMENT|Sprechstunde|Appointment|ApplicationResources|OK
+CommunicationType.email|E-Mail|E-Mail|ApplicationResources|OK
+AppointmentType.COUNCIL|Konsil|Council|ApplicationResources|OK
+CommunicationType.phone|Telefon|Phone|ApplicationResources|OK
+AppointmentType.SHIFT|Bereitschaft|Shift|ApplicationResources|OK
+CommunicationType.vcgo|VC to Go (Tablet)|VC to Go|ApplicationResources|OK
+CommunicationType|Verbindungsart|connection type|ApplicationResources|OK
+CommunicationType.video|Video|Video|ApplicationResources|OK
+CommunicationType.email|E-Mail|E-Mail|ApplicationResources|OK
+ConsultationState.CLOSED|Abgeschlossen|Closed|ApplicationResources|OK
+CommunicationType.phone|Telefon|Phone|ApplicationResources|OK
+ConsultationState.CREATED|Erstellt|Created|ApplicationResources|OK
+CommunicationType.vcgo|VC to Go (Tablet)|VC to Go|ApplicationResources|OK
+ConsultationState.OPEN|Offen|Open|ApplicationResources|OK
+CommunicationType.video|Video|Video|ApplicationResources|OK
+ConsultationState.REPORTED|Bericht|Report|ApplicationResources|OK
+ConsultationState.CLOSED|Abgeschlossen|Closed|ApplicationResources|OK
+ConsultationState.TRANSMITTED|\u00DCbermittelt|Transmitted|ApplicationResources|OK
+ConsultationState.CREATED|Erstellt|Created|ApplicationResources|OK
+ConsultationState.VERIFIED|Verfiziert|Verified|ApplicationResources|OK
+ConsultationState.OPEN|Offen|Open|ApplicationResources|OK
+ConsultationType|Konsultationstyp|Consultation type|ApplicationResources|OK
+ConsultationState.REPORTED|Bericht|Report|ApplicationResources|OK
+ConsultationType.DOCUMENT|Konsiliarbericht|Consil Psychiatry|ApplicationResources|OK
+ConsultationState.TRANSMITTED|\u00DCbermittelt|Transmitted|ApplicationResources|OK
+ConsultationType.EXTERNAL|Extern|External|ApplicationResources|OK
+ConsultationState.VERIFIED|Verfiziert|Verified|ApplicationResources|OK
+ConsultationType.INCARCERATION|Gewahrsamstauglichkeit|Incarceration-suitability|ApplicationResources|OK
+ConsultationType|Konsultationstyp|Consultation type|ApplicationResources|OK
+ConsultationType.ONBOARDING|Komplette Zugangsuntersuchung|Onboarding|ApplicationResources|OK
+ConsultationType.DOCUMENT|Konsiliarbericht|Consil Psychiatry|ApplicationResources|OK
+ConsultationType.ONBOARDING_SHORT|Kurze Zugangsuntersuchung|Quick Onboarding|ApplicationResources|OK
+ConsultationType.EXTERNAL|Extern|External|ApplicationResources|OK
+ConsultationType.STANDARD|Normale Konsultation|Basic|ApplicationResources|OK
+ConsultationType.INCARCERATION|Gewahrsamstauglichkeit|Incarceration-suitability|ApplicationResources|OK
+EquipmentStatus|Status|Status|ApplicationResources|OK
+ConsultationType.ONBOARDING|Komplette Zugangsuntersuchung|Onboarding|ApplicationResources|OK
+FurtherTreatment.FOLLOW_UP|Folgetermin|follow-up appointment|ApplicationResources|OK
+ConsultationType.ONBOARDING_SHORT|Kurze Zugangsuntersuchung|Quick Onboarding|ApplicationResources|OK
+FurtherTreatment.REFERRAL|Einweisung|hospital admission|ApplicationResources|OK
+ConsultationType.STANDARD|Normale Konsultation|Basic|ApplicationResources|OK
+IncarcerationType|Gewahrsamkeits-Typ|Custody type|ApplicationResources|OK
+EquipmentStatus|Status|Status|ApplicationResources|OK
+IncarcerationType.LIABILITY.note|Nur bei Auswahl Haftf\u00E4higkeit|Only when selecting adhesion|ApplicationResources|OK
+FurtherTreatment.FOLLOW_UP|Folgetermin|follow-up appointment|ApplicationResources|OK
+Month.DEC|Dezember|December|ApplicationResources|OK
+FurtherTreatment.REFERRAL|Einweisung|hospital admission|ApplicationResources|OK
+Month.JAN|Januar|January|ApplicationResources|OK
+IncarcerationType|Gewahrsamkeits-Typ|Custody type|ApplicationResources|OK
+PatientData.Attachments.UploadedFiles|Hochgeladene Dateien|Uploaded Files|ApplicationResources|OK
+IncarcerationType.LIABILITY.note|Nur bei Auswahl Haftf\u00E4higkeit|Only when selecting adhesion|ApplicationResources|OK
+Prescription.dosageAmount|Dosierhinweise|Dosage Amount|ApplicationResources|OK
+Month.DEC|Dezember|December|ApplicationResources|OK
+Prescription.dosageRequirement|Bedarfsregel|Dosage Requirement|ApplicationResources|OK
+Month.JAN|Januar|January|ApplicationResources|OK
+Questionaire.countEntries|Anzahl Einweisungen|Number of admissions|ApplicationResources|OK
+PatientData.Attachments.UploadedFiles|Hochgeladene Dateien|Uploaded Files|ApplicationResources|OK
+Questionaire.countFollowUps|Anzahl Folgetermine|Number of follow-up appointments|ApplicationResources|OK
+Prescription.dosageAmount|Dosierhinweise|Dosage Amount|ApplicationResources|OK
+Questionaire.countReferals|Anzahl \u00DCberweisungen|Number of transfers|ApplicationResources|OK
+Prescription.dosageRequirement|Bedarfsregel|Dosage Requirement|ApplicationResources|OK
+Questionaire.countRepeatEntry|Anzahl Wiedervorstellung bei Verschlechterung|Number of re-presentations in the event of deterioration|ApplicationResources|OK
+Questionaire.countEntries|Anzahl Einweisungen|Number of admissions|ApplicationResources|OK
+Questionaire.ratingRisk|Risiko|Risk|ApplicationResources|OK
+Questionaire.countFollowUps|Anzahl Folgetermine|Number of follow-up appointments|ApplicationResources|OK
+Questionaire.requireReporting|M\u00F6chten Sie, dass Ihr Fall an die \u00C4rztliche Leitung der Videoclinic zur Einsicht weitergegeben wird?|Would you like your case to be forwarded to the medical management of the video clinic for review?|ApplicationResources|OK
+Questionaire.countReferals|Anzahl \u00DCberweisungen|Number of transfers|ApplicationResources|OK
+Treatment|Therapie|Treatment|ApplicationResources|OK
+Questionaire.countRepeatEntry|Anzahl Wiedervorstellung bei Verschlechterung|Number of re-presentations in the event of deterioration|ApplicationResources|OK
+WarningType|Warnung|WarningType|ApplicationResources|OK
+Questionaire.ratingRisk|Risiko|Risk|ApplicationResources|OK
+action.date|Datum |Date|ApplicationResources|OK
+Questionaire.requireReporting|M\u00F6chten Sie, dass Ihr Fall an die \u00C4rztliche Leitung der Videoclinic zur Einsicht weitergegeben wird?|Would you like your case to be forwarded to the medical management of the video clinic for review?|ApplicationResources|OK
+action.dateEnd|Endzeit||ApplicationResources|MISSING_EN
+Treatment|Therapie|Treatment|ApplicationResources|OK
+action.dateStart|Startdatum|Start Date|ApplicationResources|OK
+WarningType|Warnung|WarningType|ApplicationResources|OK
+action.dateStartTime|Startzeit |Start time|ApplicationResources|OK
+action.date|Datum |Date|ApplicationResources|OK
+appointment|Sprechstunde|Appointment|ApplicationResources|OK
+action.dateEnd|Endzeit||ApplicationResources|MISSING_EN
+appointment.patients|Patienten|Patients|ApplicationResources|OK
+action.dateStart|Startdatum|Start Date|ApplicationResources|OK
+action.dateStartTime|Startzeit |Start time|ApplicationResources|OK
+button.add|Hinzuf\u00FCgen|Add|BaseResources|OK
+appointment|Sprechstunde|Appointment|ApplicationResources|OK
+button.apply|Anwenden|Apply|BaseResources|OK
+appointment.patients|Patienten|Patients|ApplicationResources|OK
+button.create|Erstellen|Create|BaseResources|OK
+button.add|Hinzuf\u00FCgen|Add|BaseResources|OK
+button.edit|Bearbeiten|edit|BaseResources|OK
+button.apply|Anwenden|Apply|BaseResources|OK
+button.remove|||ApplicationResources|MISSING_DE
+button.create|Erstellen|Create|BaseResources|OK
+button.reset|Zur\u00FCcksetzen|Reset|BaseResources|OK
+button.edit|Bearbeiten|edit|BaseResources|OK
+button.retry|Wiederholen|Retry|BaseResources|OK
+button.remove|||ApplicationResources|MISSING_DE
+consulation.submit|Abschlie\u00DFen|Finish|ApplicationResources|OK
+button.reset|Zur\u00FCcksetzen|Reset|BaseResources|OK
+consultation|Patientendokumentation|Consultation|ApplicationResources|OK
+consultation.anamnesis|AA/Anamnese|AA/anamnesis|ApplicationResources|OK
+button.retry|Wiederholen|Retry|BaseResources|OK
+consultation.attachments|Anh\u00E4nge|Attachments|ApplicationResources|OK
+consulation.submit|Abschlie\u00DFen|Finish|ApplicationResources|OK
+consultation.booknumber|Buchnummer|Book number|ApplicationResources|OK
+consultation|Patientendokumentation|Consultation|ApplicationResources|OK
+consultation.code|Code|Code|ApplicationResources|OK
+consultation.anamnesis|AA/Anamnese|AA/anamnesis|ApplicationResources|OK
+consultation.details.letters|Bitte geben Sie mindestens 50 Buchstaben ein|Please enter at least 50 letters|ApplicationResources|OK
+consultation.attachments|Anh\u00E4nge|Attachments|ApplicationResources|OK
+consultation.diagnosisReport|AD/Aktuelle Diagnose|ad/actual diagnosis report|ApplicationResources|OK
+consultation.booknumber|Buchnummer|Book number|ApplicationResources|OK
+consultation.doctor|Behandelnder Arzt|Treating doctor|ApplicationResources|OK
+consultation.code|Code|Code|ApplicationResources|OK
+consultation.documentation|Dokumentation\n|documentation|ApplicationResources|OK
+consultation.details.letters|Bitte geben Sie mindestens 50 Buchstaben ein|Please enter at least 50 letters|ApplicationResources|OK
+consultation.end|Ende|End|ApplicationResources|OK
+consultation.diagnosisReport|AD/Aktuelle Diagnose|ad/actual diagnosis report|ApplicationResources|OK
+consultation.finalize.issue.title|Fehler beim \u00DCbermitteln|Error While Transmitting|ApplicationResources|OK
+consultation.doctor|Behandelnder Arzt|Treating doctor|ApplicationResources|OK
+consultation.furtherTreatment|WB/Weitere Behandlung|further treatment|ApplicationResources|OK
+consultation.documentation|Dokumentation\n|documentation|ApplicationResources|OK
+consultation.furtherTreatment.referPsychotherapy|Psychotherapie empfohlen|Psychotherapy recommended|ApplicationResources|OK
+consultation.end|Ende|End|ApplicationResources|OK
+consultation.finalize.issue.title|Fehler beim \u00DCbermitteln|Error While Transmitting|ApplicationResources|OK
+consultation.furtherTreatmentDate|Folgetermin Datum||ApplicationResources|MISSING_EN
+consultation.furtherTreatment|WB/Weitere Behandlung|further treatment|ApplicationResources|OK
+consultation.incarceration|Gewahrsams-/Haftf\u00E4higkeit \u00E4rztliche Untersuchung|Incarceration-suitability medical examination|ApplicationResources|OK
+consultation.furtherTreatment.referPsychotherapy|Psychotherapie empfohlen|Psychotherapy recommended|ApplicationResources|OK
+consultation.incarceration.ControlDefinition|eine Kontrolle beinhaltet Sichtpr\u00FCfung von Vitalfunkitionen (z.B. Atmung) und Pr\u00FCfung des Bewusstseins (z.B. Ansprechen)|A check involves a visual inspection of vital functions (e.g., breathing) and an assessment of consciousness (e.g., responsiveness)|ApplicationResources|OK
+consultation.incarceration.additions|Erl\u00E4uterungen / Erg\u00E4nzungen der Befunde|Explanations / additions to the findings|ApplicationResources|OK
+consultation.furtherTreatmentDate|Folgetermin Datum||ApplicationResources|MISSING_EN
+consultation.incarceration.consum|Konsum|Consumption|ApplicationResources|OK
+consultation.incarceration|Gewahrsams-/Haftf\u00E4higkeit \u00E4rztliche Untersuchung|Incarceration-suitability medical examination|ApplicationResources|OK
+consultation.incarceration.control|Kontrolle|Control|ApplicationResources|OK
+consultation.incarceration.ControlDefinition|eine Kontrolle beinhaltet Sichtpr\u00FCfung von Vitalfunkitionen (z.B. Atmung) und Pr\u00FCfung des Bewusstseins (z.B. Ansprechen)|A check involves a visual inspection of vital functions (e.g., breathing) and an assessment of consciousness (e.g., responsiveness)|ApplicationResources|OK
+consultation.incarceration.deteriorationInHealth|Bei einer Verschlechterung des Gesundheitszustands bitte erneute sofortige \u00E4rztliche Vorstellung|If your state of health deteriorates, please consult your doctor again immediately|ApplicationResources|OK
+consultation.incarceration.additions|Erl\u00E4uterungen / Erg\u00E4nzungen der Befunde|Explanations / additions to the findings|ApplicationResources|OK
+consultation.incarceration.doctorExamination|\u00C4rztliche Untersuchung|Doctor Examination|ApplicationResources|OK
+consultation.incarceration.consum|Konsum|Consumption|ApplicationResources|OK
+consultation.incarceration.examinationResult|\u00C4rztliche Beurteilung / Ergebnis|Medical assessment / result|ApplicationResources|OK
+consultation.incarceration.control|Kontrolle|Control|ApplicationResources|OK
+consultation.incarceration.explanation|Erkl\u00E4rung|explanation|ApplicationResources|OK
+consultation.incarceration.deteriorationInHealth|Bei einer Verschlechterung des Gesundheitszustands bitte erneute sofortige \u00E4rztliche Vorstellung|If your state of health deteriorates, please consult your doctor again immediately|ApplicationResources|OK
+consultation.incarceration.intervallCheck.withoutWorsingCondition|Stunden Aufenthalt ohne Verschlechterung des Zustands Kontrolle(n) pro Stunde |Hours of stay without deterioration of condition Check(s) per hour |ApplicationResources|OK
+consultation.incarceration.doctorExamination|\u00C4rztliche Untersuchung|Doctor Examination|ApplicationResources|OK
+consultation.incarceration.examinationResult|\u00C4rztliche Beurteilung / Ergebnis|Medical assessment / result|ApplicationResources|OK
+consultation.incarceration.intoxication.Assessment|Einsch\u00E4tzung der Intoxikation |Assessment of the intoxication |ApplicationResources|OK
+consultation.incarceration.explanation|Erkl\u00E4rung|explanation|ApplicationResources|OK
+consultation.incarceration.intoxication.signsOfSuicidality.note|Hinweise zu Suizidalit\u00E4t|Evidence of suicidality|ApplicationResources|OK
+consultation.incarceration.intervallCheck.withoutWorsingCondition|Stunden Aufenthalt ohne Verschlechterung des Zustands Kontrolle(n) pro Stunde |Hours of stay without deterioration of condition Check(s) per hour |ApplicationResources|OK
+consultation.incarceration.neurology|Neurologie|Neurology|ApplicationResources|OK
+consultation.incarceration.intoxication.Assessment|Einsch\u00E4tzung der Intoxikation |Assessment of the intoxication |ApplicationResources|OK
+consultation.incarceration.otherRequirements|sonstige Auflagen|other requirements|ApplicationResources|OK
+consultation.incarceration.intoxication.signsOfSuicidality.note|Hinweise zu Suizidalit\u00E4t|Evidence of suicidality|ApplicationResources|OK
+consultation.incarceration.reIntroduction|Nur auszuf\u00FCllen bei Wiedervorstellung|Only to be filled out upon re-presentation|ApplicationResources|OK
+consultation.incarceration.timeOfExamination|Die untersuchte Person ist zum Zeitpunkt der Untersuchung|The person being examined is at the time of the examination|ApplicationResources|OK
+consultation.incarceration.neurology|Neurologie|Neurology|ApplicationResources|OK
+consultation.incarceration.otherRequirements|sonstige Auflagen|other requirements|ApplicationResources|OK
+consultation.incarceration.tips|Hinweise zur Kontrolle|Tips for the checks|ApplicationResources|OK
+consultation.incarceration.reIntroduction|Nur auszuf\u00FCllen bei Wiedervorstellung|Only to be filled out upon re-presentation|ApplicationResources|OK
+consultation.incarceration.vitalCheckImpossibleByPolice|Eine genaue Pr\u00FCfung der Vitalparameter ist der Polizei bei den Kontrollen nicht m\u00F6glich! |It is not possible for the police to check vital signs precisely during checks! |ApplicationResources|OK
+consultation.incarceration.timeOfExamination|Die untersuchte Person ist zum Zeitpunkt der Untersuchung|The person being examined is at the time of the examination|ApplicationResources|OK
+consultation.medication|AM/Neu Angeordnete Medikation|Medication|ApplicationResources|OK
+consultation.incarceration.tips|Hinweise zur Kontrolle|Tips for the checks|ApplicationResources|OK
+consultation.onboarding|Beratung Onboarding|consultation.onboarding|ApplicationResources|OK
+consultation.incarceration.vitalCheckImpossibleByPolice|Eine genaue Pr\u00FCfung der Vitalparameter ist der Polizei bei den Kontrollen nicht m\u00F6glich! |It is not possible for the police to check vital signs precisely during checks! |ApplicationResources|OK
+consultation.onboarding.evaluation|Beurteilung|Evaluation|ApplicationResources|OK
+consultation.medication|AM/Neu Angeordnete Medikation|Medication|ApplicationResources|OK
+consultation.patientData|Patientendaten|patient information|ApplicationResources|OK
+consultation.patientReport|AB/Aktueller Befund|ab/actual report|ApplicationResources|OK
+consultation.onboarding|Beratung Onboarding|consultation.onboarding|ApplicationResources|OK
+consultation.procedereReport|PC / Procedere|pc / procedere|ApplicationResources|OK
+consultation.onboarding.evaluation|Beurteilung|Evaluation|ApplicationResources|OK
+consultation.reasoning|Grund|Resoning|ApplicationResources|OK
+consultation.patientData|Patientendaten|patient information|ApplicationResources|OK
+consultation.patientReport|AB/Aktueller Befund|ab/actual report|ApplicationResources|OK
+consultation.reporting|\u00C4L Begutachtung||ApplicationResources|MISSING_EN
+consultation.procedereReport|PC / Procedere|pc / procedere|ApplicationResources|OK
+consultation.reporting.reportDocumentation|\u00C4L||ApplicationResources|MISSING_EN
+consultation.reasoning|Grund|Resoning|ApplicationResources|OK
+consultation.review|\u00C4L Begutachtung||ApplicationResources|MISSING_EN
+consultation.reporting|\u00C4L Begutachtung||ApplicationResources|MISSING_EN
+consultation.start|Start|Start|ApplicationResources|OK
+consultation.reporting.reportDocumentation|\u00C4L||ApplicationResources|MISSING_EN
+consultation.startDate|Tag der Behandlung|Day of Consultation|ApplicationResources|OK
+consultation.startTime|Start der Behandlung|Start of consultation|ApplicationResources|OK
+consultation.review|\u00C4L Begutachtung||ApplicationResources|MISSING_EN
+consultation.submitbackup|Alternative|Upload to VC|ApplicationResources|OK
+consultation.start|Start|Start|ApplicationResources|OK
+consultation.timeContact|Erstkontakt|First Contact|ApplicationResources|OK
+consultation.startDate|Tag der Behandlung|Day of Consultation|ApplicationResources|OK
+consultation.treatment|Therapie Behandlung|Consultation Treatment|ApplicationResources|OK
+consultation.startTime|Start der Behandlung|Start of consultation|ApplicationResources|OK
+consultation.warning|Warnhinweise|Warning|ApplicationResources|OK
+consultation.submitbackup|Alternative|Upload to VC|ApplicationResources|OK
+consultation.workIncapacity|Arbeitsunf\u00E4higkeit|Work Incapacity|ApplicationResources|OK
+consultation.timeContact|Erstkontakt|First Contact|ApplicationResources|OK
+consultation.workIncapacity.documentation|Arbeitsunf\u00E4higkeit Dokumentation|Work Incapacity Documentation|ApplicationResources|OK
+consultation.treatment|Therapie Behandlung|Consultation Treatment|ApplicationResources|OK
+consultationTemplate|Konsultationsvorlage|Consultation Template|ApplicationResources|OK
+consultation.warning|Warnhinweise|Warning|ApplicationResources|OK
+consultationTemplate.yourTemplates|Ihre Vorlagen|Your templates|ApplicationResources|OK
+consultation.workIncapacity|Arbeitsunf\u00E4higkeit|Work Incapacity|ApplicationResources|OK
+consultation.workIncapacity.documentation|Arbeitsunf\u00E4higkeit Dokumentation|Work Incapacity Documentation|ApplicationResources|OK
+consultation_comment|||ApplicationResources|MISSING_DE
+consultationTemplate|Konsultationsvorlage|Consultation Template|ApplicationResources|OK
+contact.city|Stadt|City|ApplicationResources|OK
+consultationTemplate.yourTemplates|Ihre Vorlagen|Your templates|ApplicationResources|OK
+contact.country|Land|Country|ApplicationResources|OK
+contact.firstName|Vorname|Name|ApplicationResources|OK
+consultation_comment|||ApplicationResources|MISSING_DE
+contact.lastName|Nachname|Last|ApplicationResources|OK
+contact.city|Stadt|City|ApplicationResources|OK
+contact.state|Bundesland|State|ApplicationResources|OK
+contact.country|Land|Country|ApplicationResources|OK
+contact.street|Stra\u00DFe|street|ApplicationResources|OK
+contact.firstName|Vorname|Name|ApplicationResources|OK
+contact.lastName|Nachname|Last|ApplicationResources|OK
+contact.street2|Zusatz|Additional|ApplicationResources|OK
+contact.state|Bundesland|State|ApplicationResources|OK
+contact.zipcode|PLZ|Zip|ApplicationResources|OK
+contact.street|Stra\u00DFe|street|ApplicationResources|OK
+correct.the.time.text|Bitte korrigieren Sie die Zeiten mit den tats\u00F6chlich geleisteteten.|Please correct the times with the times actually worked.|ApplicationResources|OK
+contact.street2|Zusatz|Additional|ApplicationResources|OK
+customer|Kunde|Customer|ApplicationResources|OK
+dashboard.patient.query.dialog.title|Gewahrsamkeit - Abruf \u00FCrztliche Untersuchung|Reservation - Retrieval Medical examination|ApplicationResources|OK
+contact.zipcode|PLZ|Zip|ApplicationResources|OK
+correct.the.time.text|Bitte korrigieren Sie die Zeiten mit den tats\u00F6chlich geleisteteten.|Please correct the times with the times actually worked.|ApplicationResources|OK
+dateFilter.fromDate|Von|from|ApplicationResources|OK
+customer|Kunde|Customer|ApplicationResources|OK
+dateFilter.toDate|Bis|to|ApplicationResources|OK
+dashboard.patient.query.dialog.title|Gewahrsamkeit - Abruf \u00FCrztliche Untersuchung|Reservation - Retrieval Medical examination|ApplicationResources|OK
+dialog.cancel|Abbrechen|Cancel|BaseResources|OK
+dateFilter.fromDate|Von|from|ApplicationResources|OK
+dateFilter.toDate|Bis|to|ApplicationResources|OK
+dialog.download|Download|Download|BaseResources|OK
+dialog.cancel|Abbrechen|Cancel|BaseResources|OK
+dialog.ok|Ok|Ok|BaseResources|OK
+dialog.download|Download|Download|BaseResources|OK
+dialog.save|Speichern|Save|BaseResources|OK
+dialog.ok|Ok|Ok|BaseResources|OK
+equipment.description|Beschreibung|Description|ApplicationResources|OK
+equipment.name|Ger\u00E4tename|Device Name|ApplicationResources|OK
+dialog.save|Speichern|Save|BaseResources|OK
+equipment.room|R\u00E4ume|Room|ApplicationResources|OK
+equipment.description|Beschreibung|Description|ApplicationResources|OK
+equipment.serialNumber|Seriennummer|Serial Number|ApplicationResources|OK
+equipment.name|Ger\u00E4tename|Device Name|ApplicationResources|OK
+expert|Experten|Expert|ApplicationResources|OK
+equipment.room|R\u00E4ume|Room|ApplicationResources|OK
+exportTemplate.template|Vorlage|Template|ApplicationResources|OK
+equipment.serialNumber|Seriennummer|Serial Number|ApplicationResources|OK
+filter.results|Ergebnisse|Results|ApplicationResources|OK
+expert|Experten|Expert|ApplicationResources|OK
+jobId|Dienstleistung|Job-Id|ApplicationResources|OK
+exportTemplate.template|Vorlage|Template|ApplicationResources|OK
+jobType|Job-Typ|Job type|ApplicationResources|OK
+filter.results|Ergebnisse|Results|ApplicationResources|OK
+jobId|Dienstleistung|Job-Id|ApplicationResources|OK
+label.comment|Kommentar|Comment|BaseResources|OK
+jobType|Job-Typ|Job type|ApplicationResources|OK
+label.date|Datum|Date|BaseResources|OK
+label.comment|Kommentar|Comment|BaseResources|OK
+label.description|Beschreibung|Description|BaseResources|OK
+label.date|Datum|Date|BaseResources|OK
+label.name|Name|Name|BaseResources|OK
+label.description|Beschreibung|Description|BaseResources|OK
+label.priority|Gewichtung|Priority|BaseResources|OK
+label.name|Name|Name|BaseResources|OK
+label.state|Status|State|BaseResources|OK
+label.priority|Gewichtung|Priority|BaseResources|OK
+label.type|Typ|Type|BaseResources|OK
+label.state|Status|State|BaseResources|OK
+label.use|Benutzen|Use|BaseResources|OK
+location|Ort|Location|ApplicationResources|OK
+label.type|Typ|Type|BaseResources|OK
+medication|||ApplicationResources|MISSING_DE
+label.use|Benutzen|Use|BaseResources|OK
+operation.ended.text|Soll der Einsatz wirklich beendet werden? Danach k\u00F6nnen keine weiteren Patientendokumentationen erstellt werden.|Should the operation really be ended? No further patient documentation can be created afterward.|ApplicationResources|OK
+location|Ort|Location|ApplicationResources|OK
+patient.age|Alter|Age|ApplicationResources|OK
+medication|||ApplicationResources|MISSING_DE
+patient.birthday|Geburtstag|patient birthday|ApplicationResources|OK
+operation.ended.text|Soll der Einsatz wirklich beendet werden? Danach k\u00F6nnen keine weiteren Patientendokumentationen erstellt werden.|Should the operation really be ended? No further patient documentation can be created afterward.|ApplicationResources|OK
+questionaire|Fragebogen|Questionaire|ApplicationResources|OK
+patient.age|Alter|Age|ApplicationResources|OK
+questions|Fragen|Questions|ApplicationResources|OK
+patient.birthday|Geburtstag|patient birthday|ApplicationResources|OK
+room|Raum|Room|ApplicationResources|OK
+questionaire|Fragebogen|Questionaire|ApplicationResources|OK
+shift|Bereitschaftsdienst|Shift|ApplicationResources|OK
+questions|Fragen|Questions|ApplicationResources|OK
+templateExportDlg.title|Exportieren|Export|ApplicationResources|OK
+room|Raum|Room|ApplicationResources|OK
+shift|Bereitschaftsdienst|Shift|ApplicationResources|OK
+treatmentCategory|||ApplicationResources|MISSING_DE
+user.gender|Geschlecht|Gender|ApplicationResources|OK
+templateExportDlg.title|Exportieren|Export|ApplicationResources|OK
+treatmentCategory|||ApplicationResources|MISSING_DE
+user.gender|Geschlecht|Gender|ApplicationResources|OK

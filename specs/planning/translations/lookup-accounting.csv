@@ -1,0 +1,121 @@
+key|german|english|source|status
+AppointmentType.TREATMENT_REPORT|Therapiebericht|therapy-report|ApplicationResources|OK
+AppointmentType.APPOINTMENT|Sprechstunde|Appointment|ApplicationResources|OK
+AppointmentType.COUNCIL|Konsil|Council|ApplicationResources|OK
+InvoiceReceiver|||ApplicationResources|MISSING_DE
+AppointmentType.SHIFT|Bereitschaft|Shift|ApplicationResources|OK
+Month.DEC|Dezember|December|ApplicationResources|OK
+AppointmentType.TREATMENT|Therapie|therapy|ApplicationResources|OK
+Month.JAN|Januar|January|ApplicationResources|OK
+AppointmentType.TREATMENT_REPORT|Therapiebericht|therapy-report|ApplicationResources|OK
+address.additional.text|Zusatztext Adresse|Additional text address|ApplicationResources|OK
+InvoiceReceiver|||ApplicationResources|MISSING_DE
+address.bank|Kreditinstitut|Bank|ApplicationResources|OK
+address.bic|BIC|BIC|ApplicationResources|OK
+Month.DEC|Dezember|December|ApplicationResources|OK
+billing.gkto|GKTO|GKTO|ApplicationResources|OK
+Month.JAN|Januar|January|ApplicationResources|OK
+address.additional.text|Zusatztext Adresse|Additional text address|ApplicationResources|OK
+button.apply|Anwenden|Apply|BaseResources|OK
+address.bank|Kreditinstitut|Bank|ApplicationResources|OK
+address.bic|BIC|BIC|ApplicationResources|OK
+button.reset|Zur\u00FCcksetzen|Reset|BaseResources|OK
+billing.gkto|GKTO|GKTO|ApplicationResources|OK
+contact.city|Stadt|City|ApplicationResources|OK
+contact.country|Land|Country|ApplicationResources|OK
+button.apply|Anwenden|Apply|BaseResources|OK
+contact.faxnumber|Fax|Fax|ApplicationResources|OK
+button.reset|Zur\u00FCcksetzen|Reset|BaseResources|OK
+contact.firstName|Vorname|Name|ApplicationResources|OK
+contact.city|Stadt|City|ApplicationResources|OK
+contact.lastName|Nachname|Last|ApplicationResources|OK
+contact.country|Land|Country|ApplicationResources|OK
+contact.primaryemail|E-Mail|E-Mail|ApplicationResources|OK
+contact.faxnumber|Fax|Fax|ApplicationResources|OK
+contact.state|Bundesland|State|ApplicationResources|OK
+contact.firstName|Vorname|Name|ApplicationResources|OK
+contact.street|Stra\u00DFe|street|ApplicationResources|OK
+contact.lastName|Nachname|Last|ApplicationResources|OK
+contact.street2|Zusatz|Additional|ApplicationResources|OK
+contact.primaryemail|E-Mail|E-Mail|ApplicationResources|OK
+contact.workphone|Telefonnummer|Phone|ApplicationResources|OK
+contact.state|Bundesland|State|ApplicationResources|OK
+contact.zipcode|PLZ|Zip|ApplicationResources|OK
+contact.street|Stra\u00DFe|street|ApplicationResources|OK
+customer|Kunde|Customer|ApplicationResources|OK
+contact.street2|Zusatz|Additional|ApplicationResources|OK
+email.sendTitle|E-Mail Verschicken|Send E-Mail|ApplicationResources|OK
+contact.workphone|Telefonnummer|Phone|ApplicationResources|OK
+email.subject|Betreff|Subject|ApplicationResources|OK
+contact.zipcode|PLZ|Zip|ApplicationResources|OK
+exportTemplate.template|Vorlage|Template|ApplicationResources|OK
+customer|Kunde|Customer|ApplicationResources|OK
+invoice|Rechnung|Invoice|ApplicationResources|OK
+email.sendTitle|E-Mail Verschicken|Send E-Mail|ApplicationResources|OK
+invoice.confirmStorno|M\u00F6chten Sie diese Rechnung wirklich stornieren?|Are you sure you want to cancel this invoice?|ApplicationResources|OK
+email.subject|Betreff|Subject|ApplicationResources|OK
+invoice.dateInvoice|Datum Rechnung|date invoice|ApplicationResources|OK
+exportTemplate.template|Vorlage|Template|ApplicationResources|OK
+invoice.dateSkonto|Skontodatum|date skonto|ApplicationResources|OK
+invoice|Rechnung|Invoice|ApplicationResources|OK
+invoice.dateSubmit|Sendedatum|Submit date|ApplicationResources|OK
+invoice.confirmStorno|M\u00F6chten Sie diese Rechnung wirklich stornieren?|Are you sure you want to cancel this invoice?|ApplicationResources|OK
+invoice.stornoReason|Grund f\u00FCr Stornierung eingeben.|Enter reason for cancellation.|ApplicationResources|OK
+invoice.dateInvoice|Datum Rechnung|date invoice|ApplicationResources|OK
+invoice.title|Rechnung|Invoice|ApplicationResources|OK
+invoice.dateSkonto|Skontodatum|date skonto|ApplicationResources|OK
+invoiceReceiver.active|Aktiv|Active|ApplicationResources|OK
+invoice.dateSubmit|Sendedatum|Submit date|ApplicationResources|OK
+invoiceReceiver.address|Adresse|Address|ApplicationResources|OK
+invoice.stornoReason|Grund f\u00FCr Stornierung eingeben.|Enter reason for cancellation.|ApplicationResources|OK
+invoiceReceiver.appointmentStorno|Sprechstunde Storno|Appointment Storno|ApplicationResources|OK
+invoice.title|Rechnung|Invoice|ApplicationResources|OK
+invoiceReceiver.councilStorno|Konsil Storno||ApplicationResources|MISSING_EN
+invoiceReceiver.active|Aktiv|Active|ApplicationResources|OK
+invoiceReceiver.dateLastInvoice|Datum letzte Rechnung |Date Last Invoice|ApplicationResources|OK
+invoiceReceiver.address|Adresse|Address|ApplicationResources|OK
+invoiceReceiver.extraTitle|Zusatztitel|extra title|ApplicationResources|OK
+invoiceReceiver.appointmentStorno|Sprechstunde Storno|Appointment Storno|ApplicationResources|OK
+invoiceReceiver.generateWorkLog|Rechnung-Terminliste|Worklog|ApplicationResources|OK
+invoiceReceiver.councilStorno|Konsil Storno||ApplicationResources|MISSING_EN
+invoiceReceiver.mailInvoice|E-Mail-Rechnung|mail invoice|ApplicationResources|OK
+invoiceReceiver.dateLastInvoice|Datum letzte Rechnung |Date Last Invoice|ApplicationResources|OK
+invoiceReceiver.moreEMail|Weitere E-Mail|Further e-mail|ApplicationResources|OK
+invoiceReceiver.extraTitle|Zusatztitel|extra title|ApplicationResources|OK
+invoiceReceiver.paymentGoal|Zahlungsziel|payment goal |ApplicationResources|OK
+invoiceReceiver.generateWorkLog|Rechnung-Terminliste|Worklog|ApplicationResources|OK
+invoiceReceiver.postInvoice|Post Rechnung|post invoice|ApplicationResources|OK
+invoiceReceiver.mailInvoice|E-Mail-Rechnung|mail invoice|ApplicationResources|OK
+invoiceReceiver.shiftStorno|Bereitschaft Storno||ApplicationResources|MISSING_EN
+invoiceReceiver.moreEMail|Weitere E-Mail|Further e-mail|ApplicationResources|OK
+invoiceReceiver.skonto|Skonto|Skonto|ApplicationResources|OK
+invoiceReceiver.paymentGoal|Zahlungsziel|payment goal |ApplicationResources|OK
+job.price|Preis|Price|ApplicationResources|OK
+invoiceReceiver.postInvoice|Post Rechnung|post invoice|ApplicationResources|OK
+jobId|Dienstleistung|Job-Id|ApplicationResources|OK
+invoiceReceiver.shiftStorno|Bereitschaft Storno||ApplicationResources|MISSING_EN
+label.comment|Kommentar|Comment|BaseResources|OK
+invoiceReceiver.skonto|Skonto|Skonto|ApplicationResources|OK
+job.price|Preis|Price|ApplicationResources|OK
+label.description|Beschreibung|Description|BaseResources|OK
+jobId|Dienstleistung|Job-Id|ApplicationResources|OK
+label.email|E-Mail|E.Mail|BaseResources|OK
+label.comment|Kommentar|Comment|BaseResources|OK
+label.id|ID|Id|BaseResources|OK
+label.description|Beschreibung|Description|BaseResources|OK
+label.title|Titel|Title|BaseResources|OK
+label.email|E-Mail|E.Mail|BaseResources|OK
+location|Ort|Location|ApplicationResources|OK
+label.id|ID|Id|BaseResources|OK
+location.state|Bundesland|State|ApplicationResources|OK
+productOrder.leitwegId|Leitweg-ID|Leitweg-ID|ApplicationResources|OK
+label.title|Titel|Title|BaseResources|OK
+skill|Skill|Skill|ApplicationResources|OK
+location|Ort|Location|ApplicationResources|OK
+workHours|Arbeitszeiten|Working hours|ApplicationResources|OK
+location.state|Bundesland|State|ApplicationResources|OK
+year|Jahr|Year|ApplicationResources|OK
+productOrder.leitwegId|Leitweg-ID|Leitweg-ID|ApplicationResources|OK
+skill|Skill|Skill|ApplicationResources|OK
+workHours|Arbeitszeiten|Working hours|ApplicationResources|OK
+year|Jahr|Year|ApplicationResources|OK

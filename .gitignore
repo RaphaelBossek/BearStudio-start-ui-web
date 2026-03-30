@@ -174,3 +174,8 @@ src/routeTree.gen.ts
 # Obsidian
 specs/.obsidian
 .dmux/
+
+# Symbolic links
+docs
+brownfield
+

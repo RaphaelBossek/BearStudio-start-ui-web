@@ -1,0 +1,50 @@
+key|german|english|source|status
+action.assignment.reserve|Reserviert/Vorgemerkt|Reserved|ApplicationResources|OK
+administration.security|Sicherheit|Security|BaseResources|OK
+administration.settings|Einstellungen|Settings|ApplicationResources|OK
+administration.sysconfig|Systemeinstellungen|System Config|ApplicationResources|OK
+application.buildtime|${timestamp}||ApplicationResources|MISSING_EN
+application.version|3.3.0||ApplicationResources|MISSING_EN
+appointment.requests|Terminanfragen|Appointment Requests|ApplicationResources|OK
+birthday.message|Alles Gute zum Geburtstag w\u00FCnscht dir dein VideoClinic Team!|Best wishes and a happy birthday from your VideoClinic Team!|ApplicationResources|OK
+birthday.subject|Alles Gute zum Geburtstag|Happy Birthday to you|ApplicationResources|OK
+button.cancel|Abbrechen|Cancel|BaseResources|OK
+contact.birthday|Geburtstag|Birthday|ApplicationResources|OK
+dash.consultationToControl|Behandlungen zur \u00DCberpr\u00FCfung|Consultations to control|ApplicationResources|OK
+dash.consultations|Behandlungen|Consultations|ApplicationResources|OK
+dash.doctorInfo|Arzt-Informationen|Doctor-Information|ApplicationResources|OK
+dash.scheduleNotFull|Nicht volle Eins\u00E4tze|Unfilled schedules|ApplicationResources|OK
+doctor.data.available|Verf\u00FCgbar|Availability|ApplicationResources|OK
+doctor.data.currentMonth|Aktueller monat|Current Month|ApplicationResources|OK
+doctor.data.numbers|aktuelle Zahlen|Current numbers|ApplicationResources|OK
+doctor.data.workingHours|Arbeitszeit|Working time|ApplicationResources|OK
+employee.dialogtitle|Experten|Experts|ApplicationResources|OK
+error.maintenance.title|Wartungsnachricht|Wartungsnachricht|BaseResources|OK
+label.active|Aktiv|Active|BaseResources|OK
+label.date|Datum|Date|BaseResources|OK
+label.description|Beschreibung|Description|BaseResources|OK
+label.file|Datei|File|ApplicationResources|OK
+label.id|ID|Id|BaseResources|OK
+label.name|Name|Name|BaseResources|OK
+label.priority|Gewichtung|Priority|BaseResources|OK
+label.search|Suche|search|BaseResources|OK
+label.type|Typ|Type|BaseResources|OK
+logout|Abmeldung|Logout|ApplicationResources|OK
+motd|Neuigkeiten|News|ApplicationResources|OK
+motd.preview|Vorschau|Preview|ApplicationResources|OK
+notification|Nachrichten|Notification|ApplicationResources|OK
+notification.message|Nachricht|Message|ApplicationResources|OK
+notificationTemplate.event|Benachrichtigungs-Art|Notification-Type|ApplicationResources|OK
+notificationTemplate.message|Nachricht|Message|ApplicationResources|OK
+notificationTemplate.subject|Titel|Title|ApplicationResources|OK
+notificationTemplate.textMessage|Text-Nachricht|Text-Message|ApplicationResources|OK
+table.active|Aktiv|Active|ApplicationResources|OK
+userFile.active|Aktiv|Active|ApplicationResources|OK
+userFile.data|Daten|Data|ApplicationResources|OK
+userFile.date|Datum|Date|ApplicationResources|OK
+userFile.dateVerified|Datum best\u00E4tigt|Date Verified|ApplicationResources|OK
+userFile.foreignId|Ausl\u00E4ndische ID|Foreign Id|ApplicationResources|OK
+userFile.ownerId|Besitzer ID|Owner|ApplicationResources|OK
+userFile.parentId|Eltern ID|Parent ID|ApplicationResources|OK
+userFile.type|Typ|Type|ApplicationResources|OK
+userFile.verifiedBy|Gepr\u00FCft von|Verified by|ApplicationResources|OK

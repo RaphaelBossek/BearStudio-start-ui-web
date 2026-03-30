@@ -1,0 +1,6 @@
+ConsultationType
+appointment
+consultation.booknumber
+consultation.jnumber
+consultationWizard.start
+location

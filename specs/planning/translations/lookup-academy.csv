@@ -1,0 +1,13 @@
+key|german|english|source|status
+label.id|ID|Id|BaseResources|OK
+action.dateDone|Erledigt|dateDone|ApplicationResources|OK
+user|Benutzer|User|ApplicationResources|OK
+action.dateLast|Datum Letztes|dateLast|ApplicationResources|OK
+action.dateStart|Startdatum|Start Date|ApplicationResources|OK
+userVideoHistory.sessions|Sitzungen|Sessions|ApplicationResources|OK
+action.timeWatched|Angeschaute Zeit|timeWatched|ApplicationResources|OK
+video|Video|video|ApplicationResources|OK
+label.id|ID|Id|BaseResources|OK
+user|Benutzer|User|ApplicationResources|OK
+userVideoHistory.sessions|Sitzungen|Sessions|ApplicationResources|OK
+video|Video|video|ApplicationResources|OK
