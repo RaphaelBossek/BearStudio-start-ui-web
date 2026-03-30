@@ -312,8 +312,9 @@ The `wireframe-plan-{domain}.md` in `specs/analysis/` should link to the workflo
    - Proper stroke format with `align:"inside"`
    - Notes positioned outside frame bounds
 3. **Load into Pencil:** Run `python3 specs/wireframes/_save_pen.py <path>` to extract and reload
-4. **Verify:** Use `pencil_get_screenshot` to confirm white background and no overlap
-5. **Export PNGs:** Use `pencil_export_nodes` with scale=1.5
+4. **Fix Note Overlaps:** Run `python3 specs/wireframes/_fix_notes.py <path>` to intelligently position the `note` type components outside the frame bounds and stack them vertically avoiding overlaps with other notes or frames.
+5. **Verify:** Use `pencil_get_screenshot` to confirm white background and no overlap
+6. **Export PNGs:** Use `pencil_export_nodes` with scale=1.5
 
 ---
 
