@@ -263,6 +263,36 @@ The `wireframe-plan-{domain}.md` in `specs/analysis/` should link to the workflo
 | **padding** | `padding:16` (single), `padding:[10,14]` (horiz/vert) | Both work | Single number = all sides, array = [vertical, horizontal] |
 | **cornerRadius** | `cornerRadius:8` (single), `cornerRadius:[8,8,0,0]` (per-corner) | Both work | Array = [topLeft, topRight, bottomRight, bottomLeft] |
 
+### Text Content Conventions (i18n Placeholder & Note Rules — 2026-03-30)
+
+| Rule | Wrong | Correct | Notes |
+|:---|:---|:---|:---|
+| **No `{{` placeholders** | `{{user.displayName}}` | `John Doe` | Use English sample data for data bindings |
+| **No i18n key refs** | `{{i18n.administration.settings}}` | `Settings` | Look up English translation from `specs/planning/translations/lookup-*.csv` |
+| **No template refs** | `{{> content}}`, `{{sitemap}}` | `Main Content Area` | Replace with descriptive English text |
+| **Notes outside wireframe** | `type:"text"` inside wireframe frame | `type:"note"` positioned outside frame bounds | Annotations must not appear in wireframe screenshots |
+| **Export scale** | `scale: 2` | `scale: 1.5` | Reduced size for documentation readability, not 1:1 |
+
+**Translation lookup process:**
+1. Identify the domain of the i18n key (e.g., `administration.settings` → system domain)
+2. Open `specs/planning/translations/lookup-{domain}.csv` (pipe-delimited: `key|german|english|source|status`)
+3. Use the `english` column value
+4. If `status` is `MISSING_EN`, use the `Auto-Translated English` from `specs/planning/translations/translation-summary.md`
+5. For data bindings (`user.displayName`, `role`, etc.), use realistic English sample data
+
+**Note positioning rules:**
+- `type:"note"` nodes must be positioned **outside** the wireframe frame bounds
+- For 600px dialog frames: notes at `x: 620+`
+- For 1440px full-page frames: notes at `x: 1460+`
+- Internal text annotations (e.g., `@shadcn/Sidebar 240px expanded`) that were previously inside frames must be moved to external Note nodes
+- The wireframe screenshot (`pencil_get_screenshot` on the frame node) must show only UI elements, not annotations
+
+**Retroactive audit completed (2026-03-30):**
+- Scanned all 76 `.pen` files for `{{` placeholders — found 4 affected files
+- Fixed: `sysconfig-data-cleanup.pen` (2 data bindings → English sample), `app-shell-layout.pen` (3 placeholders + 1 internal annotation relocated), `global-navigation.pen` (2 internal annotations relocated), `user-menu.pen` (7 i18n/data placeholders → English translations)
+- Re-exported PNGs at scale 1.5 for all 4 files
+- Zero `{{` occurrences remaining across all `.pen` files
+
 ### Critical Requirements (Batch 2 Extension Fix — 2026-03-30)
 
 | Issue | Problem | Solution | Verification |
@@ -283,29 +313,7 @@ The `wireframe-plan-{domain}.md` in `specs/analysis/` should link to the workflo
    - Notes positioned outside frame bounds
 3. **Load into Pencil:** Run `python3 specs/wireframes/_save_pen.py <path>` to extract and reload
 4. **Verify:** Use `pencil_get_screenshot` to confirm white background and no overlap
-5. **Export PNGs:** Use `pencil_export_nodes` with scale=2
-
-### Critical Requirements (Batch 2 Extension Fix — 2026-03-30)
-
-| Issue | Problem | Solution | Verification |
-|:---|:---|:---|:---|
-| **Background color** | Frames render black when no fill defined | **ALWAYS** set `fill:"$--bg"` on root frame | Screenshot shows white background |
-| **Variable format** | Variables use `--` prefix (not `$--`) in definition | Define as `"--bg":{"type":"color","value":"#FFFFFF"}`; reference as `"$--bg"` | Check `basisweb-wizard.pen` |
-| **Note overlap** | Annotation notes overlap main wireframe frame | Position notes **outside** frame bounds (e.g., x: 1460 for 1440px frame) | Visual inspection of screenshot |
-| **File creation** | Direct JSON write doesn't load variables into Pencil memory | Use Python script to write JSON, then `python3 specs/wireframes/_save_pen.py` to load into Pencil | Round-trip node count verification |
-| **Stroke format** | Missing `align:"inside"` causes border rendering issues | Always use `stroke:{align:"inside",thickness:1,fill:"$--border"}` | Consistent with Batch 1 files |
-
-**Recommended workflow for new .pen files:**
-
-1. **Study reference:** Read `specs/wireframes/interfaces/dashboard/basisweb-wizard.pen` for exact variable format and structure
-2. **Create JSON:** Use Python script to write valid `.pen` JSON with:
-   - Variables using `--` prefix (e.g., `"--bg"`)
-   - Root frame with explicit `fill:"$--bg"`
-   - Proper stroke format with `align:"inside"`
-   - Notes positioned outside frame bounds
-3. **Load into Pencil:** Run `python3 specs/wireframes/_save_pen.py <path>` to extract and reload
-4. **Verify:** Use `pencil_get_screenshot` to confirm white background and no overlap
-5. **Export PNGs:** Use `pencil_export_nodes` with scale=2
+5. **Export PNGs:** Use `pencil_export_nodes` with scale=1.5
 
 ---
 
@@ -632,62 +640,6 @@ All 79 wireframes across 10 batches are grouped as above, ordered by complexity 
 7. Update `specs/analysis/wireframes-index.md`
 
 **Status:** ✅ Complete (4/4 wireframes, 4 .pen files, 33–72 KB each)
-
----
-
-### Batch 10 — Planning: Appointment Admin, Support, Shift, Council (20 wireframes)
-
-**Complexity:** Medium–High
-**Dependencies:** Wireframe plans exist but need expansion with Shadcn mapping
-**Domain plans:**
-- [`specs/analysis/planning/appointment-admin/wireframe-plan.md`](../analysis/planning/appointment-admin/wireframe-plan.md) *(complete, expand to add Shadcn mapping)*
-- [`specs/analysis/planning/appointment-support/wireframe-plan.md`](../analysis/planning/appointment-support/wireframe-plan.md) *(complete, expand to add Shadcn mapping)*
-- [`specs/analysis/planning/shift/wireframe-plan.md`](../analysis/planning/shift/wireframe-plan.md) *(complete, expand to add Shadcn mapping)*
-- [`specs/analysis/planning/council/wireframe-plan.md`](../analysis/planning/council/wireframe-plan.md) *(complete, expand to add Shadcn mapping)*
-
-**Steps:**
-1. Expand all 4 wireframe plans (add Shadcn mapping, execution steps, annotation legend)
-2. Create `specs/wireframes/planning/workflows.md` — user-oriented diagrams for each subdomain:
-   - **appointment-admin**: Inline consultation flow, calculation workflow, QM integration, export/email/print flows
-   - **appointment-support**: CDR call tracking lifecycle, assignment management, close-month workflow
-   - **shift**: Shift scheduling flow, shift plan creation, apply-plan workflow
-   - **council**: Council scheduling flow, council plan creation, apply-plan workflow
-3. **User review checkpoint** — get approval before proceeding to wireframes
-4. Create `.pen` files in priority order:
-
-   **appointment-admin** (8 wireframes) — High priority:
-   - `specs/wireframes/planning/appointment-admin/inline-consultation.pen`
-   - `specs/wireframes/planning/appointment-admin/calculation.pen`
-   - `specs/wireframes/planning/appointment-admin/qm-dialog.pen`
-   - `specs/wireframes/planning/appointment-admin/export-dialog.pen`
-   - `specs/wireframes/planning/appointment-admin/email-dialog.pen`
-   - `specs/wireframes/planning/appointment-admin/print-preview.pen`
-   - `specs/wireframes/planning/appointment-admin/job-status.pen`
-   - `specs/wireframes/planning/appointment-admin/state-legend.pen`
-
-   **appointment-support** (5 wireframes) — Medium priority:
-   - `specs/wireframes/planning/appointment-support/cdr-call-list.pen`
-   - `specs/wireframes/planning/appointment-support/cdr-call-detail.pen`
-   - `specs/wireframes/planning/appointment-support/cdr-assignment-crud.pen`
-   - `specs/wireframes/planning/appointment-support/close-month.pen`
-   - `specs/wireframes/planning/appointment-support/cdr-status-legend.pen`
-
-   **shift** (4 wireframes) — Medium priority:
-   - `specs/wireframes/planning/shift/shift-list.pen`
-   - `specs/wireframes/planning/shift/shift-plan-detail.pen`
-   - `specs/wireframes/planning/shift/apply-plan.pen`
-   - `specs/wireframes/planning/shift/state-legend.pen`
-
-   **council** (3 wireframes) — Medium priority:
-   - `specs/wireframes/planning/council/council-list.pen`
-   - `specs/wireframes/planning/council/council-plan-detail.pen`
-   - `specs/wireframes/planning/council/apply-plan.pen`
-
-5. Export all to PNG
-6. Embed screenshots in `specs/wireframes/planning/workflows.md`
-7. Update `specs/analysis/wireframes-index.md`
-
-**Status:** ⏳ Pending (0/20 wireframes)
 
 ---
 
