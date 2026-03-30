@@ -92,7 +92,7 @@ flowchart TD
     C -->|maintenance=false| E[No toast shown]
     D --> F[Toast positioned bottom-right]
     F --> G[Red header with hard hat icon]
-    G --> H[Display {{i18n.error.maintenance.title}}]
+    G --> H[Display Wartungsnachricht]
     H --> I[Show maintenance message {{.}}]
     I --> J[User continues working with alert]
     
