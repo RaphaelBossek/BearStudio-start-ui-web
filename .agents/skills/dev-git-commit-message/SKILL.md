@@ -1,6 +1,7 @@
 ---
-name: git-commit-message
-description: Auto-generates conventional commit messages from git diffs with tiered format enforcement. Analyzes staged changes to produce meaningful commit messages following Conventional Commits specification.
+name: dev-git-commit-message
+description: Generates conventional commit messages from git diffs. Use when you need well-formatted commit messages following Conventional Commits.
+argument-hint: "[--validate 'msg' | --tier 1|2|3]"
 ---
 
 # Git Commit Message Generator
@@ -27,6 +28,7 @@ Analyze staged git changes and generate concise, meaningful commit messages foll
 - Identify modified, added, and deleted files
 - Analyze code changes (additions, deletions, modifications)
 - Detect patterns across multiple files
+- Apply changes in batches with logical interdependencies instead of big overall changes over all
 
 **2. Change Classification**
 - Determine commit type from changes:
@@ -55,6 +57,15 @@ Analyze staged git changes and generate concise, meaningful commit messages foll
 - Use imperative mood ("add" not "added")
 - Focus on "what" and "why", not "how"
 - Provide 2-3 alternative suggestions
+
+**5. Execution of Commit on users behalf on request**
+- Let the user choose the message of his choice
+- Commit the files with the choosen message:
+   ```bash
+   cat <<__EOF__ | git commit -F-
+   {message}
+   __EOF__
+   ```
 
 ## Tier System: Smart Format Enforcement
 
@@ -112,11 +123,14 @@ type(scope): summary line (max 72 chars)
 ## Workflow
 
 ```text
+0. Pre-staging typecheck (if project uses TypeScript):
+   - Run `pnpm check` on changed files before staging
+   - Fix type errors before committing (avoids pre-commit hook retry loops)
 1. Get staged changes (staged only, not working tree):
    - git diff --staged --name-status
    - git diff --staged --stat
    - git diff --staged
-2. Load config → frameworks/shared-skills/skills/git-commit-message/config.yaml
+2. Load config → `.skills/dev-git-commit-message/config.yaml`
 3. Analyze changes:
    - Count files modified/added/deleted
    - Identify primary change type using analysis patterns
@@ -133,6 +147,8 @@ type(scope): summary line (max 72 chars)
    - Verify required elements present
    - Ensure length limits
 6. Present to user with explanation and tier info
+7. Ask the use to choose one of the options or let the user stop here
+8. If the user choose a variant execute the checkin with the choosen message and the related files. If the files are new, add them too
 ```
 
 ## Optional Modes (If Supported By The Caller)
@@ -216,6 +232,9 @@ ANALYSIS:
 3. **Respect conventions**: Follow project's existing commit patterns if detected
 4. **Avoid hallucination**: Only describe what's actually in the diff
 5. **Be concise**: 50 chars is ideal, 72 is maximum for first line
+6. **Stage specific files**: Use `git add <file1> <file2>`, not `git add -A` or `git add .`, to avoid pulling in unrelated changes or sensitive files
+7. **Avoid heredoc in sandboxed shells**: Sandboxed environments may block temp file creation for here-documents. Use `git commit -m "$(cat <<'EOF'\nmessage\nEOF\n)"` or pass `-m "message"` directly
+8. **Pre-commit typecheck**: Run `pnpm lint` on the staged surface before committing to catch type errors early and avoid retry cascades from pre-commit hooks
 
 ## Example Analyses
 
@@ -278,7 +297,7 @@ The skill uses pattern matching to intelligently detect commit types from diffs:
 - **Mixed code+docs**: Prefer code type, note docs in description
 
 ### test Detection
-- **File patterns**: `test.js`, `specs.ts`, `__tests__/`, `/tests/`
+- **File patterns**: `test.js`, `spec.ts`, `__tests__/`, `/tests/`
 - **Test framework patterns**: `describe`, `it`, `test`, `expect`, `assert`
 
 ### style Detection
@@ -417,7 +436,25 @@ Use it to standardize `type(scope): summary` messages and keep history automatio
 
 ---
 
-**Version**: 2.1.1
-**Last Updated**: 2026-01-26
+## Resources
+
+| Resource | Purpose |
+|----------|---------|
+| [references/conventional-commits-guide.md](references/conventional-commits-guide.md) | Conventional Commits spec and tooling |
+| [references/commit-message-antipatterns.md](references/commit-message-antipatterns.md) | Common bad patterns, detection, linting |
+| [references/monorepo-commit-conventions.md](references/monorepo-commit-conventions.md) | Scope strategies for multi-package repos |
+| [references/changelog-generation-guide.md](references/changelog-generation-guide.md) | Changelog tooling setup, CI integration |
+| [data/sources.json](data/sources.json) | Curated external sources |
+
+---
+
+**Version**: 2.1.1-rb20260329
+**Last Updated**: 2026-01-26+20260329
 **Repository**: AI-Agents (documentation repository)
 **Conventional Commits Spec**: <https://www.conventionalcommits.org/>
+
+## Fact-Checking
+
+- Use web search/web fetch to verify current external facts, versions, pricing, deadlines, regulations, or platform behavior before final answers.
+- Prefer primary sources; report source links and dates for volatile information.
+- If web access is unavailable, state the limitation and mark guidance as unverified.
