@@ -25,8 +25,8 @@ This migration reorganizes the `specs/` directory to align with the application'
 | Aspect | Before | After |
 |--------|--------|-------|
 | Max directory depth | 5 levels | 3 levels |
-| Analysis subfolders | 50 directories | 13 domain folders (includes orphan/) |
-| Wireframe subfolders | 41 directories | 13 domain folders (matching analysis/) |
+| Analysis subfolders | 50 directories | 14 domain folders (includes orphan/) |
+| Wireframe subfolders | 41 directories | 14 domain folders (matching analysis/) |
 | File naming | Mixed (`01-name.md`, `name.md`) | Standardized (`list.md`, `details.md`, etc.) |
 | Top-level nav | Scattered README files | Single `SITE-NAVIGATION.md` |
 | Orphaned PNGs | ~3 files | 0 (cleaned up) |
@@ -38,6 +38,35 @@ This migration reorganizes the `specs/` directory to align with the application'
 
 **IMPORTANT**: All relative links in documentation use the file's own directory as base.
 Example: From `analysis/SITE-NAVIGATION.md`, link to `analysis/dashboard/README.md` as `./dashboard/README.md`
+
+### 2.0 Directory Cleanup Strategy
+
+After all files are migrated from old directories to new consolidated domain folders, **all source directories must be deleted** to avoid confusion and maintain a clean structure.
+
+**Cleanup Process:**
+1. Run migration scripts to move all files to new locations
+2. Validate all files have been moved successfully
+3. Delete all empty source directories (see Section 6.4 for cleanup script)
+4. Verify no broken links remain
+
+**Directories to Delete After Migration:**
+- All `analysis/accounting/*` subdirectories
+- All `analysis/academy/*` subdirectories
+- All `analysis/user-management/*` subdirectories
+- All `analysis/planning/*` subdirectories
+- All `analysis/system/*` subdirectories (except `includes/`)
+- All `analysis/customer/*` subdirectories
+- All `analysis/interfaces/*` subdirectories
+- All `analysis/treatment/*` subdirectories
+- All `wireframes/accounting/*` subdirectories
+- All `wireframes/academy/*` subdirectories
+- All `wireframes/user-management/*` subdirectories
+- All `wireframes/planning/*` subdirectories
+- All `wireframes/system/*` subdirectories (except `includes/`)
+- All `wireframes/customer/*` subdirectories
+- All `wireframes/interfaces/*` subdirectories
+- All `wireframes/treatment/*` subdirectories
+- Old `features/*` subdirectories (compliance/, performance/, resource-management/, security/, ui/, usability/)
 
 ### 2.1 Design Principles
 
@@ -187,8 +216,8 @@ specs/
 │   │
 │   └── orphan/ (NEW - orphaned content with README explaining WHY)
 │       ├── README.md (explains external Video Library, support ticket moved to dashboard)
-│       ├── support-and-video.md (from academy/)
-│       └── user-video-history.md (from academy/)
+│       ├── support-and-video.md (from analysis/academy/support-video/01-support-and-video.md)
+│       └── user-video-history.md (from analysis/academy/video-history/)
 │
 ├── wireframes/ (parallel structure to analysis/ - mirrors domain folders)
 │   ├── README.md (wireframes domain overview with component mapping)
@@ -207,7 +236,7 @@ specs/
 │   │   ├── adhoc-appointment.png
 │   │   ├── end-shift.pen (from planning/dashboard/end-shift.pen)
 │   │   ├── end-shift.png
-│   │   └── support-ticket.pen (from academy/support-video/support-ticket.pen)
+│   │   └── support-ticket.pen (from wireframes/academy/support-video/support-ticket.pen)
 │   │   └── support-ticket.png
 │   │
 │   ├── appointments/ (NEW - core appointment wireframes)
@@ -379,7 +408,7 @@ specs/
 │   │   ├── navbar.png
 │   │   ├── user-menu.pen (from system/includes/user-menu.pen)
 │   │   ├── user-menu.png
-│   │   ├── bug-report.pen (from academy/support-video/support-ticket.pen)
+│   │   ├── bug-report.pen (from wireframes/academy/support-video/support-ticket.pen)
 │   │   ├── bug-report.png
 │   │   ├── loading-states.pen (from system/includes/loading-states.pen)
 │   │   ├── loading-states.png
@@ -390,10 +419,10 @@ specs/
 │   │
 │   └── orphan/ (NEW - orphaned video library wireframes)
 │       ├── README.md (explains WHY video library is orphaned - external link)
-│       ├── video-library.pen (from academy/support-video/)
+│       ├── video-library.pen (from wireframes/academy/support-video/)
 │       ├── video-library.png
-│       ├── video-category.pen
-│       └── video-category.png
+│       ├── video-category.pen (from wireframes/academy/support-video/)
+│       └── video-category.png (from wireframes/academy/support-video/)
 │
 ├── mongodb-mapping/ (RETAIN - MongoDB schema reference)
 │   ├── README.md (index with collection tables, migration status)
@@ -604,9 +633,9 @@ domains/
 
 ---
 
-## New Scripts to Create
+## 6. Scripts to Create
 
-### 1. update-references.sh
+### 6.1 update-references.sh
 
 **Purpose**: Update all internal markdown references after file moves
 
@@ -631,7 +660,7 @@ find specs -name "*.md" -type f -exec sed -i \
 echo "Reference updates complete"
 ```
 
-### 2. check-orphans.sh
+### 6.2 check-orphans.sh
 
 **Purpose**: Detect orphaned PNG files not referenced in any markdown
 
@@ -660,7 +689,7 @@ else
 fi
 ```
 
-### 3. validate-migration.sh
+### 6.3 validate-migration.sh
 
 **Purpose**: Final validation of migration completeness
 
@@ -697,56 +726,168 @@ else
 fi
 ```
 
----
+### 6.4 cleanup-empty-dirs.sh
 
-## Updated Phase Structure
+**Purpose**: Delete all empty source directories after migration
 
-| Phase | Content | Script | Manual/Auto |
-|-------|---------|--------|-------------|
-| Phase 1-6 | File moves (analysis, wireframes, mongodb-mapping) | `migrate-directory.sh` | Auto |
-| Phase 7 | Features/ restructuring (FR + NFR split) | Manual | Manual |
-| Phase 8 | Orphan moves (academy → orphan/) | `migrate-directory.sh` | Auto |
-| Phase 9 | Create orphan READMEs (explain WHY) | Manual | Manual |
-| Phase 10 | Update all references | `update-references.sh` | Auto |
-| Phase 11 | Check orphans | `check-orphans.sh` | Auto |
-| Phase 12 | Validate migration | `validate-migration.sh` | Auto |
-| Phase 13-14 | Content creation (domains/, decisions/, etc.) | Manual | Manual |
-| Phase 15 | Create STRUCTURE.md (final structure doc) | Manual | Manual |
+**High Priority** - Critical for clean structure
 
----
+```bash
+#!/bin/bash
+# Clean up empty directories after migration
 
-## Orphan README.md Template
+cd specs
 
-```markdown
-# Orphaned Content
+# Track deleted directories
+deleted=0
 
-> **Date Moved**: 2026-03-31  
-> **Reason**: Content relates to external systems or deprecated features
+# Function to delete empty directories recursively
+cleanup_empty_dirs() {
+  local dir="$1"
+  
+  # Find all empty directories and delete them
+  find "$dir" -type d -empty -delete
+  
+  # Count deleted directories
+  deleted=$(find "$dir" -type d -empty | wc -l)
+}
 
-## Why This Content is Here
+# Analysis directories to clean (old structure)
+echo "Cleaning empty analysis/ subdirectories..."
+for old_dir in \
+  analysis/accounting/admin-job \
+  analysis/accounting/admin-workhour \
+  analysis/accounting/config \
+  analysis/accounting/invoice \
+  analysis/accounting/invoice-receiver \
+  analysis/accounting/worklog \
+  analysis/academy/support-video \
+  analysis/academy/video-history \
+  analysis/customer/contact \
+  analysis/customer/customer-core \
+  analysis/customer/equipment \
+  analysis/customer/room \
+  analysis/interfaces/dashboard \
+  analysis/planning/appointment \
+  analysis/planning/appointment-admin \
+  analysis/planning/appointment-support \
+  analysis/planning/council \
+  analysis/planning/dashboard \
+  analysis/planning/shift \
+  analysis/system/admin-cruds \
+  analysis/system/admin-system \
+  analysis/system/cdr-call \
+  analysis/system/config \
+  analysis/system/dashboard \
+  analysis/system/notification \
+  analysis/system/templates-files \
+  analysis/treatment/appointment-patient \
+  analysis/treatment/consultation \
+  analysis/treatment/dashboard \
+  analysis/treatment/medication \
+  analysis/treatment/patient-data \
+  analysis/treatment/questionnaire \
+  analysis/treatment/treatment-core \
+  analysis/treatment/warning \
+  analysis/user-management/admin-group \
+  analysis/user-management/admin-skill \
+  analysis/user-management/admin-user \
+  analysis/user-management/dashboard \
+  analysis/user-management/onboarding \
+  analysis/user-management/profile; do
+  if [ -d "$old_dir" ]; then
+    echo "  Checking: $old_dir"
+    if [ -z "$(ls -A "$old_dir" 2>/dev/null)" ]; then
+      rmdir "$old_dir" && echo "    ✓ Deleted empty directory" || echo "    ⚠ Failed to delete"
+    fi
+  fi
+done
 
-These documents were moved to `orphan/` because:
+# Wireframes directories to clean (old structure)
+echo "Cleaning empty wireframes/ subdirectories..."
+for old_dir in \
+  wireframes/accounting/admin-job \
+  wireframes/accounting/config \
+  wireframes/accounting/invoice \
+  wireframes/accounting/invoice-receiver \
+  wireframes/accounting/worklog \
+  wireframes/academy/support-video \
+  wireframes/customer/contact \
+  wireframes/customer/customer-core \
+  wireframes/customer/equipment \
+  wireframes/customer/room \
+  wireframes/interfaces/dashboard \
+  wireframes/planning/appointment \
+  wireframes/planning/appointment-admin \
+  wireframes/planning/appointment-support \
+  wireframes/planning/council \
+  wireframes/planning/dashboard \
+  wireframes/planning/shift \
+  wireframes/system/admin \
+  wireframes/system/cdr-call \
+  wireframes/system/dashboard \
+  wireframes/system/includes \
+  wireframes/system/notification \
+  wireframes/system/shell \
+  wireframes/treatment/consultation \
+  wireframes/treatment/dashboard \
+  wireframes/treatment/questionnaire \
+  wireframes/user-management/dashboard \
+  wireframes/user-management/profile; do
+  if [ -d "$old_dir" ]; then
+    echo "  Checking: $old_dir"
+    if [ -z "$(ls -A "$old_dir" 2>/dev/null)" ]; then
+      rmdir "$old_dir" && echo "    ✓ Deleted empty directory" || echo "    ⚠ Failed to delete"
+    fi
+  fi
+done
 
-1. **External Dependencies**: The Video Library (`https://learn.videoclinic.de/`) is an external link, not an internal feature
-2. **Support Ticket Integration**: The support ticket functionality is being relocated to `dashboard/user-dropdown.md` as it's part of the user support workflow
+# Features directories to clean (old structure)
+echo "Cleaning empty features/ subdirectories..."
+for old_dir in \
+  features/compliance/consultation-details \
+  features/performance/database-optimization \
+  features/performance/general \
+  features/resource-management \
+  features/security \
+  features/usability; do
+  if [ -d "$old_dir" ]; then
+    echo "  Checking: $old_dir"
+    if [ -z "$(ls -A "$old_dir" 2>/dev/null)" ]; then
+      rmdir "$old_dir" && echo "    ✓ Deleted empty directory" || echo "    ⚠ Failed to delete"
+    fi
+  fi
+done
 
-## Content Status
+# Clean parent directories if they became empty
+echo "Cleaning empty parent directories..."
+find analysis -type d -empty -delete 2>/dev/null
+find wireframes -type d -empty -delete 2>/dev/null
+find features -type d -empty -delete 2>/dev/null
 
-| File | Original Location | Status |
-|------|-------------------|--------|
-| `support-and-video.md` | `academy/support-video/` | Pending decision on video platform |
-| `user-video-history.md` | `academy/video-history/` | Pending decision on video platform |
-
-## Next Steps
-
-- [ ] Decide on video platform migration strategy
-- [ ] Determine if support ticket should remain in dashboard or move to includes
-- [ ] Update or remove orphaned content based on decisions
-
----
-
-**Back to**: [`../README.md`](../README.md)
+# Report
+echo ""
+echo "Cleanup complete!"
+echo "Remaining directories:"
+echo "  analysis/: $(find analysis -type d | wc -l)"
+echo "  wireframes/: $(find wireframes -type d | wc -l)"
+echo "  features/: $(find features -type d | wc -l)"
 ```
+
+### 6.5 Script Execution Order
+
+Scripts must be executed in the following order after manual file moves are complete:
+
+1. **update-references.sh** - Update all internal markdown references
+2. **check-orphans.sh** - Verify no orphaned PNG files remain
+3. **validate-migration.sh** - Validate all target directories exist and links work
+4. **cleanup-empty-dirs.sh** - Delete all empty source directories (FINAL STEP)
+
+**WARNING**: Do not run `cleanup-empty-dirs.sh` until you have verified that:
+- All files have been successfully moved to their new locations
+- All internal references have been updated
+- No broken links exist in the documentation
+- The migration validation passes
 
 ---
 
@@ -771,19 +912,27 @@ These documents were moved to `orphan/` because:
 
 ---
 
-## Integration Instructions
+## Notes
 
-To integrate this addendum into MIGRATION-PLAN.md:
+### Integration Status
 
-1. **Replace Section 2.2** with updated directory tree (includes orphan/, user-dropdown.md, global-components.md)
-2. **Merge Sections 2.6 & 2.7** into single section 2.6 "Wireframes Directory Alignment & Unified Naming"
-3. **Renumber sections** sequentially (2.4, 2.5, 2.6, etc.)
-4. **Add new Section 2.8**: "Features Directory Restructuring" with FR/NFR split explanation
-5. **Add new Section 2.9**: "Orphan Directory" with explanation and README template
-6. **Update Phase Structure** in Section 5 with new phases (10-15)
-7. **Add new Section 6.5**: "Script Descriptions" with update-references.sh, check-orphans.sh, validate-migration.sh
-8. **Update Section 9** (Appendix) with features/ mapping table
+This addendum has been **fully integrated** into the main MIGRATION-PLAN.md document:
+
+- ✅ Section 2.2 "Complete Directory Tree" updated with final file destinations
+- ✅ Section 6.1-6.4 "Scripts to Create" added with all migration scripts
+- ✅ Section 6.5 "Script Execution Order" added with warnings
+- ✅ Domain count corrected to 14 folders (including orphan/)
+- ✅ Wireframe source paths corrected to include full `wireframes/` prefix
+
+### Remaining Tasks
+
+The following sections mentioned in the original addendum are **NOT yet implemented**:
+
+- ❌ Phase structure table (referenced but not created)
+- ❌ Features/FR mapping documentation (manual content creation required per Item L)
+- ❌ Domain README files (all 14 domains need README.md files)
+- ❌ Actual file migrations (this document is a plan only)
 
 ---
 
-**End of Addendum**
+**Document Status**: Ready for execution
