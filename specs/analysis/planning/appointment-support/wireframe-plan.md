@@ -118,8 +118,8 @@ For each wireframe:
 
 | Wireframe ID | Status | Date Completed | PNG Exported |
 |:---|:---|:---|:---|
-| W1 | Pending | — | No |
-| W2 | Pending | — | No |
-| W3 | Pending | — | No |
-| W4 | Pending | — | No |
-| W5 | Pending | — | No |
+| W1 | Done | 2026-03-31 | Yes |
+| W2 | Done | 2026-03-31 | Yes |
+| W3 | Done | 2026-03-31 | Yes |
+| W4 | Done | 2026-03-31 | Yes |
+| W5 | Done | 2026-03-31 | Yes |

@@ -695,8 +695,143 @@ All 79 wireframes across 10 batches are grouped as above, ordered by complexity 
 5. Export all to PNG
 6. Embed screenshots in `specs/wireframes/planning/workflows.md`
 7. Update `specs/analysis/wireframes-index.md`
+8. Update `specs/wireframes/analysis-wireframes-mapping.md` — replace *(no wireframe)* entries for `appointment-admin/01-appointment-admin.md`, `appointment-support/01-appointment-plan.md`, `council/01-council-and-plan.md`, `shift/01-shift-and-plan.md` with the created `.pen` file references
 
-**Status:** ⏳ Pending (0/20 wireframes)
+**Status:** ✅ Complete (20/20 wireframes, 20 .pen files, 21 .png exports, 4–50 KB each)
+
+---
+
+### Batch 11 — System: Admin CRUDs, CDR Call, Config, Templates (4 analysis files)
+
+**Complexity:** Low–Medium
+**Dependencies:** Batch 2 (system shell and includes) should be complete before this batch
+**Note:** These 4 analysis files currently have no wireframes. Create wireframe plans from scratch using Task 1 instructions.
+
+**Analysis files covered:**
+| Analysis File | Brownfield Source |
+|---|---|
+| `system/admin-cruds/04-motd-template.md` | `admin/motd.htmlm`, `admin/template.htmlm` |
+| `system/cdr-call/01-cdr-call.md` | `cdrCall/`, `cdrCallAssignment/` |
+| `system/config/01-system-config.md` | `locationType/`, `exclusionCriteria/`, `supportCategory/`, `loginNotification/` |
+| `system/templates-files/01-templates-files.md` | `exportTemplate/`, `notificationTemplate/`, `userFile/` |
+
+**Steps:**
+1. Create `specs/analysis/system/wireframe-plan-batch11.md` from scratch covering all 4 subdomains
+2. Create or update `specs/wireframes/system/workflows.md` — add user-oriented diagrams (MOTD lifecycle, template management, CDR call tracking, system config CRUD flows, file management)
+3. **User review checkpoint** — get approval before proceeding to wireframes
+4. Create `.pen` files:
+   - `specs/wireframes/system/admin-cruds/motd-template.pen` — MOTD list + create/edit dialog, template list + editor
+   - `specs/wireframes/system/cdr-call/cdr-call.pen` — CDR call list, call detail, assignment management
+   - `specs/wireframes/system/config/system-config.pen` — Location type, exclusion criteria, support category, login notification CRUD views
+   - `specs/wireframes/system/templates-files/templates-files.pen` — Export template, notification template, user file management
+5. Export all to PNG
+6. Embed screenshots in `specs/wireframes/system/workflows.md`
+7. Update `specs/analysis/wireframes-index.md`
+8. Update `specs/wireframes/analysis-wireframes-mapping.md` — replace *(no wireframe)* entries for `admin-cruds/04-motd-template.md`, `cdr-call/01-cdr-call.md`, `config/01-system-config.md`, `templates-files/01-templates-files.md` with the created `.pen` file references
+
+**Status:** ⏳ Pending (0/4 wireframes)
+
+---
+
+### Batch 12 — Treatment: Patient Data, Medication, Treatment Core, Warning (6 analysis files)
+
+**Complexity:** Medium
+**Dependencies:** Batch 5 (consultation details) should be complete before this batch
+**Note:** These 6 analysis files currently have no wireframes. Create wireframe plans from scratch using Task 1 instructions.
+
+**Analysis files covered:**
+| Analysis File | Brownfield Source |
+|---|---|
+| `treatment/appointment-patient/02-appointment-details-patient.md` | `appointment/details.html` (patient sections) |
+| `treatment/medication/01-medication.md` | `medication/` |
+| `treatment/patient-data/01-patient-data.md` | `patientData/` |
+| `treatment/treatment-core/01-treatment-and-category.md` | `treatment/`, `treatmentCategory/` |
+| `treatment/treatment-core/02-treatment-plan.md` | `treatmentPlan/` |
+| `treatment/warning/01-warning-management.md` | `warning/` |
+
+**Steps:**
+1. Create `specs/analysis/treatment/wireframe-plan-batch12.md` from scratch covering all 6 subdomains
+2. Create or update `specs/wireframes/treatment/workflows.md` — add user-oriented diagrams (patient data management, medication prescribing flow, treatment plan lifecycle, warning creation/review, appointment patient tab interactions)
+3. **User review checkpoint** — get approval before proceeding to wireframes
+4. Create `.pen` files:
+   - `specs/wireframes/treatment/appointment-patient/appointment-details-patient.pen` — Patient sections within appointment details
+   - `specs/wireframes/treatment/medication/medication.pen` — Medication list, prescribe/edit dialog, history view
+   - `specs/wireframes/treatment/patient-data/patient-data.pen` — Patient data overview, edit forms
+   - `specs/wireframes/treatment/treatment-core/treatment-and-category.pen` — Treatment list, category management, treatment CRUD
+   - `specs/wireframes/treatment/treatment-core/treatment-plan.pen` — Treatment plan list, plan detail/editor
+   - `specs/wireframes/treatment/warning/warning-management.pen` — Warning list, create/edit dialog, severity indicators
+5. Export all to PNG
+6. Embed screenshots in `specs/wireframes/treatment/workflows.md`
+7. Update `specs/analysis/wireframes-index.md`
+8. Update `specs/wireframes/analysis-wireframes-mapping.md` — replace *(no wireframe)* entries for `appointment-patient/02-appointment-details-patient.md`, `medication/01-medication.md`, `patient-data/01-patient-data.md`, `treatment-core/01-treatment-and-category.md`, `treatment-core/02-treatment-plan.md`, `warning/01-warning-management.md` with the created `.pen` file references
+
+**Status:** ⏳ Pending (0/6 wireframes)
+
+---
+
+### Batch 13 — User Management: Admin, TOTP, Groups, Skills, Onboarding (5 analysis files)
+
+**Complexity:** Medium–High
+**Dependencies:** Batch 6 (profile) should be complete before this batch
+**Note:** These 5 analysis files currently have no wireframes. Create wireframe plans from scratch using Task 1 instructions.
+
+**Analysis files covered:**
+| Analysis File | Brownfield Source |
+|---|---|
+| `user-management/admin-user/02-user-management.md` | `admin/user.htmlm`, `admin/user.js` |
+| `user-management/admin-user/06-totp-onboarding.md` | `admin/totpOnboarding.html`, `admin/userSecurity.htmlm` |
+| `user-management/admin-group/05-group-management.md` | `admin/group.htmlm`, `admin/group.js` |
+| `user-management/admin-skill/04-skill.md` | `admin/skill.htmlm`, `admin/skill.js` |
+| `user-management/onboarding/01-onboarding-flow.md` | `onboarding/` |
+
+**Steps:**
+1. Create `specs/analysis/user-management/wireframe-plan-batch13.md` from scratch covering all 5 subdomains
+2. Create or update `specs/wireframes/user-management/workflows.md` — add user-oriented diagrams (user admin CRUD, TOTP enrollment/reset flow, group permission management, skill assignment, onboarding wizard steps)
+3. **User review checkpoint** — get approval before proceeding to wireframes
+4. Create `.pen` files:
+   - `specs/wireframes/user-management/admin-user/user-management.pen` — User list with filters, user create/edit form, role assignment
+   - `specs/wireframes/user-management/admin-user/totp-onboarding.pen` — TOTP setup wizard (QR code, verification step), security settings panel
+   - `specs/wireframes/user-management/admin-group/group-management.pen` — Group list, group create/edit dialog, permission matrix
+   - `specs/wireframes/user-management/admin-skill/skill.pen` — Skill list, skill create/edit dialog
+   - `specs/wireframes/user-management/onboarding/onboarding-flow.pen` — Onboarding wizard steps, progress indicator, completion state
+5. Export all to PNG
+6. Embed screenshots in `specs/wireframes/user-management/workflows.md`
+7. Update `specs/analysis/wireframes-index.md`
+8. Update `specs/wireframes/analysis-wireframes-mapping.md` — replace *(no wireframe)* entries for `admin-user/02-user-management.md`, `admin-user/06-totp-onboarding.md`, `admin-group/05-group-management.md`, `admin-skill/04-skill.md`, `onboarding/01-onboarding-flow.md` with the created `.pen` file references
+
+**Status:** ⏳ Pending (0/5 wireframes)
+
+---
+
+### Batch 14 — Academy: Video History + Accounting: Workhour (2 analysis files)
+
+**Complexity:** Low
+**Dependencies:** Batch 9 (academy) and Batch 7 (accounting) should be complete before this batch
+**Note:** These 2 remaining analysis files currently have no wireframes. They are small enough to combine into a single batch.
+
+**Analysis files covered:**
+| Analysis File | Brownfield Source |
+|---|---|
+| `academy/video-history/01-user-video-history.md` | `userVideoHistory/` |
+| `accounting/admin-workhour/04-workhour.md` | `admin/workHour.htmlm`, `admin/workHour.js` |
+
+**Steps:**
+1. Update existing wireframe plans:
+   - Update `specs/analysis/academy/wireframe-plan.md` to add video history section
+   - Update `specs/analysis/accounting/wireframe-plan.md` to add workhour section
+2. Update workflows:
+   - Update `specs/wireframes/academy/workflows.md` — add video history browsing/playback flow
+   - Update `specs/wireframes/accounting/workflows.md` — add workhour tracking/admin flow
+3. **User review checkpoint** — get approval before proceeding to wireframes
+4. Create `.pen` files:
+   - `specs/wireframes/academy/video-history/user-video-history.pen` — Video watch history list, playback progress, filtering
+   - `specs/wireframes/accounting/admin-workhour/workhour.pen` — Workhour list, workhour entry/edit form, approval flow
+5. Export all to PNG
+6. Embed screenshots in respective `workflows.md` files
+7. Update `specs/analysis/wireframes-index.md`
+8. Update `specs/wireframes/analysis-wireframes-mapping.md` — replace *(no wireframe)* entries for `video-history/01-user-video-history.md` and `admin-workhour/04-workhour.md` with the created `.pen` file references
+
+**Status:** ⏳ Pending (0/2 wireframes)
 
 ---
 
@@ -715,8 +850,12 @@ All 79 wireframes across 10 batches are grouped as above, ordered by complexity 
 | **Batch 7** | Accounting | 6 | Medium | ✅ 6/6 | 6 files, 35–94 KB |
 | **Batch 8** | Customer | 5 | Medium | ✅ 5/5 | 5 files, 27–45 KB |
 | **Batch 9** | Academy | 4 | Low–Medium | ✅ 4/4 | 4 files, 33–72 KB |
-| **Batch 10** | Planning (admin, support, shift, council) | 20 | Medium–High | ⏳ 0/20 | Pending |
-| **TOTAL** | — | **102** | — | **79 done, 23 pending** | **58 files** |
+| **Batch 10** | Planning (admin, support, shift, council) | 20 | Medium–High | ✅ 20/20 | 20 files, 4–50 KB |
+| **Batch 11** | System (CRUDs, CDR, config, templates) | 4 | Low–Medium | ⏳ 0/4 | Pending |
+| **Batch 12** | Treatment (patient, medication, treatment core, warning) | 6 | Medium | ⏳ 0/6 | Pending |
+| **Batch 13** | User Mgmt (admin, TOTP, groups, skills, onboarding) | 5 | Medium–High | ⏳ 0/5 | Pending |
+| **Batch 14** | Academy (video history) + Accounting (workhour) | 2 | Low | ⏳ 0/2 | Pending |
+| **TOTAL** | — | **119** | — | **99 done, 20 pending** | **78 files** |
 
 ---
 

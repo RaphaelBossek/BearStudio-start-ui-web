@@ -7,9 +7,9 @@
 
 All wireframes are `.pen` files created with Pencil MCP tools, exported to `.png` for documentation embedding. Each domain has a `workflows.md` file with embedded screenshots and Mermaid diagrams describing user journeys.
 
-- **Total wireframe files**: 68 `.pen` files (done) = **68 total**
-- **Total exported PNGs**: 100+ `.png` files (done) = **~100 total**
-- **Completion rate**: 68/91 (75%)
+- **Total wireframe files**: 88 `.pen` files (done) = **88 total**
+- **Total exported PNGs**: 121+ `.png` files (done) = **~121 total**
+- **Completion rate**: 88/91 (97%)
 
 ### Progress by Domain
 
@@ -22,10 +22,10 @@ All wireframes are `.pen` files created with Pencil MCP tools, exported to `.png
 | Academy | 4 | 0 | 4 | 100% |
 | Accounting | 6 | 0 | 6 | 100% |
 | Treatment | 14 | 0 | 14 | 100% |
-| Planning | 10 | 20 | 30 | 33% |
-| **TOTAL** | **68** | **23** | **91** | **75%** |
+| Planning | 30 | 0 | 30 | 100% |
+| **TOTAL** | **88** | **3** | **91** | **97%** |
 
-> **Note**: Planning domain has 20 pending wireframes in Batch 10 (appointment-admin, appointment-support, shift, council).
+> **Note**: Remaining 3 wireframes are in Batches 11–14 (system CRUDs, treatment patient data, academy video history).
 
 ---
 
@@ -247,13 +247,53 @@ All wireframes marked with `[HARDCODED]` annotations require corresponding i18n 
 | Ad-Hoc Appointment | `planning/dashboard/adhoc-appointment.pen` | `adhoc-appointment.png` | Done |
 | End Shift | `planning/dashboard/end-shift.pen` | `end-shift.png` | Done |
 
+### Planning — Appointment Admin (Batch 10)
+
+| Wireframe | File | PNG Export(s) | Status |
+|:---|:---|:---|:---|
+| W1: Admin Grid + Detail Drawer | `planning/appointment-admin/inline-consultation.pen` | `inline-consultation-grid.png`, `inline-consultation-detail.png` | Done |
+| W2: Calculation Dialog | `planning/appointment-admin/calculation.pen` | `calculation.png` | Done |
+| W3: QM Questionnaire Dialog | `planning/appointment-admin/qm-dialog.pen` | `qm-dialog.png` | Done |
+| W4: Export Template Dialog | `planning/appointment-admin/export-dialog.pen` | `export-dialog.png` | Done |
+| W5: Consultation Submit Dialog | `planning/appointment-admin/email-dialog.pen` | `email-dialog.png` | Done |
+| W6: Print Preview | `planning/appointment-admin/print-preview.pen` | `print-preview.png` | Done |
+| W7: Job Status Dialog | `planning/appointment-admin/job-status.pen` | `job-status.png` | Done |
+| W8: State & Payment Legend | `planning/appointment-admin/state-legend.pen` | `state-legend.png` | Done |
+
+### Planning — CDR Call / Appointment Support (Batch 10)
+
+| Wireframe | File | PNG Export(s) | Status |
+|:---|:---|:---|:---|
+| W1: CDR Call List | `planning/appointment-support/cdr-call-list.pen` | `cdr-call-list.png` | Done |
+| W2: CDR Call Detail | `planning/appointment-support/cdr-call-detail.pen` | `cdr-call-detail.png` | Done |
+| W3: CDR Assignment CRUD | `planning/appointment-support/cdr-assignment-crud.pen` | `cdr-assignment-crud.png` | Done |
+| W4: Close Month Dialog | `planning/appointment-support/close-month.pen` | `close-month.png` | Done |
+| W5: CDR Status Legend | `planning/appointment-support/cdr-status-legend.pen` | `cdr-status-legend.png` | Done |
+
+### Planning — Shift Plan (Batch 10)
+
+| Wireframe | File | PNG Export(s) | Status |
+|:---|:---|:---|:---|
+| W1: Shift Plan List | `planning/shift/shift-list.pen` | `shift-list.png` | Done |
+| W2: Shift Plan Detail | `planning/shift/shift-plan-detail.pen` | `shift-plan-detail.png` | Done |
+| W3: Apply Plan Dialog | `planning/shift/apply-plan.pen` | `apply-plan.png` | Done |
+| W4: Shift State Legend | `planning/shift/state-legend.pen` | `shift-state-legend.png` | Done |
+
+### Planning — Council Plan (Batch 10)
+
+| Wireframe | File | PNG Export(s) | Status |
+|:---|:---|:---|:---|
+| W1: Council Plan List | `planning/council/council-list.pen` | `council-list.png` | Done |
+| W2: Council Plan Detail | `planning/council/council-plan-detail.pen` | `council-plan-detail.png` | Done |
+| W3: Apply Plan Dialog | `planning/council/apply-plan.pen` | `council-apply-plan.png` | Done |
+
 ## Workflow Documentation
 
 Each domain has a `workflows.md` file with embedded wireframe screenshots and Mermaid diagrams:
 
 | Domain | Workflows File | Areas Covered |
 |:---|:---|:---|
-| Planning | [`planning/workflows.md`](../wireframes/planning/workflows.md) | Appointment lifecycle, Self-service dashboard, Calendar view, Expert availability, Shift detail, Ad-hoc appointment, End shift |
+| Planning | [`planning/workflows.md`](../wireframes/planning/workflows.md) | Appointment lifecycle, Self-service dashboard, Calendar view, Expert availability, Shift detail, Ad-hoc appointment, End shift, **Appointment Admin (billing/consultations/exports)**, **CDR Call tracking**, **Shift Plan management**, **Council Plan management** |
 | System (Sysconfig) | [`system/admin/workflows.md`](../wireframes/system/admin/workflows.md) | Sysconfig tab navigation, BasisWeb sync, Cache management, Data update, Data cleanup, Training |
 
 ## Completion Log
@@ -266,3 +306,7 @@ Each domain has a `workflows.md` file with embedded wireframe screenshots and Me
 | 2026-03-27 | User Management (Batch 6 fix) | Split `new.pen` into 8 individual files | 8 `.pen` files (4–28 KB), PNG exports already existed |
 | 2026-03-30 | System / Application Shell (Batch 2 Ext) | App Shell Layout, Global Navigation, User Menu | 3 `.pen` files (5–17 KB), 4 `.png` exports, embedded in `workflows.md` |
 | 2026-03-30 | System / Application Shell (Batch 2 Ext) | App Shell Layout, Global Navigation, User Menu | 3 `.pen` files (5–17 KB), 4 `.png` exports, embedded in `workflows.md` |
+| 2026-03-31 | Planning / Appointment Admin (Batch 10) | W1–W8: Grid, Calculation, QM, Export, Submit, Print, Job Status, State Legend | 8 `.pen` files (4–50 KB), 9 `.png` exports, embedded in `workflows.md` |
+| 2026-03-31 | Planning / CDR Call Support (Batch 10) | W1–W5: CDR List, Detail, Assignment CRUD, Close Month, Status Legend | 5 `.pen` files (5–18 KB), 5 `.png` exports, embedded in `workflows.md` |
+| 2026-03-31 | Planning / Shift Plan (Batch 10) | W1–W4: Shift List, Plan Detail, Apply Plan, State Legend | 4 `.pen` files (5–17 KB), 4 `.png` exports, embedded in `workflows.md` |
+| 2026-03-31 | Planning / Council Plan (Batch 10) | W1–W3: Council List, Plan Detail, Apply Plan | 3 `.pen` files (5–17 KB), 3 `.png` exports, embedded in `workflows.md` |

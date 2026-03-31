@@ -682,3 +682,676 @@ Permission-gated dialog (APPOINTMENT_ADHOC) with location autocomplete, type sel
 Confirmation dialog for ending an active shift with adjustable start/end time inputs.
 
 ![W13a: End Shift](./dashboard/end-shift.png)
+
+---
+
+## Area 7: Appointment Admin — Billing & Consultation Management
+
+### Context
+
+The Appointment Admin module is the most complex module in the planning domain, providing billing administration, inline consultation management, time verification, export workflows, QM questionnaire review, and CDR call assignment — all within a single grid view with a multi-section detail drawer.
+
+**Who uses it:** Admin/billing staff responsible for verifying appointment times, managing consultations, generating invoices, and exporting billing data.
+
+**Entry point:** User navigates to the Appointment Admin list (filtered grid with year/month/day toolbar).
+
+**Exit points:** Exports downloaded, consultations transmitted, month closed/opened, billing calculations reviewed.
+
+---
+
+### 7.1 Appointment Admin — User Journey Flowchart
+
+```mermaid
+flowchart TD
+    GRID["Appointment Admin Grid<br>Year / Month / Day filter toolbar"]
+
+    GRID -->|"Set year/month/day"| FILTER["Filter appointments<br>+ check if month is closed"]
+    FILTER -->|"Month closed"| BANNER["⚠ Month Closed Banner<br>(read-only mode)"]
+    FILTER -->|"Month open"| GRID
+
+    GRID -->|"Click row"| DETAIL["Admin Detail Drawer<br>Header + Time Columns + Consultations"]
+
+    DETAIL --> TIMES["Time Management<br>3 columns: Expert / Logging / Verified"]
+    DETAIL --> CONSULT["Consultation Table<br>Inline time pickers + actions"]
+    DETAIL --> CDR["CDR Call Assignment<br>Assigned vs Unassigned panels"]
+
+    CONSULT -->|"Add"| ADD_C["New Consultation<br>(prefilled from appointment)"]
+    CONSULT -->|"Edit"| EDIT_C["Consultation Dialog<br>(15 fields)"]
+    CONSULT -->|"Transmit"| SUBMIT{"Submit Type?"}
+    SUBMIT -->|"Submit"| TX_SUBMIT["Transmit to system"]
+    SUBMIT -->|"Backup"| TX_BACKUP["Save backup copy"]
+    SUBMIT -->|"Email"| TX_EMAIL["Email to recipient"]
+    SUBMIT -->|"Download"| TX_DL["Download PDF"]
+
+    CONSULT -->|"Duplicate"| DUP["Prompt: how many copies?"]
+    CONSULT -->|"Move"| MOVE["Enter target appointment ID<br>→ Verify exists → Move"]
+    CONSULT -->|"Delete"| DEL_C["Confirm deletion"]
+
+    GRID -->|"Click Export"| EXP{"Export Type?"}
+    EXP -->|"EK (purchase)"| EK["Download EK export"]
+    EXP -->|"VK (sale)"| VK["Download VK export"]
+    EXP -->|"VK by Location"| VK_LOC["Download VK grouped by location"]
+    EXP -->|"Template"| TPL["Template Export Dialog<br>Customer/Location/User filters"]
+    TPL --> JOB["Job Status Dialog<br>(async polling)"]
+
+    GRID -->|"Click Calculation"| CALC["Calculation Dialog<br>EK table + VK table + totals"]
+    GRID -->|"Click QM"| QM["QM Dialog<br>12 rating fields (1-6 scales)"]
+    GRID -->|"Click Email"| EMAIL["Email Dialog<br>Recipient, subject, body, attachments"]
+    GRID -->|"Click Print"| PRINT["Print Preview<br>Invoice template (1000px)"]
+    GRID -->|"Click Close/Open Month"| MONTH{"Month status?"}
+    MONTH -->|"Open"| CLOSE["Close month for expert"]
+    MONTH -->|"Closed"| OPEN["Open month for expert"]
+
+    style GRID fill:#e8f4f8,stroke:#2c7bb6
+    style BANNER fill:#fff3cd,stroke:#856404
+    style CALC fill:#d4edda,stroke:#155724
+    style JOB fill:#fff3cd,stroke:#856404
+    style DEL_C fill:#fce4ec,stroke:#c62828
+```
+
+**Key observations:**
+
+- The grid is NOT a MonthTable — it is a standard filterable table with year/month/day toolbar.
+- Month closed status displays a read-only banner; editing is blocked for closed months.
+- Consultation operations (add, edit, duplicate, move, transmit, delete) are the primary workflow.
+- Template export is the only async export (uses Job Status polling dialog); EK/VK are synchronous downloads.
+- CDR call assignment has a two-panel layout (assigned left, unassigned right).
+- QM dialog is view-only (no editing — ratings come from the questionnaire module).
+
+---
+
+### 7.2 Appointment Admin Detail — Sequence Diagram
+
+```mermaid
+sequenceDiagram
+    actor Admin
+    participant Grid as Admin Grid
+    participant Detail as Detail Drawer
+    participant ConsultDlg as Consultation Dialog
+    participant ExportDlg as Export Dialogs
+    participant JobDlg as Job Status Dialog
+
+    Admin->>Grid: Select appointment row
+    Grid->>Detail: Open drawer (header + 3 time columns + consultations)
+    Detail-->>Admin: Show 6 read-only header fields<br>+ Expert / Logging / Verified time columns
+
+    Admin->>Detail: Edit verified times (copy from expert/logging)
+    Detail-->>Admin: Time fields updated with copy-down buttons
+
+    Admin->>Detail: Click "Add Consultation"
+    Detail->>ConsultDlg: Open with appointment context prefilled
+    Admin->>ConsultDlg: Fill 15 fields → Save
+    ConsultDlg->>Detail: Consultation added to table
+
+    Admin->>Detail: Click "Transmit" on consultation row
+    Detail-->>Admin: Choose submit type (Submit / Backup / Email / Download)
+
+    alt Submit
+        Detail->>Detail: ConsultationService.submit(SUBMIT)
+        Detail-->>Admin: Consultation state → TRANSMITTED
+    else Email
+        Detail->>Detail: ConsultationService.submit(EMAIL)
+        Detail-->>Admin: Email sent confirmation
+    else Download
+        Detail->>Detail: ConsultationService.download()
+        Detail-->>Admin: PDF downloaded
+    end
+
+    Admin->>Grid: Click "Template Export"
+    Grid->>ExportDlg: Open template dialog (customer/location/user filters)
+    Admin->>ExportDlg: Select filters → Start export
+    ExportDlg->>JobDlg: Open with job ID
+    loop Poll every 2s
+        JobDlg->>JobDlg: WorkExportService.getStatus(jobId)
+    end
+    JobDlg-->>Admin: Export complete → Download file
+```
+
+---
+
+### 7.3 CDR Call Assignment — Sequence Diagram
+
+```mermaid
+sequenceDiagram
+    actor Admin
+    participant Detail as Detail Drawer
+    participant Assigned as Assigned Calls Panel
+    participant Unassigned as Unassigned Calls Panel
+
+    Admin->>Detail: Open CDR Call Assignment section
+    Detail->>Assigned: Load assigned calls (left panel)
+    Detail->>Unassigned: Load unassigned calls (right panel)
+
+    Assigned-->>Admin: Each row: call info + consultation dropdown + remove button
+    Unassigned-->>Admin: Searchable by date range + phone numbers
+
+    Admin->>Unassigned: Select unassigned call
+    Admin->>Unassigned: Click "Assign to consultation"
+
+    alt Existing consultation
+        Unassigned->>Assigned: Move call → link to selected consultation
+    else New consultation
+        Unassigned->>Detail: Create new consultation from CDR call
+        Detail-->>Admin: Consultation created and linked
+    end
+
+    Admin->>Assigned: Click "Remove" on assigned call
+    Assigned-->>Admin: Call moved back to unassigned panel
+```
+
+---
+
+### 7.4 Appointment Admin — Interdependencies Summary
+
+| Factor | Affects | How |
+|:---|:---|:---|
+| Month closed status | All editing | Displays read-only banner, blocks time edits and consultation changes |
+| Appointment state (STORNO) | Time columns | Hides active times, shows storno time field instead |
+| Payment type (FULL/VK/EK/IGNORE) | Row color coding | Green = FULL, Yellow = VK/EK, Red = IGNORE |
+| Export type selection | Export workflow | EK/VK = sync download; Template = async Job Status dialog |
+| Consultation submit type | Transmit action | SUBMIT/BACKUP update state; EMAIL sends; DOWNLOAD returns PDF |
+| CDR unassigned count | Logged times section | Shows "X Open CDR" badge when unmatched calls exist |
+
+---
+
+## Area 8: CDR Call Tracking (Appointment Support)
+
+### Context
+
+The CDR (Call Detail Record) module tracks telephone calls related to appointments, allowing staff to view call history, manage call assignments, and close monthly billing periods. The CDR Call list is a 16-column responsive grid with year/month/day navigation and 7 color-coded status badges.
+
+**Who uses it:** Support and admin staff tracking telephone consultations and call assignments.
+
+**Entry point:** User navigates to CDR Call list via sidebar navigation.
+
+**Exit points:** Call detail saved, assignment updated, month closed.
+
+---
+
+### 8.1 CDR Call Tracking — User Journey Flowchart
+
+```mermaid
+flowchart TD
+    LIST["CDR Call List<br>16-column grid<br>Year / Month / Day toolbar"]
+
+    LIST -->|"Set year/month/day"| FILTERED["Filtered call records"]
+    LIST -->|"Click row"| DETAIL["CDR Call Detail<br>Call info + status transitions"]
+    LIST -->|"Click Assignments"| ASSIGN["CDR Assignment Grid<br>Assignment CRUD"]
+    LIST -->|"Click Close Month"| CLOSE_M["Close Month Dialog"]
+
+    DETAIL --> STATUS{"Current status?"}
+    STATUS -->|"NEW"| S_NEW["Can: Assign, Acknowledge"]
+    STATUS -->|"ACKNOWLEDGED"| S_ACK["Can: Start processing"]
+    STATUS -->|"IN_PROGRESS"| S_PROG["Can: Complete, Escalate"]
+    STATUS -->|"COMPLETED"| S_DONE["Can: Reopen, Archive"]
+    STATUS -->|"ESCALATED"| S_ESC["Can: Reassign, Complete"]
+    STATUS -->|"ARCHIVED"| S_ARCH["Read-only"]
+    STATUS -->|"CANCELED"| S_CAN["Read-only"]
+
+    DETAIL -->|"Save changes"| SAVED["Call record updated<br>→ Grid reloads"]
+
+    ASSIGN -->|"Click Add"| ADD_A["New Assignment Dialog<br>Call + consultation link"]
+    ASSIGN -->|"Click Edit"| EDIT_A["Edit Assignment Dialog"]
+    ASSIGN -->|"Click Delete"| DEL_A["Confirm deletion"]
+
+    CLOSE_M -->|"Select year + month"| CLOSE_CONFIRM["Close billing period<br>→ Success alert"]
+
+    style LIST fill:#e8f4f8,stroke:#2c7bb6
+    style SAVED fill:#d4edda,stroke:#155724
+    style CLOSE_CONFIRM fill:#d4edda,stroke:#155724
+    style DEL_A fill:#fce4ec,stroke:#c62828
+    style S_ARCH fill:#f5f5f5,stroke:#999
+    style S_CAN fill:#f5f5f5,stroke:#999
+```
+
+**Key observations:**
+
+- The CDR Call list is a standard data table (not a MonthTable calendar grid).
+- 16 columns include: ID, date, time, duration, caller, callee, direction, status, assignment, location, job, expert, customer, phone numbers, notes, actions.
+- 7 statuses with color-coded badges: NEW (blue), ACKNOWLEDGED (cyan), IN_PROGRESS (yellow), COMPLETED (green), ESCALATED (orange), ARCHIVED (gray), CANCELED (red).
+- Close Month is a shared dialog also used by Appointment Plan and Shift Plan.
+- Assignment CRUD is a simple grid + modal pattern.
+
+---
+
+### 8.2 CDR Call Status — State Diagram
+
+```mermaid
+stateDiagram-v2
+    [*] --> NEW: Call record created
+
+    NEW --> ACKNOWLEDGED: Staff acknowledges
+    NEW --> CANCELED: Call dismissed
+
+    ACKNOWLEDGED --> IN_PROGRESS: Start processing
+    ACKNOWLEDGED --> CANCELED: Cancel
+
+    IN_PROGRESS --> COMPLETED: Processing done
+    IN_PROGRESS --> ESCALATED: Needs escalation
+
+    ESCALATED --> IN_PROGRESS: Reassigned
+    ESCALATED --> COMPLETED: Resolved
+
+    COMPLETED --> ARCHIVED: Month closed
+    COMPLETED --> IN_PROGRESS: Reopened
+
+    ARCHIVED --> [*]
+    CANCELED --> [*]
+
+    note right of NEW: Initial state<br>Blue badge
+    note right of IN_PROGRESS: Yellow badge<br>Active work
+    note right of COMPLETED: Green badge<br>Ready for archive
+    note left of ESCALATED: Orange badge<br>Needs attention
+```
+
+---
+
+### 8.3 CDR Call Detail — Sequence Diagram
+
+```mermaid
+sequenceDiagram
+    actor Staff
+    participant Grid as CDR Call Grid
+    participant Detail as Call Detail Dialog
+    participant AssignGrid as Assignment Grid
+    participant AssignDlg as Assignment Dialog
+
+    Staff->>Grid: Set year/month/day filter
+    Grid-->>Staff: Show filtered call records (16 columns)
+
+    Staff->>Grid: Click call row
+    Grid->>Detail: Open detail dialog (800px)
+    Detail-->>Staff: Show call info, status badge, transition buttons
+
+    Staff->>Detail: Change status → Save
+    Detail-->>Staff: Status badge updated, grid reloads
+
+    Staff->>Grid: Click "Assignments" button
+    Grid->>AssignGrid: Open assignment grid
+    AssignGrid-->>Staff: Show assigned calls with consultation links
+
+    Staff->>AssignGrid: Click "Add"
+    AssignGrid->>AssignDlg: Open assignment dialog (600px)
+    Staff->>AssignDlg: Select call + consultation → Save
+    AssignDlg->>AssignGrid: Assignment created
+
+    Staff->>Grid: Click "Close Month"
+    Grid-->>Staff: Prompt: select year + month
+    Staff->>Grid: Confirm close
+    Grid-->>Staff: Month closed, success alert
+```
+
+---
+
+### 8.4 CDR Call — Interdependencies Summary
+
+| Factor | Affects | How |
+|:---|:---|:---|
+| Call status | Available transitions | Each status has defined valid next states |
+| Month closed | Call editing | Archived calls are read-only |
+| Assignment link | CDR ↔ Consultation | Calls can be linked to consultations for billing |
+| Date filter (year/month/day) | Grid content | Filters call records by date range |
+| Export prefix | Close month | Custom filename prefix for monthly export |
+
+---
+
+## Area 9: Shift Plan Management
+
+### Context
+
+The Shift Plan module manages recurring shift templates that auto-generate concrete shift appointments. Plans define weekly or monthly schedules with preferred experts, price type auto-suggestion (weekday/night/weekend), and collision detection. The "Apply Plan" action generates appointments asynchronously with a progress dialog.
+
+**Who uses it:** Managers and scheduling staff who create and maintain shift schedule templates.
+
+**Entry point:** User navigates to Shift Plan list from sidebar (separate from the Shift List MonthTable).
+
+**Exit points:** Plan saved, appointments generated via Apply Plan, month closed.
+
+---
+
+### 9.1 Shift Plan — User Journey Flowchart
+
+```mermaid
+flowchart TD
+    LIST["Shift Plan List<br>10-column CRUD grid"]
+
+    LIST -->|"Click Add"| NEW["New Shift Plan Dialog<br>15 fields + expert collection"]
+    LIST -->|"Select row → Edit"| EDIT["Edit Shift Plan Dialog"]
+    LIST -->|"Select row → Delete"| DEL["Confirm deletion"]
+    LIST -->|"Click Apply Plan"| APPLY["Apply Plan Dialog<br>Date picker: generate until"]
+    LIST -->|"Click Close Month"| CLOSE["Close Month Dialog<br>(shared with Appointment Plan)"]
+
+    NEW --> PLAN_FORM["Plan Form:<br>Job, Weekday, Time range,<br>Scheduling type + multiplier,<br>Price type (auto-suggested),<br>Min patients, Expert Only flag"]
+
+    PLAN_FORM --> EXPERTS["Preferred Experts Collection<br>Sortable list: autocomplete + priority"]
+    PLAN_FORM --> PRICE{"Time + Day?"}
+    PRICE -->|"MO-FR < 18:00"| WEEKDAY["Suggest: Weekday"]
+    PRICE -->|"MO-FR ≥ 18:00"| WEEKNIGHT["Suggest: Weeknight"]
+    PRICE -->|"SA/SU/HO < 18:00"| WEEKENDDAY["Suggest: Weekend Day"]
+    PRICE -->|"SA/SU/HO ≥ 18:00"| WEEKENDNIGHT["Suggest: Weekend Night"]
+
+    PLAN_FORM -->|"Save"| COLLISION{"Collision<br>detected?"}
+    COLLISION -->|"No"| SAVED["Plan saved<br>→ Grid reloads"]
+    COLLISION -->|"Yes"| WARN["⚠ Collision warning<br>Location, day, time range"]
+    WARN -->|"Save anyway"| SAVED
+    WARN -->|"Cancel"| PLAN_FORM
+
+    APPLY -->|"Select end date"| GEN["Generate appointments<br>(async job)"]
+    GEN --> JOB["Job Status Dialog<br>Polling progress"]
+    JOB -->|"Complete"| DONE["Appointments created<br>→ Finish status"]
+
+    CLOSE -->|"Select year + month"| CLOSED["Month closed"]
+
+    style LIST fill:#e8f4f8,stroke:#2c7bb6
+    style SAVED fill:#d4edda,stroke:#155724
+    style DONE fill:#d4edda,stroke:#155724
+    style WARN fill:#fff3cd,stroke:#856404
+    style DEL fill:#fce4ec,stroke:#c62828
+```
+
+**Key observations:**
+
+- Shift Plan is a standard CRUD grid (10 columns: id, name, count, preferred doctors, job, minPatients, day, priceType, timeStart, timeEnd), NOT a MonthTable.
+- Price type is auto-suggested from a weekday + time hour matrix but can be overridden.
+- Preferred experts collection is an ordered/sortable list with add/remove and priority.
+- Collision detection checks for overlapping doctor appointments on save.
+- Apply Plan generates appointments asynchronously — uses the shared Job Status polling dialog.
+- Close Month is shared with Appointment Plan.
+- Scheduling types: WEEKLY, FIRSTOFMONTH, XOFMONTH, LASTOFMONTH.
+
+---
+
+### 9.2 Apply Plan — Sequence Diagram
+
+```mermaid
+sequenceDiagram
+    actor Manager
+    participant Grid as Shift Plan Grid
+    participant DateDlg as Date Picker Dialog
+    participant JobDlg as Job Status Dialog
+
+    Manager->>Grid: Click "Apply Plan"
+    Grid->>DateDlg: Open date picker
+    DateDlg-->>Manager: "Generate until" date input
+
+    Manager->>DateDlg: Select end date → Confirm
+    DateDlg->>JobDlg: ShiftPlanService.publishNext(date) → jobId
+    JobDlg-->>Manager: Show progress indicator
+
+    loop Poll every 2s
+        JobDlg->>JobDlg: ShiftPlanService.getStatus(jobId)
+    end
+
+    alt Job complete
+        JobDlg-->>Manager: Success — X appointments generated
+        JobDlg->>JobDlg: ShiftPlanService.finishStatus(jobId)
+        Manager->>Grid: Grid reloads with updated data
+    else Job failed
+        JobDlg-->>Manager: Error message displayed
+    end
+```
+
+---
+
+### 9.3 Shift Plan — Interdependencies Summary
+
+| Factor | Affects | How |
+|:---|:---|:---|
+| Weekday + time hour | Price type suggestion | Auto-suggests WEEKDAY/WEEKNIGHT/WEEKENDDAY/WEEKENDNIGHT |
+| Scheduling type | Appointment frequency | WEEKLY = every X weeks; FIRSTOFMONTH/XOFMONTH/LASTOFMONTH = monthly patterns |
+| Doctor selection | Collision detection | Optional, but triggers conflict check when provided |
+| expertOnly flag | Location field | When checked, location is hidden and not required |
+| Month closed status | Plan application | Closed months block new appointment generation |
+| Preferred experts | Assignment priority | Ordered list determines which experts are assigned first during generation |
+
+---
+
+## Area 10: Council Plan Management
+
+### Context
+
+The Council Plan module manages recurring council session templates. Councils are appointments with `jobType=COUNCIL`, focused on doctor role assignments rather than expert shifts. Plans define doctor collections, scheduling patterns, and auto-generate council appointments. Simpler than Shift Plan — no price type suggestion, no close month button.
+
+**Who uses it:** Administrative staff scheduling recurring council (consultation board) sessions.
+
+**Entry point:** User navigates to Council Plan list from sidebar.
+
+**Exit points:** Plan saved, council appointments generated via Apply Plan.
+
+---
+
+### 10.1 Council Plan — User Journey Flowchart
+
+```mermaid
+flowchart TD
+    LIST["Council Plan List<br>10-column CRUD grid"]
+
+    LIST -->|"Click Add"| NEW["New Council Plan Dialog<br>15 fields + doctor collection<br>Defaults: count=2, scheduling=WEEKLY"]
+    LIST -->|"Select row → Edit"| EDIT["Edit Council Plan Dialog"]
+    LIST -->|"Select row → Delete"| DEL["Confirm deletion"]
+    LIST -->|"Click Apply Plan"| APPLY["Apply Plan Dialog<br>Date picker: generate until"]
+
+    NEW --> PLAN_FORM["Plan Form:<br>Job, Weekday, Time range,<br>Scheduling type + multiplier,<br>Location (conditional),<br>Job Support flag,<br>Expert Only flag"]
+
+    PLAN_FORM --> DOCTORS["Doctor Collection<br>Repeater: doctor autocomplete + role"]
+    PLAN_FORM --> EXPERT{"Expert Only<br>checked?"}
+    EXPERT -->|"Yes"| HIDE_LOC["Hide Location field"]
+    EXPERT -->|"No"| SHOW_LOC["Show Location field (mandatory)"]
+
+    PLAN_FORM -->|"Save"| SAVED["Plan saved<br>→ Grid reloads"]
+
+    APPLY -->|"Select end date"| GEN["Generate council appointments<br>(async job)"]
+    GEN --> JOB["Job Status Dialog<br>Polling progress"]
+    JOB -->|"Complete"| DONE["Council appointments created"]
+
+    style LIST fill:#e8f4f8,stroke:#2c7bb6
+    style SAVED fill:#d4edda,stroke:#155724
+    style DONE fill:#d4edda,stroke:#155724
+    style DEL fill:#fce4ec,stroke:#c62828
+```
+
+**Key observations:**
+
+- Council Plan is structurally similar to Shift Plan but simpler.
+- No price type auto-suggestion (councils don't have shift-based pricing).
+- No Close Month button (unlike Shift Plan and Appointment Plan).
+- Doctor collection replaces expert collection — doctors have role assignments instead of priority ordering.
+- `jobSupport` checkbox is council-specific (not present in shift plans).
+- Default values on create: count=2, scheduling=WEEKLY.
+- `schedulingMulitplier` has a typo in the legacy datamodel (kept as-is for compatibility).
+
+---
+
+### 10.2 Council Apply Plan — Sequence Diagram
+
+```mermaid
+sequenceDiagram
+    actor Staff
+    participant Grid as Council Plan Grid
+    participant DateDlg as Date Picker Dialog
+    participant JobDlg as Job Status Dialog
+
+    Staff->>Grid: Click "Apply Plan"
+    Grid->>DateDlg: Open date picker
+    DateDlg-->>Staff: "Generate until" date input
+
+    Staff->>DateDlg: Select end date → Confirm
+    DateDlg->>JobDlg: CouncilPlanService.publishNext(date) → jobId
+    JobDlg-->>Staff: Show progress indicator
+
+    loop Poll every 2s
+        JobDlg->>JobDlg: CouncilPlanService.getStatus(jobId)
+    end
+
+    alt Job complete
+        JobDlg-->>Staff: Success — X council appointments generated
+        JobDlg->>JobDlg: CouncilPlanService.finishStatus(jobId)
+        Staff->>Grid: Grid reloads
+    else Job failed
+        JobDlg-->>Staff: Error message displayed
+    end
+```
+
+---
+
+### 10.3 Council Plan — Interdependencies Summary
+
+| Factor | Affects | How |
+|:---|:---|:---|
+| expertOnly flag | Location field | When checked, location is hidden and not required |
+| jobSupport flag | Council sessions | Council-specific flag for support sessions |
+| Scheduling type | Frequency | WEEKLY, FIRSTOFMONTH, XOFMONTH, LASTOFMONTH |
+| Doctor collection | Role assignments | Defines which doctors and their roles in generated councils |
+| Default count=2 | Plan creation | Pre-fills with 2 doctors minimum |
+
+---
+
+## Cross-Module Shared Components (Areas 7–10)
+
+The four Batch 10 modules share several components and patterns:
+
+| Shared Component | Used By | Notes |
+|:---|:---|:---|
+| Job Status Dialog | Appointment Admin (template export), Shift Plan (apply plan), Council Plan (apply plan) | Async polling dialog with progress indicator |
+| Close Month Dialog | Appointment Admin, Appointment Support (CDR), Shift Plan | Year + month select, calls ClosedMonthService |
+| Collision Detection | Shift Plan (on save) | Checks doctor appointment overlaps |
+| Doctor Autocomplete | Shift Plan (experts), Council Plan (doctors) | Uses UserService.findDoctor |
+| MonthTable Grid | *Not used* in Batch 10 (Shift List / Council List are in Batch 4) | Batch 10 modules use standard CRUD grids |
+
+---
+
+## Batch 10 Wireframe Screenshots
+
+### Appointment Admin Wireframes
+
+#### W1: Inline Consultation — Admin Grid
+
+Admin appointment grid with 13-column table, year/month/day toolbar, navbar with 11 action buttons (Edit, Delete, Calculate, EK/VK/VK-Loc exports, Template Export, Worklog, Close Month), payment-type color-coded rows (green=FULL, yellow=VK/EK, red=IGNORE), and month-closed alert banner.
+
+![W1: Admin Grid](./appointment-admin/inline-consultation-grid.png)
+
+#### W1b: Inline Consultation — Detail Drawer
+
+1200px detail drawer with header info (staff count, job code, date, time, state badge), 5 form fields (Customer RO, Location, State, Job, Payment), assigned experts, 3-column time management (Expert/Logging/Verified), consultation table with 13 inline-editable columns, summary statistics, and Save footer.
+
+![W1b: Detail Drawer](./appointment-admin/inline-consultation-detail.png)
+
+#### W2: Calculation Dialog
+
+700px dialog showing appointment billing calculation. Header with appointment context, EK (Purchase) table with 8 columns (Physician, Location, Patients, Time/Patient, Time, Payable Patients, EUR, Total), VK (Sale) table with 5 columns (Location, Time, Patients, EUR, Total), and currency totals.
+
+![W2: Calculation](./appointment-admin/calculation.png)
+
+#### W3: QM Dialog
+
+800px view-only QM questionnaire dialog. Summary stats (Patients, Entries, Follow-ups, Referrals, Repeat Entries), 6 rating fields on 1-6 scales (Tele-Applicability, Room Quality, Equipment, Communication, Extra Referral, Translator), equipment availability flags (Dermatoscope, Otoscope, Stethoscope, Vital Signs), reporting status, and comment.
+
+![W3: QM Dialog](./appointment-admin/qm-dialog.png)
+
+#### W4: Export Dialog
+
+600px template export dialog. Year/Month inputs (prefilled from toolbar), Export Template autocomplete (filtered by APPOINTMENT/CUSTOMER_SALE/EXPERT_BILLING/INVOICE_RECEIVER_SALE), optional Customer/Location/User filter autocompletes, and Start Export button triggering async Job Status dialog.
+
+![W4: Export Dialog](./appointment-admin/export-dialog.png)
+
+#### W5: Email/Submit Dialog
+
+600px consultation submit dialog. Confirmation message, read-only location/time info, Submit Type select (Standard per Setting / Backup / Email / Download), patient data type and access info, previous transmit result, and Transmit button.
+
+![W5: Email Dialog](./appointment-admin/email-dialog.png)
+
+#### W6: Print Preview
+
+1000px print preview dialog with large placeholder area for server-rendered invoice template.
+
+![W6: Print Preview](./appointment-admin/print-preview.png)
+
+#### W7: Job Status Dialog
+
+500px async job polling dialog. Status text, progress bar with completion percentage, step detail, download link on completion, and async queue link if queued.
+
+![W7: Job Status](./appointment-admin/job-status.png)
+
+#### W8: State & Payment Legend
+
+800px visual reference card. 12 appointment state badges in 2 rows with color coding, and 4 payment type badges (FULL=green, VK=yellow, EK=yellow, IGNORE=red).
+
+![W8: State Legend](./appointment-admin/state-legend.png)
+
+### CDR Call (Appointment Support) Wireframes
+
+#### W1: CDR Call List
+
+1440px full-page view. 16-column responsive grid with year/month/day toolbar, navbar buttons (Edit, Delete, Assignments, Close Month), 7 color-coded status badges (NEW=blue, ACKNOWLEDGED=cyan, IN_PROGRESS=yellow, COMPLETED=green, ESCALATED=orange, ARCHIVED=gray, CANCELED=red), pagination.
+
+![W1: CDR Call List](./appointment-support/cdr-call-list.png)
+
+#### W2: CDR Call Detail
+
+800px call detail dialog. Read-only call info (date, time, duration, caller, callee), Direction and Status fields, Expert and Location, phone numbers, notes textarea. Status transitions drive available actions.
+
+![W2: CDR Call Detail](./appointment-support/cdr-call-detail.png)
+
+#### W3: CDR Assignment CRUD
+
+600px assignment management dialog. Toolbar with Add/Delete buttons, 5-column assignment table (ID, Call ID, Consultation, Date, Actions), assignment detail sub-section with Call ID and Consultation select.
+
+![W3: CDR Assignment](./appointment-support/cdr-assignment-crud.png)
+
+#### W4: Close Month Dialog
+
+500px shared close month dialog. Year input, Month select, info alert about billing period lock. Toggle between Close Month and Open Month based on current state.
+
+![W4: Close Month](./appointment-support/close-month.png)
+
+#### W5: CDR Status Legend
+
+600px visual reference card. 7 CDR call status badges with colors, and status transition descriptions (NEW→ACKNOWLEDGED→IN_PROGRESS→COMPLETED→ARCHIVED, with ESCALATED and CANCELED branches).
+
+![W5: CDR Status Legend](./appointment-support/cdr-status-legend.png)
+
+### Shift Plan Wireframes
+
+#### W1: Shift Plan List
+
+1440px full-page CRUD grid. 10-column table (ID, Name, Count, Preferred Doctors, Job, Min Patients, Day, Price Type, Start, End), toolbar with Add/Edit/Delete/Apply Plan/Close Month buttons, search, pagination. NOT the MonthTable calendar (that's Batch 4).
+
+![W1: Shift Plan List](./shift/shift-list.png)
+
+#### W2: Shift Plan Detail
+
+1200px plan template dialog. 15 form fields (Name, Job, Day, Time Start/End, Price Type with auto-suggest, Scheduling type/multiplier, Last Date, Min Patients, Count, Location, Expert Only), sortable Preferred Experts collection with priority ordering and preferred flag.
+
+![W2: Shift Plan Detail](./shift/shift-plan-detail.png)
+
+#### W3: Apply Plan Dialog
+
+500px date picker dialog. "Generate Until" date input, info alert about duplicate prevention, Generate button triggering async job polling via ShiftPlanService.publishNext.
+
+![W3: Apply Plan](./shift/apply-plan.png)
+
+#### W4: Shift State Legend
+
+600px visual reference card. 12 shift states (same state machine as Appointment) with color-coded badges and transition descriptions.
+
+![W4: Shift State Legend](./shift/shift-state-legend.png)
+
+### Council Plan Wireframes
+
+#### W1: Council Plan List
+
+1440px full-page CRUD grid. 10-column table (ID, Name, Count, Doctors, Job, Min Patients, Day, Support, Start, End), toolbar with Add/Edit/Delete/Apply Plan buttons (no Close Month). Default on create: count=2, scheduling=WEEKLY.
+
+![W1: Council Plan List](./council/council-list.png)
+
+#### W2: Council Plan Detail
+
+1000px plan template dialog. 15 fields (Name, Job, Day, Time Start/End, Scheduling, Multiplier, Last Date, Count, Location, Expert Only, Job Support checkboxes), Preferred Doctors collection with role assignments (Main Doctor / Support) instead of priority ordering.
+
+![W2: Council Plan Detail](./council/council-plan-detail.png)
+
+#### W3: Apply Council Plan Dialog
+
+500px date picker dialog. Same pattern as Shift Apply Plan. "Generate Until" date input, info alert, Generate button triggering CouncilPlanService.publishNext.
+
+![W3: Council Apply Plan](./council/council-apply-plan.png)

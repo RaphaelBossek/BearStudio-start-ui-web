@@ -53,10 +53,10 @@ Legend:
 | `planning/appointment/01-appointment-list.md` | `appointment/index.htmlm`, `appointment/index.js` | `planning/appointment/appointment-list.pen` (.png) |
 | `planning/appointment/02-appointment-details-scheduling.md` | `appointment/details.html`, `appointment/details.js` | `planning/appointment/appointment-details.pen` (.png), `appointment-details-assigned.pen` (.png), `appointment-details-patients.pen` (.png), `appointment-details-referenced.pen` (.png), `appointment-details-suggestions.pen` (.png), `appointment-state-legend.pen` (.png) |
 | `planning/appointment/03-appointment-assign-user.md` | `appointment/assignUser.html`, `appointment/assignUser.js` | `planning/appointment/appointment-assign-user.pen` (.png) |
-| `planning/appointment-admin/01-appointment-admin.md` | `appointmentAdmin/index.htmlm`, `appointmentAdmin/index.js`, `appointmentAdmin/messages.i18n.js` | *(no wireframe)* |
-| `planning/appointment-support/01-appointment-plan.md` | `appointmentPlan/`, `CdrCall/`, `CdrCallAssignment/` | *(no wireframe)* |
-| `planning/council/01-council-and-plan.md` | `council/`, `councilPlan/` | *(no wireframe)* |
-| `planning/shift/01-shift-and-plan.md` | `shift/`, `shiftPlan/` | *(no wireframe)* |
+| `planning/appointment-admin/01-appointment-admin.md` | `appointmentAdmin/index.htmlm`, `appointmentAdmin/index.js`, `appointmentAdmin/messages.i18n.js` | `planning/appointment-admin/inline-consultation.pen` (.png), `calculation.pen` (.png), `qm-dialog.pen` (.png), `export-dialog.pen` (.png), `email-dialog.pen` (.png), `print-preview.pen` (.png), `job-status.pen` (.png), `state-legend.pen` (.png) |
+| `planning/appointment-support/01-appointment-plan.md` | `appointmentPlan/`, `CdrCall/`, `CdrCallAssignment/` | `planning/appointment-support/cdr-call-list.pen` (.png), `cdr-call-detail.pen` (.png), `cdr-assignment-crud.pen` (.png), `close-month.pen` (.png), `cdr-status-legend.pen` (.png) |
+| `planning/council/01-council-and-plan.md` | `council/`, `councilPlan/` | `planning/council/council-list.pen` (.png), `council-plan-detail.pen` (.png), `apply-plan.pen` (.png) |
+| `planning/shift/01-shift-and-plan.md` | `shift/`, `shiftPlan/` | `planning/shift/shift-list.pen` (.png), `shift-plan-detail.pen` (.png), `apply-plan.pen` (.png), `state-legend.pen` (.png) |
 | `planning/dashboard/02-dashboard-selfservice.md` | `dash/index.htmlm` (lines 305–484), `dash/dash.js` | `planning/dashboard/calendar.pen` (.png), `planning/dashboard/expert-availability.pen` (.png) |
 | `planning/dashboard/04-dialogs-planning.md` | `dash/index.htmlm` (lines 624–896), `dash/dash.js` | `planning/dashboard/adhoc-appointment.pen` (.png), `end-shift.pen` (.png) |
 | `planning/dashboard/08-shift-dialog.md` | `dash/` (shiftDlg, requestActionDlg) | `planning/dashboard/shift-dialog.pen` (.png) |
