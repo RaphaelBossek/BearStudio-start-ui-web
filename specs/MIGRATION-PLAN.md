@@ -550,23 +550,23 @@ specs/
 
 ## Summary of Confirmed Decisions
 
-All items A-L have been confirmed by the user:
+All items A-L have been confirmed by the user through the decision log below:
 
-| Item | Decision | Action Taken |
-|------|----------|--------------|
-| A | Remove duplicate mongodb-mapping/ | ✅ Removed from directory tree |
-| B | Merge sections 2.6 & 2.7 | To be merged |
-| C | Renumber sections after merge | To be renumbered |
-| D | Features/ structure as proposed | New structure defined below |
-| D2 | NFR Location: Option B (distributed to domains) | NFRs in domains/{domain}/permissions.md |
-| E | Search → includes/global-components.md | Documented in global-components.md |
-| F | Add final phase for STRUCTURE.md | Phase 15 added |
-| G | Add README.md to orphan/ | Template created below |
-| H | Add new script phases (separate scripts) | Scripts listed below |
-| I | Bug Report → wireframes/includes/bug-report.* | Moved from academy |
-| J | Both academy files → analysis/orphan/ (flat) | Moved |
-| K | Scripts kept separate | migrate-directory.sh, update-references.sh, check-orphans.sh, validate-migration.sh |
-| L | Features migration: manual (Option B) | Manual content creation phase |
+| Item | Question | Options | Decision | Action Taken |
+|------|----------|---------|----------|--------------|
+| A | Should we keep the duplicate `mongodb-mapping/` directory that was created in both old and new structures? | **Option A**: Keep both for redundancy<br>**Option B**: Remove duplicate, keep single source of truth | **Option B** - Remove duplicate | ✅ Removed from directory tree |
+| B | Should sections 2.6 (Analysis Directory Structure) and 2.7 (Wireframes Directory Structure) be merged into a single section? | **Option A**: Keep separate for clarity<br>**Option B**: Merge to reduce document length | **Option B** - Merge sections | To be merged |
+| C | After merging sections 2.6 & 2.7, should we renumber the remaining sections? | **Option A**: Keep original numbering<br>**Option B**: Renumber sequentially | **Option B** - Renumber sections | To be renumbered |
+| D | How should we structure the `features/` directory? | **Option A**: Keep existing structure<br>**Option B**: Restructure by domain (appointments/, shifts/, treatments/, etc.)<br>**Option C**: Flatten to single level | **Option B** - Domain-aligned structure | New structure defined below |
+| D2 | Where should Non-Functional Requirements (NFRs) be documented? | **Option A**: Central `features/nfrs/` directory<br>**Option B**: Distributed to `domains/{domain}/permissions.md`<br>**Option C**: Separate `nfrs/` top-level directory | **Option B** - Distributed to domains | NFRs in domains/{domain}/permissions.md |
+| E | Where should the Search component documentation be placed? | **Option A**: `features/search/`<br>**Option B**: `includes/global-components.md`<br>**Option C**: `components/search.md` | **Option B** - Global components | Documented in global-components.md |
+| F | Should we add a final phase to create `STRUCTURE.md` documenting the final directory structure? | **Option A**: No, MIGRATION-PLAN.md is sufficient<br>**Option B**: Yes, add Phase 15 for STRUCTURE.md | **Option B** - Add Phase 15 | Phase 15 added |
+| G | Should we add a `README.md` file to the `orphan/` directory explaining why content is orphaned? | **Option A**: No, orphaned content is self-explanatory<br>**Option B**: Yes, add README with context | **Option B** - Add README | Template created below |
+| H | How should we handle migration scripts? | **Option A**: Single monolithic script<br>**Option B**: Separate scripts per phase (migrate, update-refs, check-orphans, validate)<br>**Option C**: No scripts, manual only | **Option B** - Separate scripts | Scripts listed below |
+| I | Where should the Bug Report wireframe be placed? | **Option A**: Keep in `academy/support-video/`<br>**Option B**: Move to `wireframes/includes/bug-report.*`<br>**Option C**: Move to `wireframes/dashboard/` | **Option B** - Move to includes | Moved from academy |
+| J | Where should the academy files (`support-and-video.md`, `user-video-history.md`) be placed? | **Option A**: Keep in `academy/` subdirectory<br>**Option B**: Move to `analysis/orphan/` (flat structure)<br>**Option C**: Delete as deprecated | **Option B** - Flat orphan structure | Moved |
+| K | Should migration scripts be combined or kept separate? | **Option A**: Combine into single script<br>**Option B**: Keep separate for modularity and selective execution | **Option B** - Keep separate | migrate-directory.sh, update-references.sh, check-orphans.sh, validate-migration.sh |
+| L | How should the features/ migration be handled? | **Option A**: Automated script to move files<br>**Option B**: Manual content creation and review<br>**Option C**: Hybrid approach | **Option B** - Manual migration | Manual content creation phase |
 
 ---
 
@@ -726,6 +726,116 @@ else
 fi
 ```
 
+### 6.3 rename-files.sh
+
+**Purpose**: Rename files by removing numeric prefixes and applying standardized names
+
+**High Priority** - Must run before update-references.sh
+
+```bash
+#!/bin/bash
+# Rename files with semantic standardized names
+# Examples:
+#   01-appointment-list.md → list.md
+#   02-appointment-details-scheduling.md → details.md
+#   01-equipment.md → equipment.md
+
+cd specs
+
+# Define rename mappings: "old_pattern" -> "new_name"
+declare -A renames=(
+  # Appointments
+  ["01-appointment-list.md"]="list.md"
+  ["02-appointment-details-scheduling.md"]="details.md"
+  ["03-appointment-assign-user.md"]="assign-user.md"
+  
+  # Shifts
+  ["01-shift-and-plan.md"]="list.md"
+  
+  # Council
+  ["01-council-and-plan.md"]="list.md"
+  
+  # Consultations
+  ["01-consultation-list.md"]="list.md"
+  ["02-consultation-details-header.md"]="details-header.md"
+  ["03-consultation-details-standard.md"]="standard-form.md"
+  ["04-consultation-details-onboarding.md"]="onboarding-form.md"
+  ["05-consultation-details-incarceration.md"]="incarceration-form.md"
+  ["06-consultation-details-treatment-warning.md"]="treatment-warning.md"
+  ["07-consultation-view-review.md"]="view-review.md"
+  ["08-consultation-details-js.md"]="details-js.md"
+  
+  # Customer
+  ["01-customer-list-detail.md"]="list.md"
+  ["02-location-and-users.md"]="locations-users.md"
+  
+  # Invoices
+  ["01-invoice-list.md"]="invoices.md"
+  ["02-invoice-details.md"]="invoice-details.md"
+  
+  # Equipment
+  ["01-equipment.md"]="equipment.md"
+  
+  # Notifications
+  ["01-notification.md"]="list.md"
+  
+  # Treatments
+  ["01-treatment-and-category.md"]="list.md"
+  ["02-treatment-plan.md"]="plan.md"
+  
+  # User Management
+  ["01-onboarding-flow.md"]="onboarding.md"
+  ["02-user-management.md"]="user-management.md"
+  ["04-skill.md"]="skills.md"
+  
+  # Admin
+  ["03-job-configuration.md"]="jobs.md"
+  ["04-workhour.md"]="work-hours.md"
+  
+  # System
+  ["01-admin-landing.md"]="admin-landing.md"
+  ["04-motd-template.md"]="motd.md"
+  
+  # Wireframe plans
+  ["wireframe-plan.md"]="wireframes.md"
+)
+
+# Process each file
+for old_name in "${!renames[@]}"; do
+  new_name="${renames[$old_name]}"
+  
+  # Find and rename matching files
+  find . -name "$old_name" -type f | while read file; do
+    dir=$(dirname "$file")
+    new_path="$dir/$new_name"
+    
+    if [ "$file" != "$new_path" ]; then
+      mv "$file" "$new_path"
+      echo "Renamed: $file → $new_path"
+    fi
+  done
+done
+
+# Generic numeric prefix removal for files not in mapping
+find . -name "*.md" -type f | while read file; do
+  dir=$(dirname "$file")
+  base=$(basename "$file")
+  
+  # Check if filename starts with NN- pattern
+  if [[ "$base" =~ ^[0-9]{2}-(.+\.md)$ ]]; then
+    new_base="${BASH_REMATCH[1]}"
+    new_path="$dir/$new_base"
+    
+    if [ "$file" != "$new_path" ]; then
+      mv "$file" "$new_path"
+      echo "Renamed (generic): $file → $new_path"
+    fi
+  fi
+done
+
+echo "File renaming complete"
+```
+
 ### 6.4 cleanup-empty-dirs.sh
 
 **Purpose**: Delete all empty source directories after migration
@@ -878,10 +988,11 @@ echo "  features/: $(find features -type d | wc -l)"
 
 Scripts must be executed in the following order after manual file moves are complete:
 
-1. **update-references.sh** - Update all internal markdown references
-2. **check-orphans.sh** - Verify no orphaned PNG files remain
-3. **validate-migration.sh** - Validate all target directories exist and links work
-4. **cleanup-empty-dirs.sh** - Delete all empty source directories (FINAL STEP)
+1. **rename-files.sh** - Rename files with standardized names (MUST run first)
+2. **update-references.sh** - Update all internal markdown references
+3. **check-orphans.sh** - Verify no orphaned PNG files remain
+4. **validate-migration.sh** - Validate all target directories exist and links work
+5. **cleanup-empty-dirs.sh** - Delete all empty source directories (FINAL STEP)
 
 **WARNING**: Do not run `cleanup-empty-dirs.sh` until you have verified that:
 - All files have been successfully moved to their new locations
