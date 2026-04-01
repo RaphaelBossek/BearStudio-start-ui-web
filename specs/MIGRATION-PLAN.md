@@ -25,8 +25,8 @@ This migration reorganizes the `specs/` directory to align with the application'
 | Aspect | Before | After |
 |--------|--------|-------|
 | Max directory depth | 5 levels | 3 levels |
-| Analysis subfolders | 50 directories | 14 domain folders (includes orphan/) |
-| Wireframe subfolders | 41 directories | 14 domain folders (matching analysis/) |
+| Analysis subfolders | 50 directories | 17 domain folders (includes orphan/, i18n/, mongodb-mapping/, permissions/) |
+| Wireframe subfolders | 41 directories | 14 domain folders (excludes components/) |
 | File naming | Mixed (`01-name.md`, `name.md`) | Standardized (`list.md`, `details.md`, etc.) |
 | Top-level nav | Scattered README files | Single `SITE-NAVIGATION.md` |
 | Orphaned PNGs | ~3 files | 0 (cleaned up) |
@@ -87,13 +87,13 @@ The new structure follows these principles:
 4. **Living Documentation** — New directories for ongoing documentation
    - `domains/` — Entity models, state machines, workflows, NFRs
    - `decisions/` — Architecture Decision Records (ADRs)
-   - `permissions/` — RBAC matrix and permission gates
-   - `i18n/` — Translation inventory and hardcoded strings
    - `components/` — Component library and design tokens
    - `migration/` — Data migration guides
    - `testing/` — Testing strategy and E2E scenarios
    - `features/` — Functional requirements (domain-aligned)
-   - `glossary.md` — Domain terminology
+   - `analysis/permissions/` — RBAC matrix and permission gates (moved under analysis/)
+   - `analysis/i18n/` — Translation inventory and hardcoded strings
+   - `analysis/glossary.md` — Domain terminology
 
 5. **Automated Validation** — CI checks for broken links, orphaned files, correlations
 
@@ -106,6 +106,25 @@ specs/
 ├── analysis/ (consolidated into domain folders)
 │   ├── README.md (top-level domain overview with progress tracking)
 │   ├── SITE-NAVIGATION.md (MASTER NAVIGATION - sitemap with all links)
+│   ├── glossary.md (NEW - Domain terminology: appointment types, states, roles, acronyms)
+│   ├── i18n/ (NEW - Translation documentation from planning/translations/)
+│   │   ├── README.md (i18n strategy and overview)
+│   │   ├── translation-inventory.md (consolidated: 466 keys, coverage stats, missing translations)
+│   │   ├── hardcoded-strings.md (German strings needing i18n keys, prioritized)
+│   │   ├── translation-guide.md (naming conventions, gender handling, batched recheck workflows)
+│   │   ├── missing-keys.md (gaps: 22 missing EN, 9 missing DE with auto-translate suggestions)
+│   │   ├── domains/ (per-domain detailed inventories)
+│   │   │   ├── treatment.md (155 keys, 94-97% coverage)
+│   │   │   ├── customer.md (111 keys, 97-98% coverage)
+│   │   │   ├── accounting.md (62 keys, 95-98% coverage)
+│   │   │   ├── system.md (49 keys, 96-100% coverage)
+│   │   │   ├── planning.md (57 keys, 95-100% coverage)
+│   │   │   ├── user-management.md (18 keys, 89% coverage)
+│   │   │   ├── interfaces.md (6 keys, 100% coverage)
+│   │   │   └── academy.md (8 keys, 100% coverage)
+│   │   └── scripts/
+│   │       └── lookup-translations.sh (executable lookup script for batched rechecks)
+│   │
 │   ├── dashboard/ (NEW - combines all dashboard views)
 │   │   ├── README.md
 │   │   ├── standard.md (from system/dashboard/01-dashboard-main.md)
@@ -214,6 +233,12 @@ specs/
 │   │   ├── templates-files.md (from system/templates-files/01-templates-files.md)
 │   │   └── global-components.md (NEW - Search, Loading Spinner, global nav components)
 │   │
+│   ├── permissions/ (NEW - RBAC matrix, permission gates, role definitions)
+│   │   ├── README.md (permissions overview)
+│   │   ├── rbac-matrix.md (roles × modules matrix)
+│   │   ├── permission-gates.md (fine-grained permissions: SELF_ASSIGNMENT, APPOINTMENT_ADHOC, etc.)
+│   │   └── role-definitions.md (STANDARD, LEITER_INTERN, ADMIN, KUNDE, etc.)
+│   │
 │   └── orphan/ (NEW - orphaned content with README explaining WHY)
 │       ├── README.md (explains external Video Library, support ticket moved to dashboard)
 │       ├── support-and-video.md (from analysis/academy/support-video/01-support-and-video.md)
@@ -221,6 +246,13 @@ specs/
 │
 ├── wireframes/ (parallel structure to analysis/ - mirrors domain folders)
 │   ├── README.md (wireframes domain overview with component mapping)
+│   │
+│   ├── components/ (NEW - Component library and design tokens)
+│   │   ├── README.md (component overview)
+│   │   ├── shadcn-usage.md (which Shadcn components used where, with examples)
+│   │   ├── custom-components.md (MonthTable, SectionedScrollLayout, etc.)
+│   │   ├── design-tokens.md (colors, spacing, typography, module-based theming)
+│   │   └── state-colors.md (appointment state color palette with hex values)
 │   │
 │   ├── dashboard/ (NEW - combines all dashboard views)
 │   │   ├── README.md
@@ -424,22 +456,6 @@ specs/
 │       ├── video-category.pen (from wireframes/academy/support-video/)
 │       └── video-category.png (from wireframes/academy/support-video/)
 │
-├── mongodb-mapping/ (RETAIN - MongoDB schema reference)
-│   ├── README.md (index with collection tables, migration status)
-│   ├── planning.md (appointment, shift, expert availability schemas)
-│   ├── treatment.md (consultations, treatments, patient data schemas)
-│   ├── user-management.md (users, groups, sessions schemas)
-│   ├── customer.md (customers, locations, rooms schemas)
-│   ├── accounting.md (invoices, jobs, worklog schemas)
-│   ├── academy.md (videos, categories schemas)
-│   ├── news.md (notifications, MOTD schemas)
-│   ├── interfaces.md (BasisWeb integration schemas)
-│   ├── external-data.md (ICD-10, medications schemas)
-│   ├── capabilities.md (skills schemas)
-│   ├── system.md (system collections schemas)
-│   ├── deprecated.md (legacy collections schemas)
-│   └── analysis-consultation-vs-consultationData.md (CQRS pattern)
-│
 ├── features/ (RESTRUCTURED - Functional Requirements only, domain-aligned)
 │   ├── README.md (explains FR vs NFR split)
 │   ├── appointments/ (FR: scheduling, collision detection)
@@ -491,26 +507,6 @@ specs/
 │   ├── ADR-004-unified-naming.md (Wireframe naming convention)
 │   └── ADR-005-domain-driven-structure.md (Why domain-driven organization)
 │
-├── permissions/ (NEW - RBAC documentation)
-│   ├── README.md (permissions overview)
-│   ├── rbac-matrix.md (roles × modules matrix)
-│   ├── permission-gates.md (fine-grained permissions: SELF_ASSIGNMENT, APPOINTMENT_ADHOC, etc.)
-│   └── role-definitions.md (STANDARD, LEITER_INTERN, ADMIN, KUNDE, etc.)
-│
-├── i18n/ (NEW - Translation documentation)
-│   ├── README.md (i18n strategy)
-│   ├── translation-inventory.md (all translation keys by domain)
-│   ├── hardcoded-strings.md (German strings needing i18n keys, prioritized)
-│   ├── translation-guide.md (naming conventions, gender handling, length considerations)
-│   └── missing-keys.md (gaps in translation coverage)
-│
-├── components/ (NEW - Component library documentation)
-│   ├── README.md (component overview)
-│   ├── shadcn-usage.md (which Shadcn components used where, with examples)
-│   ├── custom-components.md (MonthTable, SectionedScrollLayout, etc.)
-│   ├── design-tokens.md (colors, spacing, typography, module-based theming)
-│   └── state-colors.md (appointment state color palette with hex values)
-│
 ├── migration/ (NEW - Data migration guides)
 │   ├── README.md (migration overview)
 │   ├── mongodb-reference.md (quick index to legacy MongoDB collections with status)
@@ -526,12 +522,6 @@ specs/
 │   ├── e2e-scenarios.md (critical user journey tests in Gherkin)
 │   ├── component-patterns.md (React Testing Library patterns)
 │   └── test-data.md (fixtures, factories, mock data strategies)
-│
-├── glossary.md (NEW - Domain terminology)
-│   ├── Appointment Types (APPOINTMENT, SHIFT, COUNCIL, TREATMENT)
-│   ├── Appointment States (READY, STARTED, ACTIVE, DONE, CLOSED, ARCHIVED, STORNO, etc.)
-│   ├── Roles (STANDARD, LEITER_INTERN, ADMIN_INTERN, ADMIN, KUNDE, ADMIN_KUNDE, REGISTERED)
-│   └── Acronyms (CDR, MOTD, QM, RBAC, HSP, etc.)
 │
 ├── rules/ (RETAIN - Implementation rules)
 │   ├── table-view.md (TanStack React Table patterns)
@@ -689,43 +679,6 @@ else
 fi
 ```
 
-### 6.3 validate-migration.sh
-
-**Purpose**: Final validation of migration completeness
-
-**Medium Priority** - Estimated token savings: Medium
-
-```bash
-#!/bin/bash
-# Validate migration completeness
-
-errors=0
-
-# Check all domains exist
-for domain in dashboard appointments shifts treatments consultations council appointment-admin notifications customers staff administration system-admin includes orphan; do
-  if [ ! -d "specs/analysis/$domain" ]; then
-    echo "❌ Missing: analysis/$domain"
-    errors=$((errors + 1))
-  fi
-  if [ ! -d "specs/wireframes/$domain" ]; then
-    echo "❌ Missing: wireframes/$domain"
-    errors=$((errors + 1))
-  fi
-done
-
-# Check for broken markdown links
-echo "Checking for broken links..."
-# (implementation omitted for brevity)
-
-if [ $errors -eq 0 ]; then
-  echo "✅ Migration validation passed"
-  exit 0
-else
-  echo "❌ Found $errors errors"
-  exit 1
-fi
-```
-
 ### 6.3 rename-files.sh
 
 **Purpose**: Rename files by removing numeric prefixes and applying standardized names
@@ -836,7 +789,44 @@ done
 echo "File renaming complete"
 ```
 
-### 6.4 cleanup-empty-dirs.sh
+### 6.4 validate-migration.sh
+
+**Purpose**: Final validation of migration completeness
+
+**Medium Priority** - Estimated token savings: Medium
+
+```bash
+#!/bin/bash
+# Validate migration completeness
+
+errors=0
+
+# Check all domains exist
+for domain in dashboard appointments shifts treatments consultations council appointment-admin notifications customers staff administration system-admin includes mongodb-mapping i18n permissions orphan; do
+  if [ ! -d "specs/analysis/$domain" ]; then
+    echo "❌ Missing: analysis/$domain"
+    errors=$((errors + 1))
+  fi
+  if [ ! -d "specs/wireframes/$domain" ]; then
+    echo "❌ Missing: wireframes/$domain"
+    errors=$((errors + 1))
+  fi
+done
+
+# Check for broken markdown links
+echo "Checking for broken links..."
+# (implementation omitted for brevity)
+
+if [ $errors -eq 0 ]; then
+  echo "✅ Migration validation passed"
+  exit 0
+else
+  echo "❌ Found $errors errors"
+  exit 1
+fi
+```
+
+### 6.5 cleanup-empty-dirs.sh
 
 **Purpose**: Delete all empty source directories after migration
 
@@ -984,7 +974,7 @@ echo "  wireframes/: $(find wireframes -type d | wc -l)"
 echo "  features/: $(find features -type d | wc -l)"
 ```
 
-### 6.5 Script Execution Order
+### 6.6 Script Execution Order
 
 Scripts must be executed in the following order after manual file moves are complete:
 
@@ -1032,7 +1022,7 @@ This addendum has been **fully integrated** into the main MIGRATION-PLAN.md docu
 - ✅ Section 2.2 "Complete Directory Tree" updated with final file destinations
 - ✅ Section 6.1-6.4 "Scripts to Create" added with all migration scripts
 - ✅ Section 6.5 "Script Execution Order" added with warnings
-- ✅ Domain count corrected to 14 folders (including orphan/)
+- ✅ Domain count corrected to 17 folders for analysis/ (including orphan/, i18n/, mongodb-mapping/, permissions/) and 14 folders for wireframes/ (including components/)
 - ✅ Wireframe source paths corrected to include full `wireframes/` prefix
 
 ### Remaining Tasks
@@ -1045,5 +1035,297 @@ The following sections mentioned in the original addendum are **NOT yet implemen
 - ❌ Actual file migrations (this document is a plan only)
 
 ---
+
+## Phase 16: i18n Directory Migration
+
+**Source**: `specs/planning/translations/`  
+**Target**: `analysis/i18n/`  
+**Status**: Ready for execution
+
+### 16.1 Overview
+
+Migrate comprehensive translation documentation from `specs/planning/translations/` to new `analysis/i18n/` directory with enhanced structure while preserving full detail level.
+
+### 16.2 Source Files
+
+| Source File | Content | Size |
+|-------------|---------|------|
+| `translation-summary.md` | Summary statistics, missing translations, auto-translate suggestions | 159 lines |
+| `BATCHED-RECHECK-GUIDE.md` | Complete how-to guide for batched translation rechecks | 268 lines |
+| `lookup-translations.sh` | Executable bash script for translation lookup | 98 lines |
+| `i18n-keys-*.txt` (8 files) | Unique i18n keys per domain | 466 total keys |
+| `lookup-*.csv` (8 files) | Translation status (DE/EN/source/status) per domain | ~1200 lines total |
+
+### 16.3 Target Structure
+
+```
+analysis/i18n/
+├── README.md (i18n strategy and overview)
+├── translation-inventory.md (consolidated from translation-summary.md + all CSV data)
+├── hardcoded-strings.md (prioritized list of German strings needing i18n keys)
+├── translation-guide.md (naming conventions, gender handling, length considerations - from BATCHED-RECHECK-GUIDE.md)
+├── missing-keys.md (gaps in translation coverage - generated from MISSING_EN/MISSING_DE in CSVs)
+├── domains/ (per-domain detailed inventories)
+│   ├── treatment.md (155 keys)
+│   ├── customer.md (111 keys)
+│   ├── accounting.md (62 keys)
+│   ├── system.md (49 keys)
+│   ├── planning.md (57 keys)
+│   ├── user-management.md (18 keys)
+│   ├── interfaces.md (6 keys)
+│   └── academy.md (8 keys)
+└── scripts/
+    └── lookup-translations.sh (migrated from planning/translations/)
+```
+
+### 16.4 Content Preservation
+
+All existing detail will be preserved:
+
+- ✅ All 466 unique i18n keys with German/English translations
+- ✅ Source attribution (ApplicationResources vs BaseResources)
+- ✅ Missing translation flags (MISSING_EN, MISSING_DE)
+- ✅ Coverage statistics per domain (currently 98% DE, 95% EN)
+- ✅ Auto-translation suggestions for 22 missing English keys
+- ✅ Auto-translation suggestions for 9 missing German keys
+- ✅ Complete lookup script functionality
+- ✅ Batched recheck workflows and commands
+- ✅ Query examples for specific keys
+- ✅ CI/CD integration examples
+
+### 16.5 Migration Steps
+
+1. **Create directory structure**
+   ```bash
+   mkdir -p analysis/i18n/domains analysis/i18n/scripts
+   ```
+
+2. **Copy executable script**
+   ```bash
+   cp specs/planning/translations/lookup-translations.sh analysis/i18n/scripts/
+   chmod +x analysis/i18n/scripts/lookup-translations.sh
+   ```
+
+3. **Create README.md** with:
+   - i18n strategy overview
+   - Link to translation-inventory.md
+   - Quick start guide for developers
+   - Script usage examples
+
+4. **Create translation-inventory.md** by consolidating:
+   - Summary statistics table from translation-summary.md
+   - All missing translation lists (MISSING_EN, MISSING_DE)
+   - Translation sources breakdown
+   - Key insights section
+   - Query commands
+
+5. **Create domain-specific files** in `domains/`:
+   - Extract data from each `lookup-*.csv`
+   - Format as markdown tables with key, German, English, source, status
+   - Include per-domain coverage statistics
+
+6. **Create hardcoded-strings.md**:
+   - List German strings found in analysis files without i18n keys
+   - Prioritize by domain and usage frequency
+   - Suggest i18n key names following naming conventions
+
+7. **Create translation-guide.md**:
+   - Extract workflow from BATCHED-RECHECK-GUIDE.md
+   - Document naming conventions (dot notation, camelCase)
+   - Gender handling guidelines
+   - Translation length considerations for UI
+
+8. **Create missing-keys.md**:
+   - Generate from all MISSING_EN and MISSING_DE entries
+   - Organize by priority (High/Medium)
+   - Include auto-translated suggestions
+   - Track resolution status
+
+9. **Update references** in other docs to point to new location
+
+10. **Validate** by running lookup script against new structure
+
+### 16.6 Missing Translations Summary
+
+**Missing English (22 keys)** - High Priority:
+- `location.externalId` (JVA/Externe Id)
+- `AppointmentState.REQUESTED.action` (Anfragen)
+- `action.dateEnd` (Endzeit)
+- `invoiceReceiver.councilStorno` (Konsil Storno)
+- `invoiceReceiver.shiftStorno` (Bereitschaft Storno)
+- `consultation.furtherTreatmentDate` (Folgetermin Datum)
+- `button.remove` (Remove - needs DE)
+
+**Missing German (9 keys)** - High Priority:
+- `InvoiceReceiver` (needs German)
+- `contact.email` (E-Mail)
+- `location.phone` (Telefon)
+- `medication` (Medikation)
+- `login.totp.device` (TOTP-Gerät)
+- `login.verifyTOTPCode` (TOTP-Code überprüfen)
+
+### 16.7 Integration with Other Phases
+
+- **After Phase 2** (directory structure): i18n/ directory created under analysis/
+- **Before Phase 15** (STRUCTURE.md): Complete migration and update references
+- **Parallel to features/ migration**: Translation inventory supports FR documentation
+
+### 16.8 Success Criteria
+
+- [ ] All 466 keys documented in new structure
+- [ ] All 8 domain files created with complete CSV data
+- [ ] lookup-translations.sh executable and functional
+- [ ] Missing translations clearly flagged with priorities
+- [ ] Hardcoded strings inventory started
+- [ ] Translation guide documented
+- [ ] No broken references to old location
+
+**Document Status**: Ready for execution
+
+## Phase 16: i18n Directory Migration
+
+**Source**: `specs/planning/translations/`  
+**Target**: `analysis/i18n/`  
+**Status**: Ready for execution
+
+### 16.1 Overview
+
+Migrate comprehensive translation documentation from `specs/planning/translations/` to new `analysis/i18n/` directory with enhanced structure while preserving full detail level.
+
+### 16.2 Source Files
+
+| Source File | Content | Size |
+|-------------|---------|------|
+| `translation-summary.md` | Summary statistics, missing translations, auto-translate suggestions | 159 lines |
+| `BATCHED-RECHECK-GUIDE.md` | Complete how-to guide for batched translation rechecks | 268 lines |
+| `lookup-translations.sh` | Executable bash script for translation lookup | 98 lines |
+| `i18n-keys-*.txt` (8 files) | Unique i18n keys per domain | 466 total keys |
+| `lookup-*.csv` (8 files) | Translation status (DE/EN/source/status) per domain | ~1200 lines total |
+
+### 16.3 Target Structure
+
+```
+analysis/i18n/
+├── README.md (i18n strategy and overview)
+├── translation-inventory.md (consolidated from translation-summary.md + all CSV data)
+├── hardcoded-strings.md (prioritized list of German strings needing i18n keys)
+├── translation-guide.md (naming conventions, gender handling, length considerations - from BATCHED-RECHECK-GUIDE.md)
+├── missing-keys.md (gaps in translation coverage - generated from MISSING_EN/MISSING_DE in CSVs)
+├── domains/ (per-domain detailed inventories)
+│   ├── treatment.md (155 keys)
+│   ├── customer.md (111 keys)
+│   ├── accounting.md (62 keys)
+│   ├── system.md (49 keys)
+│   ├── planning.md (57 keys)
+│   ├── user-management.md (18 keys)
+│   ├── interfaces.md (6 keys)
+│   └── academy.md (8 keys)
+└── scripts/
+    └── lookup-translations.sh (migrated from planning/translations/)
+```
+
+### 16.4 Content Preservation
+
+All existing detail will be preserved:
+
+- ✅ All 466 unique i18n keys with German/English translations
+- ✅ Source attribution (ApplicationResources vs BaseResources)
+- ✅ Missing translation flags (MISSING_EN, MISSING_DE)
+- ✅ Coverage statistics per domain (currently 98% DE, 95% EN)
+- ✅ Auto-translation suggestions for 22 missing English keys
+- ✅ Auto-translation suggestions for 9 missing German keys
+- ✅ Complete lookup script functionality
+- ✅ Batched recheck workflows and commands
+- ✅ Query examples for specific keys
+- ✅ CI/CD integration examples
+
+### 16.5 Migration Steps
+
+1. **Create directory structure**
+   ```bash
+   mkdir -p analysis/i18n/domains analysis/i18n/scripts
+   ```
+
+2. **Copy executable script**
+   ```bash
+   cp specs/planning/translations/lookup-translations.sh analysis/i18n/scripts/
+   chmod +x analysis/i18n/scripts/lookup-translations.sh
+   ```
+
+3. **Create README.md** with:
+   - i18n strategy overview
+   - Link to translation-inventory.md
+   - Quick start guide for developers
+   - Script usage examples
+
+4. **Create translation-inventory.md** by consolidating:
+   - Summary statistics table from translation-summary.md
+   - All missing translation lists (MISSING_EN, MISSING_DE)
+   - Translation sources breakdown
+   - Key insights section
+   - Query commands
+
+5. **Create domain-specific files** in `domains/`:
+   - Extract data from each `lookup-*.csv`
+   - Format as markdown tables with key, German, English, source, status
+   - Include per-domain coverage statistics
+
+6. **Create hardcoded-strings.md**:
+   - List German strings found in analysis files without i18n keys
+   - Prioritize by domain and usage frequency
+   - Suggest i18n key names following naming conventions
+
+7. **Create translation-guide.md**:
+   - Extract workflow from BATCHED-RECHECK-GUIDE.md
+   - Document naming conventions (dot notation, camelCase)
+   - Gender handling guidelines
+   - Translation length considerations for UI
+
+8. **Create missing-keys.md**:
+   - Generate from all MISSING_EN and MISSING_DE entries
+   - Organize by priority (High/Medium)
+   - Include auto-translated suggestions
+   - Track resolution status
+
+9. **Update references** in other docs to point to new location
+
+10. **Validate** by running lookup script against new structure
+
+### 16.6 Missing Translations Summary
+
+**Missing English (22 keys)** - High Priority:
+- `location.externalId` (JVA/Externe Id)
+- `AppointmentState.REQUESTED.action` (Anfragen)
+- `action.dateEnd` (Endzeit)
+- `invoiceReceiver.councilStorno` (Konsil Storno)
+- `invoiceReceiver.shiftStorno` (Bereitschaft Storno)
+- `consultation.furtherTreatmentDate` (Folgetermin Datum)
+- `button.remove` (Remove - needs DE)
+
+**Missing German (9 keys)** - High Priority:
+- `InvoiceReceiver` (needs German)
+- `contact.email` (E-Mail)
+- `location.phone` (Telefon)
+- `medication` (Medikation)
+- `login.totp.device` (TOTP-Gerät)
+- `login.verifyTOTPCode` (TOTP-Code überprüfen)
+
+### 16.7 Integration with Other Phases
+
+- **After Phase 2** (directory structure): i18n/ directory created under analysis/
+- **Before Phase 15** (STRUCTURE.md): Complete migration and update references
+- **Parallel to features/ migration**: Translation inventory supports FR documentation
+
+### 16.8 Success Criteria
+
+- [ ] All 466 keys documented in new structure
+- [ ] All 8 domain files created with complete CSV data
+- [ ] lookup-translations.sh executable and functional
+- [ ] Missing translations clearly flagged with priorities
+- [ ] Hardcoded strings inventory started
+- [ ] Translation guide documented
+- [ ] No broken references to old location
+
+**Document Status**: Ready for execution
 
 **Document Status**: Ready for execution
