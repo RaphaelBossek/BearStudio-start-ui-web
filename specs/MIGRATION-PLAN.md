@@ -623,318 +623,112 @@ domains/
 
 ---
 
-## 6. Scripts to Create
+## 6. Migration Scripts
 
-### 6.1 update-references.sh
+The migration scripts are located in `specs/planning/migration/` and should be executed in order:
 
-**Purpose**: Update all internal markdown references after file moves
+| # | Script | Purpose |
+|---|--------|---------|
+| 1 | `01_rename-files.sh` | Rename files by removing numeric prefixes |
+| 2 | `02_migrate-directories.sh` | Move files to new consolidated domain folders |
+| 3 | `03_update-references.sh` | Update all internal markdown references |
+| 4 | `04_check-orphans.sh` | Detect orphaned PNG files |
+| 5 | `05_validate-migration.sh` | Validate migration completeness |
+| 6 | `06_cleanup-empty-dirs.sh` | Delete empty source directories |
+| 7 | `07_create-readmes.sh` | Create README files for new directories |
 
-**High Priority** - Estimated token savings: High (100+ links)
-
-```bash
-#!/bin/bash
-set -e
-
-# Update all internal references in markdown files
-
-# Pattern 1: Old paths to new paths
-echo "Updating old path references..."
-if ! find specs -name "*.md" -type f -exec sed -i \
-  's|specs/analysis/planning/appointment/|specs/analysis/appointments/|g' {} \;; then
-  echo "❌ Error: Failed to update path references"
-  echo "Analysis: Check file permissions and disk space"
-  echo "Direction: Run 'find specs -name \"*.md\" -type f' to verify files exist"
-  exit 1
-fi
-
-# Pattern 2: Numeric prefix removal
-echo "Removing numeric prefixes..."
-if ! find specs -name "*.md" -type f -exec sed -i \
-  's|/01-|/|g; s|/02-|/|g; s|/03-|/|g; s|/04-|/|g; s|/05-|/|g' {} \;; then
-  echo "❌ Error: Failed to remove numeric prefixes"
-  echo "Analysis: Check for files with special characters or permissions issues"
-  echo "Direction: Run 'find specs -name \"*.md\" -ls' to inspect problematic files"
-  exit 1
-fi
-
-# Pattern 3: Wireframe plan references
-echo "Updating wireframe plan references..."
-if ! find specs -name "*.md" -type f -exec sed -i \
-  's|wireframe-plan\.md|wireframes.md|g' {} \;; then
-  echo "❌ Error: Failed to update wireframe plan references"
-  echo "Analysis: Check for read-only files or filesystem issues"
-  echo "Direction: Run 'ls -la specs/**/*.md' to check file permissions"
-  exit 1
-fi
-
-echo "✅ Reference updates complete"
-```
-
-### 6.2 check-orphans.sh
-
-**Purpose**: Detect orphaned PNG files not referenced in any markdown
-
-**Medium Priority** - Estimated token savings: Medium
+### Execution Instructions
 
 ```bash
-#!/bin/bash
-set -e
+cd specs/planning/migration
 
-# Find orphaned PNG files
-
-echo "Checking for orphaned PNG files..."
-
-if ! cd specs/wireframes; then
-  echo "❌ Error: Failed to change to specs/wireframes directory"
-  echo "Analysis: Directory may not exist or permissions issue"
-  echo "Direction: Run 'ls -la specs/' to verify wireframes directory exists"
-  exit 1
-fi
-
-orphans=0
-
-for file in $(find . -name "*.png" -type f); do
-  if ! grep -r "$(basename $file)" . --include="*.md" > /dev/null 2>&1; then
-    echo "ORPHANED: $file"
-    orphans=$((orphans + 1))
-  fi
-done
-
-if [ $orphans -eq 0 ]; then
-  echo "✅ No orphaned files found"
-  exit 0
-else
-  echo "❌ Found $orphans orphaned files"
-  echo "Analysis: These PNG files are not referenced in any markdown documentation"
-  echo "Direction: Review orphaned files and either delete them or add references"
-  echo "Orphaned files to review:"
-  find . -name "*.png" -type f | while read file; do
-    if ! grep -r "$(basename $file)" . --include="*.md" > /dev/null 2>&1; then
-      echo "  - $file"
-    fi
-  done
-  exit 1
-fi
+# Execute scripts in order
+./01_rename-files.sh
+./02_migrate-directories.sh
+./03_update-references.sh
+./04_check-orphans.sh
+./05_validate-migration.sh  # Must pass before cleanup
+./06_cleanup-empty-dirs.sh
+./07_create-readmes.sh
 ```
 
-### 6.3 rename-files.sh
+### Script Details
+
+#### 01_rename-files.sh
 
 **Purpose**: Rename files by removing numeric prefixes and applying standardized names
 
-**High Priority** - Must run before update-references.sh
+**High Priority** - Must run BEFORE migrate-directories.sh
 
-```bash
-#!/bin/bash
-set -e
+Key renames:
+- `01-appointment-list.md` → `list.md`
+- `02-appointment-details-scheduling.md` → `details.md`
+- `01-consultation-list.md` → `list.md`
+- All `NN-*.md` files → `*.md` (generic pattern)
 
-# Rename files with semantic standardized names
-# Examples:
-#   01-appointment-list.md → list.md
-#   02-appointment-details-scheduling.md → details.md
-#   01-equipment.md → equipment.md
+#### 02_migrate-directories.sh
 
-echo "Starting file renaming process..."
+**Purpose**: Move files from old directory structure to new consolidated domain folders
 
-if ! cd specs; then
-  echo "❌ Error: Failed to change to specs directory"
-  echo "Analysis: specs directory may not exist from current location"
-  echo "Direction: Run 'pwd' to verify current directory, then 'ls -la' to check specs exists"
-  exit 1
-fi
+Creates new directories and moves:
+- Analysis files to `specs/analysis/{domain}/`
+- Wireframe files to `specs/wireframes/{domain}/`
+- Creates new top-level directories: `features/`, `domains/`, `decisions/`, `migration/`, `testing/`
 
-# Define rename mappings: "old_pattern" -> "new_name"
-declare -A renames=(
-  # Appointments
-  ["01-appointment-list.md"]="list.md"
-  ["02-appointment-details-scheduling.md"]="details.md"
-  ["03-appointment-assign-user.md"]="assign-user.md"
-  
-  # Shifts
-  ["01-shift-and-plan.md"]="list.md"
-  
-  # Council
-  ["01-council-and-plan.md"]="list.md"
-  
-  # Consultations
-  ["01-consultation-list.md"]="list.md"
-  ["02-consultation-details-header.md"]="details-header.md"
-  ["03-consultation-details-standard.md"]="standard-form.md"
-  ["04-consultation-details-onboarding.md"]="onboarding-form.md"
-  ["05-consultation-details-incarceration.md"]="incarceration-form.md"
-  ["06-consultation-details-treatment-warning.md"]="treatment-warning.md"
-  ["07-consultation-view-review.md"]="view-review.md"
-  ["08-consultation-details-js.md"]="details-js.md"
-  
-  # Customer
-  ["01-customer-list-detail.md"]="list.md"
-  ["02-location-and-users.md"]="locations-users.md"
-  
-  # Invoices
-  ["01-invoice-list.md"]="invoices.md"
-  ["02-invoice-details.md"]="invoice-details.md"
-  
-  # Equipment
-  ["01-equipment.md"]="equipment.md"
-  
-  # Notifications
-  ["01-notification.md"]="list.md"
-  
-  # Treatments
-  ["01-treatment-and-category.md"]="list.md"
-  ["02-treatment-plan.md"]="plan.md"
-  
-  # User Management
-  ["01-onboarding-flow.md"]="onboarding.md"
-  ["02-user-management.md"]="user-management.md"
-  ["04-skill.md"]="skills.md"
-  
-  # Admin
-  ["03-job-configuration.md"]="jobs.md"
-  ["04-workhour.md"]="work-hours.md"
-  
-  # System
-  ["01-admin-landing.md"]="admin-landing.md"
-  ["04-motd-template.md"]="motd.md"
-  
-  # Wireframe plans
-  ["wireframe-plan.md"]="wireframes.md"
-)
+#### 03_update-references.sh
 
-# Process each file
-echo "Processing explicit rename mappings..."
-rename_errors=0
-for old_name in "${!renames[@]}"; do
-  new_name="${renames[$old_name]}"
-  
-  # Find and rename matching files
-  find . -name "$old_name" -type f | while read file; do
-    dir=$(dirname "$file")
-    new_path="$dir/$new_name"
-    
-    if [ "$file" != "$new_path" ]; then
-      if ! mv "$file" "$new_path"; then
-        echo "❌ Error: Failed to rename $file → $new_path"
-        echo "Analysis: Check if destination file already exists or permissions issue"
-        echo "Direction: Run 'ls -la $dir/' to inspect directory state"
-        rename_errors=$((rename_errors + 1))
-      else
-        echo "Renamed: $file → $new_path"
-      fi
-    fi
-  done
-done
+**Purpose**: Update all internal markdown references after file moves
 
-if [ $rename_errors -gt 0 ]; then
-  echo "❌ Found $rename_errors rename errors"
-  echo "Analysis: Review errors above and resolve conflicts manually"
-  echo "Direction: Check for existing files with target names or permission issues"
-  exit 1
-fi
+**High Priority** - Must run AFTER migrate-directories.sh
 
-# Generic numeric prefix removal for files not in mapping
-echo "Processing generic numeric prefix removal..."
-find . -name "*.md" -type f | while read file; do
-  dir=$(dirname "$file")
-  base=$(basename "$file")
-  
-  # Check if filename starts with NN- pattern
-  if [[ "$base" =~ ^[0-9]{2}-(.+\.md)$ ]]; then
-    new_base="${BASH_REMATCH[1]}"
-    new_path="$dir/$new_base"
-    
-    if [ "$file" != "$new_path" ]; then
-      if ! mv "$file" "$new_path"; then
-        echo "❌ Error: Failed to rename (generic) $file → $new_path"
-        echo "Analysis: Check if destination already exists or permissions issue"
-        echo "Direction: Run 'ls -la $dir/' to inspect directory state"
-        exit 1
-      else
-        echo "Renamed (generic): $file → $new_path"
-      fi
-    fi
-  fi
-done
+Updates:
+- Old path references (e.g., `planning/appointment/` → `appointments/`)
+- Wireframe path references
+- Numeric prefix references in links
 
-echo "✅ File renaming complete"
-```
+#### 04_check-orphans.sh
 
-### 6.4 validate-migration.sh
+**Purpose**: Detect orphaned PNG files not referenced in any markdown
 
-**Purpose**: Final validation of migration completeness
+Reports PNG files that are not referenced in any `.md` file for manual review.
 
-**Medium Priority** - Estimated token savings: Medium
+#### 05_validate-migration.sh
 
-```bash
-#!/bin/bash
-set -e
+**Purpose**: Validate migration completeness
 
-# Validate migration completeness
+**Medium Priority** - Must pass before running cleanup
 
-echo "Starting migration validation..."
+Checks:
+- All domain directories exist
+- No broken markdown links
+- No files remaining in old locations
 
-errors=0
+#### 06_cleanup-empty-dirs.sh
 
-# Check all domains exist
-echo "Checking domain directories exist..."
-for domain in dashboard appointments shifts treatments consultations council appointment-admin notifications customers staff administration system-admin includes mongodb-mapping i18n permissions orphan; do
-  if [ ! -d "specs/analysis/$domain" ]; then
-    echo "❌ Missing: analysis/$domain"
-    errors=$((errors + 1))
-  else
-    echo "  ✓ analysis/$domain"
-  fi
-  if [ ! -d "specs/wireframes/$domain" ]; then
-    echo "❌ Missing: wireframes/$domain"
-    errors=$((errors + 1))
-  else
-    echo "  ✓ wireframes/$domain"
-  fi
-done
+**Purpose**: Delete all empty source directories after migration
 
-# Check for broken markdown links
-echo "Checking for broken links..."
-broken_links=0
-for md_file in $(find specs -name "*.md" -type f); do
-  # Extract relative links from markdown files
-  while IFS= read -r link; do
-    # Skip external links and anchors
-    if [[ "$link" =~ ^http ]] || [[ "$link" =~ ^# ]]; then
-      continue
-    fi
-    
-    # Resolve relative path from the file's directory
-    file_dir=$(dirname "$md_file")
-    target_path="$file_dir/$link"
-    
-    # Remove anchor from path if present
-    target_path="${target_path%%#*}"
-    
-    if [ ! -e "$target_path" ]; then
-      echo "  ❌ Broken link in $md_file: $link"
-      broken_links=$((broken_links + 1))
-    fi
-  done < <(grep -oP '\]\(\K[^\)]+' "$md_file" 2>/dev/null || true)
-done
+**High Priority** - Critical for clean structure
 
-if [ $broken_links -gt 0 ]; then
-  echo "❌ Found $broken_links broken links"
-  errors=$((errors + broken_links))
-fi
+Removes old directory structures:
+- `analysis/accounting/*`, `analysis/academy/*`, `analysis/customer/*`, etc.
+- `wireframes/accounting/*`, `wireframes/academy/*`, etc.
+- `features/compliance/*`, `features/performance/*`, etc.
 
-# Summary
-echo ""
-if [ $errors -eq 0 ]; then
-  echo "✅ Migration validation passed"
-  exit 0
-else
-  echo "❌ Found $errors errors"
-  echo "Analysis: Review missing directories and broken links above"
-  echo "Direction: Fix missing directories or update broken references in markdown files"
-  exit 1
-fi
-```
+#### 07_create-readmes.sh
 
-### 6.5 cleanup-empty-dirs.sh
+**Purpose**: Create README.md files for all new directories
+
+Creates documentation for:
+- `analysis/README.md` - Domain overview
+- `wireframes/README.md` - Component mapping
+- `features/README.md` - FR vs NFR split
+- `domains/README.md` - Entity model structure
+- `decisions/README.md` - ADR index
+- `migration/README.md` - Migration status
+- `testing/README.md` - Testing strategy
+- `wireframes/components/README.md` - Component library
+- `analysis/orphan/README.md` - Orphan context
+- `wireframes/orphan/README.md` - Orphaned wireframes
 
 **Purpose**: Delete all empty source directories after migration
 
