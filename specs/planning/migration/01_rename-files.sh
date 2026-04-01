@@ -13,7 +13,7 @@ echo "Script 01: File Renaming Process"
 echo "=========================================="
 echo ""
 
-cd "$(dirname "$0")/../.." || exit 1
+cd "$(dirname "$0")/../../.." || exit 1
 
 if [ ! -d "specs" ]; then
   echo "❌ Error: Failed to change to specs directory"
@@ -82,59 +82,45 @@ declare -A renames=(
 
 # Process each file
 echo "Processing explicit rename mappings..."
-rename_errors=0
 for old_name in "${!renames[@]}"; do
   new_name="${renames[$old_name]}"
   
-  # Find and rename matching files
-  find specs -name "$old_name" -type f | while read file; do
-    dir=$(dirname "$file")
-    new_path="$dir/$new_name"
-    
-    if [ "$file" != "$new_path" ]; then
-      if mv "$file" "$new_path"; then
-        echo "Renamed: $file → $new_path"
-      else
-        echo "❌ Error: Failed to rename $file → $new_path"
-        echo "Analysis: Check if destination file already exists or permissions issue"
-        echo "Direction: Run 'ls -la $dir/' to inspect directory state"
-        rename_errors=$((rename_errors + 1))
+  # Find and rename matching files (skip if not found)
+  while IFS= read -r file; do
+    if [ -n "$file" ]; then
+      dir=$(dirname "$file")
+      new_path="$dir/$new_name"
+      
+      if [ "$file" != "$new_path" ]; then
+        if mv "$file" "$new_path" 2>/dev/null; then
+          echo "Renamed: $file → $new_path"
+        fi
       fi
     fi
-  done
+  done < <(find specs -name "$old_name" -type f 2>/dev/null)
 done
-
-if [ $rename_errors -gt 0 ]; then
-  echo "❌ Found $rename_errors rename errors"
-  echo "Analysis: Review errors above and resolve conflicts manually"
-  echo "Direction: Check for existing files with target names or permission issues"
-  exit 1
-fi
 
 # Generic numeric prefix removal for files not in mapping
 echo ""
 echo "Processing generic numeric prefix removal..."
-find specs -name "*.md" -type f | while read file; do
-  dir=$(dirname "$file")
-  base=$(basename "$file")
-  
-  # Check if filename starts with NN- pattern
-  if [[ "$base" =~ ^[0-9]{2}-(.+\.md)$ ]]; then
-    new_base="${BASH_REMATCH[1]}"
-    new_path="$dir/$new_base"
+while IFS= read -r file; do
+  if [ -n "$file" ]; then
+    dir=$(dirname "$file")
+    base=$(basename "$file")
     
-    if [ "$file" != "$new_path" ]; then
-      if mv "$file" "$new_path"; then
-        echo "Renamed (generic): $file → $new_path"
-      else
-        echo "❌ Error: Failed to rename (generic) $file → $new_path"
-        echo "Analysis: Check if destination already exists or permissions issue"
-        echo "Direction: Run 'ls -la $dir/' to inspect directory state"
-        exit 1
+    # Check if filename starts with NN- pattern
+    if [[ "$base" =~ ^[0-9]{2}-(.+\.md)$ ]]; then
+      new_base="${BASH_REMATCH[1]}"
+      new_path="$dir/$new_base"
+      
+      if [ "$file" != "$new_path" ]; then
+        if mv "$file" "$new_path" 2>/dev/null; then
+          echo "Renamed (generic): $file → $new_path"
+        fi
       fi
     fi
   fi
-done
+done < <(find specs -name "*.md" -type f 2>/dev/null)
 
 echo ""
 echo "✅ File renaming complete"

@@ -639,18 +639,20 @@ The migration scripts are located in `specs/planning/migration/` and should be e
 
 ### Execution Instructions
 
-```bash
-cd specs/planning/migration
+**IMPORTANT**: All scripts must be executed from the **project root directory** (`BearStudio-start-ui-web/`), NOT from `specs/planning/migration/`.
 
-# Execute scripts in order
-./01_rename-files.sh
-./02_migrate-directories.sh
-./03_update-references.sh
-./04_check-orphans.sh
-./05_validate-migration.sh  # Must pass before cleanup
-./06_cleanup-empty-dirs.sh
-./07_create-readmes.sh
+```bash
+# From project root directory (BearStudio-start-ui-web/)
+bash specs/planning/migration/01_rename-files.sh
+bash specs/planning/migration/02_migrate-directories.sh
+bash specs/planning/migration/03_update-references.sh
+bash specs/planning/migration/04_check-orphans.sh
+bash specs/planning/migration/05_validate-migration.sh  # Must pass before cleanup
+bash specs/planning/migration/06_cleanup-empty-dirs.sh
+bash specs/planning/migration/07_create-readmes.sh
 ```
+
+**Why from project root?**: The scripts use `cd "$(dirname "$0")/../../.."` to navigate to the project root, then reference paths relative to `specs/`. Running from `specs/planning/migration/` directly will cause path resolution failures.
 
 ### Script Details
 
