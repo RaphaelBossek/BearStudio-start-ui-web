@@ -23,14 +23,20 @@ Analyze staged git changes and generate concise, meaningful commit messages foll
 
 ## Core Capabilities
 
-**1. Diff Analysis**
-- Parse `git diff --staged` output
-- Identify modified, added, and deleted files
-- Analyze code changes (additions, deletions, modifications)
-- Detect patterns across multiple files
-- Apply changes in batches with logical interdependencies instead of big overall changes over all
+**1. Batch Detection & Grouping**
+- Analyze ALL modified files (staged + unstaged)
+- Cluster files by logical cohesion and dependencies
+- Identify unrelated changes that should be separate commits
+- Propose optimal batch breakdown with clear rationale
+- Support manual batch override by user
 
-**2. Change Classification**
+**2. Diff Analysis (per batch)**
+- Parse `git diff --staged` output for current batch only
+- Identify modified, added, and deleted files in batch
+- Analyze code changes (additions, deletions, modifications)
+- Detect patterns specific to batch scope
+
+**3. Change Classification**
 - Determine commit type from changes:
   - `feat`: New features or functionality
   - `fix`: Bug fixes
@@ -58,14 +64,18 @@ Analyze staged git changes and generate concise, meaningful commit messages foll
 - Focus on "what" and "why", not "how"
 - Provide 2-3 alternative suggestions
 
-**5. Execution of Commit on users behalf on request**
-- Let the user choose the message of his choice
-- Commit the files with the choosen message:
-   ```bash
-   cat <<__EOF__ | git commit -F-
-   {message}
-   __EOF__
-   ```
+**5. Iterative Batch Commit Execution**
+- Process batches one at a time
+- For each batch:
+  * Stage only the files in that batch: `git add <file1> <file2>`
+  * Let user choose/approve commit message
+  * Execute commit with selected message:
+    ```bash
+    git commit -m "{message}"
+    ```
+  * Report success and proceed to next batch
+- Allow user to skip batches or abort mid-process
+- Track committed batches for final summary
 
 ## Tier System: Smart Format Enforcement
 
@@ -120,47 +130,133 @@ type(scope): summary line (max 72 chars)
 
 **Why**: Documentation and routine maintenance are self-explanatory from the diff; verbose messages add noise.
 
-## Workflow
+## Workflow: Batched Commit Strategy
+
+**Core Principle**: Changes should be committed in logical batches, not all at once. Each batch represents a coherent unit of work that can be understood, reviewed, and reverted independently.
 
 ```text
 0. Pre-staging typecheck (if project uses TypeScript):
    - Run `pnpm check` on changed files before staging
    - Fix type errors before committing (avoids pre-commit hook retry loops)
-1. Get staged changes (staged only, not working tree):
-   - git diff --staged --name-status
-   - git diff --staged --stat
-   - git diff --staged
+
+1. Get ALL modified files (working tree, not staged):
+   - git status --porcelain
+   - git diff --name-only HEAD
+   - Identify all files with changes (staged + unstaged)
+
 2. Load config → `.skills/dev-git-commit-message/config.yaml`
-3. Analyze changes:
-   - Count files modified/added/deleted
-   - Identify primary change type using analysis patterns
-   - Detect scope from project structure (config.yaml)
-   - Determine tier (1/2/3) based on commit type
-   - Extract key modifications
-4. Generate commit messages:
-   - Apply tier-appropriate format
-   - Primary suggestion (best match)
-   - Alternative 1 (different scope/angle)
-   - Alternative 2 (broader/narrower focus)
-5. Validate against rules:
-   - Check forbidden patterns
-   - Verify required elements present
-   - Ensure length limits
-6. Present to user with explanation and tier info
-7. Ask the use to choose one of the options or let the user stop here
-8. If the user choose a variant execute the checkin with the choosen message and the related files. If the files are new, add them too
+
+3. ANALYZE & GROUP: Intelligent Batch Detection
+   - Cluster files by logical cohesion:
+     * Same directory/module → likely same batch
+     * Same file type pattern → likely same batch
+     * Dependency relationships → keep together
+   - Detect unrelated changes:
+     * Different scopes (e.g., src/api/ + docs/)
+     * Different change types (e.g., feat + chore)
+     * Mixed concerns (e.g., feature + formatting)
+   - Propose batch breakdown:
+     * Batch 1: feat(api) - authentication endpoints
+     * Batch 2: test(api) - authentication tests
+     * Batch 3: docs - API documentation updates
+
+4. For EACH BATCH (iterative process):
+   a. Stage only batch files:
+      - git add <file1> <file2> ...
+   b. Analyze batch changes:
+      - git diff --staged --name-status
+      - git diff --staged --stat
+      - git diff --staged
+      - Identify primary change type
+      - Detect scope from file paths
+      - Determine tier (1/2/3)
+   c. Generate commit messages for batch:
+      - Apply tier-appropriate format
+      - Primary suggestion (best match)
+      - Alternative 1 (different scope/angle)
+      - Alternative 2 (broader/narrower focus)
+   d. Validate against rules:
+      - Check forbidden patterns
+      - Verify required elements
+      - Ensure length limits
+   e. Present batch to user:
+      - Show files in batch
+      - Show suggested messages
+      - Explain batch logic
+   f. User approval:
+      - Choose message or modify
+      - Confirm commit or skip batch
+   g. Execute commit:
+      - git commit -m "<chosen_message>"
+      - Report success
+      - Move to next batch
+
+5. Final Summary:
+   - List all commits created
+   - Show remaining unstaged changes (if any)
+   - Suggest next steps
 ```
+
+### Batch Grouping Heuristics
+
+**Strong Cohesion (same batch)**:
+- Files in same directory with related names
+- Source file + its test file
+- Component + its styles
+- API route + its types/interfaces
+
+**Weak Cohesion (separate batches)**:
+- Different top-level directories (src/ vs docs/)
+- Different concerns (feature code vs config)
+- Unrelated modules (auth/ vs billing/)
+
+**Always Separate**:
+- Different commit types (feat vs chore)
+- Security fixes mixed with features
+- Formatting-only changes mixed with logic changes
 
 ## Optional Modes (If Supported By The Caller)
 
 - `--validate "<message>"`: Validate a commit message without generating suggestions (format/type/scope/length/forbidden patterns; then report required Tier 1/2/3 elements if missing).
 - `--tier <1|2|3>`: Force the tier format (overrides auto-detection).
 - `--interactive` or `-i`: Ask for confirmation of type, scope, and summary before final output.
+- `--batch <n>`: Process only batch number n (skip others).
+- `--no-batch`: Disable automatic batching, commit all staged changes together (discouraged).
+- `--review-batches`: Show proposed batch breakdown without committing (dry run).
 
 ## Output Format
 
+### Batch Proposal (Step 1)
+
 ```
-[NOTE] Suggested Commit Messages (based on X files changed)
+[NOTE] Detected 8 modified files across 3 logical batches
+
+BATCH 1: feat(api) - 3 files
+  Files: src/api/auth.ts, src/api/tokens.ts, src/middleware/auth.ts
+  Changes: +145 lines, new authentication logic
+
+BATCH 2: test(api) - 2 files
+  Files: src/api/auth.test.ts, src/api/tokens.test.ts
+  Changes: +89 lines, test coverage for auth
+
+BATCH 3: docs - 3 files
+  Files: README.md, docs/api/auth.md, docs/examples.md
+  Changes: +67 lines, documentation updates
+
+Proceed with batch-by-batch commit? [Y/n/custom]
+```
+
+### Per-Batch Commit (Step 2, repeated for each batch)
+
+```
+[NOTE] Processing BATCH 1 of 3 (feat(api))
+
+Staged files:
+  ✓ src/api/auth.ts
+  ✓ src/middleware/auth.ts
+  ✓ src/api/tokens.ts
+
+SUGGESTED COMMIT MESSAGES:
 
 PRIMARY:
 feat(api): add user authentication endpoints
@@ -174,6 +270,78 @@ ANALYSIS:
 - New functions: authenticateUser, generateToken
 - Primary change: new feature (authentication)
 - Scope detected: api/auth
+
+Choose message [1/2/3/edit/skip]:
+```
+
+### Final Summary
+
+```
+[SUCCESS] Completed batch commit process
+
+COMMITS CREATED:
+  ✓ feat(api): add user authentication endpoints
+  ✓ test(api): add authentication test coverage
+  ✓ docs: update API authentication documentation
+
+REMAINING CHANGES: None
+```
+[NOTE] Detected 8 modified files across 3 logical batches
+
+BATCH 1: feat(api) - 3 files
+  Files: src/api/auth.ts, src/api/tokens.ts, src/middleware/auth.ts
+  Changes: +145 lines, new authentication logic
+
+BATCH 2: test(api) - 2 files
+  Files: src/api/auth.test.ts, src/api/tokens.test.ts
+  Changes: +89 lines, test coverage for auth
+
+BATCH 3: docs - 3 files
+  Files: README.md, docs/api/auth.md, docs/examples.md
+  Changes: +67 lines, documentation updates
+
+Proceed with batch-by-batch commit? [Y/n/custom]
+```
+
+### Per-Batch Commit (Step 2, repeated for each batch)
+
+```
+[NOTE] Processing BATCH 1 of 3 (feat(api))
+
+Staged files:
+  ✓ src/api/auth.ts
+  ✓ src/middleware/auth.ts
+  ✓ src/api/tokens.ts
+
+SUGGESTED COMMIT MESSAGES:
+
+PRIMARY:
+feat(api): add user authentication endpoints
+
+ALTERNATIVES:
+1. feat(auth): implement JWT token validation
+2. feat: add user authentication system
+
+ANALYSIS:
+- 3 files modified in src/api/
+- New functions: authenticateUser, generateToken
+- Primary change: new feature (authentication)
+- Scope detected: api/auth
+
+Choose message [1/2/3/edit/skip]:
+```
+
+### Final Summary
+
+```
+[SUCCESS] Completed batch commit process
+
+COMMITS CREATED:
+  ✓ feat(api): add user authentication endpoints
+  ✓ test(api): add authentication test coverage
+  ✓ docs: update API authentication documentation
+
+REMAINING CHANGES: None
 ```
 
 ## Conventional Commits Quick Reference
@@ -203,9 +371,19 @@ ANALYSIS:
 
 ## Edge Cases
 
-**Multiple unrelated changes**:
-- Suggest splitting into separate commits
-- If forced to combine, use broader scope or omit scope
+**Multiple unrelated changes (DEFAULT CASE)**:
+- Automatically detect and split into separate batches
+- Process each batch as independent commit
+- Example detection:
+  * src/components/ + docs/ → separate batches
+  * feat + chore changes → separate batches
+  * feature code + lock file → separate batches
+
+**User wants single commit despite unrelated changes**:
+- Warn about commit hygiene best practices
+- Explain review/revert difficulties
+- If user insists, use broader scope or omit scope
+- Document the compromise in commit body
 
 **Breaking changes**:
 
@@ -227,14 +405,18 @@ ANALYSIS:
 
 ## Best Practices
 
-1. **Analyze context**: Look at file paths, function names, import statements
-2. **Prioritize clarity**: Prefer obvious descriptions over clever ones
-3. **Respect conventions**: Follow project's existing commit patterns if detected
-4. **Avoid hallucination**: Only describe what's actually in the diff
-5. **Be concise**: 50 chars is ideal, 72 is maximum for first line
-6. **Stage specific files**: Use `git add <file1> <file2>`, not `git add -A` or `git add .`, to avoid pulling in unrelated changes or sensitive files
-7. **Avoid heredoc in sandboxed shells**: Sandboxed environments may block temp file creation for here-documents. Use `git commit -m "$(cat <<'EOF'\nmessage\nEOF\n)"` or pass `-m "message"` directly
-8. **Pre-commit typecheck**: Run `pnpm lint` on the staged surface before committing to catch type errors early and avoid retry cascades from pre-commit hooks
+1. **Batch by logical cohesion**: Group files that change together for the same reason
+2. **One concern per commit**: Each commit should address a single concern or feature
+3. **Analyze context**: Look at file paths, function names, import statements
+4. **Prioritize clarity**: Prefer obvious descriptions over clever ones
+5. **Respect conventions**: Follow project's existing commit patterns if detected
+6. **Avoid hallucination**: Only describe what's actually in the diff
+7. **Be concise**: 50 chars is ideal, 72 is maximum for first line
+8. **Stage specific files**: Use `git add <file1> <file2>`, never `git add -A` or `git add .`
+9. **Avoid heredoc in sandboxed shells**: Use `git commit -m "message"` directly
+10. **Pre-commit typecheck**: Run `pnpm lint` on staged files before committing
+11. **Review batches before committing**: Show user proposed batches for approval
+12. **Allow batch customization**: Let users move files between batches or create new ones
 
 ## Example Analyses
 
@@ -448,8 +630,8 @@ Use it to standardize `type(scope): summary` messages and keep history automatio
 
 ---
 
-**Version**: 2.1.1-rb20260329
-**Last Updated**: 2026-01-26+20260329
+**Version**: 3.0.0-batch-20260401
+**Last Updated**: 2026-04-01 (Batched commit support)
 **Repository**: AI-Agents (documentation repository)
 **Conventional Commits Spec**: <https://www.conventionalcommits.org/>
 

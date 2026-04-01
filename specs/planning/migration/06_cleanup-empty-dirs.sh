@@ -9,7 +9,7 @@ echo "Script 06: Cleanup Empty Directories"
 echo "=========================================="
 echo ""
 
-cd "$(dirname "$0")/../.." || exit 1
+cd "$(dirname "$0")/../../.." || exit 1
 
 if [ ! -d "specs" ]; then
   echo "❌ Error: specs directory not found"

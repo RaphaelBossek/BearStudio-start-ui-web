@@ -9,7 +9,7 @@ echo "Script 04: Check Orphaned Files Process"
 echo "=========================================="
 echo ""
 
-cd "$(dirname "$0")/../.." || exit 1
+cd "$(dirname "$0")/../../.." || exit 1
 
 if [ ! -d "specs/wireframes" ]; then
   echo "❌ Error: specs/wireframes directory not found"
