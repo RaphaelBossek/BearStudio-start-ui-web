@@ -633,21 +633,41 @@ domains/
 
 ```bash
 #!/bin/bash
+set -e
+
 # Update all internal references in markdown files
 
 # Pattern 1: Old paths to new paths
-find specs -name "*.md" -type f -exec sed -i \
-  's|specs/analysis/planning/appointment/|specs/analysis/appointments/|g' {} \;
+echo "Updating old path references..."
+if ! find specs -name "*.md" -type f -exec sed -i \
+  's|specs/analysis/planning/appointment/|specs/analysis/appointments/|g' {} \;; then
+  echo "❌ Error: Failed to update path references"
+  echo "Analysis: Check file permissions and disk space"
+  echo "Direction: Run 'find specs -name \"*.md\" -type f' to verify files exist"
+  exit 1
+fi
 
 # Pattern 2: Numeric prefix removal
-find specs -name "*.md" -type f -exec sed -i \
-  's|/01-|/|g; s|/02-|/|g; s|/03-|/|g; s|/04-|/|g; s|/05-|/|g' {} \;
+echo "Removing numeric prefixes..."
+if ! find specs -name "*.md" -type f -exec sed -i \
+  's|/01-|/|g; s|/02-|/|g; s|/03-|/|g; s|/04-|/|g; s|/05-|/|g' {} \;; then
+  echo "❌ Error: Failed to remove numeric prefixes"
+  echo "Analysis: Check for files with special characters or permissions issues"
+  echo "Direction: Run 'find specs -name \"*.md\" -ls' to inspect problematic files"
+  exit 1
+fi
 
 # Pattern 3: Wireframe plan references
-find specs -name "*.md" -type f -exec sed -i \
-  's|wireframe-plan\.md|wireframes.md|g' {} \;
+echo "Updating wireframe plan references..."
+if ! find specs -name "*.md" -type f -exec sed -i \
+  's|wireframe-plan\.md|wireframes.md|g' {} \;; then
+  echo "❌ Error: Failed to update wireframe plan references"
+  echo "Analysis: Check for read-only files or filesystem issues"
+  echo "Direction: Run 'ls -la specs/**/*.md' to check file permissions"
+  exit 1
+fi
 
-echo "Reference updates complete"
+echo "✅ Reference updates complete"
 ```
 
 ### 6.2 check-orphans.sh
@@ -658,9 +678,19 @@ echo "Reference updates complete"
 
 ```bash
 #!/bin/bash
+set -e
+
 # Find orphaned PNG files
 
-cd specs/wireframes
+echo "Checking for orphaned PNG files..."
+
+if ! cd specs/wireframes; then
+  echo "❌ Error: Failed to change to specs/wireframes directory"
+  echo "Analysis: Directory may not exist or permissions issue"
+  echo "Direction: Run 'ls -la specs/' to verify wireframes directory exists"
+  exit 1
+fi
+
 orphans=0
 
 for file in $(find . -name "*.png" -type f); do
@@ -675,6 +705,14 @@ if [ $orphans -eq 0 ]; then
   exit 0
 else
   echo "❌ Found $orphans orphaned files"
+  echo "Analysis: These PNG files are not referenced in any markdown documentation"
+  echo "Direction: Review orphaned files and either delete them or add references"
+  echo "Orphaned files to review:"
+  find . -name "*.png" -type f | while read file; do
+    if ! grep -r "$(basename $file)" . --include="*.md" > /dev/null 2>&1; then
+      echo "  - $file"
+    fi
+  done
   exit 1
 fi
 ```
@@ -687,13 +725,22 @@ fi
 
 ```bash
 #!/bin/bash
+set -e
+
 # Rename files with semantic standardized names
 # Examples:
 #   01-appointment-list.md → list.md
 #   02-appointment-details-scheduling.md → details.md
 #   01-equipment.md → equipment.md
 
-cd specs
+echo "Starting file renaming process..."
+
+if ! cd specs; then
+  echo "❌ Error: Failed to change to specs directory"
+  echo "Analysis: specs directory may not exist from current location"
+  echo "Direction: Run 'pwd' to verify current directory, then 'ls -la' to check specs exists"
+  exit 1
+fi
 
 # Define rename mappings: "old_pattern" -> "new_name"
 declare -A renames=(
@@ -754,6 +801,8 @@ declare -A renames=(
 )
 
 # Process each file
+echo "Processing explicit rename mappings..."
+rename_errors=0
 for old_name in "${!renames[@]}"; do
   new_name="${renames[$old_name]}"
   
@@ -763,13 +812,27 @@ for old_name in "${!renames[@]}"; do
     new_path="$dir/$new_name"
     
     if [ "$file" != "$new_path" ]; then
-      mv "$file" "$new_path"
-      echo "Renamed: $file → $new_path"
+      if ! mv "$file" "$new_path"; then
+        echo "❌ Error: Failed to rename $file → $new_path"
+        echo "Analysis: Check if destination file already exists or permissions issue"
+        echo "Direction: Run 'ls -la $dir/' to inspect directory state"
+        rename_errors=$((rename_errors + 1))
+      else
+        echo "Renamed: $file → $new_path"
+      fi
     fi
   done
 done
 
+if [ $rename_errors -gt 0 ]; then
+  echo "❌ Found $rename_errors rename errors"
+  echo "Analysis: Review errors above and resolve conflicts manually"
+  echo "Direction: Check for existing files with target names or permission issues"
+  exit 1
+fi
+
 # Generic numeric prefix removal for files not in mapping
+echo "Processing generic numeric prefix removal..."
 find . -name "*.md" -type f | while read file; do
   dir=$(dirname "$file")
   base=$(basename "$file")
@@ -780,13 +843,19 @@ find . -name "*.md" -type f | while read file; do
     new_path="$dir/$new_base"
     
     if [ "$file" != "$new_path" ]; then
-      mv "$file" "$new_path"
-      echo "Renamed (generic): $file → $new_path"
+      if ! mv "$file" "$new_path"; then
+        echo "❌ Error: Failed to rename (generic) $file → $new_path"
+        echo "Analysis: Check if destination already exists or permissions issue"
+        echo "Direction: Run 'ls -la $dir/' to inspect directory state"
+        exit 1
+      else
+        echo "Renamed (generic): $file → $new_path"
+      fi
     fi
   fi
 done
 
-echo "File renaming complete"
+echo "✅ File renaming complete"
 ```
 
 ### 6.4 validate-migration.sh
@@ -797,31 +866,70 @@ echo "File renaming complete"
 
 ```bash
 #!/bin/bash
+set -e
+
 # Validate migration completeness
+
+echo "Starting migration validation..."
 
 errors=0
 
 # Check all domains exist
+echo "Checking domain directories exist..."
 for domain in dashboard appointments shifts treatments consultations council appointment-admin notifications customers staff administration system-admin includes mongodb-mapping i18n permissions orphan; do
   if [ ! -d "specs/analysis/$domain" ]; then
     echo "❌ Missing: analysis/$domain"
     errors=$((errors + 1))
+  else
+    echo "  ✓ analysis/$domain"
   fi
   if [ ! -d "specs/wireframes/$domain" ]; then
     echo "❌ Missing: wireframes/$domain"
     errors=$((errors + 1))
+  else
+    echo "  ✓ wireframes/$domain"
   fi
 done
 
 # Check for broken markdown links
 echo "Checking for broken links..."
-# (implementation omitted for brevity)
+broken_links=0
+for md_file in $(find specs -name "*.md" -type f); do
+  # Extract relative links from markdown files
+  while IFS= read -r link; do
+    # Skip external links and anchors
+    if [[ "$link" =~ ^http ]] || [[ "$link" =~ ^# ]]; then
+      continue
+    fi
+    
+    # Resolve relative path from the file's directory
+    file_dir=$(dirname "$md_file")
+    target_path="$file_dir/$link"
+    
+    # Remove anchor from path if present
+    target_path="${target_path%%#*}"
+    
+    if [ ! -e "$target_path" ]; then
+      echo "  ❌ Broken link in $md_file: $link"
+      broken_links=$((broken_links + 1))
+    fi
+  done < <(grep -oP '\]\(\K[^\)]+' "$md_file" 2>/dev/null || true)
+done
 
+if [ $broken_links -gt 0 ]; then
+  echo "❌ Found $broken_links broken links"
+  errors=$((errors + broken_links))
+fi
+
+# Summary
+echo ""
 if [ $errors -eq 0 ]; then
   echo "✅ Migration validation passed"
   exit 0
 else
   echo "❌ Found $errors errors"
+  echo "Analysis: Review missing directories and broken links above"
+  echo "Direction: Fix missing directories or update broken references in markdown files"
   exit 1
 fi
 ```
@@ -834,23 +942,18 @@ fi
 
 ```bash
 #!/bin/bash
+set -e
+
 # Clean up empty directories after migration
 
-cd specs
+echo "Starting directory cleanup..."
 
-# Track deleted directories
-deleted=0
-
-# Function to delete empty directories recursively
-cleanup_empty_dirs() {
-  local dir="$1"
-  
-  # Find all empty directories and delete them
-  find "$dir" -type d -empty -delete
-  
-  # Count deleted directories
-  deleted=$(find "$dir" -type d -empty | wc -l)
-}
+if ! cd specs; then
+  echo "❌ Error: Failed to change to specs directory"
+  echo "Analysis: specs directory may not exist from current location"
+  echo "Direction: Run 'pwd' to verify current directory, then 'ls -la' to check specs exists"
+  exit 1
+fi
 
 # Analysis directories to clean (old structure)
 echo "Cleaning empty analysis/ subdirectories..."
@@ -898,7 +1001,16 @@ for old_dir in \
   if [ -d "$old_dir" ]; then
     echo "  Checking: $old_dir"
     if [ -z "$(ls -A "$old_dir" 2>/dev/null)" ]; then
-      rmdir "$old_dir" && echo "    ✓ Deleted empty directory" || echo "    ⚠ Failed to delete"
+      if ! rmdir "$old_dir" 2>/dev/null; then
+        echo "    ⚠ Failed to delete directory"
+        echo "    Analysis: Directory may have subdirectories or permission issues"
+        echo "    Direction: Run 'ls -la $old_dir' to inspect contents"
+      else
+        echo "    ✓ Deleted empty directory"
+      fi
+    else
+      echo "    ⚠ Directory not empty - manual review required"
+      echo "    Contents: $(ls -A "$old_dir" | head -5)"
     fi
   fi
 done
@@ -937,7 +1049,16 @@ for old_dir in \
   if [ -d "$old_dir" ]; then
     echo "  Checking: $old_dir"
     if [ -z "$(ls -A "$old_dir" 2>/dev/null)" ]; then
-      rmdir "$old_dir" && echo "    ✓ Deleted empty directory" || echo "    ⚠ Failed to delete"
+      if ! rmdir "$old_dir" 2>/dev/null; then
+        echo "    ⚠ Failed to delete directory"
+        echo "    Analysis: Directory may have subdirectories or permission issues"
+        echo "    Direction: Run 'ls -la $old_dir' to inspect contents"
+      else
+        echo "    ✓ Deleted empty directory"
+      fi
+    else
+      echo "    ⚠ Directory not empty - manual review required"
+      echo "    Contents: $(ls -A "$old_dir" | head -5)"
     fi
   fi
 done
@@ -954,16 +1075,34 @@ for old_dir in \
   if [ -d "$old_dir" ]; then
     echo "  Checking: $old_dir"
     if [ -z "$(ls -A "$old_dir" 2>/dev/null)" ]; then
-      rmdir "$old_dir" && echo "    ✓ Deleted empty directory" || echo "    ⚠ Failed to delete"
+      if ! rmdir "$old_dir" 2>/dev/null; then
+        echo "    ⚠ Failed to delete directory"
+        echo "    Analysis: Directory may have subdirectories or permission issues"
+        echo "    Direction: Run 'ls -la $old_dir' to inspect contents"
+      else
+        echo "    ✓ Deleted empty directory"
+      fi
+    else
+      echo "    ⚠ Directory not empty - manual review required"
+      echo "    Contents: $(ls -A "$old_dir" | head -5)"
     fi
   fi
 done
 
 # Clean parent directories if they became empty
 echo "Cleaning empty parent directories..."
-find analysis -type d -empty -delete 2>/dev/null
-find wireframes -type d -empty -delete 2>/dev/null
-find features -type d -empty -delete 2>/dev/null
+if ! find analysis -type d -empty -delete 2>/dev/null; then
+  echo "  ⚠ Warning: Failed to clean some analysis/ parent directories"
+  echo "  Analysis: Check for permission issues or locked files"
+fi
+if ! find wireframes -type d -empty -delete 2>/dev/null; then
+  echo "  ⚠ Warning: Failed to clean some wireframes/ parent directories"
+  echo "  Analysis: Check for permission issues or locked files"
+fi
+if ! find features -type d -empty -delete 2>/dev/null; then
+  echo "  ⚠ Warning: Failed to clean some features/ parent directories"
+  echo "  Analysis: Check for permission issues or locked files"
+fi
 
 # Report
 echo ""
@@ -972,6 +1111,16 @@ echo "Remaining directories:"
 echo "  analysis/: $(find analysis -type d | wc -l)"
 echo "  wireframes/: $(find wireframes -type d | wc -l)"
 echo "  features/: $(find features -type d | wc -l)"
+
+# Final verification
+remaining_old_dirs=$(find analysis wireframes features -type d -name "admin-job" -o -name "appointment" -o -name "consultation" -o -name "dashboard" | grep -E "(accounting|planning|treatment|user-management)/" | wc -l)
+if [ $remaining_old_dirs -gt 0 ]; then
+  echo ""
+  echo "⚠ Warning: Found $remaining_old_dirs old structure directories still present"
+  echo "Analysis: Some old directories may still contain files"
+  echo "Direction: Review remaining directories and manually verify they can be deleted"
+  find analysis wireframes features -type d \( -name "admin-job" -o -name "appointment" -o -name "consultation" -o -name "dashboard" \) | grep -E "(accounting|planning|treatment|user-management)/" || true
+fi
 ```
 
 ### 6.6 Script Execution Order
@@ -989,6 +1138,56 @@ Scripts must be executed in the following order after manual file moves are comp
 - All internal references have been updated
 - No broken links exist in the documentation
 - The migration validation passes
+
+### 6.7 Error Handling and Recovery
+
+All scripts now include `set -e` to exit immediately on error. When a script fails:
+
+1. **Read the error message** - Each script provides:
+   - ❌ What failed
+   - Analysis: Why it might have failed
+   - Direction: Commands to diagnose the issue
+
+2. **Common recovery steps**:
+   - Check file permissions: `ls -la <path>`
+   - Verify directory exists: `test -d <path> && echo "exists" || echo "missing"`
+   - Check disk space: `df -h`
+   - Review recent changes: `git status`
+
+3. **Before retrying**:
+   - Fix the underlying issue identified in the error analysis
+   - Re-run the failed script (it will be idempotent where possible)
+   - If a script partially completed, review what changed before continuing
+
+4. **If stuck**:
+   - Run validation script to assess current state: `./validate-migration.sh`
+   - Check git diff to see what changes were made: `git diff specs/`
+   - Consider rolling back: `git checkout specs/` and restart from last known good state
+
+### 6.7 Error Handling and Recovery
+
+All scripts now include `set -e` to exit immediately on error. When a script fails:
+
+1. **Read the error message** - Each script provides:
+   - ❌ What failed
+   - Analysis: Why it might have failed
+   - Direction: Commands to diagnose the issue
+
+2. **Common recovery steps**:
+   - Check file permissions: `ls -la <path>`
+   - Verify directory exists: `test -d <path> && echo "exists" || echo "missing"`
+   - Check disk space: `df -h`
+   - Review recent changes: `git status`
+
+3. **Before retrying**:
+   - Fix the underlying issue identified in the error analysis
+   - Re-run the failed script (it will be idempotent where possible)
+   - If a script partially completed, review what changed before continuing
+
+4. **If stuck**:
+   - Run validation script to assess current state: `./validate-migration.sh`
+   - Check git diff to see what changes were made: `git diff specs/`
+   - Consider rolling back: `git checkout specs/` and restart from last known good state
 
 ---
 
