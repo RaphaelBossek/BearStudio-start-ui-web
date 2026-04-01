@@ -629,8 +629,8 @@ The migration scripts are located in `specs/planning/migration/` and should be e
 
 | # | Script | Purpose |
 |---|--------|---------|
-| 1 | `01_rename-files.sh` | Rename files by removing numeric prefixes |
-| 2 | `02_migrate-directories.sh` | Move files to new consolidated domain folders |
+| 1 | `01_migrate-directories.sh` | Move files to new consolidated domain folders (with numeric prefixes) |
+| 2 | `02_rename-files.sh` | Rename files by removing numeric prefixes in destination |
 | 3 | `03_update-references.sh` | Update all internal markdown references |
 | 4 | `04_check-orphans.sh` | Detect orphaned PNG files |
 | 5 | `05_validate-migration.sh` | Validate migration completeness |
@@ -643,8 +643,8 @@ The migration scripts are located in `specs/planning/migration/` and should be e
 
 ```bash
 # From project root directory (BearStudio-start-ui-web/)
-bash specs/planning/migration/01_rename-files.sh
-bash specs/planning/migration/02_migrate-directories.sh
+bash specs/planning/migration/01_migrate-directories.sh
+bash specs/planning/migration/02_rename-files.sh
 bash specs/planning/migration/03_update-references.sh
 bash specs/planning/migration/04_check-orphans.sh
 bash specs/planning/migration/05_validate-migration.sh  # Must pass before cleanup
@@ -656,26 +656,44 @@ bash specs/planning/migration/07_create-readmes.sh
 
 ### Script Details
 
-#### 01_rename-files.sh
-
-**Purpose**: Rename files by removing numeric prefixes and applying standardized names
-
-**High Priority** - Must run BEFORE migrate-directories.sh
-
-Key renames:
-- `01-appointment-list.md` → `list.md`
-- `02-appointment-details-scheduling.md` → `details.md`
-- `01-consultation-list.md` → `list.md`
-- All `NN-*.md` files → `*.md` (generic pattern)
-
-#### 02_migrate-directories.sh
+#### 01_migrate-directories.sh
 
 **Purpose**: Move files from old directory structure to new consolidated domain folders
 
+**High Priority** - Must run FIRST, before rename-files.sh
+
 Creates new directories and moves:
-- Analysis files to `specs/analysis/{domain}/`
-- Wireframe files to `specs/wireframes/{domain}/`
+- Analysis files to `specs/analysis/{domain}/` (keeping numeric prefixes)
+- Wireframe files to `specs/wireframes/{domain}/` (copying .pen and .png files)
 - Creates new top-level directories: `features/`, `domains/`, `decisions/`, `migration/`, `testing/`
+
+#### 02_rename-files.sh
+
+**Purpose**: Rename files by removing numeric prefixes in destination directories
+
+**High Priority** - Must run AFTER migrate-directories.sh
+
+Key renames:
+- `01-dashboard-main.md` → `dashboard-main.md`
+- `03-dashboard-admin.md` → `dashboard-admin.md`
+- `01-appointment-list.md` → `appointment-list.md`
+- All `NN-*.md` files → `*.md` (generic pattern)
+
+**Conflict handling**: If a destination filename already exists, appends `-1`, `-2`, etc. (e.g., `list-1.md`, `list-2.md`)
+
+#### 02_rename-files.sh
+
+**Purpose**: Rename files by removing numeric prefixes in destination directories
+
+**High Priority** - Must run AFTER migrate-directories.sh
+
+Key renames:
+- `01-dashboard-main.md` → `dashboard-main.md`
+- `03-dashboard-admin.md` → `dashboard-admin.md`
+- `01-appointment-list.md` → `appointment-list.md`
+- All `NN-*.md` files → `*.md` (generic pattern)
+
+**Conflict handling**: If a destination filename already exists, appends `-1`, `-2`, etc. (e.g., `list-1.md`, `list-2.md`)
 
 #### 03_update-references.sh
 
@@ -921,16 +939,18 @@ fi
 
 ### 6.6 Script Execution Order
 
-Scripts must be executed in the following order after manual file moves are complete:
+Scripts must be executed in the following order:
 
-1. **rename-files.sh** - Rename files with standardized names (MUST run first)
-2. **update-references.sh** - Update all internal markdown references
-3. **check-orphans.sh** - Verify no orphaned PNG files remain
-4. **validate-migration.sh** - Validate all target directories exist and links work
-5. **cleanup-empty-dirs.sh** - Delete all empty source directories (FINAL STEP)
+1. **01_migrate-directories.sh** - Move files to new locations (MUST run first)
+2. **02_rename-files.sh** - Remove numeric prefixes from filenames
+3. **03_update-references.sh** - Update all internal markdown references
+4. **04_check-orphans.sh** - Verify no orphaned PNG files remain
+5. **05_validate-migration.sh** - Validate all target directories exist and links work
+6. **06_cleanup-empty-dirs.sh** - Delete all empty source directories (FINAL STEP)
 
-**WARNING**: Do not run `cleanup-empty-dirs.sh` until you have verified that:
+**WARNING**: Do not run `06_cleanup-empty-dirs.sh` until you have verified that:
 - All files have been successfully moved to their new locations
+- All filenames have been renamed (numeric prefixes removed)
 - All internal references have been updated
 - No broken links exist in the documentation
 - The migration validation passes
