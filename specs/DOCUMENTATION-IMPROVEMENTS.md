@@ -406,19 +406,19 @@ VALUES ('abc123', 'user1', 'ACCEPTED'),
 
 ```bash
 # Run in order
-./scripts/migrate/01-create-temp-tables.sql
-./scripts/migrate/02-copy-appointments.sql
-./scripts/migrate/03-normalize-assignments.sql
-./scripts/migrate/04-validate-data.sql
-./scripts/migrate/05-swap-tables.sql
+./scripts/migrate/create-temp-tables.sql
+./scripts/migrate/copy-appointments.sql
+./scripts/migrate/normalize-assignments.sql
+./scripts/migrate/validate-data.sql
+./scripts/migrate/swap-tables.sql
 ```
 
 ## Rollback Plan
 
 ```bash
 # If migration fails
-./scripts/migrate/rollback/01-restore-mongodb.sh
-./scripts/migrate/rollback/02-drop-postgres-tables.sql
+./scripts/migrate/rollback/restore-mongodb.sh
+./scripts/migrate/rollback/drop-postgres-tables.sql
 ```
 ```
 

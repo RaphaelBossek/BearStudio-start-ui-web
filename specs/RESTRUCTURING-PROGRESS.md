@@ -142,14 +142,14 @@ Execute file moves per MIGRATION-PLAN.md Section 3.1:
 
 ```bash
 # Example moves (DO NOT EXECUTE YET - Plan only)
-mv specs/analysis/system/dashboard/01-dashboard-main.md specs/analysis/dashboard/standard.md
-mv specs/analysis/planning/appointment/01-appointment-list.md specs/analysis/appointments/list.md
+mv specs/analysis/dashboard/dashboard-main.md specs/analysis/dashboard/standard.md
+mv specs/analysis/appointments/appointment-list.md specs/analysis/appointments/list.md
 # ... (all other moves)
 ```
 
 ### Phase 3: Transform Wireframe Plans (PENDING)
 
-Convert all `wireframe-plan.md` files to standardized `wireframes.md` format.
+Convert all `wireframes.md` files to standardized `wireframes.md` format.
 
 ### Phase 4: Move & Rename Wireframes (PENDING)
 
@@ -349,9 +349,9 @@ grep -r "login.png" . # NOT FOUND
 
 **Cleanup command** (Phase 7):
 ```bash
-rm specs/wireframes/planning/appointment/F5baI.png
-rm specs/wireframes/planning/appointment/up8ie.png
-rm specs/wireframes/system/includes/login.png
+rm specs/wireframes/appointments/F5baI.png
+rm specs/wireframes/appointments/up8ie.png
+rm specs/wireframes/includes/login.png
 ```
 
 ---
@@ -407,9 +407,9 @@ grep -r "login.png" . # NOT FOUND
 
 **Cleanup command** (Phase 7):
 ```bash
-rm specs/wireframes/planning/appointment/F5baI.png
-rm specs/wireframes/planning/appointment/up8ie.png
-rm specs/wireframes/system/includes/login.png
+rm specs/wireframes/appointments/F5baI.png
+rm specs/wireframes/appointments/up8ie.png
+rm specs/wireframes/includes/login.png
 ```
 
 ---

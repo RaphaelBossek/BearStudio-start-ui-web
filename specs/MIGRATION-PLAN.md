@@ -1,7 +1,7 @@
 # Specs Directory Migration Plan
 
 > **Generated**: 2026-03-31  
-> **Source**: `specs/analysis/system/includes/03-site-shell.md` sitemap structure  
+> **Source**: `specs/analysis/includes/site-shell.md` sitemap structure  
 > **Goal**: Streamline folder structure, reduce nesting, standardize file names, update all cross-references
 
 ---
@@ -13,7 +13,7 @@ This migration reorganizes the `specs/` directory to align with the application'
 - **Reduces subdirectory depth** from 4-5 levels to 2-3 levels
 - **Consolidates related modules** under domain-based folders
 - **Standardizes markdown file names** (removes numeric prefixes where redundant)
-- **Transforms `wireframe-plan.md` files** into consistent format
+- **Transforms `wireframes.md` files** into consistent format
 - **Updates all internal references** between markdown files
 - **Makes `03-site-shell.md` the top-level navigation document**
 - **Aligns wireframes/ directory structure** to match analysis/ domains exactly
@@ -127,99 +127,99 @@ specs/
 │   │
 │   ├── dashboard/ (NEW - combines all dashboard views)
 │   │   ├── README.md
-│   │   ├── standard.md (from system/dashboard/01-dashboard-main.md)
-│   │   ├── admin.md (from system/dashboard/03-dashboard-admin.md)
-│   │   ├── self-service.md (from planning/dashboard/02-dashboard-selfservice.md)
+│   │   ├── standard.md (from system/dashboard/dashboard-main.md)
+│   │   ├── admin.md (from system/dashboard/dashboard-admin.md)
+│   │   ├── self-service.md (from planning/dashboard/dashboard-selfservice.md)
 │   │   ├── dialogs.md (merged from multiple dialog docs)
 │   │   └── user-dropdown.md (NEW - Settings, Security, Role Switch, Bug Report from 03-site-shell.md)
 │   │
 │   ├── appointments/ (NEW - core appointment management)
 │   │   ├── README.md
-│   │   ├── list.md (from planning/appointment/01-appointment-list.md)
-│   │   ├── details.md (from planning/appointment/02-appointment-details-scheduling.md)
-│   │   ├── assign-user.md (from planning/appointment/03-appointment-assign-user.md)
-│   │   ├── plan.md (from planning/appointment-support/01-appointment-plan.md)
-│   │   └── patient-data.md (from treatment/patient-data/01-patient-data.md)
+│   │   ├── list.md (from planning/appointment/appointment-list.md)
+│   │   ├── details.md (from planning/appointment/appointment-details-scheduling.md)
+│   │   ├── assign-user.md (from planning/appointment/appointment-assign-user.md)
+│   │   ├── plan.md (from planning/appointment-support/appointment-plan.md)
+│   │   └── patient-data.md (from treatment/patient-data/patient-data.md)
 │   │
 │   ├── shifts/ (NEW)
 │   │   ├── README.md
-│   │   ├── list.md (from planning/shift/01-shift-and-plan.md)
-│   │   └── plan.md (from planning/shift/wireframe-plan.md content)
+│   │   ├── list.md (from planning/shift/shift-and-plan.md)
+│   │   └── plan.md (from planning/shift/wireframes.md content)
 │   │
 │   ├── treatments/ (NEW)
 │   │   ├── README.md
-│   │   ├── list.md (from treatment/treatment-core/01-treatment-and-category.md)
-│   │   ├── plan.md (from treatment/treatment-core/02-treatment-plan.md)
+│   │   ├── list.md (from treatment/treatment-core/treatment-and-category.md)
+│   │   ├── plan.md (from treatment/treatment-core/treatment-plan.md)
 │   │   └── patient-data.md (moved from appointments/)
 │   │
 │   ├── council/ (NEW)
 │   │   ├── README.md
-│   │   ├── list.md (from planning/council/01-council-and-plan.md)
+│   │   ├── list.md (from planning/council/council-and-plan.md)
 │   │   └── plan.md
 │   │
 │   ├── consultations/ (NEW)
 │   │   ├── README.md
-│   │   ├── list.md (from treatment/consultation/01-consultation-list.md)
-│   │   ├── details-header.md (from treatment/consultation/02-consultation-details-header.md)
-│   │   ├── standard-form.md (from treatment/consultation/03-consultation-details-standard.md)
-│   │   ├── onboarding-form.md (from treatment/consultation/04-consultation-details-onboarding.md)
-│   │   ├── incarceration-form.md (from treatment/consultation/05-consultation-details-incarceration.md)
+│   │   ├── list.md (from treatment/consultation/consultation-list.md)
+│   │   ├── details-header.md (from treatment/consultation/consultation-details-header.md)
+│   │   ├── standard-form.md (from treatment/consultation/consultation-details-standard.md)
+│   │   ├── onboarding-form.md (from treatment/consultation/consultation-details-onboarding.md)
+│   │   ├── incarceration-form.md (from treatment/consultation/consultation-details-incarceration.md)
 │   │   ├── treatment-warning.md (from treatment/consultation/06-consultation-details-treatment-warning.md)
 │   │   ├── view-review.md (from treatment/consultation/07-consultation-view-review.md)
 │   │   └── details-js.md (from treatment/consultation/08-consultation-details-js.md)
 │   │
 │   ├── appointment-admin/ (NEW)
 │   │   ├── README.md
-│   │   ├── admin.md (from planning/appointment-admin/01-appointment-admin.md)
-│   │   └── closed-month.md (from accounting/config/01-accounting-config.md)
+│   │   ├── admin.md (from planning/appointment-admin/appointment-admin.md)
+│   │   └── closed-month.md (from accounting/config/accounting-config.md)
 │   │
 │   ├── notifications/ (NEW)
 │   │   ├── README.md
-│   │   └── list.md (from system/notification/01-notification.md)
+│   │   └── list.md (from system/notification/notification.md)
 │   │
 │   ├── customers/ (NEW - consolidated customer domain)
 │   │   ├── README.md
-│   │   ├── list.md (from customer/customer-core/01-customer-list-detail.md)
-│   │   ├── locations-users.md (from customer/customer-core/02-location-and-users.md)
-│   │   ├── onboarding-customer.md (from user-management/onboarding/01-onboarding-flow.md)
-│   │   ├── invoices.md (from accounting/invoice/01-invoice-list.md)
-│   │   ├── invoice-details.md (from accounting/invoice/02-invoice-details.md)
-│   │   ├── invoice-receivers.md (from accounting/invoice-receiver/01-invoice-receiver.md)
-│   │   ├── rooms.md (from customer/room/01-room.md)
+│   │   ├── list.md (from customer/customer-core/customer-list-detail.md)
+│   │   ├── locations-users.md (from customer/customer-core/location-and-users.md)
+│   │   ├── onboarding-customer.md (from user-management/onboarding/onboarding-flow.md)
+│   │   ├── invoices.md (from accounting/invoice/invoice-list.md)
+│   │   ├── invoice-details.md (from accounting/invoice/invoice-details.md)
+│   │   ├── invoice-receivers.md (from accounting/invoice-receiver/invoice-receiver.md)
+│   │   ├── rooms.md (from customer/room/room.md)
 │   │   └── onboarding-location.md
 │   │
 │   ├── staff/ (NEW - staff management)
 │   │   ├── README.md
 │   │   ├── profile.md (from user-management/profile/*.md merged)
-│   │   ├── user-management.md (from user-management/admin-user/02-user-management.md)
-│   │   ├── onboarding.md (from user-management/onboarding/01-onboarding-flow.md)
+│   │   ├── user-management.md (from user-management/admin-user/user-management.md)
+│   │   ├── onboarding.md (from user-management/onboarding/onboarding-flow.md)
 │   │   └── expert-assignments.md (from planning/dashboard/expertWorkWeeklyAssignments)
 │   │
 │   ├── administration/ (NEW - admin configuration)
 │   │   ├── README.md
-│   │   ├── jobs.md (from accounting/admin-job/03-job-configuration.md)
+│   │   ├── jobs.md (from accounting/admin-job/job-configuration.md)
 │   │   ├── job-queue.md (NEW - async job queue)
-│   │   ├── job-prices.md (from accounting/config/01-accounting-config.md)
-│   │   ├── products.md (from accounting/config/01-accounting-config.md)
-│   │   ├── skills.md (from user-management/admin-skill/04-skill.md)
+│   │   ├── job-prices.md (from accounting/config/accounting-config.md)
+│   │   ├── products.md (from accounting/config/accounting-config.md)
+│   │   ├── skills.md (from user-management/admin-skill/skill.md)
 │   │   ├── exclusion-criteria.md
 │   │   ├── export-templates.md
-│   │   ├── warnings.md (from treatment/warning/01-warning-management.md)
-│   │   ├── treatment-categories.md (from treatment/treatment-core/01-treatment-and-category.md)
-│   │   ├── equipment.md (from customer/equipment/01-equipment.md)
+│   │   ├── warnings.md (from treatment/warning/warning-management.md)
+│   │   ├── treatment-categories.md (from treatment/treatment-core/treatment-and-category.md)
+│   │   ├── equipment.md (from customer/equipment/equipment.md)
 │   │   └── onboarding-steps.md
 │   │
 │   ├── system-admin/ (NEW - system administration)
 │   │   ├── README.md
-│   │   ├── admin-landing.md (from system/admin-system/01-admin-landing.md)
-│   │   ├── motd.md (from system/admin-cruds/04-motd-template.md)
+│   │   ├── admin-landing.md (from system/admin-system/admin-landing.md)
+│   │   ├── motd.md (from system/admin-cruds/motd-template.md)
 │   │   ├── login-notification.md
 │   │   ├── notification-templates.md
 │   │   ├── location-types.md
 │   │   ├── storno-groups.md
-│   │   ├── work-hours.md (from accounting/admin-workhour/04-workhour.md)
-│   │   ├── cdr.md (from system/cdr-call/01-cdr-call.md)
-│   │   ├── cdr-assignment.md (from system/cdr-call/01-cdr-call.md)
+│   │   ├── work-hours.md (from accounting/admin-workhour/workhour.md)
+│   │   ├── cdr.md (from system/cdr-call/cdr-call.md)
+│   │   ├── cdr-assignment.md (from system/cdr-call/cdr-call.md)
 │   │   ├── logs.md
 │   │   ├── support-categories.md
 │   │   ├── basisweb-appointments.md
@@ -227,10 +227,10 @@ specs/
 │   │
 │   ├── includes/ (RETAIN - shared components)
 │   │   ├── README.md
-│   │   ├── site-shell.md (from system/includes/03-site-shell.md - BECOMES TOP LEVEL NAV)
-│   │   ├── shared-components.md (from system/includes/01-includes-shared-components.md)
-│   │   ├── customization.md (from system/includes/02-includes-customization.md)
-│   │   ├── templates-files.md (from system/templates-files/01-templates-files.md)
+│   │   ├── site-shell.md (from system/includes/site-shell.md - BECOMES TOP LEVEL NAV)
+│   │   ├── shared-components.md (from system/includes/includes-shared-components.md)
+│   │   ├── customization.md (from system/includes/includes-customization.md)
+│   │   ├── templates-files.md (from system/templates-files/templates-files.md)
 │   │   └── global-components.md (NEW - Search, Loading Spinner, global nav components)
 │   │
 │   ├── permissions/ (NEW - RBAC matrix, permission gates, role definitions)
@@ -241,7 +241,7 @@ specs/
 │   │
 │   └── orphan/ (NEW - orphaned content with README explaining WHY)
 │       ├── README.md (explains external Video Library, support ticket moved to dashboard)
-│       ├── support-and-video.md (from analysis/academy/support-video/01-support-and-video.md)
+│       ├── support-and-video.md (from analysis/academy/support-video/support-and-video.md)
 │       └── user-video-history.md (from analysis/academy/video-history/)
 │
 ├── wireframes/ (parallel structure to analysis/ - mirrors domain folders)

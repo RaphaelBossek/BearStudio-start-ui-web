@@ -68,7 +68,7 @@ This document maps all UI elements from the System modules (Sysconfig, Telephony
 
 ## 2. Telephony & Call Detail Records
 
-### 2.1 CDR Calls (`cdr-call/01-cdr-call.md`)
+### 2.1 CDR Calls (`cdr-call/cdr-call.md`)
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -111,7 +111,7 @@ This document maps all UI elements from the System modules (Sysconfig, Telephony
 | Upload | Upload | — | — | — | `action` | `button` | — | — | — | **Workflow-only**: upload CSV |
 | Analyze Open | Analyze Open | — | — | — | `action` | `button` | — | — | — | **Workflow-only**: calls `analyzeOpenCalls` |
 
-### 2.2 CDR Call Assignment (`cdr-call/01-cdr-call.md`)
+### 2.2 CDR Call Assignment (`cdr-call/cdr-call.md`)
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -130,7 +130,7 @@ This document maps all UI elements from the System modules (Sysconfig, Telephony
 
 ## 3. Communication & News
 
-### 3.1 Message of the Day (`admin-cruds/04-motd-template.md`)
+### 3.1 Message of the Day (`admin-cruds/motd-template.md`)
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -155,7 +155,7 @@ This document maps all UI elements from the System modules (Sysconfig, Telephony
 | Image Position | Bildposition | `data.imagePos` | `messageOfTheDay.imagePos` (inferred) | [news.md#entity-system-ank-ndigungen-message-of-the-day](../mongodb-mapping/news.md#entity-system-ank-ndigungen-message-of-the-day) | `enum:ImagePos` | `select` | LEFT, TOP, BOTTOM, BACK | No | No | Detail |
 | File upload | — | `upload` | — | — | `file` | `file upload` | — | No | No | Encoded in payload on save |
 
-### 3.2 Login Notification (`config/01-system-config.md`)
+### 3.2 Login Notification (`config/system-config.md`)
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -167,7 +167,7 @@ This document maps all UI elements from the System modules (Sysconfig, Telephony
 | Accept | Akzeptieren | — | — | — | `action` | `button` | — | — | — | **Workflow-only**: from Modal dialog |
 | Cancel | Abbrechen | — | — | — | `action` | `button` | — | — | — | **Workflow-only**: logs out user |
 
-### 3.3 Notifications (`notification/01-notification.md`)
+### 3.3 Notifications (`notification/notification.md`)
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -187,7 +187,7 @@ This document maps all UI elements from the System modules (Sysconfig, Telephony
 | Subject | Titel | `data.subject` | `notification.subject` | [news.md#entity-benachrichtigungen-notifications](../mongodb-mapping/news.md#entity-benachrichtigungen-notifications) | `string` | `text input` | — | Yes | No | Dialogs |
 | Message | Nachricht | `data.message` | `notification.message` | [news.md#entity-benachrichtigungen-notifications](../mongodb-mapping/news.md#entity-benachrichtigungen-notifications) | `bigstring` | `textarea` | — | No | No | Dialogs |
 
-### 3.4 Bug Report (`includes/02-includes-customization.md`)
+### 3.4 Bug Report (`includes/includes-customization.md`)
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -196,7 +196,7 @@ This document maps all UI elements from the System modules (Sysconfig, Telephony
 
 ## 4. Templates & Master Data
 
-### 4.1 Export Templates (`templates-files/01-templates-files.md`)
+### 4.1 Export Templates (`templates-files/templates-files.md`)
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -209,7 +209,7 @@ This document maps all UI elements from the System modules (Sysconfig, Telephony
 | Filename | Dateiname | `data.filename` | `exportTemplate.filename` | [system.md#entity-export-vorlagen-export-templates](../mongodb-mapping/system.md#entity-export-vorlagen-export-templates) | `string` | `text input` | — | No | No | Detail |
 | File | Datei | `template` | `exportTemplate.template` | [system.md#entity-export-vorlagen-export-templates](../mongodb-mapping/system.md#entity-export-vorlagen-export-templates) | `file` | `file upload` | — | No | No | Detail |
 
-### 4.2 Notification Templates (`templates-files/01-templates-files.md`)
+### 4.2 Notification Templates (`templates-files/templates-files.md`)
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -218,7 +218,7 @@ This document maps all UI elements from the System modules (Sysconfig, Telephony
 | Subject | Betreff | `data.subject` | `notificationTemplate.subject` | [news.md#entity-benachrichtigungsvorlagen-notification-templates](../mongodb-mapping/news.md#entity-benachrichtigungsvorlagen-notification-templates) | `string` | `text input` | — | No | No | Grid + Detail |
 | Message | Nachricht | `data.message` | `notificationTemplate.message` | [news.md#entity-benachrichtigungsvorlagen-notification-templates](../mongodb-mapping/news.md#entity-benachrichtigungsvorlagen-notification-templates) | `bigstring` | `textarea` | — | No | No | Grid + Detail |
 
-### 4.3 Support Category (`config/01-system-config.md`)
+### 4.3 Support Category (`config/system-config.md`)
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -228,7 +228,7 @@ This document maps all UI elements from the System modules (Sysconfig, Telephony
 | Queue | Queue | `data.queue` | `supportCategory.queue` | [system.md#entity-support-kategorien-support-categories](../mongodb-mapping/system.md#entity-support-kategorien-support-categories) | `string` | `text input` | — | No | No | Grid + Detail |
 | Themes | Themes | `data.subcategories.` | `supportCategory.subcategories` | [system.md#entity-support-kategorien-support-categories](../mongodb-mapping/system.md#entity-support-kategorien-support-categories) | `array:string` | `list` | — | No | No | Grid + Detail |
 
-### 4.4 User File (`templates-files/01-templates-files.md`)
+### 4.4 User File (`templates-files/templates-files.md`)
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -243,7 +243,7 @@ This document maps all UI elements from the System modules (Sysconfig, Telephony
 | Active | Aktiv | `data.active` | `userFile.active` | — | `boolean` | `checkbox` | — | No | No | Grid + Detail |
 | Owner ID | Besitzer-ID | `data.ownerId` | `userFile.ownerId` | — | `number` | `number input` | — | No | No | Grid + Detail |
 
-### 4.5 Location Type (`config/01-system-config.md`)
+### 4.5 Location Type (`config/system-config.md`)
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -252,7 +252,7 @@ This document maps all UI elements from the System modules (Sysconfig, Telephony
 | Description | Beschreibung | `data.description` | `locationType.description` | — | `string` | `text input` | — | No | No | Grid + Detail |
 | Priority | prio | `data.prio` | `locationType.prio` | — | `number` | `number input` | — | No | No | Grid + Detail |
 
-### 4.6 Exclusion Criteria (`config/01-system-config.md`)
+### 4.6 Exclusion Criteria (`config/system-config.md`)
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -261,7 +261,7 @@ This document maps all UI elements from the System modules (Sysconfig, Telephony
 | Description | Beschreibung | `data.description` | `exclusionCriteria.description` | — | `bigstring` | `textarea` | — | No | No | Grid + Detail |
 | Priority | Priority | `data.priority` | `exclusionCriteria.priority` | — | `number` | `number input` | — | No | No | Grid + Detail |
 
-## 5. Dashboard Admin Widgets (`dashboard/03-dashboard-admin.md`)
+## 5. Dashboard Admin Widgets (`dashboard/dashboard-admin.md`)
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -306,7 +306,7 @@ This document maps all UI elements from the System modules (Sysconfig, Telephony
 | Location name | — | `todoAppointments.location.name` | `appointment.location` | — | `string` | `text` | — | — | Yes | Display only |
 | Open Appointment | — | — | — | — | `action` | `button` | — | — | — | **Workflow-only**: calls `AppointmentDetails.open` |
 
-### 5.2 Dashboard Overview Widgets (`dashboard/01-dashboard-main.md`)
+### 5.2 Dashboard Overview Widgets (`dashboard/dashboard-main.md`)
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|

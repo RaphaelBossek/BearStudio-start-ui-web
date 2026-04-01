@@ -2,11 +2,11 @@
 
 > To be executed **after** all Markdown analysis documents are reviewed.
 > Wireframes are created as `.pen` files using the Pencil MCP tools with Shadcn registry components.
-> Target directory: `specs/wireframes/academy/support-video/`
+> Target directory: `specs/wireframes/orphan/`
 
 ## Prerequisites
 
-1. All analysis documents in `specs/analysis/academy/support-video/` and `specs/analysis/academy/video-history/` are complete and reviewed
+1. All analysis documents in `specs/analysis/orphan/` and `specs/analysis/academy/video-history/` are complete and reviewed
 2. Data dictionary `specs/analysis/academy/data-dictionary-academy.md` is complete
 3. Pencil MCP server is available and responsive
 4. Review the Pencil style guide for design systems: `get_guidelines(topic="design-system")`
@@ -110,8 +110,8 @@ Four `.pen` files, one per primary Academy view:
 | W3 | `academy/support-video/video-library.pen`      | Card-based browsing (category cards + video cards), hash deep linking, progress tracking, full-viewport players (3 variants) | Medium-High |
 | W4 | `academy/support-video/video-category.pen`     | 4-col grid, detail panel with thumbnail upload + job collection, add video/stream dialog (two-column: chunked upload + stream form) | Medium-High |
 
-Target directory: `specs/wireframes/academy/support-video/`
-Exported PNGs: `specs/wireframes/academy/support-video/*.png`
+Target directory: `specs/wireframes/orphan/`
+Exported PNGs: `specs/wireframes/orphan/*.png`
 
 ### Frame Details
 

@@ -7,11 +7,11 @@
 ## Prerequisites
 
 1. All analysis documents in `specs/analysis/customer/` are complete and reviewed:
-   - `specs/analysis/customer/customer-core/` — Customer list + detail analysis
-   - `specs/analysis/customer/customer-core/` — Location management analysis
+   - `specs/analysis/customers/` — Customer list + detail analysis
+   - `specs/analysis/customers/` — Location management analysis
    - `specs/analysis/customer/contact/` — Contact management analysis
-   - `specs/analysis/customer/room/` — Room management analysis
-   - `specs/analysis/customer/equipment/` — Equipment management analysis
+   - `specs/analysis/customers/` — Room management analysis
+   - `specs/analysis/customers/` — Equipment management analysis
 2. Data dictionary `specs/analysis/customer/data-dictionary-customer.md` is complete
 3. Pencil MCP server is available and responsive
 4. Review the Pencil style guide for design systems: `get_guidelines(topic="design-system")`

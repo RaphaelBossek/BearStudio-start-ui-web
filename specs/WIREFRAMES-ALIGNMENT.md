@@ -48,8 +48,8 @@ The wireframes directory will **mirror** the analysis directory structure exactl
 # Merge 3 source directories into wireframes/dashboard/
 mv specs/wireframes/planning/dashboard/*.pen specs/wireframes/dashboard/
 mv specs/wireframes/planning/dashboard/*.png specs/wireframes/dashboard/
-mv specs/wireframes/system/dashboard/*.pen specs/wireframes/dashboard/
-mv specs/wireframes/system/dashboard/*.png specs/wireframes/dashboard/
+mv specs/wireframes/system-admin/*.pen specs/wireframes/dashboard/
+mv specs/wireframes/system-admin/*.png specs/wireframes/dashboard/
 mv specs/wireframes/interfaces/dashboard/*.pen specs/wireframes/dashboard/
 mv specs/wireframes/interfaces/dashboard/*.png specs/wireframes/dashboard/
 
@@ -63,8 +63,8 @@ mv specs/wireframes/dashboard/expert-availability-month.png specs/wireframes/das
 
 ```bash
 # Merge 2 source directories
-mv specs/wireframes/planning/appointment/*.pen specs/wireframes/appointments/
-mv specs/wireframes/planning/appointment/*.png specs/wireframes/appointments/
+mv specs/wireframes/appointments/*.pen specs/wireframes/appointments/
+mv specs/wireframes/appointments/*.png specs/wireframes/appointments/
 mv specs/wireframes/planning/appointment-support/*.pen specs/wireframes/appointments/
 mv specs/wireframes/planning/appointment-support/*.png specs/wireframes/appointments/
 
@@ -87,8 +87,8 @@ rm specs/wireframes/appointments/up8ie.png  # NOT referenced in any .md
 
 ```bash
 # Merge 2 source directories
-mv specs/wireframes/treatment/consultation/*.pen specs/wireframes/consultations/
-mv specs/wireframes/treatment/consultation/*.png specs/wireframes/consultations/
+mv specs/wireframes/consultations/*.pen specs/wireframes/consultations/
+mv specs/wireframes/consultations/*.png specs/wireframes/consultations/
 mv specs/wireframes/treatment/dashboard/*.pen specs/wireframes/consultations/
 mv specs/wireframes/treatment/dashboard/*.png specs/wireframes/consultations/
 
@@ -147,13 +147,13 @@ grep -r "login.png" . --include="*.md" && echo "FOUND" || echo "NOT FOUND - SAFE
 
 ```bash
 # Execute during Phase 7 (Cleanup)
-rm specs/wireframes/planning/appointment/F5baI.png
-rm specs/wireframes/planning/appointment/up8ie.png
-rm specs/wireframes/system/includes/login.png
+rm specs/wireframes/appointments/F5baI.png
+rm specs/wireframes/appointments/up8ie.png
+rm specs/wireframes/includes/login.png
 
 # Verify deletion
-ls specs/wireframes/planning/appointment/*.png | grep -E 'F5baI|up8ie' && echo "ERROR: Files still exist" || echo "SUCCESS: Orphans removed"
-ls specs/wireframes/system/includes/*.png | grep login && echo "ERROR: File still exists" || echo "SUCCESS: Orphans removed"
+ls specs/wireframes/appointments/*.png | grep -E 'F5baI|up8ie' && echo "ERROR: Files still exist" || echo "SUCCESS: Orphans removed"
+ls specs/wireframes/includes/*.png | grep login && echo "ERROR: File still exists" || echo "SUCCESS: Orphans removed"
 ```
 
 ---

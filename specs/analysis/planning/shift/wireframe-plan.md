@@ -2,14 +2,14 @@
 
 > To be executed **after** all Markdown analysis documents are reviewed.
 > Wireframes are created as `.pen` files using the Pencil MCP tools.
-> Target directory: `specs/wireframes/planning/shift/`
+> Target directory: `specs/wireframes/shifts/`
 
 ## Prerequisites
 
-1. Analysis document in `specs/analysis/planning/shift/` is complete:
+1. Analysis document in `specs/analysis/shifts/` is complete:
    - `01-shift-and-plan.md` — Shift list view and shift plan management
 2. Pencil MCP server is available and responsive
-3. Review completed MonthTable wireframes: `specs/wireframes/planning/appointment/appointment-list.pen`
+3. Review completed MonthTable wireframes: `specs/wireframes/appointments/appointment-list.pen`
 4. Data dictionary: `specs/analysis/planning/data-dictionary-planning.md`
 
 ## Translation Sources
@@ -88,7 +88,7 @@ Wireframes should use **English translations**. Mark hardcoded strings with `[HA
 For each wireframe:
 
 1. **Read** the corresponding analysis document(s)
-2. **Open** Pencil: `open_document("specs/wireframes/planning/shift/{name}.pen")`
+2. **Open** Pencil: `open_document("specs/wireframes/shifts/{name}.pen")`
 3. **Get guidelines**: `get_guidelines(topic="web-app")` (first wireframe only)
 4. **Design** using `batch_design()`:
    - W1: Reuse Appointment list pattern, update annotations for shift-specific fields
@@ -96,7 +96,7 @@ For each wireframe:
    - W3: Simple dialog with month select and async polling indicator
    - W4: Color legend card with 12 shift states
 5. **Validate** with `get_screenshot()`
-6. **Export** to PNG: `export_nodes()` to `specs/wireframes/planning/shift/`
+6. **Export** to PNG: `export_nodes()` to `specs/wireframes/shifts/`
 7. **Embed screenshots** in `specs/wireframes/planning/workflows.md`
 8. **Log completion** in `specs/analysis/wireframes-index.md`
 

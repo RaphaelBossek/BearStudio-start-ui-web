@@ -1,11 +1,11 @@
 # Wireframe Creation Plan — Profile Module (Expanded)
 
-> Target directory: `specs/wireframes/user-management/profile/`
+> Target directory: `specs/wireframes/staff/`
 > Workflows: `specs/wireframes/user-management/workflows.md`
 
 ## Prerequisites
 
-1. All 4 analysis documents in `specs/analysis/user-management/profile/` are reviewed
+1. All 4 analysis documents in `specs/analysis/staff/` are reviewed
 2. Data dictionary: `specs/analysis/user-management/data-dictionary-user-management.md`
 3. Pencil MCP server available
 4. Design system reference from Batch 1 (variables, fonts, dialog conventions)

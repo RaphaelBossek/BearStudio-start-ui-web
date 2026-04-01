@@ -1,11 +1,11 @@
 # Wireframe Creation Plan — Includes Module + Application Shell
 
-> Target directory: `specs/wireframes/system/includes/` (includes components)  
+> Target directory: `specs/wireframes/includes/` (includes components)  
 > Target directory: `specs/wireframes/system/shell/` (application shell)
 
 ## Prerequisites
 
-1. All analysis documents in `specs/analysis/system/includes/` are reviewed (01, 02, 03)
+1. All analysis documents in `specs/analysis/includes/` are reviewed (01, 02, 03)
 2. Pencil MCP server available
 3. Style guide obtained via `get_guidelines(topic="web-app")`
 4. Shadcn component registry reviewed (`Shadcn_list_items_in_registries(["@shadcn"])`)

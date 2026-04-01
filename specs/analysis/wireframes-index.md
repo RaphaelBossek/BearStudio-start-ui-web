@@ -85,7 +85,7 @@ These i18n keys are referenced in analysis tables but do not exist in property f
 
 ### Wireframe Annotation Impact
 
-All wireframes marked with `[HARDCODED]` annotations require corresponding i18n keys to be created before implementation. See individual `wireframe-plan.md` files for specific `[HARDCODED]` entries per domain.
+All wireframes marked with `[HARDCODED]` annotations require corresponding i18n keys to be created before implementation. See individual `wireframes.md` files for specific `[HARDCODED]` entries per domain.
 
 ### Required Property File Updates
 
@@ -101,10 +101,10 @@ All wireframes marked with `[HARDCODED]` annotations require corresponding i18n 
 
 ### Files Requiring Translation Table Updates
 
-1. `specs/analysis/accounting/invoice-receiver/01-invoice-receiver.md` — Missing EN: `invoiceReceiver.*`
-2. `specs/analysis/planning/appointment-admin/01-appointment-admin.md` — Missing EN: `consultation.requireReporting`
-3. `specs/analysis/treatment/medication/01-medication.md` — Invalid wildcard `medication.*`
-4. All `wireframe-plan.md` files — Need i18n keys for `[HARDCODED]` annotations
+1. `specs/analysis/customers/invoice-receiver.md` — Missing EN: `invoiceReceiver.*`
+2. `specs/analysis/planning/appointment-admin/appointment-admin.md` — Missing EN: `consultation.requireReporting`
+3. `specs/analysis/treatment/medication/medication.md` — Invalid wildcard `medication.*`
+4. All `wireframes.md` files — Need i18n keys for `[HARDCODED]` annotations
 
 ---
 

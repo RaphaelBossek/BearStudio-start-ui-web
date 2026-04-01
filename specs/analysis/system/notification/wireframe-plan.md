@@ -4,7 +4,7 @@
 
 ## Prerequisites
 
-1. Analysis document `specs/analysis/notification/01-notification.md` is reviewed
+1. Analysis document `specs/analysis/notification/notification.md` is reviewed
 2. Pencil MCP server available
 3. Style guide obtained via `get_guidelines(topic="web-app")`
 

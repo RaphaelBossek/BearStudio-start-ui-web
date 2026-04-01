@@ -4,7 +4,7 @@
 
 This dictionary documents all UI fields across the Planning domain.
 
-## Source: dashboard/02-dashboard-selfservice.md
+## Source: dashboard/dashboard-selfservice.md
 
 ### Available Actions
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
@@ -67,7 +67,7 @@ This dictionary documents all UI fields across the Planning domain.
 | Expert title | Experte | `rejectedAppointments.appointment.job.expertTitle` | `appointment.job` | [planning.md#appointment](../mongodb-mapping/planning.md#entity-termine-appointments) | `string` | `text` | — | No | Yes | Snapshot from job |
 | Location name | Standort | `rejectedAppointments.appointment.location.name` | `appointment.location` | [planning.md#appointment](../mongodb-mapping/planning.md#entity-termine-appointments) | `string` | `text` | — | No | Yes | Snapshot from location |
 
-## Source: dashboard/04-dialogs-planning.md
+## Source: dashboard/dialogs-planning.md
 
 ### End Shift Dialog
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
@@ -187,7 +187,7 @@ This dictionary documents all UI fields across the Planning domain.
 | End Date | Ende | `data.until` | `holiday.until` | [planning.md#holiday](../mongodb-mapping/planning.md#entity-abwesenheiten-urlaub-holidays) | `date` | `date` | — | Yes | No | — |
 | Submit | Speichern | — | — | — | `action` | `button` | — | — | — | **Workflow-only**: calls `ExpertDaysService.setHoliday` |
 
-## Source: appointment/01-appointment-list.md
+## Source: appointment/appointment-list.md
 
 ### Filter Panel
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
@@ -196,7 +196,7 @@ This dictionary documents all UI fields across the Planning domain.
 | Job ID | Job ID | `filterJob` | `appointment.job.code` | [planning.md#appointment](../mongodb-mapping/planning.md#entity-termine-appointments) | `string` | `input` | — | No | No | Substring match on `col.data.name` |
 | Appointment state | Terminstatus | `filterState` | `appointment.state` | [planning.md#appointment](../mongodb-mapping/planning.md#entity-termine-appointments) | `enum` | `select` | `AppointmentState` | No | No | Matches `data.state` exactly |
 
-## Source: appointment/02-appointment-details-scheduling.md
+## Source: appointment/appointment-details-scheduling.md
 
 ### Tab 1 — Details/Edit
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
@@ -254,7 +254,7 @@ This dictionary documents all UI fields across the Planning domain.
 | Date | Datum | `data.date` | `appointment.dateStorno` | [planning.md#appointment](../mongodb-mapping/planning.md#entity-termine-appointments) | `date` | `date` | — | No | No | Shown only when STORNO is selected |
 | Time | Zeit | `data.time` | `appointment.dateStorno` | [planning.md#appointment](../mongodb-mapping/planning.md#entity-termine-appointments) | `time` | `time` | — | No | No | Shown only when STORNO is selected |
 
-## Source: appointment/03-appointment-assign-user.md
+## Source: appointment/appointment-assign-user.md
 
 ### Assignments Table
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
@@ -266,7 +266,7 @@ This dictionary documents all UI fields across the Planning domain.
 | Title | Titel | `assignments.appointment.title` | `appointment.title` | [planning.md#appointment](../mongodb-mapping/planning.md#entity-termine-appointments) | `string` | `text` | — | No | Yes | — |
 | Location | Standort | `assignments.appointment.location.name` | `appointment.location` | [planning.md#appointment](../mongodb-mapping/planning.md#entity-termine-appointments) | `string` | `text` | — | No | Yes | — |
 
-## Source: appointment-support/01-appointment-plan.md
+## Source: appointment-support/appointment-plan.md
 
 ### Appointment Plan Detail
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
@@ -284,7 +284,7 @@ This dictionary documents all UI fields across the Planning domain.
 | Start date | Startdatum | `data.startDate` | `appointmentPlan.startDate` | [planning.md#appointmentPlan](../mongodb-mapping/planning.md#entity-sprechstundenplan-appointment-plan) | `date` | `date` | — | Yes | No | — |
 | End date | Enddatum | `data.endDate` | `appointmentPlan.endDate` | [planning.md#appointmentPlan](../mongodb-mapping/planning.md#entity-sprechstundenplan-appointment-plan) | `date` | `date` | — | No | No | — |
 
-## Source: shift/01-shift-and-plan.md
+## Source: shift/shift-and-plan.md
 
 ### Shift Plan Detail
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
@@ -300,7 +300,7 @@ This dictionary documents all UI fields across the Planning domain.
 | Price type | Preistyp | `data.priceType` | `shiftPlan.priceType` | [planning.md#shiftPlan](../mongodb-mapping/planning.md#entity-schichtplan-shift-plan) | `enum` | `select` | WEEKDAY, WEEKNIGHT, WEEKENDDAY, WEEKENDNIGHT | No | No | — |
 | Comment | Kommentar | `data.comment` | `shiftPlan.comment` | [planning.md#shiftPlan](../mongodb-mapping/planning.md#entity-schichtplan-shift-plan) | `string` | `textarea` | — | No | No | — |
 
-## Source: council/01-council-and-plan.md
+## Source: council/council-and-plan.md
 
 ### Council Plan Detail
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
@@ -315,7 +315,7 @@ This dictionary documents all UI fields across the Planning domain.
 | Start date | Startdatum | `data.startDate` | `appointmentPlan.startDate` | [planning.md#appointmentPlan](../mongodb-mapping/planning.md#entity-sprechstundenplan-appointment-plan) | `date` | `date` | — | Yes | No | — |
 | End date | Enddatum | `data.endDate` | `appointmentPlan.endDate` | [planning.md#appointmentPlan](../mongodb-mapping/planning.md#entity-sprechstundenplan-appointment-plan) | `date` | `date` | — | No | No | — |
 
-## Source: appointment-admin/01-appointment-admin.md
+## Source: appointment-admin/appointment-admin.md
 
 ### Appointment Admin Calculation Filter
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |

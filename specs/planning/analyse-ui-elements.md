@@ -42,7 +42,7 @@ interface SitemapItem {
 
 ### 2.2 Complete Sitemap
 
-See `specs/analysis/system/includes/03-site-shell.md` Chapter 2 for the complete sitemap structure with:
+See `specs/analysis/includes/site-shell.md` Chapter 2 for the complete sitemap structure with:
 - All 12 main menu items
 - All 47 submenu items
 - Role and rights permissions
@@ -77,18 +77,18 @@ The main navigation is runtime-generated from the sitemap. Each menu item has:
 
 | # | Label (EN) | Label (DE) | i18n Key | Icon | Color | Roles | Submenu Count | Analysis Doc |
 |---|------------|------------|----------|------|-------|-------|---------------|--------------|
-| 1 | Dashboard | Dashboard | `Dashboard` | `tachometer` | `color-dash` | — | 4 | `specs/analysis/system/dashboard/01-dashboard-main.md` |
-| 2 | Appointments | Termine | `i18n.AppointmentType.APPOINTMENT` | `user-md` | `color-appointment` | LEITER_INTERN, ADMIN_INTERN, ADMIN | 2 | `specs/analysis/planning/appointment/01-appointment-list.md` |
-| 3 | Shifts | Dienste | `i18n.AppointmentType.SHIFT` | `user-injured` | `color-shift` | LEITER_INTERN, ADMIN_INTERN, ADMIN | 1 | `specs/analysis/planning/shift/01-shift-and-plan.md` |
-| 4 | Treatments | Therapien | `i18n.Treatment` | `people-arrows` | `color-treatment` | LEITER_INTERN, ADMIN_INTERN, ADMIN | 2 | `specs/analysis/treatment/treatment-core/01-treatment-and-category.md` |
+| 1 | Dashboard | Dashboard | `Dashboard` | `tachometer` | `color-dash` | — | 4 | `specs/analysis/dashboard/dashboard-main.md` |
+| 2 | Appointments | Termine | `i18n.AppointmentType.APPOINTMENT` | `user-md` | `color-appointment` | LEITER_INTERN, ADMIN_INTERN, ADMIN | 2 | `specs/analysis/appointments/appointment-list.md` |
+| 3 | Shifts | Dienste | `i18n.AppointmentType.SHIFT` | `user-injured` | `color-shift` | LEITER_INTERN, ADMIN_INTERN, ADMIN | 1 | `specs/analysis/shifts/shift-and-plan.md` |
+| 4 | Treatments | Therapien | `i18n.Treatment` | `people-arrows` | `color-treatment` | LEITER_INTERN, ADMIN_INTERN, ADMIN | 2 | `specs/analysis/treatments/treatment-and-category.md` |
 | 5 | Council | Besprechung | `i18n.AppointmentType.COUNCIL` | `user-friends` | `color-council` | LEITER_INTERN, ADMIN_INTERN, ADMIN | 1 | **TODO** |
-| 6 | Consultations | Konsultationen | `i18n.consultation` | `heartbeat` | `color-consultation` | STANDARD, LEITER_INTERN, ADMIN | 0 | `specs/analysis/treatment/consultation/01-consultation-list.md` |
-| 7 | Appointment Admin | Terminverwaltung | `i18n.appointmentAdminArea` | `calendar` | `color-appointmentAdmin` | LEITER_INTERN, ADMIN, ADMIN_INTERN | 2 | `specs/analysis/planning/appointment-admin/01-appointment-admin.md` |
-| 8 | Notifications | Mitteilungen | `i18n.notification` | `comments` | `color-notify` | — | NOTIFICATION_READ, SELF_ASSIGNMENT | 1 | `specs/analysis/system/notification/01-notification.md` |
-| 9 | Customers | Kunden | `i18n.notification.customers` | `hospital-user` | `color-customer` | LEITER_INTERN, ADMIN_INTERN, KUNDE_ADMIN, ADMIN | 7 | `specs/analysis/customer/customer-core/01-customer-list-detail.md` |
-| 10 | Staff | Mitarbeiter | `i18n.employee.dialogtitle` | `user-md` | `color-user` | LEITER_INTERN, ADMIN_INTERN, ADMIN | 3 | `specs/analysis/user-management/profile/01-profile-form.md` |
-| 11 | Administration | Administration | `Administration` | `user-cog` | `admin` | LEITER_INTERN, ADMIN_INTERN, ADMIN | 11 | `specs/analysis/user-management/admin-user/02-user-management.md` |
-| 12 | Systemadmin | Systemadministration | `Systemadmin` | `cogs` | `sysadmin` | LEITER_INTERN, ADMIN_INTERN, ADMIN | 13 | `specs/analysis/system/admin-system/01-admin-landing.md` |
+| 6 | Consultations | Konsultationen | `i18n.consultation` | `heartbeat` | `color-consultation` | STANDARD, LEITER_INTERN, ADMIN | 0 | `specs/analysis/consultations/consultation-list.md` |
+| 7 | Appointment Admin | Terminverwaltung | `i18n.appointmentAdminArea` | `calendar` | `color-appointmentAdmin` | LEITER_INTERN, ADMIN, ADMIN_INTERN | 2 | `specs/analysis/planning/appointment-admin/appointment-admin.md` |
+| 8 | Notifications | Mitteilungen | `i18n.notification` | `comments` | `color-notify` | — | NOTIFICATION_READ, SELF_ASSIGNMENT | 1 | `specs/analysis/notifications/notification.md` |
+| 9 | Customers | Kunden | `i18n.notification.customers` | `hospital-user` | `color-customer` | LEITER_INTERN, ADMIN_INTERN, KUNDE_ADMIN, ADMIN | 7 | `specs/analysis/customers/customer-list-detail.md` |
+| 10 | Staff | Mitarbeiter | `i18n.employee.dialogtitle` | `user-md` | `color-user` | LEITER_INTERN, ADMIN_INTERN, ADMIN | 3 | `specs/analysis/staff/profile-form.md` |
+| 11 | Administration | Administration | `Administration` | `user-cog` | `admin` | LEITER_INTERN, ADMIN_INTERN, ADMIN | 11 | `specs/analysis/staff/user-management.md` |
+| 12 | Systemadmin | Systemadministration | `Systemadmin` | `cogs` | `sysadmin` | LEITER_INTERN, ADMIN_INTERN, ADMIN | 13 | `specs/analysis/system-admin/admin-landing.md` |
 
 ### 3.4 Color Mapping
 
@@ -121,10 +121,10 @@ Each module has a corresponding `bg-color-{module}` CSS class:
 |------|------|----------|------------|--------|--------------|
 | Search Toggle | `fa-search` | — | Always visible | Expands search | — |
 | Search Input | (text) | `label.search` | Always visible | Full-text search | — |
-| Settings | `fa-cog` | `administration.settings` | Always visible | `/profile.html` | `specs/analysis/user-management/profile/01-profile-form.md` |
-| Security | `fa-id-card` | `administration.security` | Always visible | `/userSecurity.html` | `specs/analysis/user-management/profile/03-profile-dialogs.md` |
-| Role Switch | `fa-user-tag` | `role.{ROLE}` | `USERS_CREATE` | Opens dialog | `specs/analysis/system/includes/01-includes-shared-components.md` |
-| Bug Report | (include) | — | Always visible | Opens dialog | `specs/analysis/system/includes/01-includes-shared-components.md` |
+| Settings | `fa-cog` | `administration.settings` | Always visible | `/profile.html` | `specs/analysis/staff/profile-form.md` |
+| Security | `fa-id-card` | `administration.security` | Always visible | `/userSecurity.html` | `specs/analysis/staff/profile-dialogs.md` |
+| Role Switch | `fa-user-tag` | `role.{ROLE}` | `USERS_CREATE` | Opens dialog | `specs/analysis/includes/includes-shared-components.md` |
+| Bug Report | (include) | — | Always visible | Opens dialog | `specs/analysis/includes/includes-shared-components.md` |
 | Logout | `fa-sign-out` | `logout` | Always visible | `/logout` | — |
 | Version | — | `application.version`-`application.buildtime` | Always visible | Display only | — |
 
@@ -248,20 +248,20 @@ The following sitemap items need analysis documents created:
 
 | Menu Item | URL | Suggested Doc Path |
 |-----------|-----|-------------------|
-| Council | `/council.html` | `specs/analysis/planning/council/01-council-list.md` |
-| Council Plan | `/councilPlan.html` | `specs/analysis/planning/council/02-council-plan.md` |
-| Async Job Queue | `/asyncJobQueue.html` | `specs/analysis/system/admin-system/02-async-job-queue.md` |
-| Exclusion Criteria | `/exclusionCriteria.html` | `specs/analysis/system/config/02-exclusion-criteria.md` |
-| Export Templates | `/exportTemplate.html` | `specs/analysis/system/config/03-export-templates.md` |
-| Onboarding Steps | `/onboardingStep.html` | `specs/analysis/user-management/onboarding/02-onboarding-steps.md` |
-| Login Notification | `/loginNotification.html` | `specs/analysis/system/config/04-login-notification.md` |
-| Notification Templates | `/notificationTemplate.html` | `specs/analysis/system/config/05-notification-templates.md` |
+| Council | `/council.html` | `specs/analysis/council/council-list.md` |
+| Council Plan | `/councilPlan.html` | `specs/analysis/council/council-plan.md` |
+| Async Job Queue | `/asyncJobQueue.html` | `specs/analysis/system-admin/async-job-queue.md` |
+| Exclusion Criteria | `/exclusionCriteria.html` | `specs/analysis/system/config/exclusion-criteria.md` |
+| Export Templates | `/exportTemplate.html` | `specs/analysis/system/config/export-templates.md` |
+| Onboarding Steps | `/onboardingStep.html` | `specs/analysis/staff/onboarding-steps.md` |
+| Login Notification | `/loginNotification.html` | `specs/analysis/system/config/login-notification.md` |
+| Notification Templates | `/notificationTemplate.html` | `specs/analysis/system/config/notification-templates.md` |
 | Location Types | `/locationType.html` | `specs/analysis/system/config/06-location-types.md` |
-| Storno Groups | `/stornoGroup.html` | `specs/analysis/accounting/config/02-storno-groups.md` |
-| Log | `/log.html` | `specs/analysis/system/admin-system/03-system-log.md` |
-| Support Categories | `/supportCategory.html` | `specs/analysis/academy/support-video/02-support-categories.md` |
-| BasisWeb Appointments | `/basisWebAppointment.html` | `specs/analysis/interfaces/01-basisweb-appointments.md` |
-| Change Log | `/changelog.html` | `specs/analysis/system/admin-system/04-changelog.md` |
+| Storno Groups | `/stornoGroup.html` | `specs/analysis/administration/storno-groups.md` |
+| Log | `/log.html` | `specs/analysis/system-admin/system-log.md` |
+| Support Categories | `/supportCategory.html` | `specs/analysis/orphan/support-categories.md` |
+| BasisWeb Appointments | `/basisWebAppointment.html` | `specs/analysis/interfaces/basisweb-appointments.md` |
+| Change Log | `/changelog.html` | `specs/analysis/system-admin/changelog.md` |
 
 ---
 
@@ -289,10 +289,10 @@ See Section 4.2 for complete list.
 
 ## 11. Related Documents
 
-- `specs/analysis/system/includes/03-site-shell.md` — Detailed application shell analysis
-- `specs/analysis/system/includes/01-includes-shared-components.md` — Shared components (navbar, dialogs)
-- `specs/analysis/system/notification/01-notification.md` — Notification system
-- `specs/analysis/system/dashboard/01-dashboard-main.md` — Dashboard main view
+- `specs/analysis/includes/site-shell.md` — Detailed application shell analysis
+- `specs/analysis/includes/includes-shared-components.md` — Shared components (navbar, dialogs)
+- `specs/analysis/notifications/notification.md` — Notification system
+- `specs/analysis/dashboard/dashboard-main.md` — Dashboard main view
 - `brownfield/web/src/main/webapp/index.json` — Sitemap source file
 
 ---

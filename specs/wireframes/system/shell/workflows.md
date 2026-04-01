@@ -226,6 +226,6 @@ sequenceDiagram
 
 ## Related Documentation
 
-- **Analysis**: [`specs/analysis/system/includes/03-site-shell.md`](../../../analysis/system/includes/03-site-shell.md)
-- **Wireframe Plan**: [`specs/analysis/system/includes/wireframe-plan.md`](../../../analysis/system/includes/wireframe-plan.md)
+- **Analysis**: [`specs/analysis/includes/site-shell.md`](../../../analysis/system/includes/site-shell.md)
+- **Wireframe Plan**: [`specs/analysis/includes/wireframes.md`](../../../analysis/system/includes/wireframes.md)
 - **Progress Index**: [`specs/analysis/wireframes-index.md`](../../wireframes-index.md)

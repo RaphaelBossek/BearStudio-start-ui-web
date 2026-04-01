@@ -9,7 +9,7 @@
 1. Analysis document in `specs/analysis/planning/appointment-admin/` is complete:
    - `01-appointment-admin.md` — Appointment admin/billing with 10 dialogs, 34 service calls
 2. Pencil MCP server is available and responsive
-3. Review completed wireframes: `specs/wireframes/treatment/consultation/` for consultation patterns
+3. Review completed wireframes: `specs/wireframes/consultations/` for consultation patterns
 4. Data dictionary: `specs/analysis/planning/data-dictionary-planning.md`
 
 ## Translation Sources

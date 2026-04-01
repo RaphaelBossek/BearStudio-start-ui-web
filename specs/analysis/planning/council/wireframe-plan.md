@@ -2,14 +2,14 @@
 
 > To be executed **after** all Markdown analysis documents are reviewed.
 > Wireframes are created as `.pen` files using the Pencil MCP tools.
-> Target directory: `specs/wireframes/planning/council/`
+> Target directory: `specs/wireframes/council/`
 
 ## Prerequisites
 
-1. Analysis document in `specs/analysis/planning/council/` is complete:
+1. Analysis document in `specs/analysis/council/` is complete:
    - `01-council-and-plan.md` — Council list view and council plan management
 2. Pencil MCP server is available and responsive
-3. Review completed MonthTable wireframes: `specs/wireframes/planning/appointment/appointment-list.pen`
+3. Review completed MonthTable wireframes: `specs/wireframes/appointments/appointment-list.pen`
 4. Data dictionary: `specs/analysis/planning/data-dictionary-planning.md`
 
 ## Translation Sources
@@ -79,14 +79,14 @@ Wireframes should use **English translations**. Mark hardcoded strings with `[HA
 For each wireframe:
 
 1. **Read** the corresponding analysis document(s)
-2. **Open** Pencil: `open_document("specs/wireframes/planning/council/{name}.pen")`
+2. **Open** Pencil: `open_document("specs/wireframes/council/{name}.pen")`
 3. **Get guidelines**: `get_guidelines(topic="web-app")` (first wireframe only)
 4. **Design** using `batch_design()`:
    - W1: Reuse Appointment list pattern, update annotations for council-specific fields
    - W2: Plan template with doctor collection repeater
    - W3: Simple dialog with async polling indicator
 5. **Validate** with `get_screenshot()`
-6. **Export** to PNG: `export_nodes()` to `specs/wireframes/planning/council/`
+6. **Export** to PNG: `export_nodes()` to `specs/wireframes/council/`
 7. **Embed screenshots** in `specs/wireframes/planning/workflows.md`
 8. **Log completion** in `specs/analysis/wireframes-index.md`
 

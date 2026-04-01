@@ -1,17 +1,17 @@
 # Wireframe Plan — Treatment (Dashboard Dialogs)
 
-> **Split from**: `dash/wireframe-plan.md`
+> **Split from**: `dash/wireframes.md`
 > **Wireframe IDs preserved for traceability**
 > Target directory: `specs/wireframes/treatment/dashboard/`
 
 ## Prerequisites
 
 1. Analysis documents reviewed:
-   - [`04-dialogs-treatment.md`](./04-dialogs-treatment.md) — End appointment, summarize appointment, incarceration dialogs
-   - [`05-consultation-wizard.md`](./05-consultation-wizard.md) — Consultation start wizard + location wizard
+   - [`04-dialogs-treatment.md`](./dialogs-treatment.md) — End appointment, summarize appointment, incarceration dialogs
+   - [`05-consultation-wizard.md`](./consultation-wizard.md) — Consultation start wizard + location wizard
    - [`07-consultation-template.md`](./07-consultation-template.md) — Template list + create dialog
 2. Questionnaire analysis reviewed (QM form is embedded in dialogs):
-   - [`../questionnaire/02-questionnaire-detail.md`](../questionnaire/02-questionnaire-detail.md) — QM form with rating scales
+   - [`../questionnaire/questionnaire-detail.md`](../questionnaire/questionnaire-detail.md) — QM form with rating scales
 3. Data dictionary reviewed: [`../data-dictionary-treatment.md`](../data-dictionary-treatment.md)
 4. Pencil MCP server is available and responsive
 5. Review guidelines: `get_guidelines(topic="web-app")`

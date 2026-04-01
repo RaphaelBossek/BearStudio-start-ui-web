@@ -10,7 +10,7 @@ See the [Central Data Dictionary Index](../data-dictionary-index.md) for the map
 
 ## 1. Customer List & Detail (`customer/index.htmlm`)
 
-Source: `specs/analysis/customer/customer-core/01-customer-list-detail.md`
+Source: `specs/analysis/customers/customer-list-detail.md`
 
 ### 1.1 Grid Columns
 
@@ -80,7 +80,7 @@ Source: `specs/analysis/customer/customer-core/01-customer-list-detail.md`
 
 ## 2. Location Management (`customer/location.htmlm`)
 
-Source: `specs/analysis/customer/customer-core/02-location-and-users.md`
+Source: `specs/analysis/customers/location-and-users.md`
 
 ### 2.1 Grid Columns
 
@@ -181,7 +181,7 @@ Source: `specs/analysis/customer/customer-core/02-location-and-users.md`
 
 ## 3. Customer User Management (`customer/user.htmlm`)
 
-Source: `specs/analysis/customer/customer-core/02-location-and-users.md`
+Source: `specs/analysis/customers/location-and-users.md`
 
 ### 3.1 Grid Columns
 
@@ -246,9 +246,9 @@ Source: `specs/analysis/customer/customer-core/02-location-and-users.md`
 
 ---
 
-## 4. Contact Management (`customer/contact/01-contact.md`)
+## 4. Contact Management (`customer/contact/contact.md`)
 
-Source: `specs/analysis/customer/contact/01-contact.md`
+Source: `specs/analysis/customer/contact/contact.md`
 
 Note: Contact grid flattens `userProfile` sub-object onto the main contact object, indicating Contacts are stored as `user` entities with `employeeState: CUSTOMER` or similar.
 
@@ -347,9 +347,9 @@ Note: Contact grid flattens `userProfile` sub-object onto the main contact objec
 
 ---
 
-## 5. Room Management (`customer/room/01-room.md`)
+## 5. Room Management (`customer/room/room.md`)
 
-Source: `specs/analysis/customer/room/01-room.md`
+Source: `specs/analysis/customers/room.md`
 
 ### 5.1 Grid Columns
 
@@ -401,9 +401,9 @@ Room plan dialog fields.
 
 ---
 
-## 6. Equipment Management (`customer/equipment/01-equipment.md`)
+## 6. Equipment Management (`customer/equipment/equipment.md`)
 
-Source: `specs/analysis/customer/equipment/01-equipment.md`
+Source: `specs/analysis/customers/equipment.md`
 
 ### 6.1 Grid Columns
 

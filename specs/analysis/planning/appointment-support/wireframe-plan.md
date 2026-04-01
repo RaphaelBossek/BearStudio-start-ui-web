@@ -9,7 +9,7 @@
 1. Analysis document in `specs/analysis/planning/appointment-support/` is complete:
    - `01-appointment-plan.md` — Appointment plan, CDR call tracking, CDR call assignment
 2. Pencil MCP server is available and responsive
-3. Review completed wireframes: `specs/wireframes/planning/appointment/` for appointment patterns
+3. Review completed wireframes: `specs/wireframes/appointments/` for appointment patterns
 4. Data dictionary: `specs/analysis/planning/data-dictionary-planning.md`
 
 ## Translation Sources

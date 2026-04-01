@@ -4,7 +4,7 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 ## Invoice Receiver Grid
 
-> **Source**: `invoice-receiver/01-invoice-receiver.md`
+> **Source**: `invoice-receiver/invoice-receiver.md`
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -17,7 +17,7 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 ## Invoice Receiver Form - Payment Contact
 
-> **Source**: `invoice-receiver/01-invoice-receiver.md`
+> **Source**: `invoice-receiver/invoice-receiver.md`
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -59,7 +59,7 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 ## Invoice Receiver Form - Product Order
 
-> **Source**: `invoice-receiver/01-invoice-receiver.md`
+> **Source**: `invoice-receiver/invoice-receiver.md`
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -79,7 +79,7 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 ## Work Hour Templates Grid
 
-> **Source**: `admin-workhour/04-workhour.md`
+> **Source**: `admin-workhour/workhour.md`
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -90,7 +90,7 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 ## Work Hour Templates Detail
 
-> **Source**: `admin-workhour/04-workhour.md`
+> **Source**: `admin-workhour/workhour.md`
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -101,7 +101,7 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 ## Storno Group Grid
 
-> **Source**: `config/01-accounting-config.md`
+> **Source**: `config/accounting-config.md`
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -112,7 +112,7 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 ## Storno Group Detail
 
-> **Source**: `config/01-accounting-config.md`
+> **Source**: `config/accounting-config.md`
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -127,7 +127,7 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 ## Job Price List Grid
 
-> **Source**: `config/01-accounting-config.md`
+> **Source**: `config/accounting-config.md`
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -140,7 +140,7 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 ## Job Price List Detail
 
-> **Source**: `config/01-accounting-config.md`
+> **Source**: `config/accounting-config.md`
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -160,7 +160,7 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 ## Product Grid
 
-> **Source**: `config/01-accounting-config.md`
+> **Source**: `config/accounting-config.md`
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -175,7 +175,7 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 ## Product Detail
 
-> **Source**: `config/01-accounting-config.md`
+> **Source**: `config/accounting-config.md`
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -190,7 +190,7 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 ## Closed Month Grid
 
-> **Source**: `config/01-accounting-config.md`
+> **Source**: `config/accounting-config.md`
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -203,7 +203,7 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 ## Closed Month Detail
 
-> **Source**: `config/01-accounting-config.md`
+> **Source**: `config/accounting-config.md`
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -215,7 +215,7 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 ## Expert Work Monthly Grid
 
-> **Source**: `config/01-accounting-config.md`
+> **Source**: `config/accounting-config.md`
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -231,7 +231,7 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 ## Expert Work Monthly Detail
 
-> **Source**: `config/01-accounting-config.md`
+> **Source**: `config/accounting-config.md`
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -256,7 +256,7 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 ## Worklog List Grid
 
-> **Source**: `worklog/01-worklog.md`
+> **Source**: `worklog/worklog.md`
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -271,7 +271,7 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 ## Weekly Assignments Grid
 
-> **Source**: `worklog/01-worklog.md`
+> **Source**: `worklog/worklog.md`
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -282,7 +282,7 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 ## Job Configuration Grid
 
-> **Source**: `admin-job/03-job-configuration.md`
+> **Source**: `admin-job/job-configuration.md`
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -297,7 +297,7 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 ## Job Configuration Detail - Tab 1 Info
 
-> **Source**: `admin-job/03-job-configuration.md`
+> **Source**: `admin-job/job-configuration.md`
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -324,7 +324,7 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 ## Job Configuration Detail - Tab 2 Times/Pricing
 
-> **Source**: `admin-job/03-job-configuration.md`
+> **Source**: `admin-job/job-configuration.md`
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -337,7 +337,7 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 ## Invoice List Grid
 
-> **Source**: `invoice/01-invoice-list.md`
+> **Source**: `invoice/invoice-list.md`
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -355,7 +355,7 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 ## Invoice Detail Dialog
 
-> **Source**: `invoice/02-invoice-details.md`
+> **Source**: `invoice/invoice-details.md`
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -380,7 +380,7 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 ## Invoice Positions Collection
 
-> **Source**: `invoice/02-invoice-details.md`
+> **Source**: `invoice/invoice-details.md`
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -397,7 +397,7 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 ## Invoice Attachments
 
-> **Source**: `invoice/02-invoice-details.md`
+> **Source**: `invoice/invoice-details.md`
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -406,7 +406,7 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 ## Email Dialog
 
-> **Source**: `invoice/02-invoice-details.md`
+> **Source**: `invoice/invoice-details.md`
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -417,7 +417,7 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 ## Create Invoice Dialog
 
-> **Source**: `invoice/02-invoice-details.md`
+> **Source**: `invoice/invoice-details.md`
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -427,7 +427,7 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 ## Appointment Admin Grid
 
-> **Source**: `planning/appointment-admin/01-appointment-admin.md`
+> **Source**: `planning/appointment-admin/appointment-admin.md`
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -447,7 +447,7 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 ## Appointment Admin Detail Drawer
 
-> **Source**: `planning/appointment-admin/01-appointment-admin.md`
+> **Source**: `planning/appointment-admin/appointment-admin.md`
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|

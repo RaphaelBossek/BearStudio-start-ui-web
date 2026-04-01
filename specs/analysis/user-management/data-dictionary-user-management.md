@@ -2,7 +2,7 @@
 
 This document defines the data dictionary for the User Management domain. It maps UI fields to their exact MongoDB collection fields, documents UI types, abstract data types, translations, and workflow actions.
 
-## 1. Profile Form — Personal Data (`profile/01-profile-form.md`)
+## 1. Profile Form — Personal Data (`profile/profile-form.md`)
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -22,7 +22,7 @@ This document defines the data dictionary for the User Management domain. It map
 | Check access | Zugang prüfen | — | — | — | `action` | `button` | — | — | — | **Workflow-only**: calls `LocationService.checkBayernBoxAccess` |
 | Exclude from the following messages | Von folgenden Nachrichten ausnehmen | `data.userProfile.exludedNotifications` | `user.userProfile.exludedNotifications` | [user-management.md#userprofile](../mongodb-mapping/user-management.md#sub-entity-userprofile) | `enum:NotificationEvent[]` | `checkbox` (list) | 20 NotificationEvent options | No | No | ADMIN only |
 
-## 2. Profile Form — Business Data (`profile/01-profile-form.md`)
+## 2. Profile Form — Business Data (`profile/profile-form.md`)
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -54,7 +54,7 @@ This document defines the data dictionary for the User Management domain. It map
 | Appointment | Sprechstunde | `data.employeeProfile.appointment` | `user.employeeProfile.appointment` | [user-management.md#employeeprofile](../mongodb-mapping/user-management.md#sub-entity-employeeprofile) | `enum:FocusLevel` | `select` | NONE, HIGH, MEDIUM, LOW | No | No | ADMIN only |
 | Therapy | Therapie | `data.employeeProfile.therapy` | `user.employeeProfile.therapy` | [user-management.md#employeeprofile](../mongodb-mapping/user-management.md#sub-entity-employeeprofile) | `enum:FocusLevel` | `select` | NONE, HIGH, MEDIUM, LOW | No | No | ADMIN only |
 
-## 3. Profile Form — Addresses (`profile/01-profile-form.md`)
+## 3. Profile Form — Addresses (`profile/profile-form.md`)
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -74,7 +74,7 @@ This document defines the data dictionary for the User Management domain. It map
 | ZIP | PLZ | `data.employeeProfile.sites.zip` | `user.employeeProfile.sites.zip` | [user-management.md#employeeprofile](../mongodb-mapping/user-management.md#sub-entity-employeeprofile) | `string` | `text` | — | No | No | Repeater |
 | City | Ort | `data.employeeProfile.sites.city` | `user.employeeProfile.sites.city` | [user-management.md#employeeprofile](../mongodb-mapping/user-management.md#sub-entity-employeeprofile) | `string` | `text` | — | No | No | Repeater |
 
-## 4. Profile Form — Education (`profile/01-profile-form.md`)
+## 4. Profile Form — Education (`profile/profile-form.md`)
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -86,7 +86,7 @@ This document defines the data dictionary for the User Management domain. It map
 | Exclusion Title | Ausschlusskriterien Titel | `data.employeeProfile.exclusionCriteria.title` | `user.employeeProfile.exclusionCriteria.title` | [user-management.md#employeeprofile](../mongodb-mapping/user-management.md#sub-entity-employeeprofile) | `string` | `text` | — | No | Yes | Repeater display |
 | Exclusion Description | Ausschlusskriterien Beschreibung | `data.employeeProfile.exclusionCriteria.description` | `user.employeeProfile.exclusionCriteria.description` | [user-management.md#employeeprofile](../mongodb-mapping/user-management.md#sub-entity-employeeprofile) | `bigstring` | `textarea` | — | No | Yes | Repeater display |
 
-## 5. Profile Form — Documents (`profile/01-profile-form.md`) (ADMIN)
+## 5. Profile Form — Documents (`profile/profile-form.md`) (ADMIN)
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -95,7 +95,7 @@ This document defines the data dictionary for the User Management domain. It map
 | Type | Typ | `files.list.type` | `userFile.type` | [user-management.md#entity-benutzerdateien-user-files](../mongodb-mapping/user-management.md#entity-benutzerdateien-user-files) | `enum:UserFileType` | `select` | APPROBIATION, AUTHENTICATED_MEDICAL_SPECIALIST_CERTIFICATE, etc. | Yes | No | Repeater |
 | Date | Datum | `files.list.date` | `userFile.date` | [user-management.md#entity-benutzerdateien-user-files](../mongodb-mapping/user-management.md#entity-benutzerdateien-user-files) | `date` | `date` | — | No | No | Repeater |
 
-## 6. Profile Form — Products (`profile/01-profile-form.md`) (ADMIN)
+## 6. Profile Form — Products (`profile/profile-form.md`) (ADMIN)
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -111,7 +111,7 @@ This document defines the data dictionary for the User Management domain. It map
 | Price | Preis | `data.employerProfile.products.product.price` | `user.employerProfile.products.adjustedPrice` | [user-management.md#subscribedproduct](../mongodb-mapping/user-management.md#sub-entity-subscribedproduct) | `decimal` | `text` | — | No | No | Repeater (shows base price or adjusted) |
 | Total (Hardcoded) | Total (Hardcoded) | — | — | — | `decimal` | `display` | — | No | Yes | Computed: amount * price |
 
-## 7. Expert Days/Month & Expert Week (`profile/04-profile-expert-availability.md`) (ADMIN)
+## 7. Expert Days/Month & Expert Week (`profile/profile-expert-availability.md`) (ADMIN)
 
 *Note: The availability grids map to `expertDays` and `expertWeek` collections, but they are stored separately from the user record in MongoDB, despite being edited in the profile form.*
 
@@ -128,7 +128,7 @@ This document defines the data dictionary for the User Management domain. It map
 | Max count inputs | Max. Anzahl | — | `expertDays.maxWeekDayMorning` (etc) | [planning.md#entity-jahreskalender-eines-experten-expert-days](../mongodb-mapping/planning.md#entity-jahreskalender-eines-experten-expert-days) | `number` | `text` | — | No | No | Total 8 inputs |
 | Week Slot | Woche Slot | — | `expertWeek.slotsMo` (etc) | [planning.md#entity-experten-wochenplan-expert-week](../mongodb-mapping/planning.md#entity-experten-wochenplan-expert-week) | `boolean` | `button` | Binary (null/true) | No | No | Grid Cell |
 
-## 8. Staff Management List & Toolbar (`profile/02-profile-staff.md`)
+## 8. Staff Management List & Toolbar (`profile/profile-staff.md`)
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -151,7 +151,7 @@ This document defines the data dictionary for the User Management domain. It map
 | Invoice | Rechnungserstellung | — | — | — | `action` | `button` | — | — | — | **Workflow-only**: open `#createInvoiceDlg` |
 | Expert Test Search | Expert Test Search (Hardcoded) | — | — | — | `action` | `button` | — | — | — | **Workflow-only**: open `#searchExpertDlg` |
 
-## 9. Expert Search Dialog (`profile/02-profile-staff.md`)
+## 9. Expert Search Dialog (`profile/profile-staff.md`)
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -163,7 +163,7 @@ This document defines the data dictionary for the User Management domain. It map
 | Search Result Name | Name | `data.result.userProfile.displayName` | `user.userProfile` | [user-management.md#userprofile](../mongodb-mapping/user-management.md#sub-entity-userprofile) | `string` | `display` | — | — | Yes | Result table |
 | Qualification Level | Qualifikationsniveau | `data.result.employerProfile.level` | `user.employerProfile.level` | [user-management.md#employerprofile](../mongodb-mapping/user-management.md#sub-entity-employerprofile) | `enum:QualificationLevel` | `select` | — | — | Yes | Result table |
 
-## 10. Password Dialogs (`profile/03-profile-dialogs.md`, `admin/02-user-management.md`)
+## 10. Password Dialogs (`profile/profile-dialogs.md`, `admin/user-management.md`)
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -172,7 +172,7 @@ This document defines the data dictionary for the User Management domain. It map
 | Confirm Password | Neues Passwort wiederholen | `data.confirmPassword` | — | — | `string` | `password` | — | Yes | No | Must match new password |
 | Send Password | Passwort Senden (Hardcoded) | — | — | — | `action` | `button` | — | — | — | **Workflow-only**: `UserService.sendPassword` |
 
-## 11. DocFinder Dialog (`profile/03-profile-dialogs.md`)
+## 11. DocFinder Dialog (`profile/profile-dialogs.md`)
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -182,7 +182,7 @@ This document defines the data dictionary for the User Management domain. It map
 | Start | Start | `data.start` | `appointment.timeStart` | [planning.md#entity-termine-appointments](../mongodb-mapping/planning.md#entity-termine-appointments) | `time` | `display` | — | No | Yes | Context filter |
 | End | Ende | `data.end` | `appointment.timeEnd` | [planning.md#entity-termine-appointments](../mongodb-mapping/planning.md#entity-termine-appointments) | `time` | `display` | — | No | Yes | Context filter |
 
-## 12. Admin User Management (`admin-user/02-user-management.md`)
+## 12. Admin User Management (`admin-user/user-management.md`)
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -213,7 +213,7 @@ This document defines the data dictionary for the User Management domain. It map
 | Test | Test (Hardcoded) | — | — | — | `action` | `button` | — | — | — | **Workflow-only**: `UserService.checkTotp` |
 | Delete 2nd Factor | 2. Faktor Löschen (Hardcoded) | — | `user.totpDevice` | [user-management.md#entity-experte-expert](../mongodb-mapping/user-management.md#entity-experte-expert) | `action` | `button` | — | — | — | **Workflow-only**: `UserService.resetTotp` |
 
-## 14. Group Management (`admin-group/05-group-management.md`)
+## 14. Group Management (`admin-group/group-management.md`)
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -221,7 +221,7 @@ This document defines the data dictionary for the User Management domain. It map
 | Description | Beschreibung | `data.description` | `group.description` | [user-management.md#entity-benutzergruppen-groups](../mongodb-mapping/user-management.md#entity-benutzergruppen-groups) | `bigstring` | `textarea` | — | No | No | — |
 | Right | Recht | `data.rights` | `group.rights` | [user-management.md#entity-benutzergruppen-groups](../mongodb-mapping/user-management.md#entity-benutzergruppen-groups) | `reference:accessRight[]` | `select` (multiple) | `GroupService.getRights` | No | No | — |
 
-## 15. Skill Management (`admin-skill/04-skill.md`)
+## 15. Skill Management (`admin-skill/skill.md`)
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -231,7 +231,7 @@ This document defines the data dictionary for the User Management domain. It map
 | Active | Aktiv | `data.active` | `skill.active` | [capabilities.md#entity-fähigkeiten-skills](../mongodb-mapping/capabilities.md#entity-fähigkeiten-skills) | `boolean` | `switch` | — | No | No | — |
 | Description | Beschreibung | `data.description` | `skill.description` | [capabilities.md#entity-fähigkeiten-skills](../mongodb-mapping/capabilities.md#entity-fähigkeiten-skills) | `bigstring` | `textarea` | — | No | No | — |
 
-## 16. Onboarding Flow (`onboarding/01-onboarding-flow.md`)
+## 16. Onboarding Flow (`onboarding/onboarding-flow.md`)
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
@@ -241,7 +241,7 @@ This document defines the data dictionary for the User Management domain. It map
 | Comment | Kommentar | `data.steps.comment` | `onboardingHistory.comment` | [user-management.md#onboardinghistory](../mongodb-mapping/user-management.md#entity-onboarding-verlauf-onboarding-history) | `bigstring` | `textarea` | — | No | No | Repeater column |
 | Upload file | Datei hochladen | `data.steps.file` | — | — | `action` | `file` | — | No | No | **Workflow-only**: Only visible for SUBMIT/SELFSUBMIT types |
 
-## 17. User Stats Details (`dashboard/04-dialogs-user-management.md`)
+## 17. User Stats Details (`dashboard/dialogs-user-management.md`)
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|

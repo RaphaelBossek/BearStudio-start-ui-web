@@ -363,8 +363,8 @@ The application shell (`site.htmlm`) is the main layout wrapper that contains th
 
 | Source File | Target Doc | Description |
 |-------------|------------|-------------|
-| `specs/analysis/system/includes/01-includes-shared-components.md` (Section 7) | `shell/overview.md` | Application shell overview with HTMLM header metadata |
-| `specs/analysis/system/includes/01-includes-shared-components.md` (Section 8) | `shell/bug-report.md` | Bug report dialog with html2canvas integration |
+| `specs/analysis/includes/includes-shared-components.md` (Section 7) | `shell/overview.md` | Application shell overview with HTMLM header metadata |
+| `specs/analysis/includes/includes-shared-components.md` (Section 8) | `shell/bug-report.md` | Bug report dialog with html2canvas integration |
 | _Extract from legacy code_ | `shell/sitemap.md` | **Full sitemap structure** — all menu items, icons, colors, hierarchy |
 | `wireframes/system/shell/app-shell-layout.*` | `shell/layout.md` | Full shell layout wireframe with annotations |
 | `wireframes/system/shell/global-navigation.*` | `shell/navigation.md` | Sidebar navigation pattern (collapsed/expanded states) |

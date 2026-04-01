@@ -8,4 +8,4 @@ External system integration: BasisWeb patient import wizard.
 | File | Origin | Content |
 |:---|:---|:---|
 | `06-basisweb-wizard.md` | `dash/` (whole) | BasisWeb patient import wizard (6-step) |
-| `wireframe-plan-interfaces.md` | Split from `dash/wireframe-plan.md` | Wireframe inventory for interfaces dashboard |
+| `wireframe-plan-interfaces.md` | Split from `dash/wireframes.md` | Wireframe inventory for interfaces dashboard |

@@ -27,14 +27,14 @@ C["Step 3: Fetching Patient Data<br>(Loading spinner)"]
 | `specs/wireframes/interfaces/dashboard/workflows.md` | ~10 |
 | `specs/wireframes/user-management/workflows.md` | ~10 |
 | `specs/analysis/planning/dashboard/09-calendar-view.md` | ~5 |
-| `specs/analysis/treatment/dashboard/05-consultation-wizard.md` | ~5 |
-| `specs/analysis/treatment/consultation/07-consultation-view-review.md` | ~3 |
-| `specs/analysis/treatment/treatment-core/02-treatment-plan.md` | ~3 |
-| `specs/analysis/user-management/profile/01-profile-form.md` | ~3 |
-| `specs/analysis/user-management/profile/04-profile-expert-availability.md` | ~3 |
-| `specs/analysis/accounting/invoice/02-invoice-details.md` | ~2 |
-| `specs/analysis/system/admin-system/05-sysconfig-import.md` | ~2 |
-| `specs/analysis/system/includes/02-includes-customization.md` | ~2 |
+| `specs/analysis/treatment/dashboard/consultation-wizard.md` | ~5 |
+| `specs/analysis/consultations/07-consultation-view-review.md` | ~3 |
+| `specs/analysis/treatments/treatment-plan.md` | ~3 |
+| `specs/analysis/staff/profile-form.md` | ~3 |
+| `specs/analysis/staff/profile-expert-availability.md` | ~3 |
+| `specs/analysis/customers/invoice-details.md` | ~2 |
+| `specs/analysis/system-admin/sysconfig-import.md` | ~2 |
+| `specs/analysis/includes/includes-customization.md` | ~2 |
 
 **Total: ~263 occurrences**
 

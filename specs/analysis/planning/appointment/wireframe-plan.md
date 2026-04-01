@@ -3,11 +3,11 @@
 > **Status**: COMPLETED
 > **Self-contained wireframe plan** — expanded for Batch 4 execution.
 > Wireframes are created as `.pen` files using the Pencil MCP tools.
-> Target directory: `specs/wireframes/planning/appointment/`
+> Target directory: `specs/wireframes/appointments/`
 
 ## Prerequisites
 
-1. All 3 analysis documents in `specs/analysis/planning/appointment/` are complete and reviewed
+1. All 3 analysis documents in `specs/analysis/appointments/` are complete and reviewed
 2. Pencil MCP server is available and responsive
 3. Data dictionary: `specs/analysis/planning/data-dictionary-planning.md`
 4. Review the Pencil style guide for web-app design: `get_guidelines(topic="web-app")`
@@ -116,7 +116,7 @@ During execution, W2's 5-tab dialog required separate per-tab wireframes to capt
 For each wireframe:
 
 1. **Read** the corresponding analysis document(s)
-2. **Open** Pencil: `open_document("specs/wireframes/planning/appointment/{name}.pen")`
+2. **Open** Pencil: `open_document("specs/wireframes/appointments/{name}.pen")`
 3. **Get guidelines**: `get_guidelines(topic="web-app")` (first wireframe only)
 4. **List registry**: `Shadcn_list_items_in_registries(["@shadcn"])` to verify component availability
 5. **Design** using `batch_design()`:
@@ -187,7 +187,7 @@ For each wireframe:
 - Color annotations with hex values
 
 6. **Validate** with `get_screenshot()`
-7. **Export** to PNG in `specs/wireframes/planning/appointment/`
+7. **Export** to PNG in `specs/wireframes/appointments/`
 8. **Embed screenshots** in `specs/wireframes/planning/workflows.md` — Done
 9. **Log completion** in `specs/analysis/wireframes-index.md` — Done
 

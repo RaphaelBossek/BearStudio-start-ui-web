@@ -8,9 +8,9 @@ Scheduling & appointments: appointment lifecycle (12-state machine), shifts, cou
 | File | Origin | Content |
 |:---|:---|:---|
 | `01-appointment-list.md` | `appointment/` (whole) | Appointment list view with grid and filters |
-| `02-appointment-details-scheduling.md` | Split from `appointment/02-appointment-details.md` | State transitions, user assignment, collision handling, assignment history |
+| `02-appointment-details-scheduling.md` | Split from `appointment/appointment-details.md` | State transitions, user assignment, collision handling, assignment history |
 | `03-appointment-assign-user.md` | `appointment/` (whole) | User assignment dialog for appointments |
-| `wireframe-plan.md` | `appointment/` (whole) | Wireframe inventory for appointment screens |
+| `wireframes.md` | `appointment/` (whole) | Wireframe inventory for appointment screens |
 
 ### shift/
 | File | Origin | Content |
@@ -25,7 +25,7 @@ Scheduling & appointments: appointment lifecycle (12-state machine), shifts, cou
 ### appointment-support/
 | File | Origin | Content |
 |:---|:---|:---|
-| `01-appointment-plan.md` | Split from `appointment-support/01-plan-cdr.md` | AppointmentPlan management |
+| `01-appointment-plan.md` | Split from `appointment-support/plan-cdr.md` | AppointmentPlan management |
 
 ### appointment-admin/
 | File | Origin | Content |
@@ -40,5 +40,5 @@ Scheduling & appointments: appointment lifecycle (12-state machine), shifts, cou
 | `09-calendar-view.md` | `dash/` (whole) | Calendar day view |
 | `10-week-view.md` | `dash/` (whole) | Week view grid |
 | `11-month-view.md` | `dash/` (whole) | Month view grid |
-| `04-dialogs-planning.md` | Split from `dash/04-dashboard-dialogs.md` | Planning dialogs: endShift, adHoc, confirm/decline |
-| `wireframe-plan-planning.md` | Split from `dash/wireframe-plan.md` | Wireframe inventory for planning dashboard |
+| `04-dialogs-planning.md` | Split from `dash/dashboard-dialogs.md` | Planning dialogs: endShift, adHoc, confirm/decline |
+| `wireframe-plan-planning.md` | Split from `dash/wireframes.md` | Wireframe inventory for planning dashboard |

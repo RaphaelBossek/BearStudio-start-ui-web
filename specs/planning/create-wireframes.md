@@ -132,12 +132,12 @@ The recommended workflow splits into two phases:
 
 **Usage:**
 ```bash
-python3 specs/wireframes/_save_pen.py specs/wireframes/customer/customer-core/location-management.pen
+python3 specs/wireframes/_save_pen.py specs/wireframes/customers/location-management.pen
 ```
 
 **Output:**
 ```
-Saving: specs/wireframes/customer/customer-core/location-management.pen
+Saving: specs/wireframes/customers/location-management.pen
 UNC:    \\wsl.localhost\Ubuntu\home\...\specs\wireframes\...\location-management.pen
 [1/4] Opening in Pencil...
 [2/4] Extracting nodes (readDepth:10)...
@@ -346,9 +346,9 @@ All 79 wireframes across 10 batches are grouped as above, ordered by complexity 
 **Complexity:** Low–Medium  
 **Dependencies:** None (shared components, login flow, notifications, application shell)  
 **Domain plans:**
-- [`specs/analysis/system/includes/wireframe-plan.md`](../analysis/system/includes/wireframe-plan.md) *(complete, expand to add Shadcn mapping + site.htmlm shell)*
-- [`specs/analysis/system/notification/wireframe-plan.md`](../analysis/system/notification/wireframe-plan.md) *(complete, expand to add Shadcn mapping)*
-- [`specs/analysis/system/dashboard/wireframe-plan-system.md`](../analysis/system/dashboard/wireframe-plan-system.md) *(stub — expand fully)*
+- [`specs/analysis/includes/wireframes.md`](../analysis/system/includes/wireframes.md) *(complete, expand to add Shadcn mapping + site.htmlm shell)*
+- [`specs/analysis/notifications/wireframes.md`](../analysis/system/notification/wireframes.md) *(complete, expand to add Shadcn mapping)*
+- [`specs/analysis/dashboard/wireframe-plan-system.md`](../analysis/system/dashboard/wireframe-plan-system.md) *(stub — expand fully)*
 
 **Steps:**
 1. Expand all 3 wireframe plans (add Shadcn mapping, execution steps, annotation legend, **application shell layout**)
@@ -358,18 +358,18 @@ All 79 wireframes across 10 batches are grouped as above, ordered by complexity 
    - `specs/wireframes/system/shell/app-shell-layout.pen` ← **NEW: Application shell with sidebar nav, user menu, shared dialogs**
    - `specs/wireframes/system/shell/global-navigation.pen` ← **NEW: Sitemap-driven sidebar navigation (collapsed/expanded states)**
    - `specs/wireframes/system/shell/user-menu.pen` ← **NEW: User dropdown with role switch, settings, logout**
-   - `specs/wireframes/system/includes/navbar.pen`
-   - `specs/wireframes/system/includes/loading-states.pen`
-   - `specs/wireframes/system/includes/quick-filter.pen`
-   - `specs/wireframes/system/includes/login.pen`
-   - `specs/wireframes/system/includes/bug-report.pen`
-   - `specs/wireframes/system/includes/color-palette.pen`
+   - `specs/wireframes/includes/navbar.pen`
+   - `specs/wireframes/includes/loading-states.pen`
+   - `specs/wireframes/includes/quick-filter.pen`
+   - `specs/wireframes/includes/login.pen`
+   - `specs/wireframes/includes/bug-report.pen`
+   - `specs/wireframes/includes/color-palette.pen`
    - `specs/wireframes/system/notification/notification-list.pen`
    - `specs/wireframes/system/notification/notification-compose.pen`
    - `specs/wireframes/system/notification/send-message.pen`
-   - `specs/wireframes/system/dashboard/dashboard-standard.pen`
-   - `specs/wireframes/system/dashboard/dashboard-admin.pen`
-   - `specs/wireframes/system/dashboard/login-notification.pen`
+   - `specs/wireframes/system-admin/dashboard-standard.pen`
+   - `specs/wireframes/system-admin/dashboard-admin.pen`
+   - `specs/wireframes/system-admin/login-notification.pen`
 5. Export all to PNG
 6. Generate ASCII representations in analysis docs
 7. Update `specs/analysis/wireframes-index.md`
@@ -383,7 +383,7 @@ All 79 wireframes across 10 batches are grouped as above, ordered by complexity 
 
 **Complexity:** Medium  
 **Dependencies:** None (foundational layout component)  
-**Domain plan:** [`specs/analysis/system/includes/wireframe-plan.md`](../analysis/system/includes/wireframe-plan.md) (update to include shell section)
+**Domain plan:** [`specs/analysis/includes/wireframes.md`](../analysis/system/includes/wireframes.md) (update to include shell section)
 
 **Steps:**
 1. Update wireframe plan to add **Application Shell** section with Shadcn mapping:
@@ -428,7 +428,7 @@ All 79 wireframes across 10 batches are grouped as above, ordered by complexity 
 **Dependencies:** None  
 **Note:** These wireframes were discovered during data dictionary creation and were missing from Batch 2.
 
-**Domain plan:** [`specs/analysis/system/admin-system/05-sysconfig-import.md`](../analysis/system/admin-system/05-sysconfig-import.md) (lines 83+) + [`specs/analysis/system/data-dictionary-system.md`](../analysis/system/data-dictionary-system.md) (section 1.1, lines 11–53)
+**Domain plan:** [`specs/analysis/system-admin/sysconfig-import.md`](../analysis/system/admin-system/sysconfig-import.md) (lines 83+) + [`specs/analysis/system/data-dictionary-system.md`](../analysis/system/data-dictionary-system.md) (section 1.1, lines 11–53)
 
 **Steps:**
 1. Create `specs/wireframes/system/workflows.md` — admin sysconfig user flows, tab navigation, action triggers, error handling
@@ -452,7 +452,7 @@ All 79 wireframes across 10 batches are grouped as above, ordered by complexity 
 **Complexity:** Low–Medium
 **Dependencies:** Batch 5 (consultation details) should follow this batch
 **Domain plans:**
-- [`specs/analysis/treatment/questionnaire/wireframe-plan.md`](../analysis/treatment/questionnaire/wireframe-plan.md) *(complete, expand to add Shadcn mapping)*
+- [`specs/analysis/treatment/questionnaire/wireframes.md`](../analysis/treatment/questionnaire/wireframes.md) *(complete, expand to add Shadcn mapping)*
 - [`specs/analysis/treatment/dashboard/wireframe-plan-treatment.md`](../analysis/treatment/dashboard/wireframe-plan-treatment.md) *(stub — expand fully)*
 
 **Steps:**
@@ -481,7 +481,7 @@ All 79 wireframes across 10 batches are grouped as above, ordered by complexity 
 **Complexity:** High
 **Dependencies:** MonthTable is a custom component — wireframe carefully with annotations
 **Domain plans:**
-- [`specs/analysis/planning/appointment/wireframe-plan.md`](../analysis/planning/appointment/wireframe-plan.md) *(complete, expand to add Shadcn mapping)*
+- [`specs/analysis/appointments/wireframes.md`](../analysis/planning/appointment/wireframes.md) *(complete, expand to add Shadcn mapping)*
 - [`specs/analysis/planning/dashboard/wireframe-plan-planning.md`](../analysis/planning/dashboard/wireframe-plan-planning.md) *(stub — expand fully)*
 
 **Steps:**
@@ -489,14 +489,14 @@ All 79 wireframes across 10 batches are grouped as above, ordered by complexity 
 2. Create `specs/wireframes/planning/workflows.md` — user-oriented diagrams (appointment lifecycle from user perspective, self-service booking journey, calendar navigation, shift management)
 3. **User review checkpoint** — get approval before proceeding to wireframes
 4. Create `.pen` files:
-   - `specs/wireframes/planning/appointment/appointment-list.pen` *(MonthTable calendar grid)*
-   - `specs/wireframes/planning/appointment/appointment-details.pen` *(5-tab detail, state machine)*
-   - `specs/wireframes/planning/appointment/appointment-details-referenced.pen` *(Referenced tab sub-dialog)*
-   - `specs/wireframes/planning/appointment/appointment-details-patients.pen` *(Patients tab sub-dialog)*
-   - `specs/wireframes/planning/appointment/appointment-details-assigned.pen` *(Assigned tab)*
-   - `specs/wireframes/planning/appointment/appointment-details-suggestions.pen` *(Suggestions tab)*
-   - `specs/wireframes/planning/appointment/appointment-assign-user.pen`
-   - `specs/wireframes/planning/appointment/appointment-state-legend.pen`
+   - `specs/wireframes/appointments/appointment-list.pen` *(MonthTable calendar grid)*
+   - `specs/wireframes/appointments/appointment-details.pen` *(5-tab detail, state machine)*
+   - `specs/wireframes/appointments/appointment-details-referenced.pen` *(Referenced tab sub-dialog)*
+   - `specs/wireframes/appointments/appointment-details-patients.pen` *(Patients tab sub-dialog)*
+   - `specs/wireframes/appointments/appointment-details-assigned.pen` *(Assigned tab)*
+   - `specs/wireframes/appointments/appointment-details-suggestions.pen` *(Suggestions tab)*
+   - `specs/wireframes/appointments/appointment-assign-user.pen`
+   - `specs/wireframes/appointments/appointment-state-legend.pen`
    - `specs/wireframes/planning/dashboard/calendar.pen`
    - `specs/wireframes/planning/dashboard/expert-availability.pen`
    - `specs/wireframes/planning/dashboard/shift-dialog.pen`
@@ -515,23 +515,23 @@ All 79 wireframes across 10 batches are grouped as above, ordered by complexity 
 **Complexity:** Very High
 **Dependencies:** Batch 3 should be complete before this batch
 **Note:** This is the most field-dense component in the application (778-line dialog, 11 tabs, 7 types). Split into multiple sessions if needed.
-**Domain plan:** [`specs/analysis/treatment/consultation/wireframe-plan.md`](../analysis/treatment/consultation/wireframe-plan.md) *(complete, expand to add Shadcn mapping)*
+**Domain plan:** [`specs/analysis/consultations/wireframes.md`](../analysis/treatment/consultation/wireframes.md) *(complete, expand to add Shadcn mapping)*
 
 **Steps:**
 1. Expand wireframe plan (add Shadcn mapping, update execution steps)
-2. Create `specs/wireframes/treatment/consultation/workflows.md` — user-oriented diagrams (consultation lifecycle from clinician perspective, type→tab visibility as user experience, review/approval workflow)
+2. Create `specs/wireframes/consultations/workflows.md` — user-oriented diagrams (consultation lifecycle from clinician perspective, type→tab visibility as user experience, review/approval workflow)
 3. **User review checkpoint** — get approval before proceeding to wireframes
 4. Create `.pen` files in order of complexity (Phase 1 first, then 2, then 3):
-   - `specs/wireframes/treatment/consultation/consultation-list.pen`
-   - `specs/wireframes/treatment/consultation/consultation-details-header.pen`
-   - `specs/wireframes/treatment/consultation/consultation-details-standard.pen`
-   - `specs/wireframes/treatment/consultation/consultation-view.pen`
-   - `specs/wireframes/treatment/consultation/consultation-details-onboarding.pen`
-   - `specs/wireframes/treatment/consultation/consultation-details-incarceration.pen`
-   - `specs/wireframes/treatment/consultation/consultation-details-treatment-warning.pen`
-   - `specs/wireframes/treatment/consultation/consultation-review.pen`
-   - `specs/wireframes/treatment/consultation/consultation-icd10-search.pen`
-   - `specs/wireframes/treatment/consultation/consultation-export-template.pen`
+   - `specs/wireframes/consultations/consultation-list.pen`
+   - `specs/wireframes/consultations/consultation-details-header.pen`
+   - `specs/wireframes/consultations/consultation-details-standard.pen`
+   - `specs/wireframes/consultations/consultation-view.pen`
+   - `specs/wireframes/consultations/consultation-details-onboarding.pen`
+   - `specs/wireframes/consultations/consultation-details-incarceration.pen`
+   - `specs/wireframes/consultations/consultation-details-treatment-warning.pen`
+   - `specs/wireframes/consultations/consultation-review.pen`
+   - `specs/wireframes/consultations/consultation-icd10-search.pen`
+   - `specs/wireframes/consultations/consultation-export-template.pen`
 5. Export all to PNG
 6. Generate ASCII representations in analysis docs
 7. Update `specs/analysis/wireframes-index.md`
@@ -545,7 +545,7 @@ All 79 wireframes across 10 batches are grouped as above, ordered by complexity 
 **Complexity:** High–Very High
 **Note:** Profile form is 1014 lines with 8 tabs — the densest form after consultation. Wireframe tabs individually.
 **Domain plans:**
-- [`specs/analysis/user-management/profile/wireframe-plan.md`](../analysis/user-management/profile/wireframe-plan.md) *(complete, expand to add Shadcn mapping)*
+- [`specs/analysis/staff/wireframes.md`](../analysis/user-management/profile/wireframes.md) *(complete, expand to add Shadcn mapping)*
 - [`specs/analysis/user-management/dashboard/wireframe-plan-user-management.md`](../analysis/user-management/dashboard/wireframe-plan-user-management.md) *(stub — expand fully)*
 
 **Steps:**
@@ -553,13 +553,13 @@ All 79 wireframes across 10 batches are grouped as above, ordered by complexity 
 2. Create `specs/wireframes/user-management/workflows.md` — user-oriented diagrams (staff onboarding journey, 2FA setup experience, profile editing by role, expert availability management)
 3. **User review checkpoint** — get approval before proceeding to wireframes
 4. Create `.pen` files in Phase order:
-   - `specs/wireframes/user-management/profile/profile-form.pen`
-   - `specs/wireframes/user-management/profile/profile-staff-list.pen`
-   - `specs/wireframes/user-management/profile/profile-expert-search.pen`
-   - `specs/wireframes/user-management/profile/profile-assignment-dialog.pen`
-   - `specs/wireframes/user-management/profile/profile-password-dialog.pen`
-   - `specs/wireframes/user-management/profile/profile-signature-pad.pen`
-   - `specs/wireframes/user-management/profile/profile-expert-availability.pen`
+   - `specs/wireframes/staff/profile-form.pen`
+   - `specs/wireframes/staff/profile-staff-list.pen`
+   - `specs/wireframes/staff/profile-expert-search.pen`
+   - `specs/wireframes/staff/profile-assignment-dialog.pen`
+   - `specs/wireframes/staff/profile-password-dialog.pen`
+   - `specs/wireframes/staff/profile-signature-pad.pen`
+   - `specs/wireframes/staff/profile-expert-availability.pen`
    - `specs/wireframes/user-management/dashboard/user-stats.pen`
 5. Export all to PNG
 6. Generate ASCII representations in analysis docs
@@ -577,16 +577,16 @@ All 79 wireframes across 10 batches are grouped as above, ordered by complexity 
 - `specs/analysis/accounting/data-dictionary-accounting.md`
 
 **Steps:**
-1. Create `specs/analysis/accounting/wireframe-plan.md` from scratch
+1. Create `specs/analysis/accounting/wireframes.md` from scratch
 2. Create `specs/wireframes/accounting/workflows.md` — user-oriented diagrams (invoice lifecycle, worklog time tracking, receiver management, job configuration)
 3. **User review checkpoint** — get approval before proceeding to wireframes
 4. Create `.pen` files:
-   - `specs/wireframes/accounting/invoice/invoice-list.pen`
-   - `specs/wireframes/accounting/invoice/invoice-details.pen`
-   - `specs/wireframes/accounting/worklog/worklog.pen`
-   - `specs/wireframes/accounting/invoice-receiver/invoice-receiver.pen`
-   - `specs/wireframes/accounting/admin-job/job-configuration.pen`
-   - `specs/wireframes/accounting/config/accounting-config.pen`
+   - `specs/wireframes/administration/invoice-list.pen`
+   - `specs/wireframes/administration/invoice-details.pen`
+   - `specs/wireframes/administration/worklog.pen`
+   - `specs/wireframes/administration/invoice-receiver.pen`
+   - `specs/wireframes/administration/job-configuration.pen`
+   - `specs/wireframes/administration/accounting-config.pen`
 5. Export all to PNG
 6. Generate ASCII representations in analysis docs
 7. Update `specs/analysis/wireframes-index.md`
@@ -603,15 +603,15 @@ All 79 wireframes across 10 batches are grouped as above, ordered by complexity 
 - `specs/analysis/customer/data-dictionary-customer.md`
 
 **Steps:**
-1. Create `specs/analysis/customer/wireframe-plan.md` from scratch
+1. Create `specs/analysis/customer/wireframes.md` from scratch
 2. Create `specs/wireframes/customer/workflows.md` — user-oriented diagrams (customer onboarding, location hierarchy, contact management, room/equipment inventory)
 3. **User review checkpoint** — get approval before proceeding to wireframes
 4. Create `.pen` files:
-   - `specs/wireframes/customer/customer-core/customer-list.pen`
-   - `specs/wireframes/customer/customer-core/location-management.pen`
+   - `specs/wireframes/customers/customer-list.pen`
+   - `specs/wireframes/customers/location-management.pen`
    - `specs/wireframes/customer/contact/contact-management.pen`
-   - `specs/wireframes/customer/room/room-management.pen`
-   - `specs/wireframes/customer/equipment/equipment-management.pen`
+   - `specs/wireframes/customers/room-management.pen`
+   - `specs/wireframes/customers/equipment-management.pen`
 5. Export all to PNG
 6. Generate ASCII representations in analysis docs
 7. Update `specs/analysis/wireframes-index.md`
@@ -628,14 +628,14 @@ All 79 wireframes across 10 batches are grouped as above, ordered by complexity 
 - `specs/analysis/academy/data-dictionary-academy.md`
 
 **Steps:**
-1. Create `specs/analysis/academy/wireframe-plan.md` from scratch
+1. Create `specs/analysis/academy/wireframes.md` from scratch
 2. Create `specs/wireframes/academy/workflows.md` — user-oriented diagrams (support ticket lifecycle, video upload/categorization, video library browsing)
 3. **User review checkpoint** — get approval before proceeding to wireframes
 4. Create `.pen` files:
-   - `specs/wireframes/academy/support-video/support-ticket.pen`
-   - `specs/wireframes/academy/support-video/video-management.pen`
-   - `specs/wireframes/academy/support-video/video-library.pen`
-   - `specs/wireframes/academy/support-video/video-category.pen`
+   - `specs/wireframes/orphan/support-ticket.pen`
+   - `specs/wireframes/orphan/video-management.pen`
+   - `specs/wireframes/orphan/video-library.pen`
+   - `specs/wireframes/orphan/video-category.pen`
 5. Export all to PNG
 6. Generate ASCII representations in analysis docs
 7. Update `specs/analysis/wireframes-index.md`
@@ -649,10 +649,10 @@ All 79 wireframes across 10 batches are grouped as above, ordered by complexity 
 **Complexity:** Medium–High
 **Dependencies:** Wireframe plans exist but need expansion with Shadcn mapping
 **Domain plans:**
-- [`specs/analysis/planning/appointment-admin/wireframe-plan.md`](../analysis/planning/appointment-admin/wireframe-plan.md) *(complete, expand to add Shadcn mapping)*
-- [`specs/analysis/planning/appointment-support/wireframe-plan.md`](../analysis/planning/appointment-support/wireframe-plan.md) *(complete, expand to add Shadcn mapping)*
-- [`specs/analysis/planning/shift/wireframe-plan.md`](../analysis/planning/shift/wireframe-plan.md) *(complete, expand to add Shadcn mapping)*
-- [`specs/analysis/planning/council/wireframe-plan.md`](../analysis/planning/council/wireframe-plan.md) *(complete, expand to add Shadcn mapping)*
+- [`specs/analysis/planning/appointment-admin/wireframes.md`](../analysis/planning/appointment-admin/wireframes.md) *(complete, expand to add Shadcn mapping)*
+- [`specs/analysis/planning/appointment-support/wireframes.md`](../analysis/planning/appointment-support/wireframes.md) *(complete, expand to add Shadcn mapping)*
+- [`specs/analysis/shifts/wireframes.md`](../analysis/planning/shift/wireframes.md) *(complete, expand to add Shadcn mapping)*
+- [`specs/analysis/council/wireframes.md`](../analysis/planning/council/wireframes.md) *(complete, expand to add Shadcn mapping)*
 
 **Steps:**
 1. Expand all 4 wireframe plans (add Shadcn mapping, execution steps, annotation legend)
@@ -682,20 +682,20 @@ All 79 wireframes across 10 batches are grouped as above, ordered by complexity 
    - `specs/wireframes/planning/appointment-support/cdr-status-legend.pen`
 
    **shift** (4 wireframes) — Medium priority:
-   - `specs/wireframes/planning/shift/shift-list.pen`
-   - `specs/wireframes/planning/shift/shift-plan-detail.pen`
-   - `specs/wireframes/planning/shift/apply-plan.pen`
-   - `specs/wireframes/planning/shift/state-legend.pen`
+   - `specs/wireframes/shifts/shift-list.pen`
+   - `specs/wireframes/shifts/shift-plan-detail.pen`
+   - `specs/wireframes/shifts/apply-plan.pen`
+   - `specs/wireframes/shifts/state-legend.pen`
 
    **council** (3 wireframes) — Medium priority:
-   - `specs/wireframes/planning/council/council-list.pen`
-   - `specs/wireframes/planning/council/council-plan-detail.pen`
-   - `specs/wireframes/planning/council/apply-plan.pen`
+   - `specs/wireframes/council/council-list.pen`
+   - `specs/wireframes/council/council-plan-detail.pen`
+   - `specs/wireframes/council/apply-plan.pen`
 
 5. Export all to PNG
 6. Embed screenshots in `specs/wireframes/planning/workflows.md`
 7. Update `specs/analysis/wireframes-index.md`
-8. Update `specs/wireframes/analysis-wireframes-mapping.md` — replace *(no wireframe)* entries for `appointment-admin/01-appointment-admin.md`, `appointment-support/01-appointment-plan.md`, `council/01-council-and-plan.md`, `shift/01-shift-and-plan.md` with the created `.pen` file references
+8. Update `specs/wireframes/analysis-wireframes-mapping.md` — replace *(no wireframe)* entries for `appointment-admin/appointment-admin.md`, `appointment-support/appointment-plan.md`, `council/council-and-plan.md`, `shift/shift-and-plan.md` with the created `.pen` file references
 
 **Status:** ✅ Complete (20/20 wireframes, 20 .pen files, 21 .png exports, 4–50 KB each)
 
@@ -710,10 +710,10 @@ All 79 wireframes across 10 batches are grouped as above, ordered by complexity 
 **Analysis files covered:**
 | Analysis File | Brownfield Source |
 |---|---|
-| `system/admin-cruds/04-motd-template.md` | `admin/motd.htmlm`, `admin/template.htmlm` |
-| `system/cdr-call/01-cdr-call.md` | `cdrCall/`, `cdrCallAssignment/` |
-| `system/config/01-system-config.md` | `locationType/`, `exclusionCriteria/`, `supportCategory/`, `loginNotification/` |
-| `system/templates-files/01-templates-files.md` | `exportTemplate/`, `notificationTemplate/`, `userFile/` |
+| `system/admin-cruds/motd-template.md` | `admin/motd.htmlm`, `admin/template.htmlm` |
+| `system/cdr-call/cdr-call.md` | `cdrCall/`, `cdrCallAssignment/` |
+| `system/config/system-config.md` | `locationType/`, `exclusionCriteria/`, `supportCategory/`, `loginNotification/` |
+| `system/templates-files/templates-files.md` | `exportTemplate/`, `notificationTemplate/`, `userFile/` |
 
 **Steps:**
 1. Create `specs/analysis/system/wireframe-plan-batch11.md` from scratch covering all 4 subdomains
@@ -721,13 +721,13 @@ All 79 wireframes across 10 batches are grouped as above, ordered by complexity 
 3. **User review checkpoint** — get approval before proceeding to wireframes
 4. Create `.pen` files:
    - `specs/wireframes/system/admin-cruds/motd-template.pen` — MOTD list + create/edit dialog, template list + editor
-   - `specs/wireframes/system/cdr-call/cdr-call.pen` — CDR call list, call detail, assignment management
+   - `specs/wireframes/system-admin/cdr-call.pen` — CDR call list, call detail, assignment management
    - `specs/wireframes/system/config/system-config.pen` — Location type, exclusion criteria, support category, login notification CRUD views
    - `specs/wireframes/system/templates-files/templates-files.pen` — Export template, notification template, user file management
 5. Export all to PNG
 6. Embed screenshots in `specs/wireframes/system/workflows.md`
 7. Update `specs/analysis/wireframes-index.md`
-8. Update `specs/wireframes/analysis-wireframes-mapping.md` — replace *(no wireframe)* entries for `admin-cruds/04-motd-template.md`, `cdr-call/01-cdr-call.md`, `config/01-system-config.md`, `templates-files/01-templates-files.md` with the created `.pen` file references
+8. Update `specs/wireframes/analysis-wireframes-mapping.md` — replace *(no wireframe)* entries for `admin-cruds/motd-template.md`, `cdr-call/cdr-call.md`, `config/system-config.md`, `templates-files/templates-files.md` with the created `.pen` file references
 
 **Status:** ⏳ Pending (0/4 wireframes)
 
@@ -742,12 +742,12 @@ All 79 wireframes across 10 batches are grouped as above, ordered by complexity 
 **Analysis files covered:**
 | Analysis File | Brownfield Source |
 |---|---|
-| `treatment/appointment-patient/02-appointment-details-patient.md` | `appointment/details.html` (patient sections) |
-| `treatment/medication/01-medication.md` | `medication/` |
-| `treatment/patient-data/01-patient-data.md` | `patientData/` |
-| `treatment/treatment-core/01-treatment-and-category.md` | `treatment/`, `treatmentCategory/` |
-| `treatment/treatment-core/02-treatment-plan.md` | `treatmentPlan/` |
-| `treatment/warning/01-warning-management.md` | `warning/` |
+| `treatment/appointment-patient/appointment-details-patient.md` | `appointment/details.html` (patient sections) |
+| `treatment/medication/medication.md` | `medication/` |
+| `treatment/patient-data/patient-data.md` | `patientData/` |
+| `treatment/treatment-core/treatment-and-category.md` | `treatment/`, `treatmentCategory/` |
+| `treatment/treatment-core/treatment-plan.md` | `treatmentPlan/` |
+| `treatment/warning/warning-management.md` | `warning/` |
 
 **Steps:**
 1. Create `specs/analysis/treatment/wireframe-plan-batch12.md` from scratch covering all 6 subdomains
@@ -763,7 +763,7 @@ All 79 wireframes across 10 batches are grouped as above, ordered by complexity 
 5. Export all to PNG
 6. Embed screenshots in `specs/wireframes/treatment/workflows.md`
 7. Update `specs/analysis/wireframes-index.md`
-8. Update `specs/wireframes/analysis-wireframes-mapping.md` — replace *(no wireframe)* entries for `appointment-patient/02-appointment-details-patient.md`, `medication/01-medication.md`, `patient-data/01-patient-data.md`, `treatment-core/01-treatment-and-category.md`, `treatment-core/02-treatment-plan.md`, `warning/01-warning-management.md` with the created `.pen` file references
+8. Update `specs/wireframes/analysis-wireframes-mapping.md` — replace *(no wireframe)* entries for `appointment-patient/appointment-details-patient.md`, `medication/medication.md`, `patient-data/patient-data.md`, `treatment-core/treatment-and-category.md`, `treatment-core/treatment-plan.md`, `warning/warning-management.md` with the created `.pen` file references
 
 **Status:** ⏳ Pending (0/6 wireframes)
 
@@ -778,11 +778,11 @@ All 79 wireframes across 10 batches are grouped as above, ordered by complexity 
 **Analysis files covered:**
 | Analysis File | Brownfield Source |
 |---|---|
-| `user-management/admin-user/02-user-management.md` | `admin/user.htmlm`, `admin/user.js` |
+| `user-management/admin-user/user-management.md` | `admin/user.htmlm`, `admin/user.js` |
 | `user-management/admin-user/06-totp-onboarding.md` | `admin/totpOnboarding.html`, `admin/userSecurity.htmlm` |
-| `user-management/admin-group/05-group-management.md` | `admin/group.htmlm`, `admin/group.js` |
-| `user-management/admin-skill/04-skill.md` | `admin/skill.htmlm`, `admin/skill.js` |
-| `user-management/onboarding/01-onboarding-flow.md` | `onboarding/` |
+| `user-management/admin-group/group-management.md` | `admin/group.htmlm`, `admin/group.js` |
+| `user-management/admin-skill/skill.md` | `admin/skill.htmlm`, `admin/skill.js` |
+| `user-management/onboarding/onboarding-flow.md` | `onboarding/` |
 
 **Steps:**
 1. Create `specs/analysis/user-management/wireframe-plan-batch13.md` from scratch covering all 5 subdomains
@@ -797,7 +797,7 @@ All 79 wireframes across 10 batches are grouped as above, ordered by complexity 
 5. Export all to PNG
 6. Embed screenshots in `specs/wireframes/user-management/workflows.md`
 7. Update `specs/analysis/wireframes-index.md`
-8. Update `specs/wireframes/analysis-wireframes-mapping.md` — replace *(no wireframe)* entries for `admin-user/02-user-management.md`, `admin-user/06-totp-onboarding.md`, `admin-group/05-group-management.md`, `admin-skill/04-skill.md`, `onboarding/01-onboarding-flow.md` with the created `.pen` file references
+8. Update `specs/wireframes/analysis-wireframes-mapping.md` — replace *(no wireframe)* entries for `admin-user/user-management.md`, `admin-user/06-totp-onboarding.md`, `admin-group/group-management.md`, `admin-skill/skill.md`, `onboarding/onboarding-flow.md` with the created `.pen` file references
 
 **Status:** ⏳ Pending (0/5 wireframes)
 
@@ -812,13 +812,13 @@ All 79 wireframes across 10 batches are grouped as above, ordered by complexity 
 **Analysis files covered:**
 | Analysis File | Brownfield Source |
 |---|---|
-| `academy/video-history/01-user-video-history.md` | `userVideoHistory/` |
-| `accounting/admin-workhour/04-workhour.md` | `admin/workHour.htmlm`, `admin/workHour.js` |
+| `academy/video-history/user-video-history.md` | `userVideoHistory/` |
+| `accounting/admin-workhour/workhour.md` | `admin/workHour.htmlm`, `admin/workHour.js` |
 
 **Steps:**
 1. Update existing wireframe plans:
-   - Update `specs/analysis/academy/wireframe-plan.md` to add video history section
-   - Update `specs/analysis/accounting/wireframe-plan.md` to add workhour section
+   - Update `specs/analysis/academy/wireframes.md` to add video history section
+   - Update `specs/analysis/accounting/wireframes.md` to add workhour section
 2. Update workflows:
    - Update `specs/wireframes/academy/workflows.md` — add video history browsing/playback flow
    - Update `specs/wireframes/accounting/workflows.md` — add workhour tracking/admin flow
@@ -829,7 +829,7 @@ All 79 wireframes across 10 batches are grouped as above, ordered by complexity 
 5. Export all to PNG
 6. Embed screenshots in respective `workflows.md` files
 7. Update `specs/analysis/wireframes-index.md`
-8. Update `specs/wireframes/analysis-wireframes-mapping.md` — replace *(no wireframe)* entries for `video-history/01-user-video-history.md` and `admin-workhour/04-workhour.md` with the created `.pen` file references
+8. Update `specs/wireframes/analysis-wireframes-mapping.md` — replace *(no wireframe)* entries for `video-history/user-video-history.md` and `admin-workhour/workhour.md` with the created `.pen` file references
 
 **Status:** ⏳ Pending (0/2 wireframes)
 

@@ -15,7 +15,7 @@
    - `11-month-view.md` — Expert month availability grid
 2. Pencil MCP server is available and responsive
 3. Review the Pencil style guide for web-app design: `get_guidelines(topic="web-app")`
-4. Reference completed wireframes: `specs/wireframes/planning/appointment/` for MonthTable patterns
+4. Reference completed wireframes: `specs/wireframes/appointments/` for MonthTable patterns
 
 ## Translation Sources
 

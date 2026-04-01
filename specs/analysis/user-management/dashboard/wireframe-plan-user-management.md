@@ -1,12 +1,12 @@
 # Wireframe Plan -- User Management (Dashboard) (Expanded)
 
-> **Split from**: `dash/wireframe-plan.md`
+> **Split from**: `dash/wireframes.md`
 > **Wireframe IDs preserved for traceability**
 > **Target directory**: `specs/wireframes/user-management/dashboard/`
 
 ## Prerequisites
 
-1. Analysis document: `specs/analysis/user-management/dashboard/04-dialogs-user-management.md`
+1. Analysis document: `specs/analysis/user-management/dashboard/dialogs-user-management.md`
 2. Data dictionary: `specs/analysis/user-management/data-dictionary-user-management.md` (Section 17)
 3. Pencil MCP server available
 4. Design system reference from Batch 1

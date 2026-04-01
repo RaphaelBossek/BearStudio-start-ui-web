@@ -12,4 +12,4 @@ Training, videos, support: support tickets, video management, video library.
 ### video-history/
 | File | Origin | Content |
 |:---|:---|:---|
-| `01-user-video-history.md` | Split from `utility/01-worklog-templates-files.md` | User video history tracking |
+| `01-user-video-history.md` | Split from `utility/worklog-templates-files.md` | User video history tracking |

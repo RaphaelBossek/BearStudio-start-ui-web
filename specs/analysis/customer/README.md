@@ -13,14 +13,14 @@ Customers, locations, contacts, rooms, equipment.
 ### contact/
 | File | Origin | Content |
 |:---|:---|:---|
-| `01-contact.md` | Split from `entity-cruds/01-*` | Contact entity CRUD |
+| `01-contact.md` | Split from `entity-cruds/*` | Contact entity CRUD |
 
 ### room/
 | File | Origin | Content |
 |:---|:---|:---|
-| `01-room.md` | Split from `entity-cruds/01-*` | Room entity CRUD (with FullCalendar) |
+| `01-room.md` | Split from `entity-cruds/*` | Room entity CRUD (with FullCalendar) |
 
 ### equipment/
 | File | Origin | Content |
 |:---|:---|:---|
-| `01-equipment.md` | Split from `entity-cruds/01-*` | Equipment entity CRUD |
+| `01-equipment.md` | Split from `entity-cruds/*` | Equipment entity CRUD |

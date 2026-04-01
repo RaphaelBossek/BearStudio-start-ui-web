@@ -11,7 +11,7 @@ Users, profiles, authentication: profile management (60+ fields), staff manageme
 | `02-profile-staff.md` | `profile/` (whole) | Staff/expert profile management |
 | `03-profile-dialogs.md` | `profile/` (whole) | Profile-related dialogs |
 | `04-profile-expert-availability.md` | `profile/` (whole) | Expert availability settings |
-| `wireframe-plan.md` | `profile/` (whole) | Wireframe inventory for profile screens |
+| `wireframes.md` | `profile/` (whole) | Wireframe inventory for profile screens |
 
 ### onboarding/
 | File | Origin | Content |
@@ -27,15 +27,15 @@ Users, profiles, authentication: profile management (60+ fields), staff manageme
 ### admin-group/
 | File | Origin | Content |
 |:---|:---|:---|
-| `05-group-management.md` | Split from `admin/05-sysadmin-views.md` | Group management admin views |
+| `05-group-management.md` | Split from `admin/sysadmin-views.md` | Group management admin views |
 
 ### admin-skill/
 | File | Origin | Content |
 |:---|:---|:---|
-| `04-skill.md` | Split from `admin/04-simple-cruds.md` | Skill management CRUD |
+| `04-skill.md` | Split from `admin/simple-cruds.md` | Skill management CRUD |
 
 ### dashboard/
 | File | Origin | Content |
 |:---|:---|:---|
-| `04-dialogs-user-management.md` | Split from `dash/04-dashboard-dialogs.md` | User stats dialog |
-| `wireframe-plan-user-management.md` | Split from `dash/wireframe-plan.md` | Wireframe inventory for user management dashboard |
+| `04-dialogs-user-management.md` | Split from `dash/dashboard-dialogs.md` | User stats dialog |
+| `wireframe-plan-user-management.md` | Split from `dash/wireframes.md` | Wireframe inventory for user management dashboard |
