@@ -6,7 +6,7 @@
       "id": "X79ho",
       "x": 0,
       "y": 0,
-      "name": "W1: Questionnaire List — Full Page (1440px)",
+      "name": "W1: Questionnaire List \u2014 Full Page (1440px)",
       "width": 1440,
       "height": 900,
       "fill": "$--bg",
@@ -62,7 +62,7 @@
               "id": "VrLdl",
               "name": "hTitle",
               "fill": "$--header-fg",
-              "content": "Questionnaire (QM) — List View",
+              "content": "Questionnaire (QM) \u2014 List View",
               "fontFamily": "Inter",
               "fontSize": 16,
               "fontWeight": "600"
@@ -72,7 +72,7 @@
               "id": "F7oxH",
               "name": "hAnnot",
               "fill": "#FFFFFFAA",
-              "content": "@shadcn/data-table + @shadcn/sheet (inline detail) — 1440px full page",
+              "content": "@shadcn/data-table + @shadcn/sheet (inline detail) \u2014 1440px full page",
               "fontFamily": "Inter",
               "fontSize": 11,
               "fontWeight": "normal"
@@ -97,7 +97,7 @@
                 {
                   "type": "frame",
                   "id": "GAoeb",
-                  "name": "Toolbar — @shadcn/button (disabled by default)",
+                  "name": "Toolbar \u2014 @shadcn/button (disabled by default)",
                   "width": "fill_container",
                   "fill": "$--secondary",
                   "stroke": {
@@ -257,7 +257,7 @@
                 {
                   "type": "frame",
                   "id": "dsrNy",
-                  "name": "Data Grid — @shadcn/data-table [repeats] questionnaires",
+                  "name": "Data Grid \u2014 @shadcn/data-table [repeats] questionnaires",
                   "clip": true,
                   "width": "fill_container",
                   "height": "fill_container",
@@ -501,7 +501,7 @@
                               "type": "text",
                               "id": "zijLp",
                               "fill": "$--fg-muted",
-                              "content": "+ 14 more cols →",
+                              "content": "+ 14 more cols \u2192",
                               "fontFamily": "Inter",
                               "fontSize": 11,
                               "fontWeight": "normal"
@@ -580,7 +580,7 @@
                               "type": "text",
                               "id": "zfrrG",
                               "fill": "$--fg",
-                              "content": "14:00–15:30",
+                              "content": "14:00\u201315:30",
                               "fontFamily": "Inter",
                               "fontSize": 13,
                               "fontWeight": "normal"
@@ -748,7 +748,7 @@
                               "type": "text",
                               "id": "oFIoL",
                               "fill": "$--fg-muted",
-                              "content": "…",
+                              "content": "\u2026",
                               "fontFamily": "Inter",
                               "fontSize": 13,
                               "fontWeight": "normal"
@@ -826,7 +826,7 @@
                               "type": "text",
                               "id": "dnULP",
                               "fill": "$--fg",
-                              "content": "09:00–10:00",
+                              "content": "09:00\u201310:00",
                               "fontFamily": "Inter",
                               "fontSize": 13,
                               "fontWeight": "normal"
@@ -931,7 +931,7 @@
                               "type": "text",
                               "id": "CTDcT",
                               "fill": "$--fg-muted",
-                              "content": "—",
+                              "content": "\u2014",
                               "fontFamily": "Inter",
                               "fontSize": 13,
                               "fontWeight": "normal"
@@ -994,7 +994,7 @@
                               "type": "text",
                               "id": "TekaG",
                               "fill": "$--fg-muted",
-                              "content": "…",
+                              "content": "\u2026",
                               "fontFamily": "Inter",
                               "fontSize": 13,
                               "fontWeight": "normal"
@@ -1072,7 +1072,7 @@
                               "type": "text",
                               "id": "uxIoi",
                               "fill": "$--fg",
-                              "content": "11:00–12:30",
+                              "content": "11:00\u201312:30",
                               "fontFamily": "Inter",
                               "fontSize": 13,
                               "fontWeight": "normal"
@@ -1114,7 +1114,7 @@
                               "type": "text",
                               "id": "wHUCt",
                               "fill": "$--fg-muted",
-                              "content": "2    3    2    4    No    Yes    …",
+                              "content": "2    3    2    4    No    Yes    \u2026",
                               "fontFamily": "Inter",
                               "fontSize": 13,
                               "fontWeight": "normal"
@@ -1122,14 +1122,6 @@
                           ]
                         }
                       ]
-                    },
-                    {
-                      "type": "note",
-                      "id": "ioKKP",
-                      "name": "Grid Note",
-                      "width": "fill_container",
-                      "height": 0,
-                      "content": "24 total columns — showing representative subset. Horizontal scroll for overflow. Column widths/order saved per user via settings API. Max 100 records displayed."
                     }
                   ]
                 }
@@ -1138,7 +1130,7 @@
             {
               "type": "frame",
               "id": "WHqKs",
-              "name": "Detail Panel — 800px @shadcn/sheet",
+              "name": "Detail Panel \u2014 800px @shadcn/sheet",
               "width": 500,
               "height": "fill_container",
               "fill": "$--card",
@@ -1209,7 +1201,7 @@
                     {
                       "type": "frame",
                       "id": "vqBha",
-                      "name": "Context Fields — @shadcn/badge [RO]",
+                      "name": "Context Fields \u2014 @shadcn/badge [RO]",
                       "width": "fill_container",
                       "gap": 8,
                       "children": [
@@ -1250,7 +1242,7 @@
                               "type": "text",
                               "id": "wY2Oa",
                               "fill": "$--fg",
-                              "content": "Müller, Hans",
+                              "content": "M\u00fcller, Hans",
                               "fontFamily": "Inter",
                               "fontSize": 11,
                               "fontWeight": "500"
@@ -1338,7 +1330,7 @@
                               "id": "i0zxu",
                               "name": "ctxDateTxt",
                               "fill": "$--fg",
-                              "content": "15.03.2026  14:00–15:30",
+                              "content": "15.03.2026  14:00\u201315:30",
                               "fontFamily": "Inter",
                               "fontSize": 11,
                               "fontWeight": "500"
@@ -1360,7 +1352,7 @@
                     {
                       "type": "frame",
                       "id": "PWRKz",
-                      "name": "Counts — @shadcn/card grid",
+                      "name": "Counts \u2014 @shadcn/card grid",
                       "width": "fill_container",
                       "gap": 8,
                       "children": [
@@ -1561,7 +1553,7 @@
                       "fill": "$--fg-muted",
                       "textGrowth": "fixed-width",
                       "width": "fill_container",
-                      "content": "@shadcn/toggle-group — scrollable area. See W2 for full detail form.",
+                      "content": "@shadcn/toggle-group \u2014 scrollable area. See W2 for full detail form.",
                       "fontFamily": "Inter",
                       "fontSize": 11,
                       "fontWeight": "normal"
@@ -1569,7 +1561,7 @@
                     {
                       "type": "frame",
                       "id": "yiNqc",
-                      "name": "Rating: Room — [scale: school 1-6]",
+                      "name": "Rating: Room \u2014 [scale: school 1-6]",
                       "width": "fill_container",
                       "layout": "vertical",
                       "gap": 4,
@@ -1754,7 +1746,7 @@
                     {
                       "type": "frame",
                       "id": "J39QI",
-                      "name": "Rating: Communication — [scale: school 1-6]",
+                      "name": "Rating: Communication \u2014 [scale: school 1-6]",
                       "width": "fill_container",
                       "layout": "vertical",
                       "gap": 4,
@@ -1873,7 +1865,7 @@
                               "id": "UggNE",
                               "name": "s2dots",
                               "fill": "$--fg-muted",
-                              "content": "… 4 5 6",
+                              "content": "\u2026 4 5 6",
                               "fontFamily": "Inter",
                               "fontSize": 11,
                               "fontWeight": "normal"

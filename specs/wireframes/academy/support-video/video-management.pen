@@ -21,7 +21,10 @@
           "height": 56,
           "id": "hANzP",
           "name": "Page Header",
-          "padding": [0, 24],
+          "padding": [
+            0,
+            24
+          ],
           "type": "frame",
           "width": "fill_container"
         },
@@ -57,7 +60,10 @@
               "gap": 4,
               "id": "7qj7e",
               "name": "b1",
-              "padding": [6, 10],
+              "padding": [
+                6,
+                10
+              ],
               "stroke": {
                 "align": "inside",
                 "fill": "$--border",
@@ -94,7 +100,10 @@
               "gap": 4,
               "id": "TLEXo",
               "name": "b2",
-              "padding": [6, 10],
+              "padding": [
+                6,
+                10
+              ],
               "stroke": {
                 "align": "inside",
                 "fill": "$--border",
@@ -131,7 +140,10 @@
               "gap": 4,
               "id": "PWrMJ",
               "name": "b3",
-              "padding": [6, 10],
+              "padding": [
+                6,
+                10
+              ],
               "stroke": {
                 "align": "inside",
                 "fill": "$--border",
@@ -176,7 +188,10 @@
               "gap": 4,
               "id": "YsAwk",
               "name": "b4",
-              "padding": [6, 10],
+              "padding": [
+                6,
+                10
+              ],
               "stroke": {
                 "align": "inside",
                 "fill": "$--border",
@@ -189,7 +204,10 @@
           "gap": 6,
           "id": "Kh6fk",
           "name": "Toolbar",
-          "padding": [8, 24],
+          "padding": [
+            8,
+            24
+          ],
           "stroke": {
             "align": "inside",
             "fill": "$--border",
@@ -219,7 +237,10 @@
                   ],
                   "id": "3niIF",
                   "name": "th1",
-                  "padding": [10, 8],
+                  "padding": [
+                    10,
+                    8
+                  ],
                   "type": "frame",
                   "width": 50
                 },
@@ -238,7 +259,10 @@
                   ],
                   "id": "4CISj",
                   "name": "th2",
-                  "padding": [10, 8],
+                  "padding": [
+                    10,
+                    8
+                  ],
                   "type": "frame",
                   "width": "fill_container"
                 },
@@ -257,7 +281,10 @@
                   ],
                   "id": "kYVHq",
                   "name": "th3",
-                  "padding": [10, 8],
+                  "padding": [
+                    10,
+                    8
+                  ],
                   "type": "frame",
                   "width": 80
                 },
@@ -276,7 +303,10 @@
                   ],
                   "id": "4M3vj",
                   "name": "th4",
-                  "padding": [10, 8],
+                  "padding": [
+                    10,
+                    8
+                  ],
                   "type": "frame",
                   "width": 150
                 },
@@ -295,7 +325,10 @@
                   ],
                   "id": "0kro7",
                   "name": "th5",
-                  "padding": [10, 8],
+                  "padding": [
+                    10,
+                    8
+                  ],
                   "type": "frame",
                   "width": 80
                 },
@@ -314,7 +347,10 @@
                   ],
                   "id": "acZ9a",
                   "name": "th6",
-                  "padding": [10, 8],
+                  "padding": [
+                    10,
+                    8
+                  ],
                   "type": "frame",
                   "width": 100
                 },
@@ -333,7 +369,10 @@
                   ],
                   "id": "Oyd0b",
                   "name": "th7",
-                  "padding": [10, 8],
+                  "padding": [
+                    10,
+                    8
+                  ],
                   "type": "frame",
                   "width": 200
                 }
@@ -368,7 +407,10 @@
                   ],
                   "id": "A3MjC",
                   "name": "r1a",
-                  "padding": [10, 8],
+                  "padding": [
+                    10,
+                    8
+                  ],
                   "type": "frame",
                   "width": 50
                 },
@@ -387,7 +429,10 @@
                   ],
                   "id": "1df2h",
                   "name": "r1b",
-                  "padding": [10, 8],
+                  "padding": [
+                    10,
+                    8
+                  ],
                   "type": "frame",
                   "width": "fill_container"
                 },
@@ -424,7 +469,10 @@
                   ],
                   "id": "vXJSD",
                   "name": "r1c",
-                  "padding": [10, 8],
+                  "padding": [
+                    10,
+                    8
+                  ],
                   "type": "frame",
                   "width": 80
                 },
@@ -443,7 +491,10 @@
                   ],
                   "id": "K2yyL",
                   "name": "r1d",
-                  "padding": [10, 8],
+                  "padding": [
+                    10,
+                    8
+                  ],
                   "type": "frame",
                   "width": 150
                 },
@@ -462,7 +513,10 @@
                   ],
                   "id": "zret4",
                   "name": "r1e",
-                  "padding": [10, 8],
+                  "padding": [
+                    10,
+                    8
+                  ],
                   "type": "frame",
                   "width": 80
                 },
@@ -481,7 +535,10 @@
                   ],
                   "id": "97Ls7",
                   "name": "r1f",
-                  "padding": [10, 8],
+                  "padding": [
+                    10,
+                    8
+                  ],
                   "type": "frame",
                   "width": 100
                 },
@@ -500,7 +557,10 @@
                   ],
                   "id": "QCdOB",
                   "name": "r1g",
-                  "padding": [10, 8],
+                  "padding": [
+                    10,
+                    8
+                  ],
                   "type": "frame",
                   "width": 200
                 }
@@ -534,7 +594,10 @@
                   ],
                   "id": "YkwWk",
                   "name": "r2a",
-                  "padding": [10, 8],
+                  "padding": [
+                    10,
+                    8
+                  ],
                   "type": "frame",
                   "width": 50
                 },
@@ -553,7 +616,10 @@
                   ],
                   "id": "T20gr",
                   "name": "r2b",
-                  "padding": [10, 8],
+                  "padding": [
+                    10,
+                    8
+                  ],
                   "type": "frame",
                   "width": "fill_container"
                 },
@@ -590,7 +656,10 @@
                   ],
                   "id": "Mcc0J",
                   "name": "r2c",
-                  "padding": [10, 8],
+                  "padding": [
+                    10,
+                    8
+                  ],
                   "type": "frame",
                   "width": 80
                 },
@@ -609,7 +678,10 @@
                   ],
                   "id": "j9bRB",
                   "name": "r2d",
-                  "padding": [10, 8],
+                  "padding": [
+                    10,
+                    8
+                  ],
                   "type": "frame",
                   "width": 150
                 },
@@ -628,7 +700,10 @@
                   ],
                   "id": "2nNRP",
                   "name": "r2e",
-                  "padding": [10, 8],
+                  "padding": [
+                    10,
+                    8
+                  ],
                   "type": "frame",
                   "width": 80
                 },
@@ -647,7 +722,10 @@
                   ],
                   "id": "IXJyV",
                   "name": "r2f",
-                  "padding": [10, 8],
+                  "padding": [
+                    10,
+                    8
+                  ],
                   "type": "frame",
                   "width": 100
                 },
@@ -666,7 +744,10 @@
                   ],
                   "id": "8pFZd",
                   "name": "r2g",
-                  "padding": [10, 8],
+                  "padding": [
+                    10,
+                    8
+                  ],
                   "type": "frame",
                   "width": 200
                 }
@@ -724,7 +805,10 @@
                   "fill": "$--primary",
                   "id": "kEgS4",
                   "name": "fp1",
-                  "padding": [6, 10],
+                  "padding": [
+                    6,
+                    10
+                  ],
                   "type": "frame"
                 }
               ],
@@ -738,7 +822,10 @@
           "id": "4uVXn",
           "justifyContent": "space_between",
           "name": "Footer",
-          "padding": [12, 24],
+          "padding": [
+            12,
+            24
+          ],
           "stroke": {
             "align": "inside",
             "fill": "$--border",
@@ -748,14 +835,6 @@
           },
           "type": "frame",
           "width": "fill_container"
-        },
-        {
-          "content": "[DataTable] 7-col grid \u2192 @shadcn/table DataTable pattern\nDetail panel: path, previewImage, title, lengthInSeconds, category combobox, description textarea\nTwo player dialog types:\n[cond: video.type === VIDEO] video.js player 800px dialog\n[cond: video.type === STREAM] iframe embed 1200px dialog\nWatch button opens appropriate player based on video type",
-          "height": 0,
-          "id": "d5BsQ",
-          "name": "Annotations",
-          "type": "note",
-          "width": 1440
         }
       ],
       "fill": "$--bg",
@@ -796,7 +875,10 @@
           "id": "qXV6B",
           "justifyContent": "space_between",
           "name": "dhdr",
-          "padding": [20, 24],
+          "padding": [
+            20,
+            24
+          ],
           "stroke": {
             "align": "inside",
             "fill": "$--border",
@@ -841,7 +923,10 @@
                       "height": 36,
                       "id": "cJhRX",
                       "name": "f1i",
-                      "padding": [0, 12],
+                      "padding": [
+                        0,
+                        12
+                      ],
                       "stroke": {
                         "align": "inside",
                         "fill": "$--input-border",
@@ -888,7 +973,10 @@
                       "height": 36,
                       "id": "yOa00",
                       "name": "f2i",
-                      "padding": [0, 12],
+                      "padding": [
+                        0,
+                        12
+                      ],
                       "stroke": {
                         "align": "inside",
                         "fill": "$--input-border",
@@ -944,7 +1032,10 @@
                       "height": 36,
                       "id": "vJAjc",
                       "name": "f3i",
-                      "padding": [0, 12],
+                      "padding": [
+                        0,
+                        12
+                      ],
                       "stroke": {
                         "align": "inside",
                         "fill": "$--input-border",
@@ -991,7 +1082,10 @@
                       "height": 36,
                       "id": "MgbnH",
                       "name": "f4i",
-                      "padding": [0, 12],
+                      "padding": [
+                        0,
+                        12
+                      ],
                       "stroke": {
                         "align": "inside",
                         "fill": "$--input-border",
@@ -1058,7 +1152,10 @@
                       "id": "9fBJ1",
                       "justifyContent": "space_between",
                       "name": "f5i",
-                      "padding": [0, 12],
+                      "padding": [
+                        0,
+                        12
+                      ],
                       "stroke": {
                         "align": "inside",
                         "fill": "$--input-border",
@@ -1200,7 +1297,10 @@
               "cornerRadius": 8,
               "id": "VLLMl",
               "name": "cb",
-              "padding": [10, 20],
+              "padding": [
+                10,
+                20
+              ],
               "stroke": {
                 "align": "inside",
                 "fill": "$--border",
@@ -1225,7 +1325,10 @@
               "fill": "$--primary",
               "id": "SP7kV",
               "name": "sb",
-              "padding": [10, 20],
+              "padding": [
+                10,
+                20
+              ],
               "type": "frame"
             }
           ],
@@ -1233,7 +1336,10 @@
           "id": "7y8J8",
           "justifyContent": "end",
           "name": "dftr",
-          "padding": [16, 24],
+          "padding": [
+            16,
+            24
+          ],
           "stroke": {
             "align": "inside",
             "fill": "$--border",

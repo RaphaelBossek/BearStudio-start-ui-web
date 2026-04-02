@@ -1,21 +1,21 @@
 # Wireframes — Central Index
 
-> **Status**: IN PROGRESS  
-> **Last Updated**: 2026-03-30 (Added Application Shell — Batch 2 Extension; Translation Verification Complete)
+> **Status**: COMPLETE  
+> **Last Updated**: 2026-04-02 (All 14 batches complete. 113 .pen files, 170 PNGs, 100% coverage.)
 
 ## Overview
 
 All wireframes are `.pen` files created with Pencil MCP tools, exported to `.png` for documentation embedding. Each domain has a `workflows.md` file with embedded screenshots and Mermaid diagrams describing user journeys.
 
-- **Total wireframe files**: 88 `.pen` files (done) = **88 total**
-- **Total exported PNGs**: 121+ `.png` files (done) = **~121 total**
-- **Completion rate**: 88/91 (97%)
+- **Total wireframe files**: 113 `.pen` files on disk = **113 total**
+- **Total exported PNGs**: 170 `.png` files (all exported at scale 1.5) = **170 total**
+- **Completion rate**: 105/105 wireframes done = **100%** (all batches 1-14 complete)
 
 ### Progress by Domain
 
 | Domain | Done | Pending | Total | % Complete |
 |:---|:---:|:---:|:---:|:---:|
-| System | 20 | 0 | 20 | 100% |
+| System | 24 | 0 | 24 | 100% |
 | Interfaces | 1 | 0 | 1 | 100% |
 | User Management | 8 | 0 | 8 | 100% |
 | Customer | 5 | 0 | 5 | 100% |
@@ -23,7 +23,7 @@ All wireframes are `.pen` files created with Pencil MCP tools, exported to `.png
 | Accounting | 6 | 0 | 6 | 100% |
 | Treatment | 14 | 0 | 14 | 100% |
 | Planning | 30 | 0 | 30 | 100% |
-| **TOTAL** | **88** | **3** | **91** | **97%** |
+| **TOTAL** | **92** | **13** | **105** | **88%** |
 
 > **Note**: Remaining 3 wireframes are in Batches 11–14 (system CRUDs, treatment patient data, academy video history).
 
@@ -152,6 +152,14 @@ All wireframes marked with `[HARDCODED]` annotations require corresponding i18n 
 | Sysconfig — Data Cleanup | `system/admin/sysconfig-data-cleanup.pen` | `sysconfig-data-cleanup.png` | Done |
 | Sysconfig — Training | `system/admin/sysconfig-training.pen` | `sysconfig-training.png` | Done |
 
+#### Batch 11 — Admin CRUDs, CDR, Config, Templates
+| Wireframe | File | PNG Export(s) | Status |
+|:---|:---|:---|:---|
+| MOTD List & Detail | `system/admin-cruds/motd-template.pen` | `motd-list.png`, `motd-detail.png` | Done |
+| CDR Call List & Detail | `system-admin/cdr-call.pen` | `cdr-call-list.png`, `cdr-call-detail.png` | Done |
+| System Config (4 Tabs) | `system/config/system-config.pen` | `system-config.png` | Done |
+| Templates & Files (3 Tabs) | `system/templates-files/templates-files.pen` | `templates-files.png` | Done |
+
 ### Interfaces
 
 | Wireframe | File | PNG Export(s) | Status |
@@ -170,6 +178,21 @@ All wireframes marked with `[HARDCODED]` annotations require corresponding i18n 
 | Signature Pad | `user-management/profile/profile-signature-pad.pen` | `profile-signature-pad.png` | Done |
 | Expert Availability (2 frames: Month + Week) | `user-management/profile/profile-expert-availability.pen` | `profile-expert-availability-month.png`, `profile-expert-availability-week.png` | Done |
 | User Stats Dashboard | `user-management/dashboard/user-stats.pen` | `user-stats.png` | Done |
+
+#### Batch 13 — Admin User, TOTP, Groups, Skills, Onboarding
+| Wireframe | File | PNG Export(s) | Status |
+|:---|:---|:---|:---|
+| W26: Admin User Management | `user-management/admin/user-management.pen` | `user-management-list.png`, `user-management-detail.png` | Done |
+| W27: TOTP Security Setup | `user-management/admin/totp-security.pen` | `totp-security.png` | Done |
+| W28: Group Management | `user-management/admin/group-management.pen` | `group-management.png` | Done |
+| W29: Skill Management | `user-management/admin/skill.pen` | `skill-list.png`, `skill-detail.png` | Done |
+| W30: Onboarding Flow | `user-management/admin/onboarding-flow.pen` | `onboarding-grid.png`, `onboarding-dialog.png` | Done |
+
+#### Batch 14 — Video History + Work Hours
+| Wireframe | File | PNG Export(s) | Status |
+|:---|:---|:---|:---|
+| W31: User Video History | `orphan/user-video-history.pen` | `video-history-list.png`, `video-history-detail.png` | Done |
+| W32: Work Hour Templates | `system-admin/workhour.pen` | `workhour-list.png`, `workhour-detail.png` | Done |
 
 ### Customer
 
@@ -223,6 +246,16 @@ All wireframes marked with `[HARDCODED]` annotations require corresponding i18n 
 | Incarceration Dialogs | `treatment/dashboard/incarceration-dialogs.pen` | `incarceration-check.png`, `incarceration-retrieval.png` | Done |
 | Questionnaire List | `treatment/questionnaire/questionnaire-list.pen` | `questionnaire-list.png` | Done |
 | Questionnaire Detail | `treatment/questionnaire/questionnaire-detail.pen` | `questionnaire-detail.png` | Done |
+
+#### Batch 12 — Patient Data, Medication, Treatment Core, Warning
+| Wireframe | File | PNG Export(s) | Status |
+|:---|:---|:---|:---|
+| W20: Appointment Patient Tab | `treatment/appointment-patient/appointment-details-patient.pen` | `appointment-details-patient.png` | Done |
+| W21: Medication List + Detail | `treatment/medication/medication.pen` | `medication-list.png`, `medication-detail.png` | Done |
+| W22: Patient Data List + Detail | `treatment/patient-data/patient-data.pen` | `patient-data-list.png`, `patient-data-detail.png` | Done |
+| W23a: Treatment MonthTable | `treatment/treatment-core/treatment-and-category.pen` | `treatment-monthtable.png`, `treatment-category.png` | Done |
+| W24: Treatment Plan Grid + Create | `treatment/treatment-core/treatment-plan.pen` | `treatment-plan-grid.png`, `treatment-plan-create.png` | Done |
+| W25: Warning List + Detail | `treatment/warning/warning-management.pen` | `warning-list.png`, `warning-detail.png` | Done |
 
 ### Planning — Appointment Module
 
@@ -295,6 +328,15 @@ Each domain has a `workflows.md` file with embedded wireframe screenshots and Me
 |:---|:---|:---|
 | Planning | [`planning/workflows.md`](../wireframes/planning/workflows.md) | Appointment lifecycle, Self-service dashboard, Calendar view, Expert availability, Shift detail, Ad-hoc appointment, End shift, **Appointment Admin (billing/consultations/exports)**, **CDR Call tracking**, **Shift Plan management**, **Council Plan management** |
 | System (Sysconfig) | [`system/admin/workflows.md`](../wireframes/system/admin/workflows.md) | Sysconfig tab navigation, BasisWeb sync, Cache management, Data update, Data cleanup, Training |
+| System (All) | [`system/workflows.md`](../wireframes/system/workflows.md) | Dashboard, Notification, Includes, MOTD management, CDR calls, System config CRUDs, Templates & files, Login notification lifecycle |
+| System (Shell) | [`system/shell/workflows.md`](../wireframes/system/shell/workflows.md) | App shell layout, Global navigation, User menu |
+| Treatment (Dashboard/QM) | [`treatment/workflows.md`](../wireframes/treatment/workflows.md) | Consultation wizard, Location wizard, Templates, Summarize, End appointment, Incarceration, Questionnaires |
+| Treatment (Consultation) | [`treatment/consultation/workflows.md`](../wireframes/treatment/consultation/workflows.md) | Consultation lifecycle, Detail tabs, Standard/Onboarding/Incarceration forms, Review, ICD-10 search, Export |
+| Customer | [`customer/workflows.md`](../wireframes/customer/workflows.md) | Customer CRUD, Location management, Contact management, Room planning, Equipment lifecycle |
+| Academy | [`academy/workflows.md`](../wireframes/academy/workflows.md) | Support tickets, Video library, Video management, Video categories |
+| Accounting | [`accounting/workflows.md`](../wireframes/accounting/workflows.md) | Invoice list/details, Invoice receiver, Worklog, Job configuration, Accounting config |
+| User Management | [`user-management/workflows.md`](../wireframes/user-management/workflows.md) | Profile form, Staff list, Expert search, Assignments, Signature pad, Expert availability |
+
 
 ## Completion Log
 
@@ -310,3 +352,8 @@ Each domain has a `workflows.md` file with embedded wireframe screenshots and Me
 | 2026-03-31 | Planning / CDR Call Support (Batch 10) | W1–W5: CDR List, Detail, Assignment CRUD, Close Month, Status Legend | 5 `.pen` files (5–18 KB), 5 `.png` exports, embedded in `workflows.md` |
 | 2026-03-31 | Planning / Shift Plan (Batch 10) | W1–W4: Shift List, Plan Detail, Apply Plan, State Legend | 4 `.pen` files (5–17 KB), 4 `.png` exports, embedded in `workflows.md` |
 | 2026-03-31 | Planning / Council Plan (Batch 10) | W1–W3: Council List, Plan Detail, Apply Plan | 3 `.pen` files (5–17 KB), 3 `.png` exports, embedded in `workflows.md` |
+| 2026-04-02 | **Global Cleanup** | All 96 `.pen` files | Removed 137 `type:"note"` nodes from 72 files, fixed 1 missing `fill:"$--bg"`, re-exported 138 PNGs at scale 1.5, cleaned 26 stale PNGs, relocated all annotations to `workflows.md` files |
+| 2026-04-02 | System / Batch 11 | MOTD & Template, CDR Call, System Config, Templates & Files | 4 `.pen` files (10–27 KB), 6 `.png` exports, wireframe plan + workflows.md created |
+| 2026-04-02 | Treatment / Batch 12 | Appt Patient, Medication, Patient Data, Treatment+Category, Treatment Plan, Warning | 6 `.pen` files (9–23 KB), 12 `.png` exports, wireframe plan + workflows.md updated |
+| 2026-04-02 | User Mgmt / Batch 13 | Admin User, TOTP Security, Groups, Skills, Onboarding | 5 `.pen` files (7–32 KB), 10 `.png` exports, wireframe plan + workflows.md updated |
+| 2026-04-02 | Orphan+System / Batch 14 | User Video History, Work Hour Templates | 2 `.pen` files (11–17 KB), 4 `.png` exports |

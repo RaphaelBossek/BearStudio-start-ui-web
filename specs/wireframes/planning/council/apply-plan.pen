@@ -1,1 +1,340 @@
-{"version":"2.9","variables":{"--bg":{"type":"color","value":"#FFFFFF"},"--border":{"type":"color","value":"#E5E5E5"},"--card":{"type":"color","value":"#FAFAFA"},"--destructive":{"type":"color","value":"#DC2626"},"--fg":{"type":"color","value":"#0A0A0A"},"--fg-muted":{"type":"color","value":"#737373"},"--header-bg":{"type":"color","value":"#F98E33"},"--header-fg":{"type":"color","value":"#FFFFFF"},"--info-bg":{"type":"color","value":"#EFF6FF"},"--info-fg":{"type":"color","value":"#1D4ED8"},"--input-border":{"type":"color","value":"#D4D4D4"},"--primary":{"type":"color","value":"#171717"},"--primary-fg":{"type":"color","value":"#FAFAFA"},"--secondary":{"type":"color","value":"#F5F5F5"},"--success-bg":{"type":"color","value":"#F0FDF4"},"--success-fg":{"type":"color","value":"#166534"},"--warning":{"type":"color","value":"#F59E0B"},"--warning-bg":{"type":"color","value":"#FFFBEB"}},"children":[{"children":[{"alignItems":"center","children":[{"fill":"$--header-fg","height":20,"iconFontFamily":"lucide","iconFontName":"play","id":"5jR0c","name":"hIcon","type":"icon_font","width":20},{"content":"Apply Council Plan","fill":"$--header-fg","fontFamily":"Inter","fontSize":16,"fontWeight":"600","id":"N9dTv","name":"hTitle","type":"text"}],"cornerRadius":[12,12,0,0],"fill":"$--header-bg","gap":10,"height":48,"id":"ZucOe","name":"header","padding":[0,16],"type":"frame","width":"fill_container"},{"children":[{"content":"Generate council appointments from plan templates until the selected date.","fill":"$--fg","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"6vCWE","name":"infoTxt","textGrowth":"fixed-width","type":"text","width":"fill_container"},{"content":"Generate Until *","fill":"$--fg","fontFamily":"Inter","fontSize":12,"fontWeight":"500","id":"IcpMa","name":"dateLabel","type":"text"},{"alignItems":"center","children":[{"content":"2026-06-30","fill":"$--fg","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"bf16Z","type":"text"},{"fill":"$--fg-muted","height":14,"iconFontFamily":"lucide","iconFontName":"calendar","id":"MmGnY","type":"icon_font","width":14}],"cornerRadius":8,"height":36,"id":"qZQkV","justifyContent":"space_between","name":"dateInp","padding":[8,12],"stroke":{"align":"inside","fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"},{"children":[{"fill":"$--info-fg","height":16,"iconFontFamily":"lucide","iconFontName":"info","id":"abRlI","name":"alertIcon","type":"icon_font","width":16},{"content":"Council appointments will be created for all active plans. Existing appointments will not be duplicated.","fill":"$--info-fg","fontFamily":"Inter","fontSize":12,"fontWeight":"normal","id":"UoOrk","name":"alertTxt","textGrowth":"fixed-width","type":"text","width":"fill_container"}],"cornerRadius":8,"fill":"$--info-bg","gap":10,"id":"GDKrA","name":"alert","padding":16,"type":"frame","width":"fill_container"}],"gap":16,"id":"nNrBQ","layout":"vertical","name":"body","padding":24,"type":"frame","width":"fill_container"},{"alignItems":"center","children":[{"alignItems":"center","children":[{"content":"Cancel","fill":"$--fg","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"60fOU","type":"text"}],"cornerRadius":8,"height":36,"id":"f5e5n","name":"cancelBtn","padding":[0,16],"stroke":{"align":"inside","fill":"$--input-border","thickness":1},"type":"frame"},{"alignItems":"center","children":[{"fill":"$--primary-fg","height":14,"iconFontFamily":"lucide","iconFontName":"play","id":"kyGKM","type":"icon_font","width":14},{"content":"Generate","fill":"$--primary-fg","fontFamily":"Inter","fontSize":13,"fontWeight":"500","id":"c6pk8","type":"text"}],"cornerRadius":8,"fill":"$--primary","gap":6,"height":36,"id":"ozhJw","name":"genBtn","padding":[0,16],"type":"frame"}],"gap":12,"height":56,"id":"e33u1","justifyContent":"end","name":"footer","padding":[0,24],"stroke":{"align":"inside","fill":"$--border","thickness":{"top":1}},"type":"frame","width":"fill_container"}],"cornerRadius":12,"effect":{"blur":24,"color":"#00000020","offset":{"x":0,"y":4},"shadowType":"outer","type":"shadow"},"fill":"$--bg","id":"CL1Cq","layout":"vertical","name":"W3: Apply Council Plan Dialog","stroke":{"align":"inside","fill":"$--border","thickness":1},"type":"frame","width":500,"x":0,"y":0},{"content":"@service: CouncilPlanService.publishNext(date) -> jobId\nPolls CouncilPlanService.getStatus(jobId)\nOn complete: CouncilPlanService.finishStatus(jobId)\nSame async pattern as Shift Plan and Appointment Plan","height":160,"id":"otADn","name":"note","type":"note","width":350,"x":560,"y":0}]}
+{
+  "version": "2.9",
+  "variables": {
+    "--bg": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--border": {
+      "type": "color",
+      "value": "#E5E5E5"
+    },
+    "--card": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "--destructive": {
+      "type": "color",
+      "value": "#DC2626"
+    },
+    "--fg": {
+      "type": "color",
+      "value": "#0A0A0A"
+    },
+    "--fg-muted": {
+      "type": "color",
+      "value": "#737373"
+    },
+    "--header-bg": {
+      "type": "color",
+      "value": "#F98E33"
+    },
+    "--header-fg": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--info-bg": {
+      "type": "color",
+      "value": "#EFF6FF"
+    },
+    "--info-fg": {
+      "type": "color",
+      "value": "#1D4ED8"
+    },
+    "--input-border": {
+      "type": "color",
+      "value": "#D4D4D4"
+    },
+    "--primary": {
+      "type": "color",
+      "value": "#171717"
+    },
+    "--primary-fg": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "--secondary": {
+      "type": "color",
+      "value": "#F5F5F5"
+    },
+    "--success-bg": {
+      "type": "color",
+      "value": "#F0FDF4"
+    },
+    "--success-fg": {
+      "type": "color",
+      "value": "#166534"
+    },
+    "--warning": {
+      "type": "color",
+      "value": "#F59E0B"
+    },
+    "--warning-bg": {
+      "type": "color",
+      "value": "#FFFBEB"
+    }
+  },
+  "children": [
+    {
+      "children": [
+        {
+          "alignItems": "center",
+          "children": [
+            {
+              "fill": "$--header-fg",
+              "height": 20,
+              "iconFontFamily": "lucide",
+              "iconFontName": "play",
+              "id": "5jR0c",
+              "name": "hIcon",
+              "type": "icon_font",
+              "width": 20
+            },
+            {
+              "content": "Apply Council Plan",
+              "fill": "$--header-fg",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "600",
+              "id": "N9dTv",
+              "name": "hTitle",
+              "type": "text"
+            }
+          ],
+          "cornerRadius": [
+            12,
+            12,
+            0,
+            0
+          ],
+          "fill": "$--header-bg",
+          "gap": 10,
+          "height": 48,
+          "id": "ZucOe",
+          "name": "header",
+          "padding": [
+            0,
+            16
+          ],
+          "type": "frame",
+          "width": "fill_container"
+        },
+        {
+          "children": [
+            {
+              "content": "Generate council appointments from plan templates until the selected date.",
+              "fill": "$--fg",
+              "fontFamily": "Inter",
+              "fontSize": 13,
+              "fontWeight": "normal",
+              "id": "6vCWE",
+              "name": "infoTxt",
+              "textGrowth": "fixed-width",
+              "type": "text",
+              "width": "fill_container"
+            },
+            {
+              "content": "Generate Until *",
+              "fill": "$--fg",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "500",
+              "id": "IcpMa",
+              "name": "dateLabel",
+              "type": "text"
+            },
+            {
+              "alignItems": "center",
+              "children": [
+                {
+                  "content": "2026-06-30",
+                  "fill": "$--fg",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal",
+                  "id": "bf16Z",
+                  "type": "text"
+                },
+                {
+                  "fill": "$--fg-muted",
+                  "height": 14,
+                  "iconFontFamily": "lucide",
+                  "iconFontName": "calendar",
+                  "id": "MmGnY",
+                  "type": "icon_font",
+                  "width": 14
+                }
+              ],
+              "cornerRadius": 8,
+              "height": 36,
+              "id": "qZQkV",
+              "justifyContent": "space_between",
+              "name": "dateInp",
+              "padding": [
+                8,
+                12
+              ],
+              "stroke": {
+                "align": "inside",
+                "fill": "$--input-border",
+                "thickness": 1
+              },
+              "type": "frame",
+              "width": "fill_container"
+            },
+            {
+              "children": [
+                {
+                  "fill": "$--info-fg",
+                  "height": 16,
+                  "iconFontFamily": "lucide",
+                  "iconFontName": "info",
+                  "id": "abRlI",
+                  "name": "alertIcon",
+                  "type": "icon_font",
+                  "width": 16
+                },
+                {
+                  "content": "Council appointments will be created for all active plans. Existing appointments will not be duplicated.",
+                  "fill": "$--info-fg",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "normal",
+                  "id": "UoOrk",
+                  "name": "alertTxt",
+                  "textGrowth": "fixed-width",
+                  "type": "text",
+                  "width": "fill_container"
+                }
+              ],
+              "cornerRadius": 8,
+              "fill": "$--info-bg",
+              "gap": 10,
+              "id": "GDKrA",
+              "name": "alert",
+              "padding": 16,
+              "type": "frame",
+              "width": "fill_container"
+            }
+          ],
+          "gap": 16,
+          "id": "nNrBQ",
+          "layout": "vertical",
+          "name": "body",
+          "padding": 24,
+          "type": "frame",
+          "width": "fill_container"
+        },
+        {
+          "alignItems": "center",
+          "children": [
+            {
+              "alignItems": "center",
+              "children": [
+                {
+                  "content": "Cancel",
+                  "fill": "$--fg",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal",
+                  "id": "60fOU",
+                  "type": "text"
+                }
+              ],
+              "cornerRadius": 8,
+              "height": 36,
+              "id": "f5e5n",
+              "name": "cancelBtn",
+              "padding": [
+                0,
+                16
+              ],
+              "stroke": {
+                "align": "inside",
+                "fill": "$--input-border",
+                "thickness": 1
+              },
+              "type": "frame"
+            },
+            {
+              "alignItems": "center",
+              "children": [
+                {
+                  "fill": "$--primary-fg",
+                  "height": 14,
+                  "iconFontFamily": "lucide",
+                  "iconFontName": "play",
+                  "id": "kyGKM",
+                  "type": "icon_font",
+                  "width": 14
+                },
+                {
+                  "content": "Generate",
+                  "fill": "$--primary-fg",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "500",
+                  "id": "c6pk8",
+                  "type": "text"
+                }
+              ],
+              "cornerRadius": 8,
+              "fill": "$--primary",
+              "gap": 6,
+              "height": 36,
+              "id": "ozhJw",
+              "name": "genBtn",
+              "padding": [
+                0,
+                16
+              ],
+              "type": "frame"
+            }
+          ],
+          "gap": 12,
+          "height": 56,
+          "id": "e33u1",
+          "justifyContent": "end",
+          "name": "footer",
+          "padding": [
+            0,
+            24
+          ],
+          "stroke": {
+            "align": "inside",
+            "fill": "$--border",
+            "thickness": {
+              "top": 1
+            }
+          },
+          "type": "frame",
+          "width": "fill_container"
+        }
+      ],
+      "cornerRadius": 12,
+      "effect": {
+        "blur": 24,
+        "color": "#00000020",
+        "offset": {
+          "x": 0,
+          "y": 4
+        },
+        "shadowType": "outer",
+        "type": "shadow"
+      },
+      "fill": "$--bg",
+      "id": "CL1Cq",
+      "layout": "vertical",
+      "name": "W3: Apply Council Plan Dialog",
+      "stroke": {
+        "align": "inside",
+        "fill": "$--border",
+        "thickness": 1
+      },
+      "type": "frame",
+      "width": 500,
+      "x": 0,
+      "y": 0
+    }
+  ]
+}

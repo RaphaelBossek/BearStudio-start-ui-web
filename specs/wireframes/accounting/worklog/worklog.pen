@@ -674,7 +674,7 @@
                       "id": "YQkQN",
                       "name": "r1bt",
                       "fill": "$--fg",
-                      "content": "Shift — Morning",
+                      "content": "Shift \u2014 Morning",
                       "fontFamily": "Inter",
                       "fontSize": 12,
                       "fontWeight": "normal"
@@ -784,7 +784,7 @@
                       "id": "LMkwW",
                       "name": "r1gt",
                       "fill": "$--fg",
-                      "content": "€ 1,250.00",
+                      "content": "\u20ac 1,250.00",
                       "fontFamily": "Inter",
                       "fontSize": 12,
                       "fontWeight": "normal"
@@ -976,7 +976,7 @@
                       "id": "NkD2N",
                       "name": "r2gt",
                       "fill": "$--fg",
-                      "content": "€ 320.00",
+                      "content": "\u20ac 320.00",
                       "fontFamily": "Inter",
                       "fontSize": 12,
                       "fontWeight": "normal"
@@ -1034,7 +1034,7 @@
               "id": "ri3cV",
               "name": "fcount",
               "fill": "$--fg-muted",
-              "content": "Showing 2 of 18 entries • December 2025",
+              "content": "Showing 2 of 18 entries \u2022 December 2025",
               "fontFamily": "Inter",
               "fontSize": 13,
               "fontWeight": "normal"
@@ -1066,7 +1066,7 @@
                       "id": "99pr2",
                       "name": "fprevt",
                       "fill": "$--fg",
-                      "content": "←",
+                      "content": "\u2190",
                       "fontFamily": "Inter",
                       "fontSize": 12,
                       "fontWeight": "normal"
@@ -1145,7 +1145,7 @@
                       "id": "BKTi0",
                       "name": "fnxtt",
                       "fill": "$--fg",
-                      "content": "→",
+                      "content": "\u2192",
                       "fontFamily": "Inter",
                       "fontSize": 12,
                       "fontWeight": "normal"
@@ -1173,7 +1173,7 @@
               "id": "z7k2Z",
               "name": "stitle",
               "fill": "$--fg",
-              "content": "Weekly Assignments Matrix [matrix: 7d×3shifts]",
+              "content": "Weekly Assignments Matrix [matrix: 7d\u00d73shifts]",
               "fontFamily": "Inter",
               "fontSize": 16,
               "fontWeight": "600"
@@ -2293,7 +2293,7 @@
                           "id": "0HM2V",
                           "name": "mr1M3t",
                           "fill": "$--fg-muted",
-                          "content": "—",
+                          "content": "\u2014",
                           "fontFamily": "Inter",
                           "fontSize": 10,
                           "fontWeight": "normal"
@@ -2377,7 +2377,7 @@
                           "id": "ZhHSZ",
                           "name": "mr1T3t",
                           "fill": "$--fg-muted",
-                          "content": "—",
+                          "content": "\u2014",
                           "fontFamily": "Inter",
                           "fontSize": 10,
                           "fontWeight": "normal"
@@ -2522,7 +2522,7 @@
                           "id": "6UFGA",
                           "name": "mr1Th2t",
                           "fill": "$--fg-muted",
-                          "content": "—",
+                          "content": "\u2014",
                           "fontFamily": "Inter",
                           "fontSize": 10,
                           "fontWeight": "normal"
@@ -2545,7 +2545,7 @@
                           "id": "qmU1R",
                           "name": "mr1Th3t",
                           "fill": "$--fg-muted",
-                          "content": "—",
+                          "content": "\u2014",
                           "fontFamily": "Inter",
                           "fontSize": 10,
                           "fontWeight": "normal"
@@ -2629,7 +2629,7 @@
                           "id": "037t3",
                           "name": "mr1Fr3t",
                           "fill": "$--fg-muted",
-                          "content": "—",
+                          "content": "\u2014",
                           "fontFamily": "Inter",
                           "fontSize": 10,
                           "fontWeight": "normal"
@@ -2667,7 +2667,7 @@
                           "id": "RNDDk",
                           "name": "mr1Sa1t",
                           "fill": "$--fg-muted",
-                          "content": "—",
+                          "content": "\u2014",
                           "fontFamily": "Inter",
                           "fontSize": 10,
                           "fontWeight": "normal"
@@ -2690,7 +2690,7 @@
                           "id": "TjyT5",
                           "name": "mr1Sa2t",
                           "fill": "$--fg-muted",
-                          "content": "—",
+                          "content": "\u2014",
                           "fontFamily": "Inter",
                           "fontSize": 10,
                           "fontWeight": "normal"
@@ -2713,7 +2713,7 @@
                           "id": "DPi2l",
                           "name": "mr1Sa3t",
                           "fill": "$--fg-muted",
-                          "content": "—",
+                          "content": "\u2014",
                           "fontFamily": "Inter",
                           "fontSize": 10,
                           "fontWeight": "normal"
@@ -2751,7 +2751,7 @@
                           "id": "xUa8V",
                           "name": "mr1Su1t",
                           "fill": "$--fg-muted",
-                          "content": "—",
+                          "content": "\u2014",
                           "fontFamily": "Inter",
                           "fontSize": 10,
                           "fontWeight": "normal"
@@ -2774,7 +2774,7 @@
                           "id": "MVHOq",
                           "name": "mr1Su2t",
                           "fill": "$--fg-muted",
-                          "content": "—",
+                          "content": "\u2014",
                           "fontFamily": "Inter",
                           "fontSize": 10,
                           "fontWeight": "normal"
@@ -2797,7 +2797,7 @@
                           "id": "mzP9t",
                           "name": "mr1Su3t",
                           "fill": "$--fg-muted",
-                          "content": "—",
+                          "content": "\u2014",
                           "fontFamily": "Inter",
                           "fontSize": 10,
                           "fontWeight": "normal"
@@ -2809,14 +2809,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "note",
-          "id": "fL94q",
-          "name": "Annotations",
-          "width": 1440,
-          "height": 0,
-          "content": "[DataTable] Monthly list → @shadcn/table DataTable pattern\n[matrix: 7d×3shifts] Weekly assignments = 21 columns (expert × day × shift)\n[HARDCODED] All column headers need i18n keys\nMonth/Year selector reused from Invoice List pattern\nToolbar: View/Edit open InvoiceDetails dialog cross-module\n[async: poll job status] ZIP Download triggers background job with polling dialog"
         }
       ]
     }

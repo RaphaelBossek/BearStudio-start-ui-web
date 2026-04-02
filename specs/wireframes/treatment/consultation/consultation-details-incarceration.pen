@@ -1,1 +1,1993 @@
-{"version":"2.9","variables":{"--bg":{"type":"color","value":"#FFFFFF"},"--border":{"type":"color","value":"#E5E5E5"},"--card":{"type":"color","value":"#FAFAFA"},"--danger-bg":{"type":"color","value":"#FEF2F2"},"--destructive":{"type":"color","value":"#DC2626"},"--fg":{"type":"color","value":"#0A0A0A"},"--fg-muted":{"type":"color","value":"#737373"},"--header-bg":{"type":"color","value":"#F98E33"},"--header-fg":{"type":"color","value":"#FFFFFF"},"--info-bg":{"type":"color","value":"#EFF6FF"},"--info-fg":{"type":"color","value":"#1D4ED8"},"--input-border":{"type":"color","value":"#D4D4D4"},"--primary":{"type":"color","value":"#171717"},"--primary-fg":{"type":"color","value":"#FAFAFA"},"--secondary":{"type":"color","value":"#F5F5F5"},"--secondary-fg":{"type":"color","value":"#171717"},"--success-bg":{"type":"color","value":"#F0FDF4"},"--success-fg":{"type":"color","value":"#166534"},"--warning":{"type":"color","value":"#F59E0B"},"--warning-bg":{"type":"color","value":"#FFFBEB"}},"children":[{"children":[{"children":[{"alignItems":"center","children":[{"fill":"$--fg-muted","height":16,"iconFontFamily":"lucide","iconFontName":"lock","id":"s1Ico","type":"icon_font","width":16},{"content":"Incarceration Type","fill":"$--fg","fontFamily":"Inter","fontSize":14,"fontWeight":"600","id":"s1Ttl","type":"text"}],"fill":"$--secondary","height":44,"id":"s1Hdr","padding":[0,16],"type":"frame","width":"fill_container"},{"children":[{"alignItems":"center","children":[{"alignItems":"center","children":[{"content":"INCARCERATION","fill":"$--fg","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"s1SVal","type":"text"},{"fill":"$--fg-muted","height":14,"iconFontFamily":"lucide","iconFontName":"chevron-down","id":"s1SChv","type":"icon_font","width":14}],"cornerRadius":8,"id":"s1Sel","name":"incarcerationType select","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":280},{"alignItems":"center","children":[{"fill":"$--destructive","height":18,"iconFontFamily":"lucide","iconFontName":"siren","id":"s1SiIco","type":"icon_font","width":18}],"cornerRadius":16,"fill":"$--danger-bg","height":32,"id":"s1Siren","justifyContent":"center","name":"[SIREN] icon","type":"frame","width":32}],"gap":16,"id":"s1Row","type":"frame","width":"fill_container"}],"gap":12,"id":"s1Body","layout":"vertical","padding":16,"type":"frame","width":"fill_container"}],"cornerRadius":8,"id":"sec1Inc","layout":"vertical","name":"\u00a71 Incarceration Type","stroke":{"fill":"$--border","thickness":1},"type":"frame","width":"fill_container"},{"children":[{"alignItems":"center","children":[{"fill":"$--fg-muted","height":16,"iconFontFamily":"lucide","iconFontName":"clipboard-check","id":"s2Ico","type":"icon_font","width":16},{"content":"Examination Result","fill":"$--fg","fontFamily":"Inter","fontSize":14,"fontWeight":"600","id":"s2Ttl","type":"text"}],"fill":"$--secondary","height":44,"id":"s2Hdr","padding":[0,16],"type":"frame","width":"fill_container"},{"children":[{"children":[{"children":[{"children":[{"content":"Examination Capability","fill":"$--fg","fontFamily":"Inter","fontSize":12,"fontWeight":"500","id":"s2ExLbl","type":"text"},{"alignItems":"center","children":[{"content":"Select...","fill":"$--fg-muted","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"s2ExV","type":"text"},{"fill":"$--fg-muted","height":14,"iconFontFamily":"lucide","iconFontName":"chevron-down","id":"s2ExC","type":"icon_font","width":14}],"cornerRadius":8,"id":"s2ExSel","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"}],"gap":4,"id":"s2ExCap","layout":"vertical","name":"examination capability","type":"frame","width":"fill_container"},{"children":[{"alignItems":"center","children":[{"content":"Incarceration Capability *","fill":"$--fg","fontFamily":"Inter","fontSize":12,"fontWeight":"500","id":"s2InLT","type":"text"},{"fill":"$--destructive","height":14,"iconFontFamily":"lucide","iconFontName":"siren","id":"s2InSiren","type":"icon_font","width":14},{"content":"[SIREN]","fill":"$--destructive","fontFamily":"Inter","fontSize":10,"fontWeight":"normal","id":"s2InTag","type":"text"}],"gap":6,"id":"s2InLbl","type":"frame"},{"alignItems":"center","children":[{"content":"Select... *","fill":"$--fg-muted","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"s2InV","type":"text"},{"fill":"$--fg-muted","height":14,"iconFontFamily":"lucide","iconFontName":"chevron-down","id":"s2InC","type":"icon_font","width":14}],"cornerRadius":8,"id":"s2InSel","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"}],"gap":4,"id":"s2InCap","layout":"vertical","name":"incarceration capability * [SIREN]","type":"frame","width":"fill_container"},{"children":[{"content":"Capability Comment","fill":"$--fg","fontFamily":"Inter","fontSize":12,"fontWeight":"500","id":"s2CmLbl","type":"text"},{"children":[{"content":"Comment...","fill":"$--fg-muted","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"s2CmPH","type":"text"}],"cornerRadius":8,"height":60,"id":"s2CmTA","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"}],"gap":4,"id":"s2CapCmt","layout":"vertical","name":"capability comment","type":"frame","width":"fill_container"}],"gap":12,"id":"s2Col1","layout":"vertical","name":"Column 1","type":"frame","width":"fill_container"},{"children":[{"children":[{"content":"Checkup Interval","fill":"$--fg","fontFamily":"Inter","fontSize":12,"fontWeight":"500","id":"s2ChLbl","type":"text"},{"alignItems":"center","children":[{"content":"Select...","fill":"$--fg-muted","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"s2ChV","type":"text"},{"fill":"$--fg-muted","height":14,"iconFontFamily":"lucide","iconFontName":"chevron-down","id":"s2ChC","type":"icon_font","width":14}],"cornerRadius":8,"id":"s2ChSel","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"}],"gap":4,"id":"s2Chkup","layout":"vertical","name":"checkup interval","type":"frame","width":"fill_container"},{"children":[{"content":"Hours without Worsening","fill":"$--fg","fontFamily":"Inter","fontSize":12,"fontWeight":"500","id":"s2HrLbl","type":"text"},{"children":[{"content":"0","fill":"$--fg","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"s2HrPH","type":"text"}],"cornerRadius":8,"id":"s2HrIn","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"}],"gap":4,"id":"s2Hours","layout":"vertical","name":"hours without worsening","type":"frame","width":"fill_container"},{"children":[{"content":"Controls per Hour","fill":"$--fg","fontFamily":"Inter","fontSize":12,"fontWeight":"500","id":"s2CtLbl","type":"text"},{"children":[{"content":"0","fill":"$--fg","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"s2CtPH","type":"text"}],"cornerRadius":8,"id":"s2CtIn","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"}],"gap":4,"id":"s2CtrlH","layout":"vertical","name":"controls per hour","type":"frame","width":"fill_container"}],"gap":12,"id":"s2Col2","layout":"vertical","name":"Column 2","type":"frame","width":"fill_container"},{"children":[{"children":[{"content":"Dietary Requirements","fill":"$--fg","fontFamily":"Inter","fontSize":12,"fontWeight":"500","id":"s2DiLbl","type":"text"},{"children":[{"content":"Dietary needs...","fill":"$--fg-muted","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"s2DiPH","type":"text"}],"cornerRadius":8,"height":60,"id":"s2DiIn","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"}],"gap":4,"id":"s2Diet","layout":"vertical","name":"dietary requirements","type":"frame","width":"fill_container"},{"children":[{"content":"Video Requirements","fill":"$--fg","fontFamily":"Inter","fontSize":12,"fontWeight":"500","id":"s2ViLbl","type":"text"},{"children":[{"content":"Video monitoring needs...","fill":"$--fg-muted","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"s2ViPH","type":"text"}],"cornerRadius":8,"height":60,"id":"s2ViIn","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"}],"gap":4,"id":"s2Video","layout":"vertical","name":"video requirements","type":"frame","width":"fill_container"}],"gap":12,"id":"s2Col3","layout":"vertical","name":"Column 3","type":"frame","width":"fill_container"}],"gap":16,"id":"s2Cols","type":"frame","width":"fill_container"}],"gap":16,"id":"s2Body","layout":"vertical","padding":16,"type":"frame","width":"fill_container"}],"cornerRadius":8,"id":"sec2Exam","layout":"vertical","name":"\u00a72 Examination Result (3 cols)","stroke":{"fill":"$--border","thickness":1},"type":"frame","width":"fill_container"},{"children":[{"alignItems":"center","children":[{"fill":"$--fg-muted","height":16,"iconFontFamily":"lucide","iconFontName":"rotate-ccw","id":"s3Ico","type":"icon_font","width":16},{"content":"Re-Introduction","fill":"$--fg-muted","fontFamily":"Inter","fontSize":14,"fontWeight":"600","id":"s3Ttl","type":"text"},{"content":"[currently not used]","fill":"$--warning","fontFamily":"Inter","fontSize":10,"fontWeight":"normal","id":"s3Tag","type":"text"}],"fill":"$--secondary","height":44,"id":"s3Hdr","padding":[0,16],"type":"frame","width":"fill_container"},{"children":[{"content":"This section is currently not used and reserved for future implementation.","fill":"$--fg-muted","fontFamily":"Inter","fontSize":13,"fontStyle":"italic","fontWeight":"normal","id":"s3PH","type":"text"}],"id":"s3Body","padding":16,"type":"frame","width":"fill_container"}],"cornerRadius":8,"id":"sec3Reint","layout":"vertical","name":"\u00a73 Re-Introduction","opacity":0.5,"stroke":{"fill":"$--border","thickness":1},"type":"frame","width":"fill_container"},{"children":[{"alignItems":"center","children":[{"fill":"$--fg-muted","height":16,"iconFontFamily":"lucide","iconFontName":"stethoscope","id":"s4Ico","type":"icon_font","width":16},{"content":"Doctor Examination","fill":"$--fg","fontFamily":"Inter","fontSize":14,"fontWeight":"600","id":"s4Ttl","type":"text"}],"fill":"$--secondary","height":44,"id":"s4Hdr","padding":[0,16],"type":"frame","width":"fill_container"},{"children":[{"children":[{"content":"Consumption","fill":"$--fg","fontFamily":"Inter","fontSize":13,"fontWeight":"600","id":"s4ConLbl","type":"text"},{"children":[{"children":[{"content":"Alcohol","fill":"$--fg-muted","fontFamily":"Inter","fontSize":11,"fontWeight":"500","id":"s4AlLbl","type":"text"},{"children":[{"content":"...","fill":"$--fg-muted","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"s4AlPH","type":"text"}],"cornerRadius":8,"id":"s4AlIn","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"}],"gap":4,"id":"s4Alc","layout":"vertical","name":"alcohol","type":"frame","width":200},{"children":[{"content":"Medication","fill":"$--fg-muted","fontFamily":"Inter","fontSize":11,"fontWeight":"500","id":"s4MeLbl","type":"text"},{"children":[{"content":"...","fill":"$--fg-muted","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"s4MePH","type":"text"}],"cornerRadius":8,"id":"s4MeIn","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"}],"gap":4,"id":"s4Med","layout":"vertical","name":"medication","type":"frame","width":200},{"children":[{"content":"Substances","fill":"$--fg-muted","fontFamily":"Inter","fontSize":11,"fontWeight":"500","id":"s4SuLbl","type":"text"},{"children":[{"content":"...","fill":"$--fg-muted","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"s4SuPH","type":"text"}],"cornerRadius":8,"id":"s4SuIn","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"}],"gap":4,"id":"s4Sub","layout":"vertical","name":"substances","type":"frame","width":200}],"gap":12,"id":"s4ConR1","type":"frame","width":"fill_container"},{"children":[{"children":[{"content":"Last Consumption","fill":"$--fg-muted","fontFamily":"Inter","fontSize":11,"fontWeight":"500","id":"s4LaLbl","type":"text"},{"children":[{"content":"...","fill":"$--fg-muted","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"s4LaPH","type":"text"}],"cornerRadius":8,"id":"s4LaIn","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"}],"gap":4,"id":"s4Last","layout":"vertical","name":"last consumption","type":"frame","width":200},{"children":[{"content":"General Condition","fill":"$--fg-muted","fontFamily":"Inter","fontSize":11,"fontWeight":"500","id":"s4GcLbl","type":"text"},{"alignItems":"center","children":[{"content":"Select...","fill":"$--fg-muted","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"s4GcV","type":"text"},{"fill":"$--fg-muted","height":14,"iconFontFamily":"lucide","iconFontName":"chevron-down","id":"s4GcC","type":"icon_font","width":14}],"cornerRadius":8,"id":"s4GcSel","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"}],"gap":4,"id":"s4GenCond","layout":"vertical","name":"general condition","type":"frame","width":200},{"children":[{"content":"Intoxication","fill":"$--fg-muted","fontFamily":"Inter","fontSize":11,"fontWeight":"500","id":"s4InLbl","type":"text"},{"alignItems":"center","children":[{"content":"Select...","fill":"$--fg-muted","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"s4InV","type":"text"},{"fill":"$--fg-muted","height":14,"iconFontFamily":"lucide","iconFontName":"chevron-down","id":"s4InC","type":"icon_font","width":14}],"cornerRadius":8,"id":"s4InSel","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"}],"gap":4,"id":"s4Intox","layout":"vertical","name":"intoxication","type":"frame","width":200}],"gap":12,"id":"s4ConR2","type":"frame","width":"fill_container"},{"children":[{"children":[{"content":"Pupils","fill":"$--fg-muted","fontFamily":"Inter","fontSize":11,"fontWeight":"500","id":"s4PuLbl","type":"text"},{"children":[{"content":"...","fill":"$--fg-muted","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"s4PuPH","type":"text"}],"cornerRadius":8,"id":"s4PuIn","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"}],"gap":4,"id":"s4Pupils","layout":"vertical","name":"pupils","type":"frame","width":200},{"children":[{"content":"Allergies","fill":"$--fg-muted","fontFamily":"Inter","fontSize":11,"fontWeight":"500","id":"s4AgLbl","type":"text"},{"children":[{"content":"...","fill":"$--fg-muted","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"s4AgPH","type":"text"}],"cornerRadius":8,"id":"s4AgIn","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"}],"gap":4,"id":"s4Allergy","layout":"vertical","name":"allergies","type":"frame","width":200},{"children":[{"content":"Addiction","fill":"$--fg-muted","fontFamily":"Inter","fontSize":11,"fontWeight":"500","id":"s4AdLbl","type":"text"},{"children":[{"content":"...","fill":"$--fg-muted","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"s4AdPH","type":"text"}],"cornerRadius":8,"id":"s4AdIn","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"}],"gap":4,"id":"s4Addict","layout":"vertical","name":"addiction","type":"frame","width":200}],"gap":12,"id":"s4ConR3","type":"frame","width":"fill_container"}],"cornerRadius":6,"fill":"$--card","gap":12,"id":"s4ConSub","layout":"vertical","name":"Consumption Sub-block","padding":12,"stroke":{"fill":"$--border","thickness":1},"type":"frame","width":"fill_container"},{"children":[{"content":"Neurology","fill":"$--fg","fontFamily":"Inter","fontSize":12,"fontWeight":"600","id":"s4NeLbl","type":"text"},{"children":[{"content":"Neurological findings...","fill":"$--fg-muted","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"s4NePH","type":"text"}],"cornerRadius":8,"height":80,"id":"s4NeTA","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"}],"gap":4,"id":"s4Neuro","layout":"vertical","name":"neurology textarea","type":"frame","width":"fill_container"}],"gap":16,"id":"s4Body","layout":"vertical","padding":16,"type":"frame","width":"fill_container"}],"cornerRadius":8,"id":"sec4Doc","layout":"vertical","name":"\u00a74 Doctor Examination","stroke":{"fill":"$--border","thickness":1},"type":"frame","width":"fill_container"},{"children":[{"alignItems":"center","children":[{"fill":"$--fg-muted","height":16,"iconFontFamily":"lucide","iconFontName":"wine","id":"s5Ico","type":"icon_font","width":16},{"content":"Intoxication Assessment","fill":"$--fg","fontFamily":"Inter","fontSize":14,"fontWeight":"600","id":"s5Ttl","type":"text"}],"fill":"$--secondary","height":44,"id":"s5Hdr","padding":[0,16],"type":"frame","width":"fill_container"},{"children":[{"children":[{"content":"Stadium","fill":"$--fg","fontFamily":"Inter","fontSize":12,"fontWeight":"500","id":"s5StLbl","type":"text"},{"alignItems":"center","children":[{"content":"NONE","fill":"$--fg","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"s5StV","type":"text"},{"fill":"$--fg-muted","height":14,"iconFontFamily":"lucide","iconFontName":"chevron-down","id":"s5StC","type":"icon_font","width":14}],"cornerRadius":8,"id":"s5StSel","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":320}],"gap":4,"id":"s5Stadium","layout":"vertical","name":"stadium select","type":"frame","width":"fill_container"},{"children":[{"content":"Abnormalities","fill":"$--fg","fontFamily":"Inter","fontSize":12,"fontWeight":"600","id":"s5AbLbl","type":"text"},{"children":[{"alignItems":"center","children":[{"cornerRadius":4,"fill":"$--bg","height":18,"id":"s5Ab1Cb","stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":18},{"content":"Gait disturbance","fill":"$--fg","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"s5Ab1T","type":"text"}],"gap":8,"id":"s5Ab1","type":"frame"},{"alignItems":"center","children":[{"cornerRadius":4,"fill":"$--bg","height":18,"id":"s5Ab2Cb","stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":18},{"content":"Speech disturbance","fill":"$--fg","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"s5Ab2T","type":"text"}],"gap":8,"id":"s5Ab2","type":"frame"},{"alignItems":"center","children":[{"cornerRadius":4,"fill":"$--bg","height":18,"id":"s5Ab3Cb","stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":18},{"content":"Coordination deficit","fill":"$--fg","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"s5Ab3T","type":"text"}],"gap":8,"id":"s5Ab3","type":"frame"}],"gap":24,"id":"s5AbRow1","type":"frame","width":"fill_container"},{"children":[{"alignItems":"center","children":[{"cornerRadius":4,"fill":"$--bg","height":18,"id":"s5Ab4Cb","stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":18},{"content":"Nystagmus","fill":"$--fg","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"s5Ab4T","type":"text"}],"gap":8,"id":"s5Ab4","type":"frame"},{"alignItems":"center","children":[{"cornerRadius":4,"fill":"$--bg","height":18,"id":"s5Ab5Cb","stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":18},{"content":"Disorientation","fill":"$--fg","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"s5Ab5T","type":"text"}],"gap":8,"id":"s5Ab5","type":"frame"},{"alignItems":"center","children":[{"cornerRadius":4,"fill":"$--bg","height":18,"id":"s5Ab6Cb","stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":18},{"content":"Aggressiveness","fill":"$--fg","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"s5Ab6T","type":"text"}],"gap":8,"id":"s5Ab6","type":"frame"}],"gap":24,"id":"s5AbRow2","type":"frame","width":"fill_container"}],"gap":8,"id":"s5Abnorm","layout":"vertical","name":"6 Abnormality checks","type":"frame","width":"fill_container"},{"children":[{"content":"Vitals","fill":"$--fg","fontFamily":"Inter","fontSize":12,"fontWeight":"600","id":"s5ViLbl","type":"text"},{"children":[{"children":[{"content":"Pulse (bpm)","fill":"$--fg-muted","fontFamily":"Inter","fontSize":11,"fontWeight":"500","id":"s5PuLbl","type":"text"},{"children":[{"content":"72","fill":"$--fg","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"s5PuPH","type":"text"}],"cornerRadius":8,"id":"s5PuIn","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"}],"gap":4,"id":"s5Pulse","layout":"vertical","name":"pulse","type":"frame","width":160},{"children":[{"content":"Blood Pressure","fill":"$--fg-muted","fontFamily":"Inter","fontSize":11,"fontWeight":"500","id":"s5BPLbl","type":"text"},{"children":[{"content":"120/80","fill":"$--fg","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"s5BPPH","type":"text"}],"cornerRadius":8,"id":"s5BPIn","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"}],"gap":4,"id":"s5BPVit","layout":"vertical","name":"blood pressure","type":"frame","width":160},{"children":[{"content":"Skin Color","fill":"$--fg-muted","fontFamily":"Inter","fontSize":11,"fontWeight":"500","id":"s5ScLbl","type":"text"},{"children":[{"content":"Normal","fill":"$--fg","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"s5ScPH","type":"text"}],"cornerRadius":8,"id":"s5ScIn","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"}],"gap":4,"id":"s5SkinC","layout":"vertical","name":"skin color","type":"frame","width":160},{"children":[{"content":"Respiratory","fill":"$--fg-muted","fontFamily":"Inter","fontSize":11,"fontWeight":"500","id":"s5ReLbl","type":"text"},{"children":[{"content":"Normal","fill":"$--fg","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"s5RePH","type":"text"}],"cornerRadius":8,"id":"s5ReIn","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"}],"gap":4,"id":"s5Resp","layout":"vertical","name":"respiratory","type":"frame","width":160}],"gap":12,"id":"s5ViRow","type":"frame","width":"fill_container"}],"gap":8,"id":"s5Vitals","layout":"vertical","name":"Vitals","type":"frame","width":"fill_container"}],"gap":16,"id":"s5Body","layout":"vertical","padding":16,"type":"frame","width":"fill_container"}],"cornerRadius":8,"id":"sec5Intox","layout":"vertical","name":"\u00a75 Intoxication Assessment","stroke":{"fill":"$--border","thickness":1},"type":"frame","width":"fill_container"},{"children":[{"alignItems":"center","children":[{"fill":"$--fg-muted","height":16,"iconFontFamily":"lucide","iconFontName":"scan","id":"s6Ico","type":"icon_font","width":16},{"content":"Body Check","fill":"$--fg","fontFamily":"Inter","fontSize":14,"fontWeight":"600","id":"s6Ttl","type":"text"},{"content":"*","fill":"$--destructive","fontFamily":"Inter","fontSize":14,"fontWeight":"700","id":"s6Req","type":"text"}],"fill":"$--secondary","height":44,"id":"s6Hdr","padding":[0,16],"type":"frame","width":"fill_container"},{"children":[{"content":"Body Check *","fill":"$--fg","fontFamily":"Inter","fontSize":12,"fontWeight":"500","id":"s6Lbl","type":"text"},{"children":[{"content":"Describe body check findings...","fill":"$--fg-muted","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"s6PH","type":"text"}],"cornerRadius":8,"height":120,"id":"s6TA","name":"body check textarea (required)","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"}],"gap":12,"id":"s6Body","layout":"vertical","padding":16,"type":"frame","width":"fill_container"}],"cornerRadius":8,"id":"sec6Body","layout":"vertical","name":"\u00a76 Body Check","stroke":{"fill":"$--border","thickness":1},"type":"frame","width":"fill_container"}],"fill":"$--bg","gap":24,"id":"w5Root","layout":"vertical","name":"W5 \u2013 Incarceration Consultation Details","padding":24,"type":"frame","width":1440,"x":20,"y":20},{"content":"W5 \u2013 consultation-details-incarceration.pen\nIncarceration form with 6 blocks, 51 fields total.\nNote: cross-model bindings to onboarding data exist (physical findings, etc.).","height":0,"id":"plVuf","name":"note1","type":"note","width":0,"x":1500,"y":40},{"content":"[SIREN] Animated siren icon next to incarceration type select","height":0,"id":"mgnC7","name":"note2","type":"note","width":0,"x":1500,"y":279},{"content":"Values: INCARCERATION | LIABILITY","height":0,"id":"kGXeJ","name":"note3","type":"note","width":0,"x":1500,"y":518},{"content":"Stadium values: NONE, STAGE_1 (Euphoria), STAGE_2 (Excitement), STAGE_3 (Confusion), STAGE_4 (Stupor), STAGE_5 (Coma)","height":0,"id":"KKZFc","name":"note4","type":"note","width":0,"x":1500,"y":757}]}
+{
+  "version": "2.9",
+  "variables": {
+    "--bg": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--border": {
+      "type": "color",
+      "value": "#E5E5E5"
+    },
+    "--card": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "--danger-bg": {
+      "type": "color",
+      "value": "#FEF2F2"
+    },
+    "--destructive": {
+      "type": "color",
+      "value": "#DC2626"
+    },
+    "--fg": {
+      "type": "color",
+      "value": "#0A0A0A"
+    },
+    "--fg-muted": {
+      "type": "color",
+      "value": "#737373"
+    },
+    "--header-bg": {
+      "type": "color",
+      "value": "#F98E33"
+    },
+    "--header-fg": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--info-bg": {
+      "type": "color",
+      "value": "#EFF6FF"
+    },
+    "--info-fg": {
+      "type": "color",
+      "value": "#1D4ED8"
+    },
+    "--input-border": {
+      "type": "color",
+      "value": "#D4D4D4"
+    },
+    "--primary": {
+      "type": "color",
+      "value": "#171717"
+    },
+    "--primary-fg": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "--secondary": {
+      "type": "color",
+      "value": "#F5F5F5"
+    },
+    "--secondary-fg": {
+      "type": "color",
+      "value": "#171717"
+    },
+    "--success-bg": {
+      "type": "color",
+      "value": "#F0FDF4"
+    },
+    "--success-fg": {
+      "type": "color",
+      "value": "#166534"
+    },
+    "--warning": {
+      "type": "color",
+      "value": "#F59E0B"
+    },
+    "--warning-bg": {
+      "type": "color",
+      "value": "#FFFBEB"
+    }
+  },
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "alignItems": "center",
+              "children": [
+                {
+                  "fill": "$--fg-muted",
+                  "height": 16,
+                  "iconFontFamily": "lucide",
+                  "iconFontName": "lock",
+                  "id": "s1Ico",
+                  "type": "icon_font",
+                  "width": 16
+                },
+                {
+                  "content": "Incarceration Type",
+                  "fill": "$--fg",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600",
+                  "id": "s1Ttl",
+                  "type": "text"
+                }
+              ],
+              "fill": "$--secondary",
+              "height": 44,
+              "id": "s1Hdr",
+              "padding": [
+                0,
+                16
+              ],
+              "type": "frame",
+              "width": "fill_container"
+            },
+            {
+              "children": [
+                {
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "content": "INCARCERATION",
+                          "fill": "$--fg",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal",
+                          "id": "s1SVal",
+                          "type": "text"
+                        },
+                        {
+                          "fill": "$--fg-muted",
+                          "height": 14,
+                          "iconFontFamily": "lucide",
+                          "iconFontName": "chevron-down",
+                          "id": "s1SChv",
+                          "type": "icon_font",
+                          "width": 14
+                        }
+                      ],
+                      "cornerRadius": 8,
+                      "id": "s1Sel",
+                      "name": "incarcerationType select",
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "stroke": {
+                        "fill": "$--input-border",
+                        "thickness": 1
+                      },
+                      "type": "frame",
+                      "width": 280
+                    },
+                    {
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "fill": "$--destructive",
+                          "height": 18,
+                          "iconFontFamily": "lucide",
+                          "iconFontName": "siren",
+                          "id": "s1SiIco",
+                          "type": "icon_font",
+                          "width": 18
+                        }
+                      ],
+                      "cornerRadius": 16,
+                      "fill": "$--danger-bg",
+                      "height": 32,
+                      "id": "s1Siren",
+                      "justifyContent": "center",
+                      "name": "[SIREN] icon",
+                      "type": "frame",
+                      "width": 32
+                    }
+                  ],
+                  "gap": 16,
+                  "id": "s1Row",
+                  "type": "frame",
+                  "width": "fill_container"
+                }
+              ],
+              "gap": 12,
+              "id": "s1Body",
+              "layout": "vertical",
+              "padding": 16,
+              "type": "frame",
+              "width": "fill_container"
+            }
+          ],
+          "cornerRadius": 8,
+          "id": "sec1Inc",
+          "layout": "vertical",
+          "name": "\u00a71 Incarceration Type",
+          "stroke": {
+            "fill": "$--border",
+            "thickness": 1
+          },
+          "type": "frame",
+          "width": "fill_container"
+        },
+        {
+          "children": [
+            {
+              "alignItems": "center",
+              "children": [
+                {
+                  "fill": "$--fg-muted",
+                  "height": 16,
+                  "iconFontFamily": "lucide",
+                  "iconFontName": "clipboard-check",
+                  "id": "s2Ico",
+                  "type": "icon_font",
+                  "width": 16
+                },
+                {
+                  "content": "Examination Result",
+                  "fill": "$--fg",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600",
+                  "id": "s2Ttl",
+                  "type": "text"
+                }
+              ],
+              "fill": "$--secondary",
+              "height": 44,
+              "id": "s2Hdr",
+              "padding": [
+                0,
+                16
+              ],
+              "type": "frame",
+              "width": "fill_container"
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "content": "Examination Capability",
+                              "fill": "$--fg",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "500",
+                              "id": "s2ExLbl",
+                              "type": "text"
+                            },
+                            {
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "content": "Select...",
+                                  "fill": "$--fg-muted",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "normal",
+                                  "id": "s2ExV",
+                                  "type": "text"
+                                },
+                                {
+                                  "fill": "$--fg-muted",
+                                  "height": 14,
+                                  "iconFontFamily": "lucide",
+                                  "iconFontName": "chevron-down",
+                                  "id": "s2ExC",
+                                  "type": "icon_font",
+                                  "width": 14
+                                }
+                              ],
+                              "cornerRadius": 8,
+                              "id": "s2ExSel",
+                              "padding": [
+                                8,
+                                12
+                              ],
+                              "stroke": {
+                                "fill": "$--input-border",
+                                "thickness": 1
+                              },
+                              "type": "frame",
+                              "width": "fill_container"
+                            }
+                          ],
+                          "gap": 4,
+                          "id": "s2ExCap",
+                          "layout": "vertical",
+                          "name": "examination capability",
+                          "type": "frame",
+                          "width": "fill_container"
+                        },
+                        {
+                          "children": [
+                            {
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "content": "Incarceration Capability *",
+                                  "fill": "$--fg",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 12,
+                                  "fontWeight": "500",
+                                  "id": "s2InLT",
+                                  "type": "text"
+                                },
+                                {
+                                  "fill": "$--destructive",
+                                  "height": 14,
+                                  "iconFontFamily": "lucide",
+                                  "iconFontName": "siren",
+                                  "id": "s2InSiren",
+                                  "type": "icon_font",
+                                  "width": 14
+                                },
+                                {
+                                  "content": "[SIREN]",
+                                  "fill": "$--destructive",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 10,
+                                  "fontWeight": "normal",
+                                  "id": "s2InTag",
+                                  "type": "text"
+                                }
+                              ],
+                              "gap": 6,
+                              "id": "s2InLbl",
+                              "type": "frame"
+                            },
+                            {
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "content": "Select... *",
+                                  "fill": "$--fg-muted",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "normal",
+                                  "id": "s2InV",
+                                  "type": "text"
+                                },
+                                {
+                                  "fill": "$--fg-muted",
+                                  "height": 14,
+                                  "iconFontFamily": "lucide",
+                                  "iconFontName": "chevron-down",
+                                  "id": "s2InC",
+                                  "type": "icon_font",
+                                  "width": 14
+                                }
+                              ],
+                              "cornerRadius": 8,
+                              "id": "s2InSel",
+                              "padding": [
+                                8,
+                                12
+                              ],
+                              "stroke": {
+                                "fill": "$--input-border",
+                                "thickness": 1
+                              },
+                              "type": "frame",
+                              "width": "fill_container"
+                            }
+                          ],
+                          "gap": 4,
+                          "id": "s2InCap",
+                          "layout": "vertical",
+                          "name": "incarceration capability * [SIREN]",
+                          "type": "frame",
+                          "width": "fill_container"
+                        },
+                        {
+                          "children": [
+                            {
+                              "content": "Capability Comment",
+                              "fill": "$--fg",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "500",
+                              "id": "s2CmLbl",
+                              "type": "text"
+                            },
+                            {
+                              "children": [
+                                {
+                                  "content": "Comment...",
+                                  "fill": "$--fg-muted",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "normal",
+                                  "id": "s2CmPH",
+                                  "type": "text"
+                                }
+                              ],
+                              "cornerRadius": 8,
+                              "height": 60,
+                              "id": "s2CmTA",
+                              "padding": [
+                                8,
+                                12
+                              ],
+                              "stroke": {
+                                "fill": "$--input-border",
+                                "thickness": 1
+                              },
+                              "type": "frame",
+                              "width": "fill_container"
+                            }
+                          ],
+                          "gap": 4,
+                          "id": "s2CapCmt",
+                          "layout": "vertical",
+                          "name": "capability comment",
+                          "type": "frame",
+                          "width": "fill_container"
+                        }
+                      ],
+                      "gap": 12,
+                      "id": "s2Col1",
+                      "layout": "vertical",
+                      "name": "Column 1",
+                      "type": "frame",
+                      "width": "fill_container"
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "content": "Checkup Interval",
+                              "fill": "$--fg",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "500",
+                              "id": "s2ChLbl",
+                              "type": "text"
+                            },
+                            {
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "content": "Select...",
+                                  "fill": "$--fg-muted",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "normal",
+                                  "id": "s2ChV",
+                                  "type": "text"
+                                },
+                                {
+                                  "fill": "$--fg-muted",
+                                  "height": 14,
+                                  "iconFontFamily": "lucide",
+                                  "iconFontName": "chevron-down",
+                                  "id": "s2ChC",
+                                  "type": "icon_font",
+                                  "width": 14
+                                }
+                              ],
+                              "cornerRadius": 8,
+                              "id": "s2ChSel",
+                              "padding": [
+                                8,
+                                12
+                              ],
+                              "stroke": {
+                                "fill": "$--input-border",
+                                "thickness": 1
+                              },
+                              "type": "frame",
+                              "width": "fill_container"
+                            }
+                          ],
+                          "gap": 4,
+                          "id": "s2Chkup",
+                          "layout": "vertical",
+                          "name": "checkup interval",
+                          "type": "frame",
+                          "width": "fill_container"
+                        },
+                        {
+                          "children": [
+                            {
+                              "content": "Hours without Worsening",
+                              "fill": "$--fg",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "500",
+                              "id": "s2HrLbl",
+                              "type": "text"
+                            },
+                            {
+                              "children": [
+                                {
+                                  "content": "0",
+                                  "fill": "$--fg",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "normal",
+                                  "id": "s2HrPH",
+                                  "type": "text"
+                                }
+                              ],
+                              "cornerRadius": 8,
+                              "id": "s2HrIn",
+                              "padding": [
+                                8,
+                                12
+                              ],
+                              "stroke": {
+                                "fill": "$--input-border",
+                                "thickness": 1
+                              },
+                              "type": "frame",
+                              "width": "fill_container"
+                            }
+                          ],
+                          "gap": 4,
+                          "id": "s2Hours",
+                          "layout": "vertical",
+                          "name": "hours without worsening",
+                          "type": "frame",
+                          "width": "fill_container"
+                        },
+                        {
+                          "children": [
+                            {
+                              "content": "Controls per Hour",
+                              "fill": "$--fg",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "500",
+                              "id": "s2CtLbl",
+                              "type": "text"
+                            },
+                            {
+                              "children": [
+                                {
+                                  "content": "0",
+                                  "fill": "$--fg",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "normal",
+                                  "id": "s2CtPH",
+                                  "type": "text"
+                                }
+                              ],
+                              "cornerRadius": 8,
+                              "id": "s2CtIn",
+                              "padding": [
+                                8,
+                                12
+                              ],
+                              "stroke": {
+                                "fill": "$--input-border",
+                                "thickness": 1
+                              },
+                              "type": "frame",
+                              "width": "fill_container"
+                            }
+                          ],
+                          "gap": 4,
+                          "id": "s2CtrlH",
+                          "layout": "vertical",
+                          "name": "controls per hour",
+                          "type": "frame",
+                          "width": "fill_container"
+                        }
+                      ],
+                      "gap": 12,
+                      "id": "s2Col2",
+                      "layout": "vertical",
+                      "name": "Column 2",
+                      "type": "frame",
+                      "width": "fill_container"
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "content": "Dietary Requirements",
+                              "fill": "$--fg",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "500",
+                              "id": "s2DiLbl",
+                              "type": "text"
+                            },
+                            {
+                              "children": [
+                                {
+                                  "content": "Dietary needs...",
+                                  "fill": "$--fg-muted",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "normal",
+                                  "id": "s2DiPH",
+                                  "type": "text"
+                                }
+                              ],
+                              "cornerRadius": 8,
+                              "height": 60,
+                              "id": "s2DiIn",
+                              "padding": [
+                                8,
+                                12
+                              ],
+                              "stroke": {
+                                "fill": "$--input-border",
+                                "thickness": 1
+                              },
+                              "type": "frame",
+                              "width": "fill_container"
+                            }
+                          ],
+                          "gap": 4,
+                          "id": "s2Diet",
+                          "layout": "vertical",
+                          "name": "dietary requirements",
+                          "type": "frame",
+                          "width": "fill_container"
+                        },
+                        {
+                          "children": [
+                            {
+                              "content": "Video Requirements",
+                              "fill": "$--fg",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "500",
+                              "id": "s2ViLbl",
+                              "type": "text"
+                            },
+                            {
+                              "children": [
+                                {
+                                  "content": "Video monitoring needs...",
+                                  "fill": "$--fg-muted",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "normal",
+                                  "id": "s2ViPH",
+                                  "type": "text"
+                                }
+                              ],
+                              "cornerRadius": 8,
+                              "height": 60,
+                              "id": "s2ViIn",
+                              "padding": [
+                                8,
+                                12
+                              ],
+                              "stroke": {
+                                "fill": "$--input-border",
+                                "thickness": 1
+                              },
+                              "type": "frame",
+                              "width": "fill_container"
+                            }
+                          ],
+                          "gap": 4,
+                          "id": "s2Video",
+                          "layout": "vertical",
+                          "name": "video requirements",
+                          "type": "frame",
+                          "width": "fill_container"
+                        }
+                      ],
+                      "gap": 12,
+                      "id": "s2Col3",
+                      "layout": "vertical",
+                      "name": "Column 3",
+                      "type": "frame",
+                      "width": "fill_container"
+                    }
+                  ],
+                  "gap": 16,
+                  "id": "s2Cols",
+                  "type": "frame",
+                  "width": "fill_container"
+                }
+              ],
+              "gap": 16,
+              "id": "s2Body",
+              "layout": "vertical",
+              "padding": 16,
+              "type": "frame",
+              "width": "fill_container"
+            }
+          ],
+          "cornerRadius": 8,
+          "id": "sec2Exam",
+          "layout": "vertical",
+          "name": "\u00a72 Examination Result (3 cols)",
+          "stroke": {
+            "fill": "$--border",
+            "thickness": 1
+          },
+          "type": "frame",
+          "width": "fill_container"
+        },
+        {
+          "children": [
+            {
+              "alignItems": "center",
+              "children": [
+                {
+                  "fill": "$--fg-muted",
+                  "height": 16,
+                  "iconFontFamily": "lucide",
+                  "iconFontName": "rotate-ccw",
+                  "id": "s3Ico",
+                  "type": "icon_font",
+                  "width": 16
+                },
+                {
+                  "content": "Re-Introduction",
+                  "fill": "$--fg-muted",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600",
+                  "id": "s3Ttl",
+                  "type": "text"
+                },
+                {
+                  "content": "[currently not used]",
+                  "fill": "$--warning",
+                  "fontFamily": "Inter",
+                  "fontSize": 10,
+                  "fontWeight": "normal",
+                  "id": "s3Tag",
+                  "type": "text"
+                }
+              ],
+              "fill": "$--secondary",
+              "height": 44,
+              "id": "s3Hdr",
+              "padding": [
+                0,
+                16
+              ],
+              "type": "frame",
+              "width": "fill_container"
+            },
+            {
+              "children": [
+                {
+                  "content": "This section is currently not used and reserved for future implementation.",
+                  "fill": "$--fg-muted",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontStyle": "italic",
+                  "fontWeight": "normal",
+                  "id": "s3PH",
+                  "type": "text"
+                }
+              ],
+              "id": "s3Body",
+              "padding": 16,
+              "type": "frame",
+              "width": "fill_container"
+            }
+          ],
+          "cornerRadius": 8,
+          "id": "sec3Reint",
+          "layout": "vertical",
+          "name": "\u00a73 Re-Introduction",
+          "opacity": 0.5,
+          "stroke": {
+            "fill": "$--border",
+            "thickness": 1
+          },
+          "type": "frame",
+          "width": "fill_container"
+        },
+        {
+          "children": [
+            {
+              "alignItems": "center",
+              "children": [
+                {
+                  "fill": "$--fg-muted",
+                  "height": 16,
+                  "iconFontFamily": "lucide",
+                  "iconFontName": "stethoscope",
+                  "id": "s4Ico",
+                  "type": "icon_font",
+                  "width": 16
+                },
+                {
+                  "content": "Doctor Examination",
+                  "fill": "$--fg",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600",
+                  "id": "s4Ttl",
+                  "type": "text"
+                }
+              ],
+              "fill": "$--secondary",
+              "height": 44,
+              "id": "s4Hdr",
+              "padding": [
+                0,
+                16
+              ],
+              "type": "frame",
+              "width": "fill_container"
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "content": "Consumption",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600",
+                      "id": "s4ConLbl",
+                      "type": "text"
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "content": "Alcohol",
+                              "fill": "$--fg-muted",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "500",
+                              "id": "s4AlLbl",
+                              "type": "text"
+                            },
+                            {
+                              "children": [
+                                {
+                                  "content": "...",
+                                  "fill": "$--fg-muted",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "normal",
+                                  "id": "s4AlPH",
+                                  "type": "text"
+                                }
+                              ],
+                              "cornerRadius": 8,
+                              "id": "s4AlIn",
+                              "padding": [
+                                8,
+                                12
+                              ],
+                              "stroke": {
+                                "fill": "$--input-border",
+                                "thickness": 1
+                              },
+                              "type": "frame",
+                              "width": "fill_container"
+                            }
+                          ],
+                          "gap": 4,
+                          "id": "s4Alc",
+                          "layout": "vertical",
+                          "name": "alcohol",
+                          "type": "frame",
+                          "width": 200
+                        },
+                        {
+                          "children": [
+                            {
+                              "content": "Medication",
+                              "fill": "$--fg-muted",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "500",
+                              "id": "s4MeLbl",
+                              "type": "text"
+                            },
+                            {
+                              "children": [
+                                {
+                                  "content": "...",
+                                  "fill": "$--fg-muted",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "normal",
+                                  "id": "s4MePH",
+                                  "type": "text"
+                                }
+                              ],
+                              "cornerRadius": 8,
+                              "id": "s4MeIn",
+                              "padding": [
+                                8,
+                                12
+                              ],
+                              "stroke": {
+                                "fill": "$--input-border",
+                                "thickness": 1
+                              },
+                              "type": "frame",
+                              "width": "fill_container"
+                            }
+                          ],
+                          "gap": 4,
+                          "id": "s4Med",
+                          "layout": "vertical",
+                          "name": "medication",
+                          "type": "frame",
+                          "width": 200
+                        },
+                        {
+                          "children": [
+                            {
+                              "content": "Substances",
+                              "fill": "$--fg-muted",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "500",
+                              "id": "s4SuLbl",
+                              "type": "text"
+                            },
+                            {
+                              "children": [
+                                {
+                                  "content": "...",
+                                  "fill": "$--fg-muted",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "normal",
+                                  "id": "s4SuPH",
+                                  "type": "text"
+                                }
+                              ],
+                              "cornerRadius": 8,
+                              "id": "s4SuIn",
+                              "padding": [
+                                8,
+                                12
+                              ],
+                              "stroke": {
+                                "fill": "$--input-border",
+                                "thickness": 1
+                              },
+                              "type": "frame",
+                              "width": "fill_container"
+                            }
+                          ],
+                          "gap": 4,
+                          "id": "s4Sub",
+                          "layout": "vertical",
+                          "name": "substances",
+                          "type": "frame",
+                          "width": 200
+                        }
+                      ],
+                      "gap": 12,
+                      "id": "s4ConR1",
+                      "type": "frame",
+                      "width": "fill_container"
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "content": "Last Consumption",
+                              "fill": "$--fg-muted",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "500",
+                              "id": "s4LaLbl",
+                              "type": "text"
+                            },
+                            {
+                              "children": [
+                                {
+                                  "content": "...",
+                                  "fill": "$--fg-muted",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "normal",
+                                  "id": "s4LaPH",
+                                  "type": "text"
+                                }
+                              ],
+                              "cornerRadius": 8,
+                              "id": "s4LaIn",
+                              "padding": [
+                                8,
+                                12
+                              ],
+                              "stroke": {
+                                "fill": "$--input-border",
+                                "thickness": 1
+                              },
+                              "type": "frame",
+                              "width": "fill_container"
+                            }
+                          ],
+                          "gap": 4,
+                          "id": "s4Last",
+                          "layout": "vertical",
+                          "name": "last consumption",
+                          "type": "frame",
+                          "width": 200
+                        },
+                        {
+                          "children": [
+                            {
+                              "content": "General Condition",
+                              "fill": "$--fg-muted",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "500",
+                              "id": "s4GcLbl",
+                              "type": "text"
+                            },
+                            {
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "content": "Select...",
+                                  "fill": "$--fg-muted",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "normal",
+                                  "id": "s4GcV",
+                                  "type": "text"
+                                },
+                                {
+                                  "fill": "$--fg-muted",
+                                  "height": 14,
+                                  "iconFontFamily": "lucide",
+                                  "iconFontName": "chevron-down",
+                                  "id": "s4GcC",
+                                  "type": "icon_font",
+                                  "width": 14
+                                }
+                              ],
+                              "cornerRadius": 8,
+                              "id": "s4GcSel",
+                              "padding": [
+                                8,
+                                12
+                              ],
+                              "stroke": {
+                                "fill": "$--input-border",
+                                "thickness": 1
+                              },
+                              "type": "frame",
+                              "width": "fill_container"
+                            }
+                          ],
+                          "gap": 4,
+                          "id": "s4GenCond",
+                          "layout": "vertical",
+                          "name": "general condition",
+                          "type": "frame",
+                          "width": 200
+                        },
+                        {
+                          "children": [
+                            {
+                              "content": "Intoxication",
+                              "fill": "$--fg-muted",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "500",
+                              "id": "s4InLbl",
+                              "type": "text"
+                            },
+                            {
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "content": "Select...",
+                                  "fill": "$--fg-muted",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "normal",
+                                  "id": "s4InV",
+                                  "type": "text"
+                                },
+                                {
+                                  "fill": "$--fg-muted",
+                                  "height": 14,
+                                  "iconFontFamily": "lucide",
+                                  "iconFontName": "chevron-down",
+                                  "id": "s4InC",
+                                  "type": "icon_font",
+                                  "width": 14
+                                }
+                              ],
+                              "cornerRadius": 8,
+                              "id": "s4InSel",
+                              "padding": [
+                                8,
+                                12
+                              ],
+                              "stroke": {
+                                "fill": "$--input-border",
+                                "thickness": 1
+                              },
+                              "type": "frame",
+                              "width": "fill_container"
+                            }
+                          ],
+                          "gap": 4,
+                          "id": "s4Intox",
+                          "layout": "vertical",
+                          "name": "intoxication",
+                          "type": "frame",
+                          "width": 200
+                        }
+                      ],
+                      "gap": 12,
+                      "id": "s4ConR2",
+                      "type": "frame",
+                      "width": "fill_container"
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "content": "Pupils",
+                              "fill": "$--fg-muted",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "500",
+                              "id": "s4PuLbl",
+                              "type": "text"
+                            },
+                            {
+                              "children": [
+                                {
+                                  "content": "...",
+                                  "fill": "$--fg-muted",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "normal",
+                                  "id": "s4PuPH",
+                                  "type": "text"
+                                }
+                              ],
+                              "cornerRadius": 8,
+                              "id": "s4PuIn",
+                              "padding": [
+                                8,
+                                12
+                              ],
+                              "stroke": {
+                                "fill": "$--input-border",
+                                "thickness": 1
+                              },
+                              "type": "frame",
+                              "width": "fill_container"
+                            }
+                          ],
+                          "gap": 4,
+                          "id": "s4Pupils",
+                          "layout": "vertical",
+                          "name": "pupils",
+                          "type": "frame",
+                          "width": 200
+                        },
+                        {
+                          "children": [
+                            {
+                              "content": "Allergies",
+                              "fill": "$--fg-muted",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "500",
+                              "id": "s4AgLbl",
+                              "type": "text"
+                            },
+                            {
+                              "children": [
+                                {
+                                  "content": "...",
+                                  "fill": "$--fg-muted",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "normal",
+                                  "id": "s4AgPH",
+                                  "type": "text"
+                                }
+                              ],
+                              "cornerRadius": 8,
+                              "id": "s4AgIn",
+                              "padding": [
+                                8,
+                                12
+                              ],
+                              "stroke": {
+                                "fill": "$--input-border",
+                                "thickness": 1
+                              },
+                              "type": "frame",
+                              "width": "fill_container"
+                            }
+                          ],
+                          "gap": 4,
+                          "id": "s4Allergy",
+                          "layout": "vertical",
+                          "name": "allergies",
+                          "type": "frame",
+                          "width": 200
+                        },
+                        {
+                          "children": [
+                            {
+                              "content": "Addiction",
+                              "fill": "$--fg-muted",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "500",
+                              "id": "s4AdLbl",
+                              "type": "text"
+                            },
+                            {
+                              "children": [
+                                {
+                                  "content": "...",
+                                  "fill": "$--fg-muted",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "normal",
+                                  "id": "s4AdPH",
+                                  "type": "text"
+                                }
+                              ],
+                              "cornerRadius": 8,
+                              "id": "s4AdIn",
+                              "padding": [
+                                8,
+                                12
+                              ],
+                              "stroke": {
+                                "fill": "$--input-border",
+                                "thickness": 1
+                              },
+                              "type": "frame",
+                              "width": "fill_container"
+                            }
+                          ],
+                          "gap": 4,
+                          "id": "s4Addict",
+                          "layout": "vertical",
+                          "name": "addiction",
+                          "type": "frame",
+                          "width": 200
+                        }
+                      ],
+                      "gap": 12,
+                      "id": "s4ConR3",
+                      "type": "frame",
+                      "width": "fill_container"
+                    }
+                  ],
+                  "cornerRadius": 6,
+                  "fill": "$--card",
+                  "gap": 12,
+                  "id": "s4ConSub",
+                  "layout": "vertical",
+                  "name": "Consumption Sub-block",
+                  "padding": 12,
+                  "stroke": {
+                    "fill": "$--border",
+                    "thickness": 1
+                  },
+                  "type": "frame",
+                  "width": "fill_container"
+                },
+                {
+                  "children": [
+                    {
+                      "content": "Neurology",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "600",
+                      "id": "s4NeLbl",
+                      "type": "text"
+                    },
+                    {
+                      "children": [
+                        {
+                          "content": "Neurological findings...",
+                          "fill": "$--fg-muted",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal",
+                          "id": "s4NePH",
+                          "type": "text"
+                        }
+                      ],
+                      "cornerRadius": 8,
+                      "height": 80,
+                      "id": "s4NeTA",
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "stroke": {
+                        "fill": "$--input-border",
+                        "thickness": 1
+                      },
+                      "type": "frame",
+                      "width": "fill_container"
+                    }
+                  ],
+                  "gap": 4,
+                  "id": "s4Neuro",
+                  "layout": "vertical",
+                  "name": "neurology textarea",
+                  "type": "frame",
+                  "width": "fill_container"
+                }
+              ],
+              "gap": 16,
+              "id": "s4Body",
+              "layout": "vertical",
+              "padding": 16,
+              "type": "frame",
+              "width": "fill_container"
+            }
+          ],
+          "cornerRadius": 8,
+          "id": "sec4Doc",
+          "layout": "vertical",
+          "name": "\u00a74 Doctor Examination",
+          "stroke": {
+            "fill": "$--border",
+            "thickness": 1
+          },
+          "type": "frame",
+          "width": "fill_container"
+        },
+        {
+          "children": [
+            {
+              "alignItems": "center",
+              "children": [
+                {
+                  "fill": "$--fg-muted",
+                  "height": 16,
+                  "iconFontFamily": "lucide",
+                  "iconFontName": "wine",
+                  "id": "s5Ico",
+                  "type": "icon_font",
+                  "width": 16
+                },
+                {
+                  "content": "Intoxication Assessment",
+                  "fill": "$--fg",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600",
+                  "id": "s5Ttl",
+                  "type": "text"
+                }
+              ],
+              "fill": "$--secondary",
+              "height": 44,
+              "id": "s5Hdr",
+              "padding": [
+                0,
+                16
+              ],
+              "type": "frame",
+              "width": "fill_container"
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "content": "Stadium",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "500",
+                      "id": "s5StLbl",
+                      "type": "text"
+                    },
+                    {
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "content": "NONE",
+                          "fill": "$--fg",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal",
+                          "id": "s5StV",
+                          "type": "text"
+                        },
+                        {
+                          "fill": "$--fg-muted",
+                          "height": 14,
+                          "iconFontFamily": "lucide",
+                          "iconFontName": "chevron-down",
+                          "id": "s5StC",
+                          "type": "icon_font",
+                          "width": 14
+                        }
+                      ],
+                      "cornerRadius": 8,
+                      "id": "s5StSel",
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "stroke": {
+                        "fill": "$--input-border",
+                        "thickness": 1
+                      },
+                      "type": "frame",
+                      "width": 320
+                    }
+                  ],
+                  "gap": 4,
+                  "id": "s5Stadium",
+                  "layout": "vertical",
+                  "name": "stadium select",
+                  "type": "frame",
+                  "width": "fill_container"
+                },
+                {
+                  "children": [
+                    {
+                      "content": "Abnormalities",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "600",
+                      "id": "s5AbLbl",
+                      "type": "text"
+                    },
+                    {
+                      "children": [
+                        {
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "cornerRadius": 4,
+                              "fill": "$--bg",
+                              "height": 18,
+                              "id": "s5Ab1Cb",
+                              "stroke": {
+                                "fill": "$--input-border",
+                                "thickness": 1
+                              },
+                              "type": "frame",
+                              "width": 18
+                            },
+                            {
+                              "content": "Gait disturbance",
+                              "fill": "$--fg",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "normal",
+                              "id": "s5Ab1T",
+                              "type": "text"
+                            }
+                          ],
+                          "gap": 8,
+                          "id": "s5Ab1",
+                          "type": "frame"
+                        },
+                        {
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "cornerRadius": 4,
+                              "fill": "$--bg",
+                              "height": 18,
+                              "id": "s5Ab2Cb",
+                              "stroke": {
+                                "fill": "$--input-border",
+                                "thickness": 1
+                              },
+                              "type": "frame",
+                              "width": 18
+                            },
+                            {
+                              "content": "Speech disturbance",
+                              "fill": "$--fg",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "normal",
+                              "id": "s5Ab2T",
+                              "type": "text"
+                            }
+                          ],
+                          "gap": 8,
+                          "id": "s5Ab2",
+                          "type": "frame"
+                        },
+                        {
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "cornerRadius": 4,
+                              "fill": "$--bg",
+                              "height": 18,
+                              "id": "s5Ab3Cb",
+                              "stroke": {
+                                "fill": "$--input-border",
+                                "thickness": 1
+                              },
+                              "type": "frame",
+                              "width": 18
+                            },
+                            {
+                              "content": "Coordination deficit",
+                              "fill": "$--fg",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "normal",
+                              "id": "s5Ab3T",
+                              "type": "text"
+                            }
+                          ],
+                          "gap": 8,
+                          "id": "s5Ab3",
+                          "type": "frame"
+                        }
+                      ],
+                      "gap": 24,
+                      "id": "s5AbRow1",
+                      "type": "frame",
+                      "width": "fill_container"
+                    },
+                    {
+                      "children": [
+                        {
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "cornerRadius": 4,
+                              "fill": "$--bg",
+                              "height": 18,
+                              "id": "s5Ab4Cb",
+                              "stroke": {
+                                "fill": "$--input-border",
+                                "thickness": 1
+                              },
+                              "type": "frame",
+                              "width": 18
+                            },
+                            {
+                              "content": "Nystagmus",
+                              "fill": "$--fg",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "normal",
+                              "id": "s5Ab4T",
+                              "type": "text"
+                            }
+                          ],
+                          "gap": 8,
+                          "id": "s5Ab4",
+                          "type": "frame"
+                        },
+                        {
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "cornerRadius": 4,
+                              "fill": "$--bg",
+                              "height": 18,
+                              "id": "s5Ab5Cb",
+                              "stroke": {
+                                "fill": "$--input-border",
+                                "thickness": 1
+                              },
+                              "type": "frame",
+                              "width": 18
+                            },
+                            {
+                              "content": "Disorientation",
+                              "fill": "$--fg",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "normal",
+                              "id": "s5Ab5T",
+                              "type": "text"
+                            }
+                          ],
+                          "gap": 8,
+                          "id": "s5Ab5",
+                          "type": "frame"
+                        },
+                        {
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "cornerRadius": 4,
+                              "fill": "$--bg",
+                              "height": 18,
+                              "id": "s5Ab6Cb",
+                              "stroke": {
+                                "fill": "$--input-border",
+                                "thickness": 1
+                              },
+                              "type": "frame",
+                              "width": 18
+                            },
+                            {
+                              "content": "Aggressiveness",
+                              "fill": "$--fg",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "normal",
+                              "id": "s5Ab6T",
+                              "type": "text"
+                            }
+                          ],
+                          "gap": 8,
+                          "id": "s5Ab6",
+                          "type": "frame"
+                        }
+                      ],
+                      "gap": 24,
+                      "id": "s5AbRow2",
+                      "type": "frame",
+                      "width": "fill_container"
+                    }
+                  ],
+                  "gap": 8,
+                  "id": "s5Abnorm",
+                  "layout": "vertical",
+                  "name": "6 Abnormality checks",
+                  "type": "frame",
+                  "width": "fill_container"
+                },
+                {
+                  "children": [
+                    {
+                      "content": "Vitals",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "600",
+                      "id": "s5ViLbl",
+                      "type": "text"
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "content": "Pulse (bpm)",
+                              "fill": "$--fg-muted",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "500",
+                              "id": "s5PuLbl",
+                              "type": "text"
+                            },
+                            {
+                              "children": [
+                                {
+                                  "content": "72",
+                                  "fill": "$--fg",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "normal",
+                                  "id": "s5PuPH",
+                                  "type": "text"
+                                }
+                              ],
+                              "cornerRadius": 8,
+                              "id": "s5PuIn",
+                              "padding": [
+                                8,
+                                12
+                              ],
+                              "stroke": {
+                                "fill": "$--input-border",
+                                "thickness": 1
+                              },
+                              "type": "frame",
+                              "width": "fill_container"
+                            }
+                          ],
+                          "gap": 4,
+                          "id": "s5Pulse",
+                          "layout": "vertical",
+                          "name": "pulse",
+                          "type": "frame",
+                          "width": 160
+                        },
+                        {
+                          "children": [
+                            {
+                              "content": "Blood Pressure",
+                              "fill": "$--fg-muted",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "500",
+                              "id": "s5BPLbl",
+                              "type": "text"
+                            },
+                            {
+                              "children": [
+                                {
+                                  "content": "120/80",
+                                  "fill": "$--fg",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "normal",
+                                  "id": "s5BPPH",
+                                  "type": "text"
+                                }
+                              ],
+                              "cornerRadius": 8,
+                              "id": "s5BPIn",
+                              "padding": [
+                                8,
+                                12
+                              ],
+                              "stroke": {
+                                "fill": "$--input-border",
+                                "thickness": 1
+                              },
+                              "type": "frame",
+                              "width": "fill_container"
+                            }
+                          ],
+                          "gap": 4,
+                          "id": "s5BPVit",
+                          "layout": "vertical",
+                          "name": "blood pressure",
+                          "type": "frame",
+                          "width": 160
+                        },
+                        {
+                          "children": [
+                            {
+                              "content": "Skin Color",
+                              "fill": "$--fg-muted",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "500",
+                              "id": "s5ScLbl",
+                              "type": "text"
+                            },
+                            {
+                              "children": [
+                                {
+                                  "content": "Normal",
+                                  "fill": "$--fg",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "normal",
+                                  "id": "s5ScPH",
+                                  "type": "text"
+                                }
+                              ],
+                              "cornerRadius": 8,
+                              "id": "s5ScIn",
+                              "padding": [
+                                8,
+                                12
+                              ],
+                              "stroke": {
+                                "fill": "$--input-border",
+                                "thickness": 1
+                              },
+                              "type": "frame",
+                              "width": "fill_container"
+                            }
+                          ],
+                          "gap": 4,
+                          "id": "s5SkinC",
+                          "layout": "vertical",
+                          "name": "skin color",
+                          "type": "frame",
+                          "width": 160
+                        },
+                        {
+                          "children": [
+                            {
+                              "content": "Respiratory",
+                              "fill": "$--fg-muted",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "500",
+                              "id": "s5ReLbl",
+                              "type": "text"
+                            },
+                            {
+                              "children": [
+                                {
+                                  "content": "Normal",
+                                  "fill": "$--fg",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "normal",
+                                  "id": "s5RePH",
+                                  "type": "text"
+                                }
+                              ],
+                              "cornerRadius": 8,
+                              "id": "s5ReIn",
+                              "padding": [
+                                8,
+                                12
+                              ],
+                              "stroke": {
+                                "fill": "$--input-border",
+                                "thickness": 1
+                              },
+                              "type": "frame",
+                              "width": "fill_container"
+                            }
+                          ],
+                          "gap": 4,
+                          "id": "s5Resp",
+                          "layout": "vertical",
+                          "name": "respiratory",
+                          "type": "frame",
+                          "width": 160
+                        }
+                      ],
+                      "gap": 12,
+                      "id": "s5ViRow",
+                      "type": "frame",
+                      "width": "fill_container"
+                    }
+                  ],
+                  "gap": 8,
+                  "id": "s5Vitals",
+                  "layout": "vertical",
+                  "name": "Vitals",
+                  "type": "frame",
+                  "width": "fill_container"
+                }
+              ],
+              "gap": 16,
+              "id": "s5Body",
+              "layout": "vertical",
+              "padding": 16,
+              "type": "frame",
+              "width": "fill_container"
+            }
+          ],
+          "cornerRadius": 8,
+          "id": "sec5Intox",
+          "layout": "vertical",
+          "name": "\u00a75 Intoxication Assessment",
+          "stroke": {
+            "fill": "$--border",
+            "thickness": 1
+          },
+          "type": "frame",
+          "width": "fill_container"
+        },
+        {
+          "children": [
+            {
+              "alignItems": "center",
+              "children": [
+                {
+                  "fill": "$--fg-muted",
+                  "height": 16,
+                  "iconFontFamily": "lucide",
+                  "iconFontName": "scan",
+                  "id": "s6Ico",
+                  "type": "icon_font",
+                  "width": 16
+                },
+                {
+                  "content": "Body Check",
+                  "fill": "$--fg",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600",
+                  "id": "s6Ttl",
+                  "type": "text"
+                },
+                {
+                  "content": "*",
+                  "fill": "$--destructive",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "700",
+                  "id": "s6Req",
+                  "type": "text"
+                }
+              ],
+              "fill": "$--secondary",
+              "height": 44,
+              "id": "s6Hdr",
+              "padding": [
+                0,
+                16
+              ],
+              "type": "frame",
+              "width": "fill_container"
+            },
+            {
+              "children": [
+                {
+                  "content": "Body Check *",
+                  "fill": "$--fg",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "500",
+                  "id": "s6Lbl",
+                  "type": "text"
+                },
+                {
+                  "children": [
+                    {
+                      "content": "Describe body check findings...",
+                      "fill": "$--fg-muted",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "id": "s6PH",
+                      "type": "text"
+                    }
+                  ],
+                  "cornerRadius": 8,
+                  "height": 120,
+                  "id": "s6TA",
+                  "name": "body check textarea (required)",
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "stroke": {
+                    "fill": "$--input-border",
+                    "thickness": 1
+                  },
+                  "type": "frame",
+                  "width": "fill_container"
+                }
+              ],
+              "gap": 12,
+              "id": "s6Body",
+              "layout": "vertical",
+              "padding": 16,
+              "type": "frame",
+              "width": "fill_container"
+            }
+          ],
+          "cornerRadius": 8,
+          "id": "sec6Body",
+          "layout": "vertical",
+          "name": "\u00a76 Body Check",
+          "stroke": {
+            "fill": "$--border",
+            "thickness": 1
+          },
+          "type": "frame",
+          "width": "fill_container"
+        }
+      ],
+      "fill": "$--bg",
+      "gap": 24,
+      "id": "w5Root",
+      "layout": "vertical",
+      "name": "W5 \u2013 Incarceration Consultation Details",
+      "padding": 24,
+      "type": "frame",
+      "width": 1440,
+      "x": 20,
+      "y": 20
+    }
+  ]
+}

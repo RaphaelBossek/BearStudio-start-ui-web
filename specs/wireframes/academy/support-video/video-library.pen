@@ -18,7 +18,10 @@
           "width": "fill_container",
           "height": 56,
           "fill": "$--header-bg",
-          "padding": [0, 24],
+          "padding": [
+            0,
+            24
+          ],
           "gap": 12,
           "alignItems": "center",
           "children": [
@@ -29,8 +32,15 @@
               "cornerRadius": 4,
               "fill": "$--bg",
               "gap": 4,
-              "padding": [4, 8],
-              "stroke": { "align": "inside", "fill": "$--input-border", "thickness": 1 },
+              "padding": [
+                4,
+                8
+              ],
+              "stroke": {
+                "align": "inside",
+                "fill": "$--input-border",
+                "thickness": 1
+              },
               "children": [
                 {
                   "type": "icon_font",
@@ -101,7 +111,11 @@
                   "layout": "vertical",
                   "cornerRadius": 8,
                   "clip": true,
-                  "stroke": { "align": "inside", "fill": "$--border", "thickness": 1 },
+                  "stroke": {
+                    "align": "inside",
+                    "fill": "$--border",
+                    "thickness": 1
+                  },
                   "children": [
                     {
                       "type": "frame",
@@ -167,7 +181,10 @@
                               "name": "c1w",
                               "cornerRadius": 4,
                               "fill": "$--success-bg",
-                              "padding": [2, 6],
+                              "padding": [
+                                2,
+                                6
+                              ],
                               "children": [
                                 {
                                   "type": "text",
@@ -189,7 +206,10 @@
                           "name": "c1btn",
                           "cornerRadius": 4,
                           "fill": "$--primary",
-                          "padding": [6, 12],
+                          "padding": [
+                            6,
+                            12
+                          ],
                           "justifyContent": "center",
                           "alignItems": "center",
                           "children": [
@@ -217,7 +237,11 @@
                   "layout": "vertical",
                   "cornerRadius": 8,
                   "clip": true,
-                  "stroke": { "align": "inside", "fill": "$--border", "thickness": 1 },
+                  "stroke": {
+                    "align": "inside",
+                    "fill": "$--border",
+                    "thickness": 1
+                  },
                   "children": [
                     {
                       "type": "frame",
@@ -283,7 +307,10 @@
                               "name": "c2w",
                               "cornerRadius": 4,
                               "fill": "$--warning-bg",
-                              "padding": [2, 6],
+                              "padding": [
+                                2,
+                                6
+                              ],
                               "children": [
                                 {
                                   "type": "text",
@@ -305,7 +332,10 @@
                           "name": "c2btn",
                           "cornerRadius": 4,
                           "fill": "$--primary",
-                          "padding": [6, 12],
+                          "padding": [
+                            6,
+                            12
+                          ],
                           "justifyContent": "center",
                           "alignItems": "center",
                           "children": [
@@ -333,7 +363,11 @@
                   "layout": "vertical",
                   "cornerRadius": 8,
                   "clip": true,
-                  "stroke": { "align": "inside", "fill": "$--border", "thickness": 1 },
+                  "stroke": {
+                    "align": "inside",
+                    "fill": "$--border",
+                    "thickness": 1
+                  },
                   "children": [
                     {
                       "type": "frame",
@@ -399,7 +433,10 @@
                               "name": "c3w",
                               "cornerRadius": 4,
                               "fill": "$--success-bg",
-                              "padding": [2, 6],
+                              "padding": [
+                                2,
+                                6
+                              ],
                               "children": [
                                 {
                                   "type": "text",
@@ -421,7 +458,10 @@
                           "name": "c3btn",
                           "cornerRadius": 4,
                           "fill": "$--primary",
-                          "padding": [6, 12],
+                          "padding": [
+                            6,
+                            12
+                          ],
                           "justifyContent": "center",
                           "alignItems": "center",
                           "children": [
@@ -453,13 +493,19 @@
           "layout": "vertical",
           "padding": 24,
           "gap": 16,
-          "stroke": { "align": "inside", "fill": "$--border", "thickness": { "top": 1 } },
+          "stroke": {
+            "align": "inside",
+            "fill": "$--border",
+            "thickness": {
+              "top": 1
+            }
+          },
           "children": [
             {
               "type": "text",
               "id": "5c965",
               "name": "vttl",
-              "content": "Videos — Training Basics",
+              "content": "Videos \u2014 Training Basics",
               "fill": "$--fg",
               "fontFamily": "Inter",
               "fontSize": 16,
@@ -480,7 +526,11 @@
                   "layout": "vertical",
                   "cornerRadius": 8,
                   "clip": true,
-                  "stroke": { "align": "inside", "fill": "$--border", "thickness": 1 },
+                  "stroke": {
+                    "align": "inside",
+                    "fill": "$--border",
+                    "thickness": 1
+                  },
                   "children": [
                     {
                       "type": "frame",
@@ -559,10 +609,17 @@
                           "cornerRadius": 4,
                           "fill": "$--info-bg",
                           "gap": 4,
-                          "padding": [4, 10],
+                          "padding": [
+                            4,
+                            10
+                          ],
                           "justifyContent": "center",
                           "alignItems": "center",
-                          "stroke": { "align": "inside", "fill": "$--info-fg", "thickness": 1 },
+                          "stroke": {
+                            "align": "inside",
+                            "fill": "$--info-fg",
+                            "thickness": 1
+                          },
                           "children": [
                             {
                               "type": "icon_font",
@@ -598,7 +655,11 @@
                   "layout": "vertical",
                   "cornerRadius": 8,
                   "clip": true,
-                  "stroke": { "align": "inside", "fill": "$--border", "thickness": 1 },
+                  "stroke": {
+                    "align": "inside",
+                    "fill": "$--border",
+                    "thickness": 1
+                  },
                   "children": [
                     {
                       "type": "frame",
@@ -667,10 +728,17 @@
                           "cornerRadius": 4,
                           "fill": "$--info-bg",
                           "gap": 4,
-                          "padding": [4, 10],
+                          "padding": [
+                            4,
+                            10
+                          ],
                           "justifyContent": "center",
                           "alignItems": "center",
-                          "stroke": { "align": "inside", "fill": "$--info-fg", "thickness": 1 },
+                          "stroke": {
+                            "align": "inside",
+                            "fill": "$--info-fg",
+                            "thickness": 1
+                          },
                           "children": [
                             {
                               "type": "icon_font",
@@ -706,7 +774,11 @@
                   "layout": "vertical",
                   "cornerRadius": 8,
                   "clip": true,
-                  "stroke": { "align": "inside", "fill": "$--border", "thickness": 1 },
+                  "stroke": {
+                    "align": "inside",
+                    "fill": "$--border",
+                    "thickness": 1
+                  },
                   "children": [
                     {
                       "type": "frame",
@@ -775,10 +847,17 @@
                           "cornerRadius": 4,
                           "fill": "$--info-bg",
                           "gap": 4,
-                          "padding": [4, 10],
+                          "padding": [
+                            4,
+                            10
+                          ],
                           "justifyContent": "center",
                           "alignItems": "center",
-                          "stroke": { "align": "inside", "fill": "$--info-fg", "thickness": 1 },
+                          "stroke": {
+                            "align": "inside",
+                            "fill": "$--info-fg",
+                            "thickness": 1
+                          },
                           "children": [
                             {
                               "type": "icon_font",
@@ -809,36 +888,82 @@
               ]
             }
           ]
-        },
-        {
-          "type": "note",
-          "id": "NRuoa",
-          "name": "Annotations",
-          "width": 1440,
-          "height": 0,
-          "content": "Card-based browsing layout (no DataTable)\nCategory cards grid: thumbnail, title, totalTime, watched indicator, View button\nVideo cards grid: thumbnail, title, duration, watched indicator, Play button\n[hash: deep link] #CATEGORYID;SUBCATEGORY:VIDEOID:POSITION\n[async: periodic submitWatchTime] track video watch progress\n3 player variants: VIDEO (video.js), STREAM (iframe), PDF (embedded viewer)\ngoBack button returns to previous view"
         }
       ]
     }
   ],
   "variables": {
-    "--bg": { "type": "color", "value": "#FFFFFF" },
-    "--border": { "type": "color", "value": "#E5E5E5" },
-    "--card": { "type": "color", "value": "#FAFAFA" },
-    "--destructive": { "type": "color", "value": "#DC2626" },
-    "--fg": { "type": "color", "value": "#0A0A0A" },
-    "--fg-muted": { "type": "color", "value": "#737373" },
-    "--header-bg": { "type": "color", "value": "#3B82F6" },
-    "--header-fg": { "type": "color", "value": "#FFFFFF" },
-    "--info-bg": { "type": "color", "value": "#EFF6FF" },
-    "--info-fg": { "type": "color", "value": "#1D4ED8" },
-    "--input-border": { "type": "color", "value": "#D4D4D4" },
-    "--primary": { "type": "color", "value": "#171717" },
-    "--primary-fg": { "type": "color", "value": "#FAFAFA" },
-    "--secondary": { "type": "color", "value": "#F5F5F5" },
-    "--success-bg": { "type": "color", "value": "#F0FDF4" },
-    "--success-fg": { "type": "color", "value": "#166534" },
-    "--warning-bg": { "type": "color", "value": "#FFFBEB" },
-    "--warning-fg": { "type": "color", "value": "#92400E" }
+    "--bg": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--border": {
+      "type": "color",
+      "value": "#E5E5E5"
+    },
+    "--card": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "--destructive": {
+      "type": "color",
+      "value": "#DC2626"
+    },
+    "--fg": {
+      "type": "color",
+      "value": "#0A0A0A"
+    },
+    "--fg-muted": {
+      "type": "color",
+      "value": "#737373"
+    },
+    "--header-bg": {
+      "type": "color",
+      "value": "#3B82F6"
+    },
+    "--header-fg": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--info-bg": {
+      "type": "color",
+      "value": "#EFF6FF"
+    },
+    "--info-fg": {
+      "type": "color",
+      "value": "#1D4ED8"
+    },
+    "--input-border": {
+      "type": "color",
+      "value": "#D4D4D4"
+    },
+    "--primary": {
+      "type": "color",
+      "value": "#171717"
+    },
+    "--primary-fg": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "--secondary": {
+      "type": "color",
+      "value": "#F5F5F5"
+    },
+    "--success-bg": {
+      "type": "color",
+      "value": "#F0FDF4"
+    },
+    "--success-fg": {
+      "type": "color",
+      "value": "#166534"
+    },
+    "--warning-bg": {
+      "type": "color",
+      "value": "#FFFBEB"
+    },
+    "--warning-fg": {
+      "type": "color",
+      "value": "#92400E"
+    }
   }
 }

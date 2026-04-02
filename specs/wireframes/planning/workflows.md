@@ -593,11 +593,23 @@ MonthTable calendar grid showing days × jobs with state-colored appointment cel
 
 ![W1: Appointment List](./appointment/appointment-list.png)
 
+**Annotations:**
+- **Grid Structure Note:** MonthTable: rows = days of month (1–31), columns = jobs/services. NOT standard DataTable.
+- **Cell Rendering Note:** Each cell: state-colored + icon + name. Sub-rows: assigned staff. Missing staff shown as '--- (Missing)'.
+- **Filter Panel Note:** @shadcn/sheet side='right': filterDay (number), filterJob (text), filterState (select), Reset button.
+- **Actions Note:** Cell click → opens detail dialog. Add → creates READY appointment. Edit → disabled until selection. Export → .xls download. Reload → triggers reloadGrid.
+
 #### W2: Appointment Details Dialog
 
 5-tab detail dialog (Info, Referenced, Patients, Assigned, Suggestions) with type-driven field visibility, state badge, and form fields. SHIFT-only fields highlighted.
 
 ![W2: Appointment Details](./appointment/appointment-details.png)
+
+**Annotations:**
+- **Tab Visibility Note:** Info=always, Referenced=[expertOnly=true], Patients=always, Assigned=always, Suggestions=[state: READY|STARTED|REOPENED|REQUESTED|LOCKEDIN].
+- **Type Visibility Note:** APPOINTMENT/TREATMENT → expertOnly, location, room. SHIFT → priceType. COUNCIL → jobSupport. Job filter changes by type.
+- **State Machine Note:** State transition dialog: valid next states from ShiftLogic. STORNO adds date+time. Admin sees Delete. 12 states total.
+- **Assigned Tab Note:** Doctor autocomplete + delete. Per-row: Accept, Reserve, Override→AGREED, Reject, Abort, Send Reminder, History. Collision handling → W3 dialog.
 
 #### W2a: Appointment Details — Tab 2: Referenced
 
@@ -607,6 +619,9 @@ Referenced (Patient Appointments) tab content panel. Visible only when Expert On
 
 ![W2a: Referenced Sub-Dialog](./appointment/appointment-details-referenced-subdialog.png)
 
+**Annotations:**
+- Tab visible only when expertOnly=true. State badge click → state transition. Edit → referenced appointment dialog.
+
 #### W2b: Appointment Details — Tab 3: Patients
 
 Patients tab content panel. Always visible. Add patient toolbar with book number input, patients table with title, documentation-only flag, closed date, location, edit/remove/sort actions. Treatments sub-table below. Includes Patient Data Dialog sub-dialog with attachments management.
@@ -615,11 +630,18 @@ Patients tab content panel. Always visible. Add patient toolbar with book number
 
 ![W2b: Patient Data Dialog](./appointment/appointment-details-patients-subdialog.png)
 
+**Annotations:**
+- Always visible. Add patient: PatientDataService.save. Edit → patientDataDlg. Remove → confirm → delete.
+
 #### W2c: Appointment Details — Tab 4: Assigned
 
 Assigned (Expert Confirm) tab content panel. Always visible, toolbar only in READY–LOCKEDIN states. Doctor autocomplete + delete button toolbar. Table rows with avatar, role icon (support/main/doctor) + name + message icon, phone link, state badge, and 7 action buttons (Accept, Reserve, Override, Reject, Abort, Send Reminder, History) with state-dependent disable rules.
 
 ![W2c: Assigned Tab](./appointment/appointment-details-assigned.png)
+
+**Annotations:**
+- Assignment state machine — button disable rules per state.
+- Collision handling: addUser → if duplicate → confirm dialog.
 
 #### W2d: Appointment Details — Tab 5: Suggestions
 
@@ -627,11 +649,17 @@ Suggestions (Add Expert) tab content panel. Visible only in states READY, STARTE
 
 ![W2d: Suggestions Tab](./appointment/appointment-details-suggestions.png)
 
+**Annotations:**
+- Tab visible in READY|STARTED|REOPENED|REQUESTED|LOCKEDIN states. getSuggestions(id, 20). Separate jsForm prefix.
+
 #### W3: Assign User — Collision Dialog
 
 Collision resolution modal shown when assigning a doctor with overlapping appointments. State select per row with Accept/Reserve/Override/Reject/Abort/Remove options.
 
 ![W3: Assign User](./appointment/appointment-assign-user.png)
+
+**Annotations:**
+- State select options: ACCEPTED, RESERVED, AGREED (Override), REJECTED, ABORTED, REMOVE. Shown when getDuplicateEvents > 1.
 
 #### W4: State & Color Legend
 
@@ -647,17 +675,26 @@ FullCalendar weekly view with sample events for HOLIDAY (blue), BIRTHDAY (light 
 
 ![W3-dash: Calendar](./dashboard/calendar.png)
 
+**Annotations:**
+- FullCalendar v6 timeGridWeek, 5 entity types, 18 state colors.
+
 #### W4-dash: Expert Availability — Week Grid
 
 Hours × 7 days grid with tri-state slots (circle=unset, check=available, X=unavailable). Toolbar with Save/Reload. Click column header toggles all in column.
 
 ![W4-dash: Week Grid](./dashboard/expert-availability-week.png)
 
+**Annotations:**
+- Week view (toggle columns/rows), Month view (4-row header, slot labels).
+
 #### W4-dash: Expert Availability — Month Grid
 
 Days × 6 slots grid with 4-row header (year/month, slot labels, weekday counters, weekend counters). Month lock alert banner. Holiday button for absence requests.
 
 ![W4-dash: Month Grid](./dashboard/expert-availability-month.png)
+
+**Annotations:**
+- Month lock: data.locked=true → red alert, cells dimmed.
 
 #### W8: Shift Dialog — Detail
 
@@ -682,6 +719,9 @@ Permission-gated dialog (APPOINTMENT_ADHOC) with location autocomplete, type sel
 Confirmation dialog for ending an active shift with adjustable start/end time inputs.
 
 ![W13a: End Shift](./dashboard/end-shift.png)
+
+**Annotations:**
+- Save callback: AppointmentService.done(). On error → re-opens.
 
 ---
 
@@ -1230,11 +1270,20 @@ Admin appointment grid with 13-column table, year/month/day toolbar, navbar with
 
 ![W1: Admin Grid](./appointment-admin/inline-consultation-grid.png)
 
+**Annotations:**
+- Grid columns: 13-column table layout.
+- Toolbar: 11 action buttons.
+- Summary statistics displayed.
+
 #### W1b: Inline Consultation — Detail Drawer
 
 1200px detail drawer with header info (staff count, job code, date, time, state badge), 5 form fields (Customer RO, Location, State, Job, Payment), assigned experts, 3-column time management (Expert/Logging/Verified), consultation table with 13 inline-editable columns, summary statistics, and Save footer.
 
 ![W1b: Detail Drawer](./appointment-admin/inline-consultation-detail.png)
+
+**Annotations:**
+- Time management: 3-column layout (Expert / Logging / Verified).
+- Inline-editable: 13-column consultation table.
 
 #### W2: Calculation Dialog
 
@@ -1242,11 +1291,18 @@ Admin appointment grid with 13-column table, year/month/day toolbar, navbar with
 
 ![W2: Calculation](./appointment-admin/calculation.png)
 
+**Annotations:**
+- EK table: 8-column layout.
+- VK table: 5-column layout.
+
 #### W3: QM Dialog
 
 800px view-only QM questionnaire dialog. Summary stats (Patients, Entries, Follow-ups, Referrals, Repeat Entries), 6 rating fields on 1-6 scales (Tele-Applicability, Room Quality, Equipment, Communication, Extra Referral, Translator), equipment availability flags (Dermatoscope, Otoscope, Stethoscope, Vital Signs), reporting status, and comment.
 
 ![W3: QM Dialog](./appointment-admin/qm-dialog.png)
+
+**Annotations:**
+- View-only QM questionnaire, 12 rating fields.
 
 #### W4: Export Dialog
 
@@ -1254,11 +1310,17 @@ Admin appointment grid with 13-column table, year/month/day toolbar, navbar with
 
 ![W4: Export Dialog](./appointment-admin/export-dialog.png)
 
+**Annotations:**
+- 6 fields with template/customer/expert filters.
+
 #### W5: Email/Submit Dialog
 
 600px consultation submit dialog. Confirmation message, read-only location/time info, Submit Type select (Standard per Setting / Backup / Email / Download), patient data type and access info, previous transmit result, and Transmit button.
 
 ![W5: Email Dialog](./appointment-admin/email-dialog.png)
+
+**Annotations:**
+- Submit dialog with 4 submit types.
 
 #### W6: Print Preview
 
@@ -1266,17 +1328,26 @@ Admin appointment grid with 13-column table, year/month/day toolbar, navbar with
 
 ![W6: Print Preview](./appointment-admin/print-preview.png)
 
+**Annotations:**
+- Server-side template rendering, browser print.
+
 #### W7: Job Status Dialog
 
 500px async job polling dialog. Status text, progress bar with completion percentage, step detail, download link on completion, and async queue link if queued.
 
 ![W7: Job Status](./appointment-admin/job-status.png)
 
+**Annotations:**
+- Async polling, progress bar, download link.
+
 #### W8: State & Payment Legend
 
 800px visual reference card. 12 appointment state badges in 2 rows with color coding, and 4 payment type badges (FULL=green, VK=yellow, EK=yellow, IGNORE=red).
 
 ![W8: State Legend](./appointment-admin/state-legend.png)
+
+**Annotations:**
+- 12 states + 4 payment types color-coded.
 
 ### CDR Call (Appointment Support) Wireframes
 
@@ -1286,11 +1357,17 @@ Admin appointment grid with 13-column table, year/month/day toolbar, navbar with
 
 ![W1: CDR Call List](./appointment-support/cdr-call-list.png)
 
+**Annotations:**
+- 16-column DataTable, 7 statuses color-coded.
+
 #### W2: CDR Call Detail
 
 800px call detail dialog. Read-only call info (date, time, duration, caller, callee), Direction and Status fields, Expert and Location, phone numbers, notes textarea. Status transitions drive available actions.
 
 ![W2: CDR Call Detail](./appointment-support/cdr-call-detail.png)
+
+**Annotations:**
+- Status transitions: NEW→ACKNOWLEDGED→IN_PROGRESS→COMPLETED→ARCHIVED.
 
 #### W3: CDR Assignment CRUD
 
@@ -1298,17 +1375,26 @@ Admin appointment grid with 13-column table, year/month/day toolbar, navbar with
 
 ![W3: CDR Assignment](./appointment-support/cdr-assignment-crud.png)
 
+**Annotations:**
+- CdrCallAssignmentService, consultation dropdown, Create option.
+
 #### W4: Close Month Dialog
 
 500px shared close month dialog. Year input, Month select, info alert about billing period lock. Toggle between Close Month and Open Month based on current state.
 
 ![W4: Close Month](./appointment-support/close-month.png)
 
+**Annotations:**
+- Shared dialog: Appointment Admin + Plan + Shift Plan, toggle open/close.
+
 #### W5: CDR Status Legend
 
 600px visual reference card. 7 CDR call status badges with colors, and status transition descriptions (NEW→ACKNOWLEDGED→IN_PROGRESS→COMPLETED→ARCHIVED, with ESCALATED and CANCELED branches).
 
 ![W5: CDR Status Legend](./appointment-support/cdr-status-legend.png)
+
+**Annotations:**
+- 7 statuses, terminal states ARCHIVED/CANCELED.
 
 ### Shift Plan Wireframes
 
@@ -1318,11 +1404,17 @@ Admin appointment grid with 13-column table, year/month/day toolbar, navbar with
 
 ![W1: Shift Plan List](./shift/shift-list.png)
 
+**Annotations:**
+- 10-column CRUD grid, NOT MonthTable, preferred doctors with priority, price type auto-suggest.
+
 #### W2: Shift Plan Detail
 
 1200px plan template dialog. 15 form fields (Name, Job, Day, Time Start/End, Price Type with auto-suggest, Scheduling type/multiplier, Last Date, Min Patients, Count, Location, Expert Only), sortable Preferred Experts collection with priority ordering and preferred flag.
 
 ![W2: Shift Plan Detail](./shift/shift-plan-detail.png)
+
+**Annotations:**
+- 15 fields + expert collection, price type auto-suggested, sortable priority.
 
 #### W3: Apply Plan Dialog
 
@@ -1330,11 +1422,17 @@ Admin appointment grid with 13-column table, year/month/day toolbar, navbar with
 
 ![W3: Apply Plan](./shift/apply-plan.png)
 
+**Annotations:**
+- publishNext(date) → jobId, polls getStatus, finishStatus on complete.
+
 #### W4: Shift State Legend
 
 600px visual reference card. 12 shift states (same state machine as Appointment) with color-coded badges and transition descriptions.
 
 ![W4: Shift State Legend](./shift/shift-state-legend.png)
+
+**Annotations:**
+- 12 states = subset of appointment states.
 
 ### Council Plan Wireframes
 
@@ -1344,14 +1442,23 @@ Admin appointment grid with 13-column table, year/month/day toolbar, navbar with
 
 ![W1: Council Plan List](./council/council-list.png)
 
+**Annotations:**
+- 10-column CRUD grid, default count=2 scheduling=WEEKLY, no Close Month button.
+
 #### W2: Council Plan Detail
 
 1000px plan template dialog. 15 fields (Name, Job, Day, Time Start/End, Scheduling, Multiplier, Last Date, Count, Location, Expert Only, Job Support checkboxes), Preferred Doctors collection with role assignments (Main Doctor / Support) instead of priority ordering.
 
 ![W2: Council Plan Detail](./council/council-plan-detail.png)
 
+**Annotations:**
+- 15 fields + doctor collection with role assignments.
+
 #### W3: Apply Council Plan Dialog
 
 500px date picker dialog. Same pattern as Shift Apply Plan. "Generate Until" date input, info alert, Generate button triggering CouncilPlanService.publishNext.
 
 ![W3: Council Apply Plan](./council/council-apply-plan.png)
+
+**Annotations:**
+- publishNext(date) → jobId, polls getStatus, finishStatus on complete.

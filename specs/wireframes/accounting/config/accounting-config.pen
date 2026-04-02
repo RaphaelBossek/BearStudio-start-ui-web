@@ -700,7 +700,7 @@
                           "id": "3ZIUK",
                           "name": "rsect",
                           "fill": "$--fg",
-                          "content": "Storno Rules [repeats] [nested: group → rules]",
+                          "content": "Storno Rules [repeats] [nested: group \u2192 rules]",
                           "fontFamily": "Inter",
                           "fontSize": 14,
                           "fontWeight": "600"
@@ -1160,14 +1160,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "note",
-          "id": "R0GLt",
-          "name": "Annotations",
-          "width": 1440,
-          "height": 0,
-          "content": "5 config modules as @shadcn/tabs: Storno Groups, Price Lists, Products, Closed Months, Expert Work Monthly\nShowing: Storno Groups tab with master list + detail panel with nested rules collection\n[repeats] [nested: group → rules] Storno rules inline collection with add/delete\nPrice Lists: master list + nested prices collection, conditional fields by job type\nProducts: 8 fields with 2 enum selects\nClosed Months: [batch: generated records] — 3 date milestones, no add/delete\nExpert Work Monthly: [cond: role=ADMIN|ACCOUNTING] year/month filter, [async: poll export status]"
         }
       ]
     }

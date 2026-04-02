@@ -6,7 +6,7 @@
       "id": "F0p7d",
       "x": 0,
       "y": 0,
-      "name": "W3: Assign User — Collision Dialog",
+      "name": "W3: Assign User \u2014 Collision Dialog",
       "width": 600,
       "fill": "$--bg",
       "cornerRadius": 8,
@@ -71,7 +71,7 @@
               "id": "H3Mnk",
               "name": "hdrAnnot",
               "fill": "#FFFFFFAA",
-              "content": "@shadcn/alert-dialog — 800px",
+              "content": "@shadcn/alert-dialog \u2014 800px",
               "fontFamily": "Inter",
               "fontSize": 11,
               "fontWeight": "normal"
@@ -118,7 +118,7 @@
                   "fill": "$--fg",
                   "textGrowth": "fixed-width",
                   "width": "fill_container",
-                  "content": "The following appointments overlap for accepting this doctor. [HARDCODED — needs i18n key]",
+                  "content": "The following appointments overlap for accepting this doctor. [HARDCODED \u2014 needs i18n key]",
                   "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontWeight": "normal"
@@ -128,7 +128,7 @@
             {
               "type": "frame",
               "id": "9rH6J",
-              "name": "Assignments Table — @shadcn/table [repeats]",
+              "name": "Assignments Table \u2014 @shadcn/table [repeats]",
               "clip": true,
               "width": "fill_container",
               "cornerRadius": 6,
@@ -556,16 +556,7 @@
             12,
             24
           ],
-          "children": [
-            {
-              "type": "note",
-              "id": "y0jBx",
-              "name": "State Options",
-              "width": 550,
-              "height": 40,
-              "content": "State select options per row: ACCEPTED, RESERVED, AGREED (label: Override), REJECTED, ABORTED, REMOVE. Dialog only shown when getDuplicateEvents returns > 1 result."
-            }
-          ]
+          "children": []
         }
       ]
     }

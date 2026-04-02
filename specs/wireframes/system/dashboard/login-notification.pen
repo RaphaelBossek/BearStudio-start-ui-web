@@ -94,14 +94,6 @@
                   "fontFamily": "Inter",
                   "fontSize": 13,
                   "fontWeight": "normal"
-                },
-                {
-                  "type": "note",
-                  "id": "uyPVV",
-                  "name": "n1Annot",
-                  "width": 520,
-                  "height": 20,
-                  "content": "[markdown] rendered body content"
                 }
               ]
             },
@@ -145,14 +137,6 @@
                   "fontWeight": "normal"
                 }
               ]
-            },
-            {
-              "type": "note",
-              "id": "oV0ti",
-              "name": "sepAnnot",
-              "width": 520,
-              "height": 20,
-              "content": "Multiple notifications joined with '---' separators"
             }
           ]
         },
@@ -219,24 +203,8 @@
                   "fontWeight": "600"
                 }
               ]
-            },
-            {
-              "type": "note",
-              "id": "3crhW",
-              "name": "cancelAnnot",
-              "width": 100,
-              "height": 20,
-              "content": "Cancel → logout"
             }
           ]
-        },
-        {
-          "type": "note",
-          "id": "GhHAB",
-          "name": "mainAnnot",
-          "width": 560,
-          "height": 50,
-          "content": "Non-dismissible Bootstrap modal (data-bs-backdrop=static). Shown after login if pending notifications exist. Decline (Cancel) → immediate logout. Blocks ALL dashboard interaction until resolved."
         }
       ]
     }

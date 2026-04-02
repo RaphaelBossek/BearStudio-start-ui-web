@@ -14,14 +14,6 @@
       "padding": 24,
       "children": [
         {
-          "type": "note",
-          "id": "0lo8X",
-          "name": "adminAnnot",
-          "width": 950,
-          "height": 24,
-          "content": "[ADMIN] role requirement — all panels on this page are admin-only"
-        },
-        {
           "type": "frame",
           "id": "Psb4y",
           "name": "Row 1",
@@ -114,7 +106,7 @@
                           "id": "fsGjO",
                           "name": "call1hdr",
                           "fill": "$--fg",
-                          "content": "Call #4821 — Incoming",
+                          "content": "Call #4821 \u2014 Incoming",
                           "fontFamily": "Inter",
                           "fontSize": 12,
                           "fontWeight": "600"
@@ -178,7 +170,7 @@
                           "id": "ZBBZ5",
                           "name": "call2hdr",
                           "fill": "$--fg",
-                          "content": "Call #4822 — Outgoing",
+                          "content": "Call #4822 \u2014 Outgoing",
                           "fontFamily": "Inter",
                           "fontSize": 12,
                           "fontWeight": "600"
@@ -286,7 +278,7 @@
                       "id": "8esmb",
                       "name": "bdayLink",
                       "fill": "$--info-fg",
-                      "content": "→ Calendar",
+                      "content": "\u2192 Calendar",
                       "fontFamily": "Inter",
                       "fontSize": 11,
                       "fontWeight": "normal"
@@ -530,7 +522,7 @@
                               "id": "SbDFK",
                               "name": "aDetail1",
                               "fill": "$--fg",
-                              "content": "Checkup — Mon 23.03. 14:00",
+                              "content": "Checkup \u2014 Mon 23.03. 14:00",
                               "fontFamily": "Inter",
                               "fontSize": 12,
                               "fontWeight": "600"
@@ -651,7 +643,7 @@
                               "id": "cuUGE",
                               "name": "aDetail2",
                               "fill": "$--fg",
-                              "content": "Follow-Up — Tue 24.03. 09:30",
+                              "content": "Follow-Up \u2014 Tue 24.03. 09:30",
                               "fontFamily": "Inter",
                               "fontSize": 12,
                               "fontWeight": "600"
@@ -854,7 +846,7 @@
                               "id": "dBpkw",
                               "name": "ufDet1",
                               "fill": "$--fg",
-                              "content": "Checkup — Wed 25.03. 10:00-11:00",
+                              "content": "Checkup \u2014 Wed 25.03. 10:00-11:00",
                               "fontFamily": "Inter",
                               "fontSize": 12,
                               "fontWeight": "600"
@@ -908,7 +900,7 @@
                               "id": "t6ETS",
                               "name": "ufDet2",
                               "fill": "$--fg",
-                              "content": "Follow-Up — Thu 26.03. 14:00-15:00",
+                              "content": "Follow-Up \u2014 Thu 26.03. 14:00-15:00",
                               "fontFamily": "Inter",
                               "fontSize": 12,
                               "fontWeight": "600"
@@ -1463,14 +1455,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "note",
-          "id": "Jaixh",
-          "name": "annot2",
-          "width": 950,
-          "height": 30,
-          "content": "[HARDCODED] German strings: 'Active Calls', card headers. All panels require [ADMIN] role."
         }
       ]
     }

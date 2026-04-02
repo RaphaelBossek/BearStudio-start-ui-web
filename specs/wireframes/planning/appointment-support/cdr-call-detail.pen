@@ -1,1 +1,811 @@
-{"version":"2.9","variables":{"--bg":{"type":"color","value":"#FFFFFF"},"--border":{"type":"color","value":"#E5E5E5"},"--card":{"type":"color","value":"#FAFAFA"},"--destructive":{"type":"color","value":"#DC2626"},"--fg":{"type":"color","value":"#0A0A0A"},"--fg-muted":{"type":"color","value":"#737373"},"--header-bg":{"type":"color","value":"#F98E33"},"--header-fg":{"type":"color","value":"#FFFFFF"},"--info-bg":{"type":"color","value":"#EFF6FF"},"--info-fg":{"type":"color","value":"#1D4ED8"},"--input-border":{"type":"color","value":"#D4D4D4"},"--primary":{"type":"color","value":"#171717"},"--primary-fg":{"type":"color","value":"#FAFAFA"},"--secondary":{"type":"color","value":"#F5F5F5"},"--success-bg":{"type":"color","value":"#F0FDF4"},"--success-fg":{"type":"color","value":"#166534"},"--warning":{"type":"color","value":"#F59E0B"},"--warning-bg":{"type":"color","value":"#FFFBEB"}},"children":[{"children":[{"alignItems":"center","children":[{"fill":"$--header-fg","height":20,"iconFontFamily":"lucide","iconFontName":"phone","id":"hIc","type":"icon_font","width":20},{"content":"CDR Call #5001","fill":"$--header-fg","fontFamily":"Inter","fontSize":16,"fontWeight":"600","id":"hTl","type":"text"}],"cornerRadius":[12,12,0,0],"fill":"$--header-bg","gap":12,"height":56,"id":"hdr","name":"Dialog Header","padding":[12,24],"type":"frame","width":"fill_container"},{"children":[{"children":[{"children":[{"content":"Date","fill":"$--fg-muted","fontFamily":"Inter","fontSize":11,"fontWeight":"600","id":"lDate","type":"text"},{"alignItems":"center","children":[{"content":"2026-03-15","fill":"$--fg","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"vDate","type":"text"}],"cornerRadius":8,"fill":"$--secondary","height":36,"id":"iDate","padding":[8,12],"stroke":{"align":"inside","fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"}],"gap":4,"id":"fDate","layout":"vertical","type":"frame","width":"fill_container"},{"children":[{"content":"Time","fill":"$--fg-muted","fontFamily":"Inter","fontSize":11,"fontWeight":"600","id":"lTime","type":"text"},{"alignItems":"center","children":[{"content":"08:12","fill":"$--fg","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"vTime","type":"text"}],"cornerRadius":8,"fill":"$--secondary","height":36,"id":"iTime","padding":[8,12],"stroke":{"align":"inside","fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"}],"gap":4,"id":"fTime","layout":"vertical","type":"frame","width":"fill_container"},{"children":[{"content":"Duration","fill":"$--fg-muted","fontFamily":"Inter","fontSize":11,"fontWeight":"600","id":"lDur","type":"text"},{"alignItems":"center","children":[{"content":"4m 30s","fill":"$--fg","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"vDur","type":"text"}],"cornerRadius":8,"fill":"$--secondary","height":36,"id":"iDur","padding":[8,12],"stroke":{"align":"inside","fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"}],"gap":4,"id":"fDur","layout":"vertical","type":"frame","width":"fill_container"}],"gap":16,"id":"rw1","name":"Row: Date/Time/Duration","type":"frame","width":"fill_container"},{"children":[{"children":[{"content":"Caller","fill":"$--fg-muted","fontFamily":"Inter","fontSize":11,"fontWeight":"600","id":"lCaller","type":"text"},{"alignItems":"center","children":[{"content":"John Doe","fill":"$--fg","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"vCaller","type":"text"}],"cornerRadius":8,"fill":"$--bg","height":36,"id":"iCaller","padding":[8,12],"stroke":{"align":"inside","fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"}],"gap":4,"id":"fCaller","layout":"vertical","type":"frame","width":"fill_container"},{"children":[{"content":"Callee","fill":"$--fg-muted","fontFamily":"Inter","fontSize":11,"fontWeight":"600","id":"lCallee","type":"text"},{"alignItems":"center","children":[{"content":"JVA Reception","fill":"$--fg","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"vCallee","type":"text"}],"cornerRadius":8,"fill":"$--bg","height":36,"id":"iCallee","padding":[8,12],"stroke":{"align":"inside","fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"}],"gap":4,"id":"fCallee","layout":"vertical","type":"frame","width":"fill_container"}],"gap":16,"id":"rw2","name":"Row: Caller/Callee","type":"frame","width":"fill_container"},{"children":[{"children":[{"content":"Direction","fill":"$--fg-muted","fontFamily":"Inter","fontSize":11,"fontWeight":"600","id":"lDir","type":"text"},{"alignItems":"center","children":[{"content":"Inbound","fill":"$--fg","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"vDir","type":"text"}],"cornerRadius":8,"fill":"$--secondary","height":36,"id":"iDir","padding":[8,12],"stroke":{"align":"inside","fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"}],"gap":4,"id":"fDir","layout":"vertical","type":"frame","width":"fill_container"},{"children":[{"content":"Status","fill":"$--fg-muted","fontFamily":"Inter","fontSize":11,"fontWeight":"600","id":"lStat","type":"text"},{"alignItems":"center","children":[{"content":"NEW","fill":"$--fg","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"vStat","type":"text"},{"fill":"$--fg-muted","height":14,"iconFontFamily":"lucide","iconFontName":"chevron-down","id":"sChv","type":"icon_font","width":14}],"cornerRadius":8,"fill":"$--bg","height":36,"id":"iStat","justifyContent":"space_between","padding":[8,12],"stroke":{"align":"inside","fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"}],"gap":4,"id":"fStat","layout":"vertical","type":"frame","width":"fill_container"}],"gap":16,"id":"rw3","name":"Row: Direction/Status","type":"frame","width":"fill_container"},{"children":[{"children":[{"content":"Expert","fill":"$--fg-muted","fontFamily":"Inter","fontSize":11,"fontWeight":"600","id":"lExp","type":"text"},{"alignItems":"center","children":[{"content":"Dr. Weber","fill":"$--fg","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"vExp","type":"text"},{"fill":"$--fg-muted","height":14,"iconFontFamily":"lucide","iconFontName":"chevron-down","id":"eChv","type":"icon_font","width":14}],"cornerRadius":8,"fill":"$--bg","height":36,"id":"iExp","justifyContent":"space_between","padding":[8,12],"stroke":{"align":"inside","fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"}],"gap":4,"id":"fExp","layout":"vertical","type":"frame","width":"fill_container"},{"children":[{"content":"Location","fill":"$--fg-muted","fontFamily":"Inter","fontSize":11,"fontWeight":"600","id":"lLoc","type":"text"},{"alignItems":"center","children":[{"content":"JVA Berlin-Moabit","fill":"$--fg","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"vLoc","type":"text"}],"cornerRadius":8,"fill":"$--secondary","height":36,"id":"iLoc","padding":[8,12],"stroke":{"align":"inside","fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"}],"gap":4,"id":"fLoc","layout":"vertical","type":"frame","width":"fill_container"}],"gap":16,"id":"rw4","name":"Row: Expert/Location","type":"frame","width":"fill_container"},{"children":[{"content":"Phone Numbers","fill":"$--fg-muted","fontFamily":"Inter","fontSize":11,"fontWeight":"600","id":"lPhn","type":"text"},{"alignItems":"center","children":[{"content":"+49 30 1234 5678, +49 30 8765 4321","fill":"$--fg","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"vPhn","type":"text"}],"cornerRadius":8,"fill":"$--secondary","height":36,"id":"iPhn","padding":[8,12],"stroke":{"align":"inside","fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"}],"gap":4,"id":"fPhn","layout":"vertical","type":"frame","width":"fill_container"},{"children":[{"content":"Notes","fill":"$--fg-muted","fontFamily":"Inter","fontSize":11,"fontWeight":"600","id":"lNot","type":"text"},{"children":[{"content":"Patient inquiry regarding medication refill","fill":"$--fg","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"vNot","textGrowth":"fixed-width","type":"text","width":"fill_container"}],"cornerRadius":8,"fill":"$--bg","height":80,"id":"iNot","padding":[8,12],"stroke":{"align":"inside","fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"}],"gap":4,"id":"fNot","layout":"vertical","type":"frame","width":"fill_container"}],"gap":16,"id":"bdy","layout":"vertical","name":"Body","padding":24,"type":"frame","width":"fill_container"},{"alignItems":"center","children":[{"alignItems":"center","children":[{"content":"Cancel","fill":"$--fg","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"cnTx","type":"text"}],"cornerRadius":8,"fill":"$--bg","height":38,"id":"cnBt","padding":[10,20],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame"},{"alignItems":"center","children":[{"content":"Save","fill":"$--primary-fg","fontFamily":"Inter","fontSize":13,"fontWeight":"600","id":"svTx","type":"text"}],"cornerRadius":8,"fill":"$--primary","height":38,"id":"svBt","padding":[10,20],"type":"frame"}],"cornerRadius":[0,0,12,12],"gap":12,"height":64,"id":"ftr","justifyContent":"end","name":"Dialog Footer","padding":[12,24],"stroke":{"align":"inside","fill":"$--border","thickness":{"top":1}},"type":"frame","width":"fill_container"}],"cornerRadius":12,"effect":{"blur":24,"color":"#00000020","offset":{"x":0,"y":4},"shadowType":"outer","type":"shadow"},"fill":"$--bg","id":"dlgF","layout":"vertical","name":"W2: CDR Call Detail (800px) @shadcn/dialog","stroke":{"align":"inside","fill":"$--border","thickness":1},"type":"frame","width":800,"x":0,"y":0},{"content":"@service: CdrCallService.get(id) / .save(id, data)\nStatus transitions: NEW\u2192ACKNOWLEDGED\u2192IN_PROGRESS\u2192COMPLETED\u2192ARCHIVED\nAlternate: \u2192ESCALATED\u2192COMPLETED, \u2192CANCELED\nAll fields except Status are read-only in ARCHIVED/CANCELED state","height":0,"id":"nt2","name":"note: CDR Call Detail","type":"note","width":0,"x":860,"y":0}]}
+{
+  "version": "2.9",
+  "variables": {
+    "--bg": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--border": {
+      "type": "color",
+      "value": "#E5E5E5"
+    },
+    "--card": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "--destructive": {
+      "type": "color",
+      "value": "#DC2626"
+    },
+    "--fg": {
+      "type": "color",
+      "value": "#0A0A0A"
+    },
+    "--fg-muted": {
+      "type": "color",
+      "value": "#737373"
+    },
+    "--header-bg": {
+      "type": "color",
+      "value": "#F98E33"
+    },
+    "--header-fg": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--info-bg": {
+      "type": "color",
+      "value": "#EFF6FF"
+    },
+    "--info-fg": {
+      "type": "color",
+      "value": "#1D4ED8"
+    },
+    "--input-border": {
+      "type": "color",
+      "value": "#D4D4D4"
+    },
+    "--primary": {
+      "type": "color",
+      "value": "#171717"
+    },
+    "--primary-fg": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "--secondary": {
+      "type": "color",
+      "value": "#F5F5F5"
+    },
+    "--success-bg": {
+      "type": "color",
+      "value": "#F0FDF4"
+    },
+    "--success-fg": {
+      "type": "color",
+      "value": "#166534"
+    },
+    "--warning": {
+      "type": "color",
+      "value": "#F59E0B"
+    },
+    "--warning-bg": {
+      "type": "color",
+      "value": "#FFFBEB"
+    }
+  },
+  "children": [
+    {
+      "children": [
+        {
+          "alignItems": "center",
+          "children": [
+            {
+              "fill": "$--header-fg",
+              "height": 20,
+              "iconFontFamily": "lucide",
+              "iconFontName": "phone",
+              "id": "hIc",
+              "type": "icon_font",
+              "width": 20
+            },
+            {
+              "content": "CDR Call #5001",
+              "fill": "$--header-fg",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "600",
+              "id": "hTl",
+              "type": "text"
+            }
+          ],
+          "cornerRadius": [
+            12,
+            12,
+            0,
+            0
+          ],
+          "fill": "$--header-bg",
+          "gap": 12,
+          "height": 56,
+          "id": "hdr",
+          "name": "Dialog Header",
+          "padding": [
+            12,
+            24
+          ],
+          "type": "frame",
+          "width": "fill_container"
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "content": "Date",
+                      "fill": "$--fg-muted",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "600",
+                      "id": "lDate",
+                      "type": "text"
+                    },
+                    {
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "content": "2026-03-15",
+                          "fill": "$--fg",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal",
+                          "id": "vDate",
+                          "type": "text"
+                        }
+                      ],
+                      "cornerRadius": 8,
+                      "fill": "$--secondary",
+                      "height": 36,
+                      "id": "iDate",
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "stroke": {
+                        "align": "inside",
+                        "fill": "$--input-border",
+                        "thickness": 1
+                      },
+                      "type": "frame",
+                      "width": "fill_container"
+                    }
+                  ],
+                  "gap": 4,
+                  "id": "fDate",
+                  "layout": "vertical",
+                  "type": "frame",
+                  "width": "fill_container"
+                },
+                {
+                  "children": [
+                    {
+                      "content": "Time",
+                      "fill": "$--fg-muted",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "600",
+                      "id": "lTime",
+                      "type": "text"
+                    },
+                    {
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "content": "08:12",
+                          "fill": "$--fg",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal",
+                          "id": "vTime",
+                          "type": "text"
+                        }
+                      ],
+                      "cornerRadius": 8,
+                      "fill": "$--secondary",
+                      "height": 36,
+                      "id": "iTime",
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "stroke": {
+                        "align": "inside",
+                        "fill": "$--input-border",
+                        "thickness": 1
+                      },
+                      "type": "frame",
+                      "width": "fill_container"
+                    }
+                  ],
+                  "gap": 4,
+                  "id": "fTime",
+                  "layout": "vertical",
+                  "type": "frame",
+                  "width": "fill_container"
+                },
+                {
+                  "children": [
+                    {
+                      "content": "Duration",
+                      "fill": "$--fg-muted",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "600",
+                      "id": "lDur",
+                      "type": "text"
+                    },
+                    {
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "content": "4m 30s",
+                          "fill": "$--fg",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal",
+                          "id": "vDur",
+                          "type": "text"
+                        }
+                      ],
+                      "cornerRadius": 8,
+                      "fill": "$--secondary",
+                      "height": 36,
+                      "id": "iDur",
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "stroke": {
+                        "align": "inside",
+                        "fill": "$--input-border",
+                        "thickness": 1
+                      },
+                      "type": "frame",
+                      "width": "fill_container"
+                    }
+                  ],
+                  "gap": 4,
+                  "id": "fDur",
+                  "layout": "vertical",
+                  "type": "frame",
+                  "width": "fill_container"
+                }
+              ],
+              "gap": 16,
+              "id": "rw1",
+              "name": "Row: Date/Time/Duration",
+              "type": "frame",
+              "width": "fill_container"
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "content": "Caller",
+                      "fill": "$--fg-muted",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "600",
+                      "id": "lCaller",
+                      "type": "text"
+                    },
+                    {
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "content": "John Doe",
+                          "fill": "$--fg",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal",
+                          "id": "vCaller",
+                          "type": "text"
+                        }
+                      ],
+                      "cornerRadius": 8,
+                      "fill": "$--bg",
+                      "height": 36,
+                      "id": "iCaller",
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "stroke": {
+                        "align": "inside",
+                        "fill": "$--input-border",
+                        "thickness": 1
+                      },
+                      "type": "frame",
+                      "width": "fill_container"
+                    }
+                  ],
+                  "gap": 4,
+                  "id": "fCaller",
+                  "layout": "vertical",
+                  "type": "frame",
+                  "width": "fill_container"
+                },
+                {
+                  "children": [
+                    {
+                      "content": "Callee",
+                      "fill": "$--fg-muted",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "600",
+                      "id": "lCallee",
+                      "type": "text"
+                    },
+                    {
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "content": "JVA Reception",
+                          "fill": "$--fg",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal",
+                          "id": "vCallee",
+                          "type": "text"
+                        }
+                      ],
+                      "cornerRadius": 8,
+                      "fill": "$--bg",
+                      "height": 36,
+                      "id": "iCallee",
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "stroke": {
+                        "align": "inside",
+                        "fill": "$--input-border",
+                        "thickness": 1
+                      },
+                      "type": "frame",
+                      "width": "fill_container"
+                    }
+                  ],
+                  "gap": 4,
+                  "id": "fCallee",
+                  "layout": "vertical",
+                  "type": "frame",
+                  "width": "fill_container"
+                }
+              ],
+              "gap": 16,
+              "id": "rw2",
+              "name": "Row: Caller/Callee",
+              "type": "frame",
+              "width": "fill_container"
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "content": "Direction",
+                      "fill": "$--fg-muted",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "600",
+                      "id": "lDir",
+                      "type": "text"
+                    },
+                    {
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "content": "Inbound",
+                          "fill": "$--fg",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal",
+                          "id": "vDir",
+                          "type": "text"
+                        }
+                      ],
+                      "cornerRadius": 8,
+                      "fill": "$--secondary",
+                      "height": 36,
+                      "id": "iDir",
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "stroke": {
+                        "align": "inside",
+                        "fill": "$--input-border",
+                        "thickness": 1
+                      },
+                      "type": "frame",
+                      "width": "fill_container"
+                    }
+                  ],
+                  "gap": 4,
+                  "id": "fDir",
+                  "layout": "vertical",
+                  "type": "frame",
+                  "width": "fill_container"
+                },
+                {
+                  "children": [
+                    {
+                      "content": "Status",
+                      "fill": "$--fg-muted",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "600",
+                      "id": "lStat",
+                      "type": "text"
+                    },
+                    {
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "content": "NEW",
+                          "fill": "$--fg",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal",
+                          "id": "vStat",
+                          "type": "text"
+                        },
+                        {
+                          "fill": "$--fg-muted",
+                          "height": 14,
+                          "iconFontFamily": "lucide",
+                          "iconFontName": "chevron-down",
+                          "id": "sChv",
+                          "type": "icon_font",
+                          "width": 14
+                        }
+                      ],
+                      "cornerRadius": 8,
+                      "fill": "$--bg",
+                      "height": 36,
+                      "id": "iStat",
+                      "justifyContent": "space_between",
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "stroke": {
+                        "align": "inside",
+                        "fill": "$--input-border",
+                        "thickness": 1
+                      },
+                      "type": "frame",
+                      "width": "fill_container"
+                    }
+                  ],
+                  "gap": 4,
+                  "id": "fStat",
+                  "layout": "vertical",
+                  "type": "frame",
+                  "width": "fill_container"
+                }
+              ],
+              "gap": 16,
+              "id": "rw3",
+              "name": "Row: Direction/Status",
+              "type": "frame",
+              "width": "fill_container"
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "content": "Expert",
+                      "fill": "$--fg-muted",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "600",
+                      "id": "lExp",
+                      "type": "text"
+                    },
+                    {
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "content": "Dr. Weber",
+                          "fill": "$--fg",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal",
+                          "id": "vExp",
+                          "type": "text"
+                        },
+                        {
+                          "fill": "$--fg-muted",
+                          "height": 14,
+                          "iconFontFamily": "lucide",
+                          "iconFontName": "chevron-down",
+                          "id": "eChv",
+                          "type": "icon_font",
+                          "width": 14
+                        }
+                      ],
+                      "cornerRadius": 8,
+                      "fill": "$--bg",
+                      "height": 36,
+                      "id": "iExp",
+                      "justifyContent": "space_between",
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "stroke": {
+                        "align": "inside",
+                        "fill": "$--input-border",
+                        "thickness": 1
+                      },
+                      "type": "frame",
+                      "width": "fill_container"
+                    }
+                  ],
+                  "gap": 4,
+                  "id": "fExp",
+                  "layout": "vertical",
+                  "type": "frame",
+                  "width": "fill_container"
+                },
+                {
+                  "children": [
+                    {
+                      "content": "Location",
+                      "fill": "$--fg-muted",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "600",
+                      "id": "lLoc",
+                      "type": "text"
+                    },
+                    {
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "content": "JVA Berlin-Moabit",
+                          "fill": "$--fg",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal",
+                          "id": "vLoc",
+                          "type": "text"
+                        }
+                      ],
+                      "cornerRadius": 8,
+                      "fill": "$--secondary",
+                      "height": 36,
+                      "id": "iLoc",
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "stroke": {
+                        "align": "inside",
+                        "fill": "$--input-border",
+                        "thickness": 1
+                      },
+                      "type": "frame",
+                      "width": "fill_container"
+                    }
+                  ],
+                  "gap": 4,
+                  "id": "fLoc",
+                  "layout": "vertical",
+                  "type": "frame",
+                  "width": "fill_container"
+                }
+              ],
+              "gap": 16,
+              "id": "rw4",
+              "name": "Row: Expert/Location",
+              "type": "frame",
+              "width": "fill_container"
+            },
+            {
+              "children": [
+                {
+                  "content": "Phone Numbers",
+                  "fill": "$--fg-muted",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "id": "lPhn",
+                  "type": "text"
+                },
+                {
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "content": "+49 30 1234 5678, +49 30 8765 4321",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "id": "vPhn",
+                      "type": "text"
+                    }
+                  ],
+                  "cornerRadius": 8,
+                  "fill": "$--secondary",
+                  "height": 36,
+                  "id": "iPhn",
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "stroke": {
+                    "align": "inside",
+                    "fill": "$--input-border",
+                    "thickness": 1
+                  },
+                  "type": "frame",
+                  "width": "fill_container"
+                }
+              ],
+              "gap": 4,
+              "id": "fPhn",
+              "layout": "vertical",
+              "type": "frame",
+              "width": "fill_container"
+            },
+            {
+              "children": [
+                {
+                  "content": "Notes",
+                  "fill": "$--fg-muted",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "id": "lNot",
+                  "type": "text"
+                },
+                {
+                  "children": [
+                    {
+                      "content": "Patient inquiry regarding medication refill",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "id": "vNot",
+                      "textGrowth": "fixed-width",
+                      "type": "text",
+                      "width": "fill_container"
+                    }
+                  ],
+                  "cornerRadius": 8,
+                  "fill": "$--bg",
+                  "height": 80,
+                  "id": "iNot",
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "stroke": {
+                    "align": "inside",
+                    "fill": "$--input-border",
+                    "thickness": 1
+                  },
+                  "type": "frame",
+                  "width": "fill_container"
+                }
+              ],
+              "gap": 4,
+              "id": "fNot",
+              "layout": "vertical",
+              "type": "frame",
+              "width": "fill_container"
+            }
+          ],
+          "gap": 16,
+          "id": "bdy",
+          "layout": "vertical",
+          "name": "Body",
+          "padding": 24,
+          "type": "frame",
+          "width": "fill_container"
+        },
+        {
+          "alignItems": "center",
+          "children": [
+            {
+              "alignItems": "center",
+              "children": [
+                {
+                  "content": "Cancel",
+                  "fill": "$--fg",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal",
+                  "id": "cnTx",
+                  "type": "text"
+                }
+              ],
+              "cornerRadius": 8,
+              "fill": "$--bg",
+              "height": 38,
+              "id": "cnBt",
+              "padding": [
+                10,
+                20
+              ],
+              "stroke": {
+                "fill": "$--input-border",
+                "thickness": 1
+              },
+              "type": "frame"
+            },
+            {
+              "alignItems": "center",
+              "children": [
+                {
+                  "content": "Save",
+                  "fill": "$--primary-fg",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "600",
+                  "id": "svTx",
+                  "type": "text"
+                }
+              ],
+              "cornerRadius": 8,
+              "fill": "$--primary",
+              "height": 38,
+              "id": "svBt",
+              "padding": [
+                10,
+                20
+              ],
+              "type": "frame"
+            }
+          ],
+          "cornerRadius": [
+            0,
+            0,
+            12,
+            12
+          ],
+          "gap": 12,
+          "height": 64,
+          "id": "ftr",
+          "justifyContent": "end",
+          "name": "Dialog Footer",
+          "padding": [
+            12,
+            24
+          ],
+          "stroke": {
+            "align": "inside",
+            "fill": "$--border",
+            "thickness": {
+              "top": 1
+            }
+          },
+          "type": "frame",
+          "width": "fill_container"
+        }
+      ],
+      "cornerRadius": 12,
+      "effect": {
+        "blur": 24,
+        "color": "#00000020",
+        "offset": {
+          "x": 0,
+          "y": 4
+        },
+        "shadowType": "outer",
+        "type": "shadow"
+      },
+      "fill": "$--bg",
+      "id": "dlgF",
+      "layout": "vertical",
+      "name": "W2: CDR Call Detail (800px) @shadcn/dialog",
+      "stroke": {
+        "align": "inside",
+        "fill": "$--border",
+        "thickness": 1
+      },
+      "type": "frame",
+      "width": 800,
+      "x": 0,
+      "y": 0
+    }
+  ]
+}

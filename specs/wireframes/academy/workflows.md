@@ -428,11 +428,29 @@ flowchart TD
 
 Grid view with 6 columns (id, number, title, queue, priority, state). Toolbar with Add and View Ticket buttons. Row click opens 800px ticket detail modal. Annotation note describes cascading selects, auto-fill behavior, priority enum, and view dialog structure.
 
+**Annotations:**
+- `[DataTable]` 6-col grid → @shadcn/table DataTable pattern
+- Detail panel: 3 cascading selects `[cascade: level 1 → level 2 → level 3]`
+- Title `[RO]` `[auto: concat(cat1.title, cat2.title, cat3.title)]` — auto-generated
+- Queue `[RO]` — determined by category selection
+- Priority: VERYLOW | LOW | NORMAL | HIGH | CRITICAL
+- View dialog (800px): ticket metadata header + comment thread `[repeats]` + reply textarea
+- Body textarea for ticket description
+
 ![W1: Support Ticket List](./support-video/support-ticket.png)
 
 ### WA-2: Support Ticket Creation — Cascading Category Select (W1)
 
 600px dialog with three-level category dropdown cascade (`[cascade: level N → level N+1]`). Title field auto-populated from concatenated selections (`[RO]` `[auto: concat]`). Queue field auto-filled from selected category. Priority selector defaulting to NORMAL. Message body textarea. Cancel + Submit footer.
+
+**Annotations:**
+- `[DataTable]` 6-col grid → @shadcn/table DataTable pattern
+- Detail panel: 3 cascading selects `[cascade: level 1 → level 2 → level 3]`
+- Title `[RO]` `[auto: concat(cat1.title, cat2.title, cat3.title)]` — auto-generated
+- Queue `[RO]` — determined by category selection
+- Priority: VERYLOW | LOW | NORMAL | HIGH | CRITICAL
+- View dialog (800px): ticket metadata header + comment thread `[repeats]` + reply textarea
+- Body textarea for ticket description
 
 ![W1: Create Ticket Dialog](./support-video/support-ticket-create.png)
 
@@ -440,11 +458,28 @@ Grid view with 6 columns (id, number, title, queue, priority, state). Toolbar wi
 
 800px modal displaying ticket number + concatenated title in header, metadata row (queue, priority badge, state), full body text with whitespace preservation. Chronological comment thread (`[repeats]`) with date, subject, from, to, and body per comment. Reply textarea + "Send Reply" button at bottom.
 
+**Annotations:**
+- `[DataTable]` 6-col grid → @shadcn/table DataTable pattern
+- Detail panel: 3 cascading selects `[cascade: level 1 → level 2 → level 3]`
+- Title `[RO]` `[auto: concat(cat1.title, cat2.title, cat3.title)]` — auto-generated
+- Queue `[RO]` — determined by category selection
+- Priority: VERYLOW | LOW | NORMAL | HIGH | CRITICAL
+- View dialog (800px): ticket metadata header + comment thread `[repeats]` + reply textarea
+- Body textarea for ticket description
+
 ![W1: Ticket Detail Modal](./support-video/support-ticket-view.png)
 
 ### WA-4: Video Management Grid (W2)
 
 1440px full-page view with 7-column DataTable grid (id, path, preview thumbnail, title, duration, category, description). Toolbar with Add, Edit, Delete, and Watch buttons. Watch button triggers player dialog based on video type. Annotation note describes two player dialog variants.
+
+**Annotations:**
+- `[DataTable]` 7-col grid → @shadcn/table DataTable pattern
+- Detail panel: path, previewImage, title, lengthInSeconds, category combobox, description textarea
+- Two player dialog types:
+- `[cond: video.type === VIDEO]` video.js player 800px dialog
+- `[cond: video.type === STREAM]` iframe embed 1200px dialog
+- Watch button opens appropriate player based on video type
 
 ![W2: Video Management Grid](./support-video/video-management.png)
 
@@ -452,11 +487,28 @@ Grid view with 6 columns (id, number, title, queue, priority, state). Toolbar wi
 
 600px dialog with form fields: path, preview image, title, duration (seconds), category combobox (VideoCategoryService.autocomplete), and description textarea. Info box annotates player type routing: `[cond: video.type === VIDEO]` → video.js 800px, `[cond: video.type === STREAM]` → iframe 1200px.
 
+**Annotations:**
+- `[DataTable]` 7-col grid → @shadcn/table DataTable pattern
+- Detail panel: path, previewImage, title, lengthInSeconds, category combobox, description textarea
+- Two player dialog types:
+- `[cond: video.type === VIDEO]` video.js player 800px dialog
+- `[cond: video.type === STREAM]` iframe embed 1200px dialog
+- Watch button opens appropriate player based on video type
+
 ![W2: Video Detail Panel](./support-video/video-management-detail.png)
 
 ### WA-6: Video Library — Card Browsing (W3)
 
 1440px full-page card-based browsing layout (no DataTable). Header with Back button and "Video Library" title. **Categories section**: 3-column card grid with thumbnail placeholder, title, total time, watched badge (success/warning), and View button. **Videos section**: 3-column card grid within selected category, each card with play icon thumbnail, title, duration, watched indicator (check icon), and Play button. Annotation note describes hash deep linking (`#CATEGORYID;SUBCATEGORY:VIDEOID:POSITION`), periodic watch time tracking, and 3 player variants.
+
+**Annotations:**
+- Card-based browsing layout (no DataTable)
+- Category cards grid: thumbnail, title, totalTime, watched indicator, View button
+- Video cards grid: thumbnail, title, duration, watched indicator, Play button
+- `[hash: deep link]` #CATEGORYID;SUBCATEGORY:VIDEOID:POSITION
+- `[async: periodic submitWatchTime]` track video watch progress
+- 3 player variants: VIDEO (video.js), STREAM (iframe), PDF (embedded viewer)
+- goBack button returns to previous view
 
 ![W3: Video Library](./support-video/video-library.png)
 

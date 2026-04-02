@@ -588,38 +588,114 @@ sequenceDiagram
 
 7-column paginated grid with Add/Edit/Delete toolbar. 3-tab detail dialog (Contact, Address with zip auto-fill, Billing with price list + discount collections). Billing tab is admin-only.
 
+**Annotations:**
+
+- W1: Customer List — 7-col grid + 3-tab detail dialog
+  - Tab 1: Contact (name*, email, webpage, uid, iban, bank, bic, representative, phones)
+  - Tab 2: Address (street, zip [autofill: ZipCodeService] → city, state, country)
+  - Tab 3: Billing ([ADMIN] price lists autocomplete + discounts collection)
+
 ![W1: Customer List](./customer-core/customer-list.png)
 
 ![W1: Customer Detail](./customer-core/customer-detail.png)
+
+![W1: Location Management](./customer-core/location-management.png)
+
+![W1: Location Filter Panel](./customer-core/location-filter-panel.png)
+
+![W1: Location Detail](./customer-core/location-detail.png)
+
+![W1: Location Tab — Address](./customer-core/location-tab-address.png)
+
+![W1: Location Tab — Rooms](./customer-core/location-tab-rooms.png)
 
 ### W2: Location Management
 
 12-column grid with patientDataType icons and patientDataAccess status indicators. Offcanvas filter panel (name/address/phone). 3-tab detail dialog with ~31 fields including patient data connection testing (sequential: test connection → folder paths → test upload → test backup), SIP accounts collection, Leaflet/Mapbox map with reverse geocoding, and read-only rooms tab.
 
+**Annotations:**
+
+- 12-column DataTable: Name | Customer | Type | Address | Phone | Fax | patientDataType (icon) | patientDataAccess (badge) | Available | contactPerson | Email | Actions
+- Formatters: patientDataType shows icon per type, patientDataAccess shows colored badge
+- Sorting: server-side | Pagination: server-side
+- Filter panel: name, address, phone text inputs
+
 ![W2: Location Management](./customer-core/location-management.png)
 
+![W2: Location Filter Panel](./customer-core/location-filter-panel.png)
+
 ![W2: Location Detail](./customer-core/location-detail.png)
+
+![W2: Location Tab — Address](./customer-core/location-tab-address.png)
+
+![W2: Location Tab — Rooms](./customer-core/location-tab-rooms.png)
 
 ### W3: Contact Management
 
 A-Z quick filter bar (full A–Z + # and compact ranges A-D/E-H/etc.). 13-column grid with offcanvas filter (name, email, max results). 4-tab detail dialog (personal info with categories multi-tag + QR code, private address, work address, custom fields + notes). Import dialog with force-update checkbox. Download export + Send Password actions.
 
+**Annotations:**
+
+- **AZ Filter:** [custom: AZFilterBar] — Letter buttons A-Z + # (non-alpha). Compact variant: A-D | E-H | I-L | M-P | Q-T | U-X | Y-Z#. Clicking a letter filters grid by last name initial. Active letter highlighted with primary color.
+- **Table:** 13-column DataTable: Display Name | First Name | Last Name | Type | Categories | Primary Email | Cellular Number | Company | Work Phone | Address | Zip Code | City | Country. Sorting: server-side on all columns. Pagination: server-side.
+- **Categories:** Multi-tag widget (tag-it). Users type category names; tags appear inline. [custom: TagInput] — custom component, not in Shadcn registry. ContactService.getCategories provides autocomplete. Max 7 tags recommended before horizontal overflow.
+- **QR Code:** Generates vCard-compatible QR code from contact data. [integration: qrcode.react]. Generate button creates QR; displayed as image.
+- **Address autofill:** Address tabs: Zip Code field triggers [autofill: ZipCodeService] → City, State, Country auto-populated. data.homeAddress, data.homeZipCode, data.homeCity, data.homeState, data.homeCountry, data.workAddress…
+- **Custom fields:** 4 custom text fields (free text) + notes textarea. data.custom1 | data.custom2 | data.custom3 | data.custom4 | data.notes
+- **Import:** File upload + force-update checkbox. @shadcn/input[type=file] + @shadcn/checkbox. When checked, matching contacts (by email) are overwritten.
+- **Company autocomplete:** Company field uses CompanyService.autocomplete. @shadcn/combobox with async search. Display: company.displayName
+
 ![W3: Contact Management](./contact/contact-management.png)
 
+![W3: Contact Filter Panel](./contact/contact-filter-panel.png)
+
 ![W3: Contact Detail](./contact/contact-detail.png)
+
+![W3: Contact Tab — Private](./contact/contact-tab-private.png)
+
+![W3: Contact Tab — Work](./contact/contact-tab-work.png)
+
+![W3: Contact Tab — Other](./contact/contact-tab-other.png)
+
+![W3: Contact Import](./contact/contact-import.png)
 
 ### W4: Room Management
 
 5-column grid with client-side search. 3-tab detail dialog: room info with location autocomplete + available toggle, planning tab with FullCalendar (month/week/day views, availability slots from plans, appointment background events) + plan sidebar with CRUD + room plan sub-dialog (weekday checkboxes, time pickers), equipment tab with autocomplete insert + collection table.
 
+**Annotations:**
+
+- Client-side search: instant filtering as user types. No server call.
+- 5-column DataTable: Name | Number | Location | Available | Description. Client-side search. Pagination: client-side.
+- [integration: @fullcalendar/react] — Month/Week/Day views. Availability slots = colored blocks from room plans (foreground events). Appointments = background events with state-based coloring. Plan sidebar with CRUD + room plan sub-dialog.
+- Equipment association via autocomplete search. Added equipment appears in collection table with Remove action. @shadcn/combobox + @shadcn/table
+- Room Plan sub-dialog: opens on top of room form. Weekday toggles (Mon-Sun), time pickers, date range. Empty 'until' date = open-ended plan.
+
 ![W4: Room Management](./room/room-management.png)
 
 ![W4: Room Detail](./room/room-detail.png)
+
+![W4: Room Tab — Planning](./room/room-tab-planning.png)
+
+![W4: Room Tab — Equipment](./room/room-tab-equipment.png)
+
+![W4: Room Plan Sub-dialog](./room/room-plan-subdialog.png)
 
 ### W5: Equipment Management
 
 9-column grid with status formatter. Offcanvas filter panel with cascading Location→Room dependency. 2-tab detail dialog: 15 equipment fields in 3-column layout with cascading location→room autocompletes, comments/status change tab with status select + comment textarea (min 4 chars) + timestamped history collection. Status is read-only on Tab 1.
 
+**Annotations:**
+
+- 9-column DataTable: Inventory # | Name | Serial | Manufacturer | Location | Room | Status (badge) | Active | Actions. Status formatter: colored badge per EquipmentStatus enum. Sorting: server-side. Pagination: server-side.
+- [cascade: location → room]. Room select is disabled until Location is selected. Changing Location resets Room selection. Clearing Location disables Room again.
+- 15 equipment fields in 3-column layout. Cascading: Location → Room (same as filter panel). Status is [RO] on Tab 1 — only changeable via Tab 2. Product field filtered by EQUIPMENT type.
+- Status change via comment: select new status + enter comment (min 4 chars) + submit. Creates timestamped audit trail entry. Controls disabled until equipment saved at least once. Allowed transitions: ACTIVE→IN_SERVICE, IN_SERVICE→ACTIVE, etc.
+
 ![W5: Equipment Management](./equipment/equipment-management.png)
 
+![W5: Equipment Filter Panel](./equipment/equipment-filter-panel.png)
+
 ![W5: Equipment Detail](./equipment/equipment-detail.png)
+
+![W5: Equipment Tab — Comments](./equipment/equipment-tab-comments.png)

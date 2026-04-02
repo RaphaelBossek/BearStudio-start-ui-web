@@ -731,7 +731,7 @@
                       "id": "HeApX",
                       "name": "sec1",
                       "fill": "$--fg",
-                      "content": "Entity Selection [cond: customer↔location mutex]",
+                      "content": "Entity Selection [cond: customer\u2194location mutex]",
                       "fontFamily": "Inter",
                       "fontSize": 14,
                       "fontWeight": "600"
@@ -831,7 +831,7 @@
                                   "id": "QPgZU",
                                   "name": "inp2t",
                                   "fill": "$--fg-muted",
-                                  "content": "— disabled (mutex) —",
+                                  "content": "\u2014 disabled (mutex) \u2014",
                                   "fontFamily": "Inter",
                                   "fontSize": 13,
                                   "fontWeight": "normal"
@@ -1577,14 +1577,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "note",
-          "id": "auvrQ",
-          "name": "Annotations",
-          "width": 1440,
-          "height": 0,
-          "content": "2-tab detail: Tab 1 Payment Contact (35 fields), Tab 2 Product Orders (flat-rate toggles + product collection)\n[cond: customer↔location mutex] — selecting customer clears location and vice versa\n[repeats] Product orders collection with add/delete/sort\n[bulk: create invoices] Create Invoice + Create All Invoices actions\nFilter panel: active toggle + max results (@shadcn/sheet)\n[HARDCODED] Field labels need i18n keys"
         }
       ]
     }

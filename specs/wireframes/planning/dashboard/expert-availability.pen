@@ -122,7 +122,7 @@
               "id": "PIPIq",
               "name": "toolbarAnnot",
               "fill": "$--fg-muted",
-              "content": "Expert Week View — hours × 7 days, tri-state slots",
+              "content": "Expert Week View \u2014 hours \u00d7 7 days, tri-state slots",
               "fontFamily": "Inter",
               "fontSize": 11,
               "fontWeight": "normal"
@@ -190,7 +190,7 @@
                           "id": "vWVP0",
                           "name": "hTypeSel",
                           "fill": "$--fg",
-                          "content": "Treatment ▾",
+                          "content": "Treatment \u25be",
                           "fontFamily": "Inter",
                           "fontSize": 12,
                           "fontWeight": "500"
@@ -749,7 +749,7 @@
                       "id": "0udCx",
                       "name": "moreTxt",
                       "fill": "$--fg-muted",
-                      "content": "... hours 10:00 – 20:00 ...",
+                      "content": "... hours 10:00 \u2013 20:00 ...",
                       "fontFamily": "Inter",
                       "fontSize": 11,
                       "fontWeight": "normal",
@@ -865,7 +865,7 @@
               "id": "SFZNp",
               "name": "cycleTxt",
               "fill": "$--fg-muted",
-              "content": "Cycle: ○ → ✓ → ✗ → ○ (click)",
+              "content": "Cycle: \u25cb \u2192 \u2713 \u2192 \u2717 \u2192 \u25cb (click)",
               "fontFamily": "Inter",
               "fontSize": 11,
               "fontWeight": "normal"
@@ -885,16 +885,7 @@
             16,
             24
           ],
-          "children": [
-            {
-              "type": "note",
-              "id": "Lhdre",
-              "name": "Week View Note",
-              "width": 700,
-              "height": 45,
-              "content": "Click column header → toggle all in column. Click hour label → toggle all in row. Appointment indicators overlay as colored type icons with popovers (@HH:MM-HH:MM title state). Week type select currently only TREATMENT."
-            }
-          ]
+          "children": []
         }
       ]
     },
@@ -1054,7 +1045,7 @@
               "id": "9X6pu",
               "name": "mtbAnnot",
               "fill": "$--fg-muted",
-              "content": "Expert Month View — days × 6 slots, 4-row header, month lock",
+              "content": "Expert Month View \u2014 days \u00d7 6 slots, 4-row header, month lock",
               "fontFamily": "Inter",
               "fontSize": 11,
               "fontWeight": "normal"
@@ -1092,7 +1083,7 @@
               "fill": "$--destructive",
               "textGrowth": "fixed-width",
               "width": "fill_container",
-              "content": "This month is already in planning and blocked. [cond: data.locked=true — all cells dimmed, pointer-events: none]",
+              "content": "This month is already in planning and blocked. [cond: data.locked=true \u2014 all cells dimmed, pointer-events: none]",
               "fontFamily": "Inter",
               "fontSize": 12,
               "fontWeight": "normal"
@@ -1241,7 +1232,7 @@
                           "id": "vIWIz",
                           "name": "h2monthTxt",
                           "fill": "$--fg",
-                          "content": "Month: [March ▾]",
+                          "content": "Month: [March \u25be]",
                           "fontFamily": "Inter",
                           "fontSize": 11,
                           "fontWeight": "500"
@@ -1539,7 +1530,7 @@
                           "id": "mzQEh",
                           "name": "h3v6Txt",
                           "fill": "$--fg-muted",
-                          "content": "—",
+                          "content": "\u2014",
                           "fontFamily": "Inter",
                           "fontSize": 10,
                           "fontWeight": "normal"
@@ -1685,7 +1676,7 @@
                           "id": "fBCSu",
                           "name": "h4emptyTxt",
                           "fill": "$--fg-muted",
-                          "content": "—",
+                          "content": "\u2014",
                           "fontFamily": "Inter",
                           "fontSize": 10,
                           "fontWeight": "normal"
@@ -1889,7 +1880,7 @@
                       "id": "HbNDl",
                       "name": "moreTxt",
                       "fill": "$--fg-muted",
-                      "content": "... days 2–31 ...",
+                      "content": "... days 2\u201331 ...",
                       "fontFamily": "Inter",
                       "fontSize": 11,
                       "fontWeight": "normal",
@@ -1914,24 +1905,7 @@
             16,
             24
           ],
-          "children": [
-            {
-              "type": "note",
-              "id": "cnanW",
-              "name": "Month Grid Note",
-              "width": 700,
-              "height": 55,
-              "content": "4-row header: Row 1 (year + Shift/Appointment categories), Row 2 (month select + 6 slot labels), Row 3 (weekday counters cur/max per slot), Row 4 (weekend counters + 'Max before/after'). Each day row: day number, weekday name, 6 dayslot cells with tri-state + appointment indicator."
-            },
-            {
-              "type": "note",
-              "id": "EOR0W",
-              "name": "Month Lock + Holiday Note",
-              "width": 700,
-              "height": 55,
-              "content": "Month lock: data.locked=true → red alert banner, all cells dimmed (opacity 0.25), pointer-events: none. Holiday button → dialog with date range picker (start/end), calls ExpertDaysService.setHoliday(-1, start, until). Slot routing: SHIFT type → morning/afternoon/night; non-SHIFT → morningAppointment/afternoonAppointment/treatmentAppointment."
-            }
-          ]
+          "children": []
         }
       ]
     }

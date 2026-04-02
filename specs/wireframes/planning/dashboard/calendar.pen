@@ -83,7 +83,7 @@
               "id": "CXpko",
               "name": "titleTxt",
               "fill": "$--fg",
-              "content": "Mar 1 – 7, 2026",
+              "content": "Mar 1 \u2013 7, 2026",
               "fontFamily": "Inter",
               "fontSize": 16,
               "fontWeight": "600"
@@ -1229,16 +1229,7 @@
             16,
             24
           ],
-          "children": [
-            {
-              "type": "note",
-              "id": "og8oV",
-              "name": "Calendar Note",
-              "width": 700,
-              "height": 50,
-              "content": "@fullcalendar/react v6 timeGridWeek. 5 entity types (HOLIDAY, PUBLICHOLIDAY, BIRTHDAY, APPOINTMENT, SHIFT) with 18 state colors each for APPOINTMENT/SHIFT. HSP contrast for text. BIRTHDAY click → sendMessage; other clicks disabled/missing in legacy."
-            }
-          ]
+          "children": []
         }
       ]
     }

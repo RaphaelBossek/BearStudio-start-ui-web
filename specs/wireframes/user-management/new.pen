@@ -470,14 +470,6 @@
           ]
         },
         {
-          "type": "note",
-          "id": "gCUsa",
-          "name": "note1",
-          "width": 850,
-          "height": 80,
-          "content": "Tab visibility:\n- Tabs 1-4 (white bg): ALL users (EMPLOYEE authority)\n- Tabs 5-8 (orange bg): ADMIN only\nForm shared between personal profile and staff list detail\n@shadcn/tabs with icon+label items"
-        },
-        {
           "type": "frame",
           "id": "E4r2I",
           "name": "Tab Content Area",
@@ -1263,14 +1255,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "note",
-          "id": "wJAtt",
-          "name": "note2",
-          "width": 850,
-          "height": 80,
-          "content": "Additional fields not shown:\n- On-call number, Email 2, Notification checkbox\n- [PERM: ADMIN] Notification exclusions: 20 NotificationEvent checkboxes in 4-col grid\n\nField annotations: * = required, data.path = binding\nAll inputs @shadcn/input, selects @shadcn/select\nDates use @shadcn/calendar + @shadcn/popover DatePicker pattern"
         }
       ]
     },
@@ -1877,14 +1861,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "note",
-          "id": "uAkOM",
-          "name": "note3",
-          "width": 850,
-          "height": 60,
-          "content": "Additional admin-only fields not shown:\n- Qualification Level (select: ONBOARDING|ROOKIE|AMATEUR|PROFI)\n- Experience: Addiction Medicine (5-level select)\n- Focus: Shift/Appointment/Therapy (3-level + none selects)\n- Current Income (number)\nAll fields use @shadcn/select or @shadcn/input"
         }
       ]
     },
@@ -2630,14 +2606,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "note",
-          "id": "pFHO0",
-          "name": "snote",
-          "width": 1160,
-          "height": 80,
-          "content": "Staff List features:\n- A-Z quick filter on username field, with text search\n- 10-column grid: firstName, lastName, state, shift, appointment, therapy, lastReminder, 2FA (lock icon), enabled (lightbulb)\n- Row selection enables: Edit, Onboarding, Assignments, Password, Invoice buttons\n- Always enabled: Add, Export, Expert Search\n- Row double-click opens inline detail panel (shared profile form)\n- Right-side filter panel (@shadcn/sheet): name, email, job autocomplete, skill autocomplete\n- Data source: UserService.getExperts with client-side search on firstName/lastName/email"
         }
       ]
     },
@@ -3104,14 +3072,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "note",
-          "id": "fu6ug",
-          "name": "esnote",
-          "width": 660,
-          "height": 70,
-          "content": "Expert Search features:\n- Job autocomplete filter (JobService)\n- Active toggle (default: true)\n- Skills collection: insert via autocomplete, delete chips, AND-logic client-side filter\n- Exclusion Criteria collection: same pattern, hides matching rows\n- Results: name, skills (nested), exclusion criteria (nested), qualification level (disabled select)\n- Deep-link icon to appointment.html#id if expert has appointment"
         }
       ]
     },
@@ -3526,14 +3486,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "note",
-          "id": "D74bP",
-          "name": "anote",
-          "width": 660,
-          "height": 80,
-          "content": "Assignment Dialog:\n- Year/Month filter pre-filled with current-1 month\n- AppointmentService.getByUser(userId, year, month)\n- Accept: confirm 'Accept user?' -> adjustUser(id, AGREED)\n- Reject: confirm 'Reject user?' -> adjustUser(id, REJECTED)\n- Export downloads .xls for user/period\n- Nested: additionalAssignments displayName per row\n@shadcn/dialog + @shadcn/alert-dialog for confirms"
         }
       ]
     },
@@ -4229,14 +4181,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "note",
-          "id": "cfzdt",
-          "name": "snote",
-          "width": 460,
-          "height": 70,
-          "content": "Signature Pad:\n- Uses SignaturePad library (signature_pad.umd.min.js)\n- High-DPI canvas: devicePixelRatio scaling\n- Config: transparent bg, max stroke 1.5\n- Sign: toDataURL() -> UserService.updateSignature(userId, base64)\n- Clear: signaturePad.clear() + resizeCanvas()\n- Included by personal.htmlm AND staff.htmlm\n@shadcn/dialog + react-signature-canvas"
         }
       ]
     },
@@ -4678,14 +4622,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "note",
-          "id": "bCPdl",
-          "name": "mnote",
-          "width": 860,
-          "height": 90,
-          "content": "Month Grid (Expert Days):\n- 31 rows (days) x 6 slot columns (3 shift + 2 appointment + 1 treatment)\n- Tri-state cells: null (circle) -> true (green check) -> false (red X) -> null\n- Click interactions: cell (single slot), day# (equalize 6 slots), weekday name (copy to same weekday), column header (equalize column)\n- Weekend rows highlighted yellow, public holidays marked\n- Summary rows show current/max counts for weekday/weekend\n- Appointment overlay icons (shift/council/appointment) with popovers\n- Month can be locked by planning (non-ADMIN users see disabled grid + alert)\n- ExpertDaysService.get/save"
         }
       ]
     },
@@ -5004,14 +4940,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "note",
-          "id": "hKePp",
-          "name": "wnote",
-          "width": 660,
-          "height": 80,
-          "content": "Week Grid (Expert Week):\n- 24 rows (hours 01:00-24:00) x 7 day columns (Mon-Sun)\n- Binary state cells: null (X, no color) -> true (green check) -> null\n- Click interactions: cell (single slot), hour label (equalize 7 slots), column header (equalize column)\n- Type selector: only TREATMENT currently\n- Locked cells checked via .locked CSS class\n- Known bug: slotsSo (server) vs slotsSu (UI) naming mismatch for Sunday\n- ExpertWeekService.getUser/save"
         }
       ]
     },
@@ -5370,14 +5298,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "note",
-          "id": "i8ax0",
-          "name": "usnote",
-          "width": 560,
-          "height": 60,
-          "content": "User Stats Dialog (W14):\n- Date input triggers InfoService.getNumbers(date)\n- Collection: department.description, available, booked\n- Holiday column: header icon exists but NO data field in row template (known gap)\n- [HARDCODED] column header titles: Verfugbar, Gebucht, Urlaub\n- No permission gating (all dashboard users)\n@shadcn/dialog + @shadcn/table"
         }
       ]
     }

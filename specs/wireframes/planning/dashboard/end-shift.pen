@@ -71,7 +71,7 @@
               "id": "UVcjH",
               "name": "hdrAnnot",
               "fill": "#FFFFFFAA",
-              "content": "@shadcn/alert-dialog — endShiftDlg",
+              "content": "@shadcn/alert-dialog \u2014 endShiftDlg",
               "fontFamily": "Inter",
               "fontSize": 11,
               "fontWeight": "normal"
@@ -344,16 +344,7 @@
             12,
             24
           ],
-          "children": [
-            {
-              "type": "note",
-              "id": "7D4RV",
-              "name": "Behavior Note",
-              "width": 550,
-              "height": 40,
-              "content": "Save callback: AppointmentService.done(id, timeStart, timeEnd, qm). On error → dialog re-opens for correction. On success → page reloads. Triggered when .endAppointment clicked and ap.shift is truthy."
-            }
-          ]
+          "children": []
         }
       ]
     }

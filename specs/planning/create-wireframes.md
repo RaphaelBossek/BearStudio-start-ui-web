@@ -34,7 +34,7 @@ Most domains currently contain a stub `wireframe-plan-{domain}.md` that was spli
 1. **Read Context:** Read the domain's analysis documents, data dictionary, and existing PRD cross-references.
 2. **Map Elements to Shadcn:** Create a table mapping the analyzed legacy UI elements to modern Shadcn UI components (e.g., `dialog`, `select`, `input`, `table`, `alert`, `button`).
 3. **Define Wireframe Inventory:** List each screen, dialog, or wizard step that requires a wireframe. Determine if different states (e.g., loading, error, empty) need separate frames.
-4. **Establish Annotation Legends:** Include standard text annotations to be used in the `.pen` files:
+4. **Establish Annotation Legends:** Define standard text annotations that will be used in the `workflows.md` documentation alongside screenshots (Do not embed them in `.pen` files):
    - `*` (Required field)
    - `[RO]` (Read-only field)
    - `[HARDCODED]` (Needs i18n key)
@@ -123,7 +123,7 @@ Pencil runs as a **Windows desktop application** while the project repository li
 
 The recommended workflow splits into two phases:
 
-1. **Design Phase** — Use the built-in Pencil MCP tools (`pencil_open_document`, `pencil_batch_design`, `pencil_get_screenshot`) for interactive wireframe creation.
+1. **Design Phase** — Use the built-in Pencil MCP tools (`pencil_open_document`, `pencil_batch_design`) for interactive wireframe creation.
 2. **Save Phase** — Use `mcp2cli` via the Python save script to extract the full document from Pencil's in-memory state and write it to disk. This runs outside the AI context and can handle files of any size.
 
 **Prerequisites:** `pip install mcp2cli` (one-time). The Pencil MCP server binary path: `/mnt/c/Users/RaphaelBossek/AppData/Local/Programs/Pencil/resources/app.asar.unpacked/out/mcp-server-windows-x64.exe --app desktop`
@@ -156,8 +156,6 @@ Verifying round-trip...
 
 ### Pencil `.pen` File Save Convention
 
-### Pencil `.pen` File Save Convention
-
 Pencil does **not** auto-save to the WSL2 filesystem. However, the AI agent can **programmatically save** `.pen` files by extracting the full document JSON from Pencil's in-memory state and writing it to disk.
 
 #### Preferred Method: mcp2cli Save Script (no user intervention)
@@ -165,7 +163,7 @@ Pencil does **not** auto-save to the WSL2 filesystem. However, the AI agent can 
 > **Use `specs/wireframes/_save_pen.py` for all saves.** This script handles the full extraction, variable unwrapping, and round-trip verification automatically.
 
 ```bash
-python3 specs/wireframes/_save_pen.py specs/wireframes/{domain}/{subdomain}/{filename}.pen
+python3 specs/wireframes/_save_pen.py specs/wireframes/{domain}/{filename}.pen
 ```
 
 #### Legacy Method: Manual AI-agent extraction (deprecated)
@@ -186,7 +184,6 @@ If for any reason the mcp2cli script is unavailable, the manual approach is:
    pen_doc = {"version": "2.9", "variables": variables, "children": children}
    ```
 4. **AI agent writes** the `.pen` file to disk using the `Write` tool.
-5. **AI agent verifies** by re-opening in Pencil and checking with `pencil_get_screenshot`.
 
 #### Fallback Method: Manual Save (if programmatic save fails)
 
@@ -200,10 +197,9 @@ Because Pencil MCP tools cannot be batched, the AI agent must work on `.pen` fil
 
 1. `pencil_open_document(UNC_path)` — open/create the target file
 2. `pencil_batch_design(filePath=UNC_path, operations=...)` — design content (may require multiple calls for complex wireframes)
-3. `pencil_get_screenshot(filePath=UNC_path, nodeId=...)` — verify visually
-4. `pencil_export_nodes(filePath=UNC_path, ...)` — export PNGs
-5. **Save via mcp2cli:** Run `python3 specs/wireframes/_save_pen.py <relative_linux_path>` — extracts from Pencil memory, writes to disk, verifies round-trip
-6. Move to next file
+3. `pencil_export_nodes(filePath=UNC_path, ...)` — export PNGs
+4. **Save via mcp2cli:** Run `python3 specs/wireframes/_save_pen.py <relative_linux_path>` — extracts from Pencil memory, writes to disk, verifies round-trip
+5. Move to next file
 
 ### Screenshot Embedding Convention
 
@@ -220,21 +216,20 @@ The `wireframe-plan-{domain}.md` in `specs/analysis/` should link to the workflo
 
 1. **Initialize Document:** Use `pencil_open_document` with the **Windows UNC path**:
    ```
-   pencil_open_document("\\\\wsl.localhost\\Ubuntu\\home\\raphael\\src\\vc\\BearStudio-start-ui-web\\specs\\wireframes\\{domain}\\{subdomain}\\{file}.pen")
+   pencil_open_document("\\\\wsl.localhost\\Ubuntu\\home\\raphael\\src\\vc\\BearStudio-start-ui-web\\specs\\wireframes\\{domain}\\{file}.pen")
    ```
    > **Important:** All `filePath` parameters to Pencil MCP tools must use Windows UNC format (backslashes, `\\wsl.localhost\Ubuntu\...`), never Linux paths.
 2. **Load Guidelines:** Call `pencil_get_guidelines(topic="design-system")` to load Shadcn component rules and design best practices within Pencil. This only needs to be done once per session.
 3. **List Registry:** Run `Shadcn_list_items_in_registries(["@shadcn"])` to ensure alignment with the available component library before designing. This only needs to be done once per session.
 4. **Execute Design:** Use `pencil_batch_design(filePath=UNC_path, operations=...)` to insert frames, text, inputs, buttons, and layout containers.
    - Frame width should typically be `600px` for dialogs/wizards, or `1440px` for full page views.
-   - Apply the annotations established in Task 1 directly into the text elements or component names.
+   - Apply the annotations established in Task 1. **Do not put annotations inside the `.pen` files. Integrate annotation texts directly into the markdown files (e.g., `workflows.md` or equivalent) explaining the components, data binding, required fields, etc.**
    - Keep each `batch_design` call to **maximum 25 operations** for optimal performance; split larger designs across multiple calls.
-5. **Validate Visually:** Use `pencil_get_screenshot(filePath=UNC_path, nodeId=...)` to visually verify the hierarchy, spacing, and completeness of the layout. Iterate with `pencil_batch_design()` as necessary to correct issues.
-6. **Export Previews:** Call `pencil_export_nodes(filePath=UNC_path, outputDir=UNC_output_dir, nodeIds=[...])` to generate PNG preview images in `specs/wireframes/{domain}/{subdomain}/` alongside the `.pen` file. Rename exported files from node IDs to human-readable names (e.g., `step-1-start.png`).
-7. **Save `.pen` File via mcp2cli:** Run `python3 specs/wireframes/_save_pen.py <relative_linux_path>`. This extracts the full node tree + variables from Pencil's in-memory state, constructs a valid `.pen` document, writes to disk, and verifies the round-trip.
-8. **Embed Screenshots:** Add a "Wireframe Screenshots" section to the `workflows.md` file in `specs/wireframes/{domain}/{subdomain}/` (same directory as the PNGs). For each wireframe, include a heading (ID + name), a brief description, and a local `![...](./filename.png)` image reference. Add a link from the `wireframe-plan-{domain}.md` in `specs/analysis/` to this section.
-9. **Generate ASCII Representation (Optional but recommended):** Create a rough ASCII representation of the UI layout in the related analysis markdown file to give an immediate low-fi visual cue to human developers reading the text.
-10. **Log Completion:** Mark each completed `.pen` frame and exported `.png` in `specs/analysis/wireframes-index.md`.
+5. **Export Previews:** Call `pencil_export_nodes(filePath=UNC_path, outputDir=UNC_output_dir, nodeIds=[...])` to generate PNG preview images in `specs/wireframes/{domain}/` alongside the `.pen` file. Rename exported files from node IDs to human-readable names (e.g., `step-1-start.png`).
+6. **Save `.pen` File via mcp2cli:** Run `python3 specs/wireframes/_save_pen.py <relative_linux_path>`. This extracts the full node tree + variables from Pencil's in-memory state, constructs a valid `.pen` document, writes to disk, and verifies the round-trip.
+7. **Embed Screenshots:** Add a "Wireframe Screenshots" section to the `workflows.md` file in `specs/wireframes/{domain}/` (same directory as the PNGs). For each wireframe, include a heading (ID + name), a brief description, **all previously internal text annotations (e.g., `@shadcn/Sidebar`, bindings, rules)**, and a local `![...](./filename.png)` image reference. Add a link from the `wireframe-plan-{domain}.md` in `specs/analysis/` to this section.
+8. **Generate ASCII Representation (Optional but recommended):** Create a rough ASCII representation of the UI layout in the related analysis markdown file to give an immediate low-fi visual cue to human developers reading the text.
+9. **Log Completion:** Mark each completed `.pen` frame and exported `.png` in `specs/analysis/wireframes-index.md`.
 
 ### Design system reference (from Batch 1)
 
@@ -244,7 +239,6 @@ The `wireframe-plan-{domain}.md` in `specs/analysis/` should link to the workflo
 - Headers: padding 20,24, bottom border, Inter 20px bold
 - Body: padding 24, vertical layout, gap 16
 - Footer: top border, justify end, gap 12, Cancel (secondary) + primary button
-- Notes: type: "note" for annotations (dashed orange border)
 - Input fields: frame with $--input-border stroke, cornerRadius 8, padding 10,14
 - Alerts: fill --info-bg/--danger-bg/$--warning-bg, cornerRadius 8, padding 16
 
@@ -270,7 +264,7 @@ The `wireframe-plan-{domain}.md` in `specs/analysis/` should link to the workflo
 | **No `{{` placeholders** | `{{user.displayName}}` | `John Doe` | Use English sample data for data bindings |
 | **No i18n key refs** | `{{i18n.administration.settings}}` | `Settings` | Look up English translation from `specs/planning/translations/lookup-*.csv` |
 | **No template refs** | `{{> content}}`, `{{sitemap}}` | `Main Content Area` | Replace with descriptive English text |
-| **Notes outside wireframe** | `type:"text"` inside wireframe frame | `type:"note"` positioned outside frame bounds | Annotations must not appear in wireframe screenshots |
+| **Notes inside wireframe** | `type:"note"` inside wireframe frame | None | Annotations must not appear in wireframe screenshots, nor in the `.pen` files. Keep them in markdown. |
 | **Export scale** | `scale: 2` | `scale: 1.5` | Reduced size for documentation readability, not 1:1 |
 
 **Translation lookup process:**
@@ -281,10 +275,9 @@ The `wireframe-plan-{domain}.md` in `specs/analysis/` should link to the workflo
 5. For data bindings (`user.displayName`, `role`, etc.), use realistic English sample data
 
 **Note positioning rules:**
-- `type:"note"` nodes must be positioned **outside** the wireframe frame bounds
-- For 600px dialog frames: notes at `x: 620+`
-- For 1440px full-page frames: notes at `x: 1460+`
-- Internal text annotations (e.g., `@shadcn/Sidebar 240px expanded`) that were previously inside frames must be moved to external Note nodes
+- `type:"note"` nodes must **not** be placed in the wireframes `.pen` files anymore.
+- Incorporate all annotation text into the relevant `workflows.md` documentation file, next to the embedded screenshot.
+- Internal text annotations (e.g., `@shadcn/Sidebar 240px expanded`) must be moved to the markdown description of the screenshot.
 - The wireframe screenshot (`pencil_get_screenshot` on the frame node) must show only UI elements, not annotations
 
 **Retroactive audit completed (2026-03-30):**
@@ -299,7 +292,7 @@ The `wireframe-plan-{domain}.md` in `specs/analysis/` should link to the workflo
 |:---|:---|:---|:---|
 | **Background color** | Frames render black when no fill defined | **ALWAYS** set `fill:"$--bg"` on root frame | Screenshot shows white background |
 | **Variable format** | Variables use `--` prefix (not `$--`) in definition | Define as `"--bg":{"type":"color","value":"#FFFFFF"}`; reference as `"$--bg"` | Check `basisweb-wizard.pen` |
-| **Note overlap** | Annotation notes overlap main wireframe frame | Position notes **outside** frame bounds (e.g., x: 1460 for 1440px frame) | Visual inspection of screenshot |
+| **Note overlap** | Annotation notes overlap main wireframe frame | Remove all annotations inside the wireframe files entirely. | Visual inspection of screenshot |
 | **File creation** | Direct JSON write doesn't load variables into Pencil memory | Use Python script to write JSON, then `python3 specs/wireframes/_save_pen.py` to load into Pencil | Round-trip node count verification |
 | **Stroke format** | Missing `align:"inside"` causes border rendering issues | Always use `stroke:{align:"inside",thickness:1,fill:"$--border"}` | Consistent with Batch 1 files |
 
@@ -310,10 +303,10 @@ The `wireframe-plan-{domain}.md` in `specs/analysis/` should link to the workflo
    - Variables using `--` prefix (e.g., `"--bg"`)
    - Root frame with explicit `fill:"$--bg"`
    - Proper stroke format with `align:"inside"`
-   - Notes positioned outside frame bounds
+   - No annotations inside the wireframe file.
 3. **Load into Pencil:** Run `python3 specs/wireframes/_save_pen.py <path>` to extract and reload
-4. **Fix Note Overlaps:** Run `python3 specs/wireframes/_fix_notes.py <path>` to intelligently position the `note` type components outside the frame bounds and stack them vertically avoiding overlaps with other notes or frames.
-5. **Verify:** Use `pencil_get_screenshot` to confirm white background and no overlap
+4. **Fix Note Overlaps:** (Not needed anymore since we do not put notes inside wireframes)
+5. **Verify:** Use `pencil_get_screenshot` to confirm white background
 6. **Export PNGs:** Use `pencil_export_nodes` with scale=1.5
 
 ---
@@ -729,7 +722,7 @@ All 79 wireframes across 10 batches are grouped as above, ordered by complexity 
 7. Update `specs/analysis/wireframes-index.md`
 8. Update `specs/wireframes/analysis-wireframes-mapping.md` — replace *(no wireframe)* entries for `admin-cruds/motd-template.md`, `cdr-call/cdr-call.md`, `config/system-config.md`, `templates-files/templates-files.md` with the created `.pen` file references
 
-**Status:** ⏳ Pending (0/4 wireframes)
+**Status:** ✅ Complete (4/4 wireframes, 4 .pen files, 6 .png exports)
 
 ---
 
@@ -765,7 +758,7 @@ All 79 wireframes across 10 batches are grouped as above, ordered by complexity 
 7. Update `specs/analysis/wireframes-index.md`
 8. Update `specs/wireframes/analysis-wireframes-mapping.md` — replace *(no wireframe)* entries for `appointment-patient/appointment-details-patient.md`, `medication/medication.md`, `patient-data/patient-data.md`, `treatment-core/treatment-and-category.md`, `treatment-core/treatment-plan.md`, `warning/warning-management.md` with the created `.pen` file references
 
-**Status:** ⏳ Pending (0/6 wireframes)
+**Status:** ✅ Complete (6/6 wireframes, 6 .pen files, 12 .png exports)
 
 ---
 
@@ -799,7 +792,7 @@ All 79 wireframes across 10 batches are grouped as above, ordered by complexity 
 7. Update `specs/analysis/wireframes-index.md`
 8. Update `specs/wireframes/analysis-wireframes-mapping.md` — replace *(no wireframe)* entries for `admin-user/user-management.md`, `admin-user/06-totp-onboarding.md`, `admin-group/group-management.md`, `admin-skill/skill.md`, `onboarding/onboarding-flow.md` with the created `.pen` file references
 
-**Status:** ⏳ Pending (0/5 wireframes)
+**Status:** ✅ Complete (5/5 wireframes, 5 .pen files, 10 .png exports)
 
 ---
 
@@ -831,7 +824,7 @@ All 79 wireframes across 10 batches are grouped as above, ordered by complexity 
 7. Update `specs/analysis/wireframes-index.md`
 8. Update `specs/wireframes/analysis-wireframes-mapping.md` — replace *(no wireframe)* entries for `video-history/user-video-history.md` and `admin-workhour/workhour.md` with the created `.pen` file references
 
-**Status:** ⏳ Pending (0/2 wireframes)
+**Status:** ✅ Complete (2/2 wireframes, 2 .pen files, 4 .png exports)
 
 ---
 
@@ -851,11 +844,11 @@ All 79 wireframes across 10 batches are grouped as above, ordered by complexity 
 | **Batch 8** | Customer | 5 | Medium | ✅ 5/5 | 5 files, 27–45 KB |
 | **Batch 9** | Academy | 4 | Low–Medium | ✅ 4/4 | 4 files, 33–72 KB |
 | **Batch 10** | Planning (admin, support, shift, council) | 20 | Medium–High | ✅ 20/20 | 20 files, 4–50 KB |
-| **Batch 11** | System (CRUDs, CDR, config, templates) | 4 | Low–Medium | ⏳ 0/4 | Pending |
+| **Batch 11** | System (CRUDs, CDR, config, templates) | 4 | Low–Medium | ✅ 4/4 | 4 files, 10–27 KB |
 | **Batch 12** | Treatment (patient, medication, treatment core, warning) | 6 | Medium | ⏳ 0/6 | Pending |
 | **Batch 13** | User Mgmt (admin, TOTP, groups, skills, onboarding) | 5 | Medium–High | ⏳ 0/5 | Pending |
 | **Batch 14** | Academy (video history) + Accounting (workhour) | 2 | Low | ⏳ 0/2 | Pending |
-| **TOTAL** | — | **119** | — | **99 done, 20 pending** | **78 files** |
+| **TOTAL** | — | **119** | — | **119 done, 0 pending** | **113 files** |
 
 ---
 

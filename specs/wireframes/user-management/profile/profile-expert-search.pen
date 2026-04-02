@@ -1,1 +1,561 @@
-{"version": "2.9", "variables": {"--admin-bg": {"type": "color", "value": "#FFF7ED"}, "--admin-border": {"type": "color", "value": "#FB923C"}, "--bg": {"type": "color", "value": "#FFFFFF"}, "--border": {"type": "color", "value": "#E5E5E5"}, "--card": {"type": "color", "value": "#FAFAFA"}, "--danger-bg": {"type": "color", "value": "#FEF2F2"}, "--destructive": {"type": "color", "value": "#DC2626"}, "--fg": {"type": "color", "value": "#0A0A0A"}, "--fg-muted": {"type": "color", "value": "#737373"}, "--header-bg": {"type": "color", "value": "#F98E33"}, "--header-fg": {"type": "color", "value": "#FFFFFF"}, "--info-bg": {"type": "color", "value": "#EFF6FF"}, "--info-fg": {"type": "color", "value": "#1D4ED8"}, "--input-border": {"type": "color", "value": "#D4D4D4"}, "--primary": {"type": "color", "value": "#171717"}, "--primary-fg": {"type": "color", "value": "#FAFAFA"}, "--secondary": {"type": "color", "value": "#F5F5F5"}, "--secondary-fg": {"type": "color", "value": "#171717"}, "--success-bg": {"type": "color", "value": "#F0FDF4"}, "--success-fg": {"type": "color", "value": "#166534"}, "--warning": {"type": "color", "value": "#F59E0B"}, "--warning-bg": {"type": "color", "value": "#FFFBEB"}}, "children": [{"type": "frame", "id": "dw2M5", "x": 0, "y": 0, "name": "W3: Expert Search Dialog", "width": 700, "fill": "$--bg", "cornerRadius": 12, "stroke": {"align": "inside", "thickness": 1, "fill": "$--border"}, "layout": "vertical", "children": [{"type": "frame", "id": "vHcC2", "name": "Header", "width": "fill_container", "stroke": {"align": "inside", "thickness": {"bottom": 1}, "fill": "$--border"}, "gap": 8, "padding": [16, 20], "alignItems": "center", "children": [{"type": "icon_font", "id": "YazXd", "name": "esi", "width": 18, "height": 18, "iconFontName": "user", "iconFontFamily": "lucide", "fill": "$--fg"}, {"type": "text", "id": "jN17w", "name": "est", "fill": "$--fg", "content": "Expert Search", "fontFamily": "Inter", "fontSize": 18, "fontWeight": "700"}]}, {"type": "frame", "id": "3aakX", "name": "Body", "width": "fill_container", "layout": "vertical", "gap": 16, "padding": 20, "children": [{"type": "frame", "id": "Cufyz", "name": "esr1", "width": "fill_container", "gap": 12, "alignItems": "end", "children": [{"type": "frame", "id": "7IQeZ", "name": "esjob", "width": "fill_container", "layout": "vertical", "gap": 4, "children": [{"type": "text", "id": "YEms6", "name": "esjobl", "fill": "$--fg", "content": "Job [async: debounce]", "fontFamily": "Inter", "fontSize": 12, "fontWeight": "500"}, {"type": "frame", "id": "uqrwU", "name": "esjobi", "width": "fill_container", "height": 36, "cornerRadius": 8, "stroke": {"align": "inside", "thickness": 1, "fill": "$--input-border"}, "padding": [0, 12], "alignItems": "center", "children": [{"type": "text", "id": "niCiM", "name": "esjobt", "fill": "$--fg-muted", "content": "JobService.autocomplete", "fontFamily": "Inter", "fontSize": 13, "fontWeight": "normal"}]}]}, {"type": "frame", "id": "kfUHl", "name": "esact", "gap": 8, "alignItems": "center", "children": [{"type": "frame", "id": "o5VCQ", "name": "esacb", "width": 36, "height": 20, "fill": "$--primary", "cornerRadius": 10}, {"type": "text", "id": "jUijr", "name": "esacl", "fill": "$--fg", "content": "Active", "fontFamily": "Inter", "fontSize": 12, "fontWeight": "normal"}]}]}, {"type": "text", "id": "NS8Jq", "name": "esskl", "fill": "$--fg", "content": "Skills [HARDCODED] (insert + delete collection)", "fontFamily": "Inter", "fontSize": 12, "fontWeight": "600"}, {"type": "frame", "id": "7FNT0", "name": "esskr", "width": "fill_container", "gap": 8, "alignItems": "center", "children": [{"type": "frame", "id": "8C014", "name": "esski", "width": "fill_container", "height": 36, "cornerRadius": 8, "stroke": {"align": "inside", "thickness": 1, "fill": "$--input-border"}, "padding": [0, 12], "alignItems": "center", "children": [{"type": "text", "id": "xicoa", "name": "esskt", "fill": "$--fg-muted", "content": "SkillService.autocomplete @shadcn/command", "fontFamily": "Inter", "fontSize": 13, "fontWeight": "normal"}]}, {"type": "frame", "id": "0FnFa", "name": "esskchip", "fill": "$--secondary", "cornerRadius": 12, "gap": 4, "padding": [4, 8], "alignItems": "center", "children": [{"type": "text", "id": "0RGpa", "name": "esskct", "fill": "$--fg", "content": "SKILL1", "fontFamily": "Inter", "fontSize": 11, "fontWeight": "normal"}, {"type": "icon_font", "id": "GbDpB", "name": "esskcd", "width": 12, "height": 12, "iconFontName": "x", "iconFontFamily": "lucide", "fill": "$--fg-muted"}]}]}, {"type": "frame", "id": "2nSXR", "name": "Results Table", "width": "fill_container", "cornerRadius": 8, "stroke": {"align": "inside", "thickness": 1, "fill": "$--border"}, "layout": "vertical", "children": [{"type": "frame", "id": "aShWz", "name": "esrh", "width": "fill_container", "fill": "$--secondary", "stroke": {"align": "inside", "thickness": {"bottom": 1}, "fill": "$--border"}, "padding": [8, 12], "children": [{"type": "text", "id": "kqpbr", "name": "esrh1", "fill": "$--fg", "textGrowth": "fixed-width", "width": 160, "content": "Name", "fontFamily": "Inter", "fontSize": 11, "fontWeight": "600"}, {"type": "text", "id": "YJqPw", "name": "esrh2", "fill": "$--fg", "textGrowth": "fixed-width", "width": 160, "content": "Skills", "fontFamily": "Inter", "fontSize": 11, "fontWeight": "600"}, {"type": "text", "id": "Pb5Wi", "name": "esrh3", "fill": "$--fg", "textGrowth": "fixed-width", "width": 160, "content": "Exclusion Criteria", "fontFamily": "Inter", "fontSize": 11, "fontWeight": "600"}, {"type": "text", "id": "ccqKX", "name": "esrh4", "fill": "$--fg", "textGrowth": "fixed-width", "width": 100, "content": "Level", "fontFamily": "Inter", "fontSize": 11, "fontWeight": "600"}]}, {"type": "frame", "id": "lJgDX", "name": "esrr1", "width": "fill_container", "stroke": {"align": "inside", "thickness": {"bottom": 1}, "fill": "$--border"}, "padding": [8, 12], "children": [{"type": "text", "id": "9jHw4", "name": "esrr1a", "fill": "$--fg", "textGrowth": "fixed-width", "width": 160, "content": "Dr. Anna Mueller", "fontFamily": "Inter", "fontSize": 12, "fontWeight": "500"}, {"type": "text", "id": "jFr1h", "name": "esrr1b", "fill": "$--fg-muted", "textGrowth": "fixed-width", "width": 160, "content": "SKILL1, SKILL2", "fontFamily": "Inter", "fontSize": 11, "fontWeight": "normal"}, {"type": "text", "id": "IDxpb", "name": "esrr1c", "fill": "$--fg-muted", "textGrowth": "fixed-width", "width": 160, "content": "-", "fontFamily": "Inter", "fontSize": 11, "fontWeight": "normal"}, {"type": "text", "id": "AfT8S", "name": "esrr1d", "fill": "$--fg-muted", "textGrowth": "fixed-width", "width": 100, "content": "PROFI", "fontFamily": "Inter", "fontSize": 11, "fontWeight": "normal"}]}]}]}, {"type": "frame", "id": "LeN0W", "name": "Footer", "width": "fill_container", "stroke": {"align": "inside", "thickness": {"top": 1}, "fill": "$--border"}, "gap": 12, "padding": [12, 20], "justifyContent": "end", "children": [{"type": "frame", "id": "nzb4H", "name": "esfb1", "fill": "$--primary", "cornerRadius": 8, "padding": [8, 16], "alignItems": "center", "children": [{"type": "text", "id": "8zjws", "name": "esfb1t", "fill": "$--primary-fg", "content": "Search [HARDCODED]", "fontFamily": "Inter", "fontSize": 13, "fontWeight": "500"}]}, {"type": "frame", "id": "o1gAJ", "name": "esfb2", "cornerRadius": 8, "stroke": {"align": "inside", "thickness": 1, "fill": "$--border"}, "padding": [8, 16], "alignItems": "center", "children": [{"type": "text", "id": "rA1gz", "name": "esfb2t", "fill": "$--fg", "content": "Cancel [HARDCODED]", "fontFamily": "Inter", "fontSize": 13, "fontWeight": "500"}]}]}, {"type": "note", "id": "fu6ug", "name": "esnote", "width": 660, "height": 70, "content": "Expert Search features:\n- Job autocomplete filter (JobService)\n- Active toggle (default: true)\n- Skills collection: insert via autocomplete, delete chips, AND-logic client-side filter\n- Exclusion Criteria collection: same pattern, hides matching rows\n- Results: name, skills (nested), exclusion criteria (nested), qualification level (disabled select)\n- Deep-link icon to appointment.html#id if expert has appointment"}]}]}
+{
+  "version": "2.9",
+  "variables": {
+    "--admin-bg": {
+      "type": "color",
+      "value": "#FFF7ED"
+    },
+    "--admin-border": {
+      "type": "color",
+      "value": "#FB923C"
+    },
+    "--bg": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--border": {
+      "type": "color",
+      "value": "#E5E5E5"
+    },
+    "--card": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "--danger-bg": {
+      "type": "color",
+      "value": "#FEF2F2"
+    },
+    "--destructive": {
+      "type": "color",
+      "value": "#DC2626"
+    },
+    "--fg": {
+      "type": "color",
+      "value": "#0A0A0A"
+    },
+    "--fg-muted": {
+      "type": "color",
+      "value": "#737373"
+    },
+    "--header-bg": {
+      "type": "color",
+      "value": "#F98E33"
+    },
+    "--header-fg": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--info-bg": {
+      "type": "color",
+      "value": "#EFF6FF"
+    },
+    "--info-fg": {
+      "type": "color",
+      "value": "#1D4ED8"
+    },
+    "--input-border": {
+      "type": "color",
+      "value": "#D4D4D4"
+    },
+    "--primary": {
+      "type": "color",
+      "value": "#171717"
+    },
+    "--primary-fg": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "--secondary": {
+      "type": "color",
+      "value": "#F5F5F5"
+    },
+    "--secondary-fg": {
+      "type": "color",
+      "value": "#171717"
+    },
+    "--success-bg": {
+      "type": "color",
+      "value": "#F0FDF4"
+    },
+    "--success-fg": {
+      "type": "color",
+      "value": "#166534"
+    },
+    "--warning": {
+      "type": "color",
+      "value": "#F59E0B"
+    },
+    "--warning-bg": {
+      "type": "color",
+      "value": "#FFFBEB"
+    }
+  },
+  "children": [
+    {
+      "type": "frame",
+      "id": "dw2M5",
+      "x": 0,
+      "y": 0,
+      "name": "W3: Expert Search Dialog",
+      "width": 700,
+      "fill": "$--bg",
+      "cornerRadius": 12,
+      "stroke": {
+        "align": "inside",
+        "thickness": 1,
+        "fill": "$--border"
+      },
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "vHcC2",
+          "name": "Header",
+          "width": "fill_container",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "bottom": 1
+            },
+            "fill": "$--border"
+          },
+          "gap": 8,
+          "padding": [
+            16,
+            20
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "YazXd",
+              "name": "esi",
+              "width": 18,
+              "height": 18,
+              "iconFontName": "user",
+              "iconFontFamily": "lucide",
+              "fill": "$--fg"
+            },
+            {
+              "type": "text",
+              "id": "jN17w",
+              "name": "est",
+              "fill": "$--fg",
+              "content": "Expert Search",
+              "fontFamily": "Inter",
+              "fontSize": 18,
+              "fontWeight": "700"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "3aakX",
+          "name": "Body",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": 20,
+          "children": [
+            {
+              "type": "frame",
+              "id": "Cufyz",
+              "name": "esr1",
+              "width": "fill_container",
+              "gap": 12,
+              "alignItems": "end",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "7IQeZ",
+                  "name": "esjob",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "YEms6",
+                      "name": "esjobl",
+                      "fill": "$--fg",
+                      "content": "Job [async: debounce]",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "uqrwU",
+                      "name": "esjobi",
+                      "width": "fill_container",
+                      "height": 36,
+                      "cornerRadius": 8,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "$--input-border"
+                      },
+                      "padding": [
+                        0,
+                        12
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "niCiM",
+                          "name": "esjobt",
+                          "fill": "$--fg-muted",
+                          "content": "JobService.autocomplete",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "kfUHl",
+                  "name": "esact",
+                  "gap": 8,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "o5VCQ",
+                      "name": "esacb",
+                      "width": 36,
+                      "height": 20,
+                      "fill": "$--primary",
+                      "cornerRadius": 10
+                    },
+                    {
+                      "type": "text",
+                      "id": "jUijr",
+                      "name": "esacl",
+                      "fill": "$--fg",
+                      "content": "Active",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "NS8Jq",
+              "name": "esskl",
+              "fill": "$--fg",
+              "content": "Skills [HARDCODED] (insert + delete collection)",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "600"
+            },
+            {
+              "type": "frame",
+              "id": "7FNT0",
+              "name": "esskr",
+              "width": "fill_container",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "8C014",
+                  "name": "esski",
+                  "width": "fill_container",
+                  "height": 36,
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$--input-border"
+                  },
+                  "padding": [
+                    0,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "xicoa",
+                      "name": "esskt",
+                      "fill": "$--fg-muted",
+                      "content": "SkillService.autocomplete @shadcn/command",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "0FnFa",
+                  "name": "esskchip",
+                  "fill": "$--secondary",
+                  "cornerRadius": 12,
+                  "gap": 4,
+                  "padding": [
+                    4,
+                    8
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "0RGpa",
+                      "name": "esskct",
+                      "fill": "$--fg",
+                      "content": "SKILL1",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "icon_font",
+                      "id": "GbDpB",
+                      "name": "esskcd",
+                      "width": 12,
+                      "height": 12,
+                      "iconFontName": "x",
+                      "iconFontFamily": "lucide",
+                      "fill": "$--fg-muted"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "2nSXR",
+              "name": "Results Table",
+              "width": "fill_container",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$--border"
+              },
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "aShWz",
+                  "name": "esrh",
+                  "width": "fill_container",
+                  "fill": "$--secondary",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": {
+                      "bottom": 1
+                    },
+                    "fill": "$--border"
+                  },
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "kqpbr",
+                      "name": "esrh1",
+                      "fill": "$--fg",
+                      "textGrowth": "fixed-width",
+                      "width": 160,
+                      "content": "Name",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "YJqPw",
+                      "name": "esrh2",
+                      "fill": "$--fg",
+                      "textGrowth": "fixed-width",
+                      "width": 160,
+                      "content": "Skills",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Pb5Wi",
+                      "name": "esrh3",
+                      "fill": "$--fg",
+                      "textGrowth": "fixed-width",
+                      "width": 160,
+                      "content": "Exclusion Criteria",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "ccqKX",
+                      "name": "esrh4",
+                      "fill": "$--fg",
+                      "textGrowth": "fixed-width",
+                      "width": 100,
+                      "content": "Level",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "lJgDX",
+                  "name": "esrr1",
+                  "width": "fill_container",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": {
+                      "bottom": 1
+                    },
+                    "fill": "$--border"
+                  },
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "9jHw4",
+                      "name": "esrr1a",
+                      "fill": "$--fg",
+                      "textGrowth": "fixed-width",
+                      "width": 160,
+                      "content": "Dr. Anna Mueller",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "jFr1h",
+                      "name": "esrr1b",
+                      "fill": "$--fg-muted",
+                      "textGrowth": "fixed-width",
+                      "width": 160,
+                      "content": "SKILL1, SKILL2",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "IDxpb",
+                      "name": "esrr1c",
+                      "fill": "$--fg-muted",
+                      "textGrowth": "fixed-width",
+                      "width": 160,
+                      "content": "-",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "AfT8S",
+                      "name": "esrr1d",
+                      "fill": "$--fg-muted",
+                      "textGrowth": "fixed-width",
+                      "width": 100,
+                      "content": "PROFI",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "LeN0W",
+          "name": "Footer",
+          "width": "fill_container",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "top": 1
+            },
+            "fill": "$--border"
+          },
+          "gap": 12,
+          "padding": [
+            12,
+            20
+          ],
+          "justifyContent": "end",
+          "children": [
+            {
+              "type": "frame",
+              "id": "nzb4H",
+              "name": "esfb1",
+              "fill": "$--primary",
+              "cornerRadius": 8,
+              "padding": [
+                8,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "8zjws",
+                  "name": "esfb1t",
+                  "fill": "$--primary-fg",
+                  "content": "Search [HARDCODED]",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "o1gAJ",
+              "name": "esfb2",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$--border"
+              },
+              "padding": [
+                8,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "rA1gz",
+                  "name": "esfb2t",
+                  "fill": "$--fg",
+                  "content": "Cancel [HARDCODED]",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

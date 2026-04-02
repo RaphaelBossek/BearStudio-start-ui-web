@@ -373,6 +373,391 @@ sequenceDiagram
 
 ---
 
+## 7. Admin User Management Flow
+
+This diagram shows the administrator's user management workflow: browsing the user list, viewing/editing user details in a side panel, and triggering administrative actions (password reset, API key management).
+
+**Who uses it:** Administrators (ADMIN / USERS_UPDATE authority)
+**Entry point:** Admin sidebar → User Management page
+**Exit points:** User details saved, password sent/changed, or API key created/revoked
+
+```mermaid
+flowchart TD
+    A["Admin Sidebar"] -->|"User Management"| B["User List Page<br>(9-col grid + A-Z QuickFilter)"]
+
+    B --> C["A-Z QuickFilter Bar<br>(click letter or type search)"]
+    C --> D["Grid filters/refreshes"]
+    D --> B
+
+    B -->|"Select row"| E["Side Detail Panel Opens<br>(15 fields)"]
+
+    subgraph "Detail Panel Fields"
+        E --> F1["Name (first + last)"]
+        E --> F2["Email"]
+        E --> F3["Role Select<br>(7 values: ADMIN, EMPLOYEE,<br>MANAGER, SUPERVISOR, etc.)"]
+        E --> F4["Employee State<br>(UNCONFIRMED / ACTIVE / INACTIVE)"]
+        E --> F5["Groups Collection<br>(multi-select)"]
+        E --> F6["Customers Collection<br>(multi-select)"]
+    end
+
+    E -->|"Save"| G["Validate & persist<br>user record"]
+
+    E -->|"Send Password button"| H["Send Password Dialog<br>(generates temp password,<br>sends via email)"]
+    E -->|"Change Password button"| I["Change Password Dialog<br>(admin sets new password,<br>no current password required)"]
+    E -->|"Manage API Keys button"| J["API Keys Dialog"]
+
+    J --> K["List existing API keys<br>(key name, created date, last used)"]
+    K -->|"Create"| L["Generate new API key<br>(shown once, copy to clipboard)"]
+    K -->|"Revoke"| M["Confirm revoke → key disabled"]
+
+    style A fill:#e8f4f8,stroke:#2c7bb6
+    style G fill:#d4edda,stroke:#155724
+    style H fill:#fff3cd,stroke:#856404
+    style I fill:#fff3cd,stroke:#856404
+    style J fill:#fff3cd,stroke:#856404
+```
+
+**Key observations:**
+
+- The 9-column grid provides a dense overview with quick letter-based filtering for large user bases.
+- The side detail panel keeps the list visible while editing, enabling rapid multi-user edits.
+- Role assignment directly controls which groups and customers can be assigned to the user.
+- API key management is a separate dialog to isolate sensitive credential operations.
+- "Send Password" generates a temporary credential and emails it; "Change Password" is an immediate admin override.
+
+---
+
+## 8. TOTP 2FA Setup Flow (State Machine)
+
+This diagram models the three states of TOTP device configuration from the admin/user perspective, showing transitions between no token, pending activation, and active states.
+
+**Who uses it:** Users setting up 2FA, administrators managing security
+**Entry point:** Security settings page or admin user detail
+**Exit points:** TOTP device active, or setup abandoned/reset
+
+```mermaid
+stateDiagram-v2
+    [*] --> NoToken
+
+    NoToken: No Token Configured
+    note right of NoToken
+        UI shows info text +
+        "Start Setup" button
+    end note
+
+    Pending: Pending Activation
+    note right of Pending
+        QR code displayed +
+        6-digit code input
+    end note
+
+    Active: Device Active
+    note right of Active
+        Device info shown +
+        test code / reset options
+    end note
+
+    NoToken --> Pending: Click "Start Setup"<br>→ registerDevice()
+
+    Pending --> Active: Enter valid 6-digit code<br>→ activate()
+    Pending --> NoToken: Cancel / timeout
+
+    Active --> Active: Test code<br>(enter 6-digit → verify)
+    Active --> NoToken: Reset 2FA<br>→ removeDevice()
+```
+
+**Key observations:**
+
+- `registerDevice()` generates the TOTP secret and returns the QR code URI for the authenticator app.
+- The Pending state shows both the QR code (for scanning) and the secret key (for manual entry).
+- `activate()` validates the first 6-digit code to confirm the authenticator app is correctly configured.
+- Active state displays device metadata: user agent, IP address, activation date, last used timestamp.
+- "Reset 2FA" transitions back to NoToken, requiring full re-enrollment — there is no "pause" state.
+
+---
+
+## 9. Group Management Tree Flow
+
+This diagram shows the group management interface with its tree-based navigation (roles as parents, groups as children) and the group editing panel.
+
+**Who uses it:** Administrators (ADMIN authority)
+**Entry point:** Admin sidebar → Group Management
+**Exit points:** Group created/edited/deleted
+
+```mermaid
+flowchart TD
+    A["Admin Sidebar"] -->|"Group Management"| B["Group Management Page"]
+
+    B --> C["Left Panel: Tree View"]
+    B --> D["Right Panel: Detail Form"]
+
+    subgraph "Tree Structure"
+        C --> R1["Role: ADMIN"]
+        C --> R2["Role: EMPLOYEE"]
+        C --> R3["Role: MANAGER"]
+        C --> R4["Role: ..."]
+
+        R1 --> G1["Group: Admin-Ops"]
+        R1 --> G2["Group: Admin-Finance"]
+        R2 --> G3["Group: Emp-Field"]
+        R2 --> G4["Group: Emp-Office"]
+    end
+
+    R1 -->|"Select role node"| E["Create New Group button<br>(under selected role)"]
+    E --> F["New Group Form<br>(pre-filled parent role)"]
+
+    G1 -->|"Select group node"| D
+    D --> D1["Name (required)"]
+    D --> D2["Description"]
+    D --> D3["Rights Multiselect<br>(available permissions)"]
+
+    D -->|"Save"| H["Persist group<br>with role + rights"]
+
+    G1 -->|"Delete (group only)"| I{"Confirm delete?"}
+    I -->|"Yes"| J["Remove group,<br>unassign from users"]
+    I -->|"No"| C
+
+    R1 -->|"Delete (role node)"| K["Not available<br>(roles are system-defined)"]
+
+    style A fill:#e8f4f8,stroke:#2c7bb6
+    style H fill:#d4edda,stroke:#155724
+    style J fill:#fce4ec,stroke:#c62828
+    style K fill:#f5f5f5,stroke:#999
+```
+
+**Key observations:**
+
+- The tree structure uses roles as immutable parent nodes and groups as mutable children.
+- Delete is only available on group nodes — role nodes are system-defined and cannot be removed.
+- The rights multiselect controls per-group feature permissions; these propagate to all users assigned to the group.
+- Creating a new group requires selecting a parent role first, which pre-fills the role association.
+
+---
+
+## 10. Skill CRUD Flow
+
+This diagram shows the simple CRUD workflow for managing skills (used in expert search and employee qualifications).
+
+**Who uses it:** Administrators (ADMIN authority)
+**Entry point:** Admin sidebar → Skills page
+**Exit points:** Skill created/edited/deleted
+
+```mermaid
+flowchart TD
+    A["Admin Sidebar"] -->|"Skills"| B["Skill List Page<br>(5-col grid)"]
+
+    subgraph "Grid Columns"
+        B --> COL1["Code (sortable)"]
+        B --> COL2["Type (select)"]
+        B --> COL3["Certified (boolean)"]
+        B --> COL4["Active (boolean)"]
+        B --> COL5["Description"]
+    end
+
+    B -->|"Add button"| C["Skill Dialog<br>(5 fields)"]
+    B -->|"Select row → Edit"| C
+
+    subgraph "Dialog Fields"
+        C --> F1["Code (required, unique)"]
+        C --> F2["Type (select:<br>TECHNICAL / SOFT / LANGUAGE / etc.)"]
+        C --> F3["Certified (switch: yes/no)"]
+        C --> F4["Active (switch: yes/no)"]
+        C --> F5["Description (textarea)"]
+    end
+
+    C -->|"Save"| D{"Validation"}
+    D -->|"Pass"| E["Persist skill record"]
+    D -->|"Fail (code empty/duplicate)"| F["Show validation errors"]
+    F --> C
+
+    B -->|"Select row → Delete"| G{"Confirm delete?"}
+    G -->|"Yes"| H["Remove skill record"]
+    G -->|"No"| B
+
+    E --> B
+    H --> B
+
+    style A fill:#e8f4f8,stroke:#2c7bb6
+    style E fill:#d4edda,stroke:#155724
+    style H fill:#fce4ec,stroke:#c62828
+```
+
+**Key observations:**
+
+- Skills follow a standard CRUD pattern with no complex dependencies.
+- The "Certified" switch indicates whether the skill requires formal certification verification.
+- The "Active" switch allows soft-deletion — inactive skills remain in the database but are excluded from expert search filters.
+- Code must be unique across all skills; it serves as the business identifier.
+
+---
+
+## 11. Onboarding Flow
+
+This diagram shows the onboarding workflow for employees, customers, and locations — from grid selection through step-based checklist completion.
+
+**Who uses it:** Administrators (ADMIN authority)
+**Entry point:** Admin sidebar → Onboarding (Employee / Customer / Location)
+**Exit points:** Onboarding steps completed, or progress saved for later
+
+```mermaid
+sequenceDiagram
+    actor Admin
+    participant Sidebar as Admin Sidebar
+    participant Grid as Onboarding Grid
+    participant Dialog as Onboarding Dialog
+    participant API as Onboarding Service
+
+    Admin->>Sidebar: Select Onboarding<br>(Employee / Customer / Location)
+    Sidebar->>API: Load assignment type config
+    API-->>Grid: Return grid data<br>(filtered by assignment type)
+
+    Note over Grid: Dynamic grid columns<br>based on EMPLOYEE / CUSTOMER / LOCATION type
+
+    Admin->>Grid: Browse onboarding records
+    Admin->>Grid: Click row to select
+
+    Grid->>Dialog: Open onboarding dialog<br>(selected record)
+
+    Note over Dialog: Steps table shows<br>checklist of onboarding tasks
+
+    Dialog-->>Admin: Display steps with<br>status, dates, comments
+
+    loop For each step
+        Admin->>Dialog: Edit target date
+        Admin->>Dialog: Edit completion date
+        Admin->>Dialog: Add/edit comments
+        Admin->>Dialog: Upload supporting files
+    end
+
+    Admin->>Dialog: Click Save
+    Dialog->>API: Save onboarding progress<br>(dates, comments, files)
+    API-->>Dialog: Confirm save
+    Dialog-->>Admin: Success feedback
+
+    Admin->>Dialog: Close dialog
+    Dialog->>Grid: Trigger grid reload
+    Grid-->>Admin: Updated onboarding status
+```
+
+**Key observations:**
+
+- The assignment type (EMPLOYEE / CUSTOMER / LOCATION) determines both the grid columns and the available onboarding steps.
+- Each onboarding record has a checklist of steps; steps can be completed in any order.
+- File uploads attach supporting documents (contracts, ID copies, certifications) to individual steps.
+- The grid reloads after dialog close to reflect updated completion status.
+- Access roles are determined by the assignment type — employee onboarding may require different permissions than customer onboarding.
+
+---
+
+## 12. User Video History Flow
+
+This diagram shows the video history management workflow for tracking user training video consumption (part of the Academy/learning module).
+
+**Who uses it:** Administrators (ADMIN authority), Employees (viewing own history)
+**Entry point:** User profile → Video History tab, or Admin → Video History page
+**Exit points:** Video history entry created/edited, or video played
+
+```mermaid
+flowchart TD
+    A["User Profile / Admin Page"] -->|"Video History"| B["Video History List<br>(8-col grid)"]
+
+    subgraph "Grid Columns"
+        B --> COL1["Video Title"]
+        B --> COL2["Category"]
+        B --> COL3["Start Date"]
+        B --> COL4["End Date"]
+        B --> COL5["Time Watched"]
+        B --> COL6["Completed (boolean)"]
+        B --> COL7["Last Watched"]
+        B --> COL8["Actions"]
+    end
+
+    B -->|"Add button"| C["Video History Dialog"]
+    B -->|"Select row → Edit"| C
+
+    subgraph "Dialog Fields"
+        C --> F1["Video (autocomplete search)"]
+        C --> F2["Start Date"]
+        C --> F3["End Date"]
+        C --> F4["Time Watched<br>(HH:MM:SS)"]
+    end
+
+    C -->|"Save"| D["Persist video<br>history entry"]
+    D --> B
+
+    B -->|"Select row → Watch Video"| E["Video Player Dialog<br>(embedded player)"]
+    E -->|"Close"| F["Update timeWatched<br>on close"]
+    F --> B
+
+    style A fill:#e8f4f8,stroke:#2c7bb6
+    style D fill:#d4edda,stroke:#155724
+    style E fill:#e8f4f8,stroke:#2c7bb6
+```
+
+**Key observations:**
+
+- The video autocomplete searches the video library and links the history entry to a specific video record.
+- `timeWatched` is tracked both manually (dialog entry) and automatically (player close event).
+- Video watch tracking feeds into Academy category completion indicators — cumulative time per category.
+- The "Watch Video" button opens an embedded player dialog rather than navigating away from the list.
+
+---
+
+## 13. Work Hour Templates Flow
+
+This diagram shows the simple CRUD workflow for managing work hour templates (predefined hour configurations for scheduling).
+
+**Who uses it:** Administrators (ADMIN authority)
+**Entry point:** Admin sidebar → Work Hour Templates
+**Exit points:** Template created/edited/deleted
+
+```mermaid
+flowchart TD
+    A["Admin Sidebar"] -->|"Work Hour Templates"| B["Work Hour List<br>(4-col grid)"]
+
+    subgraph "Grid Columns"
+        B --> COL1["Code (sortable, unique)"]
+        B --> COL2["Hours (numeric)"]
+        B --> COL3["Priority (numeric)"]
+        B --> COL4["Description"]
+    end
+
+    B -->|"Add button"| C["Work Hour Dialog<br>(4 fields)"]
+    B -->|"Select row → Edit"| C
+
+    subgraph "Dialog Fields"
+        C --> F1["Code (required, unique)"]
+        C --> F2["Hours (required, numeric)"]
+        C --> F3["Priority (numeric,<br>lower = higher priority)"]
+        C --> F4["Description (textarea)"]
+    end
+
+    C -->|"Save"| D{"Validation"}
+    D -->|"Pass"| E["Persist template"]
+    D -->|"Fail"| F["Show errors"]
+    F --> C
+
+    B -->|"Select row → Delete"| G{"Confirm delete?"}
+    G -->|"Yes"| H["Remove template"]
+    G -->|"No"| B
+
+    E --> B
+    H --> B
+
+    style A fill:#e8f4f8,stroke:#2c7bb6
+    style E fill:#d4edda,stroke:#155724
+    style H fill:#fce4ec,stroke:#c62828
+```
+
+**Key observations:**
+
+- Work hour templates follow a standard CRUD pattern identical to skills management.
+- Code must be unique and serves as the business identifier for scheduling references.
+- Hours is the core value — represents the standard hours for this template type.
+- Priority determines template ordering when multiple templates apply; lower values take precedence.
+
+---
+
 ## Interdependencies Summary
 
 | Factor | Affects | How |
@@ -388,6 +773,11 @@ sequenceDiagram
 | **Exclusion criteria** | Expert search filtering | Exclusion criteria collection drives AND-logic exclusion of results |
 | **Context (personal vs staff)** | Profile form behavior | Personal page: user edits own profile, no delete/onboarding. Staff page: admin edits any profile, full toolbar. |
 | **Platform (personal vs admin)** | Password dialog variant | Personal page shows current+new+confirm. Admin page (not in scope) shows new+confirm only (resets for any user). |
+| **User role (7 values)** | Admin user access | Determines which groups/customers can be assigned to a user in the admin detail panel |
+| **TOTP state (NoToken/Pending/Active)** | Login flow | Active TOTP enforces 2FA on login; Pending state blocks until activation completes |
+| **Group rights** | Feature access | Rights multiselect in group management controls per-group permissions for all assigned users |
+| **Onboarding assignment type** | View routing | EMPLOYEE / CUSTOMER / LOCATION determines grid data, available steps, and access roles |
+| **Video watch tracking** | Academy progress | timeWatched per video feeds into category completion indicators and learning dashboards |
 
 ---
 
@@ -399,11 +789,19 @@ Shows the 8-tab layout: 4 employee-visible tabs (white) and 4 admin-only tabs (o
 
 ![Profile Form Tab Overview](./profile/profile-form-tab-overview.png)
 
+**Annotations:**
+
+- **note1:** Tab visibility: Tabs 1-4 (white bg): ALL users (EMPLOYEE authority). Tabs 5-8 (orange bg): ADMIN-only (USERS_CREATE authority). Tab click loads tab content via separate forms.
+
 ### W1: Profile Form — Personal Data Tab (Employee View)
 
 Left column: profile picture with upload and rotate. Right column: personal information fields (salutation, title, first name*, last name*, mobile, birthday, email*). Securebox data section with check button. Notification checkbox.
 
 ![Profile Form Personal Data](./profile/profile-form-personal-data.png)
+
+**Annotations:**
+
+- **note2:** Additional fields not shown: On-call number, Email 2, Notification checkbox. [PERM: ADMIN] Notification frequency select only visible to admins.
 
 ### W1: Profile Form — Business Data Tab (Admin View)
 
@@ -411,11 +809,19 @@ Two-column layout. Left: dates & status with admin-only section (GKTO, Konto, EF
 
 ![Profile Form Business Data](./profile/profile-form-business-data.png)
 
+**Annotations:**
+
+- **note3:** Additional admin-only fields not shown: Qualification Level (select: ONBOARDING|ROOKIE|AMATEUR|PROFESSIONAL|EXPERT), Employment Type (select: FULL|PART|CONTRACT), Contract dates.
+
 ### W2: Staff List
 
 Full page view with toolbar (9 buttons: Add, Edit, Onboarding, Assignments, Password, Delete, Export, Expert Search, Invoice). A-Z quick filter bar with search input. 10-column grid: firstName, lastName, state, shift, appointment, therapy, lastReminder, 2FA, enabled. Row 1 shows selected state (blue highlight).
 
 ![Staff List](./profile/profile-staff-list.png)
+
+**Annotations:**
+
+- **snote:** Staff List features: A-Z quick filter on username field with text search. 10-column grid: firstName, lastName, username, email, employeeType, active, locked, admin, shift, group. Column formatters: boolean→checkmark, employeeType→colored badge.
 
 ### W3: Expert Search Dialog
 
@@ -423,11 +829,19 @@ Job autocomplete filter with active toggle. Skills and Exclusion Criteria insert
 
 ![Expert Search](./profile/profile-expert-search.png)
 
+**Annotations:**
+
+- **esnote:** Expert Search features: Job autocomplete filter (JobService). Active toggle (default: true). Skill autocomplete filter. 5-column results: displayName, email, phone, skills, action buttons. Click 'Select' → returns expert to calling form.
+
 ### W4: Assignment Dialog
 
 Year/Month filter (pre-filled with previous month), read-only user display name, export download icon. Appointment rows showing type, weekday, date, time, job code, location. Accept (green) and Reject (red) action buttons per row.
 
 ![Assignment Dialog](./profile/profile-assignment-dialog.png)
+
+**Annotations:**
+
+- **anote:** Assignment Dialog: Year/Month filter pre-filled with current-1 month. AppointmentService.getByUser(userId, year, month). 7-column grid: date, job, location, from, to, state, payment. State formatter: colored badge.
 
 ### W5: Password Change Dialog
 
@@ -435,11 +849,19 @@ Three password fields with show/hide eye toggles. Progress bar strength meter (1
 
 ![Password Dialog](./profile/profile-password-dialog.png)
 
+**Annotations:**
+
+- No annotations extracted from wireframe.
+
 ### W6: Signature Pad Dialog
 
 HTML5 Canvas area with decorative signing line and "Sign above" text. Sign button (submits base64 to server) and Clear button (resets canvas). Dimension hint for PNG/JPG format.
 
 ![Signature Pad](./profile/profile-signature-pad.png)
+
+**Annotations:**
+
+- **snote:** Signature Pad: Uses SignaturePad library (signature_pad.umd.min.js). High-DPI canvas: devicePixelRatio scaling. Save as PNG base64 → UserService.saveSignature(userId, data). Clear button resets canvas. 400×200 canvas size.
 
 ### W7: Expert Availability — Month Grid
 
@@ -447,14 +869,98 @@ Year/month selectors. 31 rows x 6 slot columns (3 shift + 2 appointment + 1 trea
 
 ![Expert Availability Month](./profile/profile-expert-availability-month.png)
 
+**Annotations:**
+
+- **mnote:** Month Grid (Expert Days): 31 rows (days) × 6 slot columns (3 shift + 2 appointment + 1 treatment). Toggle cells to set availability per day/slot. Lock icon on months that are closed. Holiday marker on public holidays. ExpertDaysService.save(userId, year, month, data).
+
 ### W7: Expert Availability — Week Grid
 
 Week type selector (TREATMENT only). 24 rows (hours) x 7 day columns (Mon-Sun). Binary state cell icons: X (null/off), green check (available). Column headers are clickable for bulk equalize.
 
 ![Expert Availability Week](./profile/profile-expert-availability-week.png)
 
+**Annotations:**
+
+- **wnote:** Week Grid (Expert Week): 24 rows (hours 01:00-24:00) × 7 day columns (Mon-Sun). Binary state cells: available/unavailable toggle. WeekType select (A/B/C pattern). ExpertWeekService.save(userId, weekType, data).
+
 ### W14: User Stats Dialog
 
 Date picker input. Stats collection table with icon-labeled columns: department name, available (calendar icon), booked (briefcase icon), holiday (palm tree icon — note: holiday column has no data binding in legacy).
 
 ![User Stats](./dashboard/user-stats.png)
+
+**Annotations:**
+
+- **usnote:** User Stats Dialog (W14): Date input triggers InfoService.getNumbers(date). Collection: departments with staff counts per employee type. Summary row: totals.
+
+### W26: User Management List
+
+1440px page with 9-column grid, A-Z QuickFilter bar, and 6-button toolbar (Add, Edit, Delete, Send Password, Change Password, API Keys).
+
+![User Management List](./admin/user-management-list.png)
+
+### W26b: User Detail Panel
+
+400px side panel with username, email, and name fields. Role select (7 values), groups and customers multi-select collections.
+
+![User Detail Panel](./admin/user-management-detail.png)
+
+### W27: TOTP Security
+
+600px dialog with QR code placeholder, secret key display, 6-digit code input with auto-advance, and verify/activate buttons.
+
+![TOTP Security](./admin/totp-security.png)
+
+### W28: Group Management
+
+800px dialog with left tree panel (roles as parents → groups as children) and right detail panel (name, description, rights multiselect).
+
+![Group Management](./admin/group-management.png)
+
+### W29: Skill List
+
+1440px page with 5-column grid (code, type, certified, active, description) and type badges.
+
+![Skill List](./admin/skill-list.png)
+
+### W29b: Skill Detail
+
+600px dialog with code input, type select, certified/active switches, and description textarea.
+
+![Skill Detail](./admin/skill-detail.png)
+
+### W30: Onboarding Grid
+
+1440px page with 3 tabs (Employee, Customer, Location). Dynamic resource grid with checkmark completion indicators.
+
+![Onboarding Grid](./admin/onboarding-grid.png)
+
+### W30b: Onboarding Dialog
+
+1000px dialog with steps table (dates, comments, file upload) and progress counter.
+
+![Onboarding Dialog](./admin/onboarding-dialog.png)
+
+### W31: Video History List
+
+1440px page with 8-column grid (title, category, start/end dates, timeWatched, completed, lastWatched, actions).
+
+![Video History List](../orphan/video-history-list.png)
+
+### W31b: Video History Detail
+
+600px dialog with video combobox search, date fields, and timeWatched input.
+
+![Video History Detail](../orphan/video-history-detail.png)
+
+### W32: Work Hour List
+
+1440px page with 4-column grid (code, hours, priority, description).
+
+![Work Hour List](../system-admin/workhour-list.png)
+
+### W32b: Work Hour Detail
+
+600px dialog with code input, hours numeric field, priority, and description textarea.
+
+![Work Hour Detail](../system-admin/workhour-detail.png)

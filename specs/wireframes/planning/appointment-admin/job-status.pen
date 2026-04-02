@@ -1,1 +1,304 @@
-{"version":"2.9","variables":{"--bg":{"type":"color","value":"#FFFFFF"},"--border":{"type":"color","value":"#E5E5E5"},"--card":{"type":"color","value":"#FAFAFA"},"--destructive":{"type":"color","value":"#DC2626"},"--fg":{"type":"color","value":"#0A0A0A"},"--fg-muted":{"type":"color","value":"#737373"},"--header-bg":{"type":"color","value":"#F98E33"},"--header-fg":{"type":"color","value":"#FFFFFF"},"--info-bg":{"type":"color","value":"#EFF6FF"},"--info-fg":{"type":"color","value":"#1D4ED8"},"--input-border":{"type":"color","value":"#D4D4D4"},"--primary":{"type":"color","value":"#171717"},"--primary-fg":{"type":"color","value":"#FAFAFA"},"--secondary":{"type":"color","value":"#F5F5F5"},"--success-bg":{"type":"color","value":"#F0FDF4"},"--success-fg":{"type":"color","value":"#166534"},"--warning":{"type":"color","value":"#F59E0B"},"--warning-bg":{"type":"color","value":"#FFFBEB"}},"children":[{"children":[{"alignItems":"center","children":[{"fill":"$--header-fg","height":20,"iconFontFamily":"lucide","iconFontName":"loader","id":"CMgT2","name":"hIcon","type":"icon_font","width":20},{"content":"Export Progress","fill":"$--header-fg","fontFamily":"Inter","fontSize":16,"fontWeight":"600","id":"JBPgC","name":"hTitle","type":"text"}],"cornerRadius":[12,12,0,0],"fill":"$--header-bg","gap":12,"height":56,"id":"xiES0","name":"Dialog Header","padding":[12,24],"type":"frame","width":"fill_container"},{"children":[{"content":"Processing export...","fill":"$--fg","fontFamily":"Inter","fontSize":14,"fontWeight":"500","id":"IHxEI","name":"statusText","type":"text"},{"children":[{"cornerRadius":4,"fill":"$--primary","height":8,"id":"DDqM5","name":"Progress Fill 60%","type":"frame","width":270}],"cornerRadius":4,"fill":"$--secondary","height":8,"id":"UGsMk","name":"Progress Bar BG","type":"frame","width":"fill_container"},{"content":"Step 3 of 5 \u2014 Generating report","fill":"$--fg-muted","fontFamily":"Inter","fontSize":12,"fontWeight":"normal","id":"D6JU8","name":"stepText","type":"text"},{"alignItems":"center","children":[{"fill":"$--success-fg","height":16,"iconFontFamily":"lucide","iconFontName":"download","id":"k89Kv","name":"dlIcon","type":"icon_font","width":16},{"content":"Download: export-2026-03.xlsx","fill":"$--info-fg","fontFamily":"Inter","fontSize":13,"fontWeight":"500","id":"6IXMH","name":"dlText","type":"text"}],"cornerRadius":8,"fill":"$--success-bg","gap":8,"id":"PEVAF","name":"Download Row","padding":[10,12],"type":"frame","width":"fill_container"},{"content":"View in async queue \u2192","fill":"$--fg-muted","fontFamily":"Inter","fontSize":12,"fontWeight":"normal","id":"2S0Ux","name":"queueLink","type":"text"}],"gap":16,"id":"2f52O","layout":"vertical","name":"Body","padding":24,"type":"frame","width":"fill_container"},{"alignItems":"center","children":[{"alignItems":"center","children":[{"content":"Cancel","fill":"$--fg","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"wyhEf","name":"cancelText","type":"text"}],"cornerRadius":8,"fill":"$--bg","height":38,"id":"cA17d","name":"cancelBtn","padding":[10,20],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame"}],"cornerRadius":[0,0,12,12],"gap":12,"height":64,"id":"rZozL","justifyContent":"end","name":"Dialog Footer","padding":[12,24],"stroke":{"align":"inside","fill":"$--border","thickness":{"top":1}},"type":"frame","width":"fill_container"}],"cornerRadius":12,"effect":{"blur":24,"color":"#00000020","offset":{"x":0,"y":4},"shadowType":"outer","type":"shadow"},"fill":"$--bg","id":"6gSTM","layout":"vertical","name":"W7: Job Status Dialog (500px) @shadcn/dialog","stroke":{"align":"inside","fill":"$--border","thickness":1},"type":"frame","width":500,"x":0,"y":0},{"content":"Job Status Dialog \u2014 async job polling progress.\nShared template _include/jobStatusDlg.html\nPolls WorkExportService.getStatus every 2s\nProgress bar shows step N of M\nWhen complete: download link appears\nIf queued: shows async queue navigation link\nCancel button only \u2014 job auto-completes","height":0,"id":"jlpwQ","name":"note: Job Status","type":"note","width":0,"x":560,"y":0}]}
+{
+  "version": "2.9",
+  "variables": {
+    "--bg": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--border": {
+      "type": "color",
+      "value": "#E5E5E5"
+    },
+    "--card": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "--destructive": {
+      "type": "color",
+      "value": "#DC2626"
+    },
+    "--fg": {
+      "type": "color",
+      "value": "#0A0A0A"
+    },
+    "--fg-muted": {
+      "type": "color",
+      "value": "#737373"
+    },
+    "--header-bg": {
+      "type": "color",
+      "value": "#F98E33"
+    },
+    "--header-fg": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--info-bg": {
+      "type": "color",
+      "value": "#EFF6FF"
+    },
+    "--info-fg": {
+      "type": "color",
+      "value": "#1D4ED8"
+    },
+    "--input-border": {
+      "type": "color",
+      "value": "#D4D4D4"
+    },
+    "--primary": {
+      "type": "color",
+      "value": "#171717"
+    },
+    "--primary-fg": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "--secondary": {
+      "type": "color",
+      "value": "#F5F5F5"
+    },
+    "--success-bg": {
+      "type": "color",
+      "value": "#F0FDF4"
+    },
+    "--success-fg": {
+      "type": "color",
+      "value": "#166534"
+    },
+    "--warning": {
+      "type": "color",
+      "value": "#F59E0B"
+    },
+    "--warning-bg": {
+      "type": "color",
+      "value": "#FFFBEB"
+    }
+  },
+  "children": [
+    {
+      "children": [
+        {
+          "alignItems": "center",
+          "children": [
+            {
+              "fill": "$--header-fg",
+              "height": 20,
+              "iconFontFamily": "lucide",
+              "iconFontName": "loader",
+              "id": "CMgT2",
+              "name": "hIcon",
+              "type": "icon_font",
+              "width": 20
+            },
+            {
+              "content": "Export Progress",
+              "fill": "$--header-fg",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "600",
+              "id": "JBPgC",
+              "name": "hTitle",
+              "type": "text"
+            }
+          ],
+          "cornerRadius": [
+            12,
+            12,
+            0,
+            0
+          ],
+          "fill": "$--header-bg",
+          "gap": 12,
+          "height": 56,
+          "id": "xiES0",
+          "name": "Dialog Header",
+          "padding": [
+            12,
+            24
+          ],
+          "type": "frame",
+          "width": "fill_container"
+        },
+        {
+          "children": [
+            {
+              "content": "Processing export...",
+              "fill": "$--fg",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "500",
+              "id": "IHxEI",
+              "name": "statusText",
+              "type": "text"
+            },
+            {
+              "children": [
+                {
+                  "cornerRadius": 4,
+                  "fill": "$--primary",
+                  "height": 8,
+                  "id": "DDqM5",
+                  "name": "Progress Fill 60%",
+                  "type": "frame",
+                  "width": 270
+                }
+              ],
+              "cornerRadius": 4,
+              "fill": "$--secondary",
+              "height": 8,
+              "id": "UGsMk",
+              "name": "Progress Bar BG",
+              "type": "frame",
+              "width": "fill_container"
+            },
+            {
+              "content": "Step 3 of 5 \u2014 Generating report",
+              "fill": "$--fg-muted",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "normal",
+              "id": "D6JU8",
+              "name": "stepText",
+              "type": "text"
+            },
+            {
+              "alignItems": "center",
+              "children": [
+                {
+                  "fill": "$--success-fg",
+                  "height": 16,
+                  "iconFontFamily": "lucide",
+                  "iconFontName": "download",
+                  "id": "k89Kv",
+                  "name": "dlIcon",
+                  "type": "icon_font",
+                  "width": 16
+                },
+                {
+                  "content": "Download: export-2026-03.xlsx",
+                  "fill": "$--info-fg",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "500",
+                  "id": "6IXMH",
+                  "name": "dlText",
+                  "type": "text"
+                }
+              ],
+              "cornerRadius": 8,
+              "fill": "$--success-bg",
+              "gap": 8,
+              "id": "PEVAF",
+              "name": "Download Row",
+              "padding": [
+                10,
+                12
+              ],
+              "type": "frame",
+              "width": "fill_container"
+            },
+            {
+              "content": "View in async queue \u2192",
+              "fill": "$--fg-muted",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "normal",
+              "id": "2S0Ux",
+              "name": "queueLink",
+              "type": "text"
+            }
+          ],
+          "gap": 16,
+          "id": "2f52O",
+          "layout": "vertical",
+          "name": "Body",
+          "padding": 24,
+          "type": "frame",
+          "width": "fill_container"
+        },
+        {
+          "alignItems": "center",
+          "children": [
+            {
+              "alignItems": "center",
+              "children": [
+                {
+                  "content": "Cancel",
+                  "fill": "$--fg",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal",
+                  "id": "wyhEf",
+                  "name": "cancelText",
+                  "type": "text"
+                }
+              ],
+              "cornerRadius": 8,
+              "fill": "$--bg",
+              "height": 38,
+              "id": "cA17d",
+              "name": "cancelBtn",
+              "padding": [
+                10,
+                20
+              ],
+              "stroke": {
+                "fill": "$--input-border",
+                "thickness": 1
+              },
+              "type": "frame"
+            }
+          ],
+          "cornerRadius": [
+            0,
+            0,
+            12,
+            12
+          ],
+          "gap": 12,
+          "height": 64,
+          "id": "rZozL",
+          "justifyContent": "end",
+          "name": "Dialog Footer",
+          "padding": [
+            12,
+            24
+          ],
+          "stroke": {
+            "align": "inside",
+            "fill": "$--border",
+            "thickness": {
+              "top": 1
+            }
+          },
+          "type": "frame",
+          "width": "fill_container"
+        }
+      ],
+      "cornerRadius": 12,
+      "effect": {
+        "blur": 24,
+        "color": "#00000020",
+        "offset": {
+          "x": 0,
+          "y": 4
+        },
+        "shadowType": "outer",
+        "type": "shadow"
+      },
+      "fill": "$--bg",
+      "id": "6gSTM",
+      "layout": "vertical",
+      "name": "W7: Job Status Dialog (500px) @shadcn/dialog",
+      "stroke": {
+        "align": "inside",
+        "fill": "$--border",
+        "thickness": 1
+      },
+      "type": "frame",
+      "width": 500,
+      "x": 0,
+      "y": 0
+    }
+  ]
+}

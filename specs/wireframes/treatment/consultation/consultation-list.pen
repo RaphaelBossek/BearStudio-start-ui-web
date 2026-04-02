@@ -1377,14 +1377,6 @@
           },
           "type": "frame",
           "width": "fill_container"
-        },
-        {
-          "content": "Toolbar buttons:\n\u2022 View \u2014 opens edit dialog (OPEN) or view dialog (other states)\n\u2022 Review \u2014 [PERM: CONSULTATION_REPORTING | CONSULTATION_ADMIN]\n\u2022 Delete \u2014 [PERM: ADMIN only]\n\u2022 Download \u2014 PDF generation, guards on baseCompleted\n\u2022 Export \u2014 XLS by year/month\n\u2022 Template Export \u2014 opens export template dialog\n\nFilter panel (offcanvas right):\n\u2022 Date range (from/to)\n\u2022 State select (6 states: CREATED\u2192VERIFIED)\n\u2022 Doctor autocomplete\n\u2022 Max results select\n\nGrid columns: date, start, end, bookNumber [HARDCODED: \"Patient\"], location, type, state, doctor, requireReporting, reportingDocumentation\n\nData binding: ConsultationService.getAll(filter, 100)",
-          "height": 400,
-          "id": "sfVus",
-          "name": "note1",
-          "type": "note",
-          "width": 500
         }
       ],
       "fill": "$--bg",

@@ -71,7 +71,7 @@
               "id": "CgQ9K",
               "name": "hdrAnnot",
               "fill": "#FFFFFFAA",
-              "content": "@shadcn/drawer — 1200px",
+              "content": "@shadcn/drawer \u2014 1200px",
               "fontFamily": "Inter",
               "fontSize": 11,
               "fontWeight": "normal"
@@ -181,7 +181,7 @@
               "id": "8SNIO",
               "name": "timeInfo",
               "fill": "$--fg",
-              "content": "08:00 – 16:00",
+              "content": "08:00 \u2013 16:00",
               "fontFamily": "Inter",
               "fontSize": 12,
               "fontWeight": "600"
@@ -226,7 +226,7 @@
         {
           "type": "frame",
           "id": "Ezh6S",
-          "name": "Tab Bar — @shadcn/tabs",
+          "name": "Tab Bar \u2014 @shadcn/tabs",
           "width": "fill_container",
           "stroke": {
             "align": "inside",
@@ -417,7 +417,7 @@
         {
           "type": "frame",
           "id": "YsTFZ",
-          "name": "Tab 1: Info — Details/Edit Form",
+          "name": "Tab 1: Info \u2014 Details/Edit Form",
           "width": "fill_container",
           "layout": "vertical",
           "gap": 16,
@@ -693,7 +693,7 @@
                       "id": "qTzcW",
                       "name": "stLbl",
                       "fill": "$--fg",
-                      "content": "State [RO] — click opens transition dialog",
+                      "content": "State [RO] \u2014 click opens transition dialog",
                       "fontFamily": "Inter",
                       "fontSize": 13,
                       "fontWeight": "500"
@@ -802,7 +802,7 @@
                 {
                   "type": "frame",
                   "id": "H1Up7",
-                  "name": "Location * [cond: !expertOnly] — @shadcn/combobox",
+                  "name": "Location * [cond: !expertOnly] \u2014 @shadcn/combobox",
                   "width": "fill_container",
                   "layout": "vertical",
                   "gap": 4,
@@ -872,7 +872,7 @@
                 {
                   "type": "frame",
                   "id": "QVutX",
-                  "name": "Room [cond: !expertOnly] — @shadcn/combobox",
+                  "name": "Room [cond: !expertOnly] \u2014 @shadcn/combobox",
                   "width": "fill_container",
                   "layout": "vertical",
                   "gap": 4,
@@ -982,7 +982,7 @@
                 {
                   "type": "frame",
                   "id": "AmVrU",
-                  "name": "Job * — @shadcn/combobox",
+                  "name": "Job * \u2014 @shadcn/combobox",
                   "width": "fill_container",
                   "layout": "vertical",
                   "gap": 4,
@@ -1021,7 +1021,7 @@
                           "id": "LlBU5",
                           "name": "jobTxt",
                           "fill": "$--fg",
-                          "content": "GENMED — General Medicine",
+                          "content": "GENMED \u2014 General Medicine",
                           "fontFamily": "Inter",
                           "fontSize": 13,
                           "fontWeight": "normal"
@@ -1175,7 +1175,7 @@
             {
               "type": "frame",
               "id": "nDXWU",
-              "name": "Comment — @shadcn/textarea",
+              "name": "Comment \u2014 @shadcn/textarea",
               "width": "fill_container",
               "layout": "vertical",
               "gap": 4,
@@ -1248,7 +1248,7 @@
             {
               "type": "frame",
               "id": "nV8PY",
-              "name": "Cancel — @shadcn/button secondary",
+              "name": "Cancel \u2014 @shadcn/button secondary",
               "fill": "$--secondary",
               "cornerRadius": 6,
               "stroke": {
@@ -1278,7 +1278,7 @@
             {
               "type": "frame",
               "id": "V7WVx",
-              "name": "Save — @shadcn/button primary",
+              "name": "Save \u2014 @shadcn/button primary",
               "fill": "$--primary",
               "cornerRadius": 6,
               "padding": [
@@ -1313,40 +1313,7 @@
             16,
             24
           ],
-          "children": [
-            {
-              "type": "note",
-              "id": "uns0l",
-              "name": "Tab Visibility Note",
-              "width": 550,
-              "height": 50,
-              "content": "Tab visibility: Info=always, Referenced=[expertOnly=true], Patients=always, Assigned=always, Suggestions=[state: READY|STARTED|REOPENED|REQUESTED|LOCKEDIN]. Employee actions toolbar same as Suggestions."
-            },
-            {
-              "type": "note",
-              "id": "rZoVs",
-              "name": "Type Visibility Note",
-              "width": 550,
-              "height": 50,
-              "content": "Type-driven fields: APPOINTMENT/TREATMENT → expertOnly, location, room. SHIFT → priceType (auto-suggest from date+time), minPatients. COUNCIL → jobSupport checkbox. Job filter changes by type."
-            },
-            {
-              "type": "note",
-              "id": "OF4rE",
-              "name": "State Machine Note",
-              "width": 550,
-              "height": 50,
-              "content": "State transition dialog: shows valid next states from ShiftLogic.getValidState(). STORNO adds date+time fields. Admin sees Delete button. 12 states total: READY→STARTED→REQUESTED→LOCKEDIN→ACTIVE→DONE→CLOSED→ARCHIVED (+ STORNO, CANCELED, RESCHEDULED, REOPEN)."
-            },
-            {
-              "type": "note",
-              "id": "0yYm0",
-              "name": "Assigned Tab Note",
-              "width": 550,
-              "height": 45,
-              "content": "Assigned tab: doctor autocomplete + delete. Per-row actions: Accept, Reserve, Override (→AGREED), Reject, Abort, Send Reminder, History. Collision handling via assignAppointment() → W3 dialog if duplicates > 1."
-            }
-          ]
+          "children": []
         }
       ]
     }

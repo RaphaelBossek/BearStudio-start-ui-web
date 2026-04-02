@@ -1,1 +1,1336 @@
-{"version":"2.9","variables":{"--bg":{"type":"color","value":"#FFFFFF"},"--border":{"type":"color","value":"#E5E5E5"},"--card":{"type":"color","value":"#FAFAFA"},"--danger-bg":{"type":"color","value":"#FEF2F2"},"--destructive":{"type":"color","value":"#DC2626"},"--fg":{"type":"color","value":"#0A0A0A"},"--fg-muted":{"type":"color","value":"#737373"},"--header-bg":{"type":"color","value":"#F98E33"},"--header-fg":{"type":"color","value":"#FFFFFF"},"--info-bg":{"type":"color","value":"#EFF6FF"},"--info-fg":{"type":"color","value":"#1D4ED8"},"--input-border":{"type":"color","value":"#D4D4D4"},"--primary":{"type":"color","value":"#171717"},"--primary-fg":{"type":"color","value":"#FAFAFA"},"--secondary":{"type":"color","value":"#F5F5F5"},"--secondary-fg":{"type":"color","value":"#171717"},"--success-bg":{"type":"color","value":"#F0FDF4"},"--success-fg":{"type":"color","value":"#166534"},"--warning":{"type":"color","value":"#F59E0B"},"--warning-bg":{"type":"color","value":"#FFFBEB"}},"children":[{"children":[{"children":[{"alignItems":"center","children":[{"fill":"$--fg-muted","height":16,"iconFontFamily":"lucide","iconFontName":"file-text","id":"w6TIco","type":"icon_font","width":16},{"content":"Treatment Form","fill":"$--fg","fontFamily":"Inter","fontSize":15,"fontWeight":"700","id":"w6TTtl","type":"text"},{"content":"(no required fields)","fill":"$--fg-muted","fontFamily":"Inter","fontSize":11,"fontWeight":"normal","id":"w6TAnn1","type":"text"}],"fill":"$--secondary","height":48,"id":"w6THdr","padding":[0,16],"type":"frame","width":"fill_container"},{"children":[{"children":[{"content":"Diagnoses","fill":"$--fg","fontFamily":"Inter","fontSize":12,"fontWeight":"600","id":"w6TDLbl","type":"text"},{"children":[{"content":"Diagnoses...","fill":"$--fg-muted","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"w6TDPH","type":"text"}],"cornerRadius":8,"height":70,"id":"w6TDTA","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"}],"gap":4,"id":"w6TDiag","layout":"vertical","name":"Diagnoses","type":"frame","width":"fill_container"},{"children":[{"content":"Anamnese","fill":"$--fg","fontFamily":"Inter","fontSize":12,"fontWeight":"600","id":"w6TALbl","type":"text"},{"children":[{"children":[{"content":"Anamnese column 1...","fill":"$--fg-muted","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"w6TA1PH","type":"text"}],"cornerRadius":8,"height":70,"id":"w6TA1","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"},{"children":[{"content":"Anamnese column 2...","fill":"$--fg-muted","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"w6TA2PH","type":"text"}],"cornerRadius":8,"height":70,"id":"w6TA2","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"}],"gap":12,"id":"w6TARow","type":"frame","width":"fill_container"}],"gap":4,"id":"w6TAnam","layout":"vertical","name":"Anamnese (2-col)","type":"frame","width":"fill_container"},{"children":[{"content":"Medication","fill":"$--fg","fontFamily":"Inter","fontSize":12,"fontWeight":"600","id":"w6TMLbl","type":"text"},{"children":[{"content":"Medication...","fill":"$--fg-muted","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"w6TMPH","type":"text"}],"cornerRadius":8,"height":70,"id":"w6TMTA","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"}],"gap":4,"id":"w6TMed","layout":"vertical","name":"Medication","type":"frame","width":"fill_container"},{"children":[{"content":"Findings","fill":"$--fg","fontFamily":"Inter","fontSize":12,"fontWeight":"600","id":"w6TFLbl","type":"text"},{"children":[{"children":[{"content":"Findings column 1...","fill":"$--fg-muted","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"w6TF1PH","type":"text"}],"cornerRadius":8,"height":70,"id":"w6TF1","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"},{"children":[{"content":"Findings column 2...","fill":"$--fg-muted","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"w6TF2PH","type":"text"}],"cornerRadius":8,"height":70,"id":"w6TF2","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"}],"gap":12,"id":"w6TFRow","type":"frame","width":"fill_container"}],"gap":4,"id":"w6TFind","layout":"vertical","name":"Findings (2-col)","type":"frame","width":"fill_container"},{"children":[{"content":"Medical Admission","fill":"$--fg","fontFamily":"Inter","fontSize":12,"fontWeight":"600","id":"w6TADLbl","type":"text"},{"children":[{"content":"Medical admission notes...","fill":"$--fg-muted","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"w6TADPH","type":"text"}],"cornerRadius":8,"height":70,"id":"w6TADTA","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"}],"gap":4,"id":"w6TAdm","layout":"vertical","name":"Medical Admission","type":"frame","width":"fill_container"},{"children":[{"content":"History","fill":"$--fg","fontFamily":"Inter","fontSize":12,"fontWeight":"600","id":"w6THLbl","type":"text"},{"children":[{"children":[{"content":"History entry...","fill":"$--fg-muted","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"w6THRPH","type":"text"}],"cornerRadius":8,"height":60,"id":"w6THR1","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"},{"children":[{"fill":"$--destructive","height":14,"iconFontFamily":"lucide","iconFontName":"trash-2","id":"w6THDI","type":"icon_font","width":14}],"cornerRadius":6,"fill":"$--danger-bg","id":"w6THDel","padding":[6,8],"type":"frame"}],"cornerRadius":6,"fill":"$--card","gap":12,"id":"w6THRow","name":"history row (sample)","padding":12,"stroke":{"fill":"$--border","thickness":1},"type":"frame","width":"fill_container"},{"alignItems":"center","children":[{"fill":"$--fg","height":14,"iconFontFamily":"lucide","iconFontName":"plus","id":"w6THAI","type":"icon_font","width":14},{"content":"Add History Entry","fill":"$--fg","fontFamily":"Inter","fontSize":13,"fontWeight":"500","id":"w6THAT","type":"text"}],"cornerRadius":8,"fill":"$--secondary","gap":6,"id":"w6THAdd","padding":[8,16],"type":"frame"}],"gap":8,"id":"w6THist","layout":"vertical","name":"History Repeater","type":"frame","width":"fill_container"},{"children":[{"content":"Further Treatment","fill":"$--fg","fontFamily":"Inter","fontSize":12,"fontWeight":"600","id":"w6TFULbl","type":"text"},{"children":[{"children":[{"content":"Further treatment column 1...","fill":"$--fg-muted","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"w6TFU1PH","type":"text"}],"cornerRadius":8,"height":70,"id":"w6TFU1","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"},{"children":[{"content":"Further treatment column 2...","fill":"$--fg-muted","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"w6TFU2PH","type":"text"}],"cornerRadius":8,"height":70,"id":"w6TFU2","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"}],"gap":12,"id":"w6TFURow","type":"frame","width":"fill_container"}],"gap":4,"id":"w6TFurther","layout":"vertical","name":"Further Treatment (2-col)","type":"frame","width":"fill_container"}],"gap":16,"id":"w6TBody","layout":"vertical","padding":16,"type":"frame","width":"fill_container"}],"cornerRadius":8,"id":"w6Treat","layout":"vertical","name":"Treatment Form","stroke":{"fill":"$--border","thickness":1},"type":"frame","width":"fill_container"},{"children":[{"alignItems":"center","children":[{"fill":"$--warning","height":16,"iconFontFamily":"lucide","iconFontName":"alert-triangle","id":"w6WIco","type":"icon_font","width":16},{"content":"Warning Form","fill":"$--fg","fontFamily":"Inter","fontSize":15,"fontWeight":"700","id":"w6WTtl","type":"text"}],"fill":"$--warning-bg","height":48,"id":"w6WHdr","padding":[0,16],"type":"frame","width":"fill_container"},{"children":[{"children":[{"children":[{"content":"Allergies","fill":"$--fg","fontFamily":"Inter","fontSize":12,"fontWeight":"600","id":"w6WC1Lbl","type":"text"},{"alignItems":"center","children":[{"alignItems":"center","children":[{"content":"Select allergy...","fill":"$--fg-muted","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"w6WC1V","type":"text"},{"fill":"$--fg-muted","height":14,"iconFontFamily":"lucide","iconFontName":"chevron-down","id":"w6WC1C","type":"icon_font","width":14}],"cornerRadius":8,"id":"w6WC1Sel","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"},{"children":[{"fill":"$--primary-fg","height":14,"iconFontFamily":"lucide","iconFontName":"plus","id":"w6WC1AI","type":"icon_font","width":14}],"cornerRadius":6,"fill":"$--primary","id":"w6WC1Add","padding":[6,8],"type":"frame"}],"gap":8,"id":"w6WC1Row","type":"frame","width":"fill_container"}],"gap":4,"id":"w6WCat1","layout":"vertical","name":"Allergies","type":"frame","width":"fill_container"},{"children":[{"content":"Conspicuous","fill":"$--fg","fontFamily":"Inter","fontSize":12,"fontWeight":"600","id":"w6WC2Lbl","type":"text"},{"alignItems":"center","children":[{"alignItems":"center","children":[{"content":"Select...","fill":"$--fg-muted","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"w6WC2V","type":"text"},{"fill":"$--fg-muted","height":14,"iconFontFamily":"lucide","iconFontName":"chevron-down","id":"w6WC2C","type":"icon_font","width":14}],"cornerRadius":8,"id":"w6WC2Sel","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"},{"children":[{"fill":"$--primary-fg","height":14,"iconFontFamily":"lucide","iconFontName":"plus","id":"w6WC2AI","type":"icon_font","width":14}],"cornerRadius":6,"fill":"$--primary","id":"w6WC2Add","padding":[6,8],"type":"frame"}],"gap":8,"id":"w6WC2Row","type":"frame","width":"fill_container"}],"gap":4,"id":"w6WCat2","layout":"vertical","name":"Conspicuous","type":"frame","width":"fill_container"},{"children":[{"content":"Infections","fill":"$--fg","fontFamily":"Inter","fontSize":12,"fontWeight":"600","id":"w6WC3Lbl","type":"text"},{"alignItems":"center","children":[{"alignItems":"center","children":[{"content":"Select...","fill":"$--fg-muted","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"w6WC3V","type":"text"},{"fill":"$--fg-muted","height":14,"iconFontFamily":"lucide","iconFontName":"chevron-down","id":"w6WC3C","type":"icon_font","width":14}],"cornerRadius":8,"id":"w6WC3Sel","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"},{"children":[{"fill":"$--primary-fg","height":14,"iconFontFamily":"lucide","iconFontName":"plus","id":"w6WC3AI","type":"icon_font","width":14}],"cornerRadius":6,"fill":"$--primary","id":"w6WC3Add","padding":[6,8],"type":"frame"}],"gap":8,"id":"w6WC3Row","type":"frame","width":"fill_container"}],"gap":4,"id":"w6WCat3","layout":"vertical","name":"Infections","type":"frame","width":"fill_container"},{"children":[{"content":"Other","fill":"$--fg","fontFamily":"Inter","fontSize":12,"fontWeight":"600","id":"w6WC4Lbl","type":"text"},{"alignItems":"center","children":[{"alignItems":"center","children":[{"content":"Select...","fill":"$--fg-muted","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"w6WC4V","type":"text"},{"fill":"$--fg-muted","height":14,"iconFontFamily":"lucide","iconFontName":"chevron-down","id":"w6WC4C","type":"icon_font","width":14}],"cornerRadius":8,"id":"w6WC4Sel","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":"fill_container"},{"children":[{"fill":"$--primary-fg","height":14,"iconFontFamily":"lucide","iconFontName":"plus","id":"w6WC4AI","type":"icon_font","width":14}],"cornerRadius":6,"fill":"$--primary","id":"w6WC4Add","padding":[6,8],"type":"frame"}],"gap":8,"id":"w6WC4Row","type":"frame","width":"fill_container"}],"gap":4,"id":"w6WCat4","layout":"vertical","name":"Other","type":"frame","width":"fill_container"}],"gap":12,"id":"w6WCats","name":"4 Category Selects","type":"frame","width":"fill_container"},{"alignItems":"center","children":[{"cornerRadius":4,"fill":"$--bg","height":18,"id":"w6WNoCb","stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":18},{"content":"No Warnings \u2014 hides entire collection below","fill":"$--fg","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"w6WNoT","type":"text"}],"gap":8,"id":"w6WNoWarn","name":"noWarnings checkbox","padding":[12,0],"type":"frame","width":"fill_container"},{"children":[{"content":"Warning Collection","fill":"$--fg","fontFamily":"Inter","fontSize":12,"fontWeight":"600","id":"w6WCollLbl","type":"text"},{"alignItems":"center","children":[{"children":[{"content":"Penicillin Allergy","fill":"$--fg","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"w6WR1NV","type":"text"}],"cornerRadius":8,"id":"w6WR1Name","name":"name","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":180},{"children":[{"content":"Allergies [RO]","fill":"$--fg-muted","fontFamily":"Inter","fontSize":12,"fontWeight":"normal","id":"w6WR1TV","type":"text"}],"cornerRadius":6,"fill":"$--secondary","id":"w6WR1Type","name":"type [RO]","padding":[8,12],"type":"frame","width":120},{"alignItems":"center","children":[{"children":[{"fill":"$--primary-fg","height":12,"iconFontFamily":"lucide","iconFontName":"check","id":"w6WR1AChk","type":"icon_font","width":12}],"cornerRadius":4,"fill":"$--primary","height":18,"id":"w6WR1ACb","stroke":{"fill":"$--primary","thickness":2},"type":"frame","width":18},{"content":"Applies *","fill":"$--fg","fontFamily":"Inter","fontSize":12,"fontWeight":"normal","id":"w6WR1AT","type":"text"}],"gap":8,"id":"w6WR1App","name":"applies boolean *","type":"frame"},{"children":[{"content":"Comment...","fill":"$--fg-muted","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"w6WR1CV","type":"text"}],"cornerRadius":8,"id":"w6WR1Cmt","name":"comment","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":160},{"alignItems":"center","children":[{"fill":"$--fg-muted","height":12,"iconFontFamily":"lucide","iconFontName":"calendar","id":"w6WR1DSI","type":"icon_font","width":12},{"content":"Start","fill":"$--fg-muted","fontFamily":"Inter","fontSize":12,"fontWeight":"normal","id":"w6WR1DSV","type":"text"}],"cornerRadius":8,"gap":4,"id":"w6WR1DS","name":"dateStart","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":120},{"alignItems":"center","children":[{"fill":"$--fg-muted","height":12,"iconFontFamily":"lucide","iconFontName":"calendar","id":"w6WR1DEI","type":"icon_font","width":12},{"content":"End","fill":"$--fg-muted","fontFamily":"Inter","fontSize":12,"fontWeight":"normal","id":"w6WR1DEV","type":"text"}],"cornerRadius":8,"gap":4,"id":"w6WR1DE","name":"dateEnd","padding":[8,12],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame","width":120},{"children":[{"fill":"$--destructive","height":14,"iconFontFamily":"lucide","iconFontName":"trash-2","id":"w6WR1DI","type":"icon_font","width":14}],"cornerRadius":6,"fill":"$--danger-bg","id":"w6WR1Del","name":"delete","padding":[6,8],"type":"frame"}],"cornerRadius":6,"fill":"$--card","gap":8,"id":"w6WR1","name":"Warning Row (sample)","padding":12,"stroke":{"fill":"$--border","thickness":1},"type":"frame","width":"fill_container"}],"gap":8,"id":"w6WColl","layout":"vertical","name":"Warning Collection [cond: noWarnings=false]","type":"frame","width":"fill_container"}],"gap":16,"id":"w6WBody","layout":"vertical","padding":16,"type":"frame","width":"fill_container"}],"cornerRadius":8,"id":"w6Warn","layout":"vertical","name":"Warning Form","stroke":{"fill":"$--border","thickness":1},"type":"frame","width":"fill_container"}],"fill":"$--bg","gap":24,"id":"w6Root","layout":"vertical","name":"W6 \u2013 Treatment & Warning Forms","padding":24,"type":"frame","width":1440,"x":20,"y":20},{"content":"W6 \u2013 consultation-details-treatment-warning.pen\nTwo sections:\n1. Treatment Form: 15 textareas in sections. No required fields.\n2. Warning Form: 4 category selects + warning collection with conditionize2.","height":0,"id":"7Nt93","name":"note1","type":"note","width":0,"x":1500,"y":40},{"content":"[conditionize2: noWarnings=true hides warningCollection]","height":0,"id":"AzdV1","name":"note2","type":"note","width":0,"x":1500,"y":339}]}
+{
+  "version": "2.9",
+  "variables": {
+    "--bg": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--border": {
+      "type": "color",
+      "value": "#E5E5E5"
+    },
+    "--card": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "--danger-bg": {
+      "type": "color",
+      "value": "#FEF2F2"
+    },
+    "--destructive": {
+      "type": "color",
+      "value": "#DC2626"
+    },
+    "--fg": {
+      "type": "color",
+      "value": "#0A0A0A"
+    },
+    "--fg-muted": {
+      "type": "color",
+      "value": "#737373"
+    },
+    "--header-bg": {
+      "type": "color",
+      "value": "#F98E33"
+    },
+    "--header-fg": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--info-bg": {
+      "type": "color",
+      "value": "#EFF6FF"
+    },
+    "--info-fg": {
+      "type": "color",
+      "value": "#1D4ED8"
+    },
+    "--input-border": {
+      "type": "color",
+      "value": "#D4D4D4"
+    },
+    "--primary": {
+      "type": "color",
+      "value": "#171717"
+    },
+    "--primary-fg": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "--secondary": {
+      "type": "color",
+      "value": "#F5F5F5"
+    },
+    "--secondary-fg": {
+      "type": "color",
+      "value": "#171717"
+    },
+    "--success-bg": {
+      "type": "color",
+      "value": "#F0FDF4"
+    },
+    "--success-fg": {
+      "type": "color",
+      "value": "#166534"
+    },
+    "--warning": {
+      "type": "color",
+      "value": "#F59E0B"
+    },
+    "--warning-bg": {
+      "type": "color",
+      "value": "#FFFBEB"
+    }
+  },
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "alignItems": "center",
+              "children": [
+                {
+                  "fill": "$--fg-muted",
+                  "height": 16,
+                  "iconFontFamily": "lucide",
+                  "iconFontName": "file-text",
+                  "id": "w6TIco",
+                  "type": "icon_font",
+                  "width": 16
+                },
+                {
+                  "content": "Treatment Form",
+                  "fill": "$--fg",
+                  "fontFamily": "Inter",
+                  "fontSize": 15,
+                  "fontWeight": "700",
+                  "id": "w6TTtl",
+                  "type": "text"
+                },
+                {
+                  "content": "(no required fields)",
+                  "fill": "$--fg-muted",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "normal",
+                  "id": "w6TAnn1",
+                  "type": "text"
+                }
+              ],
+              "fill": "$--secondary",
+              "height": 48,
+              "id": "w6THdr",
+              "padding": [
+                0,
+                16
+              ],
+              "type": "frame",
+              "width": "fill_container"
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "content": "Diagnoses",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "600",
+                      "id": "w6TDLbl",
+                      "type": "text"
+                    },
+                    {
+                      "children": [
+                        {
+                          "content": "Diagnoses...",
+                          "fill": "$--fg-muted",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal",
+                          "id": "w6TDPH",
+                          "type": "text"
+                        }
+                      ],
+                      "cornerRadius": 8,
+                      "height": 70,
+                      "id": "w6TDTA",
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "stroke": {
+                        "fill": "$--input-border",
+                        "thickness": 1
+                      },
+                      "type": "frame",
+                      "width": "fill_container"
+                    }
+                  ],
+                  "gap": 4,
+                  "id": "w6TDiag",
+                  "layout": "vertical",
+                  "name": "Diagnoses",
+                  "type": "frame",
+                  "width": "fill_container"
+                },
+                {
+                  "children": [
+                    {
+                      "content": "Anamnese",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "600",
+                      "id": "w6TALbl",
+                      "type": "text"
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "content": "Anamnese column 1...",
+                              "fill": "$--fg-muted",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "normal",
+                              "id": "w6TA1PH",
+                              "type": "text"
+                            }
+                          ],
+                          "cornerRadius": 8,
+                          "height": 70,
+                          "id": "w6TA1",
+                          "padding": [
+                            8,
+                            12
+                          ],
+                          "stroke": {
+                            "fill": "$--input-border",
+                            "thickness": 1
+                          },
+                          "type": "frame",
+                          "width": "fill_container"
+                        },
+                        {
+                          "children": [
+                            {
+                              "content": "Anamnese column 2...",
+                              "fill": "$--fg-muted",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "normal",
+                              "id": "w6TA2PH",
+                              "type": "text"
+                            }
+                          ],
+                          "cornerRadius": 8,
+                          "height": 70,
+                          "id": "w6TA2",
+                          "padding": [
+                            8,
+                            12
+                          ],
+                          "stroke": {
+                            "fill": "$--input-border",
+                            "thickness": 1
+                          },
+                          "type": "frame",
+                          "width": "fill_container"
+                        }
+                      ],
+                      "gap": 12,
+                      "id": "w6TARow",
+                      "type": "frame",
+                      "width": "fill_container"
+                    }
+                  ],
+                  "gap": 4,
+                  "id": "w6TAnam",
+                  "layout": "vertical",
+                  "name": "Anamnese (2-col)",
+                  "type": "frame",
+                  "width": "fill_container"
+                },
+                {
+                  "children": [
+                    {
+                      "content": "Medication",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "600",
+                      "id": "w6TMLbl",
+                      "type": "text"
+                    },
+                    {
+                      "children": [
+                        {
+                          "content": "Medication...",
+                          "fill": "$--fg-muted",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal",
+                          "id": "w6TMPH",
+                          "type": "text"
+                        }
+                      ],
+                      "cornerRadius": 8,
+                      "height": 70,
+                      "id": "w6TMTA",
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "stroke": {
+                        "fill": "$--input-border",
+                        "thickness": 1
+                      },
+                      "type": "frame",
+                      "width": "fill_container"
+                    }
+                  ],
+                  "gap": 4,
+                  "id": "w6TMed",
+                  "layout": "vertical",
+                  "name": "Medication",
+                  "type": "frame",
+                  "width": "fill_container"
+                },
+                {
+                  "children": [
+                    {
+                      "content": "Findings",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "600",
+                      "id": "w6TFLbl",
+                      "type": "text"
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "content": "Findings column 1...",
+                              "fill": "$--fg-muted",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "normal",
+                              "id": "w6TF1PH",
+                              "type": "text"
+                            }
+                          ],
+                          "cornerRadius": 8,
+                          "height": 70,
+                          "id": "w6TF1",
+                          "padding": [
+                            8,
+                            12
+                          ],
+                          "stroke": {
+                            "fill": "$--input-border",
+                            "thickness": 1
+                          },
+                          "type": "frame",
+                          "width": "fill_container"
+                        },
+                        {
+                          "children": [
+                            {
+                              "content": "Findings column 2...",
+                              "fill": "$--fg-muted",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "normal",
+                              "id": "w6TF2PH",
+                              "type": "text"
+                            }
+                          ],
+                          "cornerRadius": 8,
+                          "height": 70,
+                          "id": "w6TF2",
+                          "padding": [
+                            8,
+                            12
+                          ],
+                          "stroke": {
+                            "fill": "$--input-border",
+                            "thickness": 1
+                          },
+                          "type": "frame",
+                          "width": "fill_container"
+                        }
+                      ],
+                      "gap": 12,
+                      "id": "w6TFRow",
+                      "type": "frame",
+                      "width": "fill_container"
+                    }
+                  ],
+                  "gap": 4,
+                  "id": "w6TFind",
+                  "layout": "vertical",
+                  "name": "Findings (2-col)",
+                  "type": "frame",
+                  "width": "fill_container"
+                },
+                {
+                  "children": [
+                    {
+                      "content": "Medical Admission",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "600",
+                      "id": "w6TADLbl",
+                      "type": "text"
+                    },
+                    {
+                      "children": [
+                        {
+                          "content": "Medical admission notes...",
+                          "fill": "$--fg-muted",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal",
+                          "id": "w6TADPH",
+                          "type": "text"
+                        }
+                      ],
+                      "cornerRadius": 8,
+                      "height": 70,
+                      "id": "w6TADTA",
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "stroke": {
+                        "fill": "$--input-border",
+                        "thickness": 1
+                      },
+                      "type": "frame",
+                      "width": "fill_container"
+                    }
+                  ],
+                  "gap": 4,
+                  "id": "w6TAdm",
+                  "layout": "vertical",
+                  "name": "Medical Admission",
+                  "type": "frame",
+                  "width": "fill_container"
+                },
+                {
+                  "children": [
+                    {
+                      "content": "History",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "600",
+                      "id": "w6THLbl",
+                      "type": "text"
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "content": "History entry...",
+                              "fill": "$--fg-muted",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "normal",
+                              "id": "w6THRPH",
+                              "type": "text"
+                            }
+                          ],
+                          "cornerRadius": 8,
+                          "height": 60,
+                          "id": "w6THR1",
+                          "padding": [
+                            8,
+                            12
+                          ],
+                          "stroke": {
+                            "fill": "$--input-border",
+                            "thickness": 1
+                          },
+                          "type": "frame",
+                          "width": "fill_container"
+                        },
+                        {
+                          "children": [
+                            {
+                              "fill": "$--destructive",
+                              "height": 14,
+                              "iconFontFamily": "lucide",
+                              "iconFontName": "trash-2",
+                              "id": "w6THDI",
+                              "type": "icon_font",
+                              "width": 14
+                            }
+                          ],
+                          "cornerRadius": 6,
+                          "fill": "$--danger-bg",
+                          "id": "w6THDel",
+                          "padding": [
+                            6,
+                            8
+                          ],
+                          "type": "frame"
+                        }
+                      ],
+                      "cornerRadius": 6,
+                      "fill": "$--card",
+                      "gap": 12,
+                      "id": "w6THRow",
+                      "name": "history row (sample)",
+                      "padding": 12,
+                      "stroke": {
+                        "fill": "$--border",
+                        "thickness": 1
+                      },
+                      "type": "frame",
+                      "width": "fill_container"
+                    },
+                    {
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "fill": "$--fg",
+                          "height": 14,
+                          "iconFontFamily": "lucide",
+                          "iconFontName": "plus",
+                          "id": "w6THAI",
+                          "type": "icon_font",
+                          "width": 14
+                        },
+                        {
+                          "content": "Add History Entry",
+                          "fill": "$--fg",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "500",
+                          "id": "w6THAT",
+                          "type": "text"
+                        }
+                      ],
+                      "cornerRadius": 8,
+                      "fill": "$--secondary",
+                      "gap": 6,
+                      "id": "w6THAdd",
+                      "padding": [
+                        8,
+                        16
+                      ],
+                      "type": "frame"
+                    }
+                  ],
+                  "gap": 8,
+                  "id": "w6THist",
+                  "layout": "vertical",
+                  "name": "History Repeater",
+                  "type": "frame",
+                  "width": "fill_container"
+                },
+                {
+                  "children": [
+                    {
+                      "content": "Further Treatment",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "600",
+                      "id": "w6TFULbl",
+                      "type": "text"
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "content": "Further treatment column 1...",
+                              "fill": "$--fg-muted",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "normal",
+                              "id": "w6TFU1PH",
+                              "type": "text"
+                            }
+                          ],
+                          "cornerRadius": 8,
+                          "height": 70,
+                          "id": "w6TFU1",
+                          "padding": [
+                            8,
+                            12
+                          ],
+                          "stroke": {
+                            "fill": "$--input-border",
+                            "thickness": 1
+                          },
+                          "type": "frame",
+                          "width": "fill_container"
+                        },
+                        {
+                          "children": [
+                            {
+                              "content": "Further treatment column 2...",
+                              "fill": "$--fg-muted",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "normal",
+                              "id": "w6TFU2PH",
+                              "type": "text"
+                            }
+                          ],
+                          "cornerRadius": 8,
+                          "height": 70,
+                          "id": "w6TFU2",
+                          "padding": [
+                            8,
+                            12
+                          ],
+                          "stroke": {
+                            "fill": "$--input-border",
+                            "thickness": 1
+                          },
+                          "type": "frame",
+                          "width": "fill_container"
+                        }
+                      ],
+                      "gap": 12,
+                      "id": "w6TFURow",
+                      "type": "frame",
+                      "width": "fill_container"
+                    }
+                  ],
+                  "gap": 4,
+                  "id": "w6TFurther",
+                  "layout": "vertical",
+                  "name": "Further Treatment (2-col)",
+                  "type": "frame",
+                  "width": "fill_container"
+                }
+              ],
+              "gap": 16,
+              "id": "w6TBody",
+              "layout": "vertical",
+              "padding": 16,
+              "type": "frame",
+              "width": "fill_container"
+            }
+          ],
+          "cornerRadius": 8,
+          "id": "w6Treat",
+          "layout": "vertical",
+          "name": "Treatment Form",
+          "stroke": {
+            "fill": "$--border",
+            "thickness": 1
+          },
+          "type": "frame",
+          "width": "fill_container"
+        },
+        {
+          "children": [
+            {
+              "alignItems": "center",
+              "children": [
+                {
+                  "fill": "$--warning",
+                  "height": 16,
+                  "iconFontFamily": "lucide",
+                  "iconFontName": "alert-triangle",
+                  "id": "w6WIco",
+                  "type": "icon_font",
+                  "width": 16
+                },
+                {
+                  "content": "Warning Form",
+                  "fill": "$--fg",
+                  "fontFamily": "Inter",
+                  "fontSize": 15,
+                  "fontWeight": "700",
+                  "id": "w6WTtl",
+                  "type": "text"
+                }
+              ],
+              "fill": "$--warning-bg",
+              "height": 48,
+              "id": "w6WHdr",
+              "padding": [
+                0,
+                16
+              ],
+              "type": "frame",
+              "width": "fill_container"
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "content": "Allergies",
+                          "fill": "$--fg",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "600",
+                          "id": "w6WC1Lbl",
+                          "type": "text"
+                        },
+                        {
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "content": "Select allergy...",
+                                  "fill": "$--fg-muted",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "normal",
+                                  "id": "w6WC1V",
+                                  "type": "text"
+                                },
+                                {
+                                  "fill": "$--fg-muted",
+                                  "height": 14,
+                                  "iconFontFamily": "lucide",
+                                  "iconFontName": "chevron-down",
+                                  "id": "w6WC1C",
+                                  "type": "icon_font",
+                                  "width": 14
+                                }
+                              ],
+                              "cornerRadius": 8,
+                              "id": "w6WC1Sel",
+                              "padding": [
+                                8,
+                                12
+                              ],
+                              "stroke": {
+                                "fill": "$--input-border",
+                                "thickness": 1
+                              },
+                              "type": "frame",
+                              "width": "fill_container"
+                            },
+                            {
+                              "children": [
+                                {
+                                  "fill": "$--primary-fg",
+                                  "height": 14,
+                                  "iconFontFamily": "lucide",
+                                  "iconFontName": "plus",
+                                  "id": "w6WC1AI",
+                                  "type": "icon_font",
+                                  "width": 14
+                                }
+                              ],
+                              "cornerRadius": 6,
+                              "fill": "$--primary",
+                              "id": "w6WC1Add",
+                              "padding": [
+                                6,
+                                8
+                              ],
+                              "type": "frame"
+                            }
+                          ],
+                          "gap": 8,
+                          "id": "w6WC1Row",
+                          "type": "frame",
+                          "width": "fill_container"
+                        }
+                      ],
+                      "gap": 4,
+                      "id": "w6WCat1",
+                      "layout": "vertical",
+                      "name": "Allergies",
+                      "type": "frame",
+                      "width": "fill_container"
+                    },
+                    {
+                      "children": [
+                        {
+                          "content": "Conspicuous",
+                          "fill": "$--fg",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "600",
+                          "id": "w6WC2Lbl",
+                          "type": "text"
+                        },
+                        {
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "content": "Select...",
+                                  "fill": "$--fg-muted",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "normal",
+                                  "id": "w6WC2V",
+                                  "type": "text"
+                                },
+                                {
+                                  "fill": "$--fg-muted",
+                                  "height": 14,
+                                  "iconFontFamily": "lucide",
+                                  "iconFontName": "chevron-down",
+                                  "id": "w6WC2C",
+                                  "type": "icon_font",
+                                  "width": 14
+                                }
+                              ],
+                              "cornerRadius": 8,
+                              "id": "w6WC2Sel",
+                              "padding": [
+                                8,
+                                12
+                              ],
+                              "stroke": {
+                                "fill": "$--input-border",
+                                "thickness": 1
+                              },
+                              "type": "frame",
+                              "width": "fill_container"
+                            },
+                            {
+                              "children": [
+                                {
+                                  "fill": "$--primary-fg",
+                                  "height": 14,
+                                  "iconFontFamily": "lucide",
+                                  "iconFontName": "plus",
+                                  "id": "w6WC2AI",
+                                  "type": "icon_font",
+                                  "width": 14
+                                }
+                              ],
+                              "cornerRadius": 6,
+                              "fill": "$--primary",
+                              "id": "w6WC2Add",
+                              "padding": [
+                                6,
+                                8
+                              ],
+                              "type": "frame"
+                            }
+                          ],
+                          "gap": 8,
+                          "id": "w6WC2Row",
+                          "type": "frame",
+                          "width": "fill_container"
+                        }
+                      ],
+                      "gap": 4,
+                      "id": "w6WCat2",
+                      "layout": "vertical",
+                      "name": "Conspicuous",
+                      "type": "frame",
+                      "width": "fill_container"
+                    },
+                    {
+                      "children": [
+                        {
+                          "content": "Infections",
+                          "fill": "$--fg",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "600",
+                          "id": "w6WC3Lbl",
+                          "type": "text"
+                        },
+                        {
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "content": "Select...",
+                                  "fill": "$--fg-muted",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "normal",
+                                  "id": "w6WC3V",
+                                  "type": "text"
+                                },
+                                {
+                                  "fill": "$--fg-muted",
+                                  "height": 14,
+                                  "iconFontFamily": "lucide",
+                                  "iconFontName": "chevron-down",
+                                  "id": "w6WC3C",
+                                  "type": "icon_font",
+                                  "width": 14
+                                }
+                              ],
+                              "cornerRadius": 8,
+                              "id": "w6WC3Sel",
+                              "padding": [
+                                8,
+                                12
+                              ],
+                              "stroke": {
+                                "fill": "$--input-border",
+                                "thickness": 1
+                              },
+                              "type": "frame",
+                              "width": "fill_container"
+                            },
+                            {
+                              "children": [
+                                {
+                                  "fill": "$--primary-fg",
+                                  "height": 14,
+                                  "iconFontFamily": "lucide",
+                                  "iconFontName": "plus",
+                                  "id": "w6WC3AI",
+                                  "type": "icon_font",
+                                  "width": 14
+                                }
+                              ],
+                              "cornerRadius": 6,
+                              "fill": "$--primary",
+                              "id": "w6WC3Add",
+                              "padding": [
+                                6,
+                                8
+                              ],
+                              "type": "frame"
+                            }
+                          ],
+                          "gap": 8,
+                          "id": "w6WC3Row",
+                          "type": "frame",
+                          "width": "fill_container"
+                        }
+                      ],
+                      "gap": 4,
+                      "id": "w6WCat3",
+                      "layout": "vertical",
+                      "name": "Infections",
+                      "type": "frame",
+                      "width": "fill_container"
+                    },
+                    {
+                      "children": [
+                        {
+                          "content": "Other",
+                          "fill": "$--fg",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "600",
+                          "id": "w6WC4Lbl",
+                          "type": "text"
+                        },
+                        {
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "content": "Select...",
+                                  "fill": "$--fg-muted",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "normal",
+                                  "id": "w6WC4V",
+                                  "type": "text"
+                                },
+                                {
+                                  "fill": "$--fg-muted",
+                                  "height": 14,
+                                  "iconFontFamily": "lucide",
+                                  "iconFontName": "chevron-down",
+                                  "id": "w6WC4C",
+                                  "type": "icon_font",
+                                  "width": 14
+                                }
+                              ],
+                              "cornerRadius": 8,
+                              "id": "w6WC4Sel",
+                              "padding": [
+                                8,
+                                12
+                              ],
+                              "stroke": {
+                                "fill": "$--input-border",
+                                "thickness": 1
+                              },
+                              "type": "frame",
+                              "width": "fill_container"
+                            },
+                            {
+                              "children": [
+                                {
+                                  "fill": "$--primary-fg",
+                                  "height": 14,
+                                  "iconFontFamily": "lucide",
+                                  "iconFontName": "plus",
+                                  "id": "w6WC4AI",
+                                  "type": "icon_font",
+                                  "width": 14
+                                }
+                              ],
+                              "cornerRadius": 6,
+                              "fill": "$--primary",
+                              "id": "w6WC4Add",
+                              "padding": [
+                                6,
+                                8
+                              ],
+                              "type": "frame"
+                            }
+                          ],
+                          "gap": 8,
+                          "id": "w6WC4Row",
+                          "type": "frame",
+                          "width": "fill_container"
+                        }
+                      ],
+                      "gap": 4,
+                      "id": "w6WCat4",
+                      "layout": "vertical",
+                      "name": "Other",
+                      "type": "frame",
+                      "width": "fill_container"
+                    }
+                  ],
+                  "gap": 12,
+                  "id": "w6WCats",
+                  "name": "4 Category Selects",
+                  "type": "frame",
+                  "width": "fill_container"
+                },
+                {
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "cornerRadius": 4,
+                      "fill": "$--bg",
+                      "height": 18,
+                      "id": "w6WNoCb",
+                      "stroke": {
+                        "fill": "$--input-border",
+                        "thickness": 1
+                      },
+                      "type": "frame",
+                      "width": 18
+                    },
+                    {
+                      "content": "No Warnings \u2014 hides entire collection below",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "id": "w6WNoT",
+                      "type": "text"
+                    }
+                  ],
+                  "gap": 8,
+                  "id": "w6WNoWarn",
+                  "name": "noWarnings checkbox",
+                  "padding": [
+                    12,
+                    0
+                  ],
+                  "type": "frame",
+                  "width": "fill_container"
+                },
+                {
+                  "children": [
+                    {
+                      "content": "Warning Collection",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "600",
+                      "id": "w6WCollLbl",
+                      "type": "text"
+                    },
+                    {
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "content": "Penicillin Allergy",
+                              "fill": "$--fg",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "normal",
+                              "id": "w6WR1NV",
+                              "type": "text"
+                            }
+                          ],
+                          "cornerRadius": 8,
+                          "id": "w6WR1Name",
+                          "name": "name",
+                          "padding": [
+                            8,
+                            12
+                          ],
+                          "stroke": {
+                            "fill": "$--input-border",
+                            "thickness": 1
+                          },
+                          "type": "frame",
+                          "width": 180
+                        },
+                        {
+                          "children": [
+                            {
+                              "content": "Allergies [RO]",
+                              "fill": "$--fg-muted",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "normal",
+                              "id": "w6WR1TV",
+                              "type": "text"
+                            }
+                          ],
+                          "cornerRadius": 6,
+                          "fill": "$--secondary",
+                          "id": "w6WR1Type",
+                          "name": "type [RO]",
+                          "padding": [
+                            8,
+                            12
+                          ],
+                          "type": "frame",
+                          "width": 120
+                        },
+                        {
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "fill": "$--primary-fg",
+                                  "height": 12,
+                                  "iconFontFamily": "lucide",
+                                  "iconFontName": "check",
+                                  "id": "w6WR1AChk",
+                                  "type": "icon_font",
+                                  "width": 12
+                                }
+                              ],
+                              "cornerRadius": 4,
+                              "fill": "$--primary",
+                              "height": 18,
+                              "id": "w6WR1ACb",
+                              "stroke": {
+                                "fill": "$--primary",
+                                "thickness": 2
+                              },
+                              "type": "frame",
+                              "width": 18
+                            },
+                            {
+                              "content": "Applies *",
+                              "fill": "$--fg",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "normal",
+                              "id": "w6WR1AT",
+                              "type": "text"
+                            }
+                          ],
+                          "gap": 8,
+                          "id": "w6WR1App",
+                          "name": "applies boolean *",
+                          "type": "frame"
+                        },
+                        {
+                          "children": [
+                            {
+                              "content": "Comment...",
+                              "fill": "$--fg-muted",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "normal",
+                              "id": "w6WR1CV",
+                              "type": "text"
+                            }
+                          ],
+                          "cornerRadius": 8,
+                          "id": "w6WR1Cmt",
+                          "name": "comment",
+                          "padding": [
+                            8,
+                            12
+                          ],
+                          "stroke": {
+                            "fill": "$--input-border",
+                            "thickness": 1
+                          },
+                          "type": "frame",
+                          "width": 160
+                        },
+                        {
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "fill": "$--fg-muted",
+                              "height": 12,
+                              "iconFontFamily": "lucide",
+                              "iconFontName": "calendar",
+                              "id": "w6WR1DSI",
+                              "type": "icon_font",
+                              "width": 12
+                            },
+                            {
+                              "content": "Start",
+                              "fill": "$--fg-muted",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "normal",
+                              "id": "w6WR1DSV",
+                              "type": "text"
+                            }
+                          ],
+                          "cornerRadius": 8,
+                          "gap": 4,
+                          "id": "w6WR1DS",
+                          "name": "dateStart",
+                          "padding": [
+                            8,
+                            12
+                          ],
+                          "stroke": {
+                            "fill": "$--input-border",
+                            "thickness": 1
+                          },
+                          "type": "frame",
+                          "width": 120
+                        },
+                        {
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "fill": "$--fg-muted",
+                              "height": 12,
+                              "iconFontFamily": "lucide",
+                              "iconFontName": "calendar",
+                              "id": "w6WR1DEI",
+                              "type": "icon_font",
+                              "width": 12
+                            },
+                            {
+                              "content": "End",
+                              "fill": "$--fg-muted",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "normal",
+                              "id": "w6WR1DEV",
+                              "type": "text"
+                            }
+                          ],
+                          "cornerRadius": 8,
+                          "gap": 4,
+                          "id": "w6WR1DE",
+                          "name": "dateEnd",
+                          "padding": [
+                            8,
+                            12
+                          ],
+                          "stroke": {
+                            "fill": "$--input-border",
+                            "thickness": 1
+                          },
+                          "type": "frame",
+                          "width": 120
+                        },
+                        {
+                          "children": [
+                            {
+                              "fill": "$--destructive",
+                              "height": 14,
+                              "iconFontFamily": "lucide",
+                              "iconFontName": "trash-2",
+                              "id": "w6WR1DI",
+                              "type": "icon_font",
+                              "width": 14
+                            }
+                          ],
+                          "cornerRadius": 6,
+                          "fill": "$--danger-bg",
+                          "id": "w6WR1Del",
+                          "name": "delete",
+                          "padding": [
+                            6,
+                            8
+                          ],
+                          "type": "frame"
+                        }
+                      ],
+                      "cornerRadius": 6,
+                      "fill": "$--card",
+                      "gap": 8,
+                      "id": "w6WR1",
+                      "name": "Warning Row (sample)",
+                      "padding": 12,
+                      "stroke": {
+                        "fill": "$--border",
+                        "thickness": 1
+                      },
+                      "type": "frame",
+                      "width": "fill_container"
+                    }
+                  ],
+                  "gap": 8,
+                  "id": "w6WColl",
+                  "layout": "vertical",
+                  "name": "Warning Collection [cond: noWarnings=false]",
+                  "type": "frame",
+                  "width": "fill_container"
+                }
+              ],
+              "gap": 16,
+              "id": "w6WBody",
+              "layout": "vertical",
+              "padding": 16,
+              "type": "frame",
+              "width": "fill_container"
+            }
+          ],
+          "cornerRadius": 8,
+          "id": "w6Warn",
+          "layout": "vertical",
+          "name": "Warning Form",
+          "stroke": {
+            "fill": "$--border",
+            "thickness": 1
+          },
+          "type": "frame",
+          "width": "fill_container"
+        }
+      ],
+      "fill": "$--bg",
+      "gap": 24,
+      "id": "w6Root",
+      "layout": "vertical",
+      "name": "W6 \u2013 Treatment & Warning Forms",
+      "padding": 24,
+      "type": "frame",
+      "width": 1440,
+      "x": 20,
+      "y": 20
+    }
+  ]
+}

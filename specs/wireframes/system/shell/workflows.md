@@ -147,67 +147,39 @@ sequenceDiagram
 
 ### W7: App Shell Layout
 
-![App Shell Layout](./app-shell-layout.png)
-
-**Full application shell (1440px width) showing:**
-- Sidebar navigation (240px expanded, left side)
-- Top bar (48px height, contains search toggle, user menu, version)
-- Main content area placeholder (routed page loads here)
-- Maintenance toast (bottom-right corner, fixed position)
-- Loading spinner overlay (centered modal, semi-transparent background)
+Full application shell (1440px width) showing sidebar navigation (240px expanded), top bar (48px height, search toggle + user menu + version), main content area placeholder, maintenance toast (bottom-right, fixed position), loading spinner overlay (centered, semi-transparent).
 
 **Annotations:**
-- `@shadcn/Sidebar` — Sidebar navigation component
-- `@shadcn/DropdownMenu` — User menu component
-- `[PERM: USERS_CREATE]` — Permission gate on role switch
-- `data-service`, `data-role`, `data-unread` — Body data bindings
+- `"?"` — W7: App Shell Layout — Components: Sidebar 240px `@shadcn/Sidebar`, Top bar 48px, User menu `@shadcn/DropdownMenu`. Data bindings: `user.displayName`, `i18n.application.version`. Permission gates: `USERS_CREATE` for role switch.
+- `"sidebarNote"` — `@shadcn/Sidebar`, 240px expanded, 64px collapsed, Sitemap-driven navigation.
+
+![App Shell Layout](./app-shell-layout.png)
 
 ---
 
 ### W8: Global Navigation
 
+Sidebar navigation in two states. Expanded (240px): logo area 64px, sitemap-driven menu items with icons + labels, color-coded backgrounds per module, active state highlight, accordion submenus. Collapsed (64px): icons only, hover tooltips for labels.
+
+**Annotations:**
+- `"?"` — Expanded State (240px): Logo area 64px, Sitemap-driven menu items, Color-coded bg per module, Active state highlight, Accordion submenus. Collapsed State (64px): Icons only, Hover tooltips.
+- `"expandedNote"` — `@shadcn/Sidebar`, Sitemap-driven, bg-color per module, Active state highlight
+- `"collapsedNote"` — Collapsed 64px, Icons only, Hover tooltips for labels
+
 ![Global Navigation Expanded](./global-navigation-expanded.png)
 
-**Expanded state (240px width):**
-- Logo area (64px height, full logo + subtext)
-- Main menu items with icons and labels
-- Color-coded backgrounds (`bg-color-{module}`)
-- Active state highlighting (current route)
-- Accordion submenu expansion
-
 ![Global Navigation Collapsed](./global-navigation-collapsed.png)
-
-**Collapsed state (64px width):**
-- Icons only (no labels)
-- Hover tooltips (annotated)
-- Logo icon variant (64px square)
-
-**Key features:**
-- Sitemap-driven: `{{sitemap}}` iteration
-- FontAwesome icons: `fa-{icon}` naming
-- Color classes: `bg-color-appointment`, `bg-color-consultation`, etc.
 
 ---
 
 ### W9: User Menu
 
-![User Menu](./user-menu.png)
-
-**User dropdown dialog showing:**
-- User display name + role badge at top
-- 5 menu items:
-  1. **Settings** (`fa-cog`) → `profile.html`
-  2. **Security** (`fa-id-card`) → `userSecurity.html`
-  3. **Role Switch** (`fa-user-tag`) → Opens dialog (gated by `USERS_CREATE`)
-  4. **Bug Report** (`fa-bug`) → Opens bug report dialog
-  5. **Logout** (`fa-sign-out`) → `logout` endpoint
-- Version display at bottom
+`@shadcn/DropdownMenu` with user display name + role badge at top, 5 menu items (Settings → profile, Security → userSecurity, Role Switch → dialog `[PERM: USERS_CREATE]`, Bug Report → dialog, Logout → /login), version display at bottom.
 
 **Annotations:**
-- `[PERM: USERS_CREATE]` — Permission gate on Role Switch item
-- `[HARDCODED]` — German role labels in role switch dialog
-- `{{user.displayName}}`, `{{role}}` — Data bindings
-- `{{i18n.*}}` — Translation keys
+- `"?"` — `@shadcn/DropdownMenu`. Items: 1. Settings→profile, 2. Security→userSecurity, 3. Role Switch `[PERM: USERS_CREATE]`, 4. Bug Report→dialog, 5. Logout→/login
+
+![User Menu](./user-menu.png)
 
 ---
 

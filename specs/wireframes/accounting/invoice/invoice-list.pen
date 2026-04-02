@@ -924,7 +924,7 @@
                       "id": "dmvlB",
                       "name": "r1ct",
                       "fill": "$--fg",
-                      "content": "JVA Berlin — Dr. Mueller",
+                      "content": "JVA Berlin \u2014 Dr. Mueller",
                       "fontFamily": "Inter",
                       "fontSize": 12,
                       "fontWeight": "normal"
@@ -1012,7 +1012,7 @@
                       "id": "eaZs6",
                       "name": "r1gt",
                       "fill": "$--fg",
-                      "content": "€ 4,128.00",
+                      "content": "\u20ac 4,128.00",
                       "fontFamily": "Inter",
                       "fontSize": 12,
                       "fontWeight": "normal"
@@ -1102,7 +1102,7 @@
                       "id": "MFn4W",
                       "name": "r1kt",
                       "fill": "$--fg-muted",
-                      "content": "—",
+                      "content": "\u2014",
                       "fontFamily": "Inter",
                       "fontSize": 12,
                       "fontWeight": "normal"
@@ -1184,7 +1184,7 @@
                       "id": "EUTsZ",
                       "name": "r2ct",
                       "fill": "$--fg",
-                      "content": "JVA Hamburg — Dr. Schmidt",
+                      "content": "JVA Hamburg \u2014 Dr. Schmidt",
                       "fontFamily": "Inter",
                       "fontSize": 12,
                       "fontWeight": "normal"
@@ -1272,7 +1272,7 @@
                       "id": "xIjfN",
                       "name": "r2gt",
                       "fill": "$--fg",
-                      "content": "€ 1,920.50",
+                      "content": "\u20ac 1,920.50",
                       "fontFamily": "Inter",
                       "fontSize": 12,
                       "fontWeight": "normal"
@@ -1430,7 +1430,7 @@
                       "id": "4Krsz",
                       "name": "fpvt",
                       "fill": "$--fg",
-                      "content": "←",
+                      "content": "\u2190",
                       "fontFamily": "Inter",
                       "fontSize": 12,
                       "fontWeight": "normal"
@@ -1537,7 +1537,7 @@
                       "id": "ccbwq",
                       "name": "fpnt",
                       "fill": "$--fg",
-                      "content": "→",
+                      "content": "\u2192",
                       "fontFamily": "Inter",
                       "fontSize": 12,
                       "fontWeight": "normal"
@@ -1547,14 +1547,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "note",
-          "id": "FUzih",
-          "name": "Annotations",
-          "width": 1440,
-          "height": 0,
-          "content": "[DataTable] 11-col grid → @shadcn/table DataTable pattern\n12 toolbar actions — some row-selection-gated\nMonth/Year filter → @shadcn/select + @shadcn/input\n[async: poll job status] Template Export + ZIP Download → jobStatusDlg\nRow double-click → InvoiceDetails.open(view)\n[HARDCODED] Column headers need i18n keys\nDialogs: Export Invoice (period), Template Export, Multi-Template Export, Job Status"
         }
       ]
     }

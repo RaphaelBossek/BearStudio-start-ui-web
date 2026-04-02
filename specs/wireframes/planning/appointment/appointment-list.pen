@@ -65,7 +65,7 @@
               "id": "WFpZH",
               "name": "headerAnnot",
               "fill": "#FFFFFFAA",
-              "content": "MonthTable — NOT DataTables. Rows = days, Cols = jobs.",
+              "content": "MonthTable \u2014 NOT DataTables. Rows = days, Cols = jobs.",
               "fontFamily": "Inter",
               "fontSize": 11,
               "fontWeight": "normal"
@@ -170,7 +170,7 @@
             {
               "type": "frame",
               "id": "AIJus",
-              "name": "Reload — @shadcn/button",
+              "name": "Reload \u2014 @shadcn/button",
               "fill": "$--secondary",
               "cornerRadius": 6,
               "gap": 6,
@@ -205,7 +205,7 @@
             {
               "type": "frame",
               "id": "3Q4AH",
-              "name": "Add — @shadcn/button",
+              "name": "Add \u2014 @shadcn/button",
               "fill": "$--primary",
               "cornerRadius": 6,
               "gap": 6,
@@ -240,7 +240,7 @@
             {
               "type": "frame",
               "id": "n1P16",
-              "name": "Edit — @shadcn/button (disabled)",
+              "name": "Edit \u2014 @shadcn/button (disabled)",
               "opacity": 0.4,
               "fill": "$--secondary",
               "cornerRadius": 6,
@@ -276,7 +276,7 @@
             {
               "type": "frame",
               "id": "4SNym",
-              "name": "Export — @shadcn/button",
+              "name": "Export \u2014 @shadcn/button",
               "fill": "$--secondary",
               "cornerRadius": 6,
               "gap": 6,
@@ -311,7 +311,7 @@
             {
               "type": "frame",
               "id": "qrLix",
-              "name": "Filter — @shadcn/button",
+              "name": "Filter \u2014 @shadcn/button",
               "fill": "$--secondary",
               "cornerRadius": 6,
               "gap": 6,
@@ -589,7 +589,7 @@
                               "id": "QNN9u",
                               "name": "r1c1name",
                               "fill": "$--fg",
-                              "content": "Dr. Müller",
+                              "content": "Dr. M\u00fcller",
                               "fontFamily": "Inter",
                               "fontSize": 11,
                               "fontWeight": "normal"
@@ -1303,7 +1303,7 @@
                       "id": "orxaN",
                       "name": "moreTxt",
                       "fill": "$--fg-muted",
-                      "content": "... rows 4–31 ...",
+                      "content": "... rows 4\u201331 ...",
                       "fontFamily": "Inter",
                       "fontSize": 11,
                       "fontWeight": "normal",
@@ -1326,40 +1326,7 @@
             16,
             24
           ],
-          "children": [
-            {
-              "type": "note",
-              "id": "ey7Ze",
-              "name": "Grid Structure Note",
-              "width": 700,
-              "height": 60,
-              "content": "MonthTable: rows = days of month (1–31), columns = jobs/services from AppointmentService. Cells contain state-colored appointment entries with nested sub-rows for assigned staff. NOT a standard DataTables table."
-            },
-            {
-              "type": "note",
-              "id": "eVMvr",
-              "name": "Cell Rendering Note",
-              "width": 700,
-              "height": 50,
-              "content": "Each cell: <span class='ap-{state}'> with state icon + name. Sub-rows: assigned staff with assignedState color + displayName. Missing staff shown as '--- (Missing)' with octagon icon. Referenced appointments show time range + location."
-            },
-            {
-              "type": "note",
-              "id": "Tt6bf",
-              "name": "Filter Panel Note",
-              "width": 700,
-              "height": 50,
-              "content": "Filter Panel (@shadcn/sheet, side='right'): filterDay (number input, filters rows), filterJob (text input, filters columns), filterState (select from AppointmentState enum, filters cells), Reset button. Opens via Filter toolbar button."
-            },
-            {
-              "type": "note",
-              "id": "4KWqT",
-              "name": "Actions Note",
-              "width": 700,
-              "height": 40,
-              "content": "Cell click → opens detail dialog (W2). Add → creates READY appointment with defaults. Edit → disabled until selection. Export → downloads .xls for current month. Reload → triggers reloadGrid event."
-            }
-          ]
+          "children": []
         }
       ]
     }

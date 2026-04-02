@@ -547,3 +547,83 @@ ICD-10 search dialog (600px): search input, scrollable results with ICD-10 code 
 Export template dialog (600px): Year, Month, Template autocomplete (required, filter=CONSULTATION), Customer, Location, Expert fields, Export + Cancel buttons.
 
 ![W10: Export Template](./consultation-export-template.png)
+
+---
+
+### Annotations
+
+Design annotations extracted from wireframe `.pen` files. These capture behavioral details, conditional logic, and implementation notes that supplement the workflow diagrams above.
+
+#### W1: Consultation List (`consultation-list.pen`)
+
+| # | Note |
+|:--|:-----|
+| note1 | Toolbar buttons: View — opens edit dialog (OPEN) or view dialog (other states). Review — [PERM: CONSULTATION_REPORTING]. Export — template selection dialog. |
+
+#### W2: Consultation Details — Header (`consultation-details-header.pen`)
+
+| # | Note |
+|:--|:-----|
+| — | Tab visibility controlled by `data.type`: **EXTERNAL:** Patient + Submit only. **STANDARD:** Patient + Standard + Warning + QM(shift) + Submit. **ONBOARDING:** Patient + Onboarding + Rx(if additionalPrescription) + Submit. |
+
+#### W3: Consultation Details — Standard Form (`consultation-details-standard.pen`)
+
+| # | Note |
+|:--|:-----|
+| note1 | W3, 7 card-sections for type=STANDARD. All sections except Diagnosis/Prescription add repeater rows. |
+| note2 | Repeater: type enum (11 values) + documentation textarea. CURRENT_COMPLAINTS, etc. |
+| note3 | Repeater: type enum (10 values) + documentation textarea. Physical findings. |
+| note4 | Repeater: diagnosis entry with localization, diagnosticLevel, ICD-10 search, documentation. |
+| note5 | MOST COMPLEX section. Each prescription: product select OR custom, packaging enum, nested timing. |
+
+#### W4: Consultation Details — Onboarding Form (`consultation-details-onboarding.pen`)
+
+| # | Note |
+|:--|:-----|
+| note1 | Full onboarding form ~50 fields split into 2 major rows. |
+| note2 | `[conditionize2: OTHER shows textarea]` |
+| note3 | Each infectious disease: UNKNOWN / SURE / EXCLUDED |
+| note4 | ONBOARDING_SHORT is a strict subset. Only includes general info + infectious diseases. |
+
+#### W5: Consultation Details — Incarceration Form (`consultation-details-incarceration.pen`)
+
+| # | Note |
+|:--|:-----|
+| note1 | 6 blocks, 51 fields total. Cross-model bindings to onboarding data. |
+| note2 | `[SIREN]` Animated siren icon next to incarceration type select. |
+| note3 | Values: INCARCERATION \| LIABILITY |
+| note4 | Stadium values: NONE, STAGE_1 (Euphoria), STAGE_2 (Excitement), STAGE_3 (Confusion), STAGE_4 (Stupor) |
+
+#### W6: Consultation Details — Treatment & Warning (`consultation-details-treatment-warning.pen`)
+
+| # | Note |
+|:--|:-----|
+| note1 | Two sections: 1. Treatment Form (15 textareas), 2. Warning system. |
+| note2 | `[conditionize2: noWarnings=true hides warningCollection]` |
+
+#### W7: Consultation View (`consultation-view.pen`)
+
+| # | Note |
+|:--|:-----|
+| note1 | Read-only view showing type-conditional content. |
+| note2 | Sections depend on type: STANDARD → tabStandard + tabWarning, ONBOARDING → tabOnboarding, etc. |
+
+#### W8: Consultation Review Dialog (`consultation-review.pen`)
+
+| # | Note |
+|:--|:-----|
+| note1 | 75%/25% split. Left: read-only view. Right: review panel. |
+| note2 | 3-step workflow: No Reporting → Editing → Complete. |
+| note3 | Height 70vh. Markdown editor with toolbar. |
+
+#### W9: ICD-10 Search Modal (`consultation-icd10-search.pen`)
+
+| # | Note |
+|:--|:-----|
+| note1 | ICD-10 search modal (600px). Search input, results list, select row. `@service: ICD10Service.search(query, limit)`. |
+
+#### W10: Export Template Modal (`consultation-export-template.pen`)
+
+| # | Note |
+|:--|:-----|
+| note1 | Export template modal (600px). Fields: Year, Month, Template, format dropdown, preview toggle. |

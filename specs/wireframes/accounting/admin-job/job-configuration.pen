@@ -51,7 +51,7 @@
               "id": "yTqkO",
               "name": "htxt",
               "fill": "$--fg",
-              "content": "Job Configuration — Shift Berlin Morning",
+              "content": "Job Configuration \u2014 Shift Berlin Morning",
               "fontFamily": "Inter",
               "fontSize": 20,
               "fontWeight": "700"
@@ -590,7 +590,7 @@
                   "id": "czPHM",
                   "name": "ssect",
                   "fill": "$--fg",
-                  "content": "Skills [repeats] [nested: skill → rules]",
+                  "content": "Skills [repeats] [nested: skill \u2192 rules]",
                   "fontFamily": "Inter",
                   "fontSize": 14,
                   "fontWeight": "600"
@@ -987,14 +987,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "note",
-          "id": "StJjf",
-          "name": "Annotations",
-          "width": 1160,
-          "height": 0,
-          "content": "1200px @shadcn/dialog, 2-tab detail\nTab 1 (shown): Info + skills collection [nested: skill → rules]\nTab 2: Times/Pricing — type-conditional:\n  [cond: type=SHIFT] 4-period × 6-tier pricing matrix with pricePoints sub-dialog\n  [cond: type=APPOINTMENT] Hourly rates + rounding + storno config\n  [cond: type=COUNCIL] Per-patient pricing + support hourly + rounding\nSub-dialogs: Price Point Dialog (dated price collection), Skill Select Dialog (autocomplete)\n[cond: billing.enabled] Billing fields conditionally visible\n8-col DataTable list view with filter panel (not shown in this frame)"
         }
       ]
     }

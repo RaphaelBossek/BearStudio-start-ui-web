@@ -51,7 +51,7 @@
               "id": "hb1tW",
               "name": "htxt",
               "fill": "$--fg",
-              "content": "Invoice Details — INV-2025-42",
+              "content": "Invoice Details \u2014 INV-2025-42",
               "fontFamily": "Inter",
               "fontSize": 20,
               "fontWeight": "700"
@@ -89,7 +89,7 @@
                           "id": "h06Nb",
                           "name": "hprevt",
                           "fill": "$--fg",
-                          "content": "← Prev",
+                          "content": "\u2190 Prev",
                           "fontFamily": "Inter",
                           "fontSize": 11,
                           "fontWeight": "normal"
@@ -116,7 +116,7 @@
                           "id": "DIRbt",
                           "name": "hnxtt",
                           "fill": "$--fg",
-                          "content": "Next →",
+                          "content": "Next \u2192",
                           "fontFamily": "Inter",
                           "fontSize": 11,
                           "fontWeight": "normal"
@@ -221,7 +221,7 @@
                   "id": "2eV1Z",
                   "name": "mc2v",
                   "fill": "$--fg",
-                  "content": "Shift — Morning",
+                  "content": "Shift \u2014 Morning",
                   "fontFamily": "Inter",
                   "fontSize": 13,
                   "fontWeight": "600"
@@ -345,7 +345,7 @@
                   "id": "cBQhl",
                   "name": "pstxt",
                   "fill": "$--fg",
-                  "content": "Positions [repeats] [calc: netPrice × amount + tax]",
+                  "content": "Positions [repeats] [calc: netPrice \u00d7 amount + tax]",
                   "fontFamily": "Inter",
                   "fontSize": 14,
                   "fontWeight": "600"
@@ -599,7 +599,7 @@
                           "id": "mxzyn",
                           "name": "pr1bt",
                           "fill": "$--fg",
-                          "content": "Morning shift — 01.11–15.11",
+                          "content": "Morning shift \u2014 01.11\u201315.11",
                           "fontFamily": "Inter",
                           "fontSize": 11,
                           "fontWeight": "normal"
@@ -637,7 +637,7 @@
                           "id": "5OSov",
                           "name": "pr1dt",
                           "fill": "$--fg",
-                          "content": "€ 320.00",
+                          "content": "\u20ac 320.00",
                           "fontFamily": "Inter",
                           "fontSize": 11,
                           "fontWeight": "normal"
@@ -675,7 +675,7 @@
                           "id": "soLt1",
                           "name": "pr1ft",
                           "fill": "$--fg",
-                          "content": "€ 4,188.80",
+                          "content": "\u20ac 4,188.80",
                           "fontFamily": "Inter",
                           "fontSize": 11,
                           "fontWeight": "600"
@@ -780,7 +780,7 @@
                           "id": "5Nxpo",
                           "name": "pr2dt",
                           "fill": "$--fg",
-                          "content": "€ 50.00",
+                          "content": "\u20ac 50.00",
                           "fontFamily": "Inter",
                           "fontSize": 11,
                           "fontWeight": "normal"
@@ -818,7 +818,7 @@
                           "id": "1Tsb1",
                           "name": "pr2ft",
                           "fill": "$--fg",
-                          "content": "€ 238.00",
+                          "content": "\u20ac 238.00",
                           "fontFamily": "Inter",
                           "fontSize": 11,
                           "fontWeight": "600"
@@ -898,7 +898,7 @@
                       "id": "HzFwd",
                       "name": "tr1v",
                       "fill": "$--fg",
-                      "content": "€ 3,720.00",
+                      "content": "\u20ac 3,720.00",
                       "fontFamily": "Inter",
                       "fontSize": 12,
                       "fontWeight": "600"
@@ -932,7 +932,7 @@
                       "id": "Yo1eO",
                       "name": "tr2v",
                       "fill": "$--fg",
-                      "content": "€ 706.80",
+                      "content": "\u20ac 706.80",
                       "fontFamily": "Inter",
                       "fontSize": 12,
                       "fontWeight": "normal"
@@ -966,7 +966,7 @@
                       "id": "w4zdn",
                       "name": "tr3v",
                       "fill": "$--fg",
-                      "content": "€ 4,426.80",
+                      "content": "\u20ac 4,426.80",
                       "fontFamily": "Inter",
                       "fontSize": 14,
                       "fontWeight": "700"
@@ -1196,14 +1196,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "note",
-          "id": "Ps89J",
-          "name": "Annotations",
-          "width": 1060,
-          "height": 0,
-          "content": "[multi-entity: invoice switch] ← Prev / Next → navigate between invoices without closing\n1100px @shadcn/sheet drawer with positions collection inline editing\n[calc: netPrice × amount + tax] Auto-recalculated totals\nDialogs: Print Preview (PDF), Email, Storno [cond: !invoice.storno], Create Invoice\n[async: PDF generation] Print preview may be async\nAttachments section (file upload) not shown — below positions"
         }
       ]
     }

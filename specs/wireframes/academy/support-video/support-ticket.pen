@@ -705,14 +705,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "note",
-          "id": "1gCuc",
-          "name": "Annotations",
-          "width": 1440,
-          "height": 0,
-          "content": "[DataTable] 6-col grid → @shadcn/table DataTable pattern\nDetail panel: 3 cascading selects [cascade: level 1 → level 2 → level 3]\nTitle [RO] [auto: concat(cat1.title, cat2.title, cat3.title)] — auto-generated\nQueue [RO] — determined by category selection\nPriority: VERYLOW | LOW | NORMAL | HIGH | CRITICAL\nView dialog (800px): ticket metadata header + comment thread [repeats] + reply textarea\nBody textarea for ticket description"
         }
       ]
     },
@@ -721,7 +713,7 @@
       "id": "2YJ2n",
       "x": 1500,
       "y": 0,
-      "name": "Detail — Create Ticket",
+      "name": "Detail \u2014 Create Ticket",
       "width": 900,
       "fill": "$--bg",
       "cornerRadius": 12,
@@ -797,7 +789,7 @@
               "id": "JgDtF",
               "name": "clbl",
               "fill": "$--info-fg",
-              "content": "[cascade: level 1 → level 2 → level 3]",
+              "content": "[cascade: level 1 \u2192 level 2 \u2192 level 3]",
               "fontFamily": "Inter",
               "fontSize": 12,
               "fontWeight": "600"
@@ -1032,7 +1024,7 @@
                       "id": "KiHlt",
                       "name": "tfv",
                       "fill": "$--fg",
-                      "content": "Billing — Invoice — Payment",
+                      "content": "Billing \u2014 Invoice \u2014 Payment",
                       "fontFamily": "Inter",
                       "fontSize": 13,
                       "fontWeight": "normal"
@@ -1332,7 +1324,7 @@
               "id": "fnwRz",
               "name": "vhtxt",
               "fill": "$--header-fg",
-              "content": "TKT-001 — Billing — Invoice — Payment",
+              "content": "TKT-001 \u2014 Billing \u2014 Invoice \u2014 Payment",
               "fontFamily": "Inter",
               "fontSize": 16,
               "fontWeight": "600"
@@ -1342,7 +1334,7 @@
               "id": "fRrGD",
               "name": "vhx",
               "fill": "$--header-fg",
-              "content": "✕",
+              "content": "\u2715",
               "fontFamily": "Inter",
               "fontSize": 16,
               "fontWeight": "normal"

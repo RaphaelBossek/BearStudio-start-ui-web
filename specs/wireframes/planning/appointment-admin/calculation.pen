@@ -1,1 +1,952 @@
-{"version":"2.9","variables":{"--bg":{"type":"color","value":"#FFFFFF"},"--border":{"type":"color","value":"#E5E5E5"},"--card":{"type":"color","value":"#FAFAFA"},"--destructive":{"type":"color","value":"#DC2626"},"--fg":{"type":"color","value":"#0A0A0A"},"--fg-muted":{"type":"color","value":"#737373"},"--header-bg":{"type":"color","value":"#F98E33"},"--header-fg":{"type":"color","value":"#FFFFFF"},"--info-bg":{"type":"color","value":"#EFF6FF"},"--info-fg":{"type":"color","value":"#1D4ED8"},"--input-border":{"type":"color","value":"#D4D4D4"},"--primary":{"type":"color","value":"#171717"},"--primary-fg":{"type":"color","value":"#FAFAFA"},"--secondary":{"type":"color","value":"#F5F5F5"},"--success-bg":{"type":"color","value":"#F0FDF4"},"--success-fg":{"type":"color","value":"#166534"},"--warning":{"type":"color","value":"#F59E0B"},"--warning-bg":{"type":"color","value":"#FFFBEB"}},"children":[{"children":[{"alignItems":"center","children":[{"fill":"$--header-fg","height":20,"iconFontFamily":"lucide","iconFontName":"calculator","id":"oQV60","type":"icon_font","width":20},{"content":"Appointment Calculation","fill":"$--header-fg","fontFamily":"Inter","fontSize":16,"fontWeight":"600","id":"KP39n","type":"text"}],"cornerRadius":[12,12,0,0],"fill":"$--header-bg","gap":12,"height":56,"id":"rigxo","name":"Dialog Header","padding":[12,24],"type":"frame","width":"fill_container"},{"alignItems":"center","children":[{"content":"JVA Berlin-Moabit","fill":"$--fg","fontFamily":"Inter","fontSize":12,"fontWeight":"500","id":"YGKbP","type":"text"},{"content":"x3","fill":"$--fg","fontFamily":"Inter","fontSize":12,"fontWeight":"700","id":"LWR4E","type":"text"},{"content":"GEN-MED","fill":"$--fg","fontFamily":"Inter","fontSize":12,"fontWeight":"normal","id":"PXLPm","type":"text"},{"content":"Sat 2026-03-15","fill":"$--fg-muted","fontFamily":"Inter","fontSize":12,"fontWeight":"normal","id":"lSl7z","type":"text"},{"content":"08:00\u201312:00","fill":"$--fg","fontFamily":"Inter","fontSize":12,"fontWeight":"normal","id":"oJO4F","type":"text"},{"content":"Bill: 08:00\u201312:00","fill":"$--fg-muted","fontFamily":"Inter","fontSize":12,"fontWeight":"normal","id":"Wx7Bk","type":"text"},{"alignItems":"center","children":[{"content":"ACTIVE","fill":"$--success-fg","fontFamily":"Inter","fontSize":10,"fontWeight":"600","id":"Dmin4","type":"text"}],"cornerRadius":4,"fill":"$--success-bg","id":"TVvbp","name":"badge","padding":[2,6],"type":"frame"}],"fill":"$--secondary","gap":12,"id":"p2IEr","name":"Appointment Info (read-only)","padding":[12,24],"stroke":{"align":"inside","fill":"$--border","thickness":{"bottom":1}},"type":"frame","width":"fill_container"},{"children":[{"content":"EK \u2014 Purchase Calculation","fill":"$--fg","fontFamily":"Inter","fontSize":14,"fontWeight":"600","id":"jhxKG","type":"text"},{"children":[{"alignItems":"center","children":[{"content":"Physician","fill":"$--fg","fontFamily":"Inter","fontSize":10,"fontWeight":"600","id":"A7szj","textGrowth":"fixed-width","type":"text","width":120},{"content":"Location","fill":"$--fg","fontFamily":"Inter","fontSize":10,"fontWeight":"600","id":"9UcpV","textGrowth":"fixed-width","type":"text","width":100},{"content":"Patients","fill":"$--fg","fontFamily":"Inter","fontSize":10,"fontWeight":"600","id":"sKtso","textGrowth":"fixed-width","type":"text","width":50},{"content":"Time/Pat","fill":"$--fg","fontFamily":"Inter","fontSize":10,"fontWeight":"600","id":"k83Zr","textGrowth":"fixed-width","type":"text","width":55},{"content":"Time","fill":"$--fg","fontFamily":"Inter","fontSize":10,"fontWeight":"600","id":"EqtUn","textGrowth":"fixed-width","type":"text","width":55},{"content":"Pay Pat","fill":"$--fg","fontFamily":"Inter","fontSize":10,"fontWeight":"600","id":"uWvrt","textGrowth":"fixed-width","type":"text","width":48},{"content":"EUR","fill":"$--fg","fontFamily":"Inter","fontSize":10,"fontWeight":"600","id":"K9HxH","textAlign":"right","textGrowth":"fixed-width","type":"text","width":55},{"content":"Total","fill":"$--fg","fontFamily":"Inter","fontSize":10,"fontWeight":"600","id":"IUrMM","textAlign":"right","textGrowth":"fixed-width","type":"text","width":65}],"cornerRadius":[8,8,0,0],"fill":"$--secondary","gap":4,"height":32,"id":"eIkAl","name":"EK Header","padding":[6,8],"type":"frame","width":"fill_container"},{"alignItems":"center","children":[{"content":"Dr. Weber (Employed)","fill":"$--fg","fontFamily":"Inter","fontSize":10,"fontWeight":"normal","id":"E2Wvo","textGrowth":"fixed-width","type":"text","width":120},{"content":"JVA Berlin","fill":"$--fg","fontFamily":"Inter","fontSize":10,"fontWeight":"normal","id":"nCjHA","textGrowth":"fixed-width","type":"text","width":100},{"content":"5","fill":"$--fg","fontFamily":"Inter","fontSize":10,"fontWeight":"normal","id":"XYiOK","textGrowth":"fixed-width","type":"text","width":50},{"content":"30min","fill":"$--fg","fontFamily":"Inter","fontSize":10,"fontWeight":"normal","id":"q1lSp","textGrowth":"fixed-width","type":"text","width":55},{"content":"3h 50m","fill":"$--fg","fontFamily":"Inter","fontSize":10,"fontWeight":"normal","id":"NBdf9","textGrowth":"fixed-width","type":"text","width":55},{"content":"5","fill":"$--fg","fontFamily":"Inter","fontSize":10,"fontWeight":"normal","id":"tmfvK","textGrowth":"fixed-width","type":"text","width":48},{"content":"125.00","fill":"$--fg","fontFamily":"Inter","fontSize":10,"fontWeight":"normal","id":"2u3AA","textAlign":"right","textGrowth":"fixed-width","type":"text","width":55},{"content":"625.00","fill":"$--fg","fontFamily":"Inter","fontSize":10,"fontWeight":"600","id":"wwRN0","textAlign":"right","textGrowth":"fixed-width","type":"text","width":65}],"gap":4,"height":32,"id":"EwfpG","name":"EK Row 1","padding":[6,8],"stroke":{"align":"inside","fill":"$--border","thickness":{"top":1}},"type":"frame","width":"fill_container"},{"alignItems":"center","children":[{"content":"Dr. Schmidt (Freelance)","fill":"$--fg","fontFamily":"Inter","fontSize":10,"fontWeight":"normal","id":"iHL5t","textGrowth":"fixed-width","type":"text","width":120},{"content":"JVA Berlin","fill":"$--fg","fontFamily":"Inter","fontSize":10,"fontWeight":"normal","id":"309rv","textGrowth":"fixed-width","type":"text","width":100},{"content":"3","fill":"$--fg","fontFamily":"Inter","fontSize":10,"fontWeight":"normal","id":"1nLYC","textGrowth":"fixed-width","type":"text","width":50},{"content":"25min","fill":"$--fg","fontFamily":"Inter","fontSize":10,"fontWeight":"normal","id":"Xjsh2","textGrowth":"fixed-width","type":"text","width":55},{"content":"2h 15m","fill":"$--fg","fontFamily":"Inter","fontSize":10,"fontWeight":"normal","id":"yVGcX","textGrowth":"fixed-width","type":"text","width":55},{"content":"3","fill":"$--fg","fontFamily":"Inter","fontSize":10,"fontWeight":"normal","id":"KaQmO","textGrowth":"fixed-width","type":"text","width":48},{"content":"150.00","fill":"$--fg","fontFamily":"Inter","fontSize":10,"fontWeight":"normal","id":"Rc3aw","textAlign":"right","textGrowth":"fixed-width","type":"text","width":55},{"content":"450.00","fill":"$--fg","fontFamily":"Inter","fontSize":10,"fontWeight":"600","id":"Rl8XX","textAlign":"right","textGrowth":"fixed-width","type":"text","width":65}],"fill":"$--card","gap":4,"height":32,"id":"XVp5e","name":"EK Row 2","padding":[6,8],"stroke":{"align":"inside","fill":"$--border","thickness":{"top":1}},"type":"frame","width":"fill_container"},{"alignItems":"center","children":[{"content":"EK Total:","fill":"$--fg","fontFamily":"Inter","fontSize":11,"fontWeight":"600","id":"ZSmC6","type":"text"},{"content":"EUR 1,075.00","fill":"$--fg","fontFamily":"Inter","fontSize":11,"fontWeight":"700","id":"Ku9YZ","type":"text"}],"cornerRadius":[0,0,8,8],"fill":"$--secondary","gap":4,"height":32,"id":"INCNz","justifyContent":"end","name":"EK Total","padding":[6,8],"stroke":{"align":"inside","fill":"$--border","thickness":{"top":1}},"type":"frame","width":"fill_container"}],"cornerRadius":8,"id":"UKVTS","layout":"vertical","name":"EK Table (8 cols)","stroke":{"align":"inside","fill":"$--border","thickness":1},"type":"frame","width":"fill_container"},{"content":"VK \u2014 Sale Calculation","fill":"$--fg","fontFamily":"Inter","fontSize":14,"fontWeight":"600","id":"ObM1i","type":"text"},{"children":[{"alignItems":"center","children":[{"content":"Location","fill":"$--fg","fontFamily":"Inter","fontSize":10,"fontWeight":"600","id":"rVNgr","textGrowth":"fixed-width","type":"text","width":180},{"content":"Time","fill":"$--fg","fontFamily":"Inter","fontSize":10,"fontWeight":"600","id":"qyTXh","textGrowth":"fixed-width","type":"text","width":80},{"content":"Patients","fill":"$--fg","fontFamily":"Inter","fontSize":10,"fontWeight":"600","id":"JhWGL","textGrowth":"fixed-width","type":"text","width":60},{"content":"EUR","fill":"$--fg","fontFamily":"Inter","fontSize":10,"fontWeight":"600","id":"hKCMS","textAlign":"right","textGrowth":"fixed-width","type":"text","width":80},{"content":"Total","fill":"$--fg","fontFamily":"Inter","fontSize":10,"fontWeight":"600","id":"eIRoC","textAlign":"right","textGrowth":"fixed-width","type":"text","width":80}],"cornerRadius":[8,8,0,0],"fill":"$--secondary","gap":4,"height":32,"id":"K0V4A","name":"VK Header","padding":[6,8],"type":"frame","width":"fill_container"},{"alignItems":"center","children":[{"content":"JVA Berlin-Moabit","fill":"$--fg","fontFamily":"Inter","fontSize":10,"fontWeight":"normal","id":"0KtBP","textGrowth":"fixed-width","type":"text","width":180},{"content":"3h 50m","fill":"$--fg","fontFamily":"Inter","fontSize":10,"fontWeight":"normal","id":"Qjh6L","textGrowth":"fixed-width","type":"text","width":80},{"content":"8","fill":"$--fg","fontFamily":"Inter","fontSize":10,"fontWeight":"normal","id":"futHs","textGrowth":"fixed-width","type":"text","width":60},{"content":"200.00","fill":"$--fg","fontFamily":"Inter","fontSize":10,"fontWeight":"normal","id":"672uW","textAlign":"right","textGrowth":"fixed-width","type":"text","width":80},{"content":"1,600.00","fill":"$--fg","fontFamily":"Inter","fontSize":10,"fontWeight":"600","id":"gPXkM","textAlign":"right","textGrowth":"fixed-width","type":"text","width":80}],"gap":4,"height":32,"id":"2NrWC","name":"VK Row 1","padding":[6,8],"stroke":{"align":"inside","fill":"$--border","thickness":{"top":1}},"type":"frame","width":"fill_container"},{"alignItems":"center","children":[{"content":"VK Total:","fill":"$--fg","fontFamily":"Inter","fontSize":11,"fontWeight":"600","id":"Mg2AK","type":"text"},{"content":"EUR 1,600.00","fill":"$--fg","fontFamily":"Inter","fontSize":11,"fontWeight":"700","id":"PRSk6","type":"text"}],"cornerRadius":[0,0,8,8],"fill":"$--secondary","gap":4,"height":32,"id":"JYmox","justifyContent":"end","name":"VK Total","padding":[6,8],"stroke":{"align":"inside","fill":"$--border","thickness":{"top":1}},"type":"frame","width":"fill_container"}],"cornerRadius":8,"id":"OEzb7","layout":"vertical","name":"VK Table (5 cols)","stroke":{"align":"inside","fill":"$--border","thickness":1},"type":"frame","width":"fill_container"}],"gap":20,"id":"c9VKM","layout":"vertical","name":"Body","padding":24,"type":"frame","width":"fill_container"},{"alignItems":"center","children":[{"alignItems":"center","children":[{"content":"Close","fill":"$--fg","fontFamily":"Inter","fontSize":13,"fontWeight":"normal","id":"yg7nO","type":"text"}],"cornerRadius":8,"fill":"$--bg","height":36,"id":"O3zX1","name":"Close @shadcn/button variant=outline","padding":[8,16],"stroke":{"fill":"$--input-border","thickness":1},"type":"frame"}],"cornerRadius":[0,0,12,12],"height":56,"id":"agBye","justifyContent":"end","name":"Dialog Footer","padding":[12,24],"stroke":{"align":"inside","fill":"$--border","thickness":{"top":1}},"type":"frame","width":"fill_container"}],"cornerRadius":12,"effect":{"blur":24,"color":"#00000020","offset":{"x":0,"y":4},"shadowType":"outer","type":"shadow"},"fill":"$--bg","id":"4COjT","layout":"vertical","name":"W2: Calculation Dialog (700px) @shadcn/dialog","stroke":{"align":"inside","fill":"$--border","thickness":1},"type":"frame","width":700,"x":0,"y":0},{"content":"EK (Purchase) Table \u2014 8 columns:\nPhysician (displayName + employeeType) | Location (.name) |\nPatients (actualPatients) | Time/Patient (timePerPatient, human time) |\nTime (payableWorkTime) | Payable Patients | EUR (payValue) | Total (payValueTotal)\nFooter: data.ekValueTotal (currency format)\n@service: AdminService.calcAppointment(appointmentId)","height":0,"id":"iUwOv","name":"note: EK Table","type":"note","width":0,"x":760,"y":0},{"content":"VK (Sale) Table \u2014 5 columns:\nLocation (.name) | Time (billableWorkTime) |\nPatients (billablePatients) | EUR (billValue) | Total (billValueTotal)\nFooter: data.vkValueTotal (currency format)\nView-only dialog \u2014 no edit capability","height":0,"id":"OMOn2","name":"note: VK Table","type":"note","width":0,"x":760,"y":300}]}
+{
+  "version": "2.9",
+  "variables": {
+    "--bg": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--border": {
+      "type": "color",
+      "value": "#E5E5E5"
+    },
+    "--card": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "--destructive": {
+      "type": "color",
+      "value": "#DC2626"
+    },
+    "--fg": {
+      "type": "color",
+      "value": "#0A0A0A"
+    },
+    "--fg-muted": {
+      "type": "color",
+      "value": "#737373"
+    },
+    "--header-bg": {
+      "type": "color",
+      "value": "#F98E33"
+    },
+    "--header-fg": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--info-bg": {
+      "type": "color",
+      "value": "#EFF6FF"
+    },
+    "--info-fg": {
+      "type": "color",
+      "value": "#1D4ED8"
+    },
+    "--input-border": {
+      "type": "color",
+      "value": "#D4D4D4"
+    },
+    "--primary": {
+      "type": "color",
+      "value": "#171717"
+    },
+    "--primary-fg": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "--secondary": {
+      "type": "color",
+      "value": "#F5F5F5"
+    },
+    "--success-bg": {
+      "type": "color",
+      "value": "#F0FDF4"
+    },
+    "--success-fg": {
+      "type": "color",
+      "value": "#166534"
+    },
+    "--warning": {
+      "type": "color",
+      "value": "#F59E0B"
+    },
+    "--warning-bg": {
+      "type": "color",
+      "value": "#FFFBEB"
+    }
+  },
+  "children": [
+    {
+      "children": [
+        {
+          "alignItems": "center",
+          "children": [
+            {
+              "fill": "$--header-fg",
+              "height": 20,
+              "iconFontFamily": "lucide",
+              "iconFontName": "calculator",
+              "id": "oQV60",
+              "type": "icon_font",
+              "width": 20
+            },
+            {
+              "content": "Appointment Calculation",
+              "fill": "$--header-fg",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "600",
+              "id": "KP39n",
+              "type": "text"
+            }
+          ],
+          "cornerRadius": [
+            12,
+            12,
+            0,
+            0
+          ],
+          "fill": "$--header-bg",
+          "gap": 12,
+          "height": 56,
+          "id": "rigxo",
+          "name": "Dialog Header",
+          "padding": [
+            12,
+            24
+          ],
+          "type": "frame",
+          "width": "fill_container"
+        },
+        {
+          "alignItems": "center",
+          "children": [
+            {
+              "content": "JVA Berlin-Moabit",
+              "fill": "$--fg",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "500",
+              "id": "YGKbP",
+              "type": "text"
+            },
+            {
+              "content": "x3",
+              "fill": "$--fg",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "id": "LWR4E",
+              "type": "text"
+            },
+            {
+              "content": "GEN-MED",
+              "fill": "$--fg",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "normal",
+              "id": "PXLPm",
+              "type": "text"
+            },
+            {
+              "content": "Sat 2026-03-15",
+              "fill": "$--fg-muted",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "normal",
+              "id": "lSl7z",
+              "type": "text"
+            },
+            {
+              "content": "08:00\u201312:00",
+              "fill": "$--fg",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "normal",
+              "id": "oJO4F",
+              "type": "text"
+            },
+            {
+              "content": "Bill: 08:00\u201312:00",
+              "fill": "$--fg-muted",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "normal",
+              "id": "Wx7Bk",
+              "type": "text"
+            },
+            {
+              "alignItems": "center",
+              "children": [
+                {
+                  "content": "ACTIVE",
+                  "fill": "$--success-fg",
+                  "fontFamily": "Inter",
+                  "fontSize": 10,
+                  "fontWeight": "600",
+                  "id": "Dmin4",
+                  "type": "text"
+                }
+              ],
+              "cornerRadius": 4,
+              "fill": "$--success-bg",
+              "id": "TVvbp",
+              "name": "badge",
+              "padding": [
+                2,
+                6
+              ],
+              "type": "frame"
+            }
+          ],
+          "fill": "$--secondary",
+          "gap": 12,
+          "id": "p2IEr",
+          "name": "Appointment Info (read-only)",
+          "padding": [
+            12,
+            24
+          ],
+          "stroke": {
+            "align": "inside",
+            "fill": "$--border",
+            "thickness": {
+              "bottom": 1
+            }
+          },
+          "type": "frame",
+          "width": "fill_container"
+        },
+        {
+          "children": [
+            {
+              "content": "EK \u2014 Purchase Calculation",
+              "fill": "$--fg",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "600",
+              "id": "jhxKG",
+              "type": "text"
+            },
+            {
+              "children": [
+                {
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "content": "Physician",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "600",
+                      "id": "A7szj",
+                      "textGrowth": "fixed-width",
+                      "type": "text",
+                      "width": 120
+                    },
+                    {
+                      "content": "Location",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "600",
+                      "id": "9UcpV",
+                      "textGrowth": "fixed-width",
+                      "type": "text",
+                      "width": 100
+                    },
+                    {
+                      "content": "Patients",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "600",
+                      "id": "sKtso",
+                      "textGrowth": "fixed-width",
+                      "type": "text",
+                      "width": 50
+                    },
+                    {
+                      "content": "Time/Pat",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "600",
+                      "id": "k83Zr",
+                      "textGrowth": "fixed-width",
+                      "type": "text",
+                      "width": 55
+                    },
+                    {
+                      "content": "Time",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "600",
+                      "id": "EqtUn",
+                      "textGrowth": "fixed-width",
+                      "type": "text",
+                      "width": 55
+                    },
+                    {
+                      "content": "Pay Pat",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "600",
+                      "id": "uWvrt",
+                      "textGrowth": "fixed-width",
+                      "type": "text",
+                      "width": 48
+                    },
+                    {
+                      "content": "EUR",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "600",
+                      "id": "K9HxH",
+                      "textAlign": "right",
+                      "textGrowth": "fixed-width",
+                      "type": "text",
+                      "width": 55
+                    },
+                    {
+                      "content": "Total",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "600",
+                      "id": "IUrMM",
+                      "textAlign": "right",
+                      "textGrowth": "fixed-width",
+                      "type": "text",
+                      "width": 65
+                    }
+                  ],
+                  "cornerRadius": [
+                    8,
+                    8,
+                    0,
+                    0
+                  ],
+                  "fill": "$--secondary",
+                  "gap": 4,
+                  "height": 32,
+                  "id": "eIkAl",
+                  "name": "EK Header",
+                  "padding": [
+                    6,
+                    8
+                  ],
+                  "type": "frame",
+                  "width": "fill_container"
+                },
+                {
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "content": "Dr. Weber (Employed)",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "normal",
+                      "id": "E2Wvo",
+                      "textGrowth": "fixed-width",
+                      "type": "text",
+                      "width": 120
+                    },
+                    {
+                      "content": "JVA Berlin",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "normal",
+                      "id": "nCjHA",
+                      "textGrowth": "fixed-width",
+                      "type": "text",
+                      "width": 100
+                    },
+                    {
+                      "content": "5",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "normal",
+                      "id": "XYiOK",
+                      "textGrowth": "fixed-width",
+                      "type": "text",
+                      "width": 50
+                    },
+                    {
+                      "content": "30min",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "normal",
+                      "id": "q1lSp",
+                      "textGrowth": "fixed-width",
+                      "type": "text",
+                      "width": 55
+                    },
+                    {
+                      "content": "3h 50m",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "normal",
+                      "id": "NBdf9",
+                      "textGrowth": "fixed-width",
+                      "type": "text",
+                      "width": 55
+                    },
+                    {
+                      "content": "5",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "normal",
+                      "id": "tmfvK",
+                      "textGrowth": "fixed-width",
+                      "type": "text",
+                      "width": 48
+                    },
+                    {
+                      "content": "125.00",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "normal",
+                      "id": "2u3AA",
+                      "textAlign": "right",
+                      "textGrowth": "fixed-width",
+                      "type": "text",
+                      "width": 55
+                    },
+                    {
+                      "content": "625.00",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "600",
+                      "id": "wwRN0",
+                      "textAlign": "right",
+                      "textGrowth": "fixed-width",
+                      "type": "text",
+                      "width": 65
+                    }
+                  ],
+                  "gap": 4,
+                  "height": 32,
+                  "id": "EwfpG",
+                  "name": "EK Row 1",
+                  "padding": [
+                    6,
+                    8
+                  ],
+                  "stroke": {
+                    "align": "inside",
+                    "fill": "$--border",
+                    "thickness": {
+                      "top": 1
+                    }
+                  },
+                  "type": "frame",
+                  "width": "fill_container"
+                },
+                {
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "content": "Dr. Schmidt (Freelance)",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "normal",
+                      "id": "iHL5t",
+                      "textGrowth": "fixed-width",
+                      "type": "text",
+                      "width": 120
+                    },
+                    {
+                      "content": "JVA Berlin",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "normal",
+                      "id": "309rv",
+                      "textGrowth": "fixed-width",
+                      "type": "text",
+                      "width": 100
+                    },
+                    {
+                      "content": "3",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "normal",
+                      "id": "1nLYC",
+                      "textGrowth": "fixed-width",
+                      "type": "text",
+                      "width": 50
+                    },
+                    {
+                      "content": "25min",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "normal",
+                      "id": "Xjsh2",
+                      "textGrowth": "fixed-width",
+                      "type": "text",
+                      "width": 55
+                    },
+                    {
+                      "content": "2h 15m",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "normal",
+                      "id": "yVGcX",
+                      "textGrowth": "fixed-width",
+                      "type": "text",
+                      "width": 55
+                    },
+                    {
+                      "content": "3",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "normal",
+                      "id": "KaQmO",
+                      "textGrowth": "fixed-width",
+                      "type": "text",
+                      "width": 48
+                    },
+                    {
+                      "content": "150.00",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "normal",
+                      "id": "Rc3aw",
+                      "textAlign": "right",
+                      "textGrowth": "fixed-width",
+                      "type": "text",
+                      "width": 55
+                    },
+                    {
+                      "content": "450.00",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "600",
+                      "id": "Rl8XX",
+                      "textAlign": "right",
+                      "textGrowth": "fixed-width",
+                      "type": "text",
+                      "width": 65
+                    }
+                  ],
+                  "fill": "$--card",
+                  "gap": 4,
+                  "height": 32,
+                  "id": "XVp5e",
+                  "name": "EK Row 2",
+                  "padding": [
+                    6,
+                    8
+                  ],
+                  "stroke": {
+                    "align": "inside",
+                    "fill": "$--border",
+                    "thickness": {
+                      "top": 1
+                    }
+                  },
+                  "type": "frame",
+                  "width": "fill_container"
+                },
+                {
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "content": "EK Total:",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "600",
+                      "id": "ZSmC6",
+                      "type": "text"
+                    },
+                    {
+                      "content": "EUR 1,075.00",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "700",
+                      "id": "Ku9YZ",
+                      "type": "text"
+                    }
+                  ],
+                  "cornerRadius": [
+                    0,
+                    0,
+                    8,
+                    8
+                  ],
+                  "fill": "$--secondary",
+                  "gap": 4,
+                  "height": 32,
+                  "id": "INCNz",
+                  "justifyContent": "end",
+                  "name": "EK Total",
+                  "padding": [
+                    6,
+                    8
+                  ],
+                  "stroke": {
+                    "align": "inside",
+                    "fill": "$--border",
+                    "thickness": {
+                      "top": 1
+                    }
+                  },
+                  "type": "frame",
+                  "width": "fill_container"
+                }
+              ],
+              "cornerRadius": 8,
+              "id": "UKVTS",
+              "layout": "vertical",
+              "name": "EK Table (8 cols)",
+              "stroke": {
+                "align": "inside",
+                "fill": "$--border",
+                "thickness": 1
+              },
+              "type": "frame",
+              "width": "fill_container"
+            },
+            {
+              "content": "VK \u2014 Sale Calculation",
+              "fill": "$--fg",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "600",
+              "id": "ObM1i",
+              "type": "text"
+            },
+            {
+              "children": [
+                {
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "content": "Location",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "600",
+                      "id": "rVNgr",
+                      "textGrowth": "fixed-width",
+                      "type": "text",
+                      "width": 180
+                    },
+                    {
+                      "content": "Time",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "600",
+                      "id": "qyTXh",
+                      "textGrowth": "fixed-width",
+                      "type": "text",
+                      "width": 80
+                    },
+                    {
+                      "content": "Patients",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "600",
+                      "id": "JhWGL",
+                      "textGrowth": "fixed-width",
+                      "type": "text",
+                      "width": 60
+                    },
+                    {
+                      "content": "EUR",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "600",
+                      "id": "hKCMS",
+                      "textAlign": "right",
+                      "textGrowth": "fixed-width",
+                      "type": "text",
+                      "width": 80
+                    },
+                    {
+                      "content": "Total",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "600",
+                      "id": "eIRoC",
+                      "textAlign": "right",
+                      "textGrowth": "fixed-width",
+                      "type": "text",
+                      "width": 80
+                    }
+                  ],
+                  "cornerRadius": [
+                    8,
+                    8,
+                    0,
+                    0
+                  ],
+                  "fill": "$--secondary",
+                  "gap": 4,
+                  "height": 32,
+                  "id": "K0V4A",
+                  "name": "VK Header",
+                  "padding": [
+                    6,
+                    8
+                  ],
+                  "type": "frame",
+                  "width": "fill_container"
+                },
+                {
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "content": "JVA Berlin-Moabit",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "normal",
+                      "id": "0KtBP",
+                      "textGrowth": "fixed-width",
+                      "type": "text",
+                      "width": 180
+                    },
+                    {
+                      "content": "3h 50m",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "normal",
+                      "id": "Qjh6L",
+                      "textGrowth": "fixed-width",
+                      "type": "text",
+                      "width": 80
+                    },
+                    {
+                      "content": "8",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "normal",
+                      "id": "futHs",
+                      "textGrowth": "fixed-width",
+                      "type": "text",
+                      "width": 60
+                    },
+                    {
+                      "content": "200.00",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "normal",
+                      "id": "672uW",
+                      "textAlign": "right",
+                      "textGrowth": "fixed-width",
+                      "type": "text",
+                      "width": 80
+                    },
+                    {
+                      "content": "1,600.00",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "600",
+                      "id": "gPXkM",
+                      "textAlign": "right",
+                      "textGrowth": "fixed-width",
+                      "type": "text",
+                      "width": 80
+                    }
+                  ],
+                  "gap": 4,
+                  "height": 32,
+                  "id": "2NrWC",
+                  "name": "VK Row 1",
+                  "padding": [
+                    6,
+                    8
+                  ],
+                  "stroke": {
+                    "align": "inside",
+                    "fill": "$--border",
+                    "thickness": {
+                      "top": 1
+                    }
+                  },
+                  "type": "frame",
+                  "width": "fill_container"
+                },
+                {
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "content": "VK Total:",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "600",
+                      "id": "Mg2AK",
+                      "type": "text"
+                    },
+                    {
+                      "content": "EUR 1,600.00",
+                      "fill": "$--fg",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "700",
+                      "id": "PRSk6",
+                      "type": "text"
+                    }
+                  ],
+                  "cornerRadius": [
+                    0,
+                    0,
+                    8,
+                    8
+                  ],
+                  "fill": "$--secondary",
+                  "gap": 4,
+                  "height": 32,
+                  "id": "JYmox",
+                  "justifyContent": "end",
+                  "name": "VK Total",
+                  "padding": [
+                    6,
+                    8
+                  ],
+                  "stroke": {
+                    "align": "inside",
+                    "fill": "$--border",
+                    "thickness": {
+                      "top": 1
+                    }
+                  },
+                  "type": "frame",
+                  "width": "fill_container"
+                }
+              ],
+              "cornerRadius": 8,
+              "id": "OEzb7",
+              "layout": "vertical",
+              "name": "VK Table (5 cols)",
+              "stroke": {
+                "align": "inside",
+                "fill": "$--border",
+                "thickness": 1
+              },
+              "type": "frame",
+              "width": "fill_container"
+            }
+          ],
+          "gap": 20,
+          "id": "c9VKM",
+          "layout": "vertical",
+          "name": "Body",
+          "padding": 24,
+          "type": "frame",
+          "width": "fill_container"
+        },
+        {
+          "alignItems": "center",
+          "children": [
+            {
+              "alignItems": "center",
+              "children": [
+                {
+                  "content": "Close",
+                  "fill": "$--fg",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal",
+                  "id": "yg7nO",
+                  "type": "text"
+                }
+              ],
+              "cornerRadius": 8,
+              "fill": "$--bg",
+              "height": 36,
+              "id": "O3zX1",
+              "name": "Close @shadcn/button variant=outline",
+              "padding": [
+                8,
+                16
+              ],
+              "stroke": {
+                "fill": "$--input-border",
+                "thickness": 1
+              },
+              "type": "frame"
+            }
+          ],
+          "cornerRadius": [
+            0,
+            0,
+            12,
+            12
+          ],
+          "height": 56,
+          "id": "agBye",
+          "justifyContent": "end",
+          "name": "Dialog Footer",
+          "padding": [
+            12,
+            24
+          ],
+          "stroke": {
+            "align": "inside",
+            "fill": "$--border",
+            "thickness": {
+              "top": 1
+            }
+          },
+          "type": "frame",
+          "width": "fill_container"
+        }
+      ],
+      "cornerRadius": 12,
+      "effect": {
+        "blur": 24,
+        "color": "#00000020",
+        "offset": {
+          "x": 0,
+          "y": 4
+        },
+        "shadowType": "outer",
+        "type": "shadow"
+      },
+      "fill": "$--bg",
+      "id": "4COjT",
+      "layout": "vertical",
+      "name": "W2: Calculation Dialog (700px) @shadcn/dialog",
+      "stroke": {
+        "align": "inside",
+        "fill": "$--border",
+        "thickness": 1
+      },
+      "type": "frame",
+      "width": 700,
+      "x": 0,
+      "y": 0
+    }
+  ]
+}

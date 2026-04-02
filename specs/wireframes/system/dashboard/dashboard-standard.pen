@@ -230,14 +230,6 @@
           ]
         },
         {
-          "type": "note",
-          "id": "wJHME",
-          "name": "motdAnnot",
-          "width": 950,
-          "height": 40,
-          "content": "[markdown] body, priority-based styling, optional image positioning (LEFT/TOP/BOTTOM/BACK)"
-        },
-        {
           "type": "frame",
           "id": "wVhT3",
           "name": "Active Appointments Card",
@@ -554,14 +546,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "note",
-          "id": "O8joj",
-          "name": "apptAnnot",
-          "width": 950,
-          "height": 30,
-          "content": "Button visibility depends on state + control + shift + location flags"
         },
         {
           "type": "frame",
@@ -973,7 +957,7 @@
                           "id": "qihiE",
                           "name": "r1s1t",
                           "fill": "$--success-fg",
-                          "content": "✓",
+                          "content": "\u2713",
                           "fontFamily": "Inter",
                           "fontSize": 12,
                           "fontWeight": "700"
@@ -992,7 +976,7 @@
                           "id": "qukI6",
                           "name": "r1s2t",
                           "fill": "$--success-fg",
-                          "content": "✓",
+                          "content": "\u2713",
                           "fontFamily": "Inter",
                           "fontSize": 12,
                           "fontWeight": "700"
@@ -1030,7 +1014,7 @@
                           "id": "wcI4y",
                           "name": "r1s4t",
                           "fill": "$--fg-muted",
-                          "content": "—",
+                          "content": "\u2014",
                           "fontFamily": "Inter",
                           "fontSize": 12,
                           "fontWeight": "700"
@@ -1190,7 +1174,7 @@
                           "id": "IOnUK",
                           "name": "r2s1t",
                           "fill": "$--success-fg",
-                          "content": "✓",
+                          "content": "\u2713",
                           "fontFamily": "Inter",
                           "fontSize": 12,
                           "fontWeight": "700"
@@ -1209,7 +1193,7 @@
                           "id": "C0enI",
                           "name": "r2s2t",
                           "fill": "$--success-fg",
-                          "content": "✓",
+                          "content": "\u2713",
                           "fontFamily": "Inter",
                           "fontSize": 12,
                           "fontWeight": "700"
@@ -1228,7 +1212,7 @@
                           "id": "Z6jhW",
                           "name": "r2s3t",
                           "fill": "$--success-fg",
-                          "content": "✓",
+                          "content": "\u2713",
                           "fontFamily": "Inter",
                           "fontSize": 12,
                           "fontWeight": "700"
@@ -1247,7 +1231,7 @@
                           "id": "GVHQ6",
                           "name": "r2s4t",
                           "fill": "$--success-fg",
-                          "content": "✓",
+                          "content": "\u2713",
                           "fontFamily": "Inter",
                           "fontSize": 12,
                           "fontWeight": "700"
@@ -1266,7 +1250,7 @@
                           "id": "fHtBN",
                           "name": "r2s5t",
                           "fill": "$--success-fg",
-                          "content": "✓",
+                          "content": "\u2713",
                           "fontFamily": "Inter",
                           "fontSize": 12,
                           "fontWeight": "700"
@@ -1278,14 +1262,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "note",
-          "id": "tWtQT",
-          "name": "consAnnot",
-          "width": 950,
-          "height": 30,
-          "content": "Status columns: ✓=complete (green), ?=pending (red), —=N/A (gray)"
         },
         {
           "type": "frame",
@@ -1396,14 +1372,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "note",
-          "id": "gnIDV",
-          "name": "treatAnnot",
-          "width": 950,
-          "height": 24,
-          "content": "Hidden when empty"
         }
       ]
     }

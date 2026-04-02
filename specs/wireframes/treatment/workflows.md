@@ -457,6 +457,439 @@ flowchart TD
 
 ---
 
+## Area 5: Medication CRUD Flow
+
+### Context
+
+The Medication module provides a standard CRUD interface for managing medication records used across treatment plans and consultations. It follows a grid-to-detail pattern with client-side filtering.
+
+**Who uses it:** Administrative staff and clinical staff managing the medication catalog.
+
+**Entry point:** User navigates to the Medication list view.
+
+**Exit points:** Medication record created, updated, or deleted; user returns to the grid.
+
+---
+
+### 5.1 Medication CRUD — Flowchart
+
+```mermaid
+flowchart TD
+    A["Medication Grid<br>(14-column table)"] --> B["Client-side Search<br>(filter by name)"]
+    B --> A
+
+    A -->|"Click Add"| C["Medication Detail Dialog<br>(13 fields)"]
+    A -->|"Click row / Edit"| D["Load Medication Data"]
+    D --> C
+
+    C --> C1["Fill fields:<br>Name*, Dosage, Form,<br>Unit (MedicationUnit enum),<br>Frequency, Route, Notes, ..."]
+    C1 -->|"Save"| E{"Validation<br>passed?"}
+    E -->|"Yes"| F["Medication Saved<br>(Grid Refreshes)"]
+    E -->|"No"| G["Validation Errors Shown"]
+    G --> C1
+
+    A -->|"Click Delete on row"| H{"Confirm:<br>'Delete this medication?'"}
+    H -->|"Yes"| I["Medication Deleted<br>(Grid Refreshes)"]
+    H -->|"No"| A
+
+    subgraph "MedicationUnit Enum"
+        U1["PIECE"]
+        U2["IE"]
+    end
+
+    style A fill:#e8f4f8,stroke:#2c7bb6
+    style F fill:#d4edda,stroke:#155724
+    style I fill:#fff3cd,stroke:#856404
+    style G fill:#fce4ec,stroke:#c62828
+```
+
+**Key observations:**
+
+- The grid has **14 columns** — typical for a data-heavy CRUD list. Horizontal scroll expected.
+- The detail dialog exposes **13 fields** for comprehensive medication data entry.
+- The **MedicationUnit enum** constrains the unit field to `PIECE` or `IE` — this is a select/radio, not free text.
+- Search is **client-side only** — the full medication list is loaded and filtered in the browser.
+- Standard Add/Edit/Delete pattern with confirmation on delete.
+
+---
+
+## Area 6: Patient Data Management Flow
+
+### Context
+
+Patient Data management allows staff to maintain patient records with file attachments. Patients are identified by their bookNumber, which serves as the primary cross-entity link across appointments and consultations.
+
+**Who uses it:** Administrative and clinical staff managing patient records.
+
+**Entry point:** User navigates to the Patient Data list view.
+
+**Exit points:** Patient record created, updated, or deleted; files uploaded or downloaded.
+
+---
+
+### 6.1 Patient Data Management — Flowchart
+
+```mermaid
+flowchart TD
+    A["Patient Data Grid<br>(6-column table)"] --> B["Client-side Search<br>(filter by name/bookNumber)"]
+    B --> A
+
+    A -->|"Click Add"| C["Patient Detail Dialog<br>(5 fields)"]
+    A -->|"Click row / Edit"| D["Load Patient Data"]
+    D --> C
+
+    C --> C1["Fill fields:<br>BookNumber*, Name*,<br>Date of Birth, Notes, Status"]
+    C1 -->|"Save"| E{"Validation<br>passed?"}
+    E -->|"Yes"| F["Patient Saved<br>(Grid Refreshes)"]
+    E -->|"No"| G["Validation Errors Shown"]
+    G --> C1
+
+    C --> H["File Attachment Collection"]
+    H -->|"Upload"| I["File Uploaded<br>(Attached to Patient)"]
+    H -->|"Download"| J["File Downloaded"]
+
+    A -->|"Click Delete on row"| K{"Confirm:<br>'Delete this patient?'"}
+    K -->|"Yes"| L["Patient Deleted<br>(Grid Refreshes)"]
+    K -->|"No"| A
+
+    style A fill:#e8f4f8,stroke:#2c7bb6
+    style F fill:#d4edda,stroke:#155724
+    style L fill:#fff3cd,stroke:#856404
+    style G fill:#fce4ec,stroke:#c62828
+```
+
+**Key observations:**
+
+- The grid has **6 columns** — a compact patient summary view.
+- The detail dialog has **5 fields** plus a **file attachment collection** for document management.
+- Patients are added primarily by **bookNumber**, which is the cross-entity identifier linking to appointments and consultations.
+- File attachments support **upload and download** operations directly from the detail view.
+- Search is **client-side** — filtering by name or bookNumber.
+
+---
+
+## Area 7: Treatment List & Category Flow
+
+### Context
+
+The Treatment module provides two sub-views: a **MonthTable calendar grid** for viewing scheduled treatments across a calendar month, and a **Treatment Category** CRUD for managing treatment classification. Critically, treatments themselves **cannot be created** from this view — the MonthTable is a **read-only calendar** that reuses the shared appointment detail panel for viewing.
+
+**Who uses it:** Clinical staff reviewing treatment schedules; administrators managing treatment categories.
+
+**Entry point:** User navigates to the Treatment List (MonthTable) or Treatment Category view.
+
+**Exit points:** Treatment detail viewed via shared appointment panel; category created, updated, or deleted.
+
+---
+
+### 7.1 Treatment MonthTable & Category — Flowchart
+
+```mermaid
+flowchart TD
+    subgraph "Treatment MonthTable (Read-Only Calendar)"
+        MT_A["Treatment MonthTable<br>(Calendar Grid View)"] --> MT_B["Filter Controls:<br>Day / Job / State"]
+        MT_B --> MT_A
+
+        MT_A -->|"Click treatment cell"| MT_C["Shared Appointment Detail Panel<br>(reused component)"]
+
+        MT_A -->|"Click Export"| MT_D["Export XLS<br>(filtered data)"]
+
+        MT_A -->|"Click Location Reminder"| MT_E["Location Reminder Dialog"]
+        MT_E --> MT_E1["Set Start Date<br>+ Number of Days"]
+        MT_E1 -->|"Save"| MT_E2["Reminder Scheduled"]
+
+        MT_NOTE["⚠ Treatments CANNOT be<br>created from this view.<br>This is a read-only calendar."]
+    end
+
+    subgraph "Treatment Category (CRUD)"
+        TC_A["Treatment Category Grid<br>(4-column table)"] -->|"Click Add"| TC_B["Category Modal<br>(3 fields)"]
+        TC_A -->|"Click row / Edit"| TC_C["Load Category Data"]
+        TC_C --> TC_B
+
+        TC_B -->|"Save"| TC_D["Category Saved<br>(Grid Refreshes)"]
+
+        TC_A -->|"Click Delete on row"| TC_E{"Confirm:<br>'Delete this category?'"}
+        TC_E -->|"Yes"| TC_F["Category Deleted<br>(Grid Refreshes)"]
+        TC_E -->|"No"| TC_A
+    end
+
+    style MT_A fill:#e8f4f8,stroke:#2c7bb6
+    style MT_C fill:#d4edda,stroke:#155724
+    style MT_D fill:#d4edda,stroke:#155724
+    style MT_NOTE fill:#fce4ec,stroke:#c62828
+    style TC_A fill:#e8f4f8,stroke:#2c7bb6
+    style TC_D fill:#d4edda,stroke:#155724
+    style TC_F fill:#fff3cd,stroke:#856404
+```
+
+**Key observations:**
+
+- The **MonthTable** is strictly a **read-only calendar view** — it does NOT support treatment creation. Treatments are created through treatment plans (see Area 8).
+- Clicking a treatment cell opens the **shared appointment detail panel**, which is reused across multiple views for consistency.
+- The MonthTable supports **filtering by day, job, and state** to narrow down the visible schedule.
+- **Export XLS** generates a spreadsheet of the currently filtered calendar data.
+- The **Location Reminder** dialog allows scheduling location-based reminders with a start date and number of days.
+- **Treatment Category** is a simple 4-column grid with 3-field CRUD modal — standard admin pattern.
+
+---
+
+## Area 8: Treatment Plan Lifecycle
+
+### Context
+
+Treatment plans follow a 12-state lifecycle that governs which actions are available at each phase. The state machine has a happy path (PREPARED → CLOSED), a cancellation branch (CANCELED → CANCELED_CLOSED), a storno branch (STORNO → STORNO_CLOSED), and a PAUSED state that can interrupt any active state.
+
+**Who uses it:** Clinical staff and administrators managing treatment plan progression.
+
+**Trigger:** Treatment plan state changes are triggered by user actions (Start, Cancel, Storno, Pause, Resume, Close) gated by the current state.
+
+---
+
+### 8.1 Treatment Plan Lifecycle — State Diagram
+
+```mermaid
+stateDiagram-v2
+    [*] --> PREPARED: Plan created (draft)
+
+    PREPARED --> READY: Approve / Validate
+    READY --> STARTED: Start plan
+    STARTED --> PROBATORIK: Enter probationary phase
+    PROBATORIK --> RUNNING: Probatory complete
+    RUNNING --> ENDING: Initiate close sequence
+    ENDING --> CLOSED: Final close
+
+    %% Cancellation branch
+    PREPARED --> CANCELED: Cancel before start
+    READY --> CANCELED: Cancel before start
+    STARTED --> CANCELED: Cancel after start
+    PROBATORIK --> CANCELED: Cancel during probatory
+    RUNNING --> CANCELED: Cancel during running
+    CANCELED --> CANCELED_CLOSED: Close canceled plan
+
+    %% Storno branch
+    STARTED --> STORNO: Storno (reverse)
+    PROBATORIK --> STORNO: Storno (reverse)
+    RUNNING --> STORNO: Storno (reverse)
+    STORNO --> STORNO_CLOSED: Close storno plan
+
+    %% Pause can interrupt any active state
+    STARTED --> PAUSED: Pause
+    PROBATORIK --> PAUSED: Pause
+    RUNNING --> PAUSED: Pause
+    ENDING --> PAUSED: Pause
+    PAUSED --> STARTED: Resume → STARTED
+    PAUSED --> PROBATORIK: Resume → PROBATORIK
+    PAUSED --> RUNNING: Resume → RUNNING
+    PAUSED --> ENDING: Resume → ENDING
+
+    CLOSED --> [*]
+    CANCELED_CLOSED --> [*]
+    STORNO_CLOSED --> [*]
+```
+
+**State transition notes:**
+
+- **Happy path**: PREPARED → READY → STARTED → PROBATORIK → RUNNING → ENDING → CLOSED. This is the full lifecycle from draft to completion.
+- **CANCELED** can be reached from any pre-close active state (PREPARED through RUNNING). It represents an intentional cancellation before the plan completes.
+- **STORNO** can be reached from STARTED, PROBATORIK, or RUNNING. It represents a reversal/correction of a plan that was already in progress.
+- **PAUSED** can interrupt STARTED, PROBATORIK, RUNNING, or ENDING. When resumed, the plan returns to the state it was in before being paused.
+- **Terminal states**: CLOSED, CANCELED_CLOSED, and STORNO_CLOSED are all end states with no further transitions.
+- The current state **gates all available UI actions** — e.g., Start is only available in READY, Storno is only available in active states (STARTED/PROBATORIK/RUNNING).
+
+---
+
+## Area 9: Treatment Plan Create & Edit Sequence
+
+### Context
+
+Creating and editing a treatment plan is a multi-step process involving a large form (20+ fields), expert scheduling via a week calendar, and a 3-column edit layout with positions and file attachments. The plan starts as a draft (PREPARED) and can be started to trigger async appointment generation.
+
+**Who uses it:** Administrators and clinical staff creating or modifying treatment plans.
+
+**Entry point:** User clicks "Create Treatment Plan" or opens an existing plan for editing.
+
+**Exit points:** Treatment plan saved in draft or started with appointments generated.
+
+---
+
+### 9.1 Treatment Plan Create & Edit — Sequence Diagram
+
+```mermaid
+sequenceDiagram
+    actor Admin
+    participant Grid as Treatment Plan Grid
+    participant CreateDlg as Create Dialog (20+ fields)
+    participant WeekCal as Expert Week Calendar
+    participant API as Treatment Plan API
+    participant EditView as Edit View (3-column layout)
+
+    Admin->>Grid: Click "Create Treatment Plan"
+    Grid->>CreateDlg: Opens create dialog
+
+    Note over CreateDlg: 20+ fields organized in sections:<br/>Patient, Diagnosis, Insurance,<br/>Schedule, Expert Assignment, etc.
+
+    Admin->>CreateDlg: Fills form fields
+
+    Admin->>CreateDlg: Click "Select Expert" field
+    CreateDlg->>WeekCal: Opens Expert Week Calendar
+    WeekCal-->>Admin: Shows available expert slots<br/>(day/hour/minute selection)
+    Admin->>WeekCal: Selects expert + time slot
+    WeekCal-->>CreateDlg: Expert + schedule populated
+
+    Admin->>CreateDlg: Click "Save"
+    CreateDlg->>API: Save treatment plan (state = PREPARED)
+    API-->>CreateDlg: Plan saved as draft
+
+    Note over Admin, API: Plan is now in PREPARED state (draft)
+
+    opt Start plan immediately
+        Admin->>Grid: Click "Start" on plan row
+        Grid->>API: Start treatment plan
+        API-->>Grid: Async appointment generation triggered
+
+        Note over API: System generates appointments<br/>based on schedule configuration
+    end
+
+    Admin->>Grid: Click plan row to edit
+    Grid->>EditView: Opens 3-column edit layout
+
+    Note over EditView: Column 1: Plan details (editable fields)<br/>Column 2: Positions (treatment items)<br/>Column 3: File attachments
+
+    Admin->>EditView: Modify fields / add positions / upload files
+    Admin->>EditView: Click "Save"
+    EditView->>API: Update treatment plan
+    API-->>EditView: Plan updated
+```
+
+**Interaction highlights:**
+
+- The **create dialog** has **20+ fields** organized into logical sections. This is one of the most complex forms in the system.
+- **Expert selection** uses a **week calendar** component that provides bidirectional sync — selecting an expert populates day/hour/minute fields, and vice versa.
+- **Save** creates the plan in **PREPARED (draft)** state. The plan is not active until explicitly started.
+- **Start** triggers **async appointment generation** based on the schedule configuration. This is a background process.
+- The **edit view** uses a **3-column layout**: plan details, positions (treatment items), and file attachments. This provides a comprehensive overview of the plan.
+- The expert week calendar provides **bidirectional sync** with the day/hour/minute fields on the create/edit form.
+
+---
+
+## Area 10: Warning / Allergy CRUD Flow
+
+### Context
+
+The Warning module manages clinical warnings and allergies for patients. Warnings are categorized by a WarningType enum and are displayed across the system via shared WarningTypeBadge components in consultation review and view screens.
+
+**Who uses it:** Clinical staff managing patient safety information.
+
+**Entry point:** User navigates to the Warning list view.
+
+**Exit points:** Warning record created, updated, or deleted; badge displayed in related views.
+
+---
+
+### 10.1 Warning / Allergy CRUD — Flowchart
+
+```mermaid
+flowchart TD
+    A["Warning Grid<br>(6-column table)"] --> B["Client-side Search<br>(filter by patient/type)"]
+    B --> A
+
+    A -->|"Click Add"| C["Warning Detail Dialog<br>(6 fields)"]
+    A -->|"Click row / Edit"| D["Load Warning Data"]
+    D --> C
+
+    C --> C1["Fill fields:<br>Patient*, Type* (WarningType enum),<br>Description*, Severity,<br>Date Recorded, Notes"]
+    C1 -->|"Save"| E{"Validation<br>passed?"}
+    E -->|"Yes"| F["Warning Saved<br>(Grid Refreshes)"]
+    E -->|"No"| G["Validation Errors Shown"]
+    G --> C1
+
+    A -->|"Click Delete on row"| H{"Confirm:<br>'Delete this warning?'"}
+    H -->|"Yes"| I["Warning Deleted<br>(Grid Refreshes)"]
+    H -->|"No"| A
+
+    subgraph "WarningType Enum"
+        WT1["ALLERGY"]
+        WT2["CONSPICUOUS"]
+        WT3["INFECTION"]
+        WT4["OTHER"]
+    end
+
+    F --> J["WarningTypeBadge displayed in<br>Consultation Review & View"]
+
+    style A fill:#e8f4f8,stroke:#2c7bb6
+    style F fill:#d4edda,stroke:#155724
+    style I fill:#fff3cd,stroke:#856404
+    style G fill:#fce4ec,stroke:#c62828
+    style J fill:#e8f4f8,stroke:#2c7bb6
+```
+
+**Key observations:**
+
+- The grid has **6 columns** for a concise warning summary.
+- The detail dialog has **6 fields** including the **WarningType enum** which constrains type to `ALLERGY`, `CONSPICUOUS`, `INFECTION`, or `OTHER`.
+- Warnings are surfaced across the system via a **shared WarningTypeBadge** component displayed in consultation review and view screens.
+- Standard CRUD pattern with client-side search and delete confirmation.
+
+---
+
+## Area 11: Appointment Patient Tab Flow
+
+### Context
+
+Within the appointment detail view, the Patient tab provides a focused interface for managing patients associated with an appointment. Patients are added by bookNumber, can be sorted within the collection, and have file attachment support. The tab also displays a read-only list of related treatments.
+
+**Who uses it:** Clinical staff managing patient assignments within an appointment.
+
+**Entry point:** User opens the Patient tab within an appointment detail view.
+
+**Exit points:** Patients added, edited, or removed from the appointment; files managed.
+
+---
+
+### 11.1 Appointment Patient Tab — Flowchart
+
+```mermaid
+flowchart TD
+    A["Appointment Detail View"] -->|"Open Patient Tab"| B["Patient Tab"]
+
+    B --> C["Add Patient Section"]
+    C -->|"Enter bookNumber"| D["Search / Validate bookNumber"]
+    D -->|"Valid patient found"| E["Patient Added to<br>Appointment Collection"]
+    D -->|"Not found"| F["Error: Patient not found"]
+    F --> C
+
+    B --> G["Patient List Collection<br>(sortable)"]
+    G -->|"Drag to reorder"| G
+    G -->|"Click Edit on patient"| H["Patient Edit Dialog<br>(4 fields)"]
+    H -->|"Save"| I["Patient Updated<br>(List Refreshes)"]
+
+    G -->|"Click patient row"| J["File Attachments Section"]
+    J -->|"Upload"| K["File Uploaded"]
+    J -->|"Download"| L["File Downloaded"]
+    J -->|"Delete"| M{"Confirm delete file?"}
+    M -->|"Yes"| N["File Deleted"]
+    M -->|"No"| J
+
+    B --> O["Treatment Collection<br>(Read-Only List)"]
+    O --> P["Displays related treatments<br>(no create/edit actions)"]
+
+    style A fill:#e8f4f8,stroke:#2c7bb6
+    style E fill:#d4edda,stroke:#155724
+    style I fill:#d4edda,stroke:#155724
+    style F fill:#fce4ec,stroke:#c62828
+    style P fill:#f0f0f0,stroke:#666
+```
+
+**Key observations:**
+
+- Patients are added by **bookNumber** — the same cross-entity identifier used throughout the system.
+- The **patient list collection is sortable** — users can drag to reorder patients within the appointment.
+- The **edit dialog** has **4 fields** for inline patient record adjustments.
+- **File attachments** support full CRUD: upload, download, and delete with confirmation.
+- The **treatment collection** is strictly **read-only** — treatments are managed through treatment plans (Area 8), not from the appointment patient tab.
+
+---
+
 ## Interdependencies Summary
 
 | Factor | Affects | How |
@@ -479,6 +912,11 @@ flowchart TD
 | **Zip code auto-lookup** | Address form | Auto-fills state and city after zip code entry |
 | **QM questionnaire embed** | Summarize + End dialogs | Both dialogs include the same QM form; `filterQm()` adjusts it based on context |
 | **Template mode flag** | Consultation Details behavior | Templates open Consultation Details with `template=true`, enabling template-specific fields |
+| **Treatment state** | Available actions | Create/Edit/Start/Storno/Cancel gated by state machine (12-state lifecycle) |
+| **History mode** | UI actions | `?history=true` hides create and apply-plan buttons |
+| **Expert week calendar** | Treatment scheduling | Bidirectional sync with day/hour/minute fields on treatment plan create/edit |
+| **Warning type** | Consultation views | Shared WarningTypeBadge displayed in consultation review/view |
+| **Patient bookNumber** | Cross-entity | Links patient data across appointments, consultations, and treatment plans |
 
 ---
 
@@ -540,3 +978,94 @@ flowchart TD
 
 #### W2: Questionnaire Detail (800px Form)
 ![Questionnaire Detail](questionnaire/questionnaire-detail.png)
+
+---
+
+### Area 5: Medication CRUD
+
+#### W21: Medication Grid (1440px Full Page)
+![Medication Grid](./medication/medication-list.png)
+
+1440px full-page view with 14-column medication grid, search bar, and Add/Edit/Delete toolbar.
+
+#### W21b: Medication Detail (600px Dialog)
+![Medication Detail](./medication/medication-detail.png)
+
+600px dialog with 13 fields in rows: ID, entryNumber, name, unit select (MedicationUnit enum: PIECE/IE), targetGroup, usage, appArea, approval, trafficability switch, producer, authHolder, pkgSize, amClass.
+
+---
+
+### Area 6: Patient Data Management
+
+#### W22: Patient Data Grid (1440px Full Page)
+![Patient Data Grid](./patient-data/patient-data-list.png)
+
+1440px full-page view with 6-column patient data grid and client-side search.
+
+#### W22b: Patient Data Detail (600px Dialog)
+![Patient Data Detail](./patient-data/patient-data-detail.png)
+
+600px dialog with 5 fields (bookNumber, jNumber, appointmentId, closed date) plus file attachments section.
+
+---
+
+### Area 7: Treatment List & Category
+
+#### W23a: Treatment MonthTable (1440px Calendar)
+![Treatment MonthTable](./treatment-core/treatment-monthtable.png)
+
+1440px calendar grid with days as rows, jobs as columns, and state-colored treatment entries. Filter controls for day/job/state. Export XLS button. Location Reminder dialog (start date + days). Read-only — treatments cannot be created from this view. Clicking a cell opens the shared appointment detail panel.
+
+#### W23b: Treatment Category (600px Dialog)
+![Treatment Category](./treatment-core/treatment-category.png)
+
+600px dialog with 4-column grid (id, name, description, prio) and Add/Edit/Delete toolbar. Simple administrative category management.
+
+---
+
+### Area 8–9: Treatment Plan Management
+
+#### W24a: Treatment Plan Grid (1440px Full Page)
+![Treatment Plan Grid](./treatment-core/treatment-plan-grid.png)
+
+1440px view with 17-column grid, TreatmentState badges, and Create/Edit/Delete/Apply Plan/Export CSV toolbar. Actions gated by the 12-state lifecycle (PREPARED → CLOSED, CANCELED, STORNO branches). History mode toggle hides create/apply-plan buttons.
+
+#### W24b: Treatment Plan Create (1100px Dialog)
+![Treatment Plan Create](./treatment-core/treatment-plan-create.png)
+
+1100px 2-column dialog: left column contains plan config fields (patient, diagnosis, insurance, schedule, expert assignment), right column contains expert week calendar grid with bidirectional day/hour/minute sync. Save creates plan in PREPARED (draft) state.
+
+---
+
+### Area 10: Warning / Allergy CRUD
+
+#### W25: Warning Grid (1440px Full Page)
+![Warning Grid](./warning/warning-list.png)
+
+1440px view with 6-column grid, WarningType badges (ALLERGY/INFECTION/CONSPICUOUS), and search bar.
+
+#### W25b: Warning Detail (600px Dialog)
+![Warning Detail](./warning/warning-detail.png)
+
+600px dialog with 6 fields: name, type select (WarningType enum), entryReq switch, docReq switch, priority, and description textarea.
+
+---
+
+### Area 11: Appointment Patient Tab
+
+#### W20: Appointment Details Patient Tab (1000px Dialog)
+![Appointment Details Patient Tab](./appointment-patient/appointment-details-patient.png)
+
+1000px dialog showing patient add input, patients collection table (5 columns), treatments collection (2 columns), and attachments section with upload/download/transmit/delete actions.
+
+---
+
+### Annotations
+
+Design annotations extracted from wireframe `.pen` files. These capture behavioral details, conditional logic, and implementation notes that supplement the workflow diagrams above.
+
+#### Questionnaire Module
+
+| Wireframe | Annotation | Note |
+|:---|:---|:---|
+| questionnaire-list.pen | Grid Note | 24 total columns — showing representative subset. Horizontal scroll for overflow. |
