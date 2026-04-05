@@ -15,7 +15,7 @@ This directory contains domain-driven analysis documentation for the application
 
 | Domain | Subdirectories | Description |
 |--------|---------------|-------------|
-| **[academy/](./academy/README.md)** | `support-video/` | Support video, video library |
+| **[academy/](./academy/README.md)** | — | Support video, video library |
 | **[accounting/](./accounting/README.md)** | `admin-job/`, `config/`, `invoice/`, `invoice-receiver/`, `worklog/` | Invoicing, job configuration, accounting config |
 | **[customer/](./customer/README.md)** | `contact/`, `customer-core/`, `equipment/`, `room/` | Customer management, contacts, locations, rooms, equipment |
 | **[interfaces/](./interfaces/README.md)** | `dashboard/` | BasisWeb wizard integration |
