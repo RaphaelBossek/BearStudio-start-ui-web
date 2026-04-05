@@ -24,7 +24,7 @@ This directory contains wireframes that have been moved from their original loca
 
 - **support-ticket.pen/.png** - Support ticket dialog
 
-**Note**: This wireframe has been moved to `wireframes/dashboard/support-ticket.*` as it's now part of the dashboard functionality.
+**Note**: This wireframe has been moved to `wireframes/academy/support-video/support-ticket.*` as it's now part of the academy functionality.
 
 ## Analysis Correlation
 

@@ -2,39 +2,22 @@
 title: 'Accounting'
 ---
 
-# Accounting Domain — Analysis Documents
+# Accounting Domain
 
-Invoices, billing, pricing: invoice management, job configuration (price matrices), worklog, billing.
+This directory contains analysis documentation for the accounting domain.
 
-## Documents
+## Subdirectories
 
-### invoice/
-| File | Origin | Content |
-|:---|:---|:---|
-| `01-invoice-list.md` | `invoice/` (whole) | Invoice list view with grid and filters |
-| `02-invoice-details.md` | `invoice/` (whole) | Invoice detail view |
+| Subdirectory | Description |
+|-------------|-------------|
+| `admin-job/` | Job ID configuration (billing codes) |
+| `config/` | Accounting configuration |
+| `invoice/` | Invoice list and details |
+| `invoice-receiver/` | Invoice receiver (payment contact) management |
+| `worklog/` | Work log management |
 
-### worklog/
-| File | Origin | Content |
-|:---|:---|:---|
-| `01-worklog.md` | Split from `utility/worklog-templates-files.md` | Worklog management |
+## Files
 
-### invoice-receiver/
-| File | Origin | Content |
-|:---|:---|:---|
-| `01-invoice-receiver.md` | Split from `utility/worklog-templates-files.md` | Invoice receiver management |
-
-### config/
-| File | Origin | Content |
-|:---|:---|:---|
-| `01-accounting-config.md` | Split from `config-cruds/config-cruds.md` | jobPriceList, product, closedMonth, stornoGroup, expertWorkMonthly |
-
-### admin-job/
-| File | Origin | Content |
-|:---|:---|:---|
-| `03-job-configuration.md` | `admin/` (whole) | Job/price configuration admin |
-
-### admin-workhour/
-| File | Origin | Content |
-|:---|:---|:---|
-| `04-workhour.md` | Split from `admin/simple-cruds.md` | Work hour template CRUD |
+| File | Description |
+|------|-------------|
+| `data-dictionary-accounting.md` | Accounting domain data dictionary |

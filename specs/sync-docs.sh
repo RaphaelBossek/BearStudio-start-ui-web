@@ -81,11 +81,25 @@ fix_frontmatter "${project_dir}/specs/wireframes"
 fix_frontmatter "${project_dir}/specs/domains"
 fix_frontmatter "${project_dir}/specs/decisions"
 
-# Clean existing content directories
-rm -rf "${content_dir}/analysis"
-rm -rf "${content_dir}/wireframes"
-rm -rf "${content_dir}/domains"
-rm -rf "${content_dir}/decisions"
+# Clean existing content directories (with retry for robustness)
+clean_dir() {
+  local dir="$1"
+  if [ -d "$dir" ]; then
+    # Remove contents first, then the directory itself
+    find "$dir" -mindepth 1 -delete 2>/dev/null || true
+    rmdir "$dir" 2>/dev/null || true
+    # If still exists, force remove with retry
+    if [ -d "$dir" ]; then
+      sleep 1
+      rm -rf "$dir" 2>/dev/null || true
+    fi
+  fi
+}
+
+clean_dir "${content_dir}/analysis"
+clean_dir "${content_dir}/wireframes"
+clean_dir "${content_dir}/domains"
+clean_dir "${content_dir}/decisions"
 
 # Copy spec directories to docs content
 cp -rf "${project_dir}/specs/analysis" "${content_dir}/analysis"

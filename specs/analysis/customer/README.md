@@ -2,32 +2,21 @@
 title: 'Customer'
 ---
 
----
----
+# Customer Domain
 
-# Customer Domain — Analysis Documents
+This directory contains analysis documentation for the customer domain.
 
-Customers, locations, contacts, rooms, equipment.
+## Subdirectories
 
-## Documents
+| Subdirectory | Description |
+|-------------|-------------|
+| `contact/` | Contact management |
+| `customer-core/` | Customer list, detail, locations, and users |
+| `equipment/` | Equipment/device management |
+| `room/` | Room management |
 
-### customer-core/
-| File | Origin | Content |
-|:---|:---|:---|
-| `01-customer-list-detail.md` | `customer/` (whole) | Customer list and detail views |
-| `02-location-and-users.md` | `customer/` (whole) | Location management and user assignment |
+## Files
 
-### contact/
-| File | Origin | Content |
-|:---|:---|:---|
-| `01-contact.md` | Split from `entity-cruds/*` | Contact entity CRUD |
-
-### room/
-| File | Origin | Content |
-|:---|:---|:---|
-| `01-room.md` | Split from `entity-cruds/*` | Room entity CRUD (with FullCalendar) |
-
-### equipment/
-| File | Origin | Content |
-|:---|:---|:---|
-| `01-equipment.md` | Split from `entity-cruds/*` | Equipment entity CRUD |
+| File | Description |
+|------|-------------|
+| `data-dictionary-customer.md` | Customer domain data dictionary |

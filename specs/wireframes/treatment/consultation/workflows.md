@@ -6,8 +6,8 @@ title: 'Workflows'
 
 > **Domain:** Treatment > Consultation  
 > **Complexity:** Very High — 778-line dialog, 11 tabs, 7 consultation types, 6 states  
-> **Reference analysis:** `specs/analysis/consultations/` (8 documents)  
-> **Wireframe plan:** `specs/analysis/consultations/wireframes.md`
+> **Reference analysis:** `specs/analysis/treatment/consultation/` (8 documents)  
+> **Wireframe plan:** `specs/analysis/treatment/consultation/wireframes.md`
 
 ---
 

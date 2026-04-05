@@ -118,11 +118,11 @@ Legend:
 | `user-management/profile/profile-staff.md` | `profile/staff.htmlm`, `profile/staff.js`, `profile/searchExpert.js` | `user-management/profile/profile-staff-list.pen` (.png) |
 | `user-management/profile/profile-dialogs.md` | `profile/` (password, signature, employee search, DocFinder) | `user-management/profile/profile-password-dialog.pen` (.png), `profile-signature-pad.pen` (.png), `profile-assignment-dialog.pen` (.png) |
 | `user-management/profile/profile-expert-availability.md` | `profile/expertDays.js`, `profile/expertWeek.js` | `user-management/profile/profile-expert-availability.pen` (.png), `profile-expert-search.pen` (.png) |
-| `user-management/admin-user/user-management.md` | `admin/user.htmlm`, `admin/user.js` | *(no wireframe)* |
-| `user-management/admin-user/06-totp-onboarding.md` | `admin/userSecurity.htmlm`, `admin/totpOnboarding.html`, `admin/totpOnboarding.js`, `admin/totp.css`, `admin/totpmessages.i18n.js`, `admin/userSecurity.js` | *(no wireframe)* |
-| `user-management/admin-group/group-management.md` | `admin/group.htmlm`, `admin/group.js` | *(no wireframe)* |
-| `user-management/admin-skill/skill.md` | `admin/skill.htmlm`, `admin/skill.js` | *(no wireframe)* |
-| `user-management/onboarding/onboarding-flow.md` | `onboarding/` | *(no wireframe)* |
+| `user-management/admin/user-management.md` | `admin/user.htmlm`, `admin/user.js` | *(no wireframe)* |
+| `user-management/admin/totp-onboarding.md` | `admin/userSecurity.htmlm`, `admin/totpOnboarding.html`, `admin/totpOnboarding.js`, `admin/totp.css`, `admin/totpmessages.i18n.js`, `admin/userSecurity.js` | *(no wireframe)* |
+| `user-management/admin/group-management.md` | `admin/group.htmlm`, `admin/group.js` | *(no wireframe)* |
+| `user-management/admin/skill.md` | `admin/skill.htmlm`, `admin/skill.js` | *(no wireframe)* |
+| `user-management/admin/onboarding-flow.md` | `onboarding/` | *(no wireframe)* |
 | `user-management/dashboard/dialogs-user-management.md` | `dash/index.htmlm` (lines 624–896), `dash/dash.js` | `user-management/dashboard/user-stats.pen` (.png) |
 
 ---
@@ -147,8 +147,8 @@ Legend:
 | Treatment | `treatment-core/treatment-and-category.md` | `treatment/`, `treatmentCategory/` |
 | Treatment | `treatment-core/treatment-plan.md` | `treatmentPlan/` |
 | Treatment | `warning/warning-management.md` | `warning/` |
-| User Mgmt | `admin-user/user-management.md` | `admin/user.htmlm`, `admin/user.js` |
-| User Mgmt | `admin-user/06-totp-onboarding.md` | `admin/totpOnboarding.html`, `admin/userSecurity.htmlm` |
-| User Mgmt | `admin-group/group-management.md` | `admin/group.htmlm`, `admin/group.js` |
-| User Mgmt | `admin-skill/skill.md` | `admin/skill.htmlm`, `admin/skill.js` |
-| User Mgmt | `onboarding/onboarding-flow.md` | `onboarding/` |
+| User Mgmt | `admin/user-management.md` | `admin/user.htmlm`, `admin/user.js` |
+| User Mgmt | `admin/totp-onboarding.md` | `admin/totpOnboarding.html`, `admin/userSecurity.htmlm` |
+| User Mgmt | `admin/group-management.md` | `admin/group.htmlm`, `admin/group.js` |
+| User Mgmt | `admin/skill.md` | `admin/skill.htmlm`, `admin/skill.js` |
+| User Mgmt | `admin/onboarding-flow.md` | `onboarding/` |

@@ -83,20 +83,15 @@ specs/wireframes/
 └── README.md                        # Project overview
 ```
 
-### Legacy Directories (may contain outdated files)
+### Cross-Cutting Directories (analysis only)
 
-These directories exist from earlier naming conventions and may contain stale files:
-- `specs/wireframes/administration/` → superseded by `accounting/` and `planning/appointment-admin/`
-- `specs/wireframes/appointments/` → superseded by `planning/appointment/`
-- `specs/wireframes/consultations/` → superseded by `treatment/consultation/`
-- `specs/wireframes/customers/` → superseded by `customer/`
-- `specs/wireframes/dashboard/` → superseded by `system/dashboard/` and domain-specific dashboards
-- `specs/wireframes/includes/` → superseded by `system/includes/`
-- `specs/wireframes/notifications/` → superseded by `system/notification/`
-- `specs/wireframes/shifts/` → superseded by `planning/shift/`
-- `specs/wireframes/staff/` → superseded by `user-management/profile/`
-- `specs/wireframes/system-admin/` → superseded by `system/admin/` and `system-admin/` (CDR call, workhour)
-- `specs/wireframes/treatments/` → superseded by `treatment/`
+These directories exist only in `specs/analysis/` and have no wireframe equivalents because they span multiple domains:
+
+| Directory | Purpose |
+|:---|:---|
+| `i18n/` | Translation analysis, domain-specific i18n docs, hardcoded strings, missing keys |
+| `mongodb-mapping/` | MongoDB-to-Prisma schema mapping documentation |
+| `permissions/` | Permission analysis (currently empty) |
 
 ---
 

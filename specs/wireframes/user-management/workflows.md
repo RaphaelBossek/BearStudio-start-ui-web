@@ -964,10 +964,10 @@ Date picker input. Stats collection table with icon-labeled columns: department 
 
 1440px page with 4-column grid (code, hours, priority, description).
 
-![Work Hour List](../system-admin/workhour-list.png)
+![Work Hour List](../planning/appointment-support/workhour-list.png)
 
 ### W32b: Work Hour Detail
 
 600px dialog with code input, hours numeric field, priority, and description textarea.
 
-![Work Hour Detail](../system-admin/workhour-detail.png)
+![Work Hour Detail](../planning/appointment-support/workhour-detail.png)
