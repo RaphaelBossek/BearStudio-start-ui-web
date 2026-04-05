@@ -1,3 +1,10 @@
+---
+title: 'Warning Management'
+---
+
+---
+---
+
 # Warning / Allergy Management -- Legacy Analysis
 
 > **Source**: `webapp/warning/index.htmlm` (87 lines), `webapp/warning/index.js` (71 lines), `webapp/warning/messages.i18n.js` (45 lines)

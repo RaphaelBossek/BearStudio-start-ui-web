@@ -1,3 +1,7 @@
+---
+title: 'Month View'
+---
+
 # 11 - Expert Month View & Holiday Approval Dialog
 
 ## Page Navigation Diagram

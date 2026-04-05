@@ -1,3 +1,10 @@
+---
+title: 'Dialogs Treatment'
+---
+
+---
+---
+
 # 04 - Dashboard Dialogs — Treatment
 
 > **Split from**: `dash/dashboard-dialogs.md`

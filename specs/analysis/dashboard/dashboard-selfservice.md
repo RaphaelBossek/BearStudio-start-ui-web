@@ -1,3 +1,7 @@
+---
+title: 'Dashboard Selfservice'
+---
+
 # Dashboard Self-Service Sections Analysis
 
 **Source**: `videoclinic-prod/web/src/main/webapp/dash/index.htmlm` (lines 305-484)

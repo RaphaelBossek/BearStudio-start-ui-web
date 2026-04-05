@@ -1,3 +1,10 @@
+---
+title: 'Domains'
+---
+
+---
+---
+
 # Domains Directory
 
 This directory contains domain-driven design documentation organized by business domain.

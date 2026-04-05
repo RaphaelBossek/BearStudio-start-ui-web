@@ -1,3 +1,7 @@
+---
+title: 'Appointment Plan'
+---
+
 > **Split from**: `appointment-support/plan-cdr.md`
 > **Sections extracted here**: AppointmentPlan module (grid, detail form, filter, search, collision detection, publish plan, click actions), Close Month Dialog (shared component)
 > **Other domains received**: `system/cdr-call/cdr-call.md` got CdrCall + CdrCallAssignment sections

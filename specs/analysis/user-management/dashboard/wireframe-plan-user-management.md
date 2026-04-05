@@ -1,3 +1,7 @@
+---
+title: 'Wireframe Plan User Management'
+---
+
 # Wireframe Plan -- User Management (Dashboard) (Expanded)
 
 > **Split from**: `dash/wireframes.md`

@@ -1,3 +1,7 @@
+---
+title: 'Basisweb Wizard'
+---
+
 # BasisWeb Wizard (`#basisWebWizard`) — Analysis
 
 > **Source files:**

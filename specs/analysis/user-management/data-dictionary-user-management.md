@@ -1,3 +1,10 @@
+---
+title: 'Data Dictionary User Management'
+---
+
+---
+---
+
 # Data Dictionary — User Management
 
 This document defines the data dictionary for the User Management domain. It maps UI fields to their exact MongoDB collection fields, documents UI types, abstract data types, translations, and workflow actions.

@@ -1,3 +1,7 @@
+---
+title: 'Invoice Details'
+---
+
 # 02 — Invoice Details Dialog, Email Dialog & Print Template
 
 > **Source files analysed**

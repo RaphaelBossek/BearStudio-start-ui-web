@@ -1,3 +1,10 @@
+---
+title: 'Orphan'
+---
+
+---
+---
+
 # Orphaned Wireframes
 
 This directory contains wireframes that have been moved from their original location because the feature is no longer part of the core application.

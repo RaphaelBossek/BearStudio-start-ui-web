@@ -1,3 +1,7 @@
+---
+title: 'Workflows'
+---
+
 # System Domain — User Workflows & Wireframe Screenshots
 
 > **Domain**: System  

@@ -1,3 +1,7 @@
+---
+title: 'Workflows'
+---
+
 # Customer Domain — User Workflows
 
 This document describes the user experience and decision flows across all Customer domain entities: Customers, Locations, Contacts, Rooms, Equipment, and Customer Users. All diagrams represent the journey from the user's perspective, not internal system architecture.

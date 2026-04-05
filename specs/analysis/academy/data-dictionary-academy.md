@@ -1,3 +1,7 @@
+---
+title: 'Data Dictionary Academy'
+---
+
 # Data Dictionary: Academy
 
 ## Support Ticket (supportTicket)

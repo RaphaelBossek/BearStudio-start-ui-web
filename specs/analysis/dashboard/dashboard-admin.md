@@ -1,3 +1,7 @@
+---
+title: 'Dashboard Admin'
+---
+
 # Dashboard — Admin Sections (`{{#isAdmin}}`)
 
 > **Source**: `videoclinic-prod/web/src/main/webapp/dash/index.htmlm` lines 487–618

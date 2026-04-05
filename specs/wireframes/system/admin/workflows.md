@@ -1,3 +1,7 @@
+---
+title: 'Workflows'
+---
+
 # System Configuration (Sysconfig) -- Admin Workflows
 
 This document describes the user experience and decision flows when a system administrator uses the Sysconfig panel. All diagrams represent the journey from the admin's perspective, not internal system architecture.

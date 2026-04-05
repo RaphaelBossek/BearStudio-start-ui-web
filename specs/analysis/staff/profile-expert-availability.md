@@ -1,3 +1,7 @@
+---
+title: 'Profile Expert Availability'
+---
+
 # 04 - Expert Availability Grid Logic
 
 > **Source files**

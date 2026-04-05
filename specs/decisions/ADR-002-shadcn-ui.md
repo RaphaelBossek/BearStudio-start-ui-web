@@ -1,3 +1,7 @@
+---
+title: 'Adr 002 Shadcn Ui'
+---
+
 # ADR-002: Shadcn/ui
 
 **Date**: 2026-04-01  

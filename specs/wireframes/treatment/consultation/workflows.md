@@ -1,3 +1,7 @@
+---
+title: 'Workflows'
+---
+
 # Consultation Module — Workflows & Interdependencies
 
 > **Domain:** Treatment > Consultation  

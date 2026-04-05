@@ -1,3 +1,7 @@
+---
+title: 'Data Dictionary Interfaces'
+---
+
 # Data Dictionary: Interfaces
 
 ## BasisWeb Wizard (dashboard/basisWebWizard)

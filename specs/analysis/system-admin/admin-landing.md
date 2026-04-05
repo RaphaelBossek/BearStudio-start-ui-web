@@ -1,3 +1,7 @@
+---
+title: 'Admin Landing'
+---
+
 # Admin Landing Pages - UI Analysis
 
 > **Source**: `videoclinic-prod/web/src/main/webapp/admin/`

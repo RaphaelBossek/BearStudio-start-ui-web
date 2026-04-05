@@ -1,3 +1,7 @@
+---
+title: 'User Management'
+---
+
 # Admin User Management Page
 
 This analysis covers the **Admin User Management** page (`admin/user.htmlm` + `admin/user.js`). The page displays a user list in a SlickerGrid data grid with QuickFilter (A-Z alphabetical filtering), full-text search, and an inline detail panel for editing user properties. It includes three dialogs: Send Password, Set Password, and API Key management.

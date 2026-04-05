@@ -1,3 +1,7 @@
+---
+title: 'Consultation Details Js'
+---
+
 # 08 — Consultation Details: JavaScript Behavior and State Management
 
 > **Source files analyzed:**

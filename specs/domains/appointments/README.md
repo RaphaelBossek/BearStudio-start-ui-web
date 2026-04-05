@@ -1,3 +1,7 @@
+---
+title: 'Appointments'
+---
+
 # Appointments Domain
 
 > **Last Updated**: 2026-04-01  

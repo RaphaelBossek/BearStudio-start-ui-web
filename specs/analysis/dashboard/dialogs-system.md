@@ -1,3 +1,7 @@
+---
+title: 'Dialogs System'
+---
+
 # 04 - Dashboard Dialogs — System
 
 > **Split from**: `dash/dashboard-dialogs.md`

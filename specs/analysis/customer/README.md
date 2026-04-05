@@ -1,3 +1,10 @@
+---
+title: 'Customer'
+---
+
+---
+---
+
 # Customer Domain — Analysis Documents
 
 Customers, locations, contacts, rooms, equipment.

@@ -1,3 +1,7 @@
+---
+title: 'Data Dictionary Treatment'
+---
+
 # Data Dictionary: Treatment
 
 This document contains the data dictionary for the Treatment domain, mapping UI elements to their MongoDB database paths.

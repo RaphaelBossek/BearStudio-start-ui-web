@@ -1,3 +1,10 @@
+---
+title: 'Consultation Details Standard'
+---
+
+---
+---
+
 # 03 - Standard Consultation Detail Data Form
 
 **Source**: `videoclinic-prod/web/src/main/webapp/consultation/detailDataStandard.html` (317 lines)

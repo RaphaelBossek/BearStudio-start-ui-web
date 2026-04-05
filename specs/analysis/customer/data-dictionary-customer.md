@@ -1,3 +1,7 @@
+---
+title: 'Data Dictionary Customer'
+---
+
 # Data Dictionary — Customer
 
 This document maps UI elements from the Customer domain to their underlying MongoDB data models.

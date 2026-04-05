@@ -1,3 +1,10 @@
+---
+title: 'Entity Model'
+---
+
+---
+---
+
 # Appointments Domain - Entity Model
 
 > **Last Updated**: 2026-04-01  

@@ -1,3 +1,7 @@
+---
+title: 'Onboarding Flow'
+---
+
 # Onboarding Module -- Legacy UI Analysis
 
 > **Source**: `videoclinic-prod/web/src/main/webapp/onboarding/`

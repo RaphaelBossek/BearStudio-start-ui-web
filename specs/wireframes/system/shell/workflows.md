@@ -1,3 +1,7 @@
+---
+title: 'Workflows'
+---
+
 # Application Shell Workflows
 
 > **Domain**: System / Application Shell  

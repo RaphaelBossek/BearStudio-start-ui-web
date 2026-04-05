@@ -1,3 +1,10 @@
+---
+title: 'Analysis'
+---
+
+---
+---
+
 # Analysis Domain Documentation
 
 This directory contains domain-driven analysis documentation for the application.

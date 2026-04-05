@@ -1,3 +1,10 @@
+---
+title: 'Dialogs Planning'
+---
+
+---
+---
+
 # 04 - Dashboard Dialogs — Planning
 
 > **Split from**: `dash/dashboard-dialogs.md`

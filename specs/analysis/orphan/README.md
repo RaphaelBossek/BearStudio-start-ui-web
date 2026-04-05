@@ -1,3 +1,7 @@
+---
+title: 'Orphan'
+---
+
 # Orphaned Analysis Content
 
 This directory contains analysis documentation that has been moved from its original location because the feature is no longer part of the core application or has been relocated.

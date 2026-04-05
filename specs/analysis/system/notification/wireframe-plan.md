@@ -1,3 +1,7 @@
+---
+title: 'Wireframe Plan'
+---
+
 # Wireframe Creation Plan — Notification Module
 
 > Target directory: `specs/wireframes/notification/`

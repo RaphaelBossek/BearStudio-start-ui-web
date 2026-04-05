@@ -1,3 +1,7 @@
+---
+title: 'Appointment List'
+---
+
 # Appointment List Page
 
 This analysis covers the **Appointment List** page (`appointment/index.htmlm` + `appointment/index.js`). The page displays appointments in a **MonthTable** (calendar-style monthly grid), not a standard DataTables row-based table. Each column represents a "job" (service/shift), each row represents a day of the month, and cells contain appointment entries with state-colored icons and assigned staff sub-rows.

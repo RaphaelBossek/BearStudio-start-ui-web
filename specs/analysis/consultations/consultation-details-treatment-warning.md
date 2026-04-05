@@ -1,3 +1,10 @@
+---
+title: 'Consultation Details Treatment Warning'
+---
+
+---
+---
+
 # 06 — Consultation Details: Treatment & Warning Sub-forms
 
 > **Source files analysed**

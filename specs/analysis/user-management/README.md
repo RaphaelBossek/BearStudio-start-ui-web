@@ -1,3 +1,10 @@
+---
+title: 'User Management'
+---
+
+---
+---
+
 # User Management Domain — Analysis Documents
 
 Users, profiles, authentication: profile management (60+ fields), staff management, TOTP 2FA, skills, groups.

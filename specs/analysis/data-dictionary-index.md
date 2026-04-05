@@ -1,3 +1,7 @@
+---
+title: 'Data Dictionary Index'
+---
+
 # Data Dictionary — Central Index
 
 > **Status**: COMPLETED (Phase D)

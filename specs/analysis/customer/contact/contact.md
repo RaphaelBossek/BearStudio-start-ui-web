@@ -1,3 +1,7 @@
+---
+title: 'Contact'
+---
+
 > **Split from**: `entity-cruds/room-equipment-contact-medication-patientdata.md`
 > **Sections extracted here**: Common CRUD Pattern, 3. Contact, Cross-Module Summary
 > **Other domains received**: `customer/room/room.md` (Common CRUD Pattern, 1. Room, Cross-Module Summary), `customer/equipment/equipment.md` (Common CRUD Pattern, 2. Equipment, Cross-Module Summary), `treatment/medication/medication.md` (Common CRUD Pattern, 4. Medication, Cross-Module Summary), `treatment/patient-data/patient-data.md` (Common CRUD Pattern, 5. PatientData, Cross-Module Summary)

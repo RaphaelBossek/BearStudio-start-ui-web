@@ -1,3 +1,7 @@
+---
+title: 'Analysis Wireframes Mapping'
+---
+
 # Analysis → Wireframes Mapping
 
 This table maps each analysis document in `specs/analysis/` to its brownfield source in `brownfield/web/src/main/webapp/` and its corresponding wireframe artifact(s) in `specs/wireframes/`.

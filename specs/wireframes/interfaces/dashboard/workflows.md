@@ -1,3 +1,7 @@
+---
+title: 'Workflows'
+---
+
 # BasisWeb Wizard -- User Workflows
 
 This document describes the user experience and decision flows when a clinical staff member starts a consultation via the BasisWeb Wizard. All diagrams represent the journey from the user's perspective, not internal system architecture.

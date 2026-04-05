@@ -1,3 +1,10 @@
+---
+title: 'Wireframe Plan Batch11'
+---
+
+---
+---
+
 # Wireframe Plan — System Domain (Batch 11)
 
 > **Batch 11**: MOTD & Template Editor, CDR Call & Assignment, System Config CRUDs, Templates & Files

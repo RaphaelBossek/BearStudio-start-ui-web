@@ -1,3 +1,7 @@
+---
+title: 'Profile Dialogs'
+---
+
 # 03 - Profile Supporting Dialogs
 
 > **Source module**: `webapp/profile/`

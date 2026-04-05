@@ -1,3 +1,7 @@
+---
+title: 'Appointment Admin'
+---
+
 # Appointment Admin Module Analysis
 
 > **Source**: `appointmentAdmin/index.htmlm` + `appointmentAdmin/index.js` + `appointmentAdmin/messages.i18n.js`

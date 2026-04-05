@@ -1,3 +1,7 @@
+---
+title: 'Profile Form'
+---
+
 # Profile Form & Personal Profile Page -- UI Analysis
 
 > **Source files analysed**

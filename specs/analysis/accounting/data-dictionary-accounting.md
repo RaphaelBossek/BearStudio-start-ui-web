@@ -1,3 +1,10 @@
+---
+title: 'Data Dictionary Accounting'
+---
+
+---
+---
+
 # Data Dictionary: Accounting
 
 This document defines the data dictionary for the **Accounting** domain, mapping UI elements to their backend data structures.

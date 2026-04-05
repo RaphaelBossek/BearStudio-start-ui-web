@@ -1,3 +1,7 @@
+---
+title: 'Appointment Assign User'
+---
+
 # Appointment Assign User / Collision Dialog — Legacy UI Analysis
 
 > **Source files analyzed:**

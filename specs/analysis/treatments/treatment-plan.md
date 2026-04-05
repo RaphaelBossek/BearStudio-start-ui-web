@@ -1,3 +1,10 @@
+---
+title: 'Treatment Plan'
+---
+
+---
+---
+
 # Treatment Plan Page
 
 This analysis covers the **Treatment Plan** page (`treatmentPlan/index.htmlm` + `treatmentPlan/index.js` + `treatmentPlan/messages.i18n.js`). The page displays treatment plans in a standard **SlickerGrid** (17 columns -- the largest grid in the codebase), with a create dialog featuring an embedded expert week calendar, and a detail/edit dialog with appointment position collections and file attachments.

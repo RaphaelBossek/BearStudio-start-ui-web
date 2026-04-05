@@ -1,3 +1,7 @@
+---
+title: 'Workflows'
+---
+
 # Treatment Domain -- User Workflows
 
 This document describes the user experience and decision flows for the Treatment domain: Questionnaire (QM) completion, Consultation Start (wizard + routing), Appointment Summarization, and Incarceration retrieval. All diagrams represent the journey from the user's perspective, not internal system architecture.

@@ -1,3 +1,7 @@
+---
+title: 'Wireframe Plan'
+---
+
 # Wireframe Creation Plan — Planning Domain: Appointment Support Module
 
 > To be executed **after** all Markdown analysis documents are reviewed.

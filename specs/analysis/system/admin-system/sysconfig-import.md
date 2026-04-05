@@ -1,3 +1,7 @@
+---
+title: 'Sysconfig Import'
+---
+
 > **Split from**: `admin/sysadmin-views.md`
 > **Sections extracted here**: Navigation Structure, System Configuration (sysconfig), CSV Import
 > **Other domains received**: `user-management/admin-group/group-management.md` got Group Management sections

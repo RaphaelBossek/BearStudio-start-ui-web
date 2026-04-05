@@ -1,3 +1,7 @@
+---
+title: 'Wireframe Plan'
+---
+
 # Wireframe Creation Plan — Accounting Domain
 
 > To be executed **after** all Markdown analysis documents are reviewed.

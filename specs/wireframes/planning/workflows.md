@@ -1,3 +1,10 @@
+---
+title: 'Workflows'
+---
+
+---
+---
+
 # Planning Domain — User Workflows
 
 This document describes the user experience and decision flows for the Planning domain: Appointment lifecycle (MonthTable grid, detail dialog, state machine), Self-service dashboard (available actions, confirmations), Calendar view, Expert availability management, and supporting dialogs (shift, ad-hoc appointment, end shift). All diagrams represent the journey from the user's perspective, not internal system architecture.

@@ -1,3 +1,7 @@
+---
+title: 'Wireframe Plan'
+---
+
 # Wireframe Creation Plan — Appointment Module
 
 > **Status**: COMPLETED

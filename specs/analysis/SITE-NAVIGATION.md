@@ -1,3 +1,7 @@
+---
+title: 'Site Navigation'
+---
+
 # Application Navigation & Sitemap
 
 > **Source**: Legacy `site.htmlm` application shell  

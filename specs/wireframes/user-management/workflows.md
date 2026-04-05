@@ -1,3 +1,10 @@
+---
+title: 'Workflows'
+---
+
+---
+---
+
 # User Management -- User Workflows
 
 This document describes the user experience and decision flows for the User Management domain. All diagrams represent the journey from the user's perspective, not internal system architecture.

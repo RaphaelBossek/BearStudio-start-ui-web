@@ -1,3 +1,7 @@
+---
+title: 'Dashboard'
+---
+
 # Dashboard Domain
 
 > **Legacy URLs**: `/dash.html`, `/monthView.html`, `/weekView.html`, `/expertWorkMonthly.html`  

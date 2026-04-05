@@ -1,3 +1,10 @@
+---
+title: 'Treatment And Category'
+---
+
+---
+---
+
 # Treatment List & Treatment Category CRUD
 
 This analysis covers two related pages:

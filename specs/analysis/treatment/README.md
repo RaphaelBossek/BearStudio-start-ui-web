@@ -1,3 +1,7 @@
+---
+title: 'Treatment'
+---
+
 # Treatment Domain — Analysis Documents
 
 Core medical data: consultations, treatments, prescriptions, warnings, quality management, patient data.

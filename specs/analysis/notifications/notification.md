@@ -1,3 +1,7 @@
+---
+title: 'Notification'
+---
+
 # Notification Module -- Legacy UI Analysis
 
 > **Source files analysed**

@@ -1,3 +1,10 @@
+---
+title: 'Wireframe Plan Registry'
+---
+
+---
+---
+
 # Wireframe Plan Registry
 
 > **Status**: COMPLETE — All 43 directories have wireframe plans as of 2026-03-30

@@ -1,3 +1,10 @@
+---
+title: 'Questionnaire Detail'
+---
+
+---
+---
+
 # 02 - Questionnaire Detail Dialog
 
 > **Source files analysed**

@@ -1,3 +1,10 @@
+---
+title: 'Consultation Wizard'
+---
+
+---
+---
+
 # Consultation Wizard — Legacy UI Analysis
 
 > Source files:

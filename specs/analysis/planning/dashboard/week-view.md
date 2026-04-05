@@ -1,3 +1,7 @@
+---
+title: 'Week View'
+---
+
 # Analysis: Expert Week View
 
 > **Source files**

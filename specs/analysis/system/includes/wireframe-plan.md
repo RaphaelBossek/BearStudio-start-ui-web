@@ -1,3 +1,7 @@
+---
+title: 'Wireframe Plan'
+---
+
 # Wireframe Creation Plan — Includes Module + Application Shell
 
 > Target directory: `specs/wireframes/includes/` (includes components)  

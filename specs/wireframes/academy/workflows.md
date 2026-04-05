@@ -1,3 +1,10 @@
+---
+title: 'Workflows'
+---
+
+---
+---
+
 # Academy Domain -- User Workflows
 
 This document describes the user experience and decision flows across the Academy domain, covering support ticket management, video administration, video library browsing, and video category management. All diagrams represent the journey from the user's perspective, not internal system architecture.

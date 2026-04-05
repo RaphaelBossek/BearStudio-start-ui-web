@@ -1,3 +1,7 @@
+---
+title: 'Dialogs User Management'
+---
+
 # 04 - Dashboard Dialogs — User Management
 
 > **Split from**: `dash/dashboard-dialogs.md`

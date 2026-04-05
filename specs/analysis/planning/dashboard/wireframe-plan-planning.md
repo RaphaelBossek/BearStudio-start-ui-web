@@ -1,3 +1,10 @@
+---
+title: 'Wireframe Plan Planning'
+---
+
+---
+---
+
 # Wireframe Plan — Planning Dashboard
 
 > **Self-contained wireframe plan** — expanded from stub for Batch 4 execution.

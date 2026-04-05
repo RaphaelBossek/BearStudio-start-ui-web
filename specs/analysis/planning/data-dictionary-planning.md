@@ -1,3 +1,7 @@
+---
+title: 'Data Dictionary Planning'
+---
+
 # Data Dictionary: Planning
 
 ## Overview

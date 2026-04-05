@@ -1,3 +1,7 @@
+---
+title: 'Dashboard Main'
+---
+
 # Dashboard — Main Page (Standard User + Verify Sections)
 
 This analysis covers the **standard user** (`{{#isStandard}}`) blocks and the **consultations-to-control** (`{{#canVerify}}`) block from `dash/index.htmlm`. Admin-only sections (`{{#isAdmin}}`) and self-service sections (`{{#selfService}}`) are out of scope for this document.

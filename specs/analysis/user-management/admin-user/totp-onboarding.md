@@ -1,3 +1,7 @@
+---
+title: 'Totp Onboarding'
+---
+
 # 06 - Admin TOTP 2FA Onboarding
 
 ## Source Files

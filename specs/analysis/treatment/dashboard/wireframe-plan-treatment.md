@@ -1,3 +1,7 @@
+---
+title: 'Wireframe Plan Treatment'
+---
+
 # Wireframe Plan — Treatment (Dashboard Dialogs)
 
 > **Split from**: `dash/wireframes.md`

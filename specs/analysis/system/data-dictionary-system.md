@@ -1,3 +1,7 @@
+---
+title: 'Data Dictionary System'
+---
+
 # Data Dictionary — System (Tier 3)
 
 This document maps all UI elements from the System modules (Sysconfig, Telephony/CDR, Notifications, Utilities, and Admin dashboards) to their corresponding MongoDB collection fields.

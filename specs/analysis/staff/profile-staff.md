@@ -1,3 +1,7 @@
+---
+title: 'Profile Staff'
+---
+
 # Staff Management List Page Analysis
 
 > **Source files analysed**

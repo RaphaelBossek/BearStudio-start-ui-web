@@ -1,3 +1,10 @@
+---
+title: 'Adr 005 Domain Driven Structure'
+---
+
+---
+---
+
 # ADR-005: Domain-Driven Documentation Structure
 
 **Date**: 2026-04-01  

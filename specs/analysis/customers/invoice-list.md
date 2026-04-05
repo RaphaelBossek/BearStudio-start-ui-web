@@ -1,3 +1,7 @@
+---
+title: 'Invoice List'
+---
+
 # Invoice List Page
 
 This analysis covers the **Invoice List** page (`invoice/index.htmlm` + `invoice/index.js` + `invoice/messages.i18n.js`). The page displays invoices in a standard **SlickerGrid** (row-based data table) filtered by a month/year toolbar. It provides extensive toolbar actions for viewing, editing, deleting, sending, exporting, and downloading invoices in multiple formats (PDF, xRechnung/XML, XLS, worklog templates).

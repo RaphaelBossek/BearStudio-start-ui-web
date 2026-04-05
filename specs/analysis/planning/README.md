@@ -1,3 +1,7 @@
+---
+title: 'Planning'
+---
+
 # Planning Domain — Analysis Documents
 
 Scheduling & appointments: appointment lifecycle (12-state machine), shifts, councils, calendar views, expert availability.

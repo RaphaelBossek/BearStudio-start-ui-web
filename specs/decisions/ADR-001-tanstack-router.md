@@ -1,3 +1,7 @@
+---
+title: 'Adr 001 Tanstack Router'
+---
+
 # ADR-001: TanStack Router
 
 **Date**: 2026-04-01  

@@ -1,3 +1,10 @@
+---
+title: 'Wireframe Plan'
+---
+
+---
+---
+
 # Wireframe Creation Plan — Profile Module (Expanded)
 
 > Target directory: `specs/wireframes/staff/`

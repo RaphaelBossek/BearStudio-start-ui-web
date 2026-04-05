@@ -1,3 +1,7 @@
+---
+title: 'Interfaces'
+---
+
 # Interfaces Domain — Analysis Documents
 
 External system integration: BasisWeb patient import wizard.

@@ -1,3 +1,7 @@
+---
+title: 'Components'
+---
+
 # Component Library
 
 This directory contains documentation about UI components used throughout the application.

@@ -1,3 +1,7 @@
+---
+title: 'Wireframe Plan Batch12'
+---
+
 # Wireframe Plan — Treatment Domain (Batch 12)
 
 > **Batch 12**: Appointment Details Patient Tab, Medication, Patient Data, Treatment List & Category, Treatment Plan, Warning Management

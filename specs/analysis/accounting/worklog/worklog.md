@@ -1,3 +1,7 @@
+---
+title: 'Worklog'
+---
+
 > **Split from**: `utility/worklog-templates-files.md`
 > **Sections extracted here**: 1. Worklog (1.1–1.8), 7. Summary of Cross-Module Dependencies (worklog entry), 8. Shared Patterns Across All Modules
 > **Other domains received**: `accounting/invoice-receiver/invoice-receiver.md` got sections 6 (Invoice Receiver) + cross-module (invoiceReceiver entry); `system/templates-files/templates-files.md` got sections 2 (Export Template), 3 (Notification Template), 4 (User File) + cross-module entries; `academy/video-history/user-video-history.md` got section 5 (User Video History) + cross-module entry

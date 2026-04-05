@@ -1,3 +1,10 @@
+---
+title: 'Permissions'
+---
+
+---
+---
+
 # Appointments Domain - Permissions
 
 > **Last Updated**: 2026-04-01  

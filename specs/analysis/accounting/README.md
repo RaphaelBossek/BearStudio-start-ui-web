@@ -1,3 +1,7 @@
+---
+title: 'Accounting'
+---
+
 # Accounting Domain — Analysis Documents
 
 Invoices, billing, pricing: invoice management, job configuration (price matrices), worklog, billing.

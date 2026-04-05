@@ -1,3 +1,7 @@
+---
+title: 'System'
+---
+
 # System Domain — Analysis Documents
 
 System config, notifications, shared infrastructure, login flow, CDR calls.

@@ -1,3 +1,10 @@
+---
+title: 'Workhour'
+---
+
+---
+---
+
 # 04 - Work Hour Templates
 
 > **Split from**: `admin/simple-cruds.md`

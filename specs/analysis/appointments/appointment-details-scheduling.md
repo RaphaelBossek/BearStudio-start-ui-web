@@ -1,3 +1,7 @@
+---
+title: 'Appointment Details Scheduling'
+---
+
 > **Split from**: `appointment/appointment-details.md`
 > **Sections extracted here**: State transitions (#appointmentStateDlg), user assignment (autocomplete, suggestions, accept/reject/reserve/override/abort), assignment history, referenced appointments, collision handling, dialog structure, header, tabs, details/edit form, state machines, click actions, server API, state-driven visibility, diagrams
 > **Other domains received**: `treatment/appointment-patient/appointment-details-patient.md` got patient data CRUD (add/edit/remove patient), patient file uploads/downloads, patient data attachments

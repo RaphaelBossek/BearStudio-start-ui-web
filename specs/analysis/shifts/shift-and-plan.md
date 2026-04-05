@@ -1,3 +1,7 @@
+---
+title: 'Shift And Plan'
+---
+
 # Shift List & Shift Plan Pages
 
 This analysis covers two related pages:

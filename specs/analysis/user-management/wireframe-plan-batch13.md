@@ -1,3 +1,7 @@
+---
+title: 'Wireframe Plan Batch13'
+---
+
 # Wireframe Plan — User Management & Extras (Batch 13 + Batch 14)
 
 > **Batch 13**: Admin User Management, TOTP Security, Group Management, Skill Management, Onboarding Flow

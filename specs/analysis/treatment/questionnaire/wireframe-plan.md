@@ -1,3 +1,10 @@
+---
+title: 'Wireframe Plan'
+---
+
+---
+---
+
 # Wireframe Creation Plan — Questionnaire Module
 
 > To be executed **after** all Markdown analysis documents are reviewed.

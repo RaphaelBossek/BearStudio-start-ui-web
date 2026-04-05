@@ -1,3 +1,10 @@
+---
+title: 'Workflows'
+---
+
+---
+---
+
 # Appointments Domain - Workflows
 
 > **Last Updated**: 2026-04-01  

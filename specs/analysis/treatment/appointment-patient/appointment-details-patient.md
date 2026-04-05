@@ -1,3 +1,7 @@
+---
+title: 'Appointment Details Patient'
+---
+
 > **Split from**: `appointment/appointment-details.md`
 > **Sections extracted here**: Patient data CRUD (add/edit/remove patient), patient file uploads/downloads, patient data attachments (Tab 3 -- Patients, patientDataDlg, treatments sub-collection)
 > **Other domains received**: `planning/appointment/appointment-details-scheduling.md` got state transitions, user assignment (autocomplete, suggestions, accept/reject/reserve/override/abort), assignment history, referenced appointments, collision handling

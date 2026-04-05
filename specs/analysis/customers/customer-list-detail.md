@@ -1,3 +1,10 @@
+---
+title: 'Customer List Detail'
+---
+
+---
+---
+
 # Customer List & Detail Page — Legacy UI Analysis
 
 > **Source files analyzed:**

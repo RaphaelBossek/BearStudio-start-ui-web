@@ -1,3 +1,10 @@
+---
+title: 'Consultation List'
+---
+
+---
+---
+
 # Consultation List Page — Legacy UI Analysis
 
 > **Source files analyzed:**

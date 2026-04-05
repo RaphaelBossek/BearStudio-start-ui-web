@@ -1,3 +1,7 @@
+---
+title: 'Academy'
+---
+
 # Academy Domain — Analysis Documents
 
 Training, videos, support: support tickets, video management, video library.

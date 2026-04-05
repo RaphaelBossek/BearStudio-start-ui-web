@@ -1,3 +1,10 @@
+---
+title: 'Workflows'
+---
+
+---
+---
+
 # Accounting Domain — User Workflows
 
 ## Context

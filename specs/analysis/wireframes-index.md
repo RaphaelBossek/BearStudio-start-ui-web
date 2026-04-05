@@ -1,3 +1,7 @@
+---
+title: 'Wireframes Index'
+---
+
 # Wireframes — Central Index
 
 > **Status**: COMPLETE  

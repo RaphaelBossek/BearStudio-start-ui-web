@@ -1,3 +1,7 @@
+---
+title: 'Site Shell'
+---
+
 # Application Shell Analysis (`site.htmlm`)
 
 > **Source**: `web/src/main/webapp/site.htmlm` (272 lines)  

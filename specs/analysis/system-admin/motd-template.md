@@ -1,3 +1,7 @@
+---
+title: 'Motd Template'
+---
+
 # 04 - MOTD & Template Editor
 
 > **Split from**: `admin/simple-cruds.md`

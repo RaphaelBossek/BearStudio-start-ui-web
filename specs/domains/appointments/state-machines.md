@@ -1,3 +1,10 @@
+---
+title: 'State Machines'
+---
+
+---
+---
+
 # Appointments Domain - State Machines
 
 > **Last Updated**: 2026-04-01  

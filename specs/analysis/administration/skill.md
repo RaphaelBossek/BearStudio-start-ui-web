@@ -1,3 +1,10 @@
+---
+title: 'Skill'
+---
+
+---
+---
+
 # 04 - Skill Management
 
 > **Split from**: `admin/simple-cruds.md`

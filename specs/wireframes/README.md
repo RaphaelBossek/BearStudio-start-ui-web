@@ -1,3 +1,10 @@
+---
+title: 'Wireframes'
+---
+
+---
+---
+
 # Wireframes Domain Documentation
 
 This directory contains wireframes organized by business domain, mirroring the structure of `analysis/`.

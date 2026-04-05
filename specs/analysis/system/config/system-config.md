@@ -1,3 +1,10 @@
+---
+title: 'System Config'
+---
+
+---
+---
+
 > **Split from**: `config-cruds/config-cruds.md`
 > **Sections extracted here**: locationType (A), exclusionCriteria (B), supportCategory (D), loginNotification (I)
 > **Other domains received**: accounting/config/accounting-config.md got jobPriceList (E), product (F), closedMonth (G), stornoGroup (C), expertWorkMonthly (H)
