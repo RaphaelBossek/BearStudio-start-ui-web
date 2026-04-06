@@ -1,3 +1,7 @@
+---
+title: 'Create Wireframes'
+---
+
 # UI Wireframing and Workflow Documentation Guide
 
 > **Status**: WIREFRAMES COMPLETE — All 107 wireframes across 8 domains have been created and exported as PNGs.

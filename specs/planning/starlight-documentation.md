@@ -1,3 +1,7 @@
+---
+title: 'Starlight Documentation'
+---
+
 # Starlight Documentation Migration Plan
 
 This document provides a mapping from the current `specs/wireframes` directory structure to the new Starlight documentation organization as defined in `docs/src/content/docs/index.mdx`.

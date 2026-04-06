@@ -1,3 +1,7 @@
+---
+title: 'Batched Recheck Guide'
+---
+
 # Batched Translation Recheck - How-To Guide
 
 ## Overview

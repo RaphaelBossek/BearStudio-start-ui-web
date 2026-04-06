@@ -1,3 +1,7 @@
+---
+title: 'Translation Summary'
+---
+
 # Translation Lookup Summary
 
 **Generated**: 2026-03-30  

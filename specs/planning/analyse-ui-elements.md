@@ -1,3 +1,7 @@
+---
+title: 'Analyse Ui Elements'
+---
+
 # UI Elements Analysis: Site Shell and Navigation
 
 **Source Files**:

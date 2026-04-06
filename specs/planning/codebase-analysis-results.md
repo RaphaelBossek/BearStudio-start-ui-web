@@ -1,3 +1,7 @@
+---
+title: 'Codebase Analysis Results'
+---
+
 # Codebase Analysis Results
 
 Last updated: 2026-02-22

@@ -1,3 +1,7 @@
+---
+title: 'Fix Mermaid Linebreaks'
+---
+
 # Plan: Fix Mermaid Line Breaks (`\n` → `<br>`)
 
 ## Issue Summary

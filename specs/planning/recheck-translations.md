@@ -1,3 +1,7 @@
+---
+title: 'Recheck Translations'
+---
+
 # Batched Translation Recheck Plan
 
 ## Purpose
