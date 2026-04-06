@@ -80,6 +80,8 @@ fix_frontmatter "${project_dir}/specs/analysis"
 fix_frontmatter "${project_dir}/specs/wireframes"
 fix_frontmatter "${project_dir}/specs/domains"
 fix_frontmatter "${project_dir}/specs/decisions"
+fix_frontmatter "${project_dir}/specs/planning"
+fix_frontmatter "${project_dir}/specs/migration"
 
 # Clean existing content directories (with retry for robustness)
 clean_dir() {
@@ -100,16 +102,212 @@ clean_dir "${content_dir}/analysis"
 clean_dir "${content_dir}/wireframes"
 clean_dir "${content_dir}/domains"
 clean_dir "${content_dir}/decisions"
+clean_dir "${content_dir}/planning"
+clean_dir "${content_dir}/migration"
 
 # Copy spec directories to docs content
 cp -rf "${project_dir}/specs/analysis" "${content_dir}/analysis"
 cp -rf "${project_dir}/specs/wireframes" "${content_dir}/wireframes"
 cp -rf "${project_dir}/specs/domains" "${content_dir}/domains"
 cp -rf "${project_dir}/specs/decisions" "${content_dir}/decisions"
+cp -rf "${project_dir}/specs/planning" "${content_dir}/planning"
+cp -rf "${project_dir}/specs/migration" "${content_dir}/migration"
 
-# Generate sidebar items dynamically from directory structure
+# Mirror PNG/image files from specs/ to docs/public/assets/specs/
+# Starlight serves static assets from public/, so images must be there.
+# We preserve the directory structure under public/assets/specs/
+echo "Mirroring image assets to docs/public/assets/specs/..."
+public_assets="${docs_dir}/public/assets/specs"
+mkdir -p "$public_assets"
+# Sync all image files preserving directory structure
+rsync -a --include='*/' --include='*.png' --include='*.jpg' --include='*.jpeg' \
+  --include='*.gif' --include='*.svg' --include='*.webp' --exclude='*' \
+  "${project_dir}/specs/" "$public_assets/"
+
+# Rewrite image links in copied markdown files to point to /assets/specs/...
+# This converts relative image paths like ../../../../wireframes/foo/bar.png
+# to absolute Starlight paths like /assets/specs/wireframes/foo/bar.png
+_img_rewriter=$(mktemp /tmp/fix-images-XXXXXX.pl)
+cat > "$_img_rewriter" << 'IMGPERL_EOF'
+use strict;
+use warnings;
+use File::Basename;
+use File::Spec;
+
+# The content_dir and specs_dir are passed as arguments
+my $content_dir = shift @ARGV;
+my $specs_dir = shift @ARGV;
+
+foreach my $file (@ARGV) {
+  open my $fh, '<', $file or next;
+  my @lines = <$fh>;
+  close $fh;
+
+  # Determine the directory of the current file relative to content_dir
+  my $file_dir = dirname($file);
+
+  my $changed = 0;
+  my $in_code = 0;
+  foreach my $line (@lines) {
+    if ($line =~ /^```/) { $in_code = !$in_code; }
+    next if $in_code;
+
+    # Match both ![alt](url) and [text](url) where url ends with image extension
+    $line =~ s{
+      (\!?\[[^\]]*\]\()       # ![alt]( or [text](
+      (                        # capture URL
+        (?:\.\.?/)+            # one or more ../ or ./
+        [^)]+                  # rest of path
+        \.(?:png|jpg|jpeg|gif|svg|webp)  # image extension
+      )
+      (\))                     # closing paren
+    }{
+      my $pre = $1;
+      my $rel_url = $2;
+      my $post = $3;
+
+      # Resolve the relative URL to a filesystem path
+      my $abs_path = File::Spec->rel2abs($rel_url, $file_dir);
+
+      # Try to find the corresponding path under specs_dir
+      # The content_dir mirrors specs_dir structure, so strip content_dir prefix
+      # and use the specs-relative path
+      my $resolved = File::Spec->abs2rel($abs_path, $content_dir);
+
+      # Build the absolute URL for Starlight
+      "${pre}/assets/specs/${resolved}${post}";
+    }gex;
+  }
+
+  open my $out, '>', $file or next;
+  print $out @lines;
+  close $out;
+}
+IMGPERL_EOF
+
+# Collect all markdown files and pass to the image rewriter
+echo "Rewriting image links to /assets/specs/ paths..."
+find "${content_dir}/analysis" "${content_dir}/wireframes" "${content_dir}/domains" \
+     "${content_dir}/decisions" "${content_dir}/planning" "${content_dir}/migration" \
+     -type f \( -name "*.md" -o -name "*.mdx" \) 2>/dev/null | \
+  xargs perl "$_img_rewriter" "$content_dir" "${project_dir}/specs"
+rm -f "$_img_rewriter"
+
+# Rewrite markdown links for Starlight compatibility
+# Starlight serves each .md file as /{slug}/index.html, so relative links
+# need adjustment: ./sibling resolves to /{slug}/sibling instead of /../sibling.
+# This function:
+#   1. Strips .md extensions from link targets (Starlight uses extensionless routes)
+#   2. Converts README references to lowercase 'readme'
+#   3. Adds one extra ../ level to relative links (adjusts for Starlight dir-per-file)
+
+# Create the perl rewriter script in a temp file (avoids shell quoting issues)
+_perl_rewriter=$(mktemp /tmp/fix-links-XXXXXX.pl)
+cat > "$_perl_rewriter" << 'PERL_EOF'
+use strict;
+use warnings;
+
+my $in_code = 0;
+while (<>) {
+  if (/^```/) { $in_code = !$in_code; }
+  if (!$in_code) {
+    # Process markdown links: [text](relative-url)
+    # Skip: images ![...], absolute URLs, anchor-only, mailto
+    s/(?<![!])\[([^\]]*)\]\((?!https?:\/\/)(?!mailto:)(?!#)(?!\/)([^)]+)\)/rewrite_link($1, $2)/ge;
+  }
+  print;
+}
+
+sub rewrite_link {
+  my ($text, $url) = @_;
+
+  # Split URL into path and fragment
+  my ($path, $fragment) = split(/#/, $url, 2);
+
+  # Determine if the link needs path adjustment for Starlight.
+  # Two cases need the extra ../ level:
+  #   1. Links with .md extension (filesystem links)
+  #   2. Links starting with ./ that don't have a file extension
+  #      (these are broken in both filesystem and Starlight without adjustment)
+  # Links starting with ../ without .md are assumed to be already
+  # Starlight-compatible and left unchanged.
+  my $had_md = 0;
+  my $needs_adjustment = 0;
+
+  # Strip trailing / after .md (e.g., ./file.md/ -> ./file.md)
+  if ($path =~ s/\.md\//.md/g) { $had_md = 1; }
+
+  # Strip .md extension
+  if ($path =~ s/\.md$//) { $had_md = 1; }
+
+  # Detect resource links (.sh, .png, .py, etc.) — NOT markdown pages
+  my $is_resource = ($path =~ /\.\w+$/ && $path !~ /\.mdx?$/);
+
+  if ($had_md) {
+    $needs_adjustment = 1;
+  } elsif (!$is_resource && $path =~ /^\.\//) {
+    # Links starting with ./ without .md extension also need adjustment
+    # (e.g., ./planning#anchor, ./entity-model, ./domains/)
+    $needs_adjustment = 1;
+  }
+
+  if ($needs_adjustment) {
+    # Convert README to lowercase readme
+    $path =~ s/README$/readme/;
+
+    # Add one extra ../ level for relative links to markdown pages
+    # (adjusts for Starlight serving files as directories)
+    if ($path =~ s/^\.\///) {
+      $path = "../" . $path;
+    } elsif ($path =~ /^\.\.\//) {
+      $path = "../" . $path;
+    } else {
+      # Plain relative path like "sibling" or "sub/file"
+      $path = "../" . $path;
+    }
+  }
+
+  # Reassemble
+  my $new_url = $path;
+  $new_url .= "#" . $fragment if defined $fragment;
+
+  return "[$text]($new_url)";
+}
+PERL_EOF
+
+fix_links() {
+  local dir="$1"
+
+  if [ ! -d "$dir" ]; then
+    return
+  fi
+
+  find "$dir" -type f \( -name "*.md" -o -name "*.mdx" \) | while read -r file; do
+    local temp_file
+    temp_file=$(mktemp)
+    perl "$_perl_rewriter" "$file" > "$temp_file"
+    mv "$temp_file" "$file"
+  done
+  
+  echo "Fixed links in: $dir"
+}
+
+echo "Rewriting links for Starlight compatibility..."
+fix_links "${content_dir}/analysis"
+fix_links "${content_dir}/wireframes"
+fix_links "${content_dir}/domains"
+fix_links "${content_dir}/decisions"
+fix_links "${content_dir}/planning"
+fix_links "${content_dir}/migration"
+
+# Clean up temp perl script
+rm -f "$_perl_rewriter"
+
+# Generate sidebar JSON dynamically from directory structure
+# Only updates the sidebar: [...] array in astro.config.mjs, preserving the rest.
 generate_sidebar_items() {
   local dir="$1"
+  local indent="$2"
   
   if [ ! -d "${content_dir}/${dir}" ]; then
     return
@@ -119,109 +317,152 @@ generate_sidebar_items() {
     if [ -d "$subdir" ]; then
       local name
       name=$(basename "$subdir")
-      # Skip if name matches parent directory (avoid self-reference)
-      if [ "$name" = "$dir" ]; then
-        continue
-      fi
-      # Convert directory name to label (capitalize and replace dashes with spaces)
+      if [ "$name" = "$dir" ]; then continue; fi
       local label
       label=$(echo "$name" | sed 's/-/ /g' | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1)) tolower(substr($i,2))}1')
-      echo "            { label: '${label}', autogenerate: { directory: '${dir}/${name}' } },"
+      echo "${indent}{ label: '${label}', autogenerate: { directory: '${dir}/${name}' } },"
     fi
   done
 }
 
-# Generate sidebar for a flat directory (no subdirs, just files)
 generate_flat_sidebar() {
   local dir="$1"
   local label="$2"
+  local indent="$3"
   
   if [ ! -d "${content_dir}/${dir}" ]; then
     return
   fi
   
-  echo "            { label: '${label}', autogenerate: { directory: '${dir}' } },"
+  echo "${indent}{ label: '${label}', autogenerate: { directory: '${dir}' } },"
 }
 
-# Build complete sidebar configuration in a temp file
-temp_config=$(mktemp)
+# Build the new sidebar array content
+sidebar_content=$(mktemp)
+indent="        "
+sub_indent="            "
 
-cat > "$temp_config" << 'HEADER_EOF'
-// @ts-check
-
-import starlight from '@astrojs/starlight';
-import { defineConfig } from 'astro/config';
-import brokenLinksChecker from 'astro-broken-links-checker';
-import mermaid from 'astro-mermaid';
-
-export default defineConfig({
-  output: 'static',
-  integrations: [
-    brokenLinksChecker({ checkExternalLinks: false, throwError: false }),
-    mermaid({
-      theme: 'neutral', autoTheme: true, enableLog: false,
-      mermaidConfig: { flowchart: { curve: 'basis' } },
-      iconPacks: [
-        { name: 'logos', loader: () => fetch('https://unpkg.com/@iconify-json/logos@1/icons.json').then(r => r.json()) },
-        { name: 'iconoir', loader: () => fetch('https://unpkg.com/@iconify-json/iconoir@1/icons.json').then(r => r.json()) },
-      ],
-    }),
-    starlight({
-      title: 'VCA',
-      customCss: ['./src/styles/global.css'],
-      social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/videoclinic-co' }],
-      sidebar: [
+cat > "$sidebar_content" << SIDEBAR_HEADER
         { label: 'Introduction', slug: '' },
         {
           label: 'Analysis', collapsed: true,
           items: [
-HEADER_EOF
+SIDEBAR_HEADER
 
-generate_sidebar_items "analysis" >> "$temp_config"
+generate_sidebar_items "analysis" "$sub_indent" >> "$sidebar_content"
 
-cat >> "$temp_config" << 'MID1_EOF'
+cat >> "$sidebar_content" << 'MID1'
           ],
         },
         {
           label: 'Wireframes', collapsed: true,
           items: [
-MID1_EOF
+MID1
 
-generate_sidebar_items "wireframes" >> "$temp_config"
+generate_sidebar_items "wireframes" "$sub_indent" >> "$sidebar_content"
 
-cat >> "$temp_config" << 'MID2_EOF'
+cat >> "$sidebar_content" << 'MID2'
           ],
         },
         {
           label: 'Domains', collapsed: true,
           items: [
-MID2_EOF
+MID2
 
-generate_sidebar_items "domains" >> "$temp_config"
+generate_sidebar_items "domains" "$sub_indent" >> "$sidebar_content"
 
-cat >> "$temp_config" << 'MID3_EOF'
+cat >> "$sidebar_content" << 'MID3'
           ],
         },
         {
           label: 'Decisions', collapsed: true,
           items: [
-MID3_EOF
+MID3
 
-generate_flat_sidebar "decisions" "Architecture Decisions" >> "$temp_config"
+generate_flat_sidebar "decisions" "Architecture Decisions" "$sub_indent" >> "$sidebar_content"
 
-cat >> "$temp_config" << 'FOOTER_EOF'
+cat >> "$sidebar_content" << 'FOOTER'
           ],
         },
+        { label: 'Planning', autogenerate: { directory: 'planning' } },
+        { label: 'Migration', autogenerate: { directory: 'migration' } },
         { label: 'Billing & Invoicing', autogenerate: { directory: 'billing' } },
         { label: 'Sharing', autogenerate: { directory: 'sharing' } },
         { label: 'KIS Integration', autogenerate: { directory: 'integrations/kis' } },
-      ],
-    }),
-  ],
-});
-FOOTER_EOF
+FOOTER
 
-# Atomically replace the config file
-mv "$temp_config" "${astro_config}"
+# Use perl to replace only the sidebar: [...] array in astro.config.mjs
+# This preserves all other configuration (imports, plugins, theme, etc.)
+_sidebar_updater=$(mktemp /tmp/update-sidebar-XXXXXX.pl)
+cat > "$_sidebar_updater" << 'SIDEBARPERL_EOF'
+use strict;
+use warnings;
+
+my $config_file = shift @ARGV;
+my $sidebar_file = shift @ARGV;
+
+# Read the sidebar content
+open my $sfh, '<', $sidebar_file or die "Cannot read $sidebar_file: $!";
+my $new_sidebar = do { local $/; <$sfh> };
+close $sfh;
+chomp $new_sidebar;
+
+# Read the config file line by line and find the sidebar: [ ... ] block
+# using bracket counting for reliable matching
+open my $cfh, '<', $config_file or die "Cannot read $config_file: $!";
+my @lines = <$cfh>;
+close $cfh;
+
+my $sidebar_start = -1;  # line index of "sidebar: ["
+my $sidebar_end = -1;    # line index of matching "],"
+my $bracket_depth = 0;
+
+for (my $i = 0; $i < scalar @lines; $i++) {
+  if ($sidebar_start < 0) {
+    if ($lines[$i] =~ /sidebar:\s*\[/) {
+      $sidebar_start = $i;
+      # Count brackets on this line
+      $bracket_depth += ($lines[$i] =~ tr/[//);
+      $bracket_depth -= ($lines[$i] =~ tr/]//);
+      if ($bracket_depth == 0) {
+        $sidebar_end = $i;
+        last;
+      }
+    }
+  } else {
+    $bracket_depth += ($lines[$i] =~ tr/[//);
+    $bracket_depth -= ($lines[$i] =~ tr/]//);
+    if ($bracket_depth == 0) {
+      $sidebar_end = $i;
+      last;
+    }
+  }
+}
+
+if ($sidebar_start < 0 || $sidebar_end < 0) {
+  die "ERROR: Could not find sidebar: [...] block in $config_file\n";
+}
+
+# Reconstruct: lines before sidebar, new sidebar block, lines after sidebar
+my @before = @lines[0 .. $sidebar_start - 1];
+my @after = @lines[$sidebar_end + 1 .. $#lines];
+
+# Determine the indentation from the original sidebar line
+my ($indent) = ($lines[$sidebar_start] =~ /^(\s*)/);
+
+open my $out, '>', $config_file or die "Cannot write $config_file: $!";
+print $out @before;
+print $out "${indent}sidebar: [\n";
+print $out $new_sidebar;
+print $out "\n${indent}],\n";
+print $out @after;
+close $out;
+
+print "Updated sidebar in: $config_file\n";
+SIDEBARPERL_EOF
+
+echo "Updating sidebar configuration in astro.config.mjs..."
+perl "$_sidebar_updater" "$astro_config" "$sidebar_content"
+rm -f "$_sidebar_updater" "$sidebar_content"
 
 cd "${docs_dir}" && pnpm run rebuild
