@@ -149,7 +149,7 @@ specs/
 
 ## References
 
-- [MIGRATION-PLAN.md](../MIGRATION-PLAN.md)
-- [STRUCTURE.md](../STRUCTURE.md)
+- MIGRATION-PLAN.md (archived)
+- STRUCTURE.md (archived)
 - [Domain-Driven Design](https://martinfowler.com/bliki/DomainDrivenDesign.html)
 - [Domain-Driven Design Reference](https://domainlanguage.com/)

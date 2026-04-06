@@ -119,10 +119,10 @@ domains/
 
 ## Migration
 
-See [MIGRATION-PLAN.md](../MIGRATION-PLAN.md) for the complete migration strategy.
+See MIGRATION-PLAN.md (archived) for the complete migration strategy.
 
 ## References
 
-- [MIGRATION-PLAN.md](../MIGRATION-PLAN.md)
-- [STRUCTURE.md](../STRUCTURE.md)
+- MIGRATION-PLAN.md (archived)
+- STRUCTURE.md (archived)
 - [Domain-Driven Design](https://martinfowler.com/bliki/DomainDrivenDesign.html)
