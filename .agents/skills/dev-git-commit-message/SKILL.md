@@ -6,20 +6,27 @@ argument-hint: "[--validate 'msg' | --tier 1|2|3]"
 
 # Git Commit Message Generator
 
-**Auto-generates conventional commit messages from git diffs with tiered format enforcement**
+**Auto-generates conventional commit messages from unstaged git changes with semantic batching**
 
 ## Purpose
 
-Analyze staged git changes and generate concise, meaningful commit messages following a tiered Conventional Commits specification. This skill examines file modifications, additions, and deletions to infer the type and scope of changes, producing commit messages that match the importance of the change - from detailed documentation for critical features to concise messages for minor updates.
+This skill analyzes **unstaged** modified files, groups them into **batches of same meaning/context**, then stages and commits each batch with an appropriate conventional commit message. It works with the working tree directly—not pre-staged changes—by first understanding the logical relationships between modified files, proposing meaningful batches, and then executing commits batch-by-batch.
 
-**Key Innovation**: Three-tier format system that balances thoroughness for critical commits (feat, fix, security) with efficiency for routine changes (docs, chore, style).
+**Key Innovation**: Semantic batch detection that groups files by meaning (e.g., same feature, same refactor, same docs update) rather than relying on pre-staged changes.
+
+**Process Summary**:
+1. Scan working tree for modified files (all unstaged changes)
+2. Group files into semantic batches by meaning/context/cohesion
+3. For each batch: stage → analyze → generate message → commit
+4. Repeat until all meaningful batches are committed
 
 ## When This Skill Activates
 
+- When user says "commit" or "commit these changes" (without pre-staging)
 - When `/commit-msg` command is invoked
-- When invoked from a `commit-msg`/`prepare-commit-msg` hook (if installed)
-- When user requests commit message suggestions
-- When analyzing changes before creating a commit
+- When user requests commit message suggestions for unstaged changes
+- When analyzing unstaged changes before creating commits
+- When user wants to batch-commit related changes by meaning/context
 
 ## Core Capabilities
 
@@ -31,7 +38,8 @@ Analyze staged git changes and generate concise, meaningful commit messages foll
 - Support manual batch override by user
 
 **2. Diff Analysis (per batch)**
-- Parse `git diff --staged` output for current batch only
+- Stage files in the current batch: `git add <file1> <file2> ...`
+- Parse `git diff --staged` output for the staged batch
 - Identify modified, added, and deleted files in batch
 - Analyze code changes (additions, deletions, modifications)
 - Detect patterns specific to batch scope
@@ -286,63 +294,6 @@ COMMITS CREATED:
 
 REMAINING CHANGES: None
 ```
-[NOTE] Detected 8 modified files across 3 logical batches
-
-BATCH 1: feat(api) - 3 files
-  Files: src/api/auth.ts, src/api/tokens.ts, src/middleware/auth.ts
-  Changes: +145 lines, new authentication logic
-
-BATCH 2: test(api) - 2 files
-  Files: src/api/auth.test.ts, src/api/tokens.test.ts
-  Changes: +89 lines, test coverage for auth
-
-BATCH 3: docs - 3 files
-  Files: README.md, docs/api/auth.md, docs/examples.md
-  Changes: +67 lines, documentation updates
-
-Proceed with batch-by-batch commit? [Y/n/custom]
-```
-
-### Per-Batch Commit (Step 2, repeated for each batch)
-
-```
-[NOTE] Processing BATCH 1 of 3 (feat(api))
-
-Staged files:
-  ✓ src/api/auth.ts
-  ✓ src/middleware/auth.ts
-  ✓ src/api/tokens.ts
-
-SUGGESTED COMMIT MESSAGES:
-
-PRIMARY:
-feat(api): add user authentication endpoints
-
-ALTERNATIVES:
-1. feat(auth): implement JWT token validation
-2. feat: add user authentication system
-
-ANALYSIS:
-- 3 files modified in src/api/
-- New functions: authenticateUser, generateToken
-- Primary change: new feature (authentication)
-- Scope detected: api/auth
-
-Choose message [1/2/3/edit/skip]:
-```
-
-### Final Summary
-
-```
-[SUCCESS] Completed batch commit process
-
-COMMITS CREATED:
-  ✓ feat(api): add user authentication endpoints
-  ✓ test(api): add authentication test coverage
-  ✓ docs: update API authentication documentation
-
-REMAINING CHANGES: None
-```
 
 ## Conventional Commits Quick Reference
 
@@ -394,8 +345,8 @@ REMAINING CHANGES: None
 - Use `chore(wip): description` or `feat(experimental): description`
 
 **No meaningful changes**:
-- Detect and warn: "No staged changes detected"
-- Suggest `git add` commands
+- Detect and warn: "No modified files in working tree"
+- Confirm with user if all changes were already committed
 
 ## Integration Points
 
@@ -405,14 +356,14 @@ REMAINING CHANGES: None
 
 ## Best Practices
 
-1. **Batch by logical cohesion**: Group files that change together for the same reason
+1. **Batch by semantic meaning**: Group files that represent the same logical change (same feature, same fix, same docs update)
 2. **One concern per commit**: Each commit should address a single concern or feature
-3. **Analyze context**: Look at file paths, function names, import statements
+3. **Analyze context**: Look at file paths, function names, import statements, and change content to determine meaning
 4. **Prioritize clarity**: Prefer obvious descriptions over clever ones
 5. **Respect conventions**: Follow project's existing commit patterns if detected
 6. **Avoid hallucination**: Only describe what's actually in the diff
 7. **Be concise**: 50 chars is ideal, 72 is maximum for first line
-8. **Stage specific files**: Use `git add <file1> <file2>`, never `git add -A` or `git add .`
+8. **Stage per batch**: Stage only the files in each batch, never `git add -A` or `git add .`
 9. **Avoid heredoc in sandboxed shells**: Use `git commit -m "message"` directly
 10. **Pre-commit typecheck**: Run `pnpm lint` on staged files before committing
 11. **Review batches before committing**: Show user proposed batches for approval
@@ -531,7 +482,7 @@ The skill automatically blocks commits with these patterns:
 
 ## Error Handling
 
-- **No staged changes**: Run `git status` and guide user to `git add` files
+- **No modified files**: Run `git status` and report working tree status to user
 - **Binary files only**: Note that commit message should mention file types
 - **Merge conflicts**: Detect and suggest `chore: resolve merge conflicts`
 - **Git not available**: Graceful failure with helpful error message
@@ -630,8 +581,8 @@ Use it to standardize `type(scope): summary` messages and keep history automatio
 
 ---
 
-**Version**: 3.0.0-batch-20260401
-**Last Updated**: 2026-04-01 (Batched commit support)
+**Version**: 3.1.0-batch-20260406
+**Last Updated**: 2026-04-06 (Clarified unstaged-only workflow with semantic batching)
 **Repository**: AI-Agents (documentation repository)
 **Conventional Commits Spec**: <https://www.conventionalcommits.org/>
 
