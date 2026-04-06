@@ -1,6 +1,6 @@
 # Goal Description
 
-The goal is to connect a secondary, read-only Prisma client to a MongoDB database containing the `videoclinic` data, specifically focusing on the `expertWeek` collection as described in the specification [`planning.md`](../../../mongodb-mapping/planning.md#entity-experten-wochenplan-expert-week). An oRPC backend procedure will be created to query the database and a new page with a paginated, sortable, and searchable data table using shadcn components will be added to the application. A new menu item will link to this table.
+The goal is to connect a secondary, read-only Prisma client to a MongoDB database containing the `videoclinic` data, specifically focusing on the `expertWeek` collection as described in the specification [`planning.md`](../../../mongodb-mapping/planning.md#entity-expert-week). An oRPC backend procedure will be created to query the database and a new page with a paginated, sortable, and searchable data table using shadcn components will be added to the application. A new menu item will link to this table.
 
 ## User Review Required
 
