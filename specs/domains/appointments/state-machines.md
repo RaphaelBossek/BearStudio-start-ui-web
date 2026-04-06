@@ -9,7 +9,7 @@ title: 'State Machines'
 
 > **Last Updated**: 2026-04-01  
 > **Status**: Draft  
-> **See Also**: [Entity Model](./entity-model.md), [Workflows](./workflows.md)
+> **See Also**: [Entity Model](./entity-model/), [Workflows](./workflows/), [Domain README](./readme/)
 
 ---
 
@@ -399,7 +399,7 @@ async function handleConfirmationTimeout(appointmentId: string) {
 
 ## References
 
-- [Entity Model](./entity-model.md) - Entity definitions
-- [Domain README](./README.md) - Overview
-- [Workflows](./workflows.md) - Business workflows
-- [Permissions](./permissions.md) - Permission gates
+- [Entity Model](./entity-model/) - Entity definitions
+- [Domain README](./readme/) - Overview
+- [Workflows](./workflows/) - Business workflows
+- [Permissions](./permissions/) - Permission gates

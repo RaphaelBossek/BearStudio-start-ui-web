@@ -6,7 +6,7 @@ title: 'Appointments'
 
 > **Last Updated**: 2026-04-01  
 > **Status**: Draft  
-> **Related Domains**: [Customers](../customers/README.md), [Staff](../staff/README.md), [Consultations](../consultations/README.md)
+> **Related Domains**: Customers, Staff, Consultations
 
 ---
 
@@ -26,9 +26,9 @@ The Appointments domain manages the scheduling, assignment, and lifecycle of app
 
 ### Not Responsible For
 
-- **Consultation Content**: Handled by [Consultations domain](../consultations/README.md)
-- **Customer Management**: Handled by [Customers domain](../customers/README.md)
-- **User Profiles**: Handled by [Staff domain](../staff/README.md)
+- **Consultation Content**: Handled by Consultations domain
+- **Customer Management**: Handled by Customers domain
+- **User Profiles**: Handled by Staff domain
 - **Billing/Invoicing**: Handled by Accounting domain
 
 ## Entity Model
@@ -214,6 +214,5 @@ AssignmentCancelled
 - [State Machines](./state-machines.md)
 - [Workflows](./workflows.md)
 - [Permissions](./permissions.md)
-- [Analysis](../../analysis/appointments/README.md)
-- [Wireframes](../../wireframes/appointments/README.md)
-- [Features](../../features/appointments/README.md)
+- [Analysis](../../analysis/planning/README.md)
+- [Wireframes](../../wireframes/planning/workflows.md)

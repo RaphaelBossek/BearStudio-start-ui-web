@@ -9,7 +9,7 @@ title: 'Workflows'
 
 > **Last Updated**: 2026-04-01  
 > **Status**: Draft  
-> **See Also**: [Entity Model](./entity-model.md), [State Machines](./state-machines.md)
+> **See Also**: [Entity Model](./entity-model.md), [State Machines](./state-machines.md), [Domain README](./README.md)
 
 ---
 

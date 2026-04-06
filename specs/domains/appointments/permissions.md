@@ -481,4 +481,4 @@ const performanceMetrics = {
 - [Entity Model](./entity-model.md) - Entity definitions
 - [State Machines](./state-machines.md) - State diagrams
 - [Workflows](./workflows.md) - Business workflows
-- [RBAC Matrix](../../analysis/permissions/rbac-matrix.md) - Overall permission matrix
+- RBAC Matrix (planned) - Overall permission matrix
