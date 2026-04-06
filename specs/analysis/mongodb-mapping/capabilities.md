@@ -10,7 +10,7 @@ This file covers the Capabilities category, which defines expert skills and requ
 
 ---
 
-## ER Diagram
+## ER Diagram {#er-diagram}
 
 Expert skill definitions and service qualification rules.
 
@@ -43,11 +43,11 @@ erDiagram
 
 | Table Name (DBML) | Business Entity | Description Summary |
 | :--- | :--- | :--- |
-| [`skill`](#entity-fähigkeiten-skills) | Fähigkeiten (Skills) | Definition of a skill (Fähigkeit), including name, description, type, and status. |
+| [`skill`](#entity-skills) | Fähigkeiten (Skills) | Definition of a skill (Fähigkeit), including name, description, type, and status. |
 
 ---
 
-## Entity: Fähigkeiten (Skills)
+## Entity: Fähigkeiten (Skills) {#entity-skills}
 Defines the qualifications required by experts.
 
 ### Table: skill
@@ -63,8 +63,8 @@ Defines the qualifications required by experts.
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.Skill` |
 
 The `skill` entity is referenced by:
-- [`user`](./user-management.md#entity-experte-expert) (via [`SkillAssignment`](./user-management.md#sub-entity-skillassignment))
-- [`jobId`](./accounting.md#entity-dienstleistung-service) (via [`SkillRule`](./accounting.md#sub-entity-skillrule))
+- [`user`](./user-management.md#entity-expert) (via [`SkillAssignment`](./user-management.md#sub-entity-skillassignment))
+- [`jobId`](./accounting.md#entity-service) (via [`SkillRule`](./accounting.md#sub-entity-skillrule))
 
 ### Functionality Details
 - **Skill Types:** Classified into `Fachrichtung` (MAIN), `Zusatzausbildung` (EXTRA), `Fort- und Weiterbildung` (ADDITIONAL), and `Sprache` (LANGUAGE).

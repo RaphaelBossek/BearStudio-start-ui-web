@@ -64,6 +64,6 @@ This document tracks gaps in translation coverage with auto-translate suggestion
 
 ## Related Documentation
 
-- [Translation Inventory](./translation-inventory.md) — Complete key inventory
-- [Translation Guide](./translation-guide.md) — Naming conventions
-- [Hardcoded Strings](./hardcoded-strings.md) — Strings needing i18n keys
+- [Translation Inventory](../translation-inventory/) — Complete key inventory
+- [Translation Guide](../translation-guide/) — Naming conventions
+- [Hardcoded Strings](../hardcoded-strings/) — Strings needing i18n keys

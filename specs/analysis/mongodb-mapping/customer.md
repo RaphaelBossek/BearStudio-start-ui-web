@@ -10,7 +10,7 @@ This file covers the Customer category: entities related to customers, locations
 
 ---
 
-## ER Diagram
+## ER Diagram {#er-diagram}
 
 Customer accounts, consultation sites, room inventory, equipment, and location snapshots.
 
@@ -90,18 +90,18 @@ erDiagram
 
 | Table Name (DBML) | Business Entity | Description Summary |
 | :--- | :--- | :--- |
-| [`customer`](#entity-kunden-customers) | Kunden (Customers) | Organizational entities (customers) that are assigned to locations and appointment plans. |
-| [`location`](#entity-standorte-locations) | Standorte (Locations) | Definition of consultation sites, including room configurations and contact details. |
-| [`locationType`](#entity-standorttypen-location-types) | Standorttypen (Location Types) | Classification for different types of consultation locations. |
-| [`site`](#entity-seiten-standorte-sites) | Seiten/Standorte (Sites) | Physical locations or digital sites associated with the system. |
-| [`room`](#entity-räume-rooms) | Räume (Rooms) | Individual consultation or treatment rooms within a location. |
-| [`locationRoomsDto`](#entity-standort-snapshots-location-rooms-dto) | Standort-Snapshots (Location Rooms DTO) | Snapshots of location and room configurations at a specific point in time. |
-| [`equipmentGroup`](#entity-ausrüstungsgruppen-equipment-groups) | Ausrüstungsgruppen (Equipment Groups) | Grouping of equipment for easier management and assignment. |
-| [`equipment`](#entity-ausrüstung-equipment) | Ausrüstung (Equipment) | Inventory of medical or technical equipment used in consultations. |
+| [`customer`](#entity-customers) | Kunden (Customers) | Organizational entities (customers) that are assigned to locations and appointment plans. |
+| [`location`](#entity-locations) | Standorte (Locations) | Definition of consultation sites, including room configurations and contact details. |
+| [`locationType`](#entity-location-types) | Standorttypen (Location Types) | Classification for different types of consultation locations. |
+| [`site`](#entity-sites) | Seiten/Standorte (Sites) | Physical locations or digital sites associated with the system. |
+| [`room`](#entity-rooms) | Räume (Rooms) | Individual consultation or treatment rooms within a location. |
+| [`locationRoomsDto`](#entity-location-rooms-dto) | Standort-Snapshots (Location Rooms DTO) | Snapshots of location and room configurations at a specific point in time. |
+| [`equipmentGroup`](#entity-equipment-groups) | Ausrüstungsgruppen (Equipment Groups) | Grouping of equipment for easier management and assignment. |
+| [`equipment`](#entity-equipment) | Ausrüstung (Equipment) | Inventory of medical or technical equipment used in consultations. |
 
 ---
 
-## Entity: Kunden (Customers)
+## Entity: Kunden (Customers) {#entity-customers}
 Organizational entities (customers) that are assigned to locations and appointment plans.
 
 ### Table: customer
@@ -135,39 +135,39 @@ Organizational entities (customers) that are assigned to locations and appointme
 | `priceListsValid` | `String` | schema | Validierungshinweis für Preislisten (Freitext) |
 | `dateCustomer` | `Date` | schema | Kundendatum |
 | `dateCreated` | `Date` | schema | Erstellungsdatum |
-| `createdById` | `Long` | schema | Ersteller (Reference to [user](./user-management.md#entity-experte-expert)) |
+| `createdById` | `Long` | schema | Ersteller (Reference to [user](./user-management.md#entity-expert)) |
 | `dateChanged` | `Date` | schema | Änderungsdatum |
-| `changedById` | `Long` | schema | Geändert von (Reference to [user](./user-management.md#entity-experte-expert)) |
+| `changedById` | `Long` | schema | Geändert von (Reference to [user](./user-management.md#entity-expert)) |
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.Customer` |
 
 The `customer` entity is referenced by:
-- [`appointment`](./planning.md#entity-termine-appointments)
-- [`appointmentPlan`](./planning.md#entity-sprechstundenplan-appointment-plan)
-- [`consultationData`](./treatment.md#entity-konsultationsdaten-consultation-data) (as `customer` sub-entity)
-- [`invoiceComponent`](./accounting.md#entity-rechnungskomponenten-invoice-components)
-- [`invoiceReceiver`](./accounting.md#entity-rechnungsempf-nger-invoice-receivers)
-- [`location`](#entity-standorte-locations)
-- [`project`](./deprecated.md#entity-projekte-projects)
-- [`treatment`](./treatment.md#entity-behandlungsverlauf-treatment)
-- [`locationRoomsDto`](#entity-standort-snapshots-location-rooms-dto)
+- [`appointment`](./planning.md#entity-appointments)
+- [`appointmentPlan`](./planning.md#entity-appointment-plan)
+- [`consultationData`](./treatment.md#entity-consultation-data) (as `customer` sub-entity)
+- [`invoiceComponent`](./accounting.md#entity-invoice-components)
+- [`invoiceReceiver`](./accounting.md#entity-invoice-receivers)
+- [`location`](#entity-locations)
+- [`project`](./deprecated.md#entity-projects)
+- [`treatment`](./treatment.md#entity-treatment)
+- [`locationRoomsDto`](#entity-location-rooms-dto)
 
 ### Sub-entities for customer
 
-#### Sub-entity: CustomerDiscount
+#### Sub-entity: CustomerDiscount {#sub-entity-customerdiscount}
 Definition eines kundenindividuellen Rabatts für eine bestimmte Dienstleistung.
 
 | Column | Type | Field Type | Description |
 | :--- | :--- | :--- | :--- |
-| `job` | `Long` | schema | Reference ID to [jobId](./accounting.md#entity-dienstleistung-service) |
+| `job` | `Long` | schema | Reference ID to [jobId](./accounting.md#entity-service) |
 | `discount` | `Number` | schema | Rabattsatz |
 | `comment` | `String` | schema | Kommentar |
 | `dateStart` | `Date` | schema | Startdatum |
 | `dateUntil` | `Date` | schema | Enddatum |
 
 The `CustomerDiscount` sub-entity is used within:
-- [`customer`](#entity-kunden-customers) (as `discounts` array)
+- [`customer`](#entity-customers) (as `discounts` array)
 
-#### Sub-entity: CustomerPriceList
+#### Sub-entity: CustomerPriceList {#sub-entity-customerpricelist}
 Zuweisung einer Preisliste zu einem Kunden mit zeitlicher Gültigkeit.
 
 | Column | Type | Field Type | Description |
@@ -178,9 +178,9 @@ Zuweisung einer Preisliste zu einem Kunden mit zeitlicher Gültigkeit.
 | `comment` | `String` | schema | Kommentar |
 
 The `CustomerPriceList` sub-entity is used within:
-- [`customer`](#entity-kunden-customers) (as `priceLists` array)
+- [`customer`](#entity-customers) (as `priceLists` array)
 
-## Entity: Standorte (Locations)
+## Entity: Standorte (Locations) {#entity-locations}
 Medizinische Einrichtungen oder Standorte, an denen Konsultationen durchgeführt werden.
 
 ### Table: location
@@ -191,7 +191,7 @@ Medizinische Einrichtungen oder Standorte, an denen Konsultationen durchgeführt
 | `externalId` | `String` | schema | Externe ID (ZMS) |
 | `version` | `Long` | schema | Versionsnummer |
 | `uid` | `String` | schema | Umsatzsteuer-ID |
-| `type` | `DBRef` | schema | Reference to [locationType](#entity-standorttypen-location-types) |
+| `type` | `DBRef` | schema | Reference to [locationType](#entity-location-types) |
 | `typeEnum` | `String` | schema | Typ als Enum-String |
 | `name` | `String` | schema | Name der Einrichtung |
 | `building` | `String` | schema | Gebäude |
@@ -219,28 +219,28 @@ Medizinische Einrichtungen oder Standorte, an denen Konsultationen durchgeführt
 | `patientDataAccess` | `Document` | schema | Konfiguration für Datenzugriff ([LocationPatientDataAccess](#sub-entity-locationpatientdataaccess)) |
 | `booknumberMask` | `String` | schema | Maske für Buchnummern |
 | `externalDescription` | `String` | schema | Externe Beschreibung |
-| `customer` | `DBRef` | schema | Reference to [customer](#entity-kunden-customers) |
+| `customer` | `DBRef` | schema | Reference to [customer](#entity-customers) |
 | `longitude` | `Number` | schema | Längengrad |
 | `latitude` | `Number` | schema | Breitengrad |
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.Location` |
 
 The `location` entity is referenced by:
-- [`appointment`](./planning.md#entity-termine-appointments)
-- [`appointmentPlan`](./planning.md#entity-sprechstundenplan-appointment-plan)
-- [`consultationData`](./treatment.md#entity-konsultationsdaten-consultation-data) (as `location` sub-entity)
-- [`invoiceComponent`](./accounting.md#entity-rechnungskomponenten-invoice-components)
-- [`invoiceReceiver`](./accounting.md#entity-rechnungsempf-nger-invoice-receivers)
-- [`project`](./deprecated.md#entity-projekte-projects)
-- [`treatment`](./treatment.md#entity-behandlungsverlauf-treatment)
-- [`basisWebAppointment`](./interfaces.md#entity-web-terminanfragen-basis-web-appointment)
-- [`onboardingHistory`](./user-management.md#entity-onboarding-verlauf-onboarding-history)
-- [`cDRCallAssignment`](./external-data.md#entity-cdr-call-zuweisungen-cdr-call-assignment)
-- [`room`](#entity-räume-rooms)
-- [`patientData`](./treatment.md#entity-patientenerg-nzungsdaten-patient-data)
+- [`appointment`](./planning.md#entity-appointments)
+- [`appointmentPlan`](./planning.md#entity-appointment-plan)
+- [`consultationData`](./treatment.md#entity-consultation-data) (as `location` sub-entity)
+- [`invoiceComponent`](./accounting.md#entity-invoice-components)
+- [`invoiceReceiver`](./accounting.md#entity-invoice-receivers)
+- [`project`](./deprecated.md#entity-projects)
+- [`treatment`](./treatment.md#entity-treatment)
+- [`basisWebAppointment`](./interfaces.md#entity-basis-web-appointment)
+- [`onboardingHistory`](./user-management.md#entity-onboarding-history)
+- [`cDRCallAssignment`](./external-data.md#entity-cdr-call-assignment)
+- [`room`](#entity-rooms)
+- [`patientData`](./treatment.md#entity-patient-data)
 
 ### Sub-entities for location
 
-#### Sub-entity: LocationPatientDataAccess
+#### Sub-entity: LocationPatientDataAccess {#sub-entity-locationpatientdataaccess}
 Konfiguration für den Zugriff auf externe Patientendaten (z.B. SecureBox).
 
 | Column | Type | Field Type | Description |
@@ -261,9 +261,9 @@ Konfiguration für den Zugriff auf externe Patientendaten (z.B. SecureBox).
 | `comment` | `String` | schema | Kommentar zur Konfiguration |
 
 The `LocationPatientDataAccess` sub-entity is used within:
-- [`location`](#entity-standorte-locations) (as `patientDataAccess` field)
+- [`location`](#entity-locations) (as `patientDataAccess` field)
 
-## Entity: Standorttypen (Location Types)
+## Entity: Standorttypen (Location Types) {#entity-location-types}
 Kategorisierung von Standorten: `JVA`, `CLINIC`, `POLICE`, etc.
 
 ### Table: locationType
@@ -276,9 +276,9 @@ Kategorisierung von Standorten: `JVA`, `CLINIC`, `POLICE`, etc.
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.LocationType` |
 
 The `locationType` entity is referenced by:
-- [`location`](#entity-standorte-locations) (conceptually, though not explicitly shown in schema samples)
+- [`location`](#entity-locations) (conceptually, though not explicitly shown in schema samples)
 
-## Entity: Seiten/Standorte (Sites)
+## Entity: Seiten/Standorte (Sites) {#entity-sites}
 Allgemeine Informationen zu physischen Standorten oder Web-Präsenzen.
 
 ### Table: site
@@ -300,7 +300,7 @@ Allgemeine Informationen zu physischen Standorten oder Web-Präsenzen.
 The `site` entity is used for:
 - (Organizational structure and location grouping)
 
-## Entity: Räume (Rooms)
+## Entity: Räume (Rooms) {#entity-rooms}
 Definition von physischen Räumen an den Standorten.
 
 ### Table: room
@@ -308,16 +308,16 @@ Definition von physischen Räumen an den Standorten.
 | :--- | :--- | :--- | :--- |
 | `_id` | `Long` | schema | Interner Bezeichner |
 | `version` | `Long` | schema | Versionsnummer |
-| `location` | `DBRef` | schema | Reference to [location](#entity-standorte-locations) |
+| `location` | `DBRef` | schema | Reference to [location](#entity-locations) |
 | `name` | `String` | inferred | Raumname |
 | `number` | `String` | inferred | Raumnummer |
 | `available` | `Boolean` | schema | Verfügbarkeit |
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.Room` |
 
 The `room` entity references:
-- [`location`](#entity-standorte-locations)
+- [`location`](#entity-locations)
 
-## Entity: Standort-Snapshots (Location Rooms DTO)
+## Entity: Standort-Snapshots (Location Rooms DTO) {#entity-location-rooms-dto}
 Snapshots von Standortdaten inklusive Raum-Informationen für die Web-Oberfläche.
 
 ### Table: locationRoomsDto
@@ -327,13 +327,13 @@ Snapshots von Standortdaten inklusive Raum-Informationen für die Web-Oberfläch
 | `version` | `Long` | schema | Versionsnummer |
 | `name` | `String` | schema | Name des Standorts |
 | `address` | `String` | inferred | Adresse |
-| `customer` | `DBRef` | schema | Reference to [customer](#entity-kunden-customers) |
+| `customer` | `DBRef` | schema | Reference to [customer](#entity-customers) |
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.LocationRoomsDto` (Used) |
 
 The `locationRoomsDto` entity is used for:
 - (UI snapshots of location data)
 
-## Entity: Ausrüstungsgruppen (Equipment Groups)
+## Entity: Ausrüstungsgruppen (Equipment Groups) {#entity-equipment-groups}
 Kategorisierung von medizinischer Ausrüstung.
 
 ### Table: equipmentGroup
@@ -347,9 +347,9 @@ Kategorisierung von medizinischer Ausrüstung.
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.EquipmentGroup` (Used) |
 
 The `equipmentGroup` entity is referenced by:
-- [`equipment`](#entity-ausrüstung-equipment) (conceptually, to group inventory items)
+- [`equipment`](#entity-equipment) (conceptually, to group inventory items)
 
-## Entity: Ausrüstung (Equipment)
+## Entity: Ausrüstung (Equipment) {#entity-equipment}
 Verzeichnis von medizinischem Equipment, das an Standorten vorhanden sein kann.
 
 ### Table: equipment
@@ -361,4 +361,4 @@ Verzeichnis von medizinischem Equipment, das an Standorten vorhanden sein kann.
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.Equipment` (Used) |
 
 The `equipment` entity is referenced by:
-- [`questionaire`](./treatment.md#entity-qualitätsumfragen-questionaires) (implicitly via quality ratings)
+- [`questionaire`](./treatment.md#entity-questionaires) (implicitly via quality ratings)

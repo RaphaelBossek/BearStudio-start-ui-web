@@ -10,7 +10,7 @@ This file covers the Planning category: definition of consultation schedules, sh
 
 ---
 
-## ER Diagram
+## ER Diagram {#er-diagram}
 
 Consultation schedules, shift plans, individual appointments, and expert availability.
 
@@ -129,19 +129,19 @@ erDiagram
 
 | Table Name (DBML) | Business Entity | Description Summary |
 | :--- | :--- | :--- |
-| [`appointmentPlan`](#entity-sprechstundenplan-appointment-plan) | Sprechstundenplan (Appointment Plan) | Definition of a consultation schedule entry, including service, day, repetitions, times, assigned experts, locations, and customers. |
-| [`expertWeek`](#entity-experten-wochenplan-expert-week) | Experten-Wochenplan (Expert Week) | Weekly availability and shift definitions for an individual expert. |
-| [`expertDays`](#entity-jahreskalender-eines-experten-expert-days) | Jahreskalender eines Experten (Expert Days) | Detailed availability calendar for experts, tracking shifts and appointment availability per day. |
-| [`appointment`](#entity-termine-appointments) | Termine (Appointments) | Individual appointments scheduled for patients with experts. |
-| [`appointmentAssignment`](#entity-terminzuweisungen-appointment-assignments) | Terminzuweisungen (Appointment Assignments) | Links between appointments and the experts or tasks assigned to them. |
-| [`appointmentAssignmentHistory`](#entity-terminzuweisungs-historie-appointment-assignment-history) | Terminzuweisungs-Historie (Appointment Assignment History) | Audit trail for changes to appointment assignments. |
-| [`shiftPlan`](#entity-schichtplan-shift-plan) | Schichtplan (Shift Plan) | Recurring shift schedule for expert on-call duties. |
-| [`holiday`](#entity-abwesenheiten-urlaub-holidays) | Abwesenheiten/Urlaub (Holidays) | Individual expert absences, vacations, or sick leave. |
+| [`appointmentPlan`](#entity-appointment-plan) | Sprechstundenplan (Appointment Plan) | Definition of a consultation schedule entry, including service, day, repetitions, times, assigned experts, locations, and customers. |
+| [`expertWeek`](#entity-expert-week) | Experten-Wochenplan (Expert Week) | Weekly availability and shift definitions for an individual expert. |
+| [`expertDays`](#entity-expert-days) | Jahreskalender eines Experten (Expert Days) | Detailed availability calendar for experts, tracking shifts and appointment availability per day. |
+| [`appointment`](#entity-appointments) | Termine (Appointments) | Individual appointments scheduled for patients with experts. |
+| [`appointmentAssignment`](#entity-appointment-assignments) | Terminzuweisungen (Appointment Assignments) | Links between appointments and the experts or tasks assigned to them. |
+| [`appointmentAssignmentHistory`](#entity-appointment-assignment-history) | Terminzuweisungs-Historie (Appointment Assignment History) | Audit trail for changes to appointment assignments. |
+| [`shiftPlan`](#entity-shift-plan) | Schichtplan (Shift Plan) | Recurring shift schedule for expert on-call duties. |
+| [`holiday`](#entity-holidays) | Abwesenheiten/Urlaub (Holidays) | Individual expert absences, vacations, or sick leave. |
 
 
 ---
 
-## Entity: Sprechstundenplan (Appointment Plan)
+## Entity: Sprechstundenplan (Appointment Plan) {#entity-appointment-plan}
 The appointment plan defines the schedule for consultation hours, including services, recurrence rules, assigned experts, locations, and customers.
 
 ### Table: appointmentPlan
@@ -150,7 +150,7 @@ The appointment plan defines the schedule for consultation hours, including serv
 | `_id` | `Long` | schema | Interner Bezeichner |
 | `version` | `Long` | schema | Versionsnummer (Zeitstempel) |
 | `name` | `String` | schema | Ein Name für den Plan (Freitext) |
-| `job` | `Document` | snapshot | Eine Dienstleistung (denormalized snapshot of [`jobId`](./accounting.md#entity-dienstleistung-service)) ([PlanJob](#sub-entity-planjob)) |
+| `job` | `Document` | snapshot | Eine Dienstleistung (denormalized snapshot of [`jobId`](./accounting.md#entity-service)) ([PlanJob](#sub-entity-planjob)) |
 | `day` | `String` | schema | Einen Wochentag:<br>• `MO` (Used)<br>• `TU` (Used)<br>• `WE` (Used)<br>• `TH` (Used)<br>• `FR` (Used) |
 | `startDate` | `Date` | schema | Ein Startdatum |
 | `endDate` | `Date` | schema | Einen Enddatum |
@@ -160,19 +160,19 @@ The appointment plan defines the schedule for consultation hours, including serv
 | `schedulingMulitplier` | `Number` | schema | Multiplikator für die Wiederholung |
 | `timeStart` | `Number` | schema | Einer Startuhrzeit (Format: HHmm, z.B. 930 für 09:30) |
 | `timeEnd` | `Number` | schema | Eine Enduhrzeit (Format: HHmm, z.B. 1200 für 12:00) |
-| `doctor` | `Document` | snapshot | Assigned expert (denormalized snapshot of [`user`](./user-management.md#entity-experte-expert)) ([PlanUser](#sub-entity-planuser)) |
-| `location` | `Document` | snapshot | Assigned location (denormalized snapshot of [`location`](./customer.md#entity-standorte-locations)) ([PlanLocation](#sub-entity-planlocation)) |
+| `doctor` | `Document` | snapshot | Assigned expert (denormalized snapshot of [`user`](./user-management.md#entity-expert)) ([PlanUser](#sub-entity-planuser)) |
+| `location` | `Document` | snapshot | Assigned location (denormalized snapshot of [`location`](./customer.md#entity-locations)) ([PlanLocation](#sub-entity-planlocation)) |
 | `comment` | `String` | schema | Einem Kommentar (Freitext) |
 | `expertOnly` | `Boolean` | schema | Indicates if only the assigned expert can provide the service |
 | `dateCreated` | `Date` | schema | Creation date |
-| `createdBy` | `Document/DBRef` | snapshot | Creator (denormalized snapshot of [`user`](./user-management.md#entity-experte-expert)) ([PlanUser](#sub-entity-planuser)) |
+| `createdBy` | `Document/DBRef` | snapshot | Creator (denormalized snapshot of [`user`](./user-management.md#entity-expert)) ([PlanUser](#sub-entity-planuser)) |
 | `dateChanged` | `Date` | schema | Date of last change |
-| `changedBy` | `Document/DBRef` | snapshot | Changed by (denormalized snapshot of [`user`](./user-management.md#entity-experte-expert)) ([PlanUser](#sub-entity-planuser)) |
+| `changedBy` | `Document/DBRef` | snapshot | Changed by (denormalized snapshot of [`user`](./user-management.md#entity-expert)) ([PlanUser](#sub-entity-planuser)) |
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.AppointmentPlan` |
 
 The `appointmentPlan` entity is referenced by:
-- [`appointment`](#entity-termine-appointments) (via `planId`)
-- [`asyncJobQueue`](./system.md#entity-hintergrundaufgaben-async-job-queue) (via `type`)
+- [`appointment`](#entity-appointments) (via `planId`)
+- [`asyncJobQueue`](./system.md#entity-async-job-queue) (via `type`)
 
 ### Functionality Details
 - **Recurrence rules:** The `scheduling` field maps to "Wöchentlich", "Erster Tag im Monats", "jeder x-te Tag im Monat", "Tag im Monat", "Letzter Tag im Monat" (Only `WEEKLY` and `XOFMONTH` currently in use).
@@ -183,8 +183,8 @@ The `appointmentPlan` entity is referenced by:
 
 The following structures are used as nested documents within the `appointmentPlan` collection. These are denormalized snapshots (copies) of selected fields from other collections, used to ensure historical consistency and performance.
 
-#### Sub-entity: PlanJob
-A denormalized snapshot of the associated [`jobId`](./accounting.md#entity-dienstleistung-service) entity.
+#### Sub-entity: PlanJob {#sub-entity-planjob}
+A denormalized snapshot of the associated [`jobId`](./accounting.md#entity-service) entity.
 
 | Column | Type | Field Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -197,10 +197,10 @@ A denormalized snapshot of the associated [`jobId`](./accounting.md#entity-diens
 | `type` | `String` | schema | Job type: `APPOINTMENT` (Used) |
 
 The `PlanJob` sub-entity is used within:
-- [`appointmentPlan`](#entity-sprechstundenplan-appointment-plan)
+- [`appointmentPlan`](#entity-appointment-plan)
 
-#### Sub-entity: PlanUser
-A denormalized snapshot of the associated [`user`](./user-management.md#entity-experte-expert) entity.
+#### Sub-entity: PlanUser {#sub-entity-planuser}
+A denormalized snapshot of the associated [`user`](./user-management.md#entity-expert) entity.
 
 | Column | Type | Field Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -210,34 +210,34 @@ A denormalized snapshot of the associated [`user`](./user-management.md#entity-e
 | `formalDisplayName` | `String` | schema | Formal display name (Freitext) |
 
 The `PlanUser` sub-entity is used within:
-- [`appointmentPlan`](#entity-sprechstundenplan-appointment-plan)
+- [`appointmentPlan`](#entity-appointment-plan)
 
-#### Sub-entity: PlanLocation
-A denormalized snapshot of the associated [`location`](./customer.md#entity-standorte-locations) entity.
+#### Sub-entity: PlanLocation {#sub-entity-planlocation}
+A denormalized snapshot of the associated [`location`](./customer.md#entity-locations) entity.
 
 | Column | Type | Field Type | Description |
 | :--- | :--- | :--- | :--- |
-| `_id` | `Long` | schema | Location ID (referenced from [`location`](./customer.md#entity-standorte-locations)) |
-| `name` | `String` | schema | Location name (copied from [`location`](./customer.md#entity-standorte-locations) for consistency) |
+| `_id` | `Long` | schema | Location ID (referenced from [`location`](./customer.md#entity-locations)) |
+| `name` | `String` | schema | Location name (copied from [`location`](./customer.md#entity-locations) for consistency) |
 | `booknumberMask` | `String` | schema | Mask for booking numbers (Strukturierter Text) |
-| `patientDataType` | `String` | schema | Data type: `EXTERNAL`, `EXTERNAL_BASISWEB`, `INTERNAL`, `INTERNAL_SECUREBOX`, `INTERNAL_VCCLOUD` (Used) ([Location.patientDataType](./customer.md#entity-standorte-locations)) |
+| `patientDataType` | `String` | schema | Data type: `EXTERNAL`, `EXTERNAL_BASISWEB`, `INTERNAL`, `INTERNAL_SECUREBOX`, `INTERNAL_VCCLOUD` (Used) ([Location.patientDataType](./customer.md#entity-locations)) |
 | `customer` | `Document` | snapshot | Denormalized snapshot of the assigned customer ([PlanCustomer](#sub-entity-plancustomer)) |
 
 The `PlanLocation` sub-entity is used within:
-- [`appointmentPlan`](#entity-sprechstundenplan-appointment-plan)
+- [`appointmentPlan`](#entity-appointment-plan)
 
-#### Sub-entity: PlanCustomer
-A denormalized snapshot of the associated [`customer`](./customer.md#entity-kunden-customers) entity.
+#### Sub-entity: PlanCustomer {#sub-entity-plancustomer}
+A denormalized snapshot of the associated [`customer`](./customer.md#entity-customers) entity.
 
 | Column | Type | Field Type | Description |
 | :--- | :--- | :--- | :--- |
-| `_id` | `Long` | schema | Customer ID (referenced from [`customer`](./customer.md#entity-kunden-customers)) |
-| `name` | `String` | schema | Customer name (copied from [`customer`](./customer.md#entity-kunden-customers) for consistency) |
+| `_id` | `Long` | schema | Customer ID (referenced from [`customer`](./customer.md#entity-customers)) |
+| `name` | `String` | schema | Customer name (copied from [`customer`](./customer.md#entity-customers) for consistency) |
 
 The `PlanCustomer` sub-entity is used within:
-- [`appointmentPlan`](#entity-sprechstundenplan-appointment-plan) (nested in `location`)
+- [`appointmentPlan`](#entity-appointment-plan) (nested in `location`)
 
-## Entity: Experten-Wochenplan (Expert Week)
+## Entity: Experten-Wochenplan (Expert Week) {#entity-expert-week}
 Standardisierte wöchentliche Verfügbarkeitsslots für Experten.
 
 ### Table: expertWeek
@@ -245,7 +245,7 @@ Standardisierte wöchentliche Verfügbarkeitsslots für Experten.
 | :--- | :--- | :--- | :--- |
 | `_id` | `Long` | schema | Interner Bezeichner |
 | `version` | `Long` | schema | Versionsnummer |
-| `userId` | `Long` | schema | Reference to [user](./user-management.md#entity-experte-expert) |
+| `userId` | `Long` | schema | Reference to [user](./user-management.md#entity-expert) |
 | `type` | `String` | schema | Typ des Wochenplans:<br>• `TREATMENT` (Used) |
 | `slotsMo` | `Array` | schema | Zeit-Slots für Montag (Werte: 1-24, entsprechend der Tagesstunde) |
 | `slotsTu` | `Array` | schema | Zeit-Slots für Dienstag (Werte: 1-24) |
@@ -255,15 +255,15 @@ Standardisierte wöchentliche Verfügbarkeitsslots für Experten.
 | `slotsSa` | `Array` | schema | Zeit-Slots für Samstag (Werte: 1-24) |
 | `slotsSu` | `Array` | schema | Time slots for Sunday (values: 1-24) |
 | `dateChanged` | `Date` | schema | Zeitpunkt der letzten Änderung |
-| `changedBy` | `DBRef` | schema | Last change by (Reference to [user](./user-management.md#entity-experte-expert)) |
+| `changedBy` | `DBRef` | schema | Last change by (Reference to [user](./user-management.md#entity-expert)) |
 | `dateCreated` | `Date` | schema | Erstellungszeitpunkt |
-| `createdBy` | `DBRef` | schema | Erstellt von (Reference to [user](./user-management.md#entity-experte-expert)) |
+| `createdBy` | `DBRef` | schema | Erstellt von (Reference to [user](./user-management.md#entity-expert)) |
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.ExpertWeek` |
 
 The `expertWeek` entity defines standard schedules for:
-- [`user`](./user-management.md#entity-experte-expert) (referenced via `userId`)
+- [`user`](./user-management.md#entity-expert) (referenced via `userId`)
 
-## Entity: Jahreskalender eines Experten (Expert Days)
+## Entity: Jahreskalender eines Experten (Expert Days) {#entity-expert-days}
 Detailed availability calendar for experts, tracking shifts and appointment availability per day.
 
 ### Table: expertDays
@@ -271,7 +271,7 @@ Detailed availability calendar for experts, tracking shifts and appointment avai
 | :--- | :--- | :--- | :--- |
 | `_id` | `Long` | schema | Interner Bezeichner |
 | `version` | `Long` | schema | Versionsnummer |
-| `userId` | `Long` | schema | Reference to [user](./user-management.md#entity-experte-expert) |
+| `userId` | `Long` | schema | Reference to [user](./user-management.md#entity-expert) |
 | `month` | `Number` | schema | Monat (Format: YYYYMM) |
 | `maxWeekDayMorning` | `Number` | schema | Maximale Vormittagsschichten (Wochentag) |
 | `maxWeekDayAfternoon` | `Number` | schema | Maximale Nachmittagsschichten (Wochentag) |
@@ -294,13 +294,13 @@ Detailed availability calendar for experts, tracking shifts and appointment avai
 | `afternoonAppointmentYes` | `Array` | schema | Tage mit explizitem "Ja" für Nachmittagssprechstunde |
 | `treatmentAppointmentYes` | `Array` | schema | Days with explicit "Yes" for therapy appointment |
 | `dateChanged` | `Date` | schema | Time of last change |
-| `changedBy` | `DBRef` | schema | Last change by (Reference to [user](./user-management.md#entity-experte-expert)) |
+| `changedBy` | `DBRef` | schema | Last change by (Reference to [user](./user-management.md#entity-expert)) |
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.ExpertDays` |
 
 The `expertDays` entity defines availability for:
-- [`user`](./user-management.md#entity-experte-expert) (referenced via `userId`)
+- [`user`](./user-management.md#entity-expert) (referenced via `userId`)
 
-## Entity: Termine (Appointments)
+## Entity: Termine (Appointments) {#entity-appointments}
 Verwaltung von Einzelterminen, Bereitschaften und Behandlungen.
 
 ### Table: appointment
@@ -330,13 +330,13 @@ Verwaltung von Einzelterminen, Bereitschaften und Behandlungen.
 | `comment` | `String` | schema | Kommentar |
 | `state` | `String` | schema | Status:<br>• `ACTIVE` (Used)<br>• `CANCELED` (Used)<br>• `CLOSED` (Used)<br>• `DONE` (Used)<br>• `LOCKEDIN` (Used)<br>• `READY` (Used)<br>• `REQUESTED` (Used)<br>• `RESCHEDULED` (Used)<br>• `STARTED` (Used)<br>• `STORNO` (Used) |
 | `type` | `String` | schema | Typ:<br>• `APPOINTMENT` (Used)<br>• `SHIFT` (Used)<br>• `TREATMENT` (Used)<br>• `TREATMENT_REPORT` (Used) |
-| `job` | `Document` | snapshot | Erbrachte Dienstleistung (denormalized snapshot of [`jobId`](./accounting.md#entity-dienstleistung-service)) ([ConsultationJob](./user-management.md#sub-entity-consultationjob)) |
+| `job` | `Document` | snapshot | Erbrachte Dienstleistung (denormalized snapshot of [`jobId`](./accounting.md#entity-service)) ([ConsultationJob](./user-management.md#sub-entity-consultationjob)) |
 | `billingType` | `String` | schema | Abrechnungsart:<br>• `HOURLY` (Used)<br>• `PER_CONSULTATION` (Used) |
 | `paymentType` | `String` | schema | Zahlungsart:<br>• `EK` (Used)<br>• `FULL` (Used)<br>• `VK` (Used)<br>• `IGNORE` (Used) |
 | `priceType` | `String` | schema | Preistyp:<br>• `WEEKDAY` (Used)<br>• `WEEKNIGHT` (Used)<br>• `WEEKENDDAY` (Used)<br>• `WEEKENDNIGHT` (Used) |
-| `customer` | `Document` | snapshot | Zugehöriger Kunde (denormalized snapshot of [`customer`](./customer.md#entity-kunden-customers)) ([ConsultationCustomer](./user-management.md#sub-entity-consultationcustomer)) |
-| `location` | `Document` | snapshot | Ort des Termins (denormalized snapshot of [`location`](./customer.md#entity-standorte-locations)) ([ConsultationLocation](./user-management.md#sub-entity-consultationlocation)) |
-| `treatmentId` | `Long` | schema | Reference to [treatment](./treatment.md#entity-behandlungsverlauf-treatment) |
+| `customer` | `Document` | snapshot | Zugehöriger Kunde (denormalized snapshot of [`customer`](./customer.md#entity-customers)) ([ConsultationCustomer](./user-management.md#sub-entity-consultationcustomer)) |
+| `location` | `Document` | snapshot | Ort des Termins (denormalized snapshot of [`location`](./customer.md#entity-locations)) ([ConsultationLocation](./user-management.md#sub-entity-consultationlocation)) |
+| `treatmentId` | `Long` | schema | Reference to [treatment](./treatment.md#entity-treatment) |
 | `minPatients` | `Number` | schema | Mindestanzahl Patienten |
 | `actualPatients` | `Number` | schema | Anzahl tatsächlicher Patienten |
 | `billablePatients` | `Number` | schema | Anzahl abrechenbarer Patienten |
@@ -358,11 +358,11 @@ Verwaltung von Einzelterminen, Bereitschaften und Behandlungen.
 | `countFurtherReferral` | `Number` | schema | Anzahl Überweisungen |
 | `countFurtherReferralOther` | `Number` | schema | Anzahl sonstige Überweisungen |
 | `period` | `Number` | schema | Abrechnungszeitraum (YYYYMM) |
-| `changedById` | `Long` | schema | Reference ID to [user](./user-management.md#entity-experte-expert) (last change) |
-| `createdById` | `Long` | schema | Reference ID to [user](./user-management.md#entity-experte-expert) (creation) |
-| `stornoById` | `Long` | schema | Reference ID to [user](./user-management.md#entity-experte-expert) (cancellation) |
-| `planId` | `Long` | schema | Reference ID to [appointmentPlan](#entity-sprechstundenplan-appointment-plan) |
-| `shiftPlanId` | `Long` | schema | Reference ID to [shiftPlan](#entity-schichtplan-shift-plan) |
+| `changedById` | `Long` | schema | Reference ID to [user](./user-management.md#entity-expert) (last change) |
+| `createdById` | `Long` | schema | Reference ID to [user](./user-management.md#entity-expert) (creation) |
+| `stornoById` | `Long` | schema | Reference ID to [user](./user-management.md#entity-expert) (cancellation) |
+| `planId` | `Long` | schema | Reference ID to [appointmentPlan](#entity-appointment-plan) |
+| `shiftPlanId` | `Long` | schema | Reference ID to [shiftPlan](#entity-shift-plan) |
 | `expertOnly` | `Boolean` | schema | Nur Experte |
 | `jobSupport` | `Boolean` | schema | Job Support |
 | `treatmentRequireReport` | `Boolean` | schema | Bericht erforderlich (Treatment) |
@@ -373,17 +373,17 @@ Verwaltung von Einzelterminen, Bereitschaften und Behandlungen.
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.Appointment` |
 
 The `appointment` entity is referenced by:
-- [`appointmentAssignment`](#entity-terminzuweisungen-appointment-assignments)
-- [`basisWebData`](./interfaces.md#entity-jva-patientendaten-basis-web-data)
-- [`cDRCallAssignment`](./external-data.md#entity-cdr-call-zuweisungen-cdr-call-assignment)
-- [`consultationData`](./treatment.md#entity-konsultationsdaten-consultation-data) (via `appointmentId`)
-- [`invoiceComponent`](./accounting.md#entity-rechnungskomponenten-invoice-components)
-- [`log`](./system.md#entity-system-logs-logs)
-- [`patientData`](./treatment.md#entity-patientenerg-nzungsdaten-patient-data)
-- [`questionaire`](./treatment.md#entity-qualit-tsumfragen-questionaires)
-- [`treatment`](./treatment.md#entity-behandlungsverlauf-treatment) (in `positions`)
+- [`appointmentAssignment`](#entity-appointment-assignments)
+- [`basisWebData`](./interfaces.md#entity-basis-web-data)
+- [`cDRCallAssignment`](./external-data.md#entity-cdr-call-assignment)
+- [`consultationData`](./treatment.md#entity-consultation-data) (via `appointmentId`)
+- [`invoiceComponent`](./accounting.md#entity-invoice-components)
+- [`log`](./system.md#entity-logs)
+- [`patientData`](./treatment.md#entity-patient-data)
+- [`questionaire`](./treatment.md#entity-questionaires)
+- [`treatment`](./treatment.md#entity-treatment) (in `positions`)
 
-## Entity: Terminzuweisungen (Appointment Assignments)
+## Entity: Terminzuweisungen (Appointment Assignments) {#entity-appointment-assignments}
 Zuweisung von Experten zu bestimmten Terminen mit Statusverfolgung.
 
 ### Table: appointmentAssignment
@@ -391,9 +391,9 @@ Zuweisung von Experten zu bestimmten Terminen mit Statusverfolgung.
 | :--- | :--- | :--- | :--- |
 | `_id` | `Long` | schema | Interner Bezeichner |
 | `version` | `Long` | schema | Versionsnummer |
-| `userId` | `Long` | schema | Reference to [user](./user-management.md#entity-experte-expert) |
-| `assignedById` | `Long` | schema | Zugewiesen durch (Reference to [user](./user-management.md#entity-experte-expert)) |
-| `appointmentId` | `Long` | schema | Reference to [appointment](#entity-termine-appointments) |
+| `userId` | `Long` | schema | Reference to [user](./user-management.md#entity-expert) |
+| `assignedById` | `Long` | schema | Zugewiesen durch (Reference to [user](./user-management.md#entity-expert)) |
+| `appointmentId` | `Long` | schema | Reference to [appointment](#entity-appointments) |
 | `period` | `number` | inferred | Abrechnungszeitraum (YYYYMM) |
 | `control` | `boolean` | inferred | Kontrollstatus |
 | `force` | `boolean` | inferred | Erzwingen |
@@ -403,32 +403,32 @@ Zuweisung von Experten zu bestimmten Terminen mit Statusverfolgung.
 | `dateAssigned` | `Date` | schema | Zuweisungsdatum |
 | `dateCreated` | `Date` | inferred | Erstellungsdatum |
 | `dateChanged` | `Date` | inferred | Änderungsdatum |
-| `changedById` | `Long` | inferred | Zuletzt geändert von (Reference to [user](./user-management.md#entity-experte-expert)) |
+| `changedById` | `Long` | inferred | Zuletzt geändert von (Reference to [user](./user-management.md#entity-expert)) |
 | `dateReminder` | `Date` | schema | Erinnerungsdatum |
 | `dateSelfAdded` | `Date` | inferred | Datum der Selbsteintragung |
 | `support` | `boolean` | inferred | Support-Status |
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.AppointmentAssignment` |
 
 The `appointmentAssignment` entity is referenced by:
-- [`appointmentAssignmentHistory`](#entity-terminzuweisungs-historie-appointment-assignment-history)
+- [`appointmentAssignmentHistory`](#entity-appointment-assignment-history)
 
 ### Sub-entities for appointmentAssignment
 
-#### Sub-entity: AppointmentAssignmentHistory
+#### Sub-entity: AppointmentAssignmentHistory {#sub-entity-appointmentassignmenthistory}
 Audit-Trail für Änderungen an einer Terminzuweisung.
 
 | Column | Type | Field Type | Description |
 | :--- | :--- | :--- | :--- |
 | `_id` | `Long` | schema | Interner Bezeichner |
-| `assignmentId` | `Long` | schema | Reference to [appointmentAssignment](#entity-terminzuweisungen-appointment-assignments) |
+| `assignmentId` | `Long` | schema | Reference to [appointmentAssignment](#entity-appointment-assignments) |
 | `state` | `String` | schema | Neuer Status |
 | `dateCreated` | `Date` | schema | Zeitpunkt der Änderung |
 | `message` | `String` | schema | Systemnachricht oder Kommentar |
 
 The `AppointmentAssignmentHistory` sub-entity is used within:
-- [`appointmentAssignment`](#entity-terminzuweisungen-appointment-assignments) (conceptually, though also a separate collection `appointmentAssignmentHistory`)
+- [`appointmentAssignment`](#entity-appointment-assignments) (conceptually, though also a separate collection `appointmentAssignmentHistory`)
 
-## Entity: Terminzuweisungs-Historie (Appointment Assignment History)
+## Entity: Terminzuweisungs-Historie (Appointment Assignment History) {#entity-appointment-assignment-history}
 Detaillierte Historie aller Zuweisungsänderungen.
 
 ### Table: appointmentAssignmentHistory
@@ -436,20 +436,20 @@ Detaillierte Historie aller Zuweisungsänderungen.
 | :--- | :--- | :--- | :--- |
 | `_id` | `Long` | schema | Interner Bezeichner |
 | `version` | `Long` | schema | Versionsnummer |
-| `assignmentId` | `Long` | schema | Reference to [appointmentAssignment](#entity-terminzuweisungen-appointment-assignments) |
+| `assignmentId` | `Long` | schema | Reference to [appointmentAssignment](#entity-appointment-assignments) |
 | `dateCreated` | `Date` | schema | Zeitpunkt der Änderung |
 | `state` | `String` | schema | Neuer Status |
-| `target` | `Document` | schema | Ziel des Ereignisses (Snapshot von [user](./user-management.md#entity-experte-expert)) |
+| `target` | `Document` | schema | Ziel des Ereignisses (Snapshot von [user](./user-management.md#entity-expert)) |
 | `subject` | `String` | schema | Betreff |
 | `message` | `String` | schema | Nachricht oder Kommentar |
 | `relevantDate` | `Date` | inferred | Relevantes Datum für das Ereignis |
-| `notificationId` | `Long` | inferred | Reference to [notification](./news.md#entity-benachrichtigungen-notifications) |
+| `notificationId` | `Long` | inferred | Reference to [notification](./news.md#entity-notifications) |
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.AppointmentAssignmentHistory` |
 
 The `appointmentAssignmentHistory` entity provides an audit trail for:
-- [`appointmentAssignment`](#entity-terminzuweisungen-appointment-assignments)
+- [`appointmentAssignment`](#entity-appointment-assignments)
 
-## Entity: Schichtplan (Shift Plan)
+## Entity: Schichtplan (Shift Plan) {#entity-shift-plan}
 Planungsvorgaben für wiederkehrende Bereitschaftsdienste.
 
 ### Table: shiftPlan
@@ -463,24 +463,24 @@ Planungsvorgaben für wiederkehrende Bereitschaftsdienste.
 | `schedulingMulitplier` | `Number` | schema | Multiplikator für Planung (z.B. alle X Wochen) |
 | `timeStart` | `Number` | schema | Startuhrzeit (Format: HHmm) |
 | `timeEnd` | `Number` | schema | Enduhrzeit (Format: HHmm) |
-| `job` | `Document` | snapshot | Dienstleistung (denormalized snapshot of [`jobId`](./accounting.md#entity-dienstleistung-service)) ([ConsultationJob](./user-management.md#sub-entity-consultationjob)) |
+| `job` | `Document` | snapshot | Dienstleistung (denormalized snapshot of [`jobId`](./accounting.md#entity-service)) ([ConsultationJob](./user-management.md#sub-entity-consultationjob)) |
 | `minPatients` | `Number` | schema | Mindestanzahl an Patienten |
 | `count` | `Number` | inferred | Anzahl |
 | `lastDate` | `Date` | schema | Letztes geplantes Datum |
 | `priceType` | `String` | schema | Abrechnungstyp:<br>• `WEEKDAY` (Used)<br>• `WEEKNIGHT` (Used)<br>• `WEEKENDDAY` (Used)<br>• `WEEKENDNIGHT` (Used) |
 | `dateChanged` | `Date` | schema | Zeitpunkt der letzten Änderung |
-| `changedBy` | `Document` | snapshot | Letzte Änderung durch (denormalized snapshot of [`user`](./user-management.md#entity-experte-expert)) ([ConsultationDoctor](./user-management.md#sub-entity-consultationdoctor)) |
+| `changedBy` | `Document` | snapshot | Letzte Änderung durch (denormalized snapshot of [`user`](./user-management.md#entity-expert)) ([ConsultationDoctor](./user-management.md#sub-entity-consultationdoctor)) |
 | `dateCreated` | `Date` | schema | Erstellungszeitpunkt |
-| `createdBy` | `Document` | snapshot | Erstellt von (denormalized snapshot of [`user`](./user-management.md#entity-experte-expert)) ([ConsultationDoctor](./user-management.md#sub-entity-consultationdoctor)) |
+| `createdBy` | `Document` | snapshot | Erstellt von (denormalized snapshot of [`user`](./user-management.md#entity-expert)) ([ConsultationDoctor](./user-management.md#sub-entity-consultationdoctor)) |
 | `comment` | `String` | schema | Kommentar (Freitext) |
 | `prefered` | `Array` | inferred | Liste bevorzugter Ärzte (DBRefs) |
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.ShiftPlan` |
 
 The `shiftPlan` entity is referenced by:
-- [`appointment`](#entity-termine-appointments) (via `shiftPlanId`)
-- [`asyncJobQueue`](./system.md#entity-hintergrundaufgaben-async-job-queue) (via `type`)
+- [`appointment`](#entity-appointments) (via `shiftPlanId`)
+- [`asyncJobQueue`](./system.md#entity-async-job-queue) (via `type`)
 
-## Entity: Abwesenheiten/Urlaub (Holidays)
+## Entity: Abwesenheiten/Urlaub (Holidays) {#entity-holidays}
 Manuell eingetragene Abwesenheiten oder Urlaubszeiten von Experten.
 
 ### Table: holiday
@@ -495,12 +495,12 @@ Manuell eingetragene Abwesenheiten oder Urlaubszeiten von Experten.
 | `minutes` | `Number` | inferred | Dauer in Minuten |
 | `dateApproved` | `Date` | inferred | Genehmigungsdatum |
 | `approvalComment` | `String` | inferred | Genehmigungskommentar |
-| `approvedBy` | `DBRef` | inferred | Genehmigt von (Reference to [user](./user-management.md#entity-experte-expert)) |
-| `owner` | `DBRef` | schema | Abwesenheit für (Reference to [user](./user-management.md#entity-experte-expert)) |
+| `approvedBy` | `DBRef` | inferred | Genehmigt von (Reference to [user](./user-management.md#entity-expert)) |
+| `owner` | `DBRef` | schema | Abwesenheit für (Reference to [user](./user-management.md#entity-expert)) |
 | `dateCreated` | `Date` | schema | Erstellungsdatum |
 | `dateChanged` | `Date` | schema | Änderungsdatum |
-| `createdBy` | `DBRef` | schema | Erstellt von (Reference to [user](./user-management.md#entity-experte-expert)) |
-| `changedBy` | `DBRef` | schema | Geändert von (Reference to [user](./user-management.md#entity-experte-expert)) |
+| `createdBy` | `DBRef` | schema | Erstellt von (Reference to [user](./user-management.md#entity-expert)) |
+| `changedBy` | `DBRef` | schema | Geändert von (Reference to [user](./user-management.md#entity-expert)) |
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.Holiday` |
 
 The `holiday` entity is used by:

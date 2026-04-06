@@ -33,4 +33,4 @@ title: 'Treatment'
 
 - [../translation-inventory.md](../translation-inventory.md) — Full inventory
 - [../missing-keys.md](../missing-keys.md) — Gap analysis
-- [../../treatments/README.md](../../treatments/README.md) — Treatment domain analysis
+- [../../treatment/README.md](../../treatment/README.md) — Treatment domain analysis

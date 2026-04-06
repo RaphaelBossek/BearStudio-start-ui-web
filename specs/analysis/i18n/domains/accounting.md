@@ -25,4 +25,4 @@ title: 'Accounting'
 ## Related Files
 
 - [../translation-inventory.md](../translation-inventory.md) — Full inventory
-- [../../administration/README.md](../../administration/README.md) — Accounting domain analysis
+- [../../accounting/README.md](../../accounting/README.md) — Accounting domain analysis

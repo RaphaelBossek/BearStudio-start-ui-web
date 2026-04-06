@@ -10,7 +10,7 @@ This file covers the News category: system announcements and user notifications.
 
 ---
 
-## ER Diagram
+## ER Diagram {#er-diagram}
 
 User notifications, templates, system announcements, and login alerts.
 
@@ -59,13 +59,13 @@ erDiagram
 
 | Table Name (DBML) | Business Entity | Description Summary |
 | :--- | :--- | :--- |
-| [`notification`](#entity-benachrichtigungen-notifications) | Benachrichtigungen (Notifications) | Logs of notifications sent to users via various channels. |
-| [`notificationTemplate`](#entity-benachrichtigungsvorlagen-notification-templates) | Benachrichtigungsvorlagen (Notification Templates) | Reusable templates for automated system notifications. |
-| [`messageOfTheDay`](#entity-system-ank-ndigungen-message-of-the-day) | System-Ankündigungen (Message of the Day) | Global announcements displayed to users upon login. |
+| [`notification`](#entity-notifications) | Benachrichtigungen (Notifications) | Logs of notifications sent to users via various channels. |
+| [`notificationTemplate`](#entity-notification-templates) | Benachrichtigungsvorlagen (Notification Templates) | Reusable templates for automated system notifications. |
+| [`messageOfTheDay`](#entity-message-of-the-day) | System-Ankündigungen (Message of the Day) | Global announcements displayed to users upon login. |
 
 ---
 
-## Entity: Benachrichtigungen (Notifications)
+## Entity: Benachrichtigungen (Notifications) {#entity-notifications}
 Interne Benachrichtigungen und Nachrichten zwischen Benutzern oder vom System.
 
 ### Table: notification
@@ -74,8 +74,8 @@ Interne Benachrichtigungen und Nachrichten zwischen Benutzern oder vom System.
 | `_id` | `Long` | schema | Interner Bezeichner |
 | `version` | `Long` | schema | Versionsnummer |
 | `ts` | `Date` | schema | Zeitstempel |
-| `from` | `Document` | snapshot | Absender (denormalized snapshot of [`user`](./user-management.md#entity-experte-expert)) ([ConsultationDoctor](./user-management.md#sub-entity-consultationdoctor)) |
-| `to` | `Document` | snapshot | Empfänger (denormalized snapshot of [`user`](./user-management.md#entity-experte-expert)) ([ConsultationDoctor](./user-management.md#sub-entity-consultationdoctor)) |
+| `from` | `Document` | snapshot | Absender (denormalized snapshot of [`user`](./user-management.md#entity-expert)) ([ConsultationDoctor](./user-management.md#sub-entity-consultationdoctor)) |
+| `to` | `Document` | snapshot | Empfänger (denormalized snapshot of [`user`](./user-management.md#entity-expert)) ([ConsultationDoctor](./user-management.md#sub-entity-consultationdoctor)) |
 | `important` | `Boolean` | schema | Wichtigkeit |
 | `folder` | `String` | schema | Ordner:<br>• `INBOX` (Used)<br>• `OUTBOX` (Used)<br>• `TRASH` (Used)<br>• `ARCHIVE` (Not used) |
 | `read` | `Date` | schema | Gelesen-Zeitpunkt |
@@ -86,9 +86,9 @@ Interne Benachrichtigungen und Nachrichten zwischen Benutzern oder vom System.
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.Notification` |
 
 The `notification` entity is referenced by:
-- [`appointmentAssignmentHistory`](./planning.md#entity-terminzuweisungs-historie-appointment-assignment-history) (via `notificationId`)
+- [`appointmentAssignmentHistory`](./planning.md#entity-appointment-assignment-history) (via `notificationId`)
 
-## Entity: Benachrichtigungsvorlagen (Notification Templates)
+## Entity: Benachrichtigungsvorlagen (Notification Templates) {#entity-notification-templates}
 Vordefinierte Vorlagen für Systembenachrichtigungen basierend auf Ereignissen.
 
 ### Table: notificationTemplate
@@ -103,13 +103,13 @@ Vordefinierte Vorlagen für Systembenachrichtigungen basierend auf Ereignissen.
 | `language` | `String` | schema | Sprache der Vorlage (Used: `de`) |
 | `dateCreated` | `Date` | schema | Erstellungsdatum |
 | `dateChanged` | `Date` | inferred | Änderungsdatum |
-| `changedBy` | `DBRef` | inferred | Geändert von (Reference to [user](./user-management.md#entity-experte-expert)) |
+| `changedBy` | `DBRef` | inferred | Geändert von (Reference to [user](./user-management.md#entity-expert)) |
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.NotificationTemplate` |
 
 The `notificationTemplate` entity is used by:
 - (System-wide notification logic triggered by events)
 
-## Entity: System-Ankündigungen (Message of the Day)
+## Entity: System-Ankündigungen (Message of the Day) {#entity-message-of-the-day}
 Meldungen, die Benutzern beim Login oder auf dem Dashboard angezeigt werden.
 
 ### Table: messageOfTheDay

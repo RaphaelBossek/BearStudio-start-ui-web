@@ -32,27 +32,27 @@ The Dashboard domain provides role-specific landing pages and calendar views for
 
 | Document | Status | Wireframe | Description |
 |----------|--------|-----------|-------------|
-| [`standard.md`](./standard.md) | ✅ Complete | [`../wireframes/dashboard/standard.png`](../wireframes/dashboard/standard.png) | Standard user dashboard (main landing page) |
-| [`admin.md`](./admin.md) | ✅ Complete | [`../wireframes/dashboard/admin.png`](../wireframes/dashboard/admin.png) | Admin dashboard with system metrics |
-| [`self-service.md`](./self-service.md) | ✅ Complete | — | Self-service dashboard for experts with `SELF_ASSIGNMENT` permission |
-| [`dialogs.md`](./dialogs.md) | ✅ Complete | Multiple | Shared dashboard dialogs (shift, ad-hoc appointment, end shift) |
+| [`dashboard-main.md`](./dashboard-main.md) | ✅ Complete | [`dashboard-standard.png`](../../../../wireframes/system/dashboard/dashboard-standard.png) | Standard user dashboard (main landing page) |
+| [`dashboard-admin.md`](../admin/dashboard-admin.md) | ✅ Complete | [`dashboard-admin.png`](../../../../wireframes/system/dashboard/dashboard-admin.png) | Admin dashboard with system metrics |
+| [`dashboard-selfservice.md`](./dashboard-selfservice.md) | ✅ Complete | — | Self-service dashboard for experts with `SELF_ASSIGNMENT` permission |
+| [`dialogs-system.md`](./dialogs-system.md) | ✅ Complete | Multiple | Shared dashboard dialogs (shift, ad-hoc appointment, end shift) |
 
 ## Wireframes
 
 | ID | Wireframe | Status | Location |
 |----|-----------|--------|----------|
-| W1 | Calendar (Month View) | ✅ Complete | [`../wireframes/dashboard/calendar.png`](../wireframes/dashboard/calendar.png) |
-| W2 | Week View | ✅ Complete | [`../wireframes/dashboard/expert-availability-week.png`](../wireframes/dashboard/expert-availability-week.png) |
-| W3 | Month View | ✅ Complete | [`../wireframes/dashboard/expert-availability-month.png`](../wireframes/dashboard/expert-availability-month.png) |
-| W4 | Shift Dialog — Detail | ✅ Complete | [`../wireframes/dashboard/shift-dialog-detail.png`](../wireframes/dashboard/shift-dialog-detail.png) |
-| W5 | Shift Dialog — Request Action | ✅ Complete | [`../wireframes/dashboard/shift-dialog-request.png`](../wireframes/dashboard/shift-dialog-request.png) |
-| W6 | Ad-Hoc Appointment | ✅ Complete | [`../wireframes/dashboard/adhoc-appointment.png`](../wireframes/dashboard/adhoc-appointment.png) |
-| W7 | End Shift | ✅ Complete | [`../wireframes/dashboard/end-shift.png`](../wireframes/dashboard/end-shift.png) |
-| W8 | User Stats Dialog | ✅ Complete | [`../wireframes/dashboard/user-stats.png`](../wireframes/dashboard/user-stats.png) |
+| W1 | Calendar (Month View) | ✅ Complete | [`calendar.png`](../../../../wireframes/planning/dashboard/calendar.png) |
+| W2 | Week View | ✅ Complete | [`expert-availability-week.png`](../../../../wireframes/planning/dashboard/expert-availability-week.png) |
+| W3 | Month View | ✅ Complete | [`expert-availability-month.png`](../../../../wireframes/planning/dashboard/expert-availability-month.png) |
+| W4 | Shift Dialog — Detail | ✅ Complete | [`shift-dialog-detail.png`](../../../../wireframes/planning/dashboard/shift-dialog-detail.png) |
+| W5 | Shift Dialog — Request Action | ✅ Complete | [`shift-dialog-request.png`](../../../../wireframes/planning/dashboard/shift-dialog-request.png) |
+| W6 | Ad-Hoc Appointment | ✅ Complete | [`adhoc-appointment.png`](../../../../wireframes/planning/dashboard/adhoc-appointment.png) |
+| W7 | End Shift | ✅ Complete | [`end-shift.png`](../../../../wireframes/planning/dashboard/end-shift.png) |
+| W8 | User Stats Dialog | ✅ Complete | [`user-stats.png`](../../../../wireframes/user-management/dashboard/user-stats.png) |
 
 ## Workflows
 
-See [`../wireframes/dashboard/workflows.md`](../wireframes/dashboard/workflows.md) for detailed user journey flowcharts:
+See [`workflows.md`](../../../../wireframes/system/workflows.md) for detailed user journey flowcharts:
 
 - Area 1: Appointment Lifecycle
 - Area 2: Self-Service Dashboard
@@ -73,10 +73,10 @@ See [`../wireframes/dashboard/workflows.md`](../wireframes/dashboard/workflows.m
 
 | Domain | Integration | Description |
 |--------|-------------|-------------|
-| [`appointments/`](../appointments/README.md) | MonthTable grid | Dashboard displays appointment calendar |
-| [`shifts/`](../shifts/README.md) | Shift assignments | Dashboard shows upcoming shifts |
-| [`staff/`](../staff/README.md) | Expert availability | Profile → Availability → Dashboard grids |
-| [`administration/`](../administration/README.md) | Worklog | Dashboard → Worklog links to accounting |
+<!-- removed: | [`appointments/`](../appointments/README.md) | MonthTable grid | Dashboard displays appointment calendar | -->
+<!-- removed: | [`shifts/`](../shifts/README.md) | Shift assignments | Dashboard shows upcoming shifts | -->
+| [`staff/`](../../user-management/README.md) | Expert availability | Profile → Availability → Dashboard grids |
+| [`accounting/`](../../accounting/README.md) | Worklog | Dashboard → Worklog links to accounting |
 
 ## Migration Progress
 
@@ -104,4 +104,4 @@ See [`../wireframes/dashboard/workflows.md`](../wireframes/dashboard/workflows.m
 
 ---
 
-**Back to**: [`SITE-NAVIGATION.md`](./SITE-NAVIGATION.md)
+<!-- removed: **Back to**: [`SITE-NAVIGATION.md`](./SITE-NAVIGATION.md) -->

@@ -81,7 +81,7 @@ grep -r "[ÄÖÜäöüß]" src/components/ src/routes/ --include="*.tsx" --inclu
 
 ### 2. Add to Inventory
 
-Add new strings to appropriate domain file in `domains/` or [hardcoded-strings.md](./hardcoded-strings.md)
+Add new strings to appropriate domain file in `domains/` or [hardcoded-strings.md](../hardcoded-strings/)
 
 ### 3. Lookup Existing Keys
 
@@ -93,7 +93,7 @@ Use the lookup script to check if keys already exist:
 
 ### 4. Update Missing Translations
 
-Add missing translations to [missing-keys.md](./missing-keys.md) with auto-translate suggestions
+Add missing translations to [missing-keys.md](../missing-keys/) with auto-translate suggestions
 
 ### 5. Review and Validate
 
@@ -133,6 +133,6 @@ Each domain file in `domains/` follows this structure:
 
 ## Related Documentation
 
-- [Translation Inventory](./translation-inventory.md) — Complete key inventory
-- [Hardcoded Strings](./hardcoded-strings.md) — Strings needing i18n keys
-- [Missing Keys](./missing-keys.md) — Gaps in translation coverage
+- [Translation Inventory](../translation-inventory) — Complete key inventory
+- [Hardcoded Strings](../hardcoded-strings) — Strings needing i18n keys
+- [Missing Keys](../missing-keys) — Gaps in translation coverage

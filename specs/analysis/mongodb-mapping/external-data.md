@@ -10,7 +10,7 @@ This file covers the External Data category: reference data including medical cl
 
 ---
 
-## ER Diagram
+## ER Diagram {#er-diagram} {#er-diagram}
 
 Reference data: ICD-10 codes, medications, geography, and telephony.
 
@@ -91,17 +91,17 @@ erDiagram
 
 | Table Name (DBML) | Business Entity | Description Summary |
 | :--- | :--- | :--- |
-| [`icd10`](#entity-icd-10-klassifikation-icd-10) | ICD-10 Klassifikation (ICD-10) | International Classification of Diseases (ICD-10) codes and descriptions. |
-| [`medication`](#entity-medikamente-medication) | Medikamente (Medication) | Comprehensive database of medications, ingredients, and dosages. |
-| [`zipCodeLookup`](#entity-plz-verzeichnis-zip-code-lookup) | PLZ-Verzeichnis (Zip Code Lookup) | Geographic reference data for postal codes and cities. |
-| [`country`](#entity-l-nder-countries) | Länder (Countries) | Reference data for countries, including codes and names. |
-| [`publicHoliday`](#entity-feiertage-public-holidays) | Feiertage (Public Holidays) | Definition of public holidays for specific regions and years. |
-| [`cDRCall`](#entity-anrufliste-cdr-calls) | Anrufliste (CDR Calls) | Call Detail Records for tracking telephonic interactions. |
-| [`cDRCallAssignment`](#entity-cdr-call-zuweisungen-cdr-call-assignment) | CDR Call Zuweisungen (CDR Call Assignment) | Mapping of call records to specific patients or consultations. |
+| [`icd10`](#entity-icd-10) | ICD-10 Klassifikation (ICD-10) | International Classification of Diseases (ICD-10) codes and descriptions. |
+| [`medication`](#entity-medication) | Medikamente (Medication) | Comprehensive database of medications, ingredients, and dosages. |
+| [`zipCodeLookup`](#entity-zip-code-lookup) | PLZ-Verzeichnis (Zip Code Lookup) | Geographic reference data for postal codes and cities. |
+| [`country`](#entity-countries) | Länder (Countries) | Reference data for countries, including codes and names. |
+| [`publicHoliday`](#entity-public-holidays) | Feiertage (Public Holidays) | Definition of public holidays for specific regions and years. |
+| [`cDRCall`](#entity-cdr-calls) | Anrufliste (CDR Calls) | Call Detail Records for tracking telephonic interactions. |
+| [`cDRCallAssignment`](#entity-cdr-call-assignment) | CDR Call Zuweisungen (CDR Call Assignment) | Mapping of call records to specific patients or consultations. |
 
 ---
 
-## Entity: ICD-10 Klassifikation (ICD-10)
+## Entity: ICD-10 Klassifikation (ICD-10) {#entity-icd-10} {#entity-icd-10}
 Systematische Verzeichnis der Krankheiten und verwandter Gesundheitsprobleme.
 
 ### Table: icd10
@@ -120,9 +120,9 @@ Systematische Verzeichnis der Krankheiten und verwandter Gesundheitsprobleme.
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.Icd10` |
 
 The `icd10` entity is referenced by:
-- [`consultationData`](./treatment.md#entity-konsultationsdaten-consultation-data) (in `standard.diagnosis`)
+- [`consultationData`](./treatment.md#entity-consultation-data) (in `standard.diagnosis`)
 
-## Entity: Medikamente (Medication)
+## Entity: Medikamente (Medication) {#entity-medication} {#entity-medication}
 Zentrales Verzeichnis der verfügbaren Medikamente mit Inhaltsstoffen, Produkten und Anwendungshinweisen.
 
 ### Table: medication
@@ -151,11 +151,11 @@ Zentrales Verzeichnis der verfügbaren Medikamente mit Inhaltsstoffen, Produkten
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.Medication` |
 
 The `medication` entity is referenced by:
-- [`consultationData`](./treatment.md#entity-konsultationsdaten-consultation-data) (in `standard.prescription`)
+- [`consultationData`](./treatment.md#entity-consultation-data) (in `standard.prescription`)
 
 ### Sub-entities for medication
 
-#### Sub-entity: MedicationIngredient
+#### Sub-entity: MedicationIngredient {#sub-entity-medicationingredient} {#sub-entity-medicationingredient}
 Einzelner Wirkstoff oder Hilfsstoff eines Medikaments.
 
 | Column | Type | Field Type | Description |
@@ -168,10 +168,10 @@ Einzelner Wirkstoff oder Hilfsstoff eines Medikaments.
 | `extra` | `Boolean` | schema | Ob es sich um einen Hilfsstoff handelt |
 
 The `MedicationIngredient` sub-entity is used within:
-- [`medication`](#entity-medikamente-medication) (as `ingredients` array)
+- [`medication`](#entity-medication) (as `ingredients` array)
 - [`MedicationProduct`](#sub-entity-medicationproduct) (as `ingredients` snapshot array)
 
-#### Sub-entity: MedicationProduct
+#### Sub-entity: MedicationProduct {#sub-entity-medicationproduct} {#sub-entity-medicationproduct}
 Konkrete Packungsform oder Variante eines Medikaments.
 
 | Column | Type | Field Type | Description |
@@ -185,9 +185,9 @@ Konkrete Packungsform oder Variante eines Medikaments.
 | `ingredients` | `Array` | snapshot | Liste der Inhaltsstoffe (Snapshot) |
 
 The `MedicationProduct` sub-entity is used within:
-- [`medication`](#entity-medikamente-medication) (as `products` array)
+- [`medication`](#entity-medication) (as `products` array)
 
-## Entity: PLZ-Verzeichnis (Zip Code Lookup)
+## Entity: PLZ-Verzeichnis (Zip Code Lookup) {#entity-zip-code-lookup} {#entity-zip-code-lookup}
 Verzeichnis von Postleitzahlen zur Zuordnung von Orten und Bundesländern.
 
 ### Table: zipCodeLookup
@@ -203,7 +203,7 @@ Verzeichnis von Postleitzahlen zur Zuordnung von Orten und Bundesländern.
 The `zipCodeLookup` entity is used for:
 - (Geographic data validation and lookups in the UI)
 
-## Entity: Länder (Countries)
+## Entity: Länder (Countries) {#entity-countries} {#entity-countries}
 Verzeichnis von Ländern für Adressdaten und Feiertagsberechnungen.
 
 ### Table: country
@@ -218,7 +218,7 @@ Verzeichnis von Ländern für Adressdaten und Feiertagsberechnungen.
 The `country` entity is used by:
 - (Geographic lookup and address validation)
 
-## Entity: Feiertage (Public Holidays)
+## Entity: Feiertage (Public Holidays) {#entity-public-holidays} {#entity-public-holidays}
 Definition von gesetzlichen Feiertagen zur Berücksichtigung in der Planung.
 
 ### Table: publicHoliday
@@ -234,7 +234,7 @@ Definition von gesetzlichen Feiertagen zur Berücksichtigung in der Planung.
 The `publicHoliday` entity is used by:
 - (Planning modules to identify non-working days)
 
-## Entity: Anrufliste (CDR Calls)
+## Entity: Anrufliste (CDR Calls) {#entity-cdr-calls} {#entity-cdr-calls}
 Erfasst Details zu getätigten Video- und Audioanrufen (Call Detail Records).
 
 ### Table: cDRCall
@@ -251,14 +251,14 @@ Erfasst Details zu getätigten Video- und Audioanrufen (Call Detail Records).
 | `callingNumber` | `String` | inferred | Anrufende Nummer |
 | `connected` | `Boolean` | inferred | Ob eine Verbindung zustande kam |
 | `location` | `String` | schema | Ort des Anrufs |
-| `userId` | `Long` | inferred | Reference to [user](./user-management.md#entity-experte-expert) |
-| `assignmentId` | `Long` | inferred | Reference to [appointmentAssignment](./planning.md#entity-terminzuweisungen-appointment-assignments) |
+| `userId` | `Long` | inferred | Reference to [user](./user-management.md#entity-expert) |
+| `assignmentId` | `Long` | inferred | Reference to [appointmentAssignment](./planning.md#entity-appointment-assignments) |
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.CDRCall` |
 
 The `cDRCall` entity is referenced by:
-- [`cDRCallAssignment`](#entity-cdr-call-zuweisungen-cdr-call-assignment) (implicitly linked by time and location)
+- [`cDRCallAssignment`](#entity-cdr-call-assignment) (implicitly linked by time and location)
 
-## Entity: CDR Call Zuweisungen (CDR Call Assignment)
+## Entity: CDR Call Zuweisungen (CDR Call Assignment) {#entity-cdr-call-assignment} {#entity-cdr-call-assignment}
 Ordnet CDR-Anrufe bestimmten Terminen oder Konsultationen zu.
 
 ### Table: cDRCallAssignment
@@ -269,15 +269,15 @@ Ordnet CDR-Anrufe bestimmten Terminen oder Konsultationen zu.
 | `start` | `Date` | schema | Startzeitpunkt |
 | `until` | `Date` | schema | Endzeitpunkt |
 | `duration` | `Long` | schema | Dauer in Sekunden |
-| `locationId` | `Long` | schema | Reference to [location](./customer.md#entity-standorte-locations) |
+| `locationId` | `Long` | schema | Reference to [location](./customer.md#entity-locations) |
 | `location` | `String` | schema | Name des Ortes |
 | `user` | `Document` | schema | Beteiligter Benutzer ([ConsultationDoctor](./user-management.md#sub-entity-consultationdoctor)) |
 | `state` | `String` | schema | Status der Zuweisung |
-| `appointmentId` | `Long` | inferred | Reference to [appointment](./planning.md#entity-termine-appointments) |
-| `consultationId` | `Long` | inferred | Reference to [consultationData](./treatment.md#entity-konsultationsdaten-consultation-data) |
+| `appointmentId` | `Long` | inferred | Reference to [appointment](./planning.md#entity-appointments) |
+| `consultationId` | `Long` | inferred | Reference to [consultationData](./treatment.md#entity-consultation-data) |
 | `confidence` | `Number` | schema | Konfidenzlevel der Zuweisung |
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.CDRCallAssignment` |
 
 The `cDRCallAssignment` entity links calls to:
-- [`appointment`](./planning.md#entity-termine-appointments)
-- [`consultationData`](./treatment.md#entity-konsultationsdaten-consultation-data)
+- [`appointment`](./planning.md#entity-appointments)
+- [`consultationData`](./treatment.md#entity-consultation-data)

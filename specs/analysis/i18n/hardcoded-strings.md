@@ -59,11 +59,11 @@ This document tracks German strings found in the codebase that need i18n keys.
 1. **Find hardcoded strings**: Search for German text in `.tsx`, `.ts` files
 2. **Categorize by domain**: Place in appropriate section above
 3. **Assign priority**: Based on user visibility and impact
-4. **Create i18n key**: Follow naming conventions in [translation-guide.md](./translation-guide.md)
+4. **Create i18n key**: Follow naming conventions in [../translation-guide.md](../translation-guide/)
 5. **Update code**: Replace string with `t('domain:key')` call
 
 ## Related Documentation
 
-- [Translation Inventory](./translation-inventory.md) — Complete key inventory
-- [Translation Guide](./translation-guide.md) — Naming conventions
-- [Missing Keys](./missing-keys.md) — Gaps in translation coverage
+- [Translation Inventory](../translation-inventory/) — Complete key inventory
+- [Translation Guide](../translation-guide/) — Naming conventions
+- [Missing Keys](../missing-keys/) — Gaps in translation coverage

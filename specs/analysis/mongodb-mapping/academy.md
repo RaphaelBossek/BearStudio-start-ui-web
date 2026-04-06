@@ -10,7 +10,7 @@ This file covers the Academy category: educational resources and training materi
 
 ---
 
-## ER Diagram
+## ER Diagram {#er-diagram}
 
 Training videos, categories, and per-user viewing history.
 
@@ -57,13 +57,13 @@ erDiagram
 
 | Table Name (DBML) | Business Entity | Description Summary |
 | :--- | :--- | :--- |
-| [`video`](#entity-videos-videos) | Videos (Videos) | Metadata for instructional or informational videos in the system. |
-| [`userVideoHistory`](#entity-video-verlauf-user-video-history) | Video-Verlauf (User Video History) | Tracking of video call attempts and successful connections. |
-| [`videoCategory`](#entity-videokategorien-video-categories) | Videokategorien (Video Categories) | Categorization for organizing the video library. |
+| [`video`](#entity-videos) | Videos (Videos) | Metadata for instructional or informational videos in the system. |
+| [`userVideoHistory`](#entity-user-video-history) | Video-Verlauf (User Video History) | Tracking of video call attempts and successful connections. |
+| [`videoCategory`](#entity-video-categories) | Videokategorien (Video Categories) | Categorization for organizing the video library. |
 
 ---
 
-## Entity: Videos (Videos)
+## Entity: Videos (Videos) {#entity-videos}
 Metadaten für Schulungs- oder Informationsvideos.
 
 ### Table: video
@@ -72,7 +72,7 @@ Metadaten für Schulungs- oder Informationsvideos.
 | `_id` | `Long` | schema | Interner Bezeichner |
 | `version` | `Long` | schema | Versionsnummer |
 | `name` | `String` | schema | Videotitel |
-| `category` | `DBRef` | schema | Reference to [videoCategory](#entity-videokategorien-video-categories) |
+| `category` | `DBRef` | schema | Reference to [videoCategory](#entity-video-categories) |
 | `file` | `Document` | schema | Metadaten der Videodatei ([FileMetadata](./user-management.md#sub-entity-filemetadata)) |
 | `preview` | `Document` | schema | Metadaten des Vorschaubilds ([FileMetadata](./user-management.md#sub-entity-filemetadata)) |
 | `lengthInSeconds` | `Long` | schema | Videolänge in Sekunden |
@@ -80,9 +80,9 @@ Metadaten für Schulungs- oder Informationsvideos.
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.Video` |
 
 The `video` entity is referenced by:
-- [`userVideoHistory`](#entity-video-verlauf-user-video-history)
+- [`userVideoHistory`](#entity-user-video-history)
 
-## Entity: Video-Verlauf (User Video History)
+## Entity: Video-Verlauf (User Video History) {#entity-user-video-history}
 Protokollierung der von Benutzern angesehenen (Schulungs-)Videos.
 
 ### Table: userVideoHistory
@@ -90,8 +90,8 @@ Protokollierung der von Benutzern angesehenen (Schulungs-)Videos.
 | :--- | :--- | :--- | :--- |
 | `_id` | `Long` | schema | Interner Bezeichner |
 | `version` | `Long` | schema | Versionsnummer |
-| `user` | `DBRef` | schema | Reference to [user](./user-management.md#entity-experte-expert) |
-| `video` | `DBRef` | schema | Reference to [video](#entity-videos-videos) |
+| `user` | `DBRef` | schema | Reference to [user](./user-management.md#entity-expert) |
+| `video` | `DBRef` | schema | Reference to [video](#entity-videos) |
 | `dateStart` | `Date` | schema | Erster Zugriff |
 | `dateLast` | `Date` | schema | Letzter Zugriff |
 | `timeWatched` | `Long` | schema | Gesamt-Zuschauerzeit in Sekunden |
@@ -100,12 +100,12 @@ Protokollierung der von Benutzern angesehenen (Schulungs-)Videos.
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.UserVideoHistory` |
 
 The `userVideoHistory` entity references:
-- [`user`](./user-management.md#entity-experte-expert) (via `user` DBRef)
-- [`video`](#entity-videos-videos) (via `video` DBRef)
+- [`user`](./user-management.md#entity-expert) (via `user` DBRef)
+- [`video`](#entity-videos) (via `video` DBRef)
 
 ### Sub-entities for userVideoHistory
 
-#### Sub-entity: UserVideoSession
+#### Sub-entity: UserVideoSession {#sub-entity-uservideosession}
 Einzelne Wiedergabe-Sitzung eines Videos.
 
 | Column | Type | Field Type | Description |
@@ -120,9 +120,9 @@ Einzelne Wiedergabe-Sitzung eines Videos.
 | `timeWatched` | `Long` | schema | Zuschauerzeit in dieser Sitzung |
 
 The `UserVideoSession` sub-entity is used within:
-- [`userVideoHistory`](#entity-video-verlauf-user-video-history) (as `sessions` array)
+- [`userVideoHistory`](#entity-user-video-history) (as `sessions` array)
 
-## Entity: Videokategorien (Video Categories)
+## Entity: Videokategorien (Video Categories) {#entity-video-categories}
 Kategorisierung von Videos in einer hierarchischen Struktur.
 
 ### Table: videoCategory
@@ -133,8 +133,8 @@ Kategorisierung von Videos in einer hierarchischen Struktur.
 | `title` | `String` | inferred | Name der Kategorie |
 | `description` | `String` | inferred | Beschreibung |
 | `thumbnail` | `Document` | inferred | Vorschaubild ([FileMetadata](./user-management.md#sub-entity-filemetadata)) |
-| `parent` | `Long` | schema | Reference to übergeordnete [videoCategory](#entity-videokategorien-video-categories) |
+| `parent` | `Long` | schema | Reference to übergeordnete [videoCategory](#entity-video-categories) |
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.VideoCategory` |
 
 The `videoCategory` entity is referenced by:
-- [`video`](#entity-videos-videos)
+- [`video`](#entity-videos)

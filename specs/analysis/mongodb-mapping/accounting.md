@@ -10,7 +10,7 @@ This file covers the Accounting category: entities related to billing, customers
 
 ---
 
-## ER Diagram
+## ER Diagram {#er-diagram}
 
 Invoices, billing components, price lists, expert work logs, and financial tracking.
 
@@ -150,21 +150,21 @@ erDiagram
 
 | Table Name (DBML) | Business Entity | Description Summary |
 | :--- | :--- | :--- |
-| [`invoice`](#entity-rechnungen-invoices) | Rechnungen (Invoices) | Billing documents for experts, customers, or patients. |
-| [`invoiceComponent`](#entity-rechnungskomponenten-invoice-components) | Rechnungskomponenten (Invoice Components) | Individual items and rules contributing to a final invoice. |
-| [`invoiceReceiver`](#entity-rechnungsempf-nger-invoice-receivers) | Rechnungsempfänger (Invoice Receivers) | Details of entities receiving invoices, including tax settings. |
-| [`expertWorkMonthly`](#entity-monatliche-expertenarbeit-expert-work-monthly) | Monatliche Expertenarbeit (Expert Work Monthly) | Aggregated monthly work logs and billing summaries for experts. |
-| [`jobId`](#entity-dienstleistung-service) | Dienstleistung (Service) | Definition of a service (Dienstleistung), including title, color, billing modality, specialty, and consultation types. |
-| [`jobPriceList`](#entity-preislisten-job-price-lists) | Preislisten (Job Price Lists) | Master price lists for different services and specialties. |
-| [`product`](#entity-waren-products) | Waren (Products) | Goods or services subscribed by the expert, including quantity, price, and dates. |
-| [`cashRegister`](#entity-kassenregistrierung-cash-register) | Kassenregistrierung (Cash Register) | Records of cash transactions and POS register states. |
-| [`closedMonth`](#entity-abgeschlossene-zeitr-ume-closed-months) | Abgeschlossene Zeiträume (Closed Months) | Tracking of billing periods that have been finalized and locked. |
-| [`stornoGroup`](#entity-storno-regelgruppen-storno-groups) | Storno-Regelgruppen (Storno Groups) | Rules and groups defining cancellation conditions and fees. |
-| [`workHour`](#entity-arbeitszeit-kategorien-work-hours) | Arbeitszeit-Kategorien (Work Hours) | Definitions of different work hour types for billing and reporting. |
+| [`invoice`](#entity-invoices) | Rechnungen (Invoices) | Billing documents for experts, customers, or patients. |
+| [`invoiceComponent`](#entity-invoice-components) | Rechnungskomponenten (Invoice Components) | Individual items and rules contributing to a final invoice. |
+| [`invoiceReceiver`](#entity-invoice-receivers) | Rechnungsempfänger (Invoice Receivers) | Details of entities receiving invoices, including tax settings. |
+| [`expertWorkMonthly`](#entity-expert-work-monthly) | Monatliche Expertenarbeit (Expert Work Monthly) | Aggregated monthly work logs and billing summaries for experts. |
+| [`jobId`](#entity-service) | Dienstleistung (Service) | Definition of a service (Dienstleistung), including title, color, billing modality, specialty, and consultation types. |
+| [`jobPriceList`](#entity-job-price-lists) | Preislisten (Job Price Lists) | Master price lists for different services and specialties. |
+| [`product`](#entity-products) | Waren (Products) | Goods or services subscribed by the expert, including quantity, price, and dates. |
+| [`cashRegister`](#entity-cash-register) | Kassenregistrierung (Cash Register) | Records of cash transactions and POS register states. |
+| [`closedMonth`](#entity-closed-months) | Abgeschlossene Zeiträume (Closed Months) | Tracking of billing periods that have been finalized and locked. |
+| [`stornoGroup`](#entity-storno-groups) | Storno-Regelgruppen (Storno Groups) | Rules and groups defining cancellation conditions and fees. |
+| [`workHour`](#entity-work-hours) | Arbeitszeit-Kategorien (Work Hours) | Definitions of different work hour types for billing and reporting. |
 
 ---
 
-## Entity: Rechnungen (Invoices)
+## Entity: Rechnungen (Invoices) {#entity-invoices}
 Zentrale Abrechnungsdokumente für Kunden und Experten.
 
 ### Table: invoice
@@ -175,7 +175,7 @@ Zentrale Abrechnungsdokumente für Kunden und Experten.
 | `no` | `String` | schema | Rechnungsnummer |
 | `title` | `String` | schema | Titel |
 | `description` | `String` | schema | Beschreibung |
-| `cashRegister` | `DBRef` | schema | Reference to [cashRegister](#entity-kassenregistrierung-cash-register) |
+| `cashRegister` | `DBRef` | schema | Reference to [cashRegister](#entity-cash-register) |
 | `client` | `Document` | schema | Rechnungsempfänger-Details (Snapshot: [InvoiceClient](#sub-entity-invoiceclient)) |
 | `month` | `Number` | schema | Monat |
 | `year` | `Number` | schema | Jahr |
@@ -189,13 +189,13 @@ Zentrale Abrechnungsdokumente für Kunden und Experten.
 | `dateSubmit` | `Date` | schema | Einreichungsdatum |
 | `dateWorklog` | `Date` | inferred | Arbeitsnachweis-Datum |
 | `dateCreated` | `Date` | inferred | Erstellungsdatum |
-| `createdBy` | `DBRef` | inferred | Erstellt von (Reference to [user](./user-management.md#entity-experte-expert)) |
+| `createdBy` | `DBRef` | inferred | Erstellt von (Reference to [user](./user-management.md#entity-expert)) |
 | `dateChanged` | `Date` | inferred | Änderungsdatum |
-| `changedBy` | `DBRef` | inferred | Geändert von (Reference to [user](./user-management.md#entity-experte-expert)) |
+| `changedBy` | `DBRef` | inferred | Geändert von (Reference to [user](./user-management.md#entity-expert)) |
 | `totalTaxes` | `Number` | inferred | Gesamtsteuer |
 | `paidAt` | `Date` | inferred | Bezahlungsdatum |
-| `storno` | `DBRef` | inferred | Storno-Referenz (Reference to [invoice](#entity-rechnungen-invoices)) |
-| `attachments` | `Array` | inferred | Anhänge ([UserFileMetadata](./user-management.md#sub-entity-userfilemetadata)) |
+| `storno` | `DBRef` | inferred | Storno-Referenz (Reference to [invoice](#entity-invoices)) |
+| `attachments` | `Array` | inferred | Anhänge ([UserFileMetadata](./user-management.md#sub-entity-filemetadata)) |
 | `paymentType` | `String` | schema | Zahlungsart:<br>• `CASH` (Used)<br>• `INVOICE` (Used)<br>• `INVOICE_STORNO` (Used) |
 | `invoiceType` | `String` | schema | Rechnungstyp:<br>• `EXPERT_INVOICE` (Used)<br>• `INVOICE` (Used)<br>• `START_INVOICE` (Used) |
 | `mail` | `String` | schema | E-Mail-Adresse für den Versand |
@@ -203,13 +203,13 @@ Zentrale Abrechnungsdokumente für Kunden und Experten.
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.Invoice` |
 
 The `invoice` entity is referenced by:
-- [`invoiceReceiver`](#entity-rechnungsempf-nger-invoice-receivers) (implicit link via billing data)
-- [`expertWorkMonthly`](#entity-monatliche-expertenarbeit-expert-work-monthly) (for billing calculations)
-- [`stornoGroup`](#entity-storno-regelgruppen-storno-groups) (via cancellation logic)
+- [`invoiceReceiver`](#entity-invoice-receivers) (implicit link via billing data)
+- [`expertWorkMonthly`](#entity-expert-work-monthly) (for billing calculations)
+- [`stornoGroup`](#entity-storno-groups) (via cancellation logic)
 
 ### Sub-entities for invoice
 
-#### Sub-entity: InvoiceClient
+#### Sub-entity: InvoiceClient {#sub-entity-invoiceclient}
 Snapshot der Client-Daten zum Zeitpunkt der Rechnungserstellung.
 
 | Column | Type | Field Type | Description |
@@ -229,9 +229,9 @@ Snapshot der Client-Daten zum Zeitpunkt der Rechnungserstellung.
 | `uid` | `String` | schema | Umsatzsteuer-ID |
 
 The `InvoiceClient` sub-entity is used within:
-- [`invoice`](#entity-rechnungen-invoices) (as `client` field)
+- [`invoice`](#entity-invoices) (as `client` field)
 
-#### Sub-entity: InvoicePosition
+#### Sub-entity: InvoicePosition {#sub-entity-invoiceposition}
 Einzelne Position auf einer Rechnung.
 
 | Column | Type | Field Type | Description |
@@ -244,13 +244,13 @@ Einzelne Position auf einer Rechnung.
 | `pricePerUnit` | `Number` | schema | Preis pro Einheit |
 | `totalPrice` | `Number` | schema | Gesamtpreis der Position |
 | `taxType` | `String` | schema | Steuerart:<br>• `SATZ_NORMAL` (Used)<br>• `SATZ_NULL` (Used) |
-| `job` | `DBRef` | schema | Reference to [jobId](#entity-dienstleistung-service) |
+| `job` | `DBRef` | schema | Reference to [jobId](#entity-service) |
 | `comment` | `String` | schema | Kommentar |
 
 The `InvoicePosition` sub-entity is used within:
-- [`invoice`](#entity-rechnungen-invoices) (as `positions` array)
+- [`invoice`](#entity-invoices) (as `positions` array)
 
-#### Sub-entity: InvoiceTax
+#### Sub-entity: InvoiceTax {#sub-entity-invoicetax}
 Zusammenfassung einer Steuerart auf der Rechnung.
 
 | Column | Type | Field Type | Description |
@@ -264,9 +264,9 @@ Zusammenfassung einer Steuerart auf der Rechnung.
 | `description` | `String` | schema | Beschreibung |
 
 The `InvoiceTax` sub-entity is used within:
-- [`invoice`](#entity-rechnungen-invoices) (as `taxes` array)
+- [`invoice`](#entity-invoices) (as `taxes` array)
 
-## Entity: Rechnungskomponenten (Invoice Components)
+## Entity: Rechnungskomponenten (Invoice Components) {#entity-invoice-components}
 Einzelne Bestandteile einer Rechnung, basierend auf Terminen und Konsultationen.
 
 ### Table: invoiceComponent
@@ -275,11 +275,11 @@ Einzelne Bestandteile einer Rechnung, basierend auf Terminen und Konsultationen.
 | `_id` | `Long` | schema | Interner Bezeichner |
 | `version` | `Long` | schema | Versionsnummer |
 | `start` | `Date` | schema | Startzeitpunkt |
-| `priceList` | `Long` | schema | Reference to [jobPriceList](#entity-preislisten-job-price-lists) |
-| `customerId` | `Long` | schema | Reference to [customer](./customer.md#entity-kunden-customers) |
-| `locationId` | `Long` | schema | Reference to [location](./customer.md#entity-standorte-locations) |
-| `appointmentId` | `Long` | schema | Reference to [appointment](./planning.md#entity-termine-appointments) |
-| `consultationId` | `Long` | schema | Reference to [consultationData](./treatment.md#entity-konsultationsdaten-consultation-data) |
+| `priceList` | `Long` | schema | Reference to [jobPriceList](#entity-job-price-lists) |
+| `customerId` | `Long` | schema | Reference to [customer](./customer.md#entity-customers) |
+| `locationId` | `Long` | schema | Reference to [location](./customer.md#entity-locations) |
+| `appointmentId` | `Long` | schema | Reference to [appointment](./planning.md#entity-appointments) |
+| `consultationId` | `Long` | schema | Reference to [consultationData](./treatment.md#entity-consultation-data) |
 | `actualPatients` | `Number` | schema | Tatsächliche Anzahl Patienten |
 | `billablePatients` | `Number` | schema | Abrechenbare Patienten |
 | `payablePatients` | `Number` | schema | Auszahlbare Patienten |
@@ -293,11 +293,11 @@ Einzelne Bestandteile einer Rechnung, basierend auf Terminen und Konsultationen.
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.InvoiceComponent` |
 
 The `invoiceComponent` entity is a derived entity used for accounting and is referenced by:
-- [`invoice`](#entity-rechnungen-invoices) (implicitly during invoice generation)
+- [`invoice`](#entity-invoices) (implicitly during invoice generation)
 
 ### Sub-entities for invoiceComponent
 
-#### Sub-entity: InvoiceComponentStorno
+#### Sub-entity: InvoiceComponentStorno {#sub-entity-invoicecomponentstorno}
 Details zur Stornierung einer Rechnungskomponente.
 
 | Column | Type | Field Type | Description |
@@ -310,9 +310,9 @@ Details zur Stornierung einer Rechnungskomponente.
 | `type` | `String` | schema | Storno-Typ |
 
 The `InvoiceComponentStorno` sub-entity is used within:
-- [`invoiceComponent`](#entity-rechnungskomponenten-invoice-components) (as `stornoType` field)
+- [`invoiceComponent`](#entity-invoice-components) (as `stornoType` field)
 
-## Entity: Rechnungsempfänger (Invoice Receivers)
+## Entity: Rechnungsempfänger (Invoice Receivers) {#entity-invoice-receivers}
 Konfiguration von Empfängern für Rechnungen, inklusive steuerlicher Details und Kontaktinformationen.
 
 ### Table: invoiceReceiver
@@ -320,8 +320,8 @@ Konfiguration von Empfängern für Rechnungen, inklusive steuerlicher Details un
 | :--- | :--- | :--- | :--- |
 | `_id` | `Long` | schema | Interner Bezeichner |
 | `version` | `Long` | schema | Versionsnummer |
-| `customer` | `DBRef` | schema | Reference to [customer](./customer.md#entity-kunden-customers) |
-| `location` | `DBRef` | schema | Reference to [location](./customer.md#entity-standorte-locations) |
+| `customer` | `DBRef` | schema | Reference to [customer](./customer.md#entity-customers) |
+| `location` | `DBRef` | schema | Reference to [location](./customer.md#entity-locations) |
 | `name` | `String` | schema | Name des Empfängers |
 | `address` | `String` | schema | Straße und Hausnummer |
 | `zip` | `String` | schema | PLZ |
@@ -337,7 +337,7 @@ Konfiguration von Empfängern für Rechnungen, inklusive steuerlicher Details un
 The `invoiceReceiver` entity is used by:
 - (Internal invoice generation processes)
 
-## Entity: Monatliche Expertenarbeit (Expert Work Monthly)
+## Entity: Monatliche Expertenarbeit (Expert Work Monthly) {#entity-expert-work-monthly}
 Zusammenfassung der erbrachten Leistungen eines Experten pro Monat zur Abrechnungsvorbereitung.
 
 ### Table: expertWorkMonthly
@@ -347,7 +347,7 @@ Zusammenfassung der erbrachten Leistungen eines Experten pro Monat zur Abrechnun
 | `version` | `Long` | schema | Versionsnummer |
 | `year` | `Number` | schema | Jahr |
 | `month` | `Number` | schema | Monat |
-| `user` | `DBRef` | schema | Reference to [user](./user-management.md#entity-experte-expert) |
+| `user` | `DBRef` | schema | Reference to [user](./user-management.md#entity-expert) |
 | `doctorName` | `String` | schema | Name des Experten |
 | `total` | `Number` | schema | Gesamtbetrag |
 | `payableWorkTimeTotal` | `Number` | schema | Auszahlbare Arbeitszeit gesamt |
@@ -362,14 +362,14 @@ The `expertWorkMonthly` entity is a summary for experts and is referenced by:
 
 ### Sub-entities for expertWorkMonthly
 
-#### Sub-entity: ExpertWorklogEntry
+#### Sub-entity: ExpertWorklogEntry {#sub-entity-expertworklogentry}
 Einzelner Eintrag im monatlichen Arbeitsprotokoll eines Experten.
 
 | Column | Type | Field Type | Description |
 | :--- | :--- | :--- | :--- |
 | `_id` | `String` | inferred | Internal identifier |
-| `appointmentId` | `Long` | schema | Reference to [appointment](./planning.md#entity-termine-appointments) |
-| `job` | `DBRef` | schema | Reference to [jobId](#entity-dienstleistung-service) |
+| `appointmentId` | `Long` | schema | Reference to [appointment](./planning.md#entity-appointments) |
+| `job` | `DBRef` | schema | Reference to [jobId](#entity-service) |
 | `start` | `Date` | schema | Startzeitpunkt |
 | `actualWorkTime` | `Long` | schema | Tatsächliche Arbeitszeit |
 | `payableWorkTime` | `Number` | schema | Auszahlbare Arbeitszeit |
@@ -380,9 +380,9 @@ Einzelner Eintrag im monatlichen Arbeitsprotokoll eines Experten.
 | `invoice` | `Document` | inferred | Rechnungs-Snapshot |
 
 The `ExpertWorklogEntry` sub-entity is used within:
-- [`expertWorkMonthly`](#entity-monatliche-expertenarbeit-expert-work-monthly) (as `worklog` array)
+- [`expertWorkMonthly`](#entity-expert-work-monthly) (as `worklog` array)
 
-## Entity: Dienstleistung (Service)
+## Entity: Dienstleistung (Service) {#entity-service}
 Defines the types of medical services provided, their billing modalities, and required skills.
 
 ### Table: jobId
@@ -412,14 +412,14 @@ Defines the types of medical services provided, their billing modalities, and re
 | `_class` | `String` | schema | Java Klassenname |
 
 The `jobId` entity is referenced by:
-- [`appointment`](./planning.md#entity-termine-appointments) (as `job` sub-entity)
-- [`appointmentPlan`](./planning.md#entity-sprechstundenplan-appointment-plan) (as `job` sub-entity)
-- [`consultationData`](./treatment.md#entity-konsultationsdaten-consultation-data)
-- [`expertWorkMonthly`](#entity-monatliche-expertenarbeit-expert-work-monthly)
-- [`invoice`](#entity-rechnungen-invoices) (in positions)
-- [`jobPriceList`](#entity-preislisten-job-price-lists) (as `jobPriceEntries` sub-entities)
-- [`treatment`](./treatment.md#entity-behandlungsverlauf-treatment)
-- [`customer`](./customer.md#entity-kunden-customers) (as `discounts` sub-entities)
+- [`appointment`](./planning.md#entity-appointments) (as `job` sub-entity)
+- [`appointmentPlan`](./planning.md#entity-appointment-plan) (as `job` sub-entity)
+- [`consultationData`](./treatment.md#entity-consultation-data)
+- [`expertWorkMonthly`](#entity-expert-work-monthly)
+- [`invoice`](#entity-invoices) (in positions)
+- [`jobPriceList`](#entity-job-price-lists) (as `jobPriceEntries` sub-entities)
+- [`treatment`](./treatment.md#entity-treatment)
+- [`customer`](./customer.md#entity-customers) (as `discounts` sub-entities)
 
 ### Functionality Details
 - **Billing Modalities:** "Patienten (Bereitschaft)", "Zeit (Sprechstunde, Therapie)", "Experten+Zeit (Konsil)".
@@ -430,19 +430,19 @@ The `jobId` entity is referenced by:
 
 The following structures are used as nested documents within the `jobId` collection.
 
-#### Sub-entity: SkillRule
+#### Sub-entity: SkillRule {#sub-entity-skillrule}
 Defines requirements for expert skills.
 
 | Column | Type | Field Type | Description |
 | :--- | :--- | :--- | :--- |
 | `_id` | `String` | schema | Internal identifier |
-| `skills` | `Array` | schema | List of DBRefs to the [skill](./capabilities.md#entity-fähigkeiten-skills) collection |
+| `skills` | `Array` | schema | List of DBRefs to the [skill](./capabilities.md#entity-skills) collection |
 | `rule` | `String` | schema | Logical rule for the skills: `ANY_MUST`, `ALL_MUST`, `ANY_WEIGHT`, `ALL_WEIGHT` |
 
 The `SkillRule` sub-entity is used within:
-- [`jobId`](#entity-dienstleistung-service) (as `skillRules` array)
+- [`jobId`](#entity-service) (as `skillRules` array)
 
-#### Sub-entity: PriceDefinition
+#### Sub-entity: PriceDefinition {#sub-entity-pricedefinition}
 A reusable structure for defining time-based or condition-based prices. Used in both `AppointmentCondition` and `ShiftCondition`.
 
 | Column | Type | Field Type | Description |
@@ -454,7 +454,7 @@ The `PriceDefinition` sub-entity is used within:
 - [`AppointmentCondition`](#sub-entity-appointmentcondition) (via `hourlyPrice` document)
 - [`ShiftCondition`](#sub-entity-shiftcondition) (via `priceWeekDay`, `priceWeekNight`, etc.)
 
-#### Sub-entity: PricePoint
+#### Sub-entity: PricePoint {#sub-entity-pricepoint}
 An individual price entry with an optional start date.
 
 | Column | Type | Field Type | Description |
@@ -467,13 +467,13 @@ An individual price entry with an optional start date.
 The `PricePoint` sub-entity is used within:
 - [`PriceDefinition`](#sub-entity-pricedefinition) (as `prices` array)
 
-#### Sub-entity: AppointmentCondition
+#### Sub-entity: AppointmentCondition {#sub-entity-appointmentcondition}
 Defines pricing and rounding rules for appointments.
 
 | Column | Type | Field Type | Description |
 | :--- | :--- | :--- | :--- |
 | `_id` | `String` | schema | Internal identifier |
-| `storno` | `DBRef` | schema | Reference to [stornoGroup](#entity-storno-regelgruppen-storno-groups) |
+| `storno` | `DBRef` | schema | Reference to [stornoGroup](#entity-storno-groups) |
 | `hourlyPrice` | `Document` | schema | Contains multiple [PriceDefinitions](#sub-entity-pricedefinition) (e.g., `priceHN`, `priceHN2`, `priceA1`, `priceA2`) |
 | `roundingTypeHN` | `String` | schema | Rounding rule for HN:<br>• `FULL_HOUR` (Used)<br>• `HALF_HOUR` (Used) |
 | `roundingTypeHN2` | `String` | schema | Rounding rule for HN2:<br>• `FULL_HOUR` (Used)<br>• `HALF_HOUR` (Used) |
@@ -483,9 +483,9 @@ Defines pricing and rounding rules for appointments.
 | `roundingTypeA3` | `String` | schema | Rounding rule for A3:<br>• `FULL_HOUR` (Used)<br>• `HALF_HOUR` (Used) |
 
 The `AppointmentCondition` sub-entity is used within:
-- [`jobId`](#entity-dienstleistung-service) (as `appointmentCondition` field)
+- [`jobId`](#entity-service) (as `appointmentCondition` field)
 
-#### Sub-entity: ShiftCondition
+#### Sub-entity: ShiftCondition {#sub-entity-shiftcondition}
 Defines pricing for shift-based services, categorized by time and day.
 
 | Column | Type | Field Type | Description |
@@ -497,9 +497,9 @@ Defines pricing for shift-based services, categorized by time and day.
 | `priceWeekendNight` | `Document` | schema | [PriceDefinitions](#sub-entity-pricedefinition) for weekend nights |
 
 The `ShiftCondition` sub-entity is used within:
-- [`jobId`](#entity-dienstleistung-service) (as `shiftCondition` field)
+- [`jobId`](#entity-service) (as `shiftCondition` field)
 
-## Entity: Preislisten (Job Price Lists)
+## Entity: Preislisten (Job Price Lists) {#entity-job-price-lists}
 Versionierte Preislisten für Dienstleistungen mit zeitlicher Gültigkeit.
 
 ### Table: jobPriceList
@@ -515,28 +515,28 @@ Versionierte Preislisten für Dienstleistungen mit zeitlicher Gültigkeit.
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.JobPriceList` |
 
 The `jobPriceList` entity is referenced by:
-- [`customer`](./customer.md#entity-kunden-customers) (in `priceLists`)
-- [`invoiceComponent`](#entity-rechnungskomponenten-invoice-components)
-- [`invoiceReceiver`](#entity-rechnungsempf-nger-invoice-receivers)
+- [`customer`](./customer.md#entity-customers) (in `priceLists`)
+- [`invoiceComponent`](#entity-invoice-components)
+- [`invoiceReceiver`](#entity-invoice-receivers)
 
 ### Sub-entities for jobPriceList
 
-#### Sub-entity: JobPriceEntry
+#### Sub-entity: JobPriceEntry {#sub-entity-jobpriceentry}
 Konkreter Preis für eine bestimmte Dienstleistung innerhalb einer Preisliste.
 
 | Column | Type | Field Type | Description |
 | :--- | :--- | :--- | :--- |
 | `_id` | `String` | inferred | Internal identifier |
-| `jobId` | `Long` | schema | Reference to [jobId](#entity-dienstleistung-service) |
+| `jobId` | `Long` | schema | Reference to [jobId](#entity-service) |
 | `price` | `Number` | schema | Preiswert |
 | `roundingType` | `String` | schema | Rundungsregel:<br>• `FULL_HOUR` (Used)<br>• `HALF_HOUR` (Used) |
 | `consultationType` | `String` | schema | Art der Konsultation |
 | `currency` | `String` | schema | Währung |
 
 The `JobPriceEntry` sub-entity is used within:
-- [`jobPriceList`](#entity-preislisten-job-price-lists) (as `prices` array)
+- [`jobPriceList`](#entity-job-price-lists) (as `prices` array)
 
-## Entity: Waren (Products)
+## Entity: Waren (Products) {#entity-products}
 Items experts can subscribe to.
 
 ### Table: product
@@ -553,16 +553,16 @@ Items experts can subscribe to.
 | `price` | `Number` | schema | Preis |
 | `active` | `Boolean` | schema | Status (Aktiv/Inaktiv) |
 | `dateCreated` | `Date` | schema | Erstellungsdatum |
-| `createdBy` | `DBRef` | schema | Erstellt von (Reference to [user](./user-management.md#entity-experte-expert)) |
+| `createdBy` | `DBRef` | schema | Erstellt von (Reference to [user](./user-management.md#entity-expert)) |
 | `dateChanged` | `Date` | schema | Änderungsdatum |
-| `changedBy` | `DBRef` | schema | Geändert von (Reference to [user](./user-management.md#entity-experte-expert)) |
+| `changedBy` | `DBRef` | schema | Geändert von (Reference to [user](./user-management.md#entity-expert)) |
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.Product` |
 
 The `product` entity is referenced by:
-- [`user`](./user-management.md#entity-experte-expert) (in `employerProfile.products`)
-- [`invoice`](#entity-rechnungen-invoices) (in `positions`)
+- [`user`](./user-management.md#entity-expert) (in `employerProfile.products`)
+- [`invoice`](#entity-invoices) (in `positions`)
 
-## Entity: Kassenregistrierung (Cash Register)
+## Entity: Kassenregistrierung (Cash Register) {#entity-cash-register}
 Definition von Abrechnungseinheiten mit spezifischen Steuersätzen und ID-Formaten.
 
 ### Table: cashRegister
@@ -578,11 +578,11 @@ Definition von Abrechnungseinheiten mit spezifischen Steuersätzen und ID-Format
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.CashRegister` |
 
 The `cashRegister` entity is referenced by:
-- [`invoice`](#entity-rechnungen-invoices)
+- [`invoice`](#entity-invoices)
 
 ### Sub-entities for cashRegister
 
-#### Sub-entity: TaxValue
+#### Sub-entity: TaxValue {#sub-entity-taxvalue}
 Definition eines Steuersatzes.
 
 | Column | Type | Field Type | Description |
@@ -596,9 +596,9 @@ Definition eines Steuersatzes.
 | `description` | `String` | schema | Beschreibung |
 
 The `TaxValue` sub-entity is used within:
-- [`cashRegister`](#entity-kassenregistrierung-cash-register) (as `taxes` array)
+- [`cashRegister`](#entity-cash-register) (as `taxes` array)
 
-## Entity: Abgeschlossene Zeiträume (Closed Months)
+## Entity: Abgeschlossene Zeiträume (Closed Months) {#entity-closed-months}
 Protokollierung von Abrechnungszeiträumen, die für Änderungen gesperrt wurden.
 
 ### Table: closedMonth
@@ -613,7 +613,7 @@ Protokollierung von Abrechnungszeiträumen, die für Änderungen gesperrt wurden
 The `closedMonth` entity is used by:
 - (System-wide billing and locking processes)
 
-## Entity: Storno-Regelgruppen (Storno Groups)
+## Entity: Storno-Regelgruppen (Storno Groups) {#entity-storno-groups}
 Zusammenfassungen von Stornierungsregeln für verschiedene Dienstleistungen oder Kunden.
 
 ### Table: stornoGroup
@@ -627,11 +627,11 @@ Zusammenfassungen von Stornierungsregeln für verschiedene Dienstleistungen oder
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.StornoGroup` |
 
 The `stornoGroup` entity is referenced by:
-- [`jobId`](#entity-dienstleistung-service) (via `appointmentCondition.storno`)
+- [`jobId`](#entity-service) (via `appointmentCondition.storno`)
 
 ### Sub-entities for stornoGroup
 
-#### Sub-entity: StornoRule
+#### Sub-entity: StornoRule {#sub-entity-stornorule}
 Definiert eine spezifische Stornierungsbedingung (Zeitpunkt und Kosten).
 
 | Column | Type | Field Type | Description |
@@ -644,9 +644,9 @@ Definiert eine spezifische Stornierungsbedingung (Zeitpunkt und Kosten).
 | `comment` | `String` | schema | Kommentar |
 
 The `StornoRule` sub-entity is used within:
-- [`stornoGroup`](#entity-storno-regelgruppen-storno-groups) (as `storno` array)
+- [`stornoGroup`](#entity-storno-groups) (as `storno` array)
 
-## Entity: Arbeitszeit-Kategorien (Work Hours)
+## Entity: Arbeitszeit-Kategorien (Work Hours) {#entity-work-hours}
 Definition von standardisierten Arbeitszeit-Modellen oder Stundenkontingenten.
 
 ### Table: workHour

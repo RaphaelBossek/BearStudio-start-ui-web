@@ -10,7 +10,7 @@ This file covers the System category: technical configurations, logs, and system
 
 ---
 
-## ER Diagram
+## ER Diagram {#er-diagram} {#er-diagram}
 
 Background jobs, application logs, export templates, caches, and system configuration.
 
@@ -80,18 +80,18 @@ erDiagram
 
 | Table Name (DBML) | Business Entity | Description Summary |
 | :--- | :--- | :--- |
-| [`log`](#entity-system-logs-logs) | System-Logs (Logs) | Technical application logs for monitoring and debugging. |
-| [`asyncJobQueue`](#entity-hintergrundaufgaben-async-job-queue) | Hintergrundaufgaben (Async Job Queue) | Status and tracking of asynchronous background tasks. |
-| [`exportTemplate`](#entity-export-vorlagen-export-templates) | Export-Vorlagen (Export Templates) | Configuration for data exports for various business entities. |
-| [`supportCategory`](#entity-support-kategorien-support-categories) | Support-Kategorien (Support Categories) | Categories used for organizing support requests and help documents. |
-| [`uploadFile`](#entity-dateiuploads-upload-files) | Dateiuploads (Upload Files) | Records of generic file uploads managed by the system. |
-| [`sequenceEntity`](#entity-sequenz-z-hler-sequence-entity) | Sequenz-Zähler (Sequence Entity) | Global counters used to generate unique numeric identifiers. |
-| [`videoclinicSystem`](#entity-systemkonfiguration-videoclinic-system) | Systemkonfiguration (Videoclinic System) | Global system settings and configuration parameters. |
-| [`cacheState`](#entity-cache-status-cache-state) | Cache-Status (Cache State) | Technical collection for tracking the version/state of various system caches. |
+| [`log`](#entity-logs) | System-Logs (Logs) | Technical application logs for monitoring and debugging. |
+| [`asyncJobQueue`](#entity-async-job-queue) | Hintergrundaufgaben (Async Job Queue) | Status and tracking of asynchronous background tasks. |
+| [`exportTemplate`](#entity-export-templates) | Export-Vorlagen (Export Templates) | Configuration for data exports for various business entities. |
+| [`supportCategory`](#entity-support-categories) | Support-Kategorien (Support Categories) | Categories used for organizing support requests and help documents. |
+| [`uploadFile`](#entity-upload-files) | Dateiuploads (Upload Files) | Records of generic file uploads managed by the system. |
+| [`sequenceEntity`](#entity-sequence-entity) | Sequenz-Zähler (Sequence Entity) | Global counters used to generate unique numeric identifiers. |
+| [`videoclinicSystem`](#entity-videoclinic-system) | Systemkonfiguration (Videoclinic System) | Global system settings and configuration parameters. |
+| [`cacheState`](#entity-cache-state) | Cache-Status (Cache State) | Technical collection for tracking the version/state of various system caches. |
 
 ---
 
-## Entity: System-Logs (Logs)
+## Entity: System-Logs (Logs) {#entity-logs} {#entity-logs}
 Protokollierung von Systemereignissen, Fehlern und sicherheitsrelevanten Aktionen.
 
 ### Table: log
@@ -100,19 +100,19 @@ Protokollierung von Systemereignissen, Fehlern und sicherheitsrelevanten Aktione
 | `_id` | `Long` | schema | Interner Bezeichner |
 | `version` | `Long` | schema | Versionsnummer |
 | `ts` | `Date` | schema | Zeitstempel |
-| `userId` | `Long` | schema | Reference to [user](./user-management.md#entity-experte-expert) |
+| `userId` | `Long` | schema | Reference to [user](./user-management.md#entity-expert) |
 | `level` | `String` | schema | Log-Level:<br>• `INFO` (Used)<br>• `ERROR` (Used)<br>• `SECURITY` (Used) |
 | `type` | `String` | inferred | Art des Ereignisses:<br>• `CONSULTATION` (Used)<br>• `CONSULTATION_TRANSMIT` (Used)<br>• `CONTACT` (Used) |
 | `key` | `String` | inferred | Eindeutiger Schlüssel für das Ereignis |
 | `message` | `String` | inferred | Log-Nachricht |
 | `param` | `Array` | inferred | Parameter zur Nachricht (Strings) |
-| `appointment` | `Long` | schema | Reference to [appointment](./planning.md#entity-termine-appointments) |
+| `appointment` | `Long` | schema | Reference to [appointment](./planning.md#entity-appointments) |
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.Log` |
 
 The `log` entity stores technical logs and is referenced by:
 - (System-wide monitoring tools)
 
-## Entity: Hintergrundaufgaben (Async Job Queue)
+## Entity: Hintergrundaufgaben (Async Job Queue) {#entity-async-job-queue} {#entity-async-job-queue}
 Warteschlange für asynchron auszuführende Systemaufgaben.
 
 ### Table: asyncJobQueue
@@ -131,14 +131,14 @@ Warteschlange für asynchron auszuführende Systemaufgaben.
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.AsyncJobQueue` |
 
 The `asyncJobQueue` entity tracks background tasks for:
-- [`appointmentPlan`](./planning.md#entity-sprechstundenplan-appointment-plan)
-- [`shiftPlan`](./planning.md#entity-schichtplan-shift-plan)
-- [`invoice`](./accounting.md#entity-rechnungen-invoices)
-- [`treatment`](./treatment.md#entity-behandlungsverlauf-treatment)
+- [`appointmentPlan`](./planning.md#entity-appointment-plan)
+- [`shiftPlan`](./planning.md#entity-shift-plan)
+- [`invoice`](./accounting.md#entity-invoices)
+- [`treatment`](./treatment.md#entity-treatment)
 
 ### Sub-entities for asyncJobQueue
 
-#### Sub-entity: AsyncJobTask
+#### Sub-entity: AsyncJobTask {#sub-entity-asyncjobtask} {#sub-entity-asyncjobtask}
 Einzelner Arbeitsschritt innerhalb einer Hintergrundaufgabe.
 
 | Column | Type | Field Type | Description |
@@ -150,9 +150,9 @@ Einzelner Arbeitsschritt innerhalb einer Hintergrundaufgabe.
 | `dateFinished` | `Date` | schema | Endzeitpunkt |
 
 The `AsyncJobTask` sub-entity is used within:
-- [`asyncJobQueue`](#entity-hintergrundaufgaben-async-job-queue)
+- [`asyncJobQueue`](#entity-async-job-queue)
 
-## Entity: Export-Vorlagen (Export Templates)
+## Entity: Export-Vorlagen (Export Templates) {#entity-export-templates} {#entity-export-templates}
 Definition von Vorlagen für den Datenexport aus dem System.
 
 ### Table: exportTemplate
@@ -170,7 +170,7 @@ Definition von Vorlagen für den Datenexport aus dem System.
 The `exportTemplate` entity is used by:
 - (Data export modules for generating CSV/PDF reports)
 
-## Entity: Support-Kategorien (Support Categories)
+## Entity: Support-Kategorien (Support Categories) {#entity-support-categories} {#entity-support-categories}
 Kategorisierung von Support-Anfragen und deren Zuordnung zu Bearbeitungsschlangen.
 
 ### Table: supportCategory
@@ -187,7 +187,7 @@ Kategorisierung von Support-Anfragen und deren Zuordnung zu Bearbeitungsschlange
 The `supportCategory` entity is used for:
 - (Internal helpdesk categorization of support tickets)
 
-## Entity: Dateiuploads (Upload Files)
+## Entity: Dateiuploads (Upload Files) {#entity-upload-files} {#entity-upload-files}
 Registry aller über die Benutzeroberfläche hochgeladenen Dateien.
 
 ### Table: uploadFile
@@ -203,7 +203,7 @@ Registry aller über die Benutzeroberfläche hochgeladenen Dateien.
 The `uploadFile` entity references:
 - (Uploaded files managed by the system)
 
-## Entity: Sequenz-Zähler (Sequence Entity)
+## Entity: Sequenz-Zähler (Sequence Entity) {#entity-sequence-entity} {#entity-sequence-entity}
 Zähler zur Generierung von fortlaufenden IDs für verschiedene Entitäten.
 
 ### Table: sequenceEntity
@@ -217,7 +217,7 @@ Zähler zur Generierung von fortlaufenden IDs für verschiedene Entitäten.
 The `sequenceEntity` entity is used by:
 - (Internal ID generation logic for various collections)
 
-## Entity: Systemkonfiguration (Videoclinic System)
+## Entity: Systemkonfiguration (Videoclinic System) {#entity-videoclinic-system} {#entity-videoclinic-system}
 Globale Systemeinstellungen und Metadaten.
 
 ### Table: videoclinicSystem
@@ -233,7 +233,7 @@ Globale Systemeinstellungen und Metadaten.
 The `videoclinicSystem` entity is used for:
 - (Global system configuration and feature toggles)
 
-## Entity: Cache-Status (Cache State)
+## Entity: Cache-Status (Cache State) {#entity-cache-state} {#entity-cache-state}
 Technical collection for tracking the version/state of various system caches.
 
 ### Table: cacheState

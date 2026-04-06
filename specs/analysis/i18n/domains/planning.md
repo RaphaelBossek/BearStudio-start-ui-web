@@ -27,5 +27,5 @@ title: 'Planning'
 ## Related Files
 
 - [../translation-inventory.md](../translation-inventory.md) — Full inventory
-- [../../appointments/README.md](../../appointments/README.md) — Appointments domain analysis
-- [../../shifts/README.md](../../shifts/README.md) — Shifts domain analysis
+- [../../planning/appointment/appointment-list.md](../../planning/appointment/appointment-list.md) — Appointments domain analysis
+- [../../planning/shift/shift-and-plan.md](../../planning/shift/shift-and-plan.md) — Shifts domain analysis

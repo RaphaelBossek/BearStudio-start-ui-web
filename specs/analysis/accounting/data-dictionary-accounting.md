@@ -15,9 +15,9 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| ID | ID | `id` | `invoiceReceiver._id` | [accounting.md](../mongodb-mapping/accounting.md#entity-rechnungsempf-nger-invoice-receivers) | `number` | `text` | - | No | Yes | - |
-| Customer | Kunde | `customer` | `invoiceReceiver.customer` | [accounting.md](../mongodb-mapping/accounting.md#entity-rechnungsempf-nger-invoice-receivers) | `reference:customer` | `text` | - | No | Yes | - |
-| Location | Standort | `location` | `invoiceReceiver.location` | [accounting.md](../mongodb-mapping/accounting.md#entity-rechnungsempf-nger-invoice-receivers) | `reference:location` | `text` | - | No | Yes | - |
+| ID | ID | `id` | `invoiceReceiver._id` | [accounting.md](../mongodb-mapping/accounting.md#entity-invoice-receivers) | `number` | `text` | - | No | Yes | - |
+| Customer | Kunde | `customer` | `invoiceReceiver.customer` | [accounting.md](../mongodb-mapping/accounting.md#entity-invoice-receivers) | `reference:customer` | `text` | - | No | Yes | - |
+| Location | Standort | `location` | `invoiceReceiver.location` | [accounting.md](../mongodb-mapping/accounting.md#entity-invoice-receivers) | `reference:location` | `text` | - | No | Yes | - |
 | State | Bundesland | `state` | `-` | - | `string` | `text` | - | No | Yes | Derived from location |
 | Last Invoice Date | Letzte Rechnung | `dateLastInvoice` | `-` | - | `date` | `text` | - | No | Yes | Computed |
 | Address | Adresse | `addressDto` | `-` | - | `string` | `text` | - | No | Yes | Computed full address |
@@ -28,34 +28,34 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| Customer | Kunde | `data.customer` | `invoiceReceiver.customer` | [accounting.md](../mongodb-mapping/accounting.md#entity-rechnungsempf-nger-invoice-receivers) | `reference:customer` | `autocomplete` | CustomerService.autocomplete | No | No | Mutually exclusive with location |
-| Location | Standort | `data.location` | `invoiceReceiver.location` | [accounting.md](../mongodb-mapping/accounting.md#entity-rechnungsempf-nger-invoice-receivers) | `reference:location` | `autocomplete` | LocationService.autocomplete | No | No | Mutually exclusive with customer |
-| Street | Strasse | `data.address` | `invoiceReceiver.address` | [accounting.md](../mongodb-mapping/accounting.md#entity-rechnungsempf-nger-invoice-receivers) | `string` | `text input` | - | No | No | Auto-filled |
+| Customer | Kunde | `data.customer` | `invoiceReceiver.customer` | [accounting.md](../mongodb-mapping/accounting.md#entity-invoice-receivers) | `reference:customer` | `autocomplete` | CustomerService.autocomplete | No | No | Mutually exclusive with location |
+| Location | Standort | `data.location` | `invoiceReceiver.location` | [accounting.md](../mongodb-mapping/accounting.md#entity-invoice-receivers) | `reference:location` | `autocomplete` | LocationService.autocomplete | No | No | Mutually exclusive with customer |
+| Street | Strasse | `data.address` | `invoiceReceiver.address` | [accounting.md](../mongodb-mapping/accounting.md#entity-invoice-receivers) | `string` | `text input` | - | No | No | Auto-filled |
 | Street 2 | Adresszusatz | `data.address2` | `-` | - | `string` | `text input` | - | No | No | Auto-filled |
-| Zip Code | PLZ | `data.zip` | `invoiceReceiver.zip` | [accounting.md](../mongodb-mapping/accounting.md#entity-rechnungsempf-nger-invoice-receivers) | `string` | `text input` | - | No | No | Auto-filled |
+| Zip Code | PLZ | `data.zip` | `invoiceReceiver.zip` | [accounting.md](../mongodb-mapping/accounting.md#entity-invoice-receivers) | `string` | `text input` | - | No | No | Auto-filled |
 | State | Bundesland | `data.state` | `-` | - | `string` | `text input` | - | No | No | Auto-filled |
-| City | Stadt | `data.city` | `invoiceReceiver.city` | [accounting.md](../mongodb-mapping/accounting.md#entity-rechnungsempf-nger-invoice-receivers) | `string` | `text input` | - | No | No | Auto-filled |
+| City | Stadt | `data.city` | `invoiceReceiver.city` | [accounting.md](../mongodb-mapping/accounting.md#entity-invoice-receivers) | `string` | `text input` | - | No | No | Auto-filled |
 | Country | Land | `data.country` | `-` | - | `string` | `text input` | - | No | No | Auto-filled |
 | Additional Address Info | Zusaetzliche Adressinfo | `data.addressInfo` | `-` | - | `string` | `textarea` | - | No | No | - |
 | First Name | Vorname | `data.firstName` | `-` | - | `string` | `text input` | - | No | No | - |
 | Last Name | Nachname | `data.lastName` | `-` | - | `string` | `text input` | - | No | No | - |
-| Primary Email | Primaere E-Mail | `data.email` | `invoiceReceiver.email` | [accounting.md](../mongodb-mapping/accounting.md#entity-rechnungsempf-nger-invoice-receivers) | `string` | `email input` | - | No | No | - |
+| Primary Email | Primaere E-Mail | `data.email` | `invoiceReceiver.email` | [accounting.md](../mongodb-mapping/accounting.md#entity-invoice-receivers) | `string` | `email input` | - | No | No | - |
 | More Email | Weitere E-Mail | `data.extraEmail` | `-` | - | `array:string` | `collection (email inputs)` | - | No | No | - |
 | Work Phone | Telefon (Arbeit) | `data.phone` | `-` | - | `string` | `text input` | - | No | No | - |
 | Fax Number | Faxnummer | `data.faxNumber` | `-` | - | `string` | `text input` | - | No | No | - |
 | Title | Titel | `data.title` | `-` | - | `string` | `text input` | - | No | No | Invoice title |
 | Extra Title | Zusaetzlicher Titel | `data.extraTitle` | `-` | - | `string` | `textarea` | - | No | No | - |
-| Payment Goal | Zahlungsziel | `data.paymentGoal` | `invoiceReceiver.paymentGoal` | [accounting.md](../mongodb-mapping/accounting.md#entity-rechnungsempf-nger-invoice-receivers) | `number` | `text input` | - | Yes | No | Days |
+| Payment Goal | Zahlungsziel | `data.paymentGoal` | `invoiceReceiver.paymentGoal` | [accounting.md](../mongodb-mapping/accounting.md#entity-invoice-receivers) | `number` | `text input` | - | Yes | No | Days |
 | Appointment Cancellation | Storno Termin | `data.appointmentStorno` | `-` | - | `reference:stornoGroup` | `select` | StornoGroupService.getAll | No | No | - |
 | Shift Cancellation | Storno Schicht | `data.shiftStorno` | `-` | - | `reference:stornoGroup` | `select` | StornoGroupService.getAll | No | No | - |
 | Council Cancellation | Storno Konsil | `data.councilStorno` | `-` | - | `reference:stornoGroup` | `select` | StornoGroupService.getAll | No | No | - |
 | Early Payment Discount | Skonto | `data.skontoPaymentGoal` | `-` | - | `number` | `text input` | - | Yes | No | Days |
 | Early Payment Discount % | Skonto % | `data.skontoPaymentPercentage` | `-` | - | `number` | `percent input` | - | Yes | No | - |
-| Tax Rate | Steuersatz | `data.taxType` | `invoiceReceiver.taxType` | [accounting.md](../mongodb-mapping/accounting.md#entity-rechnungsempf-nger-invoice-receivers) | `enum:TaxType` | `select` | SATZ_NORMAL, SATZ_NULL, etc. | No | No | - |
-| Contra Account | Gegenkonto | `data.gkto` | `invoiceReceiver.gkto` | [accounting.md](../mongodb-mapping/accounting.md#entity-rechnungsempf-nger-invoice-receivers) | `string` | `text input` | - | No | No | - |
+| Tax Rate | Steuersatz | `data.taxType` | `invoiceReceiver.taxType` | [accounting.md](../mongodb-mapping/accounting.md#entity-invoice-receivers) | `enum:TaxType` | `select` | SATZ_NORMAL, SATZ_NULL, etc. | No | No | - |
+| Contra Account | Gegenkonto | `data.gkto` | `invoiceReceiver.gkto` | [accounting.md](../mongodb-mapping/accounting.md#entity-invoice-receivers) | `string` | `text input` | - | No | No | - |
 | Routing ID | Leitweg-ID | `data.leitwegId` | `-` | - | `string` | `text input` | - | No | No | - |
-| Mail Invoice | Rechnung per E-Mail | `data.mailInvoice` | `invoiceReceiver.mailInvoice` | [accounting.md](../mongodb-mapping/accounting.md#entity-rechnungsempf-nger-invoice-receivers) | `boolean` | `checkbox switch` | - | No | No | - |
-| Post Invoice | Rechnung per Post | `data.postInvoice` | `invoiceReceiver.postInvoice` | [accounting.md](../mongodb-mapping/accounting.md#entity-rechnungsempf-nger-invoice-receivers) | `boolean` | `checkbox switch` | - | No | No | - |
+| Mail Invoice | Rechnung per E-Mail | `data.mailInvoice` | `invoiceReceiver.mailInvoice` | [accounting.md](../mongodb-mapping/accounting.md#entity-invoice-receivers) | `boolean` | `checkbox switch` | - | No | No | - |
+| Post Invoice | Rechnung per Post | `data.postInvoice` | `invoiceReceiver.postInvoice` | [accounting.md](../mongodb-mapping/accounting.md#entity-invoice-receivers) | `boolean` | `checkbox switch` | - | No | No | - |
 | Active | Aktiv | `data.active` | `-` | - | `boolean` | `checkbox switch` | - | No | No | - |
 | Generate Work Log | Arbeitsnachweis generieren | `data.workLog` | `-` | - | `enum:WorkLogType` | `select` | STANDARD, EXTENDED | No | No | - |
 | Worklog Exports | Arbeitsnachweis generieren | `data.worklogExports` | `-` | - | `array` | `collection` | - | No | No | - |
@@ -90,10 +90,10 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| ID | ID | `id` | `workHour._id` | [accounting.md](../mongodb-mapping/accounting.md#entity-arbeitszeit-kategorien-work-hours) | `number` | `text` | - | No | Yes | - |
-| Code | Code | `code` | `workHour.code` | [accounting.md](../mongodb-mapping/accounting.md#entity-arbeitszeit-kategorien-work-hours) | `string` | `text` | - | No | Yes | - |
-| Description | Beschreibung | `description` | `workHour.description` | [accounting.md](../mongodb-mapping/accounting.md#entity-arbeitszeit-kategorien-work-hours) | `string` | `text` | - | No | Yes | - |
-| Hours | Stunden | `hours` | `workHour.hours` | [accounting.md](../mongodb-mapping/accounting.md#entity-arbeitszeit-kategorien-work-hours) | `string` | `text` | - | No | Yes | - |
+| ID | ID | `id` | `workHour._id` | [accounting.md](../mongodb-mapping/accounting.md#entity-work-hours) | `number` | `text` | - | No | Yes | - |
+| Code | Code | `code` | `workHour.code` | [accounting.md](../mongodb-mapping/accounting.md#entity-work-hours) | `string` | `text` | - | No | Yes | - |
+| Description | Beschreibung | `description` | `workHour.description` | [accounting.md](../mongodb-mapping/accounting.md#entity-work-hours) | `string` | `text` | - | No | Yes | - |
+| Hours | Stunden | `hours` | `workHour.hours` | [accounting.md](../mongodb-mapping/accounting.md#entity-work-hours) | `string` | `text` | - | No | Yes | - |
 
 ## Work Hour Templates Detail
 
@@ -101,10 +101,10 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| Code | Code | `data.code` | `workHour.code` | [accounting.md](../mongodb-mapping/accounting.md#entity-arbeitszeit-kategorien-work-hours) | `string` | `text` | - | Yes | No | - |
-| Hours | Stunden | `data.hours` | `workHour.hours` | [accounting.md](../mongodb-mapping/accounting.md#entity-arbeitszeit-kategorien-work-hours) | `string` | `text` | - | Yes | No | - |
+| Code | Code | `data.code` | `workHour.code` | [accounting.md](../mongodb-mapping/accounting.md#entity-work-hours) | `string` | `text` | - | Yes | No | - |
+| Hours | Stunden | `data.hours` | `workHour.hours` | [accounting.md](../mongodb-mapping/accounting.md#entity-work-hours) | `string` | `text` | - | Yes | No | - |
 | Priority | Prioritat | `data.prio` | `-` | - | `number` | `number input` | - | No | No | - |
-| Description | Beschreibung | `data.description` | `workHour.description` | [accounting.md](../mongodb-mapping/accounting.md#entity-arbeitszeit-kategorien-work-hours) | `string` | `text` | - | No | No | - |
+| Description | Beschreibung | `data.description` | `workHour.description` | [accounting.md](../mongodb-mapping/accounting.md#entity-work-hours) | `string` | `text` | - | No | No | - |
 
 ## Storno Group Grid
 
@@ -112,10 +112,10 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| Title | Titel | `title` | `stornoGroup.title` | [accounting.md](../mongodb-mapping/accounting.md#entity-storno-regelgruppen-storno-groups) | `string` | `text` | - | No | Yes | - |
-| Comment | Kommentar | `comment` | `stornoGroup.comment` | [accounting.md](../mongodb-mapping/accounting.md#entity-storno-regelgruppen-storno-groups) | `string` | `text` | - | No | Yes | - |
+| Title | Titel | `title` | `stornoGroup.title` | [accounting.md](../mongodb-mapping/accounting.md#entity-storno-groups) | `string` | `text` | - | No | Yes | - |
+| Comment | Kommentar | `comment` | `stornoGroup.comment` | [accounting.md](../mongodb-mapping/accounting.md#entity-storno-groups) | `string` | `text` | - | No | Yes | - |
 | Storno | Storno | `storno` | `-` | - | `array` | `text` | - | No | Yes | - |
-| ID | ID | `id` | `stornoGroup._id` | [accounting.md](../mongodb-mapping/accounting.md#entity-storno-regelgruppen-storno-groups) | `number` | `text` | - | No | Yes | - |
+| ID | ID | `id` | `stornoGroup._id` | [accounting.md](../mongodb-mapping/accounting.md#entity-storno-groups) | `number` | `text` | - | No | Yes | - |
 
 ## Storno Group Detail
 
@@ -123,8 +123,8 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| Title | Titel | `data.title` | `stornoGroup.title` | [accounting.md](../mongodb-mapping/accounting.md#entity-storno-regelgruppen-storno-groups) | `string` | `text input` | - | No | No | - |
-| Comment | Kommentar | `data.comment` | `stornoGroup.comment` | [accounting.md](../mongodb-mapping/accounting.md#entity-storno-regelgruppen-storno-groups) | `string` | `text input` | - | No | No | - |
+| Title | Titel | `data.title` | `stornoGroup.title` | [accounting.md](../mongodb-mapping/accounting.md#entity-storno-groups) | `string` | `text input` | - | No | No | - |
+| Comment | Kommentar | `data.comment` | `stornoGroup.comment` | [accounting.md](../mongodb-mapping/accounting.md#entity-storno-groups) | `string` | `text input` | - | No | No | - |
 | Name | Name | `storno.name` | `stornoGroup.storno.name` | [accounting.md](../mongodb-mapping/accounting.md#sub-entity-stornorule) | `string` | `text input` | - | No | No | - |
 | Cancellation Time | Stornozeit | `storno.stornoTime` | `stornoGroup.storno.stornoTime` | [accounting.md](../mongodb-mapping/accounting.md#sub-entity-stornorule) | `number` | `humantime input` | - | No | No | - |
 | Percentage | Prozentsatz | `storno.percentage` | `stornoGroup.storno.percentage` | [accounting.md](../mongodb-mapping/accounting.md#sub-entity-stornorule) | `number` | `percent input` | - | No | No | - |
@@ -138,11 +138,11 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| ID | ID | `id` | `jobPriceList._id` | [accounting.md](../mongodb-mapping/accounting.md#entity-preislisten-job-price-lists) | `number` | `text` | - | No | Yes | - |
-| Name | Name | `name` | `jobPriceList.name` | [accounting.md](../mongodb-mapping/accounting.md#entity-preislisten-job-price-lists) | `string` | `text` | - | No | Yes | - |
-| Start | Start | `start` | `jobPriceList.start` | [accounting.md](../mongodb-mapping/accounting.md#entity-preislisten-job-price-lists) | `date` | `text` | - | No | Yes | - |
-| Until | Bis | `until` | `jobPriceList.until` | [accounting.md](../mongodb-mapping/accounting.md#entity-preislisten-job-price-lists) | `date` | `text` | - | No | Yes | - |
-| Active | Aktiv | `active` | `jobPriceList.active` | [accounting.md](../mongodb-mapping/accounting.md#entity-preislisten-job-price-lists) | `boolean` | `text` | - | No | Yes | - |
+| ID | ID | `id` | `jobPriceList._id` | [accounting.md](../mongodb-mapping/accounting.md#entity-job-price-lists) | `number` | `text` | - | No | Yes | - |
+| Name | Name | `name` | `jobPriceList.name` | [accounting.md](../mongodb-mapping/accounting.md#entity-job-price-lists) | `string` | `text` | - | No | Yes | - |
+| Start | Start | `start` | `jobPriceList.start` | [accounting.md](../mongodb-mapping/accounting.md#entity-job-price-lists) | `date` | `text` | - | No | Yes | - |
+| Until | Bis | `until` | `jobPriceList.until` | [accounting.md](../mongodb-mapping/accounting.md#entity-job-price-lists) | `date` | `text` | - | No | Yes | - |
+| Active | Aktiv | `active` | `jobPriceList.active` | [accounting.md](../mongodb-mapping/accounting.md#entity-job-price-lists) | `boolean` | `text` | - | No | Yes | - |
 | Comment | Kommentar | `comment` | `-` | - | `string` | `text` | - | No | Yes | - |
 
 ## Job Price List Detail
@@ -151,10 +151,10 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| Name | Name | `data.name` | `jobPriceList.name` | [accounting.md](../mongodb-mapping/accounting.md#entity-preislisten-job-price-lists) | `string` | `text input` | - | No | No | - |
-| Active | Aktiv | `data.active` | `jobPriceList.active` | [accounting.md](../mongodb-mapping/accounting.md#entity-preislisten-job-price-lists) | `boolean` | `checkbox switch` | - | No | No | - |
-| Start | Start | `data.start` | `jobPriceList.start` | [accounting.md](../mongodb-mapping/accounting.md#entity-preislisten-job-price-lists) | `date` | `date input` | - | No | No | - |
-| Until | Bis | `data.until` | `jobPriceList.until` | [accounting.md](../mongodb-mapping/accounting.md#entity-preislisten-job-price-lists) | `date` | `date input` | - | No | No | - |
+| Name | Name | `data.name` | `jobPriceList.name` | [accounting.md](../mongodb-mapping/accounting.md#entity-job-price-lists) | `string` | `text input` | - | No | No | - |
+| Active | Aktiv | `data.active` | `jobPriceList.active` | [accounting.md](../mongodb-mapping/accounting.md#entity-job-price-lists) | `boolean` | `checkbox switch` | - | No | No | - |
+| Start | Start | `data.start` | `jobPriceList.start` | [accounting.md](../mongodb-mapping/accounting.md#entity-job-price-lists) | `date` | `date input` | - | No | No | - |
+| Until | Bis | `data.until` | `jobPriceList.until` | [accounting.md](../mongodb-mapping/accounting.md#entity-job-price-lists) | `date` | `date input` | - | No | No | - |
 | Comment | Kommentar | `data.comment` | `-` | - | `string` | `text input` | - | No | No | - |
 | Job Code | Job Code | `prices.job.code` | `-` | - | `string` | `display` | - | No | Yes | - |
 | Job Type | Job Typ | `prices.job.type` | `-` | - | `string` | `display` | - | No | Yes | - |
@@ -171,14 +171,14 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| ID | ID | `id` | `product._id` | [accounting.md](../mongodb-mapping/accounting.md#entity-waren-products) | `number` | `text` | - | No | Yes | - |
-| Name | Name | `name` | `product.name` | [accounting.md](../mongodb-mapping/accounting.md#entity-waren-products) | `string` | `text` | - | No | Yes | - |
-| Description | Beschreibung | `description` | `product.description` | [accounting.md](../mongodb-mapping/accounting.md#entity-waren-products) | `string` | `text` | - | No | Yes | - |
-| Booking Code | Buchungscode | `bookingCode` | `product.bookingCode` | [accounting.md](../mongodb-mapping/accounting.md#entity-waren-products) | `string` | `text` | - | No | Yes | - |
-| Type | Typ | `type` | `product.type` | [accounting.md](../mongodb-mapping/accounting.md#entity-waren-products) | `enum:ProductTarget` | `text` | - | No | Yes | - |
-| Price | Preis | `price` | `product.price` | [accounting.md](../mongodb-mapping/accounting.md#entity-waren-products) | `number` | `text` | - | No | Yes | - |
-| Account | Konto | `konto` | `product.konto` | [accounting.md](../mongodb-mapping/accounting.md#entity-waren-products) | `string` | `text` | - | No | Yes | - |
-| Active | Aktiv | `active` | `product.active` | [accounting.md](../mongodb-mapping/accounting.md#entity-waren-products) | `boolean` | `text` | - | No | Yes | - |
+| ID | ID | `id` | `product._id` | [accounting.md](../mongodb-mapping/accounting.md#entity-products) | `number` | `text` | - | No | Yes | - |
+| Name | Name | `name` | `product.name` | [accounting.md](../mongodb-mapping/accounting.md#entity-products) | `string` | `text` | - | No | Yes | - |
+| Description | Beschreibung | `description` | `product.description` | [accounting.md](../mongodb-mapping/accounting.md#entity-products) | `string` | `text` | - | No | Yes | - |
+| Booking Code | Buchungscode | `bookingCode` | `product.bookingCode` | [accounting.md](../mongodb-mapping/accounting.md#entity-products) | `string` | `text` | - | No | Yes | - |
+| Type | Typ | `type` | `product.type` | [accounting.md](../mongodb-mapping/accounting.md#entity-products) | `enum:ProductTarget` | `text` | - | No | Yes | - |
+| Price | Preis | `price` | `product.price` | [accounting.md](../mongodb-mapping/accounting.md#entity-products) | `number` | `text` | - | No | Yes | - |
+| Account | Konto | `konto` | `product.konto` | [accounting.md](../mongodb-mapping/accounting.md#entity-products) | `string` | `text` | - | No | Yes | - |
+| Active | Aktiv | `active` | `product.active` | [accounting.md](../mongodb-mapping/accounting.md#entity-products) | `boolean` | `text` | - | No | Yes | - |
 
 ## Product Detail
 
@@ -186,14 +186,14 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| Name | Name | `data.name` | `product.name` | [accounting.md](../mongodb-mapping/accounting.md#entity-waren-products) | `string` | `text input` | - | No | No | - |
-| Price | Preis | `data.price` | `product.price` | [accounting.md](../mongodb-mapping/accounting.md#entity-waren-products) | `number` | `number input` | - | No | No | - |
-| Active | Aktiv | `data.active` | `product.active` | [accounting.md](../mongodb-mapping/accounting.md#entity-waren-products) | `boolean` | `checkbox switch` | - | No | No | - |
-| Type | Typ | `data.type` | `product.type` | [accounting.md](../mongodb-mapping/accounting.md#entity-waren-products) | `enum:ProductTarget` | `select` | CUSTOMER, EXPERT, EQUIPMENT | Yes | No | - |
-| Bill Type | Abrechnungsart | `data.billType` | `product.billType` | [accounting.md](../mongodb-mapping/accounting.md#entity-waren-products) | `enum:BillType` | `select` | MONTH, DAILY, WEEKDAYS | No | No | - |
-| Booking Code | Buchungscode | `data.bookingCode` | `product.bookingCode` | [accounting.md](../mongodb-mapping/accounting.md#entity-waren-products) | `string` | `text input` | - | No | No | - |
-| Description | Beschreibung | `data.description` | `product.description` | [accounting.md](../mongodb-mapping/accounting.md#entity-waren-products) | `string` | `textarea` | - | No | No | - |
-| Account | Konto | `data.konto` | `product.konto` | [accounting.md](../mongodb-mapping/accounting.md#entity-waren-products) | `string` | `text input` | - | No | No | - |
+| Name | Name | `data.name` | `product.name` | [accounting.md](../mongodb-mapping/accounting.md#entity-products) | `string` | `text input` | - | No | No | - |
+| Price | Preis | `data.price` | `product.price` | [accounting.md](../mongodb-mapping/accounting.md#entity-products) | `number` | `number input` | - | No | No | - |
+| Active | Aktiv | `data.active` | `product.active` | [accounting.md](../mongodb-mapping/accounting.md#entity-products) | `boolean` | `checkbox switch` | - | No | No | - |
+| Type | Typ | `data.type` | `product.type` | [accounting.md](../mongodb-mapping/accounting.md#entity-products) | `enum:ProductTarget` | `select` | CUSTOMER, EXPERT, EQUIPMENT | Yes | No | - |
+| Bill Type | Abrechnungsart | `data.billType` | `product.billType` | [accounting.md](../mongodb-mapping/accounting.md#entity-products) | `enum:BillType` | `select` | MONTH, DAILY, WEEKDAYS | No | No | - |
+| Booking Code | Buchungscode | `data.bookingCode` | `product.bookingCode` | [accounting.md](../mongodb-mapping/accounting.md#entity-products) | `string` | `text input` | - | No | No | - |
+| Description | Beschreibung | `data.description` | `product.description` | [accounting.md](../mongodb-mapping/accounting.md#entity-products) | `string` | `textarea` | - | No | No | - |
+| Account | Konto | `data.konto` | `product.konto` | [accounting.md](../mongodb-mapping/accounting.md#entity-products) | `string` | `text input` | - | No | No | - |
 
 ## Closed Month Grid
 
@@ -201,12 +201,12 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| ID | ID | `id` | `closedMonth._id` | [accounting.md](../mongodb-mapping/accounting.md#entity-abgeschlossene-zeitr-ume-closed-months) | `number` | `text` | - | No | Yes | - |
-| Period | Zeitraum | `period` | `closedMonth.period` | [accounting.md](../mongodb-mapping/accounting.md#entity-abgeschlossene-zeitr-ume-closed-months) | `number` | `text` | - | No | Yes | - |
+| ID | ID | `id` | `closedMonth._id` | [accounting.md](../mongodb-mapping/accounting.md#entity-closed-months) | `number` | `text` | - | No | Yes | - |
+| Period | Zeitraum | `period` | `closedMonth.period` | [accounting.md](../mongodb-mapping/accounting.md#entity-closed-months) | `number` | `text` | - | No | Yes | - |
 | Closed for Expert | Geschlossen für Experte | `closedForExpert` | `-` | - | `date` | `text` | - | No | Yes | - |
 | Verified | Verifiziert | `verified` | `-` | - | `date` | `text` | - | No | Yes | - |
 | Invoiced | Abgerechnet | `invoiced` | `-` | - | `date` | `text` | - | No | Yes | - |
-| Comment | Kommentar | `comment` | `closedMonth.comment` | [accounting.md](../mongodb-mapping/accounting.md#entity-abgeschlossene-zeitr-ume-closed-months) | `string` | `text` | - | No | Yes | - |
+| Comment | Kommentar | `comment` | `closedMonth.comment` | [accounting.md](../mongodb-mapping/accounting.md#entity-closed-months) | `string` | `text` | - | No | Yes | - |
 
 ## Closed Month Detail
 
@@ -214,8 +214,8 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| Period | Zeitraum | `data.period` | `closedMonth.period` | [accounting.md](../mongodb-mapping/accounting.md#entity-abgeschlossene-zeitr-ume-closed-months) | `number` | `display` | - | No | Yes | - |
-| Comment | Kommentar | `data.comment` | `closedMonth.comment` | [accounting.md](../mongodb-mapping/accounting.md#entity-abgeschlossene-zeitr-ume-closed-months) | `string` | `textarea` | - | No | No | - |
+| Period | Zeitraum | `data.period` | `closedMonth.period` | [accounting.md](../mongodb-mapping/accounting.md#entity-closed-months) | `number` | `display` | - | No | Yes | - |
+| Comment | Kommentar | `data.comment` | `closedMonth.comment` | [accounting.md](../mongodb-mapping/accounting.md#entity-closed-months) | `string` | `textarea` | - | No | No | - |
 | Closed for Expert | Geschlossen für Experte | `data.closedForExpert` | `-` | - | `date` | `date input` | - | No | No | - |
 | Verified | Verifiziert | `data.verified` | `-` | - | `date` | `date input` | - | No | No | - |
 | Invoiced | Abgerechnet | `data.invoiced` | `-` | - | `date` | `date input` | - | No | No | - |
@@ -226,13 +226,13 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| ID | ID | `id` | `expertWorkMonthly._id` | [accounting.md](../mongodb-mapping/accounting.md#entity-monatliche-expertenarbeit-expert-work-monthly) | `number` | `text` | - | No | Yes | - |
-| Year | Jahr | `year` | `expertWorkMonthly.year` | [accounting.md](../mongodb-mapping/accounting.md#entity-monatliche-expertenarbeit-expert-work-monthly) | `number` | `text` | - | No | Yes | - |
-| Month | Monat | `month` | `expertWorkMonthly.month` | [accounting.md](../mongodb-mapping/accounting.md#entity-monatliche-expertenarbeit-expert-work-monthly) | `number` | `text` | - | No | Yes | - |
-| User | Experte | `doctorName` | `expertWorkMonthly.doctorName` | [accounting.md](../mongodb-mapping/accounting.md#entity-monatliche-expertenarbeit-expert-work-monthly) | `string` | `text` | - | No | Yes | - |
+| ID | ID | `id` | `expertWorkMonthly._id` | [accounting.md](../mongodb-mapping/accounting.md#entity-expert-work-monthly) | `number` | `text` | - | No | Yes | - |
+| Year | Jahr | `year` | `expertWorkMonthly.year` | [accounting.md](../mongodb-mapping/accounting.md#entity-expert-work-monthly) | `number` | `text` | - | No | Yes | - |
+| Month | Monat | `month` | `expertWorkMonthly.month` | [accounting.md](../mongodb-mapping/accounting.md#entity-expert-work-monthly) | `number` | `text` | - | No | Yes | - |
+| User | Experte | `doctorName` | `expertWorkMonthly.doctorName` | [accounting.md](../mongodb-mapping/accounting.md#entity-expert-work-monthly) | `string` | `text` | - | No | Yes | - |
 | Booking Reference | Buchungsreferenz | `bookingReference` | `-` | - | `string` | `text` | - | No | Yes | - |
-| Total | Gesamt | `total` | `expertWorkMonthly.total` | [accounting.md](../mongodb-mapping/accounting.md#entity-monatliche-expertenarbeit-expert-work-monthly) | `number` | `text` | - | No | Yes | Admin only |
-| Date Sent | Sendedatum | `dateSent` | `expertWorkMonthly.dateSent` | [accounting.md](../mongodb-mapping/accounting.md#entity-monatliche-expertenarbeit-expert-work-monthly) | `date` | `text` | - | No | Yes | Admin only |
+| Total | Gesamt | `total` | `expertWorkMonthly.total` | [accounting.md](../mongodb-mapping/accounting.md#entity-expert-work-monthly) | `number` | `text` | - | No | Yes | Admin only |
+| Date Sent | Sendedatum | `dateSent` | `expertWorkMonthly.dateSent` | [accounting.md](../mongodb-mapping/accounting.md#entity-expert-work-monthly) | `date` | `text` | - | No | Yes | Admin only |
 | Date Received | Empfangsdatum | `dateReceived` | `-` | - | `date` | `text` | - | No | Yes | Admin only |
 | Date Paid | Zahldatum | `datePaid` | `-` | - | `date` | `text` | - | No | Yes | Admin only |
 
@@ -242,13 +242,13 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| Month | Monat | `data.month` | `expertWorkMonthly.month` | [accounting.md](../mongodb-mapping/accounting.md#entity-monatliche-expertenarbeit-expert-work-monthly) | `number` | `select` | - | No | Yes | - |
-| Year | Jahr | `data.year` | `expertWorkMonthly.year` | [accounting.md](../mongodb-mapping/accounting.md#entity-monatliche-expertenarbeit-expert-work-monthly) | `number` | `display` | - | No | Yes | - |
-| Doctor Name | Experte | `data.doctorName` | `expertWorkMonthly.doctorName` | [accounting.md](../mongodb-mapping/accounting.md#entity-monatliche-expertenarbeit-expert-work-monthly) | `string` | `display` | - | No | Yes | - |
+| Month | Monat | `data.month` | `expertWorkMonthly.month` | [accounting.md](../mongodb-mapping/accounting.md#entity-expert-work-monthly) | `number` | `select` | - | No | Yes | - |
+| Year | Jahr | `data.year` | `expertWorkMonthly.year` | [accounting.md](../mongodb-mapping/accounting.md#entity-expert-work-monthly) | `number` | `display` | - | No | Yes | - |
+| Doctor Name | Experte | `data.doctorName` | `expertWorkMonthly.doctorName` | [accounting.md](../mongodb-mapping/accounting.md#entity-expert-work-monthly) | `string` | `display` | - | No | Yes | - |
 | Employee Type | Mitarbeitertyp | `data.employeeType` | `-` | - | `string` | `display` | - | No | Yes | - |
 | Comment | Kommentar | `data.comment` | `-` | - | `string` | `textarea` | - | No | No | - |
 | Booking Reference | Buchungsreferenz | `data.bookingReference` | `-` | - | `string` | `text input` | - | No | No | - |
-| Date Created | Erstellungsdatum | `data.dateCreated` | `expertWorkMonthly.dateCreated` | [accounting.md](../mongodb-mapping/accounting.md#entity-monatliche-expertenarbeit-expert-work-monthly) | `date` | `display` | - | No | Yes | - |
+| Date Created | Erstellungsdatum | `data.dateCreated` | `expertWorkMonthly.dateCreated` | [accounting.md](../mongodb-mapping/accounting.md#entity-expert-work-monthly) | `date` | `display` | - | No | Yes | - |
 | Date Received | Empfangsdatum | `data.received` | `-` | - | `date` | `display` | - | No | Yes | - |
 | Date Paid | Zahldatum | `data.datePaid` | `-` | - | `date` | `display` | - | No | Yes | - |
 | Start | Start | `worklog.start` | `expertWorkMonthly.worklog.start` | [accounting.md](../mongodb-mapping/accounting.md#sub-entity-expertworklogentry) | `date` | `display` | - | No | Yes | - |
@@ -293,14 +293,14 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| ID | ID | `id` | `jobId._id` | [accounting.md](../mongodb-mapping/accounting.md#entity-dienstleistung-service) | `number` | `text` | - | No | Yes | - |
-| Name | Name | `code` | `jobId.code` | [accounting.md](../mongodb-mapping/accounting.md#entity-dienstleistung-service) | `string` | `text` | - | No | Yes | - |
-| Type | Typ | `type` | `jobId.type` | [accounting.md](../mongodb-mapping/accounting.md#entity-dienstleistung-service) | `enum:AppointmentType` | `text` | - | No | Yes | - |
-| Title (Expert) | Titel (Experte) | `expertTitle` | `jobId.expertTitle` | [accounting.md](../mongodb-mapping/accounting.md#entity-dienstleistung-service) | `string` | `text` | - | No | Yes | - |
-| Shortcode | Kurzcode | `shortcode` | `jobId.shortcode` | [accounting.md](../mongodb-mapping/accounting.md#entity-dienstleistung-service) | `string` | `text` | - | No | Yes | - |
-| Remote Code | Remote Code | `remoteCode` | `jobId.remoteCode` | [accounting.md](../mongodb-mapping/accounting.md#entity-dienstleistung-service) | `string` | `text` | - | No | Yes | - |
+| ID | ID | `id` | `jobId._id` | [accounting.md](../mongodb-mapping/accounting.md#entity-service) | `number` | `text` | - | No | Yes | - |
+| Name | Name | `code` | `jobId.code` | [accounting.md](../mongodb-mapping/accounting.md#entity-service) | `string` | `text` | - | No | Yes | - |
+| Type | Typ | `type` | `jobId.type` | [accounting.md](../mongodb-mapping/accounting.md#entity-service) | `enum:AppointmentType` | `text` | - | No | Yes | - |
+| Title (Expert) | Titel (Experte) | `expertTitle` | `jobId.expertTitle` | [accounting.md](../mongodb-mapping/accounting.md#entity-service) | `string` | `text` | - | No | Yes | - |
+| Shortcode | Kurzcode | `shortcode` | `jobId.shortcode` | [accounting.md](../mongodb-mapping/accounting.md#entity-service) | `string` | `text` | - | No | Yes | - |
+| Remote Code | Remote Code | `remoteCode` | `jobId.remoteCode` | [accounting.md](../mongodb-mapping/accounting.md#entity-service) | `string` | `text` | - | No | Yes | - |
 | Account | Konto | `konto` | `-` | - | `string` | `text` | - | No | Yes | - |
-| Priority | Prioritat | `prio` | `jobId.prio` | [accounting.md](../mongodb-mapping/accounting.md#entity-dienstleistung-service) | `number` | `text` | - | No | Yes | - |
+| Priority | Prioritat | `prio` | `jobId.prio` | [accounting.md](../mongodb-mapping/accounting.md#entity-service) | `number` | `text` | - | No | Yes | - |
 
 ## Job Configuration Detail - Tab 1 Info
 
@@ -308,26 +308,26 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| Name | Name | `data.code` | `jobId.code` | [accounting.md](../mongodb-mapping/accounting.md#entity-dienstleistung-service) | `string` | `text input` | - | Yes | No | - |
-| Shortcode | Kurzcode | `data.shortcode` | `jobId.shortcode` | [accounting.md](../mongodb-mapping/accounting.md#entity-dienstleistung-service) | `string` | `text input` | - | No | No | - |
-| Title (Expert) | Titel (Experte) | `data.expertTitle` | `jobId.expertTitle` | [accounting.md](../mongodb-mapping/accounting.md#entity-dienstleistung-service) | `string` | `text input` | - | No | No | - |
-| Type | Typ | `data.type` | `jobId.type` | [accounting.md](../mongodb-mapping/accounting.md#entity-dienstleistung-service) | `enum:AppointmentType` | `select` | APPOINTMENT, SHIFT, COUNCIL | No | No | - |
-| Subject Area | Fachgebiet | `data.remoteCode` | `jobId.remoteCode` | [accounting.md](../mongodb-mapping/accounting.md#entity-dienstleistung-service) | `string` | `select` | - | No | No | - |
-| Consultation Type | Konsultationstyp | `data.defaultConsultation` | `jobId.defaultConsultation` | [accounting.md](../mongodb-mapping/accounting.md#entity-dienstleistung-service) | `enum:ConsultationType` | `select` | - | No | No | - |
-| Further Treatment | Weiterbehandlung | `data.defaultFurtherTreatment` | `jobId.defaultFurtherTreatment` | [accounting.md](../mongodb-mapping/accounting.md#entity-dienstleistung-service) | `enum:FurtherTreatment` | `select` | - | No | No | - |
-| Standard | Standard | `data.consultationStandard` | `jobId.consultationStandard` | [accounting.md](../mongodb-mapping/accounting.md#entity-dienstleistung-service) | `boolean` | `checkbox` | - | No | No | - |
-| Onboarding | Onboarding | `data.consultationOnboarding` | `jobId.consultationOnboarding` | [accounting.md](../mongodb-mapping/accounting.md#entity-dienstleistung-service) | `boolean` | `checkbox` | - | No | No | - |
-| Incarceration | Inhaftierung | `data.consultationIncarceration` | `jobId.consultationIncarceration` | [accounting.md](../mongodb-mapping/accounting.md#entity-dienstleistung-service) | `boolean` | `checkbox` | - | No | No | - |
-| Onboarding Short | Onboarding (kurz) | `data.consultationOnboardingShort` | `jobId.consultationOnboardingShort` | [accounting.md](../mongodb-mapping/accounting.md#entity-dienstleistung-service) | `boolean` | `checkbox` | - | No | No | - |
-| Document | Dokument | `data.consultationDocument` | `jobId.consultationDocument` | [accounting.md](../mongodb-mapping/accounting.md#entity-dienstleistung-service) | `boolean` | `checkbox` | - | No | No | - |
-| Invoice Title | Rechnung Titel | `data.title` | `jobId.title` | [accounting.md](../mongodb-mapping/accounting.md#entity-dienstleistung-service) | `string` | `text input` | - | No | No | - |
+| Name | Name | `data.code` | `jobId.code` | [accounting.md](../mongodb-mapping/accounting.md#entity-service) | `string` | `text input` | - | Yes | No | - |
+| Shortcode | Kurzcode | `data.shortcode` | `jobId.shortcode` | [accounting.md](../mongodb-mapping/accounting.md#entity-service) | `string` | `text input` | - | No | No | - |
+| Title (Expert) | Titel (Experte) | `data.expertTitle` | `jobId.expertTitle` | [accounting.md](../mongodb-mapping/accounting.md#entity-service) | `string` | `text input` | - | No | No | - |
+| Type | Typ | `data.type` | `jobId.type` | [accounting.md](../mongodb-mapping/accounting.md#entity-service) | `enum:AppointmentType` | `select` | APPOINTMENT, SHIFT, COUNCIL | No | No | - |
+| Subject Area | Fachgebiet | `data.remoteCode` | `jobId.remoteCode` | [accounting.md](../mongodb-mapping/accounting.md#entity-service) | `string` | `select` | - | No | No | - |
+| Consultation Type | Konsultationstyp | `data.defaultConsultation` | `jobId.defaultConsultation` | [accounting.md](../mongodb-mapping/accounting.md#entity-service) | `enum:ConsultationType` | `select` | - | No | No | - |
+| Further Treatment | Weiterbehandlung | `data.defaultFurtherTreatment` | `jobId.defaultFurtherTreatment` | [accounting.md](../mongodb-mapping/accounting.md#entity-service) | `enum:FurtherTreatment` | `select` | - | No | No | - |
+| Standard | Standard | `data.consultationStandard` | `jobId.consultationStandard` | [accounting.md](../mongodb-mapping/accounting.md#entity-service) | `boolean` | `checkbox` | - | No | No | - |
+| Onboarding | Onboarding | `data.consultationOnboarding` | `jobId.consultationOnboarding` | [accounting.md](../mongodb-mapping/accounting.md#entity-service) | `boolean` | `checkbox` | - | No | No | - |
+| Incarceration | Inhaftierung | `data.consultationIncarceration` | `jobId.consultationIncarceration` | [accounting.md](../mongodb-mapping/accounting.md#entity-service) | `boolean` | `checkbox` | - | No | No | - |
+| Onboarding Short | Onboarding (kurz) | `data.consultationOnboardingShort` | `jobId.consultationOnboardingShort` | [accounting.md](../mongodb-mapping/accounting.md#entity-service) | `boolean` | `checkbox` | - | No | No | - |
+| Document | Dokument | `data.consultationDocument` | `jobId.consultationDocument` | [accounting.md](../mongodb-mapping/accounting.md#entity-service) | `boolean` | `checkbox` | - | No | No | - |
+| Invoice Title | Rechnung Titel | `data.title` | `jobId.title` | [accounting.md](../mongodb-mapping/accounting.md#entity-service) | `string` | `text input` | - | No | No | - |
 | Bill As | Abrechnen als | `data.billAs` | `-` | - | `reference:jobId` | `select` | - | No | No | - |
 | Account | Konto | `data.konto` | `-` | - | `string` | `text input` | - | No | No | - |
-| Color | Farbe | `data.color` | `jobId.color` | [accounting.md](../mongodb-mapping/accounting.md#entity-dienstleistung-service) | `string` | `color picker` | - | No | No | - |
-| Priority | Prioritat | `data.prio` | `jobId.prio` | [accounting.md](../mongodb-mapping/accounting.md#entity-dienstleistung-service) | `number` | `number input` | - | No | No | - |
+| Color | Farbe | `data.color` | `jobId.color` | [accounting.md](../mongodb-mapping/accounting.md#entity-service) | `string` | `color picker` | - | No | No | - |
+| Priority | Prioritat | `data.prio` | `jobId.prio` | [accounting.md](../mongodb-mapping/accounting.md#entity-service) | `number` | `number input` | - | No | No | - |
 | Skill Rule | Qualifikation Regel | `skillRules.rule` | `jobId.skillRules.rule` | [accounting.md](../mongodb-mapping/accounting.md#sub-entity-skillrule) | `string` | `select` | ALL_MUST, ANY_MUST, etc. | Yes | No | - |
 | Skills | Qualifikationen | `skillRules.skills` | `jobId.skillRules.skills` | [accounting.md](../mongodb-mapping/accounting.md#sub-entity-skillrule) | `array` | `nested collection` | - | No | No | - |
-| On-Call Numbers | Bereitschaftsnummern | `data.onCallNumbers` | `jobId.onCallNumbers` | [accounting.md](../mongodb-mapping/accounting.md#entity-dienstleistung-service) | `array:string` | `text input collection` | - | No | No | - |
+| On-Call Numbers | Bereitschaftsnummern | `data.onCallNumbers` | `jobId.onCallNumbers` | [accounting.md](../mongodb-mapping/accounting.md#entity-service) | `array:string` | `text input collection` | - | No | No | - |
 
 ## Job Configuration Detail - Tab 2 Times/Pricing
 
@@ -348,17 +348,17 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| Invoice No. | Rechnungsnr. | `no` | `invoice.no` | [accounting.md](../mongodb-mapping/accounting.md#entity-rechnungen-invoices) | `string` | `text` | - | No | Yes | - |
-| Client | Kunde | `client` | `invoice.client` | [accounting.md](../mongodb-mapping/accounting.md#entity-rechnungen-invoices) | `object` | `text` | - | No | Yes | - |
+| Invoice No. | Rechnungsnr. | `no` | `invoice.no` | [accounting.md](../mongodb-mapping/accounting.md#entity-invoices) | `string` | `text` | - | No | Yes | - |
+| Client | Kunde | `client` | `invoice.client` | [accounting.md](../mongodb-mapping/accounting.md#entity-invoices) | `object` | `text` | - | No | Yes | - |
 | Shipping | Versand | `client` | `-` | - | `object` | `icon` | - | No | Yes | Displays mail/post icons |
-| Title | Titel | `title` | `invoice.title` | [accounting.md](../mongodb-mapping/accounting.md#entity-rechnungen-invoices) | `string` | `text` | - | No | Yes | - |
-| Invoice Date | Rechnungsdatum | `dateInvoice` | `invoice.dateInvoice` | [accounting.md](../mongodb-mapping/accounting.md#entity-rechnungen-invoices) | `date` | `text` | - | No | Yes | - |
-| Total | Gesamt | `totalPrice` | `invoice.totalPrice` | [accounting.md](../mongodb-mapping/accounting.md#entity-rechnungen-invoices) | `number` | `text` | - | No | Yes | - |
-| Paid | Bezahlt | `paidAt` | `invoice.paidAt` | [accounting.md](../mongodb-mapping/accounting.md#entity-rechnungen-invoices) | `date` | `text` | - | No | Yes | - |
-| Comment | Kommentar | `comment` | `invoice.comment` | [accounting.md](../mongodb-mapping/accounting.md#entity-rechnungen-invoices) | `string` | `text` | - | No | Yes | - |
-| Worklog | Arbeitsnachweis | `dateWorklog` | `invoice.dateWorklog` | [accounting.md](../mongodb-mapping/accounting.md#entity-rechnungen-invoices) | `date` | `icon` | - | No | Yes | Existence indicator |
-| Date Created | Erstellt | `dateCreated` | `invoice.dateCreated` | [accounting.md](../mongodb-mapping/accounting.md#entity-rechnungen-invoices) | `date` | `text` | - | No | Yes | - |
-| Date Submitted | Gesendet | `dateSubmit` | `invoice.dateSubmit` | [accounting.md](../mongodb-mapping/accounting.md#entity-rechnungen-invoices) | `date` | `text` | - | No | Yes | - |
+| Title | Titel | `title` | `invoice.title` | [accounting.md](../mongodb-mapping/accounting.md#entity-invoices) | `string` | `text` | - | No | Yes | - |
+| Invoice Date | Rechnungsdatum | `dateInvoice` | `invoice.dateInvoice` | [accounting.md](../mongodb-mapping/accounting.md#entity-invoices) | `date` | `text` | - | No | Yes | - |
+| Total | Gesamt | `totalPrice` | `invoice.totalPrice` | [accounting.md](../mongodb-mapping/accounting.md#entity-invoices) | `number` | `text` | - | No | Yes | - |
+| Paid | Bezahlt | `paidAt` | `invoice.paidAt` | [accounting.md](../mongodb-mapping/accounting.md#entity-invoices) | `date` | `text` | - | No | Yes | - |
+| Comment | Kommentar | `comment` | `invoice.comment` | [accounting.md](../mongodb-mapping/accounting.md#entity-invoices) | `string` | `text` | - | No | Yes | - |
+| Worklog | Arbeitsnachweis | `dateWorklog` | `invoice.dateWorklog` | [accounting.md](../mongodb-mapping/accounting.md#entity-invoices) | `date` | `icon` | - | No | Yes | Existence indicator |
+| Date Created | Erstellt | `dateCreated` | `invoice.dateCreated` | [accounting.md](../mongodb-mapping/accounting.md#entity-invoices) | `date` | `text` | - | No | Yes | - |
+| Date Submitted | Gesendet | `dateSubmit` | `invoice.dateSubmit` | [accounting.md](../mongodb-mapping/accounting.md#entity-invoices) | `date` | `text` | - | No | Yes | - |
 
 ## Invoice Detail Dialog
 
@@ -367,23 +367,23 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
 | Multi-invoice Switch | Multi-Rechnung | `multiInvoice` | `-` | - | `action` | `select` | - | No | No | Workflow-only |
-| Invoice No. | Rechnungsnr. | `data.no` | `invoice.no` | [accounting.md](../mongodb-mapping/accounting.md#entity-rechnungen-invoices) | `string` | `text input` | - | No | No | - |
-| Date Created | Erstellt am | `data.dateCreated` | `invoice.dateCreated` | [accounting.md](../mongodb-mapping/accounting.md#entity-rechnungen-invoices) | `date` | `span` | - | No | Yes | - |
+| Invoice No. | Rechnungsnr. | `data.no` | `invoice.no` | [accounting.md](../mongodb-mapping/accounting.md#entity-invoices) | `string` | `text input` | - | No | No | - |
+| Date Created | Erstellt am | `data.dateCreated` | `invoice.dateCreated` | [accounting.md](../mongodb-mapping/accounting.md#entity-invoices) | `date` | `span` | - | No | Yes | - |
 | Client Name | Kunde Name | `data.client.name` | `invoice.client.name` | [accounting.md](../mongodb-mapping/accounting.md#sub-entity-invoiceclient) | `string` | `span` | - | No | Yes | - |
 | Client Extra Title | Kunde Extra Titel | `data.client.extraTitle` | `-` | - | `string` | `span` | - | No | Yes | - |
 | Client Address | Kunde Adresse | `data.client.address` | `invoice.client.address` | [accounting.md](../mongodb-mapping/accounting.md#sub-entity-invoiceclient) | `string` | `span` | - | No | Yes | - |
 | Client ZIP | Kunde PLZ | `data.client.zip` | `invoice.client.zip` | [accounting.md](../mongodb-mapping/accounting.md#sub-entity-invoiceclient) | `string` | `span` | - | No | Yes | - |
 | Client City | Kunde Stadt | `data.client.city` | `invoice.client.city` | [accounting.md](../mongodb-mapping/accounting.md#sub-entity-invoiceclient) | `string` | `span` | - | No | Yes | - |
-| Title | Titel | `data.title` | `invoice.title` | [accounting.md](../mongodb-mapping/accounting.md#entity-rechnungen-invoices) | `string` | `text input` | - | No | No | - |
-| Description | Beschreibung | `data.description` | `invoice.description` | [accounting.md](../mongodb-mapping/accounting.md#entity-rechnungen-invoices) | `string` | `textarea` | - | No | No | - |
-| Paid At | Bezahlt am | `data.paidAt` | `invoice.paidAt` | [accounting.md](../mongodb-mapping/accounting.md#entity-rechnungen-invoices) | `date` | `date input` | - | No | Yes | - |
-| Comment | Kommentar | `data.comment` | `invoice.comment` | [accounting.md](../mongodb-mapping/accounting.md#entity-rechnungen-invoices) | `string` | `textarea` | - | No | No | - |
-| Invoice Date | Rechnungsdatum | `data.dateInvoice` | `invoice.dateInvoice` | [accounting.md](../mongodb-mapping/accounting.md#entity-rechnungen-invoices) | `date` | `date input` | - | No | No | - |
-| Skonto Date | Skonto Datum | `data.dateSkonto` | `invoice.dateSkonto` | [accounting.md](../mongodb-mapping/accounting.md#entity-rechnungen-invoices) | `date` | `span` | - | No | Yes | - |
+| Title | Titel | `data.title` | `invoice.title` | [accounting.md](../mongodb-mapping/accounting.md#entity-invoices) | `string` | `text input` | - | No | No | - |
+| Description | Beschreibung | `data.description` | `invoice.description` | [accounting.md](../mongodb-mapping/accounting.md#entity-invoices) | `string` | `textarea` | - | No | No | - |
+| Paid At | Bezahlt am | `data.paidAt` | `invoice.paidAt` | [accounting.md](../mongodb-mapping/accounting.md#entity-invoices) | `date` | `date input` | - | No | Yes | - |
+| Comment | Kommentar | `data.comment` | `invoice.comment` | [accounting.md](../mongodb-mapping/accounting.md#entity-invoices) | `string` | `textarea` | - | No | No | - |
+| Invoice Date | Rechnungsdatum | `data.dateInvoice` | `invoice.dateInvoice` | [accounting.md](../mongodb-mapping/accounting.md#entity-invoices) | `date` | `date input` | - | No | No | - |
+| Skonto Date | Skonto Datum | `data.dateSkonto` | `invoice.dateSkonto` | [accounting.md](../mongodb-mapping/accounting.md#entity-invoices) | `date` | `span` | - | No | Yes | - |
 | Skonto % | Skonto % | `data.client.skontoPaymentPercentage` | `-` | - | `number` | `span` | - | No | Yes | - |
-| Date Submitted | Versanddatum | `data.dateSubmit` | `invoice.dateSubmit` | [accounting.md](../mongodb-mapping/accounting.md#entity-rechnungen-invoices) | `date` | `date input` | - | No | No | - |
-| Month | Monat | `data.month` | `invoice.month` | [accounting.md](../mongodb-mapping/accounting.md#entity-rechnungen-invoices) | `number` | `select` | - | No | No | - |
-| Year | Jahr | `data.year` | `invoice.year` | [accounting.md](../mongodb-mapping/accounting.md#entity-rechnungen-invoices) | `number` | `number input` | - | No | No | - |
+| Date Submitted | Versanddatum | `data.dateSubmit` | `invoice.dateSubmit` | [accounting.md](../mongodb-mapping/accounting.md#entity-invoices) | `date` | `date input` | - | No | No | - |
+| Month | Monat | `data.month` | `invoice.month` | [accounting.md](../mongodb-mapping/accounting.md#entity-invoices) | `number` | `select` | - | No | No | - |
+| Year | Jahr | `data.year` | `invoice.year` | [accounting.md](../mongodb-mapping/accounting.md#entity-invoices) | `number` | `number input` | - | No | No | - |
 
 ## Invoice Positions Collection
 
@@ -438,17 +438,17 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| ID | ID | `id` | `appointment._id` | [planning.md](../mongodb-mapping/planning.md#entity-termine-appointments) | `number` | `text` | - | No | Yes | - |
-| Start Date | Startdatum | `date` | `appointment.date` | [planning.md](../mongodb-mapping/planning.md#entity-termine-appointments) | `date` | `text` | - | No | Yes | - |
-| From | Von | `timeStart` | `appointment.timeStart` | [planning.md](../mongodb-mapping/planning.md#entity-termine-appointments) | `string` | `text` | - | No | Yes | - |
-| Until | Bis | `timeEnd` | `appointment.timeEnd` | [planning.md](../mongodb-mapping/planning.md#entity-termine-appointments) | `string` | `text` | - | No | Yes | - |
-| Location | Ort | `location` | `appointment.location` | [planning.md](../mongodb-mapping/planning.md#entity-termine-appointments) | `reference:location` | `text` | - | No | Yes | - |
-| Service | Dienstleistung | `job` | `appointment.job` | [planning.md](../mongodb-mapping/planning.md#entity-termine-appointments) | `reference:jobId` | `text` | - | No | Yes | - |
+| ID | ID | `id` | `appointment._id` | [planning.md](../mongodb-mapping/planning.md#entity-appointments) | `number` | `text` | - | No | Yes | - |
+| Start Date | Startdatum | `date` | `appointment.date` | [planning.md](../mongodb-mapping/planning.md#entity-appointments) | `date` | `text` | - | No | Yes | - |
+| From | Von | `timeStart` | `appointment.timeStart` | [planning.md](../mongodb-mapping/planning.md#entity-appointments) | `string` | `text` | - | No | Yes | - |
+| Until | Bis | `timeEnd` | `appointment.timeEnd` | [planning.md](../mongodb-mapping/planning.md#entity-appointments) | `string` | `text` | - | No | Yes | - |
+| Location | Ort | `location` | `appointment.location` | [planning.md](../mongodb-mapping/planning.md#entity-appointments) | `reference:location` | `text` | - | No | Yes | - |
+| Service | Dienstleistung | `job` | `appointment.job` | [planning.md](../mongodb-mapping/planning.md#entity-appointments) | `reference:jobId` | `text` | - | No | Yes | - |
 | Physician | Arzt | `assignedDisplayName` | `-` | - | `string` | `text` | - | No | Yes | - |
-| Type | Typ | `type` | `appointment.type` | [planning.md](../mongodb-mapping/planning.md#entity-termine-appointments) | `enum:AppointmentType` | `text` | - | No | Yes | - |
-| Status | Status | `state` | `appointment.state` | [planning.md](../mongodb-mapping/planning.md#entity-termine-appointments) | `enum:AppointmentState` | `icon` | - | No | Yes | - |
-| Payment Type | Zahlungsart | `paymentType` | `appointment.paymentType` | [planning.md](../mongodb-mapping/planning.md#entity-termine-appointments) | `enum:AppointmentPaymentType` | `text` | - | No | Yes | - |
-| Cancel | Storno | `dateStorno` | `appointment.dateStorno` | [planning.md](../mongodb-mapping/planning.md#entity-termine-appointments) | `date` | `text` | - | No | Yes | - |
+| Type | Typ | `type` | `appointment.type` | [planning.md](../mongodb-mapping/planning.md#entity-appointments) | `enum:AppointmentType` | `text` | - | No | Yes | - |
+| Status | Status | `state` | `appointment.state` | [planning.md](../mongodb-mapping/planning.md#entity-appointments) | `enum:AppointmentState` | `icon` | - | No | Yes | - |
+| Payment Type | Zahlungsart | `paymentType` | `appointment.paymentType` | [planning.md](../mongodb-mapping/planning.md#entity-appointments) | `enum:AppointmentPaymentType` | `text` | - | No | Yes | - |
+| Cancel | Storno | `dateStorno` | `appointment.dateStorno` | [planning.md](../mongodb-mapping/planning.md#entity-appointments) | `date` | `text` | - | No | Yes | - |
 | Count | Anzahl | `count` | `-` | - | `number` | `text` | - | No | Yes | - |
 | Period | Zeitraum | `period` | `-` | - | `string` | `text` | - | No | Yes | - |
 
@@ -458,11 +458,11 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| Customer | Kunde | `data.appointment.customer` | `appointment.customer` | [planning.md](../mongodb-mapping/planning.md#entity-termine-appointments) | `reference:customer` | `autocomplete` | - | No | Yes | Read-only |
-| Location | Ort | `data.appointment.location` | `appointment.location` | [planning.md](../mongodb-mapping/planning.md#entity-termine-appointments) | `reference:location` | `autocomplete` | LocationService.autocomplete | No | No | - |
-| Status | Status | `data.appointment.state` | `appointment.state` | [planning.md](../mongodb-mapping/planning.md#entity-termine-appointments) | `enum:AppointmentState` | `select` | - | No | No | - |
-| Service | Dienstleistung | `data.appointment.job` | `appointment.job` | [planning.md](../mongodb-mapping/planning.md#entity-termine-appointments) | `reference:jobId` | `autocomplete` | JobService.autocomplete | Yes | No | - |
-| Payment Type | Zahlungsart | `data.appointment.paymentType` | `appointment.paymentType` | [planning.md](../mongodb-mapping/planning.md#entity-termine-appointments) | `enum:AppointmentPaymentType` | `select` | - | No | No | - |
+| Customer | Kunde | `data.appointment.customer` | `appointment.customer` | [planning.md](../mongodb-mapping/planning.md#entity-appointments) | `reference:customer` | `autocomplete` | - | No | Yes | Read-only |
+| Location | Ort | `data.appointment.location` | `appointment.location` | [planning.md](../mongodb-mapping/planning.md#entity-appointments) | `reference:location` | `autocomplete` | LocationService.autocomplete | No | No | - |
+| Status | Status | `data.appointment.state` | `appointment.state` | [planning.md](../mongodb-mapping/planning.md#entity-appointments) | `enum:AppointmentState` | `select` | - | No | No | - |
+| Service | Dienstleistung | `data.appointment.job` | `appointment.job` | [planning.md](../mongodb-mapping/planning.md#entity-appointments) | `reference:jobId` | `autocomplete` | JobService.autocomplete | Yes | No | - |
+| Payment Type | Zahlungsart | `data.appointment.paymentType` | `appointment.paymentType` | [planning.md](../mongodb-mapping/planning.md#entity-appointments) | `enum:AppointmentPaymentType` | `select` | - | No | No | - |
 | Storno Time | Stornozeit | `data.summary.stornoTime` | `-` | - | `number` | `humantime input` | - | No | No | Recalculates dateStorno |
 | First Contact | Erster Kontakt | `data.summary.firstContact` | `-` | - | `time` | `time picker` | - | No | No | - |
 | Adjusted Start | Angepasster Start | `data.summary.adjustedStart` | `-` | - | `time` | `time picker` | - | No | No | - |
@@ -479,5 +479,5 @@ This document defines the data dictionary for the **Accounting** domain, mapping
 | Referral Other | Überweisung andere | `data.summary.referralOther` | `-` | - | `number` | `number input` | - | No | No | - |
 | Unknown Follow Up | Unbekannte Nachsorge | `data.summary.nofollow` | `-` | - | `number` | `number input` | - | No | No | - |
 | QM Comment | QM Kommentar | `data.qm.comment` | `-` | - | `string` | `textarea` | - | No | No | - |
-| Comment | Kommentar | `data.appointment.comment` | `appointment.comment` | [planning.md](../mongodb-mapping/planning.md#entity-termine-appointments) | `string` | `textarea` | - | No | No | - |
+| Comment | Kommentar | `data.appointment.comment` | `appointment.comment` | [planning.md](../mongodb-mapping/planning.md#entity-appointments) | `string` | `textarea` | - | No | No | - |
 

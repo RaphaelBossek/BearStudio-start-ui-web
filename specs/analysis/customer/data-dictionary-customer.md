@@ -20,40 +20,40 @@ Source: `specs/analysis/customers/customer-list-detail.md`
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| ID | ID | `data.id` | `customer._id` | [customer.md#customer](../mongodb-mapping/customer.md#entity-kunden-customers) | `number` | `text` | — | No | Yes | — |
-| Name | Name | `data.name` | `customer.name` | [customer.md#customer](../mongodb-mapping/customer.md#entity-kunden-customers) | `string` | `text` | — | No | Yes | — |
-| Bank | Bank | `data.bank` | `customer.bank` | [customer.md#customer](../mongodb-mapping/customer.md#entity-kunden-customers) | `string` | `text` | — | No | Yes | Hardcoded "Bank" in legacy |
-| State | Bundesland | `data.state` | `customer.state` | [customer.md#customer](../mongodb-mapping/customer.md#entity-kunden-customers) | `string` | `text` | — | No | Yes | — |
-| Representative | Ansprechpartner | `data.representative` | `customer.representative` | [customer.md#customer](../mongodb-mapping/customer.md#entity-kunden-customers) | `string` | `text` | — | No | Yes | — |
-| Primary Email | E-Mail | `data.email` | `customer.email` | [customer.md#customer](../mongodb-mapping/customer.md#entity-kunden-customers) | `string` | `text` | — | No | Yes | — |
-| Work Phone | Telefon (Arbeit) | `data.phone` | `customer.phone2` | [customer.md#customer](../mongodb-mapping/customer.md#entity-kunden-customers) | `string` | `text` | — | No | Yes | Grid says workphone, maps to phone2 ideally, legacy mapped `phone` |
+| ID | ID | `data.id` | `customer._id` | [customer.md#customer](../mongodb-mapping/customer.md#entity-customers) | `number` | `text` | — | No | Yes | — |
+| Name | Name | `data.name` | `customer.name` | [customer.md#customer](../mongodb-mapping/customer.md#entity-customers) | `string` | `text` | — | No | Yes | — |
+| Bank | Bank | `data.bank` | `customer.bank` | [customer.md#customer](../mongodb-mapping/customer.md#entity-customers) | `string` | `text` | — | No | Yes | Hardcoded "Bank" in legacy |
+| State | Bundesland | `data.state` | `customer.state` | [customer.md#customer](../mongodb-mapping/customer.md#entity-customers) | `string` | `text` | — | No | Yes | — |
+| Representative | Ansprechpartner | `data.representative` | `customer.representative` | [customer.md#customer](../mongodb-mapping/customer.md#entity-customers) | `string` | `text` | — | No | Yes | — |
+| Primary Email | E-Mail | `data.email` | `customer.email` | [customer.md#customer](../mongodb-mapping/customer.md#entity-customers) | `string` | `text` | — | No | Yes | — |
+| Work Phone | Telefon (Arbeit) | `data.phone` | `customer.phone2` | [customer.md#customer](../mongodb-mapping/customer.md#entity-customers) | `string` | `text` | — | No | Yes | Grid says workphone, maps to phone2 ideally, legacy mapped `phone` |
 
 ### 1.2 Form Elements — Tab 1: Contact (`tabContact`)
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| Customer Name | Kundenname | `data.name` | `customer.name` | [customer.md#customer](../mongodb-mapping/customer.md#entity-kunden-customers) | `string` | `text` | — | Yes | No | — |
-| Primary Email | E-Mail | `data.email` | `customer.email` | [customer.md#customer](../mongodb-mapping/customer.md#entity-kunden-customers) | `string` | `email` | — | No | No | Regex validated |
-| Webpage | Webseite | `data.webpage` | `customer.webpage` | [customer.md#customer](../mongodb-mapping/customer.md#entity-kunden-customers) | `string` | `text` | — | No | No | — |
-| UID (VAT ID) | UID | `data.uid` | `customer.uid` | [customer.md#customer](../mongodb-mapping/customer.md#entity-kunden-customers) | `string` | `text` | — | No | No | — |
-| IBAN | IBAN | `data.iban` | `customer.iban` | [customer.md#customer](../mongodb-mapping/customer.md#entity-kunden-customers) | `string` | `text` | — | No | No | — |
-| Bank | Bank | `data.bank` | `customer.bank` | [customer.md#customer](../mongodb-mapping/customer.md#entity-kunden-customers) | `string` | `text` | — | No | No | — |
-| BIC | BIC | `data.bic` | `customer.bic` | [customer.md#customer](../mongodb-mapping/customer.md#entity-kunden-customers) | `string` | `text` | — | No | No | — |
-| Representative | Ansprechpartner | `data.representative` | `customer.representative` | [customer.md#customer](../mongodb-mapping/customer.md#entity-kunden-customers) | `string` | `text` | — | No | No | — |
-| Cellular Number | Mobiltelefon | `data.phone` | `customer.phone` | [customer.md#customer](../mongodb-mapping/customer.md#entity-kunden-customers) | `string` | `text` | — | No | No | — |
-| Work Phone | Telefon (Arbeit) | `data.phone2` | `customer.phone2` | [customer.md#customer](../mongodb-mapping/customer.md#entity-kunden-customers) | `string` | `text` | — | No | No | — |
-| Fax Number | Fax | `data.faxNumber` | `customer.faxNumber` | [customer.md#customer](../mongodb-mapping/customer.md#entity-kunden-customers) | `string` | `text` | — | No | No | — |
+| Customer Name | Kundenname | `data.name` | `customer.name` | [customer.md#customer](../mongodb-mapping/customer.md#entity-customers) | `string` | `text` | — | Yes | No | — |
+| Primary Email | E-Mail | `data.email` | `customer.email` | [customer.md#customer](../mongodb-mapping/customer.md#entity-customers) | `string` | `email` | — | No | No | Regex validated |
+| Webpage | Webseite | `data.webpage` | `customer.webpage` | [customer.md#customer](../mongodb-mapping/customer.md#entity-customers) | `string` | `text` | — | No | No | — |
+| UID (VAT ID) | UID | `data.uid` | `customer.uid` | [customer.md#customer](../mongodb-mapping/customer.md#entity-customers) | `string` | `text` | — | No | No | — |
+| IBAN | IBAN | `data.iban` | `customer.iban` | [customer.md#customer](../mongodb-mapping/customer.md#entity-customers) | `string` | `text` | — | No | No | — |
+| Bank | Bank | `data.bank` | `customer.bank` | [customer.md#customer](../mongodb-mapping/customer.md#entity-customers) | `string` | `text` | — | No | No | — |
+| BIC | BIC | `data.bic` | `customer.bic` | [customer.md#customer](../mongodb-mapping/customer.md#entity-customers) | `string` | `text` | — | No | No | — |
+| Representative | Ansprechpartner | `data.representative` | `customer.representative` | [customer.md#customer](../mongodb-mapping/customer.md#entity-customers) | `string` | `text` | — | No | No | — |
+| Cellular Number | Mobiltelefon | `data.phone` | `customer.phone` | [customer.md#customer](../mongodb-mapping/customer.md#entity-customers) | `string` | `text` | — | No | No | — |
+| Work Phone | Telefon (Arbeit) | `data.phone2` | `customer.phone2` | [customer.md#customer](../mongodb-mapping/customer.md#entity-customers) | `string` | `text` | — | No | No | — |
+| Fax Number | Fax | `data.faxNumber` | `customer.faxNumber` | [customer.md#customer](../mongodb-mapping/customer.md#entity-customers) | `string` | `text` | — | No | No | — |
 
 ### 1.3 Form Elements — Tab 2: Home/Private (`tabPrivate`)
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| Street | Strasse | `data.address` | `customer.address` | [customer.md#customer](../mongodb-mapping/customer.md#entity-kunden-customers) | `string` | `text` | — | No | No | — |
-| Street Line 2 | Adresszeile 2 | `data.address2` | `customer.address2` | [customer.md#customer](../mongodb-mapping/customer.md#entity-kunden-customers) | `string` | `text` | — | No | No | — |
-| Zip Code | PLZ | `data.zip` | `customer.zip` | [customer.md#customer](../mongodb-mapping/customer.md#entity-kunden-customers) | `string` | `autocomplete` | `ZipCodeService.get` | No | No | Auto-fills city, state, country |
-| State | Bundesland | `data.state` | `customer.state` | [customer.md#customer](../mongodb-mapping/customer.md#entity-kunden-customers) | `string` | `text` | — | No | No | Auto-filled by zip lookup |
-| City | Stadt / Ort | `data.city` | `customer.city` | [customer.md#customer](../mongodb-mapping/customer.md#entity-kunden-customers) | `string` | `text` | — | No | No | Auto-filled by zip lookup |
-| Country | Land | `data.country` | `customer.country` | [customer.md#customer](../mongodb-mapping/customer.md#entity-kunden-customers) | `string` | `text` | — | No | No | Auto-filled by zip lookup |
+| Street | Strasse | `data.address` | `customer.address` | [customer.md#customer](../mongodb-mapping/customer.md#entity-customers) | `string` | `text` | — | No | No | — |
+| Street Line 2 | Adresszeile 2 | `data.address2` | `customer.address2` | [customer.md#customer](../mongodb-mapping/customer.md#entity-customers) | `string` | `text` | — | No | No | — |
+| Zip Code | PLZ | `data.zip` | `customer.zip` | [customer.md#customer](../mongodb-mapping/customer.md#entity-customers) | `string` | `autocomplete` | `ZipCodeService.get` | No | No | Auto-fills city, state, country |
+| State | Bundesland | `data.state` | `customer.state` | [customer.md#customer](../mongodb-mapping/customer.md#entity-customers) | `string` | `text` | — | No | No | Auto-filled by zip lookup |
+| City | Stadt / Ort | `data.city` | `customer.city` | [customer.md#customer](../mongodb-mapping/customer.md#entity-customers) | `string` | `text` | — | No | No | Auto-filled by zip lookup |
+| Country | Land | `data.country` | `customer.country` | [customer.md#customer](../mongodb-mapping/customer.md#entity-customers) | `string` | `text` | — | No | No | Auto-filled by zip lookup |
 
 ### 1.4 Form Elements — Tab 3: Billing (`tabBilling`) (Admin Only)
 
@@ -90,38 +90,38 @@ Source: `specs/analysis/customers/location-and-users.md`
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| ID | ID | `foreignId` | `location.foreignId` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `string` | `text` | — | No | Yes | — |
-| Name | Name | `name` | `location.name` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `string` | `text` | — | No | Yes | — |
-| Type | Typ | `typeName` | `location.type` (resolved) | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `string` | `text` | — | No | Yes | Resolved locationType |
-| Customer | Kunde | `customerName` | `location.customer` (resolved) | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `string` | `text` | — | No | Yes | Resolved customer name |
-| Patient Data Type | Patientendatentyp | `patientDataType` | `location.patientDataType` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `enum:PatientDataType` | `text` | — | No | Yes | Formatter used |
-| Patient Data Access | Patientendatenzugriff | `patientDataAccess` | `location.patientDataAccess` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `object` | `icon` | — | No | Yes | Displays folder/envelope icons |
-| State | Bundesland | `state` | `location.state` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `string` | `text` | — | No | Yes | — |
-| Primary Email | E-Mail | `email` | `location.emailMedical` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `string` | `text` | — | No | Yes | — |
-| Address | Adresse | `address` | `location.address` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `string` | `text` | — | No | Yes | — |
-| Zip Code | PLZ | `zip` | `location.zip` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `string` | `text` | — | No | Yes | — |
-| City | Stadt/Ort | `city` | `location.city` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `string` | `text` | — | No | Yes | — |
-| Country | Land | `country` | `location.country` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `string` | `text` | — | No | Yes | — |
+| ID | ID | `foreignId` | `location.foreignId` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `string` | `text` | — | No | Yes | — |
+| Name | Name | `name` | `location.name` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `string` | `text` | — | No | Yes | — |
+| Type | Typ | `typeName` | `location.type` (resolved) | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `string` | `text` | — | No | Yes | Resolved locationType |
+| Customer | Kunde | `customerName` | `location.customer` (resolved) | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `string` | `text` | — | No | Yes | Resolved customer name |
+| Patient Data Type | Patientendatentyp | `patientDataType` | `location.patientDataType` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `enum:PatientDataType` | `text` | — | No | Yes | Formatter used |
+| Patient Data Access | Patientendatenzugriff | `patientDataAccess` | `location.patientDataAccess` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `object` | `icon` | — | No | Yes | Displays folder/envelope icons |
+| State | Bundesland | `state` | `location.state` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `string` | `text` | — | No | Yes | — |
+| Primary Email | E-Mail | `email` | `location.emailMedical` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `string` | `text` | — | No | Yes | — |
+| Address | Adresse | `address` | `location.address` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `string` | `text` | — | No | Yes | — |
+| Zip Code | PLZ | `zip` | `location.zip` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `string` | `text` | — | No | Yes | — |
+| City | Stadt/Ort | `city` | `location.city` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `string` | `text` | — | No | Yes | — |
+| Country | Land | `country` | `location.country` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `string` | `text` | — | No | Yes | — |
 
 ### 2.2 Filter Panel
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| Name | Name | `data.name` | `location.name` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `string` | `text` | — | No | No | Search filter |
-| Address | Adresse | `data.address` | `location.address` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `string` | `text` | — | No | No | Search filter |
-| Phone | Telefon | `data.phone` | `location.phone` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `string` | `text` | — | No | No | Search filter |
+| Name | Name | `data.name` | `location.name` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `string` | `text` | — | No | No | Search filter |
+| Address | Adresse | `data.address` | `location.address` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `string` | `text` | — | No | No | Search filter |
+| Phone | Telefon | `data.phone` | `location.phone` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `string` | `text` | — | No | No | Search filter |
 
 ### 2.3 Form Elements — Tab 1: Contact (`#tabContact`)
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| Location | Standort | `data.type` | `location.type` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `reference:locationType` | `autocomplete` | `LocationTypeService.autocomplete` | No | No | Location Type |
-| Name | Name | `data.name` | `location.name` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `string` | `text` | — | Yes | No | — |
-| ID | ID | `data.foreignId` | `location.foreignId` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `string` | `text` | — | No | No | External reference ID |
-| External ID | Externe ID | `data.externalId` | `location.externalId` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `string` | `text` | — | No | No | — |
-| Customer | Kunde | `data.customer` | `location.customer` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `reference:customer` | `autocomplete` | `CustomerService.autocomplete` | Yes | No | — |
-| Patient Data Type | Patientendatentyp | `data.patientDataType` | `location.patientDataType` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `enum:PatientDataType` | `select` | INTERNAL_SECUREBOX, VCCLOUD, INTERNAL, EXTERNAL, etc. | No | No | Controls visibility of preconfigured fields |
-| Book Number | Buchnummer | `data.booknumberMask` | `location.booknumberMask` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `string` | `text` | — | No | No | Mask |
+| Location | Standort | `data.type` | `location.type` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `reference:locationType` | `autocomplete` | `LocationTypeService.autocomplete` | No | No | Location Type |
+| Name | Name | `data.name` | `location.name` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `string` | `text` | — | Yes | No | — |
+| ID | ID | `data.foreignId` | `location.foreignId` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `string` | `text` | — | No | No | External reference ID |
+| External ID | Externe ID | `data.externalId` | `location.externalId` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `string` | `text` | — | No | No | — |
+| Customer | Kunde | `data.customer` | `location.customer` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `reference:customer` | `autocomplete` | `CustomerService.autocomplete` | Yes | No | — |
+| Patient Data Type | Patientendatentyp | `data.patientDataType` | `location.patientDataType` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `enum:PatientDataType` | `select` | INTERNAL_SECUREBOX, VCCLOUD, INTERNAL, EXTERNAL, etc. | No | No | Controls visibility of preconfigured fields |
+| Book Number | Buchnummer | `data.booknumberMask` | `location.booknumberMask` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `string` | `text` | — | No | No | Mask |
 | E-Mail | E-Mail | `data.patientDataAccess.email` | `location.patientDataAccess.email` | [customer.md#locationpatientdataaccess](../mongodb-mapping/customer.md#sub-entity-locationpatientdataaccess) | `string` | `text` | — | No | No | — |
 | Subject | Subject | `data.patientDataAccess.subject` | `location.patientDataAccess.subject` | [customer.md#locationpatientdataaccess](../mongodb-mapping/customer.md#sub-entity-locationpatientdataaccess) | `string` | `text` | — | No | No | — |
 | Host/Url | Host/Url | `data.patientDataAccess.host` | `location.patientDataAccess.host` | [customer.md#locationpatientdataaccess](../mongodb-mapping/customer.md#sub-entity-locationpatientdataaccess) | `string` | `text` | — | No | No | Hidden when preconfigured |
@@ -130,22 +130,22 @@ Source: `specs/analysis/customers/location-and-users.md`
 | Path | Pfad | `data.patientDataAccess.url` | `location.patientDataAccess.url` | [customer.md#locationpatientdataaccess](../mongodb-mapping/customer.md#sub-entity-locationpatientdataaccess) | `string` | `autocomplete` | Populated by `checkConnection` | No | No | — |
 | Active | Aktiv | `data.patientDataAccess.active` | `location.patientDataAccess.active` | [customer.md#locationpatientdataaccess](../mongodb-mapping/customer.md#sub-entity-locationpatientdataaccess) | `boolean` | `checkbox` | — | No | No | Toggle switch |
 | Backup Path | Backup Pfad | `data.patientDataAccess.backupUrl` | `location.patientDataAccess.backupUrl` | [customer.md#locationpatientdataaccess](../mongodb-mapping/customer.md#sub-entity-locationpatientdataaccess) | `string` | `autocomplete` | Populated by `checkbackupConnection` | No | No | — |
-| Medication Type | Medikationstyp | `data.medicationType` | `location.medicationType` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `enum:MedicationType` | `select` | ROTE_LISTE, WALDAPOTHEKE | No | No | — |
-| External Description | Externe Beschreibung | `data.externalDescription` | `location.externalDescription` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `string` | `textarea` | — | No | No | Markdown |
-| Sip Accounts | Sip Accounts | `data.sipAccounts` | `location.sipAccounts` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `collection` | `list` | — | No | No | Dynamic list of sip.number |
-| Representative | Ansprechpartner | `data.representative` | `location.representative` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `string` | `text` | — | No | No | Contact Person section |
-| Work Phone | Telefon (Arbeit) | `data.phone` | `location.phone` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `string` | `text` | — | No | No | — |
-| Fax Number | Fax | `data.fax` | `location.fax` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `string` | `text` | — | No | No | — |
-| UID (VAT Number) | UID | `data.uid` | `location.uid` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `string` | `text` | — | No | No | — |
-| IBAN | IBAN | `data.iban` | `location.iban` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `string` | `text` | — | No | No | — |
-| Bank | Bank | `data.bank` | `location.bank` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `string` | `text` | — | No | No | — |
-| BIC | BIC | `data.bic` | `location.bic` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `string` | `text` | — | No | No | — |
-| Medical Contact | Medizinischer Kontakt | `data.contactMedical` | `location.contactMedical` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `string` | `text` | — | No | No | Medical Contact section |
-| Work Phone | Telefon (Arbeit) | `data.sip1` | `location.sip1` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `string` | `text` | — | No | No | SIP 1 |
-| Work Phone | Telefon (Arbeit) | `data.sip2` | `location.sip2` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `string` | `text` | — | No | No | SIP 2 |
-| Work Phone | Telefon (Arbeit) | `data.sipMobile` | `location.sipMobile` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `string` | `text` | — | No | No | SIP Mobile |
-| Work Phone | Telefon (Arbeit) | `data.phoneMedical` | `location.phoneMedical` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `string` | `text` | — | No | No | — |
-| Email | E-Mail | `data.emailMedical` | `location.emailMedical` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `string` | `text` | — | No | No | — |
+| Medication Type | Medikationstyp | `data.medicationType` | `location.medicationType` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `enum:MedicationType` | `select` | ROTE_LISTE, WALDAPOTHEKE | No | No | — |
+| External Description | Externe Beschreibung | `data.externalDescription` | `location.externalDescription` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `string` | `textarea` | — | No | No | Markdown |
+| Sip Accounts | Sip Accounts | `data.sipAccounts` | `location.sipAccounts` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `collection` | `list` | — | No | No | Dynamic list of sip.number |
+| Representative | Ansprechpartner | `data.representative` | `location.representative` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `string` | `text` | — | No | No | Contact Person section |
+| Work Phone | Telefon (Arbeit) | `data.phone` | `location.phone` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `string` | `text` | — | No | No | — |
+| Fax Number | Fax | `data.fax` | `location.fax` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `string` | `text` | — | No | No | — |
+| UID (VAT Number) | UID | `data.uid` | `location.uid` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `string` | `text` | — | No | No | — |
+| IBAN | IBAN | `data.iban` | `location.iban` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `string` | `text` | — | No | No | — |
+| Bank | Bank | `data.bank` | `location.bank` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `string` | `text` | — | No | No | — |
+| BIC | BIC | `data.bic` | `location.bic` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `string` | `text` | — | No | No | — |
+| Medical Contact | Medizinischer Kontakt | `data.contactMedical` | `location.contactMedical` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `string` | `text` | — | No | No | Medical Contact section |
+| Work Phone | Telefon (Arbeit) | `data.sip1` | `location.sip1` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `string` | `text` | — | No | No | SIP 1 |
+| Work Phone | Telefon (Arbeit) | `data.sip2` | `location.sip2` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `string` | `text` | — | No | No | SIP 2 |
+| Work Phone | Telefon (Arbeit) | `data.sipMobile` | `location.sipMobile` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `string` | `text` | — | No | No | SIP Mobile |
+| Work Phone | Telefon (Arbeit) | `data.phoneMedical` | `location.phoneMedical` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `string` | `text` | — | No | No | — |
+| Email | E-Mail | `data.emailMedical` | `location.emailMedical` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `string` | `text` | — | No | No | — |
 | Check and load | check und laden | — | — | — | `action` | `button` | — | — | — | **Workflow-only**: `LocationService.getFolders` |
 | Upload File | Datei hochladen | — | — | — | `action` | `button` | — | — | — | **Workflow-only**: `LocationService.testUpload` |
 | Backup Test | Backup Test | — | — | — | `action` | `button` | — | — | — | **Workflow-only**: `LocationService.getBackupFolders` |
@@ -154,24 +154,24 @@ Source: `specs/analysis/customers/location-and-users.md`
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| Address | Adresse | `data.address` | `location.address` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `string` | `text` | — | No | No | — |
-| Street Line 2 | Adresszeile 2 | `data.address2` | `location.address2` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `string` | `text` | — | No | No | — |
-| Zip Code | PLZ | `data.zip` | `location.zip` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `string` | `autocomplete` | `ZipCodeService.get` | No | No | Auto-fills city, state, country |
-| State | Bundesland | `data.state` | `location.state` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `string` | `text` | — | No | No | — |
-| City | Stadt/Ort | `data.city` | `location.city` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `string` | `text` | — | No | No | — |
-| Country | Land | `data.country` | `location.country` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `string` | `autocomplete` | `CountryService` | No | No | — |
-| Building | Gebäude | `data.building` | `location.building` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `string` | `text` | — | No | No | — |
-| Latitude | Breitengrad | `data.latitude` | `location.latitude` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `number` | `text` | — | No | No | Mapbox geocoding |
-| Longitude | Längengrad | `data.longitude` | `location.longitude` | [customer.md#location](../mongodb-mapping/customer.md#entity-standorte-locations) | `number` | `text` | — | No | No | Mapbox geocoding |
+| Address | Adresse | `data.address` | `location.address` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `string` | `text` | — | No | No | — |
+| Street Line 2 | Adresszeile 2 | `data.address2` | `location.address2` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `string` | `text` | — | No | No | — |
+| Zip Code | PLZ | `data.zip` | `location.zip` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `string` | `autocomplete` | `ZipCodeService.get` | No | No | Auto-fills city, state, country |
+| State | Bundesland | `data.state` | `location.state` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `string` | `text` | — | No | No | — |
+| City | Stadt/Ort | `data.city` | `location.city` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `string` | `text` | — | No | No | — |
+| Country | Land | `data.country` | `location.country` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `string` | `autocomplete` | `CountryService` | No | No | — |
+| Building | Gebäude | `data.building` | `location.building` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `string` | `text` | — | No | No | — |
+| Latitude | Breitengrad | `data.latitude` | `location.latitude` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `number` | `text` | — | No | No | Mapbox geocoding |
+| Longitude | Längengrad | `data.longitude` | `location.longitude` | [customer.md#location](../mongodb-mapping/customer.md#entity-locations) | `number` | `text` | — | No | No | Mapbox geocoding |
 | Search Map | — | — | — | — | `action` | `button` | — | — | — | **Workflow-only**: Mapbox Geocoding reverse lookup |
 
 ### 2.5 Form Elements — Tab 3: Rooms (`#tabRooms`)
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| Room Name | Raumname | `rooms.name` | `room.name` | [customer.md#room](../mongodb-mapping/customer.md#entity-räume-rooms) | `string` | `text` | — | No | Yes | Collection row |
-| Room Number | Raumnummer | `rooms.number` | `room.number` | [customer.md#room](../mongodb-mapping/customer.md#entity-räume-rooms) | `string` | `text` | — | No | Yes | Collection row |
-| Description | Beschreibung | `rooms.description` | `room.description` (unmapped) | [customer.md#room](../mongodb-mapping/customer.md#entity-räume-rooms) | `string` | `text` | — | No | Yes | Collection row |
+| Room Name | Raumname | `rooms.name` | `room.name` | [customer.md#room](../mongodb-mapping/customer.md#entity-rooms) | `string` | `text` | — | No | Yes | Collection row |
+| Room Number | Raumnummer | `rooms.number` | `room.number` | [customer.md#room](../mongodb-mapping/customer.md#entity-rooms) | `string` | `text` | — | No | Yes | Collection row |
+| Description | Beschreibung | `rooms.description` | `room.description` (unmapped) | [customer.md#room](../mongodb-mapping/customer.md#entity-rooms) | `string` | `text` | — | No | Yes | Collection row |
 
 ### 2.6 Workflow Buttons
 
@@ -191,27 +191,27 @@ Source: `specs/analysis/customers/location-and-users.md`
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| ID | ID | `id` | `user._id` | [user-management.md#user](../mongodb-mapping/user-management.md#entity-experte-expert) | `number` | `text` | — | No | Yes | — |
-| Username | Benutzername | `username` | `user.username` | [user-management.md#user](../mongodb-mapping/user-management.md#entity-experte-expert) | `string` | `text` | — | No | Yes | — |
-| Email | E-Mail | `email` | `user.email` | [user-management.md#user](../mongodb-mapping/user-management.md#entity-experte-expert) | `string` | `text` | — | No | Yes | — |
-| Customer | Kunde | `customers` | `user.customers` | [user-management.md#user](../mongodb-mapping/user-management.md#entity-experte-expert) | `array` | `text` | — | No | Yes | Formatter.names |
-| Role | Rolle | `role` | `user.role` | [user-management.md#user](../mongodb-mapping/user-management.md#entity-experte-expert) | `enum:Role` | `text` | — | No | Yes | — |
+| ID | ID | `id` | `user._id` | [user-management.md#user](../mongodb-mapping/user-management.md#entity-expert) | `number` | `text` | — | No | Yes | — |
+| Username | Benutzername | `username` | `user.username` | [user-management.md#user](../mongodb-mapping/user-management.md#entity-expert) | `string` | `text` | — | No | Yes | — |
+| Email | E-Mail | `email` | `user.email` | [user-management.md#user](../mongodb-mapping/user-management.md#entity-expert) | `string` | `text` | — | No | Yes | — |
+| Customer | Kunde | `customers` | `user.customers` | [user-management.md#user](../mongodb-mapping/user-management.md#entity-expert) | `array` | `text` | — | No | Yes | Formatter.names |
+| Role | Rolle | `role` | `user.role` | [user-management.md#user](../mongodb-mapping/user-management.md#entity-expert) | `enum:Role` | `text` | — | No | Yes | — |
 | First Name | Vorname | `firstName` | `user.userProfile.firstName` | [user-management.md#userprofile](../mongodb-mapping/user-management.md#sub-entity-userprofile) | `string` | `text` | — | No | Yes | — |
 | Last Name | Nachname | `lastName` | `user.userProfile.lastName` | [user-management.md#userprofile](../mongodb-mapping/user-management.md#sub-entity-userprofile) | `string` | `text` | — | No | Yes | — |
-| Enabled | Aktiv | `enabled` | `user.enabled` | [user-management.md#user](../mongodb-mapping/user-management.md#entity-experte-expert) | `boolean` | `text` | — | No | Yes | Boolean formatter |
+| Enabled | Aktiv | `enabled` | `user.enabled` | [user-management.md#user](../mongodb-mapping/user-management.md#entity-expert) | `boolean` | `text` | — | No | Yes | Boolean formatter |
 
 ### 3.2 Form Elements — Tab 1: Main Profile (`#profile-main`)
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
 | Profile Picture | Profilbild | — | `user.userProfile.photo` | [user-management.md#userprofile](../mongodb-mapping/user-management.md#sub-entity-userprofile) | `reference:userFile` | `file` | `UserService.updateThumbnail` | No | No | — |
-| Username | Benutzername | `data.username` | `user.username` | [user-management.md#user](../mongodb-mapping/user-management.md#entity-experte-expert) | `string` | `text` | — | No | Yes | — |
-| Customer | Kunde | `data.customers` | `user.customers` | [user-management.md#user](../mongodb-mapping/user-management.md#entity-experte-expert) | `collection` | `autocomplete` | `CustomerService.autocomplete` | No | No | — |
+| Username | Benutzername | `data.username` | `user.username` | [user-management.md#user](../mongodb-mapping/user-management.md#entity-expert) | `string` | `text` | — | No | Yes | — |
+| Customer | Kunde | `data.customers` | `user.customers` | [user-management.md#user](../mongodb-mapping/user-management.md#entity-expert) | `collection` | `autocomplete` | `CustomerService.autocomplete` | No | No | — |
 | Notification per Mail | E-Mail-Benachrichtigung | `data.userProfile.notificationPerMail` | `user.userProfile.notificationPerMail` | [user-management.md#userprofile](../mongodb-mapping/user-management.md#sub-entity-userprofile) | `boolean` | `checkbox` | — | No | No | Toggle switch |
 | First Name | Vorname | `data.userProfile.firstName` | `user.userProfile.firstName` | [user-management.md#userprofile](../mongodb-mapping/user-management.md#sub-entity-userprofile) | `string` | `text` | — | No | No | — |
 | Last Name | Nachname | `data.userProfile.lastName` | `user.userProfile.lastName` | [user-management.md#userprofile](../mongodb-mapping/user-management.md#sub-entity-userprofile) | `string` | `text` | — | No | No | — |
 | Cellular Number | Mobilnummer | `data.userProfile.cellularNumber` | `user.userProfile.cellularNumber` | [user-management.md#userprofile](../mongodb-mapping/user-management.md#sub-entity-userprofile) | `string` | `text` | — | No | No | Regex validated |
-| Email | E-Mail | `data.email` | `user.email` | [user-management.md#user](../mongodb-mapping/user-management.md#entity-experte-expert) | `string` | `email` | — | Yes | No | Regex validated |
+| Email | E-Mail | `data.email` | `user.email` | [user-management.md#user](../mongodb-mapping/user-management.md#entity-expert) | `string` | `email` | — | Yes | No | Regex validated |
 
 ### 3.3 Form Elements — Tab 2: Address (`#profile-address`)
 
@@ -234,9 +234,9 @@ Source: `specs/analysis/customers/location-and-users.md`
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| Role | Rolle | `data.role` | `user.role` | [user-management.md#user](../mongodb-mapping/user-management.md#entity-experte-expert) | `enum:Role` | `select` | REGISTERED, STANDARD, LEITER_INTERN, ADMIN_INTERN, KUNDE, ADMIN_KUNDE, ADMIN | No | No | Admin only |
-| Enabled | Aktiv | `data.enabled` | `user.enabled` | [user-management.md#user](../mongodb-mapping/user-management.md#entity-experte-expert) | `boolean` | `select` | — | No | No | Admin only |
-| Locked | Gesperrt | `data.accountLocked` | `user.accountLocked` | [user-management.md#user](../mongodb-mapping/user-management.md#entity-experte-expert) | `boolean` | `select` | — | No | No | Admin only |
+| Role | Rolle | `data.role` | `user.role` | [user-management.md#user](../mongodb-mapping/user-management.md#entity-expert) | `enum:Role` | `select` | REGISTERED, STANDARD, LEITER_INTERN, ADMIN_INTERN, KUNDE, ADMIN_KUNDE, ADMIN | No | No | Admin only |
+| Enabled | Aktiv | `data.enabled` | `user.enabled` | [user-management.md#user](../mongodb-mapping/user-management.md#entity-expert) | `boolean` | `select` | — | No | No | Admin only |
+| Locked | Gesperrt | `data.accountLocked` | `user.accountLocked` | [user-management.md#user](../mongodb-mapping/user-management.md#entity-expert) | `boolean` | `select` | — | No | No | Admin only |
 
 ### 3.5 Workflow Buttons & Send Password Dialog
 
@@ -263,9 +263,9 @@ Note: Contact grid flattens `userProfile` sub-object onto the main contact objec
 | Display Name | Display Name | `displayName` | `user.userProfile.displayName` | [user-management.md#userprofile](../mongodb-mapping/user-management.md#sub-entity-userprofile) | `string` | `text` | — | No | Yes | — |
 | First Name | First Name | `firstName` | `user.userProfile.firstName` | [user-management.md#userprofile](../mongodb-mapping/user-management.md#sub-entity-userprofile) | `string` | `text` | — | No | Yes | — |
 | Last Name | Last Name | `lastName` | `user.userProfile.lastName` | [user-management.md#userprofile](../mongodb-mapping/user-management.md#sub-entity-userprofile) | `string` | `text` | — | No | Yes | — |
-| Type | Type | `type` | `user.type` (unmapped) | [user-management.md#user](../mongodb-mapping/user-management.md#entity-experte-expert) | `string` | `text` | — | No | Yes | — |
-| Categories | Categories | `categories` | `user.categories` (unmapped) | [user-management.md#user](../mongodb-mapping/user-management.md#entity-experte-expert) | `array` | `text` | — | No | Yes | Formatter joins array |
-| Primary Email | Primary Email | `primaryEmail` | `user.email` | [user-management.md#user](../mongodb-mapping/user-management.md#entity-experte-expert) | `string` | `text` | — | No | Yes | — |
+| Type | Type | `type` | `user.type` (unmapped) | [user-management.md#user](../mongodb-mapping/user-management.md#entity-expert) | `string` | `text` | — | No | Yes | — |
+| Categories | Categories | `categories` | `user.categories` (unmapped) | [user-management.md#user](../mongodb-mapping/user-management.md#entity-expert) | `array` | `text` | — | No | Yes | Formatter joins array |
+| Primary Email | Primary Email | `primaryEmail` | `user.email` | [user-management.md#user](../mongodb-mapping/user-management.md#entity-expert) | `string` | `text` | — | No | Yes | — |
 | Cellular Number | Cellular Number | `cellularNumber` | `user.userProfile.cellularNumber` | [user-management.md#userprofile](../mongodb-mapping/user-management.md#sub-entity-userprofile) | `string` | `text` | — | No | Yes | — |
 | Company | Company | `company` | `user.employerProfile` | [user-management.md#employerprofile](../mongodb-mapping/user-management.md#sub-entity-employerprofile) | `string` | `text` | — | No | Yes | Formatter displays `.name` |
 | Work Phone | Work Phone | `workPhone` | `user.userProfile.workPhone` | [user-management.md#userprofile](../mongodb-mapping/user-management.md#sub-entity-userprofile) | `string` | `text` | — | No | Yes | — |
@@ -279,7 +279,7 @@ Note: Contact grid flattens `userProfile` sub-object onto the main contact objec
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
 | Name | Name | `data.name` | `user.userProfile.displayName` | [user-management.md#userprofile](../mongodb-mapping/user-management.md#sub-entity-userprofile) | `string` | `text` | — | No | No | Offcanvas search |
-| Primary Email | Primary Email | `data.email` | `user.email` | [user-management.md#user](../mongodb-mapping/user-management.md#entity-experte-expert) | `string` | `text` | — | No | No | Offcanvas search |
+| Primary Email | Primary Email | `data.email` | `user.email` | [user-management.md#user](../mongodb-mapping/user-management.md#entity-expert) | `string` | `text` | — | No | No | Offcanvas search |
 | A-Z Filter | — | — | `user.userProfile.lastName` | [user-management.md#userprofile](../mongodb-mapping/user-management.md#sub-entity-userprofile) | `string` | `filter` | — | No | No | A-Z Quick Filter bar |
 
 ### 4.3 Form Elements — Tab 1: Contact Info
@@ -292,8 +292,8 @@ Note: Contact grid flattens `userProfile` sub-object onto the main contact objec
 | Display Name | Display Name | `data.displayName` | `user.userProfile.displayName` | [user-management.md#userprofile](../mongodb-mapping/user-management.md#sub-entity-userprofile) | `string` | `text` | — | No | No | — |
 | Company | Company | `data.company` | `user.employerProfile` | [user-management.md#employerprofile](../mongodb-mapping/user-management.md#sub-entity-employerprofile) | `reference:customer` | `autocomplete` | `CompanyService.autocomplete` | No | No | — |
 | Position | Position | `data.position` | `user.employeeProfile.position` (unmapped) | [user-management.md#employeeprofile](../mongodb-mapping/user-management.md#sub-entity-employeeprofile) | `string` | `text` | — | No | No | — |
-| Categories | Categories | `data.categories` | `user.categories` (unmapped) | [user-management.md#user](../mongodb-mapping/user-management.md#entity-experte-expert) | `array` | `tag-it` | `ContactService.getCategories` | No | No | Multi-tag |
-| Primary Email | Primary Email | `data.primaryEmail` | `user.email` | [user-management.md#user](../mongodb-mapping/user-management.md#entity-experte-expert) | `string` | `email` | — | No | No | Regex validated |
+| Categories | Categories | `data.categories` | `user.categories` (unmapped) | [user-management.md#user](../mongodb-mapping/user-management.md#entity-expert) | `array` | `tag-it` | `ContactService.getCategories` | No | No | Multi-tag |
+| Primary Email | Primary Email | `data.primaryEmail` | `user.email` | [user-management.md#user](../mongodb-mapping/user-management.md#entity-expert) | `string` | `email` | — | No | No | Regex validated |
 | Second Email | Second Email | `data.secondEmail` | `user.employeeProfile.email2` | [user-management.md#employeeprofile](../mongodb-mapping/user-management.md#sub-entity-employeeprofile) | `string` | `email` | — | No | No | Regex validated |
 | Work Phone | Work Phone | `data.workPhone` | `user.userProfile.workPhone` | [user-management.md#userprofile](../mongodb-mapping/user-management.md#sub-entity-userprofile) | `string` | `text` | — | No | No | — |
 | Cellular | Cellular Number | `data.cellularNumber` | `user.userProfile.cellularNumber` | [user-management.md#userprofile](../mongodb-mapping/user-management.md#sub-entity-userprofile) | `string` | `text` | — | No | No | — |
@@ -331,11 +331,11 @@ Note: Contact grid flattens `userProfile` sub-object onto the main contact objec
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| Custom 1 | Custom 1 | `data.custom1` | `user.custom1` (unmapped) | [user-management.md#user](../mongodb-mapping/user-management.md#entity-experte-expert) | `string` | `text` | — | No | No | — |
-| Custom 2 | Custom 2 | `data.custom2` | `user.custom2` (unmapped) | [user-management.md#user](../mongodb-mapping/user-management.md#entity-experte-expert) | `string` | `text` | — | No | No | — |
-| Custom 3 | Custom 3 | `data.custom3` | `user.custom3` (unmapped) | [user-management.md#user](../mongodb-mapping/user-management.md#entity-experte-expert) | `string` | `text` | — | No | No | — |
-| Custom 4 | Custom 4 | `data.custom4` | `user.custom4` (unmapped) | [user-management.md#user](../mongodb-mapping/user-management.md#entity-experte-expert) | `string` | `text` | — | No | No | — |
-| Notes | Notes | `data.notes` | `user.notes` (unmapped) | [user-management.md#user](../mongodb-mapping/user-management.md#entity-experte-expert) | `string` | `textarea` | — | No | No | — |
+| Custom 1 | Custom 1 | `data.custom1` | `user.custom1` (unmapped) | [user-management.md#user](../mongodb-mapping/user-management.md#entity-expert) | `string` | `text` | — | No | No | — |
+| Custom 2 | Custom 2 | `data.custom2` | `user.custom2` (unmapped) | [user-management.md#user](../mongodb-mapping/user-management.md#entity-expert) | `string` | `text` | — | No | No | — |
+| Custom 3 | Custom 3 | `data.custom3` | `user.custom3` (unmapped) | [user-management.md#user](../mongodb-mapping/user-management.md#entity-expert) | `string` | `text` | — | No | No | — |
+| Custom 4 | Custom 4 | `data.custom4` | `user.custom4` (unmapped) | [user-management.md#user](../mongodb-mapping/user-management.md#entity-expert) | `string` | `text` | — | No | No | — |
+| Notes | Notes | `data.notes` | `user.notes` (unmapped) | [user-management.md#user](../mongodb-mapping/user-management.md#entity-expert) | `string` | `textarea` | — | No | No | — |
 
 ### 4.7 Workflow Buttons & Dialogs
 
@@ -359,21 +359,21 @@ Source: `specs/analysis/customers/room.md`
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| ID | ID | `id` | `room._id` | [customer.md#room](../mongodb-mapping/customer.md#entity-räume-rooms) | `number` | `text` | — | No | Yes | — |
-| Location | Location | `location` | `room.location` | [customer.md#room](../mongodb-mapping/customer.md#entity-räume-rooms) | `reference:location` | `text` | — | No | Yes | Formatter.name |
-| Room Name | Raumname | `name` | `room.name` | [customer.md#room](../mongodb-mapping/customer.md#entity-räume-rooms) | `string` | `text` | — | No | Yes | — |
-| Room Number | Raumnummer | `number` | `room.number` | [customer.md#room](../mongodb-mapping/customer.md#entity-räume-rooms) | `string` | `text` | — | No | Yes | — |
-| Description | Beschreibung | `description` | `room.description` (unmapped) | [customer.md#room](../mongodb-mapping/customer.md#entity-räume-rooms) | `string` | `text` | — | No | Yes | — |
+| ID | ID | `id` | `room._id` | [customer.md#room](../mongodb-mapping/customer.md#entity-rooms) | `number` | `text` | — | No | Yes | — |
+| Location | Location | `location` | `room.location` | [customer.md#room](../mongodb-mapping/customer.md#entity-rooms) | `reference:location` | `text` | — | No | Yes | Formatter.name |
+| Room Name | Raumname | `name` | `room.name` | [customer.md#room](../mongodb-mapping/customer.md#entity-rooms) | `string` | `text` | — | No | Yes | — |
+| Room Number | Raumnummer | `number` | `room.number` | [customer.md#room](../mongodb-mapping/customer.md#entity-rooms) | `string` | `text` | — | No | Yes | — |
+| Description | Beschreibung | `description` | `room.description` (unmapped) | [customer.md#room](../mongodb-mapping/customer.md#entity-rooms) | `string` | `text` | — | No | Yes | — |
 
 ### 5.2 Form Elements — Tab 1: Room Info
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| Location | Location | `data.location` | `room.location` | [customer.md#room](../mongodb-mapping/customer.md#entity-räume-rooms) | `reference:location` | `autocomplete` | `LocationService.autocomplete` | No | No | — |
-| Available | Available | `data.available` | `room.available` | [customer.md#room](../mongodb-mapping/customer.md#entity-räume-rooms) | `boolean` | `checkbox` | — | No | No | — |
-| Room Name | Raumname | `data.name` | `room.name` | [customer.md#room](../mongodb-mapping/customer.md#entity-räume-rooms) | `string` | `text` | — | Yes | No | — |
-| Room Number | Raumnummer | `data.number` | `room.number` | [customer.md#room](../mongodb-mapping/customer.md#entity-räume-rooms) | `string` | `text` | — | Yes | No | — |
-| Description | Beschreibung | `data.description` | `room.description` (unmapped) | [customer.md#room](../mongodb-mapping/customer.md#entity-räume-rooms) | `string` | `textarea` | — | No | No | — |
+| Location | Location | `data.location` | `room.location` | [customer.md#room](../mongodb-mapping/customer.md#entity-rooms) | `reference:location` | `autocomplete` | `LocationService.autocomplete` | No | No | — |
+| Available | Available | `data.available` | `room.available` | [customer.md#room](../mongodb-mapping/customer.md#entity-rooms) | `boolean` | `checkbox` | — | No | No | — |
+| Room Name | Raumname | `data.name` | `room.name` | [customer.md#room](../mongodb-mapping/customer.md#entity-rooms) | `string` | `text` | — | Yes | No | — |
+| Room Number | Raumnummer | `data.number` | `room.number` | [customer.md#room](../mongodb-mapping/customer.md#entity-rooms) | `string` | `text` | — | Yes | No | — |
+| Description | Beschreibung | `data.description` | `room.description` (unmapped) | [customer.md#room](../mongodb-mapping/customer.md#entity-rooms) | `string` | `textarea` | — | No | No | — |
 
 ### 5.3 Form Elements — Tab 2: Planning (`#roomplanDlg`)
 
@@ -400,8 +400,8 @@ Room plan dialog fields.
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| Add Equipment | Add Equipment | — | `equipment.room` | [customer.md#equipment](../mongodb-mapping/customer.md#entity-ausrüstung-equipment) | `reference:equipment` | `autocomplete` | `EquipmentService.autocomplete` | No | No | Assigns equipment to room |
-| Equipment List | Equipment List | — | `equipment.room` | [customer.md#equipment](../mongodb-mapping/customer.md#entity-ausrüstung-equipment) | `collection` | `list` | — | No | Yes | View associated equipment |
+| Add Equipment | Add Equipment | — | `equipment.room` | [customer.md#equipment](../mongodb-mapping/customer.md#entity-equipment) | `reference:equipment` | `autocomplete` | `EquipmentService.autocomplete` | No | No | Assigns equipment to room |
+| Equipment List | Equipment List | — | `equipment.room` | [customer.md#equipment](../mongodb-mapping/customer.md#entity-equipment) | `collection` | `list` | — | No | Yes | View associated equipment |
 
 ---
 
@@ -413,53 +413,53 @@ Source: `specs/analysis/customers/equipment.md`
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| ID | ID | `id` | `equipment._id` | [customer.md#equipment](../mongodb-mapping/customer.md#entity-ausrüstung-equipment) | `number` | `text` | — | No | Yes | — |
-| Serial Number | Seriennummer | `serialNumber` | `equipment.serialNumber` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-ausrüstung-equipment) | `string` | `text` | — | No | Yes | — |
-| Inventory Number | Inventarnummer | `inventoryNumber` | `equipment.inventoryNumber` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-ausrüstung-equipment) | `string` | `text` | — | No | Yes | — |
-| Equipment Status | Ausrüstungsstatus | `status` | `equipment.status` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-ausrüstung-equipment) | `enum:EquipmentStatus` | `text` | — | No | Yes | Formatter used |
-| Name | Name | `name` | `equipment.name` | [customer.md#equipment](../mongodb-mapping/customer.md#entity-ausrüstung-equipment) | `string` | `text` | — | No | Yes | — |
-| Manufacturer | Hersteller | `manufacturer` | `equipment.manufacturer` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-ausrüstung-equipment) | `string` | `text` | — | No | Yes | — |
-| Description | Beschreibung | `description` | `equipment.description` | [customer.md#equipment](../mongodb-mapping/customer.md#entity-ausrüstung-equipment) | `string` | `text` | — | No | Yes | — |
-| Comments | Kommentare | `comments` | `equipment.comments` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-ausrüstung-equipment) | `number` | `text` | — | No | Yes | Count of comments |
-| Room | Raum | `room` | `equipment.room` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-ausrüstung-equipment) | `reference:room` | `text` | — | No | Yes | Formatter used |
+| ID | ID | `id` | `equipment._id` | [customer.md#equipment](../mongodb-mapping/customer.md#entity-equipment) | `number` | `text` | — | No | Yes | — |
+| Serial Number | Seriennummer | `serialNumber` | `equipment.serialNumber` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-equipment) | `string` | `text` | — | No | Yes | — |
+| Inventory Number | Inventarnummer | `inventoryNumber` | `equipment.inventoryNumber` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-equipment) | `string` | `text` | — | No | Yes | — |
+| Equipment Status | Ausrüstungsstatus | `status` | `equipment.status` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-equipment) | `enum:EquipmentStatus` | `text` | — | No | Yes | Formatter used |
+| Name | Name | `name` | `equipment.name` | [customer.md#equipment](../mongodb-mapping/customer.md#entity-equipment) | `string` | `text` | — | No | Yes | — |
+| Manufacturer | Hersteller | `manufacturer` | `equipment.manufacturer` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-equipment) | `string` | `text` | — | No | Yes | — |
+| Description | Beschreibung | `description` | `equipment.description` | [customer.md#equipment](../mongodb-mapping/customer.md#entity-equipment) | `string` | `text` | — | No | Yes | — |
+| Comments | Kommentare | `comments` | `equipment.comments` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-equipment) | `number` | `text` | — | No | Yes | Count of comments |
+| Room | Raum | `room` | `equipment.room` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-equipment) | `reference:room` | `text` | — | No | Yes | Formatter used |
 
 ### 6.2 Filter Panel
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| Name | Name | `data.name` | `equipment.name` | [customer.md#equipment](../mongodb-mapping/customer.md#entity-ausrüstung-equipment) | `string` | `text` | — | No | No | — |
-| Location | Standort | `data.location` | `equipment.location` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-ausrüstung-equipment) | `reference:location` | `autocomplete` | `LocationService.autocomplete` | No | No | Unlocks room filter |
-| Room | Raum | `data.room` | `equipment.room` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-ausrüstung-equipment) | `reference:room` | `autocomplete` | `RoomService.autocomplete` | No | No | Readonly until location is set |
-| Customer | Kunde | `data.customer` | `equipment.customer` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-ausrüstung-equipment) | `reference:customer` | `autocomplete` | `CustomerService.autocomplete` | No | No | — |
-| Equipment Status | Ausrüstungsstatus | `data.status` | `equipment.status` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-ausrüstung-equipment) | `enum:EquipmentStatus` | `select` | WORKING, DEFECT, INREPAIR, RESERVED, UNKNOWN, SENT | No | No | — |
+| Name | Name | `data.name` | `equipment.name` | [customer.md#equipment](../mongodb-mapping/customer.md#entity-equipment) | `string` | `text` | — | No | No | — |
+| Location | Standort | `data.location` | `equipment.location` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-equipment) | `reference:location` | `autocomplete` | `LocationService.autocomplete` | No | No | Unlocks room filter |
+| Room | Raum | `data.room` | `equipment.room` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-equipment) | `reference:room` | `autocomplete` | `RoomService.autocomplete` | No | No | Readonly until location is set |
+| Customer | Kunde | `data.customer` | `equipment.customer` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-equipment) | `reference:customer` | `autocomplete` | `CustomerService.autocomplete` | No | No | — |
+| Equipment Status | Ausrüstungsstatus | `data.status` | `equipment.status` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-equipment) | `enum:EquipmentStatus` | `select` | WORKING, DEFECT, INREPAIR, RESERVED, UNKNOWN, SENT | No | No | — |
 
 ### 6.3 Form Elements — Tab 1: Equipment Info
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| Inventory Number | Inventarnummer | `data.inventoryNumber` | `equipment.inventoryNumber` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-ausrüstung-equipment) | `string` | `text` | — | No | No | — |
-| Name | Name | `data.name` | `equipment.name` | [customer.md#equipment](../mongodb-mapping/customer.md#entity-ausrüstung-equipment) | `string` | `text` | — | No | No | — |
-| Access User | Access User | `data.accessUser` | `equipment.accessUser` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-ausrüstung-equipment) | `reference:user` | `autocomplete` | `UserService.autocomplete` | No | No | — |
-| Serial Number | Seriennummer | `data.serialNumber` | `equipment.serialNumber` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-ausrüstung-equipment) | `string` | `text` | — | No | No | — |
-| Manufacturer | Hersteller | `data.manufacturer` | `equipment.manufacturer` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-ausrüstung-equipment) | `string` | `text` | — | No | No | — |
-| Initial User | Initial User | `data.initialUser` | `equipment.initialUser` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-ausrüstung-equipment) | `reference:user` | `autocomplete` | `UserService.autocomplete` | No | No | — |
-| Active | Aktiv | `data.active` | `equipment.active` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-ausrüstung-equipment) | `boolean` | `select` | — | No | No | Options: Active/Inactive |
-| Location | Standort | `data.location` | `equipment.location` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-ausrüstung-equipment) | `reference:location` | `autocomplete` | `LocationService.autocomplete` | No | No | — |
-| Initial Password | Initial Password | `data.initialPassword` | `equipment.initialPassword` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-ausrüstung-equipment) | `string` | `text` | — | No | No | — |
-| Equipment Status | Ausrüstungsstatus | `data.status` | `equipment.status` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-ausrüstung-equipment) | `enum:EquipmentStatus` | `text` | — | No | Yes | Managed via comments tab |
-| Room | Raum | `data.room` | `equipment.room` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-ausrüstung-equipment) | `reference:room` | `autocomplete` | `RoomService.autocomplete` | No | No | Cascading from Location |
-| Date Setup | Date Setup | `data.dateSetup` | `equipment.dateSetup` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-ausrüstung-equipment) | `date` | `date` | — | No | No | — |
-| Product | Produkt | `data.product` | `equipment.product` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-ausrüstung-equipment) | `reference:product` | `autocomplete` | `ProductService.autocomplete` | No | No | Filtered by "EQUIPMENT" |
-| Date Last Inventory | Date Last Inventory | `data.dateLastInventory` | `equipment.dateLastInventory` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-ausrüstung-equipment) | `date` | `date` | — | No | No | — |
-| Date Exit | Date Exit | `data.dateExit` | `equipment.dateExit` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-ausrüstung-equipment) | `date` | `date` | — | No | No | — |
-| Description | Beschreibung | `data.description` | `equipment.description` | [customer.md#equipment](../mongodb-mapping/customer.md#entity-ausrüstung-equipment) | `string` | `textarea` | — | No | No | — |
+| Inventory Number | Inventarnummer | `data.inventoryNumber` | `equipment.inventoryNumber` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-equipment) | `string` | `text` | — | No | No | — |
+| Name | Name | `data.name` | `equipment.name` | [customer.md#equipment](../mongodb-mapping/customer.md#entity-equipment) | `string` | `text` | — | No | No | — |
+| Access User | Access User | `data.accessUser` | `equipment.accessUser` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-equipment) | `reference:user` | `autocomplete` | `UserService.autocomplete` | No | No | — |
+| Serial Number | Seriennummer | `data.serialNumber` | `equipment.serialNumber` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-equipment) | `string` | `text` | — | No | No | — |
+| Manufacturer | Hersteller | `data.manufacturer` | `equipment.manufacturer` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-equipment) | `string` | `text` | — | No | No | — |
+| Initial User | Initial User | `data.initialUser` | `equipment.initialUser` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-equipment) | `reference:user` | `autocomplete` | `UserService.autocomplete` | No | No | — |
+| Active | Aktiv | `data.active` | `equipment.active` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-equipment) | `boolean` | `select` | — | No | No | Options: Active/Inactive |
+| Location | Standort | `data.location` | `equipment.location` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-equipment) | `reference:location` | `autocomplete` | `LocationService.autocomplete` | No | No | — |
+| Initial Password | Initial Password | `data.initialPassword` | `equipment.initialPassword` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-equipment) | `string` | `text` | — | No | No | — |
+| Equipment Status | Ausrüstungsstatus | `data.status` | `equipment.status` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-equipment) | `enum:EquipmentStatus` | `text` | — | No | Yes | Managed via comments tab |
+| Room | Raum | `data.room` | `equipment.room` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-equipment) | `reference:room` | `autocomplete` | `RoomService.autocomplete` | No | No | Cascading from Location |
+| Date Setup | Date Setup | `data.dateSetup` | `equipment.dateSetup` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-equipment) | `date` | `date` | — | No | No | — |
+| Product | Produkt | `data.product` | `equipment.product` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-equipment) | `reference:product` | `autocomplete` | `ProductService.autocomplete` | No | No | Filtered by "EQUIPMENT" |
+| Date Last Inventory | Date Last Inventory | `data.dateLastInventory` | `equipment.dateLastInventory` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-equipment) | `date` | `date` | — | No | No | — |
+| Date Exit | Date Exit | `data.dateExit` | `equipment.dateExit` (unmapped) | [customer.md#equipment](../mongodb-mapping/customer.md#entity-equipment) | `date` | `date` | — | No | No | — |
+| Description | Beschreibung | `data.description` | `equipment.description` | [customer.md#equipment](../mongodb-mapping/customer.md#entity-equipment) | `string` | `textarea` | — | No | No | — |
 
 ### 6.4 Form Elements — Tab 2: Comments / Status Change
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| Status | Status | `data.status` | `equipment.status` | [customer.md#equipment](../mongodb-mapping/customer.md#entity-ausrüstung-equipment) | `enum:EquipmentStatus` | `select` | WORKING, DEFECT, INREPAIR, RESERVED, UNKNOWN, SENT | Yes | No | — |
-| Comment | Kommentar | `data.comment` | `equipment.comments.text` | [customer.md#equipment](../mongodb-mapping/customer.md#entity-ausrüstung-equipment) | `string` | `textarea` | — | No | No | Appends to collection |
+| Status | Status | `data.status` | `equipment.status` | [customer.md#equipment](../mongodb-mapping/customer.md#entity-equipment) | `enum:EquipmentStatus` | `select` | WORKING, DEFECT, INREPAIR, RESERVED, UNKNOWN, SENT | Yes | No | — |
+| Comment | Kommentar | `data.comment` | `equipment.comments.text` | [customer.md#equipment](../mongodb-mapping/customer.md#entity-equipment) | `string` | `textarea` | — | No | No | Appends to collection |
 | Save Comment | Speichern | — | — | — | `action` | `button` | — | — | — | **Workflow-only**: `EquipmentService.addComment` |
-| Comments List | Kommentare | `comments` | `equipment.comments` | [customer.md#equipment](../mongodb-mapping/customer.md#entity-ausrüstung-equipment) | `collection` | `list` | — | No | Yes | Shows user, time, status, text |
+| Comments List | Kommentare | `comments` | `equipment.comments` | [customer.md#equipment](../mongodb-mapping/customer.md#entity-equipment) | `collection` | `list` | — | No | Yes | Shows user, time, status, text |
 

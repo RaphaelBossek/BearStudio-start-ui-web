@@ -23,9 +23,9 @@ title: 'Academy'
 ## Notes
 
 - Small domain with only 8 keys
-- Most content moved to [orphan/](../../orphan/README.md) as external Video Library
+- Most content in [academy domain](../../academy/README.md)
 
 ## Related Files
 
 - [../translation-inventory.md](../translation-inventory.md) — Full inventory
-- [../../orphan/README.md](../../orphan/README.md) — Orphaned content explanation
+- [../../academy/README.md](../../academy/README.md) — Academy domain documentation

@@ -23,4 +23,4 @@ title: 'Interfaces'
 ## Related Files
 
 - [../translation-inventory.md](../translation-inventory.md) — Full inventory
-- [../../includes/README.md](../../includes/README.md) — Interfaces domain analysis
+- [../../interfaces/README.md](../../interfaces/README.md) — Interfaces domain analysis

@@ -10,7 +10,7 @@ This file covers tables that are no longer in use or not yet implemented.
 
 ---
 
-## ER Diagram
+## ER Diagram {#er-diagram}
 
 Collections that are no longer in use or not yet implemented.
 
@@ -40,13 +40,13 @@ erDiagram
 
 | Table Name (DBML) | Business Entity | Description Summary |
 | :--- | :--- | :--- |
-| [`tag`](#entity-tags-tags) | Tags (Tags) | Metadata tags used for labeling and filtering various system entities. |
-| [`project`](#entity-projekte-projects) | Projekte (Projects) | Organizational entities used to group related resources or operations. |
-| [`department`](#entity-abteilungen-departments) | Abteilungen (Departments) | Medical specialties or organizational departments. |
+| [`tag`](#entity-tags) | Tags (Tags) | Metadata tags used for labeling and filtering various system entities. |
+| [`project`](#entity-projects) | Projekte (Projects) | Organizational entities used to group related resources or operations. |
+| [`department`](#entity-departments) | Abteilungen (Departments) | Medical specialties or organizational departments. |
 
 ---
 
-## Entity: Tags (Tags)
+## Entity: Tags (Tags) {#entity-tags}
 Zentrales Verzeichnis für Tags zur Kategorisierung verschiedener Entitäten.
 
 ### Table: tag
@@ -61,7 +61,7 @@ Zentrales Verzeichnis für Tags zur Kategorisierung verschiedener Entitäten.
 The `tag` entity is used for:
 - (Labeling and filtering various system entities)
 
-## Entity: Projekte (Projects)
+## Entity: Projekte (Projects) {#entity-projects}
 Verwaltung von Projekten, die Kunden und Standorten zugeordnet sind.
 
 ### Table: project
@@ -73,14 +73,14 @@ Verwaltung von Projekten, die Kunden und Standorten zugeordnet sind.
 | `dateEnd` | `Date` | schema | Projektende |
 | `description` | `String` | schema | Projektbeschreibung |
 | `state` | `String` | inferred | Projektstatus |
-| `customer` | `DBRef` | inferred | Reference to [customer](./customer.md#entity-kunden-customers) |
-| `location` | `DBRef` | schema | Reference to [location](./customer.md#entity-standorte-locations) |
+| `customer` | `DBRef` | inferred | Reference to [customer](./customer.md#entity-customers) |
+| `location` | `DBRef` | schema | Reference to [location](./customer.md#entity-locations) |
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.Project` |
 
 The `project` entity is referenced by:
 - (Internal project management tools)
 
-## Entity: Abteilungen (Departments)
+## Entity: Abteilungen (Departments) {#entity-departments}
 Definition von organisatorischen Abteilungen.
 
 ### Table: department

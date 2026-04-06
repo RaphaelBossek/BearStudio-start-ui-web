@@ -10,7 +10,7 @@ This file covers the Treatment category: core medical data, consultations, treat
 
 ---
 
-## ER Diagram
+## ER Diagram {#er-diagram}
 
 Medical treatments, consultations, patient data, and clinical records.
 
@@ -231,21 +231,21 @@ erDiagram
 
 | Table Name (DBML) | Business Entity | Description Summary |
 | :--- | :--- | :--- |
-| [`treatment`](#entity-behandlungsverlauf-treatment) | Behandlungsverlauf (Treatment) | Tracking of medical treatments, including states and positions. |
-| [`treatmentCategory`](#entity-behandlungskategorien-treatment-categories) | Behandlungskategorien (Treatment Categories) | Categories for organizing and classifying different treatments. |
-| [`consultationData`](#entity-konsultationsdaten-consultation-data) | Konsultationsdaten (Consultation Data) | Source of truth for consultation records, including all medical sub-documents, prescriptions, and results. |
-| [`consultation`](#entity-konsultationen-cqrs-read-projection) | Konsultationen (CQRS Read Projection) | Read-only projection of `consultationData` (missing `paymentType`). Compound index on `{ period, location._id }` for list queries. |
-| [`expertConsultationTemplate`](#entity-konsultationsvorlagen-expert-consultation-templates) | Konsultationsvorlagen (Expert Consultation Templates) | Custom templates used by experts for various consultation types. |
-| [`patientData`](#entity-patientenergänzungsdaten-patient-data) | Patientenergänzungsdaten (Patient Data) | Additional metadata and settings associated with a patient profile. |
-| [`patient`](#entity-patienten-patients) | Patienten (Patients) | Core patient profiles, including demographic and contact information. |
-| [`patientAlerts`](#entity-patientenbezogene-risikofaktoren--warnhinweise-patient-alerts) | Patientenbezogene Risikofaktoren / Warnhinweise (Patient Alerts) | Exclusion criteria (warnings) consisting of name, description, weight, and status. |
-| [`serviceQm`](#entity-service-qualitätsmanagement-service-qm) | Service-Qualitätsmanagement (Service QM) | Data related to quality assurance and management of medical services. |
-| [`questionaire`](#entity-qualitätsumfragen-questionaires) | Qualitätsumfragen (Questionaires) | Quality management surveys and results. |
+| [`treatment`](#entity-treatment) | Behandlungsverlauf (Treatment) | Tracking of medical treatments, including states and positions. |
+| [`treatmentCategory`](#entity-treatment-categories) | Behandlungskategorien (Treatment Categories) | Categories for organizing and classifying different treatments. |
+| [`consultationData`](#entity-consultation-data) | Konsultationsdaten (Consultation Data) | Source of truth for consultation records, including all medical sub-documents, prescriptions, and results. |
+| [`consultation`](#entity-consultation) | Konsultationen (CQRS Read Projection) | Read-only projection of `consultationData` (missing `paymentType`). Compound index on `{ period, location._id }` for list queries. |
+| [`expertConsultationTemplate`](#entity-expert-consultation-templates) | Konsultationsvorlagen (Expert Consultation Templates) | Custom templates used by experts for various consultation types. |
+| [`patientData`](#entity-patient-data) | Patientenergänzungsdaten (Patient Data) | Additional metadata and settings associated with a patient profile. |
+| [`patient`](#entity-patients) | Patienten (Patients) | Core patient profiles, including demographic and contact information. |
+| [`patientAlerts`](#entity-patient-alerts) | Patientenbezogene Risikofaktoren / Warnhinweise (Patient Alerts) | Exclusion criteria (warnings) consisting of name, description, weight, and status. |
+| [`serviceQm`](#entity-service-qm) | Service-Qualitätsmanagement (Service QM) | Data related to quality assurance and management of medical services. |
+| [`questionaire`](#entity-questionaires) | Qualitätsumfragen (Questionaires) | Quality management surveys and results. |
 
 
 ---
 
-## Entity: Behandlungsverlauf (Treatment)
+## Entity: Behandlungsverlauf (Treatment) {#entity-treatment}
 Erfasst den Verlauf von Behandlungen, insbesondere im Bereich der Psychotherapie.
 
 ### Table: treatment
@@ -253,7 +253,7 @@ Erfasst den Verlauf von Behandlungen, insbesondere im Bereich der Psychotherapie
 | :--- | :--- | :--- | :--- |
 | `_id` | `Long` | schema | Interner Bezeichner |
 | `version` | `Long` | schema | Versionsnummer |
-| `assigned` | `Document` | snapshot | Zugewiesener Experte (denormalized snapshot, copy of fields from [`user`](./user-management.md#entity-experte-expert)) ([ConsultationDoctor](./user-management.md#sub-entity-consultationdoctor)) |
+| `assigned` | `Document` | snapshot | Zugewiesener Experte (denormalized snapshot, copy of fields from [`user`](./user-management.md#entity-expert)) ([ConsultationDoctor](./user-management.md#sub-entity-consultationdoctor)) |
 | `hour` | `Number` | schema | Stundenindex |
 | `day` | `String` | schema | Wochentag:<br>• `MO` (Used)<br>• `TU` (Used)<br>• `WE` (Used)<br>• `TH` (Used)<br>• `FR` (Used) |
 | `bookNumber` | `String` | schema | Buchnummer (JVA) |
@@ -261,16 +261,16 @@ Erfasst den Verlauf von Behandlungen, insbesondere im Bereich der Psychotherapie
 | `type` | `String` | schema | Art der Behandlung:<br>• `PSYCH` (Used) |
 | `state` | `String` | schema | Status der Behandlung:<br>• `ACTIVE` (Used)<br>• `CANCELED` (Used)<br>• `CANCELED_CLOSED` (Used)<br>• `CLOSED` (Used)<br>• `ENDING` (Used)<br>• `PROBATORIK` (Used)<br>• `RUNNING` (Used)<br>• `STARTED` (Used)<br>• `STORNO` (Used)<br>• `STORNO_CLOSED` (Used) |
 | `dateStorno` | `Date` | schema | Stornierungsdatum |
-| `job` | `Document` | snapshot | Erbrachte Dienstleistung (denormalized snapshot, copy of fields from [`jobId`](./accounting.md#entity-dienstleistung-service)) ([ConsultationJob](./user-management.md#sub-entity-consultationjob)) |
-| `jobReport` | `Document` | snapshot | Dienstleistung für Berichte (denormalized snapshot, copy of fields from [`jobId`](./accounting.md#entity-dienstleistung-service)) ([ConsultationJob](./user-management.md#sub-entity-consultationjob)) |
+| `job` | `Document` | snapshot | Erbrachte Dienstleistung (denormalized snapshot, copy of fields from [`jobId`](./accounting.md#entity-service)) ([ConsultationJob](./user-management.md#sub-entity-consultationjob)) |
+| `jobReport` | `Document` | snapshot | Dienstleistung für Berichte (denormalized snapshot, copy of fields from [`jobId`](./accounting.md#entity-service)) ([ConsultationJob](./user-management.md#sub-entity-consultationjob)) |
 | `reportingPath` | `String` | schema | Pfad für das Reporting |
-| `jobReportPobatorik` | `Document` | snapshot | Dienstleistung für Probatorik-Berichte (denormalized snapshot, copy of fields from [`jobId`](./accounting.md#entity-dienstleistung-service)) ([ConsultationJob](./user-management.md#sub-entity-consultationjob)) |
+| `jobReportPobatorik` | `Document` | snapshot | Dienstleistung für Probatorik-Berichte (denormalized snapshot, copy of fields from [`jobId`](./accounting.md#entity-service)) ([ConsultationJob](./user-management.md#sub-entity-consultationjob)) |
 | `archived` | `Boolean` | schema | Archivierungsstatus |
 | `attachments` | `Array` | schema | Liste von Anhängen ([TreatmentAttachment](#sub-entity-treatmentattachment)) |
 | `positions` | `Array` | schema | Einzelne Termine der Behandlung ([TreatmentPosition](#sub-entity-treatmentposition)) |
-| `changedBy` | `Document` | snapshot | Zuletzt geändert von (denormalized snapshot, copy of fields from [`user`](./user-management.md#entity-experte-expert)) ([ConsultationDoctor](./user-management.md#sub-entity-consultationdoctor)) |
+| `changedBy` | `Document` | snapshot | Zuletzt geändert von (denormalized snapshot, copy of fields from [`user`](./user-management.md#entity-expert)) ([ConsultationDoctor](./user-management.md#sub-entity-consultationdoctor)) |
 | `dateChanged` | `Date` | schema | Zeitpunkt der letzten Änderung |
-| `createdBy` | `Document` | snapshot | Erstellt von (denormalized snapshot, copy of fields from [`user`](./user-management.md#entity-experte-expert)) ([ConsultationDoctor](./user-management.md#sub-entity-consultationdoctor)) |
+| `createdBy` | `Document` | snapshot | Erstellt von (denormalized snapshot, copy of fields from [`user`](./user-management.md#entity-expert)) ([ConsultationDoctor](./user-management.md#sub-entity-consultationdoctor)) |
 | `dateCreated` | `Date` | inferred | Erstellungsdatum |
 | `closed` | `Date` | schema | Abschlussdatum |
 | `countTotal` | `Number` | schema | Gesamtanzahl |
@@ -286,20 +286,20 @@ Erfasst den Verlauf von Behandlungen, insbesondere im Bereich der Psychotherapie
 | `dateLastAppointment` | `Date` | schema | Datum des letzten Termins |
 | `reportCountInitial` | `Number` | schema | Initiale Anzahl Berichte |
 | `reportCountRhytm` | `Number` | schema | Rhythmus der Berichte |
-| `customer` | `Document` | snapshot | Zugehöriger Kunde (denormalized snapshot, copy of fields from [`customer`](./customer.md#entity-kunden-customers)) ([ConsultationCustomer](./user-management.md#sub-entity-consultationcustomer)) |
-| `location` | `Document` | snapshot | Ort der Behandlung (denormalized snapshot, copy of fields from [`location`](./customer.md#entity-standorte-locations)) ([ConsultationLocation](./user-management.md#sub-entity-consultationlocation)) |
+| `customer` | `Document` | snapshot | Zugehöriger Kunde (denormalized snapshot, copy of fields from [`customer`](./customer.md#entity-customers)) ([ConsultationCustomer](./user-management.md#sub-entity-consultationcustomer)) |
+| `location` | `Document` | snapshot | Ort der Behandlung (denormalized snapshot, copy of fields from [`location`](./customer.md#entity-locations)) ([ConsultationLocation](./user-management.md#sub-entity-consultationlocation)) |
 | `minutes` | `Number` | schema | Dauer in Minuten |
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.Treatment` (Used) |
 
 The `treatment` entity is referenced by:
-- [`appointment`](./planning.md#entity-termine-appointments) (via `treatmentId`)
-- [`asyncJobQueue`](./system.md#entity-hintergrundaufgaben-async-job-queue) (via `type`)
+- [`appointment`](./planning.md#entity-appointments) (via `treatmentId`)
+- [`asyncJobQueue`](./system.md#entity-async-job-queue) (via `type`)
 
 ### Sub-entities for treatment
 
 The following structures are used as nested documents within the `treatment` collection. Snapshot fields are denormalized copies of selected fields from their source-of-truth entities.
 
-#### Sub-entity: TreatmentAttachment
+#### Sub-entity: TreatmentAttachment {#sub-entity-treatmentattachment}
 Ein einzelner Anhangseintrag innerhalb von `attachments[]`.
 
 | Column | Type | Field Type | Description |
@@ -308,10 +308,10 @@ Ein einzelner Anhangseintrag innerhalb von `attachments[]`.
 | `attach` | `Boolean` | inferred | Optionaler Anhang-Status (Schema-Feld, in Samples als Boolean beobachtet) |
 
 The `TreatmentAttachment` sub-entity is used within:
-- [`treatment`](#entity-behandlungsverlauf-treatment) (as `attachments` array)
+- [`treatment`](#entity-treatment) (as `attachments` array)
 
-#### Sub-entity: TreatmentAttachmentFile
-Datei-Metadaten für einen Behandlung-Anhang als denormalized snapshot (copy of fields from persisted file payload, not from [`userFile`](./user-management.md#entity-benutzerdateien-user-files)).
+#### Sub-entity: TreatmentAttachmentFile {#sub-entity-treatmentattachmentfile}
+Datei-Metadaten für einen Behandlung-Anhang als denormalized snapshot (copy of fields from persisted file payload, not from [`userFile`](./user-management.md#entity-user-files)).
 
 | Column | Type | Field Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -323,18 +323,18 @@ Datei-Metadaten für einen Behandlung-Anhang als denormalized snapshot (copy of 
 | `version` | `Number/Long` | inferred | Versionswert; in Samples sowohl `Number` als auch `Long` beobachtet |
 | `deep` | `String` | inferred | Storage-/Pfad-Locator innerhalb des Dateispeichers |
 | `dateCreated` | `Date` | schema | Erstellungsdatum der Datei |
-| `createdBy` | `Long` | schema | Ersteller-ID (copy of field from source payload; source-of-truth reference to [`user`](./user-management.md#entity-experte-expert)) |
+| `createdBy` | `Long` | schema | Ersteller-ID (copy of field from source payload; source-of-truth reference to [`user`](./user-management.md#entity-expert)) |
 
 The `TreatmentAttachmentFile` sub-entity is used within:
 - [`TreatmentAttachment`](#sub-entity-treatmentattachment) (as `file` field)
 
-#### Sub-entity: TreatmentPosition
+#### Sub-entity: TreatmentPosition {#sub-entity-treatmentposition}
 Ein einzelner Termin oder eine Position innerhalb eines Behandlungsverlaufs.
 
 | Column | Type | Field Type | Description |
 | :--- | :--- | :--- | :--- |
 | `_id` | `String` | inferred | Internal identifier |
-| `appointmentId` | `Long` | schema | Reference to [appointment](./planning.md#entity-termine-appointments) |
+| `appointmentId` | `Long` | schema | Reference to [appointment](./planning.md#entity-appointments) |
 | `start` | `Date` | schema | Startzeitpunkt |
 | `until` | `Date` | schema | Endzeitpunkt |
 | `state` | `String` | schema | Status des Termins:<br>• `CANCELED` (Used)<br>• `CLOSED` (Used)<br>• `DONE` (Used)<br>• `LOCKEDIN` (Used)<br>• `READY` (Used)<br>• `RESCHEDULED` (Used)<br>• `STORNO` (Used) |
@@ -343,25 +343,25 @@ Ein einzelner Termin oder eine Position innerhalb eines Behandlungsverlaufs.
 | `report` | `Document` | schema | Referenz auf den Bericht ([TreatmentReport](#sub-entity-treatmentreport)) |
 
 The `TreatmentPosition` sub-entity is used within:
-- [`treatment`](#entity-behandlungsverlauf-treatment) (as `positions` array)
+- [`treatment`](#entity-treatment) (as `positions` array)
 
-#### Sub-entity: TreatmentReport
+#### Sub-entity: TreatmentReport {#sub-entity-treatmentreport}
 Informationen zum Bericht einer Behandlungsposition.
 
 | Column | Type | Field Type | Description |
 | :--- | :--- | :--- | :--- |
 | `_id` | `String` | inferred | Internal identifier |
 | `type` | `String` | schema | Art des Berichts:<br>• `STANDARD` (Used) |
-| `consultationId` | `Long` | schema | Referenz auf [consultationData](#entity-konsultationsdaten-consultation-data) |
+| `consultationId` | `Long` | schema | Referenz auf [consultationData](#entity-consultation-data) |
 | `date` | `Date` | schema | Datum des Berichts |
 | `dateStart` | `Date` | schema | Startdatum des Berichts |
 | `dateEnd` | `Date` | schema | Enddatum des Berichts |
-| `job` | `Document` | snapshot | Zugehörige Dienstleistung (denormalized snapshot of [`jobId`](./accounting.md#entity-dienstleistung-service)) ([ConsultationJob](./user-management.md#sub-entity-consultationjob)) |
+| `job` | `Document` | snapshot | Zugehörige Dienstleistung (denormalized snapshot of [`jobId`](./accounting.md#entity-service)) ([ConsultationJob](./user-management.md#sub-entity-consultationjob)) |
 
 The `TreatmentReport` sub-entity is used within:
 - [`TreatmentPosition`](#sub-entity-treatmentposition) (as `report` field)
 
-## Entity: Behandlungskategorien (Treatment Categories)
+## Entity: Behandlungskategorien (Treatment Categories) {#entity-treatment-categories}
 Kategorisierung von verschiedenen Behandlungsarten.
 
 ### Table: treatmentCategory
@@ -375,12 +375,12 @@ Kategorisierung von verschiedenen Behandlungsarten.
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.TreatmentCategory` (Used) |
 
 The `treatmentCategory` entity is referenced by:
-- [`treatment`](#entity-behandlungsverlauf-treatment) (via `category` DBRef)
+- [`treatment`](#entity-treatment) (via `category` DBRef)
 
-## Entity: Konsultationsdaten (Consultation Data)
+## Entity: Konsultationsdaten (Consultation Data) {#entity-consultation-data}
 Die Konsultationsdaten erfassen alle medizinischen Informationen, die während einer Konsultation dokumentiert werden, einschließlich Anamnese, Befund, Diagnose und Medikation.
 
-> **CQRS-lite Pattern — Source of Truth**: `consultationData` is the **source of truth** for all consultation records. Every field written here is also reflected in [`consultation`](#entity-konsultationen-cqrs-read-projection), except `paymentType` which exists only in this collection. Only a `_id` index exists; records are always retrieved individually by primary key. See the [`consultation`](#entity-konsultationen-cqrs-read-projection) entity for the full dual-collection description.
+> **CQRS-lite Pattern — Source of Truth**: `consultationData` is the **source of truth** for all consultation records. Every field written here is also reflected in [`consultation`](#entity-consultation), except `paymentType` which exists only in this collection. Only a `_id` index exists; records are always retrieved individually by primary key. See the [`consultation`](#entity-consultation) entity for the full dual-collection description.
 
 ### Table: consultationData
 | Column | Type | Field Type | Description |
@@ -409,7 +409,7 @@ Die Konsultationsdaten erfassen alle medizinischen Informationen, die während e
 | `tags` | `Array` | schema | Freitext-Tags |
 | `bookNumber` | `String` | inferred | Buchnummer (JVA) |
 | `jNumber` | `String` | inferred | J-Nummer (JVA) |
-| `basisWebDataId` | `Long` | schema | Reference to [basisWebData](./interfaces.md#entity-jva-patientendaten-basis-web-data) |
+| `basisWebDataId` | `Long` | schema | Reference to [basisWebData](./interfaces.md#entity-basis-web-data) |
 | `requireReporting` | `Boolean` | schema | Meldepflicht |
 | `externalDown` | `Boolean` | inferred | Externer Ausfall-Marker |
 | `qmComplete` | `Boolean` | inferred | Qualitätsmanagement abgeschlossen |
@@ -417,15 +417,15 @@ Die Konsultationsdaten erfassen alle medizinischen Informationen, die während e
 | `period` | `Number` | schema | Abrechnungszeitraum (Format YYYYMM) |
 | `appointmentType` | `String` | schema | Termintyp:<br>• `APPOINTMENT` (Used) |
 | `paymentType` | `String` | schema | Zahlungsart (only in `consultationData`, absent from `consultation`):<br>• `FULL` (Used) |
-| `signedOffBy` | `DBRef` | schema | Abgezeichnet von (Reference to [user](./user-management.md#entity-experte-expert)) |
-| `appointment` | `DBRef` | schema | Zugehöriger Termin (Reference to [appointment](./planning.md#entity-termine-appointments)) |
-| `doctor` | `Document` | snapshot | Durchführender Experte (denormalized snapshot of [`user`](./user-management.md#entity-experte-expert)) ([ConsultationDoctor](./user-management.md#sub-entity-consultationdoctor)) |
-| `job` | `Document` | snapshot | Erbrachte Dienstleistung (denormalized snapshot of [`jobId`](./accounting.md#entity-dienstleistung-service)) ([ConsultationJob](./user-management.md#sub-entity-consultationjob)) |
-| `location` | `Document` | snapshot | Ort der Konsultation (denormalized snapshot of [`location`](./customer.md#entity-standorte-locations)) ([ConsultationLocation](./user-management.md#sub-entity-consultationlocation)) |
-| `customer` | `Document` | snapshot | Zugehöriger Kunde (denormalized snapshot of [`customer`](./customer.md#entity-kunden-customers)) ([ConsultationCustomer](./user-management.md#sub-entity-consultationcustomer)) |
-| `changedBy` | `Document` | snapshot | Zuletzt geändert von (denormalized snapshot of [`user`](./user-management.md#entity-experte-expert); fields: `_id`, `name`, `email`) |
-| `createdBy` | `Document` | snapshot | Erstellt von (denormalized snapshot of [`user`](./user-management.md#entity-experte-expert); fields: `_id`, `name`, `email`) |
-| `reportingExpert` | `Document` | snapshot | Meldepflicht-Experte (denormalized snapshot of [`user`](./user-management.md#entity-experte-expert); fields: `_id`, `name`, `email`) |
+| `signedOffBy` | `DBRef` | schema | Abgezeichnet von (Reference to [user](./user-management.md#entity-expert)) |
+| `appointment` | `DBRef` | schema | Zugehöriger Termin (Reference to [appointment](./planning.md#entity-appointments)) |
+| `doctor` | `Document` | snapshot | Durchführender Experte (denormalized snapshot of [`user`](./user-management.md#entity-expert)) ([ConsultationDoctor](./user-management.md#sub-entity-consultationdoctor)) |
+| `job` | `Document` | snapshot | Erbrachte Dienstleistung (denormalized snapshot of [`jobId`](./accounting.md#entity-service)) ([ConsultationJob](./user-management.md#sub-entity-consultationjob)) |
+| `location` | `Document` | snapshot | Ort der Konsultation (denormalized snapshot of [`location`](./customer.md#entity-locations)) ([ConsultationLocation](./user-management.md#sub-entity-consultationlocation)) |
+| `customer` | `Document` | snapshot | Zugehöriger Kunde (denormalized snapshot of [`customer`](./customer.md#entity-customers)) ([ConsultationCustomer](./user-management.md#sub-entity-consultationcustomer)) |
+| `changedBy` | `Document` | snapshot | Zuletzt geändert von (denormalized snapshot of [`user`](./user-management.md#entity-expert); fields: `_id`, `name`, `email`) |
+| `createdBy` | `Document` | snapshot | Erstellt von (denormalized snapshot of [`user`](./user-management.md#entity-expert); fields: `_id`, `name`, `email`) |
+| `reportingExpert` | `Document` | snapshot | Meldepflicht-Experte (denormalized snapshot of [`user`](./user-management.md#entity-expert); fields: `_id`, `name`, `email`) |
 | `dateChanged` | `Date` | schema | Zeitpunkt der letzten Änderung |
 | `dateCreated` | `Date` | schema | Erstellungszeitpunkt |
 | `dateTransmitted` | `Date` | schema | Übermittlungszeitpunkt |
@@ -435,15 +435,15 @@ Die Konsultationsdaten erfassen alle medizinischen Informationen, die während e
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.Consultation` (same value as in `consultation`) |
 
 The `consultationData` entity is referenced by:
-- [`invoiceComponent`](./accounting.md#entity-rechnungskomponenten-invoice-components)
-- [`log`](./system.md#entity-system-logs-logs)
-- [`questionaire`](#entity-qualitätsumfragen-questionaires)
-- [`treatment`](#entity-behandlungsverlauf-treatment) (in `positions.report`)
-- [`cDRCallAssignment`](./external-data.md#entity-cdr-call-zuweisungen-cdr-call-assignment)
+- [`invoiceComponent`](./accounting.md#entity-invoice-components)
+- [`log`](./system.md#entity-logs)
+- [`questionaire`](#entity-questionaires)
+- [`treatment`](#entity-treatment) (in `positions.report`)
+- [`cDRCallAssignment`](./external-data.md#entity-cdr-call-assignment)
 
 ### Sub-entities for consultationData
 
-#### Sub-entity: ConsultationBase
+#### Sub-entity: ConsultationBase {#sub-entity-consultationbase}
 Basiselemente der Konsultation.
 
 | Column | Type | Field Type | Description |
@@ -456,10 +456,10 @@ Basiselemente der Konsultation.
 | `dateFurtherTreatment` | `Date` | schema | Datum der weiteren Behandlung |
 
 The `ConsultationBase` sub-entity is used within:
-- [`consultationData`](#entity-konsultationsdaten-consultation-data) (as `base` field)
-- [`consultation`](#entity-konsultationen-cqrs-read-projection) (as `base` field — read-only projection)
+- [`consultationData`](#entity-consultation-data) (as `base` field)
+- [`consultation`](#entity-consultation) (as `base` field — read-only projection)
 
-#### Sub-entity: ConsultationBody
+#### Sub-entity: ConsultationBody {#sub-entity-consultationbody}
 Körperliche Basisdaten des Patienten zum Zeitpunkt der Konsultation.
 
 | Column | Type | Field Type | Description |
@@ -474,28 +474,28 @@ Körperliche Basisdaten des Patienten zum Zeitpunkt der Konsultation.
 | `pulse` | `String` | schema | Puls |
 
 The `ConsultationBody` sub-entity is used within:
-- [`consultationData`](#entity-konsultationsdaten-consultation-data) (as `body` field)
-- [`consultation`](#entity-konsultationen-cqrs-read-projection) (as `body` field — read-only projection)
-- [`expertConsultationTemplate`](#entity-konsultationsvorlagen-expert-consultation-templates) (as `body` field)
+- [`consultationData`](#entity-consultation-data) (as `body` field)
+- [`consultation`](#entity-consultation) (as `body` field — read-only projection)
+- [`expertConsultationTemplate`](#entity-expert-consultation-templates) (as `body` field)
 
-#### Sub-entity: ConsultationWarning
+#### Sub-entity: ConsultationWarning {#sub-entity-consultationwarning}
 Warnhinweise für den Patienten.
 
-> **Note**: The `warning` field is a **full embedded snapshot** of the [`patientAlerts`](#entity-patientenbezogene-risikofaktoren--warnhinweise-patient-alerts) document at write time — **not** a DBRef. It carries `_id`, `version`, `name`, `type`, `entryRequirement`, `documentationRequirement`, and `priority`.
+> **Note**: The `warning` field is a **full embedded snapshot** of the [`patientAlerts`](#entity-patient-alerts) document at write time — **not** a DBRef. It carries `_id`, `version`, `name`, `type`, `entryRequirement`, `documentationRequirement`, and `priority`.
 
 | Column | Type | Field Type | Description |
 | :--- | :--- | :--- | :--- |
 | `_id` | `String` | schema | Internal identifier |
-| `warning` | `Document` | snapshot | Vollständiger Snapshot des Warnhinweises (denormalized snapshot of [`patientAlerts`](#entity-patientenbezogene-risikofaktoren--warnhinweise-patient-alerts); fields: `_id`, `version`, `name`, `type`, `entryRequirement`, `documentationRequirement`, `priority`) |
+| `warning` | `Document` | snapshot | Vollständiger Snapshot des Warnhinweises (denormalized snapshot of [`patientAlerts`](#entity-patient-alerts); fields: `_id`, `version`, `name`, `type`, `entryRequirement`, `documentationRequirement`, `priority`) |
 | `comment` | `String` | schema | Kommentar |
 | `applies` | `Boolean` | schema | Trifft zu |
 | `dateStart` | `Date` | schema | Startdatum |
 
 The `ConsultationWarning` sub-entity is used within:
-- [`consultationData`](#entity-konsultationsdaten-consultation-data) (as `warnings` array)
-- [`consultation`](#entity-konsultationen-cqrs-read-projection) (as `warnings` array)
+- [`consultationData`](#entity-consultation-data) (as `warnings` array)
+- [`consultation`](#entity-consultation) (as `warnings` array)
 
-#### Sub-entity: ConsultationOnboarding
+#### Sub-entity: ConsultationOnboarding {#sub-entity-consultationonboarding}
 Detaillierte medizinische Daten für die Erstuntersuchung (Zugangsuntersuchung).
 
 | Column | Type | Field Type | Description |
@@ -528,11 +528,11 @@ Detaillierte medizinische Daten für die Erstuntersuchung (Zugangsuntersuchung).
 | `requireTreatment` | `Boolean` | schema | Behandlungsbedürftigkeit |
 
 The `ConsultationOnboarding` sub-entity is used within:
-- [`consultationData`](#entity-konsultationsdaten-consultation-data) (as `onboarding` field)
-- [`consultation`](#entity-konsultationen-cqrs-read-projection) (as `onboarding` field — read-only projection)
-- [`expertConsultationTemplate`](#entity-konsultationsvorlagen-expert-consultation-templates) (as `onboarding` field)
+- [`consultationData`](#entity-consultation-data) (as `onboarding` field)
+- [`consultation`](#entity-consultation) (as `onboarding` field — read-only projection)
+- [`expertConsultationTemplate`](#entity-expert-consultation-templates) (as `onboarding` field)
 
-#### Sub-entity: ConsultationStandard
+#### Sub-entity: ConsultationStandard {#sub-entity-consultationstandard}
 Dokumentation einer Standard-Konsultation.
 
 | Column | Type | Field Type | Description |
@@ -549,11 +549,11 @@ Dokumentation einer Standard-Konsultation.
 | `furtherTreatment` | `String` | schema | Voreinstellung für die weitere Behandlung (mapped to [ConsultationBase.furtherTreatment](#sub-entity-consultationbase)) |
 
 The `ConsultationStandard` sub-entity is used within:
-- [`consultationData`](#entity-konsultationsdaten-consultation-data) (as `standard` field)
-- [`consultation`](#entity-konsultationen-cqrs-read-projection) (as `standard` field — read-only projection)
-- [`expertConsultationTemplate`](#entity-konsultationsvorlagen-expert-consultation-templates) (as `standard` field)
+- [`consultationData`](#entity-consultation-data) (as `standard` field)
+- [`consultation`](#entity-consultation) (as `standard` field — read-only projection)
+- [`expertConsultationTemplate`](#entity-expert-consultation-templates) (as `standard` field)
 
-#### Sub-entity: ConsultationMedicationAnamnesis
+#### Sub-entity: ConsultationMedicationAnamnesis {#sub-entity-consultationmedicationanamnesis}
 Zusammenfassung der Medikationsanamnese mit Kategorisierung.
 
 | Column | Type | Field Type | Description |
@@ -577,7 +577,7 @@ Zusammenfassung der Medikationsanamnese mit Kategorisierung.
 The `ConsultationMedicationAnamnesis` sub-entity is used within:
 - [`ConsultationStandard`](#sub-entity-consultationstandard) (as `medicationAnamnesis` field)
 
-#### Sub-entity: ConsultationAnamnesis
+#### Sub-entity: ConsultationAnamnesis {#sub-entity-consultationanamnesis}
 Einzelner Anamneseeintrag innerhalb von `standard.anamnesis[]`.
 
 | Column | Type | Field Type | Description |
@@ -588,7 +588,7 @@ Einzelner Anamneseeintrag innerhalb von `standard.anamnesis[]`.
 The `ConsultationAnamnesis` sub-entity is used within:
 - [`ConsultationStandard`](#sub-entity-consultationstandard) (as `anamnesis` array)
 
-#### Sub-entity: ConsultationPatientReport
+#### Sub-entity: ConsultationPatientReport {#sub-entity-consultationpatientreport}
 Einzelner Befundbericht innerhalb von `standard.patientReport[]`.
 
 | Column | Type | Field Type | Description |
@@ -599,12 +599,12 @@ Einzelner Befundbericht innerhalb von `standard.patientReport[]`.
 The `ConsultationPatientReport` sub-entity is used within:
 - [`ConsultationStandard`](#sub-entity-consultationstandard) (as `patientReport` array)
 
-#### Sub-entity: ConsultationPrescription
+#### Sub-entity: ConsultationPrescription {#sub-entity-consultationprescription}
 Einzelne Verschreibung innerhalb von `standard.prescription[]`.
 
 | Column | Type | Field Type | Description |
 | :--- | :--- | :--- | :--- |
-| `medication` | `DBRef` | schema | Reference to [medication](./external-data.md#entity-medikamente-medications) |
+| `medication` | `DBRef` | schema | Reference to [medication](./external-data.md#entity-medication) |
 | `type` | `String` | schema | Verschreibungstyp (z.B. `LIMITED`, `PERMANENT`) |
 | `packages` | `Number` | schema | Anzahl Packungen |
 | `product` | `Document` | snapshot | Medikamenten-Produktdetails (snapshot; fields: `_id`, `name`, `ingredients`, `packaging`, `packageName`, `price`) |
@@ -623,7 +623,7 @@ Einzelne Verschreibung innerhalb von `standard.prescription[]`.
 The `ConsultationPrescription` sub-entity is used within:
 - [`ConsultationStandard`](#sub-entity-consultationstandard) (as `prescription` array)
 
-#### Sub-entity: ConsultationWorkIncapacity
+#### Sub-entity: ConsultationWorkIncapacity {#sub-entity-consultationworkincapacity}
 Einzelner Arbeitsunfähigkeits-Eintrag innerhalb von `standard.workIncapacity[]`.
 
 | Column | Type | Field Type | Description |
@@ -635,13 +635,13 @@ Einzelner Arbeitsunfähigkeits-Eintrag innerhalb von `standard.workIncapacity[]`
 The `ConsultationWorkIncapacity` sub-entity is used within:
 - [`ConsultationStandard`](#sub-entity-consultationstandard) (as `workIncapacity` array)
 
-#### Sub-entity: ConsultationDiagnosis
+#### Sub-entity: ConsultationDiagnosis {#sub-entity-consultationdiagnosis}
 Einzelne Diagnose mit ICD-10 Code.
 
 | Column | Type | Field Type | Description |
 | :--- | :--- | :--- | :--- |
 | `_id` | `String` | inferred | Internal identifier |
-| `icd10` | `Document` | schema | ICD-10 Reference ([Icd10](./external-data.md#entity-icd-10-klassifikation-icd-10)) |
+| `icd10` | `Document` | schema | ICD-10 Reference ([Icd10](./external-data.md#entity-icd-10)) |
 | `localization` | `String` | schema | Lokalisierung:<br>• `LEFT` (Used)<br>• `RIGHT` (Used)<br>• `BOTH` (Used)<br>• `UNKNOWN` (Used) |
 | `level` | `String` | schema | Sicherheit der Diagnose:<br>• `GENERAL` (Used)<br>• `VERIFY` (Used)<br>• `ZERO` (Used)<br>• `STATIONARY` (Used)<br>• `EXCLUDED` (Legacy/Orphan — 2 records) |
 | `title` | `String` | schema | Titel |
@@ -650,7 +650,7 @@ Einzelne Diagnose mit ICD-10 Code.
 The `ConsultationDiagnosis` sub-entity is used within:
 - [`ConsultationStandard`](#sub-entity-consultationstandard) (as `diagnosis` array)
 
-#### Sub-entity: ConsultationIncarceration
+#### Sub-entity: ConsultationIncarceration {#sub-entity-consultationincarceration}
 Daten der Gewahrsamstauglichkeit.
 
 | Column | Type | Field Type | Description |
@@ -669,10 +669,10 @@ Daten der Gewahrsamstauglichkeit.
 | `documentation` | `String` | schema | Freitextdokumentation |
 
 The `ConsultationIncarceration` sub-entity is used within:
-- [`consultationData`](#entity-konsultationsdaten-consultation-data) (as `incarceration` field)
-- [`consultation`](#entity-konsultationen-cqrs-read-projection) (as `incarceration` field — read-only projection)
+- [`consultationData`](#entity-consultation-data) (as `incarceration` field)
+- [`consultation`](#entity-consultation) (as `incarceration` field — read-only projection)
 
-#### Sub-entity: ConsultationDocument
+#### Sub-entity: ConsultationDocument {#sub-entity-consultationdocument}
 Daten einer Dokumentations-Konsultation.
 
 | Column | Type | Field Type | Description |
@@ -681,10 +681,10 @@ Daten einer Dokumentations-Konsultation.
 | `documentation` | `String` | schema | Freitextdokumentation |
 
 The `ConsultationDocument` sub-entity is used within:
-- [`consultationData`](#entity-konsultationsdaten-consultation-data) (as `document` field)
-- [`consultation`](#entity-konsultationen-cqrs-read-projection) (as `document` field — read-only projection)
+- [`consultationData`](#entity-consultation-data) (as `document` field)
+- [`consultation`](#entity-consultation) (as `document` field — read-only projection)
 
-#### Sub-entity: ConsultationReferral
+#### Sub-entity: ConsultationReferral {#sub-entity-consultationreferral}
 Überweisungsdaten der Konsultation.
 
 | Column | Type | Field Type | Description |
@@ -694,10 +694,10 @@ The `ConsultationDocument` sub-entity is used within:
 | `psychoTherapy` | `Document` | schema | Psychotherapie-Details (contains `comment` field) |
 
 The `ConsultationReferral` sub-entity is used within:
-- [`consultationData`](#entity-konsultationsdaten-consultation-data) (as `referral` field)
-- [`consultation`](#entity-konsultationen-cqrs-read-projection) (as `referral` field)
+- [`consultationData`](#entity-consultation-data) (as `referral` field)
+- [`consultation`](#entity-consultation) (as `referral` field)
 
-#### Sub-entity: ConsultationTreatment
+#### Sub-entity: ConsultationTreatment {#sub-entity-consultationtreatment}
 Daten einer Behandlungs-Konsultation (Psychotherapie).
 
 | Column | Type | Field Type | Description |
@@ -721,10 +721,10 @@ Daten einer Behandlungs-Konsultation (Psychotherapie).
 | `furtherGoals` | `String` | schema | Weitere Ziele |
 
 The `ConsultationTreatment` sub-entity is used within:
-- [`consultationData`](#entity-konsultationsdaten-consultation-data) (as `treatment` field)
-- [`consultation`](#entity-konsultationen-cqrs-read-projection) (as `treatment` field)
+- [`consultationData`](#entity-consultation-data) (as `treatment` field)
+- [`consultation`](#entity-consultation) (as `treatment` field)
 
-#### Sub-entity: ConsultationHistory
+#### Sub-entity: ConsultationHistory {#sub-entity-consultationhistory}
 Patientenhistorie, die aus dem BasisWEB-/JVA-System gespiegelt wird.
 
 | Column | Type | Field Type | Description |
@@ -733,24 +733,24 @@ Patientenhistorie, die aus dem BasisWEB-/JVA-System gespiegelt wird.
 | `history` | `Array` | schema | Historische Einträge aus BasisWEB/JVA (entries: `date`, `active`, `type`, `content`, `entry`) |
 
 The `ConsultationHistory` sub-entity is used within:
-- [`consultationData`](#entity-konsultationsdaten-consultation-data) (as `history` field)
-- [`consultation`](#entity-konsultationen-cqrs-read-projection) (as `history` field)
+- [`consultationData`](#entity-consultation-data) (as `history` field)
+- [`consultation`](#entity-consultation) (as `history` field)
 
-## Entity: Konsultationen (CQRS Read Projection)
+## Entity: Konsultationen (CQRS Read Projection) {#entity-consultation}
 
 > **CQRS-lite Pattern — Dual Collection**
 >
-> `consultation` and [`consultationData`](#entity-konsultationsdaten-consultation-data) form a **synchronized pair** with a strict 1:1 relationship (matching `_id` values, ~101,900 documents each).
+> `consultation` and [`consultationData`](#entity-consultation-data) form a **synchronized pair** with a strict 1:1 relationship (matching `_id` values, ~101,900 documents each).
 >
-> - [`consultationData`](#entity-konsultationsdaten-consultation-data) is the **source of truth** for all writes. It contains the complete record including `paymentType`, which is absent from `consultation`.
-> - `consultation` is a **read-only projection** — a copy kept synchronized with every write to `consultationData`. All fields in this table originate from [`consultationData`](#entity-konsultationsdaten-consultation-data) and **must not be written to directly**.
-> - `consultation` carries a **compound index on `{ period, "location._id" }`** that enables efficient list queries and filtering. [`consultationData`](#entity-konsultationsdaten-consultation-data) only has a `_id` index and is always accessed by primary key.
+> - [`consultationData`](#entity-consultation-data) is the **source of truth** for all writes. It contains the complete record including `paymentType`, which is absent from `consultation`.
+> - `consultation` is a **read-only projection** — a copy kept synchronized with every write to `consultationData`. All fields in this table originate from [`consultationData`](#entity-consultation-data) and **must not be written to directly**.
+> - `consultation` carries a **compound index on `{ period, "location._id" }`** that enables efficient list queries and filtering. [`consultationData`](#entity-consultation-data) only has a `_id` index and is always accessed by primary key.
 >
-> Storage: `consultation` ≈ 130 MB · [`consultationData`](#entity-konsultationsdaten-consultation-data) ≈ 212 MB.
+> Storage: `consultation` ≈ 130 MB · [`consultationData`](#entity-consultation-data) ≈ 212 MB.
 
 ### Table: consultation
 
-All fields below are **read-only projections** of their counterpart in [`consultationData`](#entity-konsultationsdaten-consultation-data). The `Origin` column names the source field in `consultationData` (identical name unless noted).
+All fields below are **read-only projections** of their counterpart in [`consultationData`](#entity-consultation-data). The `Origin` column names the source field in `consultationData` (identical name unless noted).
 
 | Column | Type | Field Type | Origin (consultationData) | Description |
 | :--- | :--- | :--- | :--- | :--- |
@@ -778,22 +778,22 @@ All fields below are **read-only projections** of their counterpart in [`consult
 | `tags` | `Array` | schema | `tags` | Freitext-Tags |
 | `bookNumber` | `String` | inferred | `bookNumber` | Buchnummer (JVA) |
 | `jNumber` | `String` | inferred | `jNumber` | J-Nummer (JVA) |
-| `basisWebDataId` | `Long` | schema | `basisWebDataId` | Reference to [basisWebData](./interfaces.md#entity-jva-patientendaten-basis-web-data) |
+| `basisWebDataId` | `Long` | schema | `basisWebDataId` | Reference to [basisWebData](./interfaces.md#entity-basis-web-data) |
 | `requireReporting` | `Boolean` | schema | `requireReporting` | Meldepflicht |
 | `externalDown` | `Boolean` | inferred | `externalDown` | Externer Ausfall-Marker |
 | `qmComplete` | `Boolean` | inferred | `qmComplete` | Qualitätsmanagement abgeschlossen |
 | `comment` | `String` | schema | `comment` | Kommentar |
 | `period` | `Number` | schema | `period` | Abrechnungszeitraum (Format YYYYMM) — **part of compound index** |
 | `appointmentType` | `String` | schema | `appointmentType` | Termintyp:<br>• `APPOINTMENT` (Used) |
-| `signedOffBy` | `DBRef` | schema | `signedOffBy` | Abgezeichnet von (Reference to [user](./user-management.md#entity-experte-expert)) |
-| `appointment` | `DBRef` | schema | `appointment` | Zugehöriger Termin (Reference to [appointment](./planning.md#entity-termine-appointments)) |
-| `doctor` | `Document` | snapshot | `doctor` | Durchführender Experte (denormalized snapshot of [`user`](./user-management.md#entity-experte-expert)) ([ConsultationDoctor](./user-management.md#sub-entity-consultationdoctor)) |
-| `job` | `Document` | snapshot | `job` | Erbrachte Dienstleistung (denormalized snapshot of [`jobId`](./accounting.md#entity-dienstleistung-service)) ([ConsultationJob](./user-management.md#sub-entity-consultationjob)) |
-| `location` | `Document` | snapshot | `location` | Ort der Konsultation (denormalized snapshot of [`location`](./customer.md#entity-standorte-locations)) ([ConsultationLocation](./user-management.md#sub-entity-consultationlocation)) — **part of compound index** (`"location._id"`) |
-| `customer` | `Document` | snapshot | `customer` | Zugehöriger Kunde (denormalized snapshot of [`customer`](./customer.md#entity-kunden-customers)) ([ConsultationCustomer](./user-management.md#sub-entity-consultationcustomer)) |
-| `changedBy` | `Document` | snapshot | `changedBy` | Zuletzt geändert von (denormalized snapshot of [`user`](./user-management.md#entity-experte-expert); fields: `_id`, `name`, `email`) |
-| `createdBy` | `Document` | snapshot | `createdBy` | Erstellt von (denormalized snapshot of [`user`](./user-management.md#entity-experte-expert); fields: `_id`, `name`, `email`) |
-| `reportingExpert` | `Document` | snapshot | `reportingExpert` | Meldepflicht-Experte (denormalized snapshot of [`user`](./user-management.md#entity-experte-expert); fields: `_id`, `name`, `email`) |
+| `signedOffBy` | `DBRef` | schema | `signedOffBy` | Abgezeichnet von (Reference to [user](./user-management.md#entity-expert)) |
+| `appointment` | `DBRef` | schema | `appointment` | Zugehöriger Termin (Reference to [appointment](./planning.md#entity-appointments)) |
+| `doctor` | `Document` | snapshot | `doctor` | Durchführender Experte (denormalized snapshot of [`user`](./user-management.md#entity-expert)) ([ConsultationDoctor](./user-management.md#sub-entity-consultationdoctor)) |
+| `job` | `Document` | snapshot | `job` | Erbrachte Dienstleistung (denormalized snapshot of [`jobId`](./accounting.md#entity-service)) ([ConsultationJob](./user-management.md#sub-entity-consultationjob)) |
+| `location` | `Document` | snapshot | `location` | Ort der Konsultation (denormalized snapshot of [`location`](./customer.md#entity-locations)) ([ConsultationLocation](./user-management.md#sub-entity-consultationlocation)) — **part of compound index** (`"location._id"`) |
+| `customer` | `Document` | snapshot | `customer` | Zugehöriger Kunde (denormalized snapshot of [`customer`](./customer.md#entity-customers)) ([ConsultationCustomer](./user-management.md#sub-entity-consultationcustomer)) |
+| `changedBy` | `Document` | snapshot | `changedBy` | Zuletzt geändert von (denormalized snapshot of [`user`](./user-management.md#entity-expert); fields: `_id`, `name`, `email`) |
+| `createdBy` | `Document` | snapshot | `createdBy` | Erstellt von (denormalized snapshot of [`user`](./user-management.md#entity-expert); fields: `_id`, `name`, `email`) |
+| `reportingExpert` | `Document` | snapshot | `reportingExpert` | Meldepflicht-Experte (denormalized snapshot of [`user`](./user-management.md#entity-expert); fields: `_id`, `name`, `email`) |
 | `dateChanged` | `Date` | schema | `dateChanged` | Zeitpunkt der letzten Änderung |
 | `dateCreated` | `Date` | schema | `dateCreated` | Erstellungszeitpunkt |
 | `dateTransmitted` | `Date` | schema | `dateTransmitted` | Übermittlungszeitpunkt |
@@ -802,13 +802,13 @@ All fields below are **read-only projections** of their counterpart in [`consult
 | `update` | `String` | inferred | `update` | Migrations-/Sync-Marker (z.B. `2023-07`) |
 | `_class` | `String` | schema | `_class` | Laufzeitklassen-Marker: `de.videoclinic.model.Consultation` |
 
-> **Indexes**: `_id` (default) · `{ period: 1, "location._id": 1 }` (compound, list queries). [`consultationData`](#entity-konsultationsdaten-consultation-data) has only the `_id` index.
+> **Indexes**: `_id` (default) · `{ period: 1, "location._id": 1 }` (compound, list queries). [`consultationData`](#entity-consultation-data) has only the `_id` index.
 
 The `consultation` entity is referenced by:
-- [`questionaire`](#entity-qualitätsumfragen-questionaires) (via `consultationId`)
-- [`invoiceComponent`](./accounting.md#entity-rechnungskomponenten-invoice-components) (via `consultationId`)
+- [`questionaire`](#entity-questionaires) (via `consultationId`)
+- [`invoiceComponent`](./accounting.md#entity-invoice-components) (via `consultationId`)
 
-## Entity: Konsultationsvorlagen (Expert Consultation Templates)
+## Entity: Konsultationsvorlagen (Expert Consultation Templates) {#entity-expert-consultation-templates} {#entity-expert-consultation-templates}
 Vordefinierte Vorlagen für medizinische Konsultationen zur schnelleren Dokumentation.
 
 ### Table: expertConsultationTemplate
@@ -823,7 +823,7 @@ Vordefinierte Vorlagen für medizinische Konsultationen zur schnelleren Dokument
 | `job` | `Document` | schema | Vorlage für Dienstleistung ([ConsultationJob](./user-management.md#sub-entity-consultationjob)) |
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.ExpertConsultationTemplate` (Used) |
 
-## Entity: Patientenergänzungsdaten (Patient Data)
+## Entity: Patientenergänzungsdaten (Patient Data) {#entity-patient-data} {#entity-patient-data}
 Zusätzliche oder ergänzende Informationen zu Patienten, oft im Kontext spezifischer Termine.
 
 ### Table: patientData
@@ -831,17 +831,17 @@ Zusätzliche oder ergänzende Informationen zu Patienten, oft im Kontext spezifi
 | :--- | :--- | :--- | :--- |
 | `_id` | `Long` | schema | Interner Bezeichner |
 | `version` | `Long` | schema | Versionsnummer |
-| `appointmentId` | `Long` | inferred | Reference to [appointment](./planning.md#entity-termine-appointments) |
+| `appointmentId` | `Long` | inferred | Reference to [appointment](./planning.md#entity-appointments) |
 | `bookNumber` | `String` | inferred | Buchnummer (JVA) |
 | `location` | `Document` | inferred | Ort der Erfassung ([ConsultationLocation](./user-management.md#sub-entity-consultationlocation)) |
 | `onlyDocumentation` | `Boolean` | schema | Nur Dokumentation Kennzeichnung |
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.PatientData` (Used) |
 
 The `patientData` entity references:
-- [`appointment`](./planning.md#entity-termine-appointments)
-- [`location`](./customer.md#entity-standorte-locations)
+- [`appointment`](./planning.md#entity-appointments)
+- [`location`](./customer.md#entity-locations)
 
-## Entity: Patienten (Patients)
+## Entity: Patienten (Patients) {#entity-patients} {#entity-patients}
 Zentrales Verzeichnis aller Patienten mit persönlichen Daten und Kontakthistorie.
 
 ### Table: patient
@@ -861,10 +861,10 @@ Zentrales Verzeichnis aller Patienten mit persönlichen Daten und Kontakthistori
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.Patient` (Used) |
 
 The `patient` entity is referenced by:
-- [`consultationData`](#entity-konsultationsdaten-consultation-data) (implicitly via JVA identifiers or legacy links)
-- [`treatment`](#entity-behandlungsverlauf-treatment) (implicitly via JVA identifiers)
+- [`consultationData`](#entity-consultation-data) (implicitly via JVA identifiers or legacy links)
+- [`treatment`](#entity-treatment) (implicitly via JVA identifiers)
 
-## Entity: Patientenbezogene Risikofaktoren / Warnhinweise (Patient Alerts)
+## Entity: Patientenbezogene Risikofaktoren / Warnhinweise (Patient Alerts) {#entity-patient-alerts} {#entity-patient-alerts}
 Patient-related risk factors or alerts that can be assigned to patients.
 
 ### Table: patientAlerts (former: warning)
@@ -881,10 +881,10 @@ Patient-related risk factors or alerts that can be assigned to patients.
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.Warning` (Used) |
 
 The `patientAlerts` entity is referenced by:
-- [`consultationData`](#entity-konsultationsdaten-consultation-data) (in `warnings` — as embedded snapshot)
-- [`consultation`](#entity-konsultationen-cqrs-read-projection) (in `warnings` — as embedded snapshot)
+- [`consultationData`](#entity-consultation-data) (in `warnings` — as embedded snapshot)
+- [`consultation`](#entity-consultation) (in `warnings` — as embedded snapshot)
 
-## Entity: Service-Qualitätsmanagement (Service QM)
+## Entity: Service-Qualitätsmanagement (Service QM) {#entity-service-qm} {#entity-service-qm}
 Protokollierung von Qualitätsmetriken für erbrachte Dienstleistungen.
 
 ### Table: serviceQm
@@ -901,7 +901,7 @@ Protokollierung von Qualitätsmetriken für erbrachte Dienstleistungen.
 The `serviceQm` entity is used for:
 - (Quality assurance reports)
 
-## Entity: Qualitätsumfragen (Questionaires)
+## Entity: Qualitätsumfragen (Questionaires) {#entity-questionaires} {#entity-questionaires}
 Fragebögen zur Bewertung der Qualität von Konsultationen und Dienstleistungen.
 
 ### Table: questionaire
@@ -909,8 +909,8 @@ Fragebögen zur Bewertung der Qualität von Konsultationen und Dienstleistungen.
 | :--- | :--- | :--- | :--- |
 | `_id` | `Long` | schema | Interner Bezeichner |
 | `version` | `Long` | schema | Versionsnummer |
-| `appointmentId` | `Long` | schema | Reference to [appointment](./planning.md#entity-termine-appointments) |
-| `consultationId` | `Long` | schema | Reference to [consultationData](#entity-konsultationsdaten-consultation-data) |
+| `appointmentId` | `Long` | schema | Reference to [appointment](./planning.md#entity-appointments) |
+| `consultationId` | `Long` | schema | Reference to [consultationData](#entity-consultation-data) |
 | `date` | `Date` | schema | Datum der Umfrage |
 | `ratingRisk` | `Number` | schema | Bewertung Risiko (1-5) |
 | `ratingTeleApplyable` | `Number` | schema | Bewertung Telemedizin-Eignung (1-5) |

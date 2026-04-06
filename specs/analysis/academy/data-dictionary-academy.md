@@ -49,23 +49,23 @@ title: 'Data Dictionary Academy'
 
 | UI Field / Label | UI Element | Abstract Type | DB Collection.Field | German | English |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| `id` | `text` | `number` | [`video._id`](../../mongodb-mapping/academy.md#entity-videos-videos) | ID | ID |
-| `path` | `text` | `string` | [`video.path`](../../mongodb-mapping/academy.md#entity-videos-videos) | Pfad | Path |
-| `previewImage` | `text` | `string` | [`video.preview`](../../mongodb-mapping/academy.md#entity-videos-videos) | Vorschaubild | Preview Image |
-| `title` | `text` | `string` | [`video.name`](../../mongodb-mapping/academy.md#entity-videos-videos) | Titel | Title |
-| `lengthInSeconds` | `text` | `number` | [`video.lengthInSeconds`](../../mongodb-mapping/academy.md#entity-videos-videos) | Laenge (in Sekunden) | Length (in seconds) |
-| `category` | `text` | `reference:VideoCategory` | [`video.category`](../../mongodb-mapping/academy.md#entity-videos-videos) | Kategorie | Category |
+| `id` | `text` | `number` | [`video._id`](../mongodb-mapping/academy.md#entity-videos) | ID | ID |
+| `path` | `text` | `string` | [`video.path`](../mongodb-mapping/academy.md#entity-videos) | Pfad | Path |
+| `previewImage` | `text` | `string` | [`video.preview`](../mongodb-mapping/academy.md#entity-videos) | Vorschaubild | Preview Image |
+| `title` | `text` | `string` | [`video.name`](../mongodb-mapping/academy.md#entity-videos) | Titel | Title |
+| `lengthInSeconds` | `text` | `number` | [`video.lengthInSeconds`](../mongodb-mapping/academy.md#entity-videos) | Laenge (in Sekunden) | Length (in seconds) |
+| `category` | `text` | `reference:VideoCategory` | [`video.category`](../mongodb-mapping/academy.md#entity-videos) | Kategorie | Category |
 | `description` | `text` | `string` | *Workflow: implicit/computed* | Beschreibung | Description |
 
 ### Detail Panel (Create / Edit)
 
 | UI Field / Label | UI Element | Abstract Type | DB Collection.Field | German | English |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| `data.path` | `<input>` | `string` | [`video.path`](../../mongodb-mapping/academy.md#entity-videos-videos) | Pfad | Path |
-| `data.previewImage` | `<input>` | `string` | [`video.preview`](../../mongodb-mapping/academy.md#entity-videos-videos) | Vorschaubild | Preview Image |
-| `data.title` | `<input>` | `string` | [`video.name`](../../mongodb-mapping/academy.md#entity-videos-videos) | Titel | Title |
-| `data.lengthInSeconds` | `<input>` | `number` | [`video.lengthInSeconds`](../../mongodb-mapping/academy.md#entity-videos-videos) | Laenge (in Sekunden) | Length (in seconds) |
-| `data.category` | `<input>` (autocomplete) | `reference:VideoCategory` | [`video.category`](../../mongodb-mapping/academy.md#entity-videos-videos) | Kategorie | Category |
+| `data.path` | `<input>` | `string` | [`video.path`](../mongodb-mapping/academy.md#entity-videos) | Pfad | Path |
+| `data.previewImage` | `<input>` | `string` | [`video.preview`](../mongodb-mapping/academy.md#entity-videos) | Vorschaubild | Preview Image |
+| `data.title` | `<input>` | `string` | [`video.name`](../mongodb-mapping/academy.md#entity-videos) | Titel | Title |
+| `data.lengthInSeconds` | `<input>` | `number` | [`video.lengthInSeconds`](../mongodb-mapping/academy.md#entity-videos) | Laenge (in Sekunden) | Length (in seconds) |
+| `data.category` | `<input>` (autocomplete) | `reference:VideoCategory` | [`video.category`](../mongodb-mapping/academy.md#entity-videos) | Kategorie | Category |
 | `data.description` | `<textarea>` | `string` | *Workflow: implicit/computed* | Beschreibung | Description |
 
 ## Video Library (videoLibrary)
@@ -74,19 +74,19 @@ title: 'Data Dictionary Academy'
 
 | UI Field / Label | UI Element | Abstract Type | DB Collection.Field | German | English |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| `thumbnail` | `<img>` | `image` | [`videoCategory.thumbnail`](../../mongodb-mapping/academy.md#entity-videokategorien-video-categories) | - | - |
-| `children.title` | `<span>` | `string` | [`videoCategory.title`](../../mongodb-mapping/academy.md#entity-videokategorien-video-categories) | - | - |
+| `thumbnail` | `<img>` | `image` | [`videoCategory.thumbnail`](../mongodb-mapping/academy.md#entity-video-categories) | - | - |
+| `children.title` | `<span>` | `string` | [`videoCategory.title`](../mongodb-mapping/academy.md#entity-video-categories) | - | - |
 | `children.totalTime` | `<span>` | `number` | *Workflow: Computed total time* | - | - |
-| `children.description` | `<p>` | `string` | [`videoCategory.description`](../../mongodb-mapping/academy.md#entity-videokategorien-video-categories) | - | - |
+| `children.description` | `<p>` | `string` | [`videoCategory.description`](../mongodb-mapping/academy.md#entity-video-categories) | - | - |
 | `pojo.seen` | `<i>` | `boolean` | *Workflow: Computed (has seen all)* | - | - |
 
 ### Video Cards (`#videoList`)
 
 | UI Field / Label | UI Element | Abstract Type | DB Collection.Field | German | English |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| `thumbnail` | `<img>` | `image` | [`video.preview`](../../mongodb-mapping/academy.md#entity-videos-videos) | - | - |
-| `videos.title` | `<span>` | `string` | [`video.name`](../../mongodb-mapping/academy.md#entity-videos-videos) | - | - |
-| `videos.length` | `<span>` | `number` | [`video.lengthInSeconds`](../../mongodb-mapping/academy.md#entity-videos-videos) | - | - |
+| `thumbnail` | `<img>` | `image` | [`video.preview`](../mongodb-mapping/academy.md#entity-videos) | - | - |
+| `videos.title` | `<span>` | `string` | [`video.name`](../mongodb-mapping/academy.md#entity-videos) | - | - |
+| `videos.length` | `<span>` | `number` | [`video.lengthInSeconds`](../mongodb-mapping/academy.md#entity-videos) | - | - |
 | `videos.description` | `<p>` | `string` | *Workflow: Computed/API* | - | - |
 | `pojo.seen` | `<i>` | `boolean` | *Workflow: Computed* | - | - |
 
@@ -96,21 +96,21 @@ title: 'Data Dictionary Academy'
 
 | UI Field / Label | UI Element | Abstract Type | DB Collection.Field | German | English |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| `id` | `text` | `number` | [`videoCategory._id`](../../mongodb-mapping/academy.md#entity-videokategorien-video-categories) | ID | ID |
-| `title` | `text` | `string` | [`videoCategory.title`](../../mongodb-mapping/academy.md#entity-videokategorien-video-categories) | Titel | Title |
-| `description` | `text` | `string` | [`videoCategory.description`](../../mongodb-mapping/academy.md#entity-videokategorien-video-categories) | Beschreibung | Description |
+| `id` | `text` | `number` | [`videoCategory._id`](../mongodb-mapping/academy.md#entity-video-categories) | ID | ID |
+| `title` | `text` | `string` | [`videoCategory.title`](../mongodb-mapping/academy.md#entity-video-categories) | Titel | Title |
+| `description` | `text` | `string` | [`videoCategory.description`](../mongodb-mapping/academy.md#entity-video-categories) | Beschreibung | Description |
 | `priority` | `text` | `number` | *Workflow: Implicit field* | Prioritaet | Priority |
 
 ### Detail Panel (Create / Edit)
 
 | UI Field / Label | UI Element | Abstract Type | DB Collection.Field | German | English |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| `data.title` | `<input>` | `string` | [`videoCategory.title`](../../mongodb-mapping/academy.md#entity-videokategorien-video-categories) | Titel | Title |
-| `data.parentCategory` | `<input>` (autocomplete) | `reference:VideoCategory` | [`videoCategory.parent`](../../mongodb-mapping/academy.md#entity-videokategorien-video-categories) | Uebergeordnete Kategorie | Parent Category |
+| `data.title` | `<input>` | `string` | [`videoCategory.title`](../mongodb-mapping/academy.md#entity-video-categories) | Titel | Title |
+| `data.parentCategory` | `<input>` (autocomplete) | `reference:VideoCategory` | [`videoCategory.parent`](../mongodb-mapping/academy.md#entity-video-categories) | Uebergeordnete Kategorie | Parent Category |
 | `data.priority` | `<input>` | `number` | *Workflow: VideoCategoryService.update* | Prioritaet | Priority |
-| `data.thumbnail` | `<input type="file">` | `file` | [`videoCategory.thumbnail`](../../mongodb-mapping/academy.md#entity-videokategorien-video-categories) | Vorschaubild | Thumbnail |
-| `data.id` (preview) | `<img>` | `image` | [`videoCategory._id`](../../mongodb-mapping/academy.md#entity-videokategorien-video-categories) | - | - |
-| `data.description` | `<textarea>` | `string` | [`videoCategory.description`](../../mongodb-mapping/academy.md#entity-videokategorien-video-categories) | Beschreibung | Description |
+| `data.thumbnail` | `<input type="file">` | `file` | [`videoCategory.thumbnail`](../mongodb-mapping/academy.md#entity-video-categories) | Vorschaubild | Thumbnail |
+| `data.id` (preview) | `<img>` | `image` | [`videoCategory._id`](../mongodb-mapping/academy.md#entity-video-categories) | - | - |
+| `data.description` | `<textarea>` | `string` | [`videoCategory.description`](../mongodb-mapping/academy.md#entity-video-categories) | Beschreibung | Description |
 | `data.jobs` (insert) | `<input>` (autocomplete) | `reference:Job` | *Workflow: VideoCategoryService.update* | Job | Job |
 | `data.jobs` (list) | `collection` | `array` | *Workflow: VideoCategoryService.update* | - | - |
 
@@ -132,21 +132,21 @@ title: 'Data Dictionary Academy'
 
 | UI Field / Label | UI Element | Abstract Type | DB Collection.Field | German | English |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| `id` | `text` | `number` | [`userVideoHistory._id`](../../mongodb-mapping/academy.md#entity-video-verlauf-user-video-history) | ID | ID |
-| `user` | `text` | `reference:User` | [`userVideoHistory.user`](../../mongodb-mapping/academy.md#entity-video-verlauf-user-video-history) | Benutzer | User |
-| `video` | `text` | `reference:Video` | [`userVideoHistory.video`](../../mongodb-mapping/academy.md#entity-video-verlauf-user-video-history) | Video | Video |
-| `dateStart` | `text` | `datetime` | [`userVideoHistory.dateStart`](../../mongodb-mapping/academy.md#entity-video-verlauf-user-video-history) | Startdatum | Start Date |
-| `dateLast` | `text` | `datetime` | [`userVideoHistory.dateLast`](../../mongodb-mapping/academy.md#entity-video-verlauf-user-video-history) | Letztes Datum | Last Date |
-| `timeWatched` | `text` | `number` | [`userVideoHistory.timeWatched`](../../mongodb-mapping/academy.md#entity-video-verlauf-user-video-history) | Ansichtszeit | Time Watched |
+| `id` | `text` | `number` | [`userVideoHistory._id`](../mongodb-mapping/academy.md#entity-user-video-history) | ID | ID |
+| `user` | `text` | `reference:User` | [`userVideoHistory.user`](../mongodb-mapping/academy.md#entity-user-video-history) | Benutzer | User |
+| `video` | `text` | `reference:Video` | [`userVideoHistory.video`](../mongodb-mapping/academy.md#entity-user-video-history) | Video | Video |
+| `dateStart` | `text` | `datetime` | [`userVideoHistory.dateStart`](../mongodb-mapping/academy.md#entity-user-video-history) | Startdatum | Start Date |
+| `dateLast` | `text` | `datetime` | [`userVideoHistory.dateLast`](../mongodb-mapping/academy.md#entity-user-video-history) | Letztes Datum | Last Date |
+| `timeWatched` | `text` | `number` | [`userVideoHistory.timeWatched`](../mongodb-mapping/academy.md#entity-user-video-history) | Ansichtszeit | Time Watched |
 | `dateDone` | `text` | `datetime` | *Workflow: implicit/computed* | Abschlussdatum | Done Date |
-| `sessions` | `text` | `number` | [`userVideoHistory.sessions`](../../mongodb-mapping/academy.md#entity-video-verlauf-user-video-history) | Sitzungen | Sessions |
+| `sessions` | `text` | `number` | [`userVideoHistory.sessions`](../mongodb-mapping/academy.md#entity-user-video-history) | Sitzungen | Sessions |
 
 ### Detail Panel (Create / Edit)
 
 | UI Field / Label | UI Element | Abstract Type | DB Collection.Field | German | English |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| `data.video` | `autocomplete` | `reference:Video` | [`userVideoHistory.video`](../../mongodb-mapping/academy.md#entity-video-verlauf-user-video-history) | Video | Video |
-| `data.dateStart` | `<input type="date">` | `datetime` | [`userVideoHistory.dateStart`](../../mongodb-mapping/academy.md#entity-video-verlauf-user-video-history) | Startdatum | Start Date |
-| `data.dateLast` | `<input type="date">` | `datetime` | [`userVideoHistory.dateLast`](../../mongodb-mapping/academy.md#entity-video-verlauf-user-video-history) | Letztes Datum | Last Date |
-| `data.timeWatched` | `<input type="number">` | `number` | [`userVideoHistory.timeWatched`](../../mongodb-mapping/academy.md#entity-video-verlauf-user-video-history) | Ansichtszeit | Time Watched |
+| `data.video` | `autocomplete` | `reference:Video` | [`userVideoHistory.video`](../mongodb-mapping/academy.md#entity-user-video-history) | Video | Video |
+| `data.dateStart` | `<input type="date">` | `datetime` | [`userVideoHistory.dateStart`](../mongodb-mapping/academy.md#entity-user-video-history) | Startdatum | Start Date |
+| `data.dateLast` | `<input type="date">` | `datetime` | [`userVideoHistory.dateLast`](../mongodb-mapping/academy.md#entity-user-video-history) | Letztes Datum | Last Date |
+| `data.timeWatched` | `<input type="number">` | `number` | [`userVideoHistory.timeWatched`](../mongodb-mapping/academy.md#entity-user-video-history) | Ansichtszeit | Time Watched |
 | `data.dateDone` | `<input type="date">` | `datetime` | *Workflow: implicit/computed* | Abschlussdatum | Done Date |

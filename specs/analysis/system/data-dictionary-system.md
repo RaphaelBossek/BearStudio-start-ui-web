@@ -25,19 +25,19 @@ This document maps all UI elements from the System modules (Sysconfig, Telephony
 | Decrypt Emergency Form | Notfallbogen entschlüsseln | — | — | — | `action` | `button` | — | — | — | **Workflow-only**: calls `BasisWebDataService.decryptBogen` |
 | Show Treatment Data (XML) | Behandlungs-Daten anzeigen (XML) | — | — | — | `action` | `button` | — | — | — | **Workflow-only**: calls `BasisWebDataService.getSerializedResult` |
 | **Tab: Cache** | | | | | | | | | | |
-| Id | Id | `cache.id` | `cacheState._id` | [system.md#entity-cache-status-cache-state](../mongodb-mapping/system.md#entity-cache-status-cache-state) | `string` | `text` | — | — | Yes | Grid column |
-| Size | Size | `cache.size` | `cacheState.size` (inferred) | [system.md#entity-cache-status-cache-state](../mongodb-mapping/system.md#entity-cache-status-cache-state) | `number` | `text` | — | — | Yes | Grid column |
-| TS | TS | `cache.ts` | `cacheState.ts` (inferred) | [system.md#entity-cache-status-cache-state](../mongodb-mapping/system.md#entity-cache-status-cache-state) | `datetime` | `text` | — | — | Yes | Grid column |
-| Hits | Hits | `cache.hits` | `cacheState.hits` (inferred) | [system.md#entity-cache-status-cache-state](../mongodb-mapping/system.md#entity-cache-status-cache-state) | `number` | `text` | — | — | Yes | Grid column |
-| Misses | Misses | `cache.miss` | `cacheState.miss` (inferred) | [system.md#entity-cache-status-cache-state](../mongodb-mapping/system.md#entity-cache-status-cache-state) | `number` | `text` | — | — | Yes | Grid column |
-| Resets | Resets | `cache.resets` | `cacheState.resets` (inferred) | [system.md#entity-cache-status-cache-state](../mongodb-mapping/system.md#entity-cache-status-cache-state) | `number` | `text` | — | — | Yes | Grid column |
-| DbChecks | DbChecks | `cache.dbchecks` | `cacheState.dbchecks` (inferred) | [system.md#entity-cache-status-cache-state](../mongodb-mapping/system.md#entity-cache-status-cache-state) | `number` | `text` | — | — | Yes | Grid column |
+| Id | Id | `cache.id` | `cacheState._id` | [system.md#entity-cache-state](../mongodb-mapping/system.md#entity-cache-state) | `string` | `text` | — | — | Yes | Grid column |
+| Size | Size | `cache.size` | `cacheState.size` (inferred) | [system.md#entity-cache-state](../mongodb-mapping/system.md#entity-cache-state) | `number` | `text` | — | — | Yes | Grid column |
+| TS | TS | `cache.ts` | `cacheState.ts` (inferred) | [system.md#entity-cache-state](../mongodb-mapping/system.md#entity-cache-state) | `datetime` | `text` | — | — | Yes | Grid column |
+| Hits | Hits | `cache.hits` | `cacheState.hits` (inferred) | [system.md#entity-cache-state](../mongodb-mapping/system.md#entity-cache-state) | `number` | `text` | — | — | Yes | Grid column |
+| Misses | Misses | `cache.miss` | `cacheState.miss` (inferred) | [system.md#entity-cache-state](../mongodb-mapping/system.md#entity-cache-state) | `number` | `text` | — | — | Yes | Grid column |
+| Resets | Resets | `cache.resets` | `cacheState.resets` (inferred) | [system.md#entity-cache-state](../mongodb-mapping/system.md#entity-cache-state) | `number` | `text` | — | — | Yes | Grid column |
+| DbChecks | DbChecks | `cache.dbchecks` | `cacheState.dbchecks` (inferred) | [system.md#entity-cache-state](../mongodb-mapping/system.md#entity-cache-state) | `number` | `text` | — | — | Yes | Grid column |
 | Verify Caches | Caches Verifizieren | — | — | — | `action` | `button` | — | — | — | **Workflow-only**: calls `AdminService.verifyCaches` |
 | Clear Caches | Caches Leeren | — | — | — | `action` | `button` | — | — | — | **Workflow-only**: calls `AdminService.clearCaches` |
 | **Tab: Data Update** | | | | | | | | | | |
 | Year | Jahr | `updatePublicHolidaysYear` | — | — | `number` | `number input` | — | No | No | — |
-| Id Format | Id Format | `data.idFormat` | `videoclinicSystem.invoiceIdFormat` | [system.md#entity-systemkonfiguration-videoclinic-system](../mongodb-mapping/system.md#entity-systemkonfiguration-videoclinic-system) | `string` | `text input` | — | Yes | No | — |
-| Count | Count | `data.count` | `sequenceEntity.value` | [system.md#entity-sequenz-z-hler-sequence-entity](../mongodb-mapping/system.md#entity-sequenz-z-hler-sequence-entity) | `number` | `number input` | — | Yes | No | — |
+| Id Format | Id Format | `data.idFormat` | `videoclinicSystem.invoiceIdFormat` | [system.md#entity-videoclinic-system](../mongodb-mapping/system.md#entity-videoclinic-system) | `string` | `text input` | — | Yes | No | — |
+| Count | Count | `data.count` | `sequenceEntity.value` | [system.md#entity-sequence-entity](../mongodb-mapping/system.md#entity-sequence-entity) | `number` | `number input` | — | Yes | No | — |
 | Load Public Holidays | Feiertage laden | — | — | — | `action` | `button` | — | — | — | **Workflow-only**: calls `ImportService.updatePublicHolidays` |
 | Sync Locations | Orte mit Otobo Abgleichen | — | — | — | `action` | `button` | — | — | — | **Workflow-only**: calls `LocationService.otoboSync` |
 | Update Count/Format | Update Count/Format | — | — | — | `action` | `button` | — | — | — | **Workflow-only**: calls `AdminService.updateCashRegister` |
@@ -81,34 +81,34 @@ This document maps all UI elements from the System modules (Sysconfig, Telephony
 | Month | Monat | `month` | — | — | `number` | `select` | — | No | No | Filter |
 | Day | Tag | `day` | — | — | `number` | `select` | — | No | No | Filter |
 | **Detail Fields** | | | | | | | | | | |
-| ID | ID | `data.id` | `cDRCall._id` | [external-data.md#entity-anrufliste-cdr-calls](../mongodb-mapping/external-data.md#entity-anrufliste-cdr-calls) | `number` | `text input` | — | No | Yes | Grid + Detail |
-| Status | Status | `data.type` | `cDRCall.type` | [external-data.md#entity-anrufliste-cdr-calls](../mongodb-mapping/external-data.md#entity-anrufliste-cdr-calls) | `enum:CdrStatus` | `text` | INVALID_UNKNOWN, DIRECT, FORWARDED, etc | No | Yes | Grid |
-| Expert | Experte | `data.user` | `cDRCall.userId` (DBRef) | [external-data.md#entity-anrufliste-cdr-calls](../mongodb-mapping/external-data.md#entity-anrufliste-cdr-calls) | `reference:user` | `text` | — | No | Yes | Grid |
-| Place | Ort | `data.location` | `cDRCall.location` | [external-data.md#entity-anrufliste-cdr-calls](../mongodb-mapping/external-data.md#entity-anrufliste-cdr-calls) | `string` | `text` | — | No | Yes | Grid |
-| Date Start | Startdatum | `data.dateStart` | `cDRCall.dateStart` | [external-data.md#entity-anrufliste-cdr-calls](../mongodb-mapping/external-data.md#entity-anrufliste-cdr-calls) | `datetime` | `date input` | — | No | No | Grid + Detail |
-| Connected | Verbunden | `data.dateConnect` | `cDRCall.dateConnect` | [external-data.md#entity-anrufliste-cdr-calls](../mongodb-mapping/external-data.md#entity-anrufliste-cdr-calls) | `datetime` | `date input` | — | No | No | Grid + Detail |
-| Ended | Beendet | `data.dateDisconnect` | `cDRCall.dateDisconnect` | [external-data.md#entity-anrufliste-cdr-calls](../mongodb-mapping/external-data.md#entity-anrufliste-cdr-calls) | `datetime` | `date input` | — | No | No | Grid + Detail |
-| Duration | Dauer | `data.duration` | `cDRCall.duration` | [external-data.md#entity-anrufliste-cdr-calls](../mongodb-mapping/external-data.md#entity-anrufliste-cdr-calls) | `number` | `number input` | — | No | No | Grid + Detail |
-| Caller | Anrufer | `data.callingNumber` | `cDRCall.callingNumber` | [external-data.md#entity-anrufliste-cdr-calls](../mongodb-mapping/external-data.md#entity-anrufliste-cdr-calls) | `string` | `text input` | — | No | No | Grid + Detail |
-| Receiver | Empfänger | `data.calledNumber` | `cDRCall.calledNumber` (inferred) | [external-data.md#entity-anrufliste-cdr-calls](../mongodb-mapping/external-data.md#entity-anrufliste-cdr-calls) | `string` | `text` | — | No | Yes | Grid |
-| Calling User | callingUser | `data.callingUser` | `cDRCall.callingUser` (inferred) | [external-data.md#entity-anrufliste-cdr-calls](../mongodb-mapping/external-data.md#entity-anrufliste-cdr-calls) | `string` | `text input` | — | No | No | Grid + Detail |
-| Final User | Endbenutzer | `data.finalUserId` | `cDRCall.finalUserId` (inferred) | [external-data.md#entity-anrufliste-cdr-calls](../mongodb-mapping/external-data.md#entity-anrufliste-cdr-calls) | `string` | `text input` | — | No | No | Grid + Detail |
-| Final Number | Endnummer | `data.finalNumber` | `cDRCall.finalNumber` (inferred) | [external-data.md#entity-anrufliste-cdr-calls](../mongodb-mapping/external-data.md#entity-anrufliste-cdr-calls) | `string` | `text input` | — | No | No | Grid + Detail |
-| Conversation ID | conversationId | `data.conversationId` | `cDRCall.conversationId` (inferred) | [external-data.md#entity-anrufliste-cdr-calls](../mongodb-mapping/external-data.md#entity-anrufliste-cdr-calls) | `number` | `number input` | — | No | No | Grid + Detail |
-| Assigned | Zugeordnet | `data.assignmentId` | `cDRCall.assignmentId` (DBRef) | [external-data.md#entity-anrufliste-cdr-calls](../mongodb-mapping/external-data.md#entity-anrufliste-cdr-calls) | `number` | `number input` | — | No | No | Grid + Detail |
-| Pk ID | pkId | `data.pkId` | `cDRCall.pkId` (inferred) | [external-data.md#entity-anrufliste-cdr-calls](../mongodb-mapping/external-data.md#entity-anrufliste-cdr-calls) | `number` | `number input` | — | No | No | Grid + Detail |
-| Calling Uri | callingUri | `data.callingUri` | `cDRCall.callingUri` (inferred) | [external-data.md#entity-anrufliste-cdr-calls](../mongodb-mapping/external-data.md#entity-anrufliste-cdr-calls) | `string` | `text input` | — | No | No | Detail |
-| Original Called Uri | originalCalledUri | `data.originalCalledUri` | `cDRCall.originalCalledUri` (inferred) | [external-data.md#entity-anrufliste-cdr-calls](../mongodb-mapping/external-data.md#entity-anrufliste-cdr-calls) | `string` | `text input` | — | No | No | Detail |
-| Last Redirect | lastRedirect | `data.lastRedirect` | `cDRCall.lastRedirect` (inferred) | [external-data.md#entity-anrufliste-cdr-calls](../mongodb-mapping/external-data.md#entity-anrufliste-cdr-calls) | `string` | `text input` | — | No | No | Detail |
-| Join On Behalf | joinOnBehalf | `data.joinOnBehalf` | `cDRCall.joinOnBehalf` (inferred) | [external-data.md#entity-anrufliste-cdr-calls](../mongodb-mapping/external-data.md#entity-anrufliste-cdr-calls) | `number` | `number input` | — | No | No | Detail |
-| Dest Conversation ID | destConversationId | `data.destConversationId` | `cDRCall.destConversationId` (inferred) | [external-data.md#entity-anrufliste-cdr-calls](../mongodb-mapping/external-data.md#entity-anrufliste-cdr-calls) | `string` | `text input` | — | No | No | Detail |
-| Original Number | originalNumber | `data.originalNumber` | `cDRCall.originalNumber` (inferred) | [external-data.md#entity-anrufliste-cdr-calls](../mongodb-mapping/external-data.md#entity-anrufliste-cdr-calls) | `string` | `text input` | — | No | No | Detail |
-| Dest Device | destDevice | `data.destDevice` | `cDRCall.destDevice` (inferred) | [external-data.md#entity-anrufliste-cdr-calls](../mongodb-mapping/external-data.md#entity-anrufliste-cdr-calls) | `string` | `text input` | — | No | No | Detail |
-| Orig Device | origDevice | `data.origDevice` | `cDRCall.origDevice` (inferred) | [external-data.md#entity-anrufliste-cdr-calls](../mongodb-mapping/external-data.md#entity-anrufliste-cdr-calls) | `string` | `text input` | — | No | No | Detail |
-| Video | ideo | `data.ideo` | `cDRCall.video` | [external-data.md#entity-anrufliste-cdr-calls](../mongodb-mapping/external-data.md#entity-anrufliste-cdr-calls) | `boolean` | `checkbox` | — | No | No | Detail |
-| Controller Info | controllerInfo | `data.controllerInfo` | `cDRCall.controllerInfo` (inferred) | [external-data.md#entity-anrufliste-cdr-calls](../mongodb-mapping/external-data.md#entity-anrufliste-cdr-calls) | `string` | `text input` | — | No | No | Detail |
-| Hunt Pilot | huntPilot | `data.huntPilot` | `cDRCall.huntPilot` (inferred) | [external-data.md#entity-anrufliste-cdr-calls](../mongodb-mapping/external-data.md#entity-anrufliste-cdr-calls) | `string` | `text input` | — | No | No | Detail |
-| Dest Cause | destCause | `data.destCause` | `cDRCall.destCause` (inferred) | [external-data.md#entity-anrufliste-cdr-calls](../mongodb-mapping/external-data.md#entity-anrufliste-cdr-calls) | `number` | `number input` | — | No | No | Detail |
+| ID | ID | `data.id` | `cDRCall._id` | [external-data.md#entity-cdr-calls](../mongodb-mapping/external-data.md#entity-cdr-calls) | `number` | `text input` | — | No | Yes | Grid + Detail |
+| Status | Status | `data.type` | `cDRCall.type` | [external-data.md#entity-cdr-calls](../mongodb-mapping/external-data.md#entity-cdr-calls) | `enum:CdrStatus` | `text` | INVALID_UNKNOWN, DIRECT, FORWARDED, etc | No | Yes | Grid |
+| Expert | Experte | `data.user` | `cDRCall.userId` (DBRef) | [external-data.md#entity-cdr-calls](../mongodb-mapping/external-data.md#entity-cdr-calls) | `reference:user` | `text` | — | No | Yes | Grid |
+| Place | Ort | `data.location` | `cDRCall.location` | [external-data.md#entity-cdr-calls](../mongodb-mapping/external-data.md#entity-cdr-calls) | `string` | `text` | — | No | Yes | Grid |
+| Date Start | Startdatum | `data.dateStart` | `cDRCall.dateStart` | [external-data.md#entity-cdr-calls](../mongodb-mapping/external-data.md#entity-cdr-calls) | `datetime` | `date input` | — | No | No | Grid + Detail |
+| Connected | Verbunden | `data.dateConnect` | `cDRCall.dateConnect` | [external-data.md#entity-cdr-calls](../mongodb-mapping/external-data.md#entity-cdr-calls) | `datetime` | `date input` | — | No | No | Grid + Detail |
+| Ended | Beendet | `data.dateDisconnect` | `cDRCall.dateDisconnect` | [external-data.md#entity-cdr-calls](../mongodb-mapping/external-data.md#entity-cdr-calls) | `datetime` | `date input` | — | No | No | Grid + Detail |
+| Duration | Dauer | `data.duration` | `cDRCall.duration` | [external-data.md#entity-cdr-calls](../mongodb-mapping/external-data.md#entity-cdr-calls) | `number` | `number input` | — | No | No | Grid + Detail |
+| Caller | Anrufer | `data.callingNumber` | `cDRCall.callingNumber` | [external-data.md#entity-cdr-calls](../mongodb-mapping/external-data.md#entity-cdr-calls) | `string` | `text input` | — | No | No | Grid + Detail |
+| Receiver | Empfänger | `data.calledNumber` | `cDRCall.calledNumber` (inferred) | [external-data.md#entity-cdr-calls](../mongodb-mapping/external-data.md#entity-cdr-calls) | `string` | `text` | — | No | Yes | Grid |
+| Calling User | callingUser | `data.callingUser` | `cDRCall.callingUser` (inferred) | [external-data.md#entity-cdr-calls](../mongodb-mapping/external-data.md#entity-cdr-calls) | `string` | `text input` | — | No | No | Grid + Detail |
+| Final User | Endbenutzer | `data.finalUserId` | `cDRCall.finalUserId` (inferred) | [external-data.md#entity-cdr-calls](../mongodb-mapping/external-data.md#entity-cdr-calls) | `string` | `text input` | — | No | No | Grid + Detail |
+| Final Number | Endnummer | `data.finalNumber` | `cDRCall.finalNumber` (inferred) | [external-data.md#entity-cdr-calls](../mongodb-mapping/external-data.md#entity-cdr-calls) | `string` | `text input` | — | No | No | Grid + Detail |
+| Conversation ID | conversationId | `data.conversationId` | `cDRCall.conversationId` (inferred) | [external-data.md#entity-cdr-calls](../mongodb-mapping/external-data.md#entity-cdr-calls) | `number` | `number input` | — | No | No | Grid + Detail |
+| Assigned | Zugeordnet | `data.assignmentId` | `cDRCall.assignmentId` (DBRef) | [external-data.md#entity-cdr-calls](../mongodb-mapping/external-data.md#entity-cdr-calls) | `number` | `number input` | — | No | No | Grid + Detail |
+| Pk ID | pkId | `data.pkId` | `cDRCall.pkId` (inferred) | [external-data.md#entity-cdr-calls](../mongodb-mapping/external-data.md#entity-cdr-calls) | `number` | `number input` | — | No | No | Grid + Detail |
+| Calling Uri | callingUri | `data.callingUri` | `cDRCall.callingUri` (inferred) | [external-data.md#entity-cdr-calls](../mongodb-mapping/external-data.md#entity-cdr-calls) | `string` | `text input` | — | No | No | Detail |
+| Original Called Uri | originalCalledUri | `data.originalCalledUri` | `cDRCall.originalCalledUri` (inferred) | [external-data.md#entity-cdr-calls](../mongodb-mapping/external-data.md#entity-cdr-calls) | `string` | `text input` | — | No | No | Detail |
+| Last Redirect | lastRedirect | `data.lastRedirect` | `cDRCall.lastRedirect` (inferred) | [external-data.md#entity-cdr-calls](../mongodb-mapping/external-data.md#entity-cdr-calls) | `string` | `text input` | — | No | No | Detail |
+| Join On Behalf | joinOnBehalf | `data.joinOnBehalf` | `cDRCall.joinOnBehalf` (inferred) | [external-data.md#entity-cdr-calls](../mongodb-mapping/external-data.md#entity-cdr-calls) | `number` | `number input` | — | No | No | Detail |
+| Dest Conversation ID | destConversationId | `data.destConversationId` | `cDRCall.destConversationId` (inferred) | [external-data.md#entity-cdr-calls](../mongodb-mapping/external-data.md#entity-cdr-calls) | `string` | `text input` | — | No | No | Detail |
+| Original Number | originalNumber | `data.originalNumber` | `cDRCall.originalNumber` (inferred) | [external-data.md#entity-cdr-calls](../mongodb-mapping/external-data.md#entity-cdr-calls) | `string` | `text input` | — | No | No | Detail |
+| Dest Device | destDevice | `data.destDevice` | `cDRCall.destDevice` (inferred) | [external-data.md#entity-cdr-calls](../mongodb-mapping/external-data.md#entity-cdr-calls) | `string` | `text input` | — | No | No | Detail |
+| Orig Device | origDevice | `data.origDevice` | `cDRCall.origDevice` (inferred) | [external-data.md#entity-cdr-calls](../mongodb-mapping/external-data.md#entity-cdr-calls) | `string` | `text input` | — | No | No | Detail |
+| Video | ideo | `data.ideo` | `cDRCall.video` | [external-data.md#entity-cdr-calls](../mongodb-mapping/external-data.md#entity-cdr-calls) | `boolean` | `checkbox` | — | No | No | Detail |
+| Controller Info | controllerInfo | `data.controllerInfo` | `cDRCall.controllerInfo` (inferred) | [external-data.md#entity-cdr-calls](../mongodb-mapping/external-data.md#entity-cdr-calls) | `string` | `text input` | — | No | No | Detail |
+| Hunt Pilot | huntPilot | `data.huntPilot` | `cDRCall.huntPilot` (inferred) | [external-data.md#entity-cdr-calls](../mongodb-mapping/external-data.md#entity-cdr-calls) | `string` | `text input` | — | No | No | Detail |
+| Dest Cause | destCause | `data.destCause` | `cDRCall.destCause` (inferred) | [external-data.md#entity-cdr-calls](../mongodb-mapping/external-data.md#entity-cdr-calls) | `number` | `number input` | — | No | No | Detail |
 | Export | Exportieren | — | — | — | `action` | `button` | — | — | — | **Workflow-only**: calls `generateExport(xls)` |
 | Export CSV | Export CSV | — | — | — | `action` | `button` | — | — | — | **Workflow-only**: calls `generateExport(csv)` |
 | Reset Calls | Reset Calls | — | — | — | `action` | `button` | — | — | — | **Workflow-only**: calls `resetCalls` |
@@ -119,17 +119,17 @@ This document maps all UI elements from the System modules (Sysconfig, Telephony
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| ID | ID | `data.id` | `cDRCallAssignment._id` | [external-data.md#entity-cdr-call-zuweisungen-cdr-call-assignment](../mongodb-mapping/external-data.md#entity-cdr-call-zuweisungen-cdr-call-assignment) | `number` | `text input` | — | No | Yes | Grid + Detail |
-| Confidence | confidence | `data.confidence` | `cDRCallAssignment.confidence` | [external-data.md#entity-cdr-call-zuweisungen-cdr-call-assignment](../mongodb-mapping/external-data.md#entity-cdr-call-zuweisungen-cdr-call-assignment) | `number` | `number input` | — | No | No | Grid + Detail |
-| Start | Start | `data.start` | `cDRCallAssignment.start` | [external-data.md#entity-cdr-call-zuweisungen-cdr-call-assignment](../mongodb-mapping/external-data.md#entity-cdr-call-zuweisungen-cdr-call-assignment) | `datetime` | `date input` | — | No | No | Grid + Detail |
-| Until | until | `data.until` | `cDRCallAssignment.until` | [external-data.md#entity-cdr-call-zuweisungen-cdr-call-assignment](../mongodb-mapping/external-data.md#entity-cdr-call-zuweisungen-cdr-call-assignment) | `datetime` | `date input` | — | No | No | Grid + Detail |
-| Duration | duration | `data.duration` | `cDRCallAssignment.duration` | [external-data.md#entity-cdr-call-zuweisungen-cdr-call-assignment](../mongodb-mapping/external-data.md#entity-cdr-call-zuweisungen-cdr-call-assignment) | `number` | `number input` | — | No | No | Grid + Detail |
-| User | Benutzer | `data.user` | `cDRCallAssignment.user` | [external-data.md#entity-cdr-call-zuweisungen-cdr-call-assignment](../mongodb-mapping/external-data.md#entity-cdr-call-zuweisungen-cdr-call-assignment) | `reference:User` | `autocomplete` | `UserInfoService.autocomplete` | No | No | Grid + Detail |
-| Location ID | locationId | `data.locationId` | `cDRCallAssignment.locationId` | [external-data.md#entity-cdr-call-zuweisungen-cdr-call-assignment](../mongodb-mapping/external-data.md#entity-cdr-call-zuweisungen-cdr-call-assignment) | `number` | `number input` | — | No | No | Grid + Detail |
-| Location | location | `data.location` | `cDRCallAssignment.location` | [external-data.md#entity-cdr-call-zuweisungen-cdr-call-assignment](../mongodb-mapping/external-data.md#entity-cdr-call-zuweisungen-cdr-call-assignment) | `string` | `text input` | — | No | No | Grid + Detail |
-| Appointment ID | appointmentId | `data.appointmentId` | `cDRCallAssignment.appointmentId` | [external-data.md#entity-cdr-call-zuweisungen-cdr-call-assignment](../mongodb-mapping/external-data.md#entity-cdr-call-zuweisungen-cdr-call-assignment) | `number` | `number input` | — | No | No | Grid + Detail |
-| Consultation ID | consultationId | `data.consultationId` | `cDRCallAssignment.consultationId` | [external-data.md#entity-cdr-call-zuweisungen-cdr-call-assignment](../mongodb-mapping/external-data.md#entity-cdr-call-zuweisungen-cdr-call-assignment) | `number` | `number input` | — | No | No | Grid + Detail |
-| Conference | Conference | `data.conferenceId` | `cDRCallAssignment.conferenceId` (inferred) | [external-data.md#entity-cdr-call-zuweisungen-cdr-call-assignment](../mongodb-mapping/external-data.md#entity-cdr-call-zuweisungen-cdr-call-assignment) | `number` | `text` | — | No | Yes | Grid |
+| ID | ID | `data.id` | `cDRCallAssignment._id` | [external-data.md#entity-cdr-call-assignment](../mongodb-mapping/external-data.md#entity-cdr-call-assignment) | `number` | `text input` | — | No | Yes | Grid + Detail |
+| Confidence | confidence | `data.confidence` | `cDRCallAssignment.confidence` | [external-data.md#entity-cdr-call-assignment](../mongodb-mapping/external-data.md#entity-cdr-call-assignment) | `number` | `number input` | — | No | No | Grid + Detail |
+| Start | Start | `data.start` | `cDRCallAssignment.start` | [external-data.md#entity-cdr-call-assignment](../mongodb-mapping/external-data.md#entity-cdr-call-assignment) | `datetime` | `date input` | — | No | No | Grid + Detail |
+| Until | until | `data.until` | `cDRCallAssignment.until` | [external-data.md#entity-cdr-call-assignment](../mongodb-mapping/external-data.md#entity-cdr-call-assignment) | `datetime` | `date input` | — | No | No | Grid + Detail |
+| Duration | duration | `data.duration` | `cDRCallAssignment.duration` | [external-data.md#entity-cdr-call-assignment](../mongodb-mapping/external-data.md#entity-cdr-call-assignment) | `number` | `number input` | — | No | No | Grid + Detail |
+| User | Benutzer | `data.user` | `cDRCallAssignment.user` | [external-data.md#entity-cdr-call-assignment](../mongodb-mapping/external-data.md#entity-cdr-call-assignment) | `reference:User` | `autocomplete` | `UserInfoService.autocomplete` | No | No | Grid + Detail |
+| Location ID | locationId | `data.locationId` | `cDRCallAssignment.locationId` | [external-data.md#entity-cdr-call-assignment](../mongodb-mapping/external-data.md#entity-cdr-call-assignment) | `number` | `number input` | — | No | No | Grid + Detail |
+| Location | location | `data.location` | `cDRCallAssignment.location` | [external-data.md#entity-cdr-call-assignment](../mongodb-mapping/external-data.md#entity-cdr-call-assignment) | `string` | `text input` | — | No | No | Grid + Detail |
+| Appointment ID | appointmentId | `data.appointmentId` | `cDRCallAssignment.appointmentId` | [external-data.md#entity-cdr-call-assignment](../mongodb-mapping/external-data.md#entity-cdr-call-assignment) | `number` | `number input` | — | No | No | Grid + Detail |
+| Consultation ID | consultationId | `data.consultationId` | `cDRCallAssignment.consultationId` | [external-data.md#entity-cdr-call-assignment](../mongodb-mapping/external-data.md#entity-cdr-call-assignment) | `number` | `number input` | — | No | No | Grid + Detail |
+| Conference | Conference | `data.conferenceId` | `cDRCallAssignment.conferenceId` (inferred) | [external-data.md#entity-cdr-call-assignment](../mongodb-mapping/external-data.md#entity-cdr-call-assignment) | `number` | `text` | — | No | Yes | Grid |
 | Assign | Assign | — | — | — | `action` | `button` | — | — | — | **Workflow-only**: calls `CdrCallService.assignCalls` |
 
 ## 3. Communication & News
@@ -138,25 +138,25 @@ This document maps all UI elements from the System modules (Sysconfig, Telephony
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| ID | ID | `data.id` | `messageOfTheDay._id` | [news.md#entity-system-ank-ndigungen-message-of-the-day](../mongodb-mapping/news.md#entity-system-ank-ndigungen-message-of-the-day) | `number` | `text` | — | No | Yes | Grid |
-| Title | Titel | `data.subject` | `messageOfTheDay.subject` | [news.md#entity-system-ank-ndigungen-message-of-the-day](../mongodb-mapping/news.md#entity-system-ank-ndigungen-message-of-the-day) | `string` | `text input` | — | No | No | Grid + Detail |
-| Enabled | Aktiviert | `data.enabled` | `messageOfTheDay.enabled` | [news.md#entity-system-ank-ndigungen-message-of-the-day](../mongodb-mapping/news.md#entity-system-ank-ndigungen-message-of-the-day) | `boolean` | `checkbox` | — | No | No | Grid + Detail |
-| Priority | Prioritat | `data.priority` | `messageOfTheDay.important` (enum variant) | [news.md#entity-system-ank-ndigungen-message-of-the-day](../mongodb-mapping/news.md#entity-system-ank-ndigungen-message-of-the-day) | `enum:Priority` | `select` | LOW, NORMAL, HIGH, URGENT | No | No | Grid + Detail |
-| Start date | Start | `data.startDate` | `messageOfTheDay.dateStart` | [news.md#entity-system-ank-ndigungen-message-of-the-day](../mongodb-mapping/news.md#entity-system-ank-ndigungen-message-of-the-day) | `date` | `date input` | — | No | No | Grid + Detail |
-| Start time | Start | `data.startTime` | `messageOfTheDay.dateStart` | [news.md#entity-system-ank-ndigungen-message-of-the-day](../mongodb-mapping/news.md#entity-system-ank-ndigungen-message-of-the-day) | `time` | `time input` | — | No | No | Detail |
-| End date | Ende | `data.endDate` | `messageOfTheDay.dateEnd` | [news.md#entity-system-ank-ndigungen-message-of-the-day](../mongodb-mapping/news.md#entity-system-ank-ndigungen-message-of-the-day) | `date` | `date input` | — | No | No | Detail |
-| End time | Ende | `data.endTime` | `messageOfTheDay.dateEnd` | [news.md#entity-system-ank-ndigungen-message-of-the-day](../mongodb-mapping/news.md#entity-system-ank-ndigungen-message-of-the-day) | `time` | `time input` | — | No | No | Detail |
-| Role: New | Neu | `data.roles[]` | `messageOfTheDay.roles` | [news.md#entity-system-ank-ndigungen-message-of-the-day](../mongodb-mapping/news.md#entity-system-ank-ndigungen-message-of-the-day) | `boolean` | `checkbox` | — | No | No | Detail |
-| Role: Expert | Experte | `data.roles[]` | `messageOfTheDay.roles` | [news.md#entity-system-ank-ndigungen-message-of-the-day](../mongodb-mapping/news.md#entity-system-ank-ndigungen-message-of-the-day) | `boolean` | `checkbox` | — | No | No | Detail |
-| Role: Admin Intern | Admin Intern | `data.roles[]` | `messageOfTheDay.roles` | [news.md#entity-system-ank-ndigungen-message-of-the-day](../mongodb-mapping/news.md#entity-system-ank-ndigungen-message-of-the-day) | `boolean` | `checkbox` | — | No | No | Detail |
-| Role: Admin | Admin | `data.roles[]` | `messageOfTheDay.roles` | [news.md#entity-system-ank-ndigungen-message-of-the-day](../mongodb-mapping/news.md#entity-system-ank-ndigungen-message-of-the-day) | `boolean` | `checkbox` | — | No | No | Detail |
-| Role: Customer | Kunde | `data.roles[]` | `messageOfTheDay.roles` | [news.md#entity-system-ank-ndigungen-message-of-the-day](../mongodb-mapping/news.md#entity-system-ank-ndigungen-message-of-the-day) | `boolean` | `checkbox` | — | No | No | Detail |
-| Role: Admin Customer | Admin-Kunde | `data.roles[]` | `messageOfTheDay.roles` | [news.md#entity-system-ank-ndigungen-message-of-the-day](../mongodb-mapping/news.md#entity-system-ank-ndigungen-message-of-the-day) | `boolean` | `checkbox` | — | No | No | Detail |
-| Message | — | `data.message` | `messageOfTheDay.message` | [news.md#entity-system-ank-ndigungen-message-of-the-day](../mongodb-mapping/news.md#entity-system-ank-ndigungen-message-of-the-day) | `bigstring` | `textarea` | — | Yes | No | Markdown content |
-| Link | Link | `data.link` | `messageOfTheDay.link` (inferred) | [news.md#entity-system-ank-ndigungen-message-of-the-day](../mongodb-mapping/news.md#entity-system-ank-ndigungen-message-of-the-day) | `string` | `text input` | — | No | No | Detail |
-| Sort order | Sortierung | `data.sort` | `messageOfTheDay.sort` (inferred) | [news.md#entity-system-ank-ndigungen-message-of-the-day](../mongodb-mapping/news.md#entity-system-ank-ndigungen-message-of-the-day) | `number` | `number input` | — | No | No | Grid + Detail |
-| Width (1-12) | Breite (1-12) | `data.width` | `messageOfTheDay.width` (inferred) | [news.md#entity-system-ank-ndigungen-message-of-the-day](../mongodb-mapping/news.md#entity-system-ank-ndigungen-message-of-the-day) | `number` | `number input` | — | No | No | Detail |
-| Image Position | Bildposition | `data.imagePos` | `messageOfTheDay.imagePos` (inferred) | [news.md#entity-system-ank-ndigungen-message-of-the-day](../mongodb-mapping/news.md#entity-system-ank-ndigungen-message-of-the-day) | `enum:ImagePos` | `select` | LEFT, TOP, BOTTOM, BACK | No | No | Detail |
+| ID | ID | `data.id` | `messageOfTheDay._id` | [news.md#entity-message-of-the-day](../mongodb-mapping/news.md#entity-message-of-the-day) | `number` | `text` | — | No | Yes | Grid |
+| Title | Titel | `data.subject` | `messageOfTheDay.subject` | [news.md#entity-message-of-the-day](../mongodb-mapping/news.md#entity-message-of-the-day) | `string` | `text input` | — | No | No | Grid + Detail |
+| Enabled | Aktiviert | `data.enabled` | `messageOfTheDay.enabled` | [news.md#entity-message-of-the-day](../mongodb-mapping/news.md#entity-message-of-the-day) | `boolean` | `checkbox` | — | No | No | Grid + Detail |
+| Priority | Prioritat | `data.priority` | `messageOfTheDay.important` (enum variant) | [news.md#entity-message-of-the-day](../mongodb-mapping/news.md#entity-message-of-the-day) | `enum:Priority` | `select` | LOW, NORMAL, HIGH, URGENT | No | No | Grid + Detail |
+| Start date | Start | `data.startDate` | `messageOfTheDay.dateStart` | [news.md#entity-message-of-the-day](../mongodb-mapping/news.md#entity-message-of-the-day) | `date` | `date input` | — | No | No | Grid + Detail |
+| Start time | Start | `data.startTime` | `messageOfTheDay.dateStart` | [news.md#entity-message-of-the-day](../mongodb-mapping/news.md#entity-message-of-the-day) | `time` | `time input` | — | No | No | Detail |
+| End date | Ende | `data.endDate` | `messageOfTheDay.dateEnd` | [news.md#entity-message-of-the-day](../mongodb-mapping/news.md#entity-message-of-the-day) | `date` | `date input` | — | No | No | Detail |
+| End time | Ende | `data.endTime` | `messageOfTheDay.dateEnd` | [news.md#entity-message-of-the-day](../mongodb-mapping/news.md#entity-message-of-the-day) | `time` | `time input` | — | No | No | Detail |
+| Role: New | Neu | `data.roles[]` | `messageOfTheDay.roles` | [news.md#entity-message-of-the-day](../mongodb-mapping/news.md#entity-message-of-the-day) | `boolean` | `checkbox` | — | No | No | Detail |
+| Role: Expert | Experte | `data.roles[]` | `messageOfTheDay.roles` | [news.md#entity-message-of-the-day](../mongodb-mapping/news.md#entity-message-of-the-day) | `boolean` | `checkbox` | — | No | No | Detail |
+| Role: Admin Intern | Admin Intern | `data.roles[]` | `messageOfTheDay.roles` | [news.md#entity-message-of-the-day](../mongodb-mapping/news.md#entity-message-of-the-day) | `boolean` | `checkbox` | — | No | No | Detail |
+| Role: Admin | Admin | `data.roles[]` | `messageOfTheDay.roles` | [news.md#entity-message-of-the-day](../mongodb-mapping/news.md#entity-message-of-the-day) | `boolean` | `checkbox` | — | No | No | Detail |
+| Role: Customer | Kunde | `data.roles[]` | `messageOfTheDay.roles` | [news.md#entity-message-of-the-day](../mongodb-mapping/news.md#entity-message-of-the-day) | `boolean` | `checkbox` | — | No | No | Detail |
+| Role: Admin Customer | Admin-Kunde | `data.roles[]` | `messageOfTheDay.roles` | [news.md#entity-message-of-the-day](../mongodb-mapping/news.md#entity-message-of-the-day) | `boolean` | `checkbox` | — | No | No | Detail |
+| Message | — | `data.message` | `messageOfTheDay.message` | [news.md#entity-message-of-the-day](../mongodb-mapping/news.md#entity-message-of-the-day) | `bigstring` | `textarea` | — | Yes | No | Markdown content |
+| Link | Link | `data.link` | `messageOfTheDay.link` (inferred) | [news.md#entity-message-of-the-day](../mongodb-mapping/news.md#entity-message-of-the-day) | `string` | `text input` | — | No | No | Detail |
+| Sort order | Sortierung | `data.sort` | `messageOfTheDay.sort` (inferred) | [news.md#entity-message-of-the-day](../mongodb-mapping/news.md#entity-message-of-the-day) | `number` | `number input` | — | No | No | Grid + Detail |
+| Width (1-12) | Breite (1-12) | `data.width` | `messageOfTheDay.width` (inferred) | [news.md#entity-message-of-the-day](../mongodb-mapping/news.md#entity-message-of-the-day) | `number` | `number input` | — | No | No | Detail |
+| Image Position | Bildposition | `data.imagePos` | `messageOfTheDay.imagePos` (inferred) | [news.md#entity-message-of-the-day](../mongodb-mapping/news.md#entity-message-of-the-day) | `enum:ImagePos` | `select` | LEFT, TOP, BOTTOM, BACK | No | No | Detail |
 | File upload | — | `upload` | — | — | `file` | `file upload` | — | No | No | Encoded in payload on save |
 
 ### 3.2 Login Notification (`config/system-config.md`)
@@ -175,21 +175,21 @@ This document maps all UI elements from the System modules (Sysconfig, Telephony
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| Important | Wichtig | `important` | `notification.important` | [news.md#entity-benachrichtigungen-notifications](../mongodb-mapping/news.md#entity-benachrichtigungen-notifications) | `boolean` | `icon` | — | No | Yes | Grid |
-| From | Sender | `from` | `notification.from` (DBRef) | [news.md#entity-benachrichtigungen-notifications](../mongodb-mapping/news.md#entity-benachrichtigungen-notifications) | `reference:User` | `text` | — | No | Yes | Grid |
-| Date | Datum | `ts` | `notification.ts` | [news.md#entity-benachrichtigungen-notifications](../mongodb-mapping/news.md#entity-benachrichtigungen-notifications) | `datetime` | `text` | — | No | Yes | Grid |
-| Subject | Titel | `subject` | `notification.subject` | [news.md#entity-benachrichtigungen-notifications](../mongodb-mapping/news.md#entity-benachrichtigungen-notifications) | `string` | `text` | — | No | Yes | Grid |
-| Folder | Ort | `folder` | `notification.folder` | [news.md#entity-benachrichtigungen-notifications](../mongodb-mapping/news.md#entity-benachrichtigungen-notifications) | `enum:Folder` | `text` | INBOX, OUTBOX, ARCHIVE, TRASH | No | Yes | Grid |
-| Recipient | Empfänger | `data.to.name` | `notification.to` (DBRef) | [news.md#entity-benachrichtigungen-notifications](../mongodb-mapping/news.md#entity-benachrichtigungen-notifications) | `reference:User` | `text` | — | No | Yes | Detail |
-| Sender | Sender | `data.from.name` | `notification.from` (DBRef) | [news.md#entity-benachrichtigungen-notifications](../mongodb-mapping/news.md#entity-benachrichtigungen-notifications) | `reference:User` | `text` | — | No | Yes | Detail |
-| Date | Datum | `data.ts` | `notification.ts` | [news.md#entity-benachrichtigungen-notifications](../mongodb-mapping/news.md#entity-benachrichtigungen-notifications) | `datetime` | `text` | — | No | Yes | Detail |
-| Subject | Titel | `data.subject` | `notification.subject` | [news.md#entity-benachrichtigungen-notifications](../mongodb-mapping/news.md#entity-benachrichtigungen-notifications) | `string` | `text` | — | No | Yes | Detail |
-| Message | Nachricht | `data.message` | `notification.message` | [news.md#entity-benachrichtigungen-notifications](../mongodb-mapping/news.md#entity-benachrichtigungen-notifications) | `bigstring` | `text` | — | No | Yes | Detail |
+| Important | Wichtig | `important` | `notification.important` | [news.md#entity-notifications](../mongodb-mapping/news.md#entity-notifications) | `boolean` | `icon` | — | No | Yes | Grid |
+| From | Sender | `from` | `notification.from` (DBRef) | [news.md#entity-notifications](../mongodb-mapping/news.md#entity-notifications) | `reference:User` | `text` | — | No | Yes | Grid |
+| Date | Datum | `ts` | `notification.ts` | [news.md#entity-notifications](../mongodb-mapping/news.md#entity-notifications) | `datetime` | `text` | — | No | Yes | Grid |
+| Subject | Titel | `subject` | `notification.subject` | [news.md#entity-notifications](../mongodb-mapping/news.md#entity-notifications) | `string` | `text` | — | No | Yes | Grid |
+| Folder | Ort | `folder` | `notification.folder` | [news.md#entity-notifications](../mongodb-mapping/news.md#entity-notifications) | `enum:Folder` | `text` | INBOX, OUTBOX, ARCHIVE, TRASH | No | Yes | Grid |
+| Recipient | Empfänger | `data.to.name` | `notification.to` (DBRef) | [news.md#entity-notifications](../mongodb-mapping/news.md#entity-notifications) | `reference:User` | `text` | — | No | Yes | Detail |
+| Sender | Sender | `data.from.name` | `notification.from` (DBRef) | [news.md#entity-notifications](../mongodb-mapping/news.md#entity-notifications) | `reference:User` | `text` | — | No | Yes | Detail |
+| Date | Datum | `data.ts` | `notification.ts` | [news.md#entity-notifications](../mongodb-mapping/news.md#entity-notifications) | `datetime` | `text` | — | No | Yes | Detail |
+| Subject | Titel | `data.subject` | `notification.subject` | [news.md#entity-notifications](../mongodb-mapping/news.md#entity-notifications) | `string` | `text` | — | No | Yes | Detail |
+| Message | Nachricht | `data.message` | `notification.message` | [news.md#entity-notifications](../mongodb-mapping/news.md#entity-notifications) | `bigstring` | `text` | — | No | Yes | Detail |
 | **Compose Dialogs** | | | | | | | | | | |
-| Recipients | Empfänger | `data.tos` | `notification.to` | [news.md#entity-benachrichtigungen-notifications](../mongodb-mapping/news.md#entity-benachrichtigungen-notifications) | `array:reference:User` | `checkbox` | — | Yes | No | Multi message dialog |
-| Recipient | Empfänger | `data.to` | `notification.to` | [news.md#entity-benachrichtigungen-notifications](../mongodb-mapping/news.md#entity-benachrichtigungen-notifications) | `reference:User` | `autocomplete` | `UserService.findEmployee` | Yes | No | Single message dialog |
-| Subject | Titel | `data.subject` | `notification.subject` | [news.md#entity-benachrichtigungen-notifications](../mongodb-mapping/news.md#entity-benachrichtigungen-notifications) | `string` | `text input` | — | Yes | No | Dialogs |
-| Message | Nachricht | `data.message` | `notification.message` | [news.md#entity-benachrichtigungen-notifications](../mongodb-mapping/news.md#entity-benachrichtigungen-notifications) | `bigstring` | `textarea` | — | No | No | Dialogs |
+| Recipients | Empfänger | `data.tos` | `notification.to` | [news.md#entity-notifications](../mongodb-mapping/news.md#entity-notifications) | `array:reference:User` | `checkbox` | — | Yes | No | Multi message dialog |
+| Recipient | Empfänger | `data.to` | `notification.to` | [news.md#entity-notifications](../mongodb-mapping/news.md#entity-notifications) | `reference:User` | `autocomplete` | `UserService.findEmployee` | Yes | No | Single message dialog |
+| Subject | Titel | `data.subject` | `notification.subject` | [news.md#entity-notifications](../mongodb-mapping/news.md#entity-notifications) | `string` | `text input` | — | Yes | No | Dialogs |
+| Message | Nachricht | `data.message` | `notification.message` | [news.md#entity-notifications](../mongodb-mapping/news.md#entity-notifications) | `bigstring` | `textarea` | — | No | No | Dialogs |
 
 ### 3.4 Bug Report (`includes/includes-customization.md`)
 
@@ -204,33 +204,33 @@ This document maps all UI elements from the System modules (Sysconfig, Telephony
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| ID | ID | `data.id` | `exportTemplate._id` | [system.md#entity-export-vorlagen-export-templates](../mongodb-mapping/system.md#entity-export-vorlagen-export-templates) | `number` | `text` | — | No | Yes | Grid + Detail |
-| Name | Name | `data.name` | `exportTemplate.name` | [system.md#entity-export-vorlagen-export-templates](../mongodb-mapping/system.md#entity-export-vorlagen-export-templates) | `string` | `text input` | — | Yes | No | Grid + Detail |
-| Description | Beschreibung | `data.description` | `exportTemplate.description` (inferred) | [system.md#entity-export-vorlagen-export-templates](../mongodb-mapping/system.md#entity-export-vorlagen-export-templates) | `bigstring` | `textarea` | — | No | No | Grid + Detail |
-| Type | Typ | `data.type` | `exportTemplate.type` | [system.md#entity-export-vorlagen-export-templates](../mongodb-mapping/system.md#entity-export-vorlagen-export-templates) | `enum:ExportTemplateType` | `select` | — | Yes | No | Grid + Detail |
-| Active | Aktiv | `data.active` | `exportTemplate.active` | [system.md#entity-export-vorlagen-export-templates](../mongodb-mapping/system.md#entity-export-vorlagen-export-templates) | `boolean` | `checkbox` | — | No | No | Grid + Detail |
-| Priority | Prioritaet | `data.prio` | `exportTemplate.prio` (inferred) | [system.md#entity-export-vorlagen-export-templates](../mongodb-mapping/system.md#entity-export-vorlagen-export-templates) | `number` | `number input` | — | No | No | Detail |
-| Filename | Dateiname | `data.filename` | `exportTemplate.filename` | [system.md#entity-export-vorlagen-export-templates](../mongodb-mapping/system.md#entity-export-vorlagen-export-templates) | `string` | `text input` | — | No | No | Detail |
-| File | Datei | `template` | `exportTemplate.template` | [system.md#entity-export-vorlagen-export-templates](../mongodb-mapping/system.md#entity-export-vorlagen-export-templates) | `file` | `file upload` | — | No | No | Detail |
+| ID | ID | `data.id` | `exportTemplate._id` | [system.md#entity-export-templates](../mongodb-mapping/system.md#entity-export-templates) | `number` | `text` | — | No | Yes | Grid + Detail |
+| Name | Name | `data.name` | `exportTemplate.name` | [system.md#entity-export-templates](../mongodb-mapping/system.md#entity-export-templates) | `string` | `text input` | — | Yes | No | Grid + Detail |
+| Description | Beschreibung | `data.description` | `exportTemplate.description` (inferred) | [system.md#entity-export-templates](../mongodb-mapping/system.md#entity-export-templates) | `bigstring` | `textarea` | — | No | No | Grid + Detail |
+| Type | Typ | `data.type` | `exportTemplate.type` | [system.md#entity-export-templates](../mongodb-mapping/system.md#entity-export-templates) | `enum:ExportTemplateType` | `select` | — | Yes | No | Grid + Detail |
+| Active | Aktiv | `data.active` | `exportTemplate.active` | [system.md#entity-export-templates](../mongodb-mapping/system.md#entity-export-templates) | `boolean` | `checkbox` | — | No | No | Grid + Detail |
+| Priority | Prioritaet | `data.prio` | `exportTemplate.prio` (inferred) | [system.md#entity-export-templates](../mongodb-mapping/system.md#entity-export-templates) | `number` | `number input` | — | No | No | Detail |
+| Filename | Dateiname | `data.filename` | `exportTemplate.filename` | [system.md#entity-export-templates](../mongodb-mapping/system.md#entity-export-templates) | `string` | `text input` | — | No | No | Detail |
+| File | Datei | `template` | `exportTemplate.template` | [system.md#entity-export-templates](../mongodb-mapping/system.md#entity-export-templates) | `file` | `file upload` | — | No | No | Detail |
 
 ### 4.2 Notification Templates (`templates-files/templates-files.md`)
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| ID | ID | `data.id` | `notificationTemplate._id` | [news.md#entity-benachrichtigungsvorlagen-notification-templates](../mongodb-mapping/news.md#entity-benachrichtigungsvorlagen-notification-templates) | `number` | `text` | — | No | Yes | Grid + Detail |
-| Event | Ereignis | `data.event` | `notificationTemplate.event` | [news.md#entity-benachrichtigungsvorlagen-notification-templates](../mongodb-mapping/news.md#entity-benachrichtigungsvorlagen-notification-templates) | `enum:NotificationEvent` | `select` | — | No | No | Grid + Detail |
-| Subject | Betreff | `data.subject` | `notificationTemplate.subject` | [news.md#entity-benachrichtigungsvorlagen-notification-templates](../mongodb-mapping/news.md#entity-benachrichtigungsvorlagen-notification-templates) | `string` | `text input` | — | No | No | Grid + Detail |
-| Message | Nachricht | `data.message` | `notificationTemplate.message` | [news.md#entity-benachrichtigungsvorlagen-notification-templates](../mongodb-mapping/news.md#entity-benachrichtigungsvorlagen-notification-templates) | `bigstring` | `textarea` | — | No | No | Grid + Detail |
+| ID | ID | `data.id` | `notificationTemplate._id` | [news.md#entity-notification-templates](../mongodb-mapping/news.md#entity-notification-templates) | `number` | `text` | — | No | Yes | Grid + Detail |
+| Event | Ereignis | `data.event` | `notificationTemplate.event` | [news.md#entity-notification-templates](../mongodb-mapping/news.md#entity-notification-templates) | `enum:NotificationEvent` | `select` | — | No | No | Grid + Detail |
+| Subject | Betreff | `data.subject` | `notificationTemplate.subject` | [news.md#entity-notification-templates](../mongodb-mapping/news.md#entity-notification-templates) | `string` | `text input` | — | No | No | Grid + Detail |
+| Message | Nachricht | `data.message` | `notificationTemplate.message` | [news.md#entity-notification-templates](../mongodb-mapping/news.md#entity-notification-templates) | `bigstring` | `textarea` | — | No | No | Grid + Detail |
 
 ### 4.3 Support Category (`config/system-config.md`)
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| ID | id | `data.id` | `supportCategory._id` | [system.md#entity-support-kategorien-support-categories](../mongodb-mapping/system.md#entity-support-kategorien-support-categories) | `number` | `text` | — | No | Yes | Grid + Detail |
-| Category | Category | `data.category` | `supportCategory.category` | [system.md#entity-support-kategorien-support-categories](../mongodb-mapping/system.md#entity-support-kategorien-support-categories) | `string` | `text input` | — | No | No | Grid + Detail |
-| Title | Title | `data.title` | `supportCategory.title` | [system.md#entity-support-kategorien-support-categories](../mongodb-mapping/system.md#entity-support-kategorien-support-categories) | `string` | `text input` | — | No | No | Grid + Detail |
-| Queue | Queue | `data.queue` | `supportCategory.queue` | [system.md#entity-support-kategorien-support-categories](../mongodb-mapping/system.md#entity-support-kategorien-support-categories) | `string` | `text input` | — | No | No | Grid + Detail |
-| Themes | Themes | `data.subcategories.` | `supportCategory.subcategories` | [system.md#entity-support-kategorien-support-categories](../mongodb-mapping/system.md#entity-support-kategorien-support-categories) | `array:string` | `list` | — | No | No | Grid + Detail |
+| ID | id | `data.id` | `supportCategory._id` | [system.md#entity-support-categories](../mongodb-mapping/system.md#entity-support-categories) | `number` | `text` | — | No | Yes | Grid + Detail |
+| Category | Category | `data.category` | `supportCategory.category` | [system.md#entity-support-categories](../mongodb-mapping/system.md#entity-support-categories) | `string` | `text input` | — | No | No | Grid + Detail |
+| Title | Title | `data.title` | `supportCategory.title` | [system.md#entity-support-categories](../mongodb-mapping/system.md#entity-support-categories) | `string` | `text input` | — | No | No | Grid + Detail |
+| Queue | Queue | `data.queue` | `supportCategory.queue` | [system.md#entity-support-categories](../mongodb-mapping/system.md#entity-support-categories) | `string` | `text input` | — | No | No | Grid + Detail |
+| Themes | Themes | `data.subcategories.` | `supportCategory.subcategories` | [system.md#entity-support-categories](../mongodb-mapping/system.md#entity-support-categories) | `array:string` | `list` | — | No | No | Grid + Detail |
 
 ### 4.4 User File (`templates-files/templates-files.md`)
 
@@ -270,10 +270,10 @@ This document maps all UI elements from the System modules (Sysconfig, Telephony
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
 | **Active Calls Card** | | | | | | | | | | |
-| Call Start Time | — | `calls.list.started` | `cDRCall.dateStart` | [external-data.md#entity-anrufliste-cdr-calls](../mongodb-mapping/external-data.md#entity-anrufliste-cdr-calls) | `datetime` | `text` | — | — | Yes | Display only |
-| Party Number | — | `parties.number` | `cDRCall.callingNumber` | [external-data.md#entity-anrufliste-cdr-calls](../mongodb-mapping/external-data.md#entity-anrufliste-cdr-calls) | `string` | `text` | — | — | Yes | Display only |
+| Call Start Time | — | `calls.list.started` | `cDRCall.dateStart` | [external-data.md#entity-cdr-calls](../mongodb-mapping/external-data.md#entity-cdr-calls) | `datetime` | `text` | — | — | Yes | Display only |
+| Party Number | — | `parties.number` | `cDRCall.callingNumber` | [external-data.md#entity-cdr-calls](../mongodb-mapping/external-data.md#entity-cdr-calls) | `string` | `text` | — | — | Yes | Display only |
 | Party Description | — | `parties.description` | — | — | `string` | `text` | — | — | Yes | Display only |
-| Location Name | — | `parties.location.name` | `cDRCall.location` | [external-data.md#entity-anrufliste-cdr-calls](../mongodb-mapping/external-data.md#entity-anrufliste-cdr-calls) | `string` | `text` | — | — | Yes | Display only |
+| Location Name | — | `parties.location.name` | `cDRCall.location` | [external-data.md#entity-cdr-calls](../mongodb-mapping/external-data.md#entity-cdr-calls) | `string` | `text` | — | — | Yes | Display only |
 | Expert Name | — | `parties.expert.displayName` | — | — | `string` | `text` | — | — | Yes | Display only |
 | **Doctor Information Card** | | | | | | | | | | |
 | Working Time | Arbeitszeit | `data.maxWorkTime` | — | — | `number` | `text` | — | — | Yes | Display only |

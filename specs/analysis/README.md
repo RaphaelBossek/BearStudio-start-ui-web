@@ -15,19 +15,19 @@ This directory contains domain-driven analysis documentation for the application
 
 | Domain | Subdirectories | Description |
 |--------|---------------|-------------|
-| **[academy/](./academy/README.md)** | — | Support video, video library |
-| **[accounting/](./accounting/README.md)** | `admin-job/`, `config/`, `invoice/`, `invoice-receiver/`, `worklog/` | Invoicing, job configuration, accounting config |
-| **[customer/](./customer/README.md)** | `contact/`, `customer-core/`, `equipment/`, `room/` | Customer management, contacts, locations, rooms, equipment |
-| **[interfaces/](./interfaces/README.md)** | `dashboard/` | BasisWeb wizard integration |
-| **[planning/](./planning/README.md)** | `appointment/`, `appointment-admin/`, `appointment-support/`, `council/`, `dashboard/`, `shift/` | Appointments, shifts, councils, planning dashboards |
-| **[system/](./system/README.md)** | `admin/`, `admin-cruds/`, `config/`, `dashboard/`, `includes/`, `notification/`, `shell/`, `templates-files/` | System config, admin, notifications, shared components |
-| **[treatment/](./treatment/README.md)** | `appointment-patient/`, `consultation/`, `dashboard/`, `medication/`, `patient-data/`, `questionnaire/`, `treatment-core/`, `warning/` | Consultations, treatments, patient data |
-| **[user-management/](./user-management/README.md)** | `admin/`, `dashboard/`, `profile/` | User profiles, admin, groups, skills, onboarding |
-| **[components/](./components/README.md)** | — | Shared reusable components |
-| **[orphan/](./orphan/README.md)** | — | Orphaned content with context |
-| **[i18n/](./i18n/README.md)** | `domains/`, `scripts/` | Internationalization (cross-cutting) |
-| **[mongodb-mapping/](./mongodb-mapping/README.md)** | — | MongoDB-to-Prisma schema mapping (cross-cutting) |
-| **[permissions/](./permissions/README.md)** | — | RBAC matrix and permission gates (cross-cutting) |
+| **[academy/](../academy/readme/)** | — | Support video, video library |
+| **[accounting/](../accounting/readme/)** | `admin-job/`, `config/`, `invoice/`, `invoice-receiver/`, `worklog/` | Invoicing, job configuration, accounting config |
+| **[customer/](../customer/readme/)** | `contact/`, `customer-core/`, `equipment/`, `room/` | Customer management, contacts, locations, rooms, equipment |
+| **[interfaces/](../interfaces/readme/)** | `dashboard/` | BasisWeb wizard integration |
+| **[planning/](../planning/readme/)** | `appointment/`, `appointment-admin/`, `appointment-support/`, `council/`, `dashboard/`, `shift/` | Appointments, shifts, councils, planning dashboards |
+| **[system/](../system/readme/)** | `admin/`, `admin-cruds/`, `config/`, `dashboard/`, `includes/`, `notification/`, `shell/`, `templates-files/` | System config, admin, notifications, shared components |
+| **[treatment/](../treatment/readme/)** | `appointment-patient/`, `consultation/`, `dashboard/`, `medication/`, `patient-data/`, `questionnaire/`, `treatment-core/`, `warning/` | Consultations, treatments, patient data |
+| **[user-management/](../user-management/readme/)** | `admin/`, `dashboard/`, `profile/` | User profiles, admin, groups, skills, onboarding |
+| **[components/](../components/readme/)** | — | Shared reusable components |
+| **[orphan/](../orphan/readme/)** | — | Orphaned content with context |
+| **[i18n/](../i18n/readme/)** | `domains/`, `scripts/` | Internationalization (cross-cutting) |
+| **[mongodb-mapping/](../mongodb-mapping/readme/)** | — | MongoDB-to-Prisma schema mapping (cross-cutting) |
+| **[permissions/](../permissions/readme/)** | — | RBAC matrix and permission gates (cross-cutting) |
 
 ---
 

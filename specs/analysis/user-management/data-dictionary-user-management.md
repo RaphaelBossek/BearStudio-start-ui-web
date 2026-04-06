@@ -21,7 +21,7 @@ This document defines the data dictionary for the User Management domain. It map
 | Mobile | Handy | `data.userProfile.cellularNumber` | `user.userProfile.cellularNumber` | [user-management.md#userprofile](../mongodb-mapping/user-management.md#sub-entity-userprofile) | `string` | `text` | — | No | No | — |
 | Birthday | Geburtstag | `data.userProfile.birthday` | `user.userProfile.birthday` | [user-management.md#userprofile](../mongodb-mapping/user-management.md#sub-entity-userprofile) | `date` | `date` | — | No | No | — |
 | On-call number | Bereitschaftsnummer | `data.userProfile.shiftPhoneNumber` | `user.userProfile.shiftPhoneNumber` | [user-management.md#userprofile](../mongodb-mapping/user-management.md#sub-entity-userprofile) | `string` | `text` | — | No | No | — |
-| Email | E-Mail | `data.email` | `user.email` | [user-management.md#entity-experte-expert](../mongodb-mapping/user-management.md#entity-experte-expert) | `string` | `text` | — | Yes | No | Email format |
+| Email | E-Mail | `data.email` | `user.email` | [user-management.md#entity-expert](../mongodb-mapping/user-management.md#entity-expert) | `string` | `text` | — | Yes | No | Email format |
 | Email 2 | E-Mail2 | `data.employeeProfile.email2` | `user.employeeProfile.email2` | [user-management.md#employeeprofile](../mongodb-mapping/user-management.md#sub-entity-employeeprofile) | `string` | `text` | — | No | No | Email format |
 | Send notifications per mail | Nachrichten per E-Mail weiterleiten | `data.userProfile.notificationPerMail` | `user.userProfile.notificationPerMail` | [user-management.md#userprofile](../mongodb-mapping/user-management.md#sub-entity-userprofile) | `boolean` | `checkbox` | — | No | No | — |
 | User | User (Hardcoded) | `data.employeeProfile.bayernBoxAccess.user` | `user.employeeProfile.bayernBoxAccess.user` | [user-management.md#employeeprofile](../mongodb-mapping/user-management.md#sub-entity-employeeprofile) | `string` | `text` | — | No | No | Securebox Data |
@@ -39,12 +39,12 @@ This document defines the data dictionary for the User Management domain. It map
 | EFN/Membernumber (PT) | EFN/Mitgliedsnummer (PT) | `data.employerProfile.efn` | `user.employerProfile.efn` | [user-management.md#employerprofile](../mongodb-mapping/user-management.md#sub-entity-employerprofile) | `string` | `text` | — | No | No | ADMIN only |
 | active at VC since | tätig bei VC als Arzt seit | `data.employerProfile.activeSinceVC` | `user.employerProfile.activeSinceVC` | [user-management.md#employerprofile](../mongodb-mapping/user-management.md#sub-entity-employerprofile) | `date` | `date` | — | No | No | ADMIN only |
 | active at VC till | tätig bei VC als Arzt bis | `data.employerProfile.activeUntilVC` | `user.employerProfile.activeUntilVC` | [user-management.md#employerprofile](../mongodb-mapping/user-management.md#sub-entity-employerprofile) | `date` | `date` | — | No | No | ADMIN only |
-| AGB/TC Login Akzeptiert (Hardcoded) | AGB/TC Login Akzeptiert (Hardcoded) | `data.dateAcceptedLoginNotification` | `user.dateAcceptedLoginNotification` | [user-management.md#entity-experte-expert](../mongodb-mapping/user-management.md#entity-experte-expert) | `datetime` | `display` | — | No | Yes | ADMIN only |
-| State | Status | `data.employeeState` | `user.employeeState` | [user-management.md#entity-experte-expert](../mongodb-mapping/user-management.md#entity-experte-expert) | `enum:EmployeeState` | `select` | UNCONFIRMED, ACTIVE, SICK, HOLIDAY, INACTIVE | No | No | ADMIN only |
+| AGB/TC Login Akzeptiert (Hardcoded) | AGB/TC Login Akzeptiert (Hardcoded) | `data.dateAcceptedLoginNotification` | `user.dateAcceptedLoginNotification` | [user-management.md#entity-expert](../mongodb-mapping/user-management.md#entity-expert) | `datetime` | `display` | — | No | Yes | ADMIN only |
+| State | Status | `data.employeeState` | `user.employeeState` | [user-management.md#entity-expert](../mongodb-mapping/user-management.md#entity-expert) | `enum:EmployeeState` | `select` | UNCONFIRMED, ACTIVE, SICK, HOLIDAY, INACTIVE | No | No | ADMIN only |
 | Inactive start | Inaktiv ab | `data.employerProfile.dateInactiveStart` | `user.employerProfile.dateInactiveStart` | [user-management.md#employerprofile](../mongodb-mapping/user-management.md#sub-entity-employerprofile) | `date` | `date` | — | No | No | ADMIN only |
 | Inactive until | Inaktiv bis | `data.employerProfile.dateInactiveUntil` | `user.employerProfile.dateInactiveUntil` | [user-management.md#employerprofile](../mongodb-mapping/user-management.md#sub-entity-employerprofile) | `date` | `date` | — | No | No | ADMIN only |
 | Description | Beschreibung | `data.employerProfile.inctiveReason` | `user.employerProfile.inctiveReason` | [user-management.md#employerprofile](../mongodb-mapping/user-management.md#sub-entity-employerprofile) | `bigstring` | `textarea` | — | No | No | ADMIN only |
-| Require Two-Factor | 2-Faktor verpflichtend | `data.requireTotp` | `user.requireTotp` | [user-management.md#entity-experte-expert](../mongodb-mapping/user-management.md#entity-experte-expert) | `boolean` | `checkbox` | — | No | No | ADMIN only |
+| Require Two-Factor | 2-Faktor verpflichtend | `data.requireTotp` | `user.requireTotp` | [user-management.md#entity-expert](../mongodb-mapping/user-management.md#entity-expert) | `boolean` | `checkbox` | — | No | No | ADMIN only |
 | Start (Hardcoded) | Start (Hardcoded) | `data.employerProfile.employeeType.start` | `user.employerProfile.employeeType.start` | [user-management.md#employerprofile](../mongodb-mapping/user-management.md#sub-entity-employerprofile) | `date` | `date` | — | No | No | ADMIN only, Repeater |
 | Type | Typ | `data.employerProfile.employeeType.type` | `user.employerProfile.employeeType.type` | [user-management.md#employerprofile](../mongodb-mapping/user-management.md#sub-entity-employerprofile) | `enum:EmployeeType` | `select` | HONORAR, HN2, HN3, A1, A2, A3 | No | No | ADMIN only, Repeater |
 | Sip Accounts (Hardcoded) | Sip Accounts (Hardcoded) | `data.employerProfile.sipAccounts.number` | `user.employerProfile.sipAccounts.number` | [user-management.md#employerprofile](../mongodb-mapping/user-management.md#sub-entity-employerprofile) | `string` | `text` | — | No | No | ADMIN only, Repeater |
@@ -98,9 +98,9 @@ This document defines the data dictionary for the User Management domain. It map
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
 | Upload file (Hardcoded) | Datei hochladen (Hardcoded) | — | — | — | `action` | `button` / `file` | — | — | — | **Workflow-only**: calls `UserFileService.upload` |
-| File | Datei | `files.list.name` | `userFile.name` | [user-management.md#entity-benutzerdateien-user-files](../mongodb-mapping/user-management.md#entity-benutzerdateien-user-files) | `string` | `display` | — | No | Yes | Repeater |
-| Type | Typ | `files.list.type` | `userFile.type` | [user-management.md#entity-benutzerdateien-user-files](../mongodb-mapping/user-management.md#entity-benutzerdateien-user-files) | `enum:UserFileType` | `select` | APPROBIATION, AUTHENTICATED_MEDICAL_SPECIALIST_CERTIFICATE, etc. | Yes | No | Repeater |
-| Date | Datum | `files.list.date` | `userFile.date` | [user-management.md#entity-benutzerdateien-user-files](../mongodb-mapping/user-management.md#entity-benutzerdateien-user-files) | `date` | `date` | — | No | No | Repeater |
+| File | Datei | `files.list.name` | `userFile.name` | [user-management.md#entity-user-files](../mongodb-mapping/user-management.md#entity-user-files) | `string` | `display` | — | No | Yes | Repeater |
+| Type | Typ | `files.list.type` | `userFile.type` | [user-management.md#entity-user-files](../mongodb-mapping/user-management.md#entity-user-files) | `enum:UserFileType` | `select` | APPROBIATION, AUTHENTICATED_MEDICAL_SPECIALIST_CERTIFICATE, etc. | Yes | No | Repeater |
+| Date | Datum | `files.list.date` | `userFile.date` | [user-management.md#entity-user-files](../mongodb-mapping/user-management.md#entity-user-files) | `date` | `date` | — | No | No | Repeater |
 
 ## 6. Profile Form — Products (`profile/profile-form.md`) (ADMIN)
 
@@ -124,16 +124,16 @@ This document defines the data dictionary for the User Management domain. It map
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| Year | Jahr | — | `expertDays.year` | [planning.md#entity-jahreskalender-eines-experten-expert-days](../mongodb-mapping/planning.md#entity-jahreskalender-eines-experten-expert-days) | `number` | `text` | — | Yes | No | Input |
-| Month | Monat | — | `expertDays.month` | [planning.md#entity-jahreskalender-eines-experten-expert-days](../mongodb-mapping/planning.md#entity-jahreskalender-eines-experten-expert-days) | `enum:Month` | `select` | JAN to DEC | Yes | No | Input |
-| Slot: morning | Vormittag | — | `expertDays.morningYes` / `morningNo` | [planning.md#entity-jahreskalender-eines-experten-expert-days](../mongodb-mapping/planning.md#entity-jahreskalender-eines-experten-expert-days) | `boolean` | `button` | Tri-state (null/true/false) | No | No | Grid Cell |
-| Slot: afternoon | Nachmittag | — | `expertDays.afternoonYes` / `afternoonNo` | [planning.md#entity-jahreskalender-eines-experten-expert-days](../mongodb-mapping/planning.md#entity-jahreskalender-eines-experten-expert-days) | `boolean` | `button` | Tri-state | No | No | Grid Cell |
-| Slot: night | Nacht | — | `expertDays.nightYes` / `nightNo` | [planning.md#entity-jahreskalender-eines-experten-expert-days](../mongodb-mapping/planning.md#entity-jahreskalender-eines-experten-expert-days) | `boolean` | `button` | Tri-state | No | No | Grid Cell |
-| Slot: morning appointment | Sprechstunde Vormittag | — | `expertDays.morningAppointmentYes` / `No` | [planning.md#entity-jahreskalender-eines-experten-expert-days](../mongodb-mapping/planning.md#entity-jahreskalender-eines-experten-expert-days) | `boolean` | `button` | Tri-state | No | No | Grid Cell |
-| Slot: afternoon appointment | Sprechstunde Nachmittag | — | `expertDays.afternoonAppointmentYes` / `No` | [planning.md#entity-jahreskalender-eines-experten-expert-days](../mongodb-mapping/planning.md#entity-jahreskalender-eines-experten-expert-days) | `boolean` | `button` | Tri-state | No | No | Grid Cell |
-| Slot: treatment | Therapie | — | `expertDays.treatmentAppointmentYes` / `No`| [planning.md#entity-jahreskalender-eines-experten-expert-days](../mongodb-mapping/planning.md#entity-jahreskalender-eines-experten-expert-days) | `boolean` | `button` | Tri-state | No | No | Grid Cell |
-| Max count inputs | Max. Anzahl | — | `expertDays.maxWeekDayMorning` (etc) | [planning.md#entity-jahreskalender-eines-experten-expert-days](../mongodb-mapping/planning.md#entity-jahreskalender-eines-experten-expert-days) | `number` | `text` | — | No | No | Total 8 inputs |
-| Week Slot | Woche Slot | — | `expertWeek.slotsMo` (etc) | [planning.md#entity-experten-wochenplan-expert-week](../mongodb-mapping/planning.md#entity-experten-wochenplan-expert-week) | `boolean` | `button` | Binary (null/true) | No | No | Grid Cell |
+| Year | Jahr | — | `expertDays.year` | [planning.md#entity-expert-days](../mongodb-mapping/planning.md#entity-expert-days) | `number` | `text` | — | Yes | No | Input |
+| Month | Monat | — | `expertDays.month` | [planning.md#entity-expert-days](../mongodb-mapping/planning.md#entity-expert-days) | `enum:Month` | `select` | JAN to DEC | Yes | No | Input |
+| Slot: morning | Vormittag | — | `expertDays.morningYes` / `morningNo` | [planning.md#entity-expert-days](../mongodb-mapping/planning.md#entity-expert-days) | `boolean` | `button` | Tri-state (null/true/false) | No | No | Grid Cell |
+| Slot: afternoon | Nachmittag | — | `expertDays.afternoonYes` / `afternoonNo` | [planning.md#entity-expert-days](../mongodb-mapping/planning.md#entity-expert-days) | `boolean` | `button` | Tri-state | No | No | Grid Cell |
+| Slot: night | Nacht | — | `expertDays.nightYes` / `nightNo` | [planning.md#entity-expert-days](../mongodb-mapping/planning.md#entity-expert-days) | `boolean` | `button` | Tri-state | No | No | Grid Cell |
+| Slot: morning appointment | Sprechstunde Vormittag | — | `expertDays.morningAppointmentYes` / `No` | [planning.md#entity-expert-days](../mongodb-mapping/planning.md#entity-expert-days) | `boolean` | `button` | Tri-state | No | No | Grid Cell |
+| Slot: afternoon appointment | Sprechstunde Nachmittag | — | `expertDays.afternoonAppointmentYes` / `No` | [planning.md#entity-expert-days](../mongodb-mapping/planning.md#entity-expert-days) | `boolean` | `button` | Tri-state | No | No | Grid Cell |
+| Slot: treatment | Therapie | — | `expertDays.treatmentAppointmentYes` / `No`| [planning.md#entity-expert-days](../mongodb-mapping/planning.md#entity-expert-days) | `boolean` | `button` | Tri-state | No | No | Grid Cell |
+| Max count inputs | Max. Anzahl | — | `expertDays.maxWeekDayMorning` (etc) | [planning.md#entity-expert-days](../mongodb-mapping/planning.md#entity-expert-days) | `number` | `text` | — | No | No | Total 8 inputs |
+| Week Slot | Woche Slot | — | `expertWeek.slotsMo` (etc) | [planning.md#entity-expert-week](../mongodb-mapping/planning.md#entity-expert-week) | `boolean` | `button` | Binary (null/true) | No | No | Grid Cell |
 
 ## 8. Staff Management List & Toolbar (`profile/profile-staff.md`)
 
@@ -141,13 +141,13 @@ This document defines the data dictionary for the User Management domain. It map
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
 | First Name | Vorname | `firstName` | `user.userProfile.firstName` | [user-management.md#userprofile](../mongodb-mapping/user-management.md#sub-entity-userprofile) | `string` | `display` | — | — | Yes | Grid Column |
 | Last Name | Nachname | `lastName` | `user.userProfile.lastName` | [user-management.md#userprofile](../mongodb-mapping/user-management.md#sub-entity-userprofile) | `string` | `display` | — | — | Yes | Grid Column |
-| State | Status | `employeeState` | `user.employeeState` | [user-management.md#entity-experte-expert](../mongodb-mapping/user-management.md#entity-experte-expert) | `enum:EmployeeState` | `display` | — | — | Yes | Grid Column |
+| State | Status | `employeeState` | `user.employeeState` | [user-management.md#entity-expert](../mongodb-mapping/user-management.md#entity-expert) | `enum:EmployeeState` | `display` | — | — | Yes | Grid Column |
 | Standby | Bereitschaft | `shift` | `user.employeeProfile.shift` | [user-management.md#employeeprofile](../mongodb-mapping/user-management.md#sub-entity-employeeprofile) | `enum:FocusLevel` | `display` | — | — | Yes | Grid Column |
 | Appointment | Sprechstunde | `appointment` | `user.employeeProfile.appointment` | [user-management.md#employeeprofile](../mongodb-mapping/user-management.md#sub-entity-employeeprofile) | `enum:FocusLevel` | `display` | — | — | Yes | Grid Column |
 | Therapy | Therapie | `therapy` | `user.employeeProfile.therapy` | [user-management.md#employeeprofile](../mongodb-mapping/user-management.md#sub-entity-employeeprofile) | `enum:FocusLevel` | `display` | — | — | Yes | Grid Column |
-| Last Reminder | Letzte Erinnerung | `lastReminder` | `user.lastReminder` | [user-management.md#entity-experte-expert](../mongodb-mapping/user-management.md#entity-experte-expert) | `datetime` | `display` | — | — | Yes | Grid Column |
-| Require Two-Factor | 2-Faktor verpflichtend | `requireTotp` | `user.requireTotp` | [user-management.md#entity-experte-expert](../mongodb-mapping/user-management.md#entity-experte-expert) | `boolean` | `icon` | — | — | Yes | Grid Column |
-| Enabled | Aktiv | `enabled` | `user.enabled` | [user-management.md#entity-experte-expert](../mongodb-mapping/user-management.md#entity-experte-expert) | `boolean` | `icon` | — | — | Yes | Grid Column |
+| Last Reminder | Letzte Erinnerung | `lastReminder` | `user.lastReminder` | [user-management.md#entity-expert](../mongodb-mapping/user-management.md#entity-expert) | `datetime` | `display` | — | — | Yes | Grid Column |
+| Require Two-Factor | 2-Faktor verpflichtend | `requireTotp` | `user.requireTotp` | [user-management.md#entity-expert](../mongodb-mapping/user-management.md#entity-expert) | `boolean` | `icon` | — | — | Yes | Grid Column |
+| Enabled | Aktiv | `enabled` | `user.enabled` | [user-management.md#entity-expert](../mongodb-mapping/user-management.md#entity-expert) | `boolean` | `icon` | — | — | Yes | Grid Column |
 | Appointment Requests | Terminanfragen | — | — | — | `action` | `button` | — | — | — | **Workflow-only**: opens `#assignmentDlg` |
 | Add | Neu | — | — | — | `action` | `button` | — | — | — | **Workflow-only**: open new profile form |
 | Change | Editieren | — | — | — | `action` | `button` | — | — | — | **Workflow-only**: open edit profile form |
@@ -174,8 +174,8 @@ This document defines the data dictionary for the User Management domain. It map
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| Current Password | Aktuelles Passwort | `data.current` | `user.password` | [user-management.md#entity-experte-expert](../mongodb-mapping/user-management.md#entity-experte-expert) | `string` | `password` | — | Yes | No | Hidden for admin |
-| New password | Neues Passwort | `data.password` | `user.password` | [user-management.md#entity-experte-expert](../mongodb-mapping/user-management.md#entity-experte-expert) | `string` | `password` | — | Yes | No | Validated |
+| Current Password | Aktuelles Passwort | `data.current` | `user.password` | [user-management.md#entity-expert](../mongodb-mapping/user-management.md#entity-expert) | `string` | `password` | — | Yes | No | Hidden for admin |
+| New password | Neues Passwort | `data.password` | `user.password` | [user-management.md#entity-expert](../mongodb-mapping/user-management.md#entity-expert) | `string` | `password` | — | Yes | No | Validated |
 | Confirm Password | Neues Passwort wiederholen | `data.confirmPassword` | — | — | `string` | `password` | — | Yes | No | Must match new password |
 | Send Password | Passwort Senden (Hardcoded) | — | — | — | `action` | `button` | — | — | — | **Workflow-only**: `UserService.sendPassword` |
 
@@ -183,21 +183,21 @@ This document defines the data dictionary for the User Management domain. It map
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| Physician | Arzt | `data.doctor` | `appointment.doctor` | [planning.md#entity-termine-appointments](../mongodb-mapping/planning.md#entity-termine-appointments) | `reference:user` | `autocomplete` | `UserService.findEmployee` | No | No | Search filter |
-| Job-Id | Dienstleistung | `data.job.code` | `appointment.job.code` | [planning.md#entity-termine-appointments](../mongodb-mapping/planning.md#entity-termine-appointments) | `string` | `display` | — | No | Yes | Context filter |
-| Day | Tag | `data.day` | `appointment.date` | [planning.md#entity-termine-appointments](../mongodb-mapping/planning.md#entity-termine-appointments) | `date` | `display` | — | No | Yes | Context filter |
-| Start | Start | `data.start` | `appointment.timeStart` | [planning.md#entity-termine-appointments](../mongodb-mapping/planning.md#entity-termine-appointments) | `time` | `display` | — | No | Yes | Context filter |
-| End | Ende | `data.end` | `appointment.timeEnd` | [planning.md#entity-termine-appointments](../mongodb-mapping/planning.md#entity-termine-appointments) | `time` | `display` | — | No | Yes | Context filter |
+| Physician | Arzt | `data.doctor` | `appointment.doctor` | [planning.md#entity-appointments](../mongodb-mapping/planning.md#entity-appointments) | `reference:user` | `autocomplete` | `UserService.findEmployee` | No | No | Search filter |
+| Job-Id | Dienstleistung | `data.job.code` | `appointment.job.code` | [planning.md#entity-appointments](../mongodb-mapping/planning.md#entity-appointments) | `string` | `display` | — | No | Yes | Context filter |
+| Day | Tag | `data.day` | `appointment.date` | [planning.md#entity-appointments](../mongodb-mapping/planning.md#entity-appointments) | `date` | `display` | — | No | Yes | Context filter |
+| Start | Start | `data.start` | `appointment.timeStart` | [planning.md#entity-appointments](../mongodb-mapping/planning.md#entity-appointments) | `time` | `display` | — | No | Yes | Context filter |
+| End | Ende | `data.end` | `appointment.timeEnd` | [planning.md#entity-appointments](../mongodb-mapping/planning.md#entity-appointments) | `time` | `display` | — | No | Yes | Context filter |
 
 ## 12. Admin User Management (`admin-user/user-management.md`)
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| Username | Benutzername | `data.username` | `user.username` | [user-management.md#entity-experte-expert](../mongodb-mapping/user-management.md#entity-experte-expert) | `string` | `text` | — | Yes | No | Grid + Detail |
-| Role | Rolle | `data.role` | `user.role` | [user-management.md#entity-experte-expert](../mongodb-mapping/user-management.md#entity-experte-expert) | `enum:Role` | `select` | REGISTERED, STANDARD, KUNDE, ADMIN_KUNDE, LEITER_INTERN, ADMIN_INTERN, ADMIN | Yes | No | Grid + Detail |
-| Group | Gruppe | `data.groups` | `user.groups` | [user-management.md#entity-experte-expert](../mongodb-mapping/user-management.md#entity-experte-expert) | `reference:group` | `select` | `GroupService.getAll` | No | No | Detail collection insert |
-| Customer | Kunde | `data.customers` | `user.customers` | [user-management.md#entity-experte-expert](../mongodb-mapping/user-management.md#entity-experte-expert) | `reference:customer` | `autocomplete` | `CustomerService.autocomplete` | No | No | Detail collection insert |
-| Locked | Gesperrt | `data.accountLocked` | `user.accountLocked` | [user-management.md#entity-experte-expert](../mongodb-mapping/user-management.md#entity-experte-expert) | `boolean` | `switch` | — | No | No | Grid + Detail |
+| Username | Benutzername | `data.username` | `user.username` | [user-management.md#entity-expert](../mongodb-mapping/user-management.md#entity-expert) | `string` | `text` | — | Yes | No | Grid + Detail |
+| Role | Rolle | `data.role` | `user.role` | [user-management.md#entity-expert](../mongodb-mapping/user-management.md#entity-expert) | `enum:Role` | `select` | REGISTERED, STANDARD, KUNDE, ADMIN_KUNDE, LEITER_INTERN, ADMIN_INTERN, ADMIN | Yes | No | Grid + Detail |
+| Group | Gruppe | `data.groups` | `user.groups` | [user-management.md#entity-expert](../mongodb-mapping/user-management.md#entity-expert) | `reference:group` | `select` | `GroupService.getAll` | No | No | Detail collection insert |
+| Customer | Kunde | `data.customers` | `user.customers` | [user-management.md#entity-expert](../mongodb-mapping/user-management.md#entity-expert) | `reference:customer` | `autocomplete` | `CustomerService.autocomplete` | No | No | Detail collection insert |
+| Locked | Gesperrt | `data.accountLocked` | `user.accountLocked` | [user-management.md#entity-expert](../mongodb-mapping/user-management.md#entity-expert) | `boolean` | `switch` | — | No | No | Grid + Detail |
 | Two Factor | Zwei-Faktor | `data.dateTwoFactor` | `user.totpDevice.dateRegistered` | [user-management.md#totpdevice](../mongodb-mapping/user-management.md#sub-entity-totpdevice) | `datetime` | `display` | — | No | Yes | Has reset button |
 | API Key | API-Schlüssel | — | — | — | `action` | `button` | — | — | — | **Workflow-only**: opens `#changeApiKeyDlg` |
 
@@ -205,10 +205,10 @@ This document defines the data dictionary for the User Management domain. It map
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| Key (Hardcoded) | Key (Hardcoded) | `apikeys.key` | `user.settings.apikeys` | [user-management.md#entity-experte-expert](../mongodb-mapping/user-management.md#entity-experte-expert) | `string` | `display` | — | No | Yes | Auto-generated |
-| IP (Hardcoded) | IP (Hardcoded) | `apikeys.whitelistText` | `user.settings.apikeys` | [user-management.md#entity-experte-expert](../mongodb-mapping/user-management.md#entity-experte-expert) | `string` | `text` | — | Yes | No | Parsed to array |
-| Active (Hardcoded) | Active (Hardcoded) | `apikeys.enabled` | `user.settings.apikeys` | [user-management.md#entity-experte-expert](../mongodb-mapping/user-management.md#entity-experte-expert) | `boolean` | `checkbox` | — | No | No | — |
-| Last Use (Hardcoded) | Last Use (Hardcoded) | `apikeys.dateLastUsed` | `user.settings.apikeys` | [user-management.md#entity-experte-expert](../mongodb-mapping/user-management.md#entity-experte-expert) | `datetime` | `display` | — | No | Yes | — |
+| Key (Hardcoded) | Key (Hardcoded) | `apikeys.key` | `user.settings.apikeys` | [user-management.md#entity-expert](../mongodb-mapping/user-management.md#entity-expert) | `string` | `display` | — | No | Yes | Auto-generated |
+| IP (Hardcoded) | IP (Hardcoded) | `apikeys.whitelistText` | `user.settings.apikeys` | [user-management.md#entity-expert](../mongodb-mapping/user-management.md#entity-expert) | `string` | `text` | — | Yes | No | Parsed to array |
+| Active (Hardcoded) | Active (Hardcoded) | `apikeys.enabled` | `user.settings.apikeys` | [user-management.md#entity-expert](../mongodb-mapping/user-management.md#entity-expert) | `boolean` | `checkbox` | — | No | No | — |
+| Last Use (Hardcoded) | Last Use (Hardcoded) | `apikeys.dateLastUsed` | `user.settings.apikeys` | [user-management.md#entity-expert](../mongodb-mapping/user-management.md#entity-expert) | `datetime` | `display` | — | No | Yes | — |
 
 ## 13. TOTP Onboarding (`admin-user/06-totp-onboarding.md`)
 
@@ -218,34 +218,34 @@ This document defines the data dictionary for the User Management domain. It map
 | Start | Start | — | — | — | `action` | `button` | — | — | — | **Workflow-only**: `UserService.registerDevice` |
 | Generate New Secret | Neues Secret Generieren (Hardcoded) | — | — | — | `action` | `button` | — | — | — | **Workflow-only**: `UserService.registerDevice` |
 | Test | Test (Hardcoded) | — | — | — | `action` | `button` | — | — | — | **Workflow-only**: `UserService.checkTotp` |
-| Delete 2nd Factor | 2. Faktor Löschen (Hardcoded) | — | `user.totpDevice` | [user-management.md#entity-experte-expert](../mongodb-mapping/user-management.md#entity-experte-expert) | `action` | `button` | — | — | — | **Workflow-only**: `UserService.resetTotp` |
+| Delete 2nd Factor | 2. Faktor Löschen (Hardcoded) | — | `user.totpDevice` | [user-management.md#entity-expert](../mongodb-mapping/user-management.md#entity-expert) | `action` | `button` | — | — | — | **Workflow-only**: `UserService.resetTotp` |
 
 ## 14. Group Management (`admin-group/group-management.md`)
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| Name | Name | `data.name` | `group.name` | [user-management.md#entity-benutzergruppen-groups](../mongodb-mapping/user-management.md#entity-benutzergruppen-groups) | `string` | `text` | — | Yes | No | — |
-| Description | Beschreibung | `data.description` | `group.description` | [user-management.md#entity-benutzergruppen-groups](../mongodb-mapping/user-management.md#entity-benutzergruppen-groups) | `bigstring` | `textarea` | — | No | No | — |
-| Right | Recht | `data.rights` | `group.rights` | [user-management.md#entity-benutzergruppen-groups](../mongodb-mapping/user-management.md#entity-benutzergruppen-groups) | `reference:accessRight[]` | `select` (multiple) | `GroupService.getRights` | No | No | — |
+| Name | Name | `data.name` | `group.name` | [user-management.md#entity-groups](../mongodb-mapping/user-management.md#entity-groups) | `string` | `text` | — | Yes | No | — |
+| Description | Beschreibung | `data.description` | `group.description` | [user-management.md#entity-groups](../mongodb-mapping/user-management.md#entity-groups) | `bigstring` | `textarea` | — | No | No | — |
+| Right | Recht | `data.rights` | `group.rights` | [user-management.md#entity-groups](../mongodb-mapping/user-management.md#entity-groups) | `reference:accessRight[]` | `select` (multiple) | `GroupService.getRights` | No | No | — |
 
 ## 15. Skill Management (`admin-skill/skill.md`)
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| Code | Code | `data.code` | `skill.code` | [capabilities.md#entity-fähigkeiten-skills](../mongodb-mapping/capabilities.md#entity-fähigkeiten-skills) | `string` | `text` | — | Yes | No | — |
-| Type | Typ | `data.type` | `skill.type` | [capabilities.md#entity-fähigkeiten-skills](../mongodb-mapping/capabilities.md#entity-fähigkeiten-skills) | `enum:SkillType` | `select` | MAIN, ADDITIONAL, EXTRA, LANGUAGE | Yes | No | — |
-| Certificate | Zertifikat | `data.certified` | `skill.certified` | [capabilities.md#entity-fähigkeiten-skills](../mongodb-mapping/capabilities.md#entity-fähigkeiten-skills) | `boolean` | `switch` | — | No | No | — |
-| Active | Aktiv | `data.active` | `skill.active` | [capabilities.md#entity-fähigkeiten-skills](../mongodb-mapping/capabilities.md#entity-fähigkeiten-skills) | `boolean` | `switch` | — | No | No | — |
-| Description | Beschreibung | `data.description` | `skill.description` | [capabilities.md#entity-fähigkeiten-skills](../mongodb-mapping/capabilities.md#entity-fähigkeiten-skills) | `bigstring` | `textarea` | — | No | No | — |
+| Code | Code | `data.code` | `skill.code` | [capabilities.md#entity-skills](../mongodb-mapping/capabilities.md#entity-skills) | `string` | `text` | — | Yes | No | — |
+| Type | Typ | `data.type` | `skill.type` | [capabilities.md#entity-skills](../mongodb-mapping/capabilities.md#entity-skills) | `enum:SkillType` | `select` | MAIN, ADDITIONAL, EXTRA, LANGUAGE | Yes | No | — |
+| Certificate | Zertifikat | `data.certified` | `skill.certified` | [capabilities.md#entity-skills](../mongodb-mapping/capabilities.md#entity-skills) | `boolean` | `switch` | — | No | No | — |
+| Active | Aktiv | `data.active` | `skill.active` | [capabilities.md#entity-skills](../mongodb-mapping/capabilities.md#entity-skills) | `boolean` | `switch` | — | No | No | — |
+| Description | Beschreibung | `data.description` | `skill.description` | [capabilities.md#entity-skills](../mongodb-mapping/capabilities.md#entity-skills) | `bigstring` | `textarea` | — | No | No | — |
 
 ## 16. Onboarding Flow (`onboarding/onboarding-flow.md`)
 
 | UI Field Label (EN) | UI Field Label (DE) | Data Path (`data.*`) | MongoDB Path (`collection.field`) | DB Mapping Reference | Abstract Type | UI Element | Options/Enum | Required | Read-only | Notes |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| Step | Schritt | `data.steps.step.title` | `onboardingHistory.step.title` | [user-management.md#onboardinghistory](../mongodb-mapping/user-management.md#entity-onboarding-verlauf-onboarding-history) | `string` | `display` | — | No | Yes | Repeater column |
-| Date | Datum | `data.steps.dateStarted` | `onboardingHistory.dateStarted` | [user-management.md#onboardinghistory](../mongodb-mapping/user-management.md#entity-onboarding-verlauf-onboarding-history) | `date` | `date` | — | No | No | Repeater column |
-| Completed | Abgeschlossen | `data.steps.dateCompleted` | `onboardingHistory.dateCompleted` | [user-management.md#onboardinghistory](../mongodb-mapping/user-management.md#entity-onboarding-verlauf-onboarding-history) | `date` | `date` | — | No | No | Repeater column |
-| Comment | Kommentar | `data.steps.comment` | `onboardingHistory.comment` | [user-management.md#onboardinghistory](../mongodb-mapping/user-management.md#entity-onboarding-verlauf-onboarding-history) | `bigstring` | `textarea` | — | No | No | Repeater column |
+| Step | Schritt | `data.steps.step.title` | `onboardingHistory.step.title` | [user-management.md#onboardinghistory](../mongodb-mapping/user-management.md#entity-onboarding-history) | `string` | `display` | — | No | Yes | Repeater column |
+| Date | Datum | `data.steps.dateStarted` | `onboardingHistory.dateStarted` | [user-management.md#onboardinghistory](../mongodb-mapping/user-management.md#entity-onboarding-history) | `date` | `date` | — | No | No | Repeater column |
+| Completed | Abgeschlossen | `data.steps.dateCompleted` | `onboardingHistory.dateCompleted` | [user-management.md#onboardinghistory](../mongodb-mapping/user-management.md#entity-onboarding-history) | `date` | `date` | — | No | No | Repeater column |
+| Comment | Kommentar | `data.steps.comment` | `onboardingHistory.comment` | [user-management.md#onboardinghistory](../mongodb-mapping/user-management.md#entity-onboarding-history) | `bigstring` | `textarea` | — | No | No | Repeater column |
 | Upload file | Datei hochladen | `data.steps.file` | — | — | `action` | `file` | — | No | No | **Workflow-only**: Only visible for SUBMIT/SELFSUBMIT types |
 
 ## 17. User Stats Details (`dashboard/dialogs-user-management.md`)

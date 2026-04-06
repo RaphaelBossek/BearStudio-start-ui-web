@@ -9,8 +9,8 @@ title: 'Profile Expert Availability'
 > - `web/src/main/webapp/profile/expertWeek.js` (236 lines) -- Week-level expert availability grid
 >
 > **Loaded by**
-> - `dash/monthView.htmlm` loads `expertDays.js` (see [11-month-view.md](../dash/11-month-view.md))
-> - `dash/weekView.htmlm` loads `expertWeek.js` (see [10-week-view.md](../dash/10-week-view.md))
+> - `dash/monthView.htmlm` loads `expertDays.js` (see [11-month-view.md](../../planning/dashboard/month-view.md))
+> - `dash/weekView.htmlm` loads `expertWeek.js` (see [10-week-view.md](../../planning/dashboard/week-view.md))
 
 ---
 

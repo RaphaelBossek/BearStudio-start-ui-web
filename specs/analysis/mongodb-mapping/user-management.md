@@ -10,7 +10,7 @@ This file covers the User Management category: management of experts, users, rol
 
 ---
 
-## ER Diagram
+## ER Diagram {#er-diagram} {#er-diagram}
 
 Expert profiles, groups, permissions, sessions, and onboarding.
 
@@ -138,19 +138,19 @@ erDiagram
 
 | Table Name (DBML) | Business Entity | Description Summary |
 | :--- | :--- | :--- |
-| [`user`](#entity-experte-expert) | Experte (Expert) | Expert profile including personal details, contact info, credentials, status, billing info, and qualifications. |
-| [`group`](#entity-benutzergruppen-groups) | Benutzergruppen (Groups) | Roles and permissions groups assigned to users. |
-| [`accessRight`](#entity-zugriffsrechte-access-rights) | Zugriffsrechte (Access Rights) | Definition of individual permissions and their descriptions. |
-| [`userFile`](#entity-benutzerdateien-user-files) | Benutzerdateien (User Files) | Metadata and references for files uploaded by or for users. |
-| [`persistentSession`](#entity-benutzersitzungen-persistent-sessions) | Benutzersitzungen (Persistent Sessions) | Storage for persistent user authentication sessions. |
-| [`onboardingHistory`](#entity-onboarding-verlauf-onboarding-history) | Onboarding-Verlauf (Onboarding History) | Records of onboarding steps completed by employees or locations. |
-| [`onboardingStep`](#entity-onboarding-schritte-onboarding-steps) | Onboarding-Schritte (Onboarding Steps) | Individual steps and checks required for onboarding processes. |
-| [`loginNotification`](#entity-login-benachrichtigungen-login-notifications) | Login-Benachrichtigungen (Login Notifications) | Specialized notifications triggered by user login events. |
-| [`1testuser`](#entity-testbenutzer-test-user) | Testbenutzer (Test User) | Placeholder or dedicated entity for system testing and QA. |
+| [`user`](#entity-expert) | Experte (Expert) | Expert profile including personal details, contact info, credentials, status, billing info, and qualifications. |
+| [`group`](#entity-groups) | Benutzergruppen (Groups) | Roles and permissions groups assigned to users. |
+| [`accessRight`](#entity-access-rights) | Zugriffsrechte (Access Rights) | Definition of individual permissions and their descriptions. |
+| [`userFile`](#entity-user-files) | Benutzerdateien (User Files) | Metadata and references for files uploaded by or for users. |
+| [`persistentSession`](#entity-persistent-sessions) | Benutzersitzungen (Persistent Sessions) | Storage for persistent user authentication sessions. |
+| [`onboardingHistory`](#entity-onboarding-history) | Onboarding-Verlauf (Onboarding History) | Records of onboarding steps completed by employees or locations. |
+| [`onboardingStep`](#entity-onboarding-steps) | Onboarding-Schritte (Onboarding Steps) | Individual steps and checks required for onboarding processes. |
+| [`loginNotification`](#entity-login-notifications) | Login-Benachrichtigungen (Login Notifications) | Specialized notifications triggered by user login events. |
+| [`1testuser`](#entity-test-user) | Testbenutzer (Test User) | Placeholder or dedicated entity for system testing and QA. |
 
 ---
 
-## Entity: Experte (Expert)
+## Entity: Experte (Expert) {#entity-expert} {#entity-expert}
 Personal and professional data for medical experts.
 
 ### Table: user
@@ -184,7 +184,7 @@ Personal and professional data for medical experts.
 | `settings` | `Document` | schema | Benutzereinstellungen |
 | `ip` | `String` | schema | Aktuelle IP-Adresse |
 | `invalidLogins` | `Array` | schema | Liste ungültiger Logins ([LoginEvent](#sub-entity-loginevent)) |
-| `groups` | `Array` | schema | Liste zugeordneter Gruppen (DBRefs to [group](#entity-benutzergruppen-groups)) |
+| `groups` | `Array` | schema | Liste zugeordneter Gruppen (DBRefs to [group](#entity-groups)) |
 | `consecutiveFailedLoginAttempts` | `Number` | schema | Aufeinanderfolgende fehlgeschlagene Logins |
 | `successfulLogins` | `Array` | schema | Liste erfolgreicher Logins ([LoginEvent](#sub-entity-loginevent)) |
 | `dateAcceptedLoginNotification` | `Date` | schema | Akzeptanzdatum der Login-Benachrichtigung |
@@ -200,32 +200,32 @@ Personal and professional data for medical experts.
 | `onBoardingPercentComplete` | `Number` | inferred | Onboarding Fortschritt (%) |
 | `stepsTotal` | `Number` | inferred | Gesamtanzahl Onboarding-Schritte |
 | `stepsCompleted` | `Number` | inferred | Abgeschlossene Onboarding-Schritte |
-| `customers` | `Array` | schema | Zugeordnete Kunden (DBRefs to [customer](./customer.md#entity-kunden-customers)) |
+| `customers` | `Array` | schema | Zugeordnete Kunden (DBRefs to [customer](./customer.md#entity-customers)) |
 | `lang` | `String` | schema | Spracheinstellung (z.B. `de`) |
 | `verifikationKey` | `String` | schema | Verifizierungsschlüssel |
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.User` |
 
 The `user` entity is referenced by:
-- [`appointmentAssignment`](./planning.md#entity-terminzuweisungen-appointment-assignments)
-- [`appointmentAssignmentHistory`](./planning.md#entity-terminzuweisungs-historie-appointment-assignment-history)
-- [`appointmentPlan`](./planning.md#entity-sprechstundenplan-appointment-plan) (as `doctor`, `createdBy`, `changedBy`)
-- [`consultationData`](./treatment.md#entity-konsultationsdaten-consultation-data) (as `signedOffBy`, `doctor`, `changedBy`, `createdBy`)
-- [`expertDays`](./planning.md#entity-jahreskalender-eines-experten-expert-days)
-- [`expertWeek`](./planning.md#entity-experten-wochenplan-expert-week)
-- [`holiday`](./planning.md#entity-abwesenheiten-urlaub-holidays)
-- [`invoice`](./accounting.md#entity-rechnungen-invoices) (as `createdBy`, `changedBy`)
-- [`log`](./system.md#entity-system-logs-logs)
-- [`notification`](./news.md#entity-benachrichtigungen-notifications)
-- [`patient`](./treatment.md#entity-patienten-patients) (as `createdBy`, `changedBy`)
-- [`userFile`](#entity-benutzerdateien-user-files)
-- [`userVideoHistory`](./academy.md#entity-video-verlauf-user-video-history)
-- [`persistentSession`](#entity-benutzersitzungen-persistent-sessions)
-- [`onboardingHistory`](#entity-onboarding-verlauf-onboarding-history) (as `changedBy`)
-- [`onboardingStep`](#entity-onboarding-schritte-onboarding-steps) (as `createdBy`, `changedBy`)
-- [`notificationTemplate`](./news.md#entity-benachrichtigungsvorlagen-notification-templates) (as `changedBy`)
-- [`cDRCall`](./external-data.md#entity-anrufliste-cdr-calls) (as `ownerId`, `assignedById`)
-- [`expertWorkMonthly`](./accounting.md#entity-monatliche-expertenarbeit-expert-work-monthly) (as `userId`)
-- [`closedMonth`](./accounting.md#entity-abgeschlossene-zeitr-ume-closed-months) (as `closedBy`)
+- [`appointmentAssignment`](./planning.md#entity-appointment-assignments)
+- [`appointmentAssignmentHistory`](./planning.md#entity-appointment-assignment-history)
+- [`appointmentPlan`](./planning.md#entity-appointment-plan) (as `doctor`, `createdBy`, `changedBy`)
+- [`consultationData`](./treatment.md#entity-consultation-data) (as `signedOffBy`, `doctor`, `changedBy`, `createdBy`)
+- [`expertDays`](./planning.md#entity-expert-days)
+- [`expertWeek`](./planning.md#entity-expert-week)
+- [`holiday`](./planning.md#entity-holidays)
+- [`invoice`](./accounting.md#entity-invoices) (as `createdBy`, `changedBy`)
+- [`log`](./system.md#entity-logs)
+- [`notification`](./news.md#entity-notifications)
+- [`patient`](./treatment.md#entity-patients) (as `createdBy`, `changedBy`)
+- [`userFile`](#entity-user-files)
+- [`userVideoHistory`](./academy.md#entity-user-video-history)
+- [`persistentSession`](#entity-persistent-sessions)
+- [`onboardingHistory`](#entity-onboarding-history) (as `changedBy`)
+- [`onboardingStep`](#entity-onboarding-steps) (as `createdBy`, `changedBy`)
+- [`notificationTemplate`](./news.md#entity-notification-templates) (as `changedBy`)
+- [`cDRCall`](./external-data.md#entity-cdr-calls) (as `ownerId`, `assignedById`)
+- [`expertWorkMonthly`](./accounting.md#entity-expert-work-monthly) (as `userId`)
+- [`closedMonth`](./accounting.md#entity-closed-months) (as `closedBy`)
 
 ### Functionality Details
 - **Availability:** Managed via `expertDays` collection (mapped from "Jahreskalender eines Experten").
@@ -237,7 +237,7 @@ The `user` entity is referenced by:
 
 The following structures are used as nested documents within the `user` collection.
 
-#### Sub-entity: UserProfile
+#### Sub-entity: UserProfile {#sub-entity-userprofile} {#sub-entity-userprofile}
 Contains personal information and general settings for the user.
 
 | Column | Type | Field Type | Description |
@@ -259,12 +259,12 @@ Contains personal information and general settings for the user.
 | `homePhone` | `String` | inferred | Privatnummer |
 | `faxNumber` | `String` | inferred | Faxnummer |
 | `workPhone` | `String` | inferred | Dienstnummer |
-| `userId` | `Long` | inferred | Reference to [user](#entity-experte-expert) |
+| `userId` | `Long` | inferred | Reference to [user](#entity-expert) |
 
 The `UserProfile` sub-entity is used within:
-- [`user`](#entity-experte-expert) (as `userProfile` field)
+- [`user`](#entity-expert) (as `userProfile` field)
 
-#### Sub-entity: Address
+#### Sub-entity: Address {#sub-entity-address} {#sub-entity-address}
 A reusable structure for postal addresses.
 
 | Column | Type | Field Type | Description |
@@ -282,9 +282,9 @@ A reusable structure for postal addresses.
 The `Address` sub-entity is used within:
 - [`UserProfile`](#sub-entity-userprofile) (as `mainAddress` field)
 - [`EmployerProfile`](#sub-entity-employerprofile) (as `billingAddress` field)
-- [`customer`](./customer.md#entity-kunden-customers) (as `mainAddress` field)
+- [`customer`](./customer.md#entity-customers) (as `mainAddress` field)
 
-#### Sub-entity: EmployeeProfile
+#### Sub-entity: EmployeeProfile {#sub-entity-employeeprofile} {#sub-entity-employeeprofile}
 Contains professional qualifications and payment details for the expert.
 
 | Column | Type | Field Type | Description |
@@ -309,15 +309,15 @@ Contains professional qualifications and payment details for the expert.
 | `categoriesWatched` | `Array` | inferred | Gesehene Video-Kategorien ([WatchedCategory](#sub-entity-watchedcategory)) |
 
 The `EmployeeProfile` sub-entity is used within:
-- [`user`](#entity-experte-expert) (as `employeeProfile` field)
+- [`user`](#entity-expert) (as `employeeProfile` field)
 
-#### Sub-entity: SkillAssignment
+#### Sub-entity: SkillAssignment {#sub-entity-skillassignment} {#sub-entity-skillassignment}
 Maps a specific skill to the expert with certification details.
 
 | Column | Type | Field Type | Description |
 | :--- | :--- | :--- | :--- |
 | `_id` | `String` | inferred | Internal identifier |
-| `skill` | `DBRef` | schema | Reference to [skill](./capabilities.md#entity-fähigkeiten-skills) collection |
+| `skill` | `DBRef` | schema | Reference to [skill](./capabilities.md#entity-skills) collection |
 | `active` | `Boolean` | schema | Whether the skill is active for the expert |
 | `dateCertification` | `Date` | schema | Date when the skill was obtained |
 | `certification` | `Document` | schema | Zertifikatsdatei ([FileMetadata](#sub-entity-filemetadata)) |
@@ -325,7 +325,7 @@ Maps a specific skill to the expert with certification details.
 The `SkillAssignment` sub-entity is used within:
 - [`EmployeeProfile`](#sub-entity-employeeprofile) (as `skills` array)
 
-#### Sub-entity: EmployerProfile
+#### Sub-entity: EmployerProfile {#sub-entity-employerprofile} {#sub-entity-employerprofile}
 Contains contract details and billing information related to Videoclinic.
 
 | Column | Type | Field Type | Description |
@@ -346,15 +346,15 @@ Contains contract details and billing information related to Videoclinic.
 | `experienceAddictionMedicine` | `String` | inferred | Erfahrung in Suchtmedizin |
 
 The `EmployerProfile` sub-entity is used within:
-- [`user`](#entity-experte-expert) (as `employerProfile` field)
+- [`user`](#entity-expert) (as `employerProfile` field)
 
-#### Sub-entity: SubscribedProduct
+#### Sub-entity: SubscribedProduct {#sub-entity-subscribedproduct} {#sub-entity-subscribedproduct}
 A product or service the expert has subscribed to.
 
 | Column | Type | Field Type | Description |
 | :--- | :--- | :--- | :--- |
 | `_id` | `String` | schema | Internal identifier |
-| `product` | `DBRef` | schema | Reference to [product](./accounting.md#entity-waren-products) collection |
+| `product` | `DBRef` | schema | Reference to [product](./accounting.md#entity-products) collection |
 | `amount` | `Number` | schema | Quantity |
 | `start` | `Date` | schema | Start date |
 | `until` | `Date` | schema | Enddatum |
@@ -365,7 +365,7 @@ A product or service the expert has subscribed to.
 The `SubscribedProduct` sub-entity is used within:
 - [`EmployerProfile`](#sub-entity-employerprofile) (as `products` array)
 
-#### Sub-entity: TotpDevice
+#### Sub-entity: TotpDevice {#sub-entity-totpdevice} {#sub-entity-totpdevice}
 Information about the TOTP device used for multi-factor authentication.
 
 | Column | Type | Field Type | Description |
@@ -376,9 +376,9 @@ Information about the TOTP device used for multi-factor authentication.
 | `activated` | `Date` | schema | Date of activation |
 
 The `TotpDevice` sub-entity is used within:
-- [`user`](#entity-experte-expert) (as `totpDevice` field)
+- [`user`](#entity-expert) (as `totpDevice` field)
 
-#### Sub-entity: TotpActivity
+#### Sub-entity: TotpActivity {#sub-entity-totpactivity} {#sub-entity-totpactivity}
 Records the last TOTP-related activity.
 
 | Column | Type | Field Type | Description |
@@ -389,9 +389,9 @@ Records the last TOTP-related activity.
 | `action` | `String` | schema | Performed action (e.g., `login`) |
 
 The `TotpActivity` sub-entity is used within:
-- [`user`](#entity-experte-expert) (as `totpActivity` field)
+- [`user`](#entity-expert) (as `totpActivity` field)
 
-#### Sub-entity: LoginEvent
+#### Sub-entity: LoginEvent {#sub-entity-loginevent} {#sub-entity-loginevent}
 Details of a login attempt (successful or unsuccessful).
 
 | Column | Type | Field Type | Description |
@@ -403,9 +403,9 @@ Details of a login attempt (successful or unsuccessful).
 | `count` | `Number` | schema | Total count of attempts for this IP |
 
 The `LoginEvent` sub-entity is used within:
-- [`user`](#entity-experte-expert) (as `invalidLogins` and `successfulLogins` arrays)
+- [`user`](#entity-expert) (as `invalidLogins` and `successfulLogins` arrays)
 
-#### Sub-entity: FileMetadata
+#### Sub-entity: FileMetadata {#sub-entity-filemetadata} {#sub-entity-filemetadata}
 Metadata for uploaded files (signatures, certifications, etc.).
 
 | Column | Type | Field Type | Description |
@@ -421,39 +421,39 @@ Metadata for uploaded files (signatures, certifications, etc.).
 The `FileMetadata` sub-entity is used within:
 - [`EmployeeProfile`](#sub-entity-employeeprofile) (as `imageSignature`)
 - [`SkillAssignment`](#sub-entity-skillassignment) (as `certification`)
-- [`uploadFile`](./system.md#entity-dateiuploads-upload-files) (as `data`)
-- [`video`](./academy.md#entity-videos-videos) (as `file` and `preview`)
-- [`exportTemplate`](./system.md#entity-export-vorlagen-export-templates) (as `template`)
+- [`uploadFile`](./system.md#entity-upload-files) (as `data`)
+- [`video`](./academy.md#entity-videos) (as `file` and `preview`)
+- [`exportTemplate`](./system.md#entity-export-templates) (as `template`)
 
-#### Sub-entity: ConsultationDoctor
+#### Sub-entity: ConsultationDoctor {#sub-entity-consultationdoctor} {#sub-entity-consultationdoctor}
 
-Denormalisierter Snapshot eines Experten ([user](#entity-experte-expert)).
+Denormalisierter Snapshot eines Experten ([user](#entity-expert)).
 
 | Column | Type | Field Type | Description |
 | :--- | :--- | :--- | :--- |
-| `_id` | `Long` | snapshot | Referenz-ID auf [user](#entity-experte-expert) |
+| `_id` | `Long` | snapshot | Referenz-ID auf [user](#entity-expert) |
 | `name` | `String` | snapshot | Name des Experten |
 | `email` | `String` | snapshot | E-Mail-Adresse |
 | `formalDisplayName` | `String` | snapshot | Vollständiger Name mit Titel |
 
 The `ConsultationDoctor` sub-entity is used within:
 
-- [`consultationData`](./treatment.md#entity-konsultationsdaten-consultation-data) (as `doctor`)
-- [`consultation`](./treatment.md#entity-konsultationen-cqrs-read-projection) (as `doctor`)
-- [`notification`](./news.md#entity-benachrichtigungen-notifications) (as `from` and `to`)
-- [`cDRCallAssignment`](./external-data.md#entity-cdr-call-zuweisungen-cdr-call-assignment) (as `user`)
+- [`consultationData`](./treatment.md#entity-consultation-data) (as `doctor`)
+- [`consultation`](./treatment.md#entity-consultation) (as `doctor`)
+- [`notification`](./news.md#entity-notifications) (as `from` and `to`)
+- [`cDRCallAssignment`](./external-data.md#entity-cdr-call-assignment) (as `user`)
 - [`expertWorklogEntry`](./accounting.md#sub-entity-expertworklogentry) (as `expert`)
-- [`asyncJobQueue`](./system.md#entity-hintergrundaufgaben-async-job-queue) (as `createdBy`)
+- [`asyncJobQueue`](./system.md#entity-async-job-queue) (as `createdBy`)
 
 > **Note**: `changedBy`, `createdBy`, and `reportingExpert` in `consultation`/`consultationData` use a **slim variant** (fields: `_id`, `name`, `email` — no `formalDisplayName`) compared to the full `ConsultationDoctor` shape used in `doctor`.
 
-#### Sub-entity: ConsultationJob
+#### Sub-entity: ConsultationJob {#sub-entity-consultationjob} {#sub-entity-consultationjob}
 
-Denormalisierter Snapshot einer Dienstleistung ([jobId](./accounting.md#entity-dienstleistung-service)).
+Denormalisierter Snapshot einer Dienstleistung ([jobId](./accounting.md#entity-service)).
 
 | Column | Type | Field Type | Description |
 | :--- | :--- | :--- | :--- |
-| `_id` | `Long` | snapshot | Referenz-ID auf [jobId](./accounting.md#entity-dienstleistung-service) |
+| `_id` | `Long` | snapshot | Referenz-ID auf [jobId](./accounting.md#entity-service) |
 | `code` | `String` | snapshot | Dienstleistungscode |
 | `color` | `String` | snapshot | Farbe (Hex/Name) |
 | `expertTitle` | `String` | snapshot | Titel für Experten |
@@ -463,35 +463,35 @@ Denormalisierter Snapshot einer Dienstleistung ([jobId](./accounting.md#entity-d
 
 The `ConsultationJob` sub-entity is used within:
 
-- [`appointment`](./planning.md#entity-termine-appointments) (as `job`)
-- [`consultationData`](./treatment.md#entity-konsultationsdaten-consultation-data) (as `job`)
-- [`consultation`](./treatment.md#entity-konsultationen-cqrs-read-projection) (as `job`)
-- [`expertConsultationTemplate`](./treatment.md#entity-konsultationsvorlagen-expert-consultation-templates) (as `job`)
-- [`shiftPlan`](./planning.md#entity-schichtplan-shift-plan) (as `job`)
+- [`appointment`](./planning.md#entity-appointments) (as `job`)
+- [`consultationData`](./treatment.md#entity-consultation-data) (as `job`)
+- [`consultation`](./treatment.md#entity-consultation) (as `job`)
+- [`expertConsultationTemplate`](./treatment.md#entity-expert-consultation-templates) (as `job`)
+- [`shiftPlan`](./planning.md#entity-shift-plan) (as `job`)
 
-#### Sub-entity: ConsultationCustomer
+#### Sub-entity: ConsultationCustomer {#sub-entity-consultationcustomer} {#sub-entity-consultationcustomer}
 
-Denormalisierter Snapshot eines Kunden ([customer](./customer.md#entity-kunden-customers)).
+Denormalisierter Snapshot eines Kunden ([customer](./customer.md#entity-customers)).
 
 | Column | Type | Field Type | Description |
 | :--- | :--- | :--- | :--- |
-| `_id` | `Long` | snapshot | Referenz-ID auf [customer](./customer.md#entity-kunden-customers) |
+| `_id` | `Long` | snapshot | Referenz-ID auf [customer](./customer.md#entity-customers) |
 | `name` | `String` | snapshot | Name des Kunden |
 
 The `ConsultationCustomer` sub-entity is used within:
 
-- [`appointment`](./planning.md#entity-termine-appointments) (as `customer`)
-- [`consultationData`](./treatment.md#entity-konsultationsdaten-consultation-data) (as `customer`)
-- [`consultation`](./treatment.md#entity-konsultationen-cqrs-read-projection) (as `customer`)
-- [`treatment`](./treatment.md#entity-behandlungsverlauf-treatment) (as `customer`)
+- [`appointment`](./planning.md#entity-appointments) (as `customer`)
+- [`consultationData`](./treatment.md#entity-consultation-data) (as `customer`)
+- [`consultation`](./treatment.md#entity-consultation) (as `customer`)
+- [`treatment`](./treatment.md#entity-treatment) (as `customer`)
 
-#### Sub-entity: ConsultationLocation
+#### Sub-entity: ConsultationLocation {#sub-entity-consultationlocation} {#sub-entity-consultationlocation}
 
-Denormalisierter Snapshot eines Standorts ([location](./customer.md#entity-standorte-locations)).
+Denormalisierter Snapshot eines Standorts ([location](./customer.md#entity-locations)).
 
 | Column | Type | Field Type | Description |
 | :--- | :--- | :--- | :--- |
-| `_id` | `Long` | snapshot | Referenz-ID auf [location](./customer.md#entity-standorte-locations) |
+| `_id` | `Long` | snapshot | Referenz-ID auf [location](./customer.md#entity-locations) |
 | `name` | `String` | snapshot | Name des Ortes |
 | `booknumberMask` | `String` | snapshot | Maske für Buchnummern |
 | `patientDataType` | `String` | snapshot | Datentyp der Patienten (z.B. `EXTERNAL`, `INTERNAL_VCCLOUD`) |
@@ -499,14 +499,14 @@ Denormalisierter Snapshot eines Standorts ([location](./customer.md#entity-stand
 
 The `ConsultationLocation` sub-entity is used within:
 
-- [`appointment`](./planning.md#entity-termine-appointments) (as `location`)
-- [`consultationData`](./treatment.md#entity-konsultationsdaten-consultation-data) (as `location`)
-- [`consultation`](./treatment.md#entity-konsultationen-cqrs-read-projection) (as `location`)
-- [`treatment`](./treatment.md#entity-behandlungsverlauf-treatment) (as `location`)
-- [`patientData`](./treatment.md#entity-patientenerg-nzungsdaten-patient-data) (as `location`)
-- [`appointmentPlan`](./planning.md#entity-sprechstundenplan-appointment-plan) (as `location`)
+- [`appointment`](./planning.md#entity-appointments) (as `location`)
+- [`consultationData`](./treatment.md#entity-consultation-data) (as `location`)
+- [`consultation`](./treatment.md#entity-consultation) (as `location`)
+- [`treatment`](./treatment.md#entity-treatment) (as `location`)
+- [`patientData`](./treatment.md#entity-patient-data) (as `location`)
+- [`appointmentPlan`](./planning.md#entity-appointment-plan) (as `location`)
 
-## Entity: Benutzergruppen (Groups)
+## Entity: Benutzergruppen (Groups) {#entity-groups} {#entity-groups}
 
 Zusammenfassung von Benutzern zu Gruppen mit gemeinsamen Rollen und Rechten.
 
@@ -522,9 +522,9 @@ Zusammenfassung von Benutzern zu Gruppen mit gemeinsamen Rollen und Rechten.
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.Group` |
 
 The `group` entity is referenced by:
-- [`user`](#entity-experte-expert) (in `groups`)
+- [`user`](#entity-expert) (in `groups`)
 
-## Entity: Zugriffsrechte (Access Rights)
+## Entity: Zugriffsrechte (Access Rights) {#entity-access-rights} {#entity-access-rights}
 Definition von spezifischen Berechtigungen innerhalb des Systems.
 
 ### Table: accessRight
@@ -538,9 +538,9 @@ Definition von spezifischen Berechtigungen innerhalb des Systems.
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.AccessRight` |
 
 The `accessRight` entity is referenced by:
-- [`group`](#entity-benutzergruppen-groups) (via `rights`)
+- [`group`](#entity-groups) (via `rights`)
 
-## Entity: Benutzerdateien (User Files)
+## Entity: Benutzerdateien (User Files) {#entity-user-files} {#entity-user-files}
 Dateien, die Benutzern zugeordnet sind (z.B. Zertifikate).
 
 ### Table: userFile
@@ -551,15 +551,15 @@ Dateien, die Benutzern zugeordnet sind (z.B. Zertifikate).
 | `data` | `Document` | schema | Metadaten der Datei ([FileMetadata](#sub-entity-filemetadata)) |
 | `name` | `String` | schema | Anzeigename |
 | `type` | `String` | schema | Dateityp:<br>• `APPROBIATION` (Used)<br>• `AUTHENTICATED_MEDICAL_SPECIALIST_CERTIFICATE` (Used)<br>• `BASIC_RULES_CONTRACT` (Used)<br>• `BAVARIA_LAWS_CONTRACT` (Used)<br>• `CONDUCT_CERTIFICATE` (Used)<br>• `CURRICULUM_VITAE` (Used)<br>• `DATA_PROTECTION_CONTRACT` (Used)<br>• `LOAN_AGREEMENT` (Used)<br>• `OTHER` (Used)<br>• `PROFESSIONAL_LIABILITY_INSURANCE` (Used)<br>• `PROOF_OF_EXPERTISE` (Used)<br>• `SERVICE_CONTRACT` (Used)<br>• `SOCIAL_SECURITY_CHECKLIST` (Used) |
-| `ownerId` | `Long` | schema | Reference to [user](#entity-experte-expert) |
+| `ownerId` | `Long` | schema | Reference to [user](#entity-expert) |
 | `date` | `Date` | inferred | Datum |
 | `active` | `Boolean` | inferred | Status |
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.UserFile` |
 
 The `userFile` entity references:
-- [`user`](#entity-experte-expert) (via `ownerId`)
+- [`user`](#entity-expert) (via `ownerId`)
 
-## Entity: Benutzersitzungen (Persistent Sessions)
+## Entity: Benutzersitzungen (Persistent Sessions) {#entity-persistent-sessions} {#entity-persistent-sessions}
 Speichert Informationen über aktive und vergangene Benutzersitzungen im System.
 
 ### Table: persistentSession
@@ -567,12 +567,12 @@ Speichert Informationen über aktive und vergangene Benutzersitzungen im System.
 | :--- | :--- | :--- | :--- |
 | `_id` | `String` | schema | Session-ID |
 | `version` | `Long` | schema | Versionsnummer |
-| `user` | `DBRef` | schema | Reference to [user](#entity-experte-expert) |
+| `user` | `DBRef` | schema | Reference to [user](#entity-expert) |
 | `created` | `Date` | schema | Erstellungszeitpunkt |
 | `ip` | `String` | schema | IP-Adresse des Benutzers |
 | `userAgent` | `String` | schema | Browser-Informationen (User Agent) |
 | `authorities` | `Array` | inferred | Liste zugeordneter Berechtigungen ([UserAuthority](#sub-entity-userauthority)) |
-| `loginUser` | `Long` | inferred | Reference to [user](#entity-experte-expert) |
+| `loginUser` | `Long` | inferred | Reference to [user](#entity-expert) |
 | `lang` | `String` | inferred | Spracheinstellung (z.B. `de`) |
 | `csfr` | `String` | inferred | CSRF-Token |
 | `newSession` | `Boolean` | inferred | Ob es eine neue Sitzung ist |
@@ -582,9 +582,9 @@ Speichert Informationen über aktive und vergangene Benutzersitzungen im System.
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.PersistentSession` |
 
 The `persistentSession` entity references:
-- [`user`](#entity-experte-expert)
+- [`user`](#entity-expert)
 
-## Entity: Onboarding-Verlauf (Onboarding History)
+## Entity: Onboarding-Verlauf (Onboarding History) {#entity-onboarding-history} {#entity-onboarding-history}
 Verlauf und Status der einzelnen Onboarding-Schritte eines Experten.
 
 ### Table: onboardingHistory
@@ -592,22 +592,22 @@ Verlauf und Status der einzelnen Onboarding-Schritte eines Experten.
 | :--- | :--- | :--- | :--- |
 | `_id` | `Long` | schema | Interner Bezeichner |
 | `version` | `Long` | schema | Versionsnummer |
-| `referenceId` | `Long` | schema | Reference (e.g. [user.id](#entity-experte-expert) or [location.id](./customer.md#entity-standorte-locations)) |
+| `referenceId` | `Long` | schema | Reference (e.g. [user.id](#entity-expert) or [location.id](./customer.md#entity-locations)) |
 | `step` | `Document` | schema | Snapshot des Onboarding-Schritts ([OnboardingStep](#sub-entity-onboardingstep)) |
 | `comment` | `String` | schema | Kommentar (Freitext) |
 | `dateStarted` | `Date` | schema | Startzeitpunkt des Schritts |
 | `dateCompleted` | `Date` | schema | Abschlusszeitpunkt des Schritts |
 | `dateChanged` | `Date` | schema | Zeitpunkt der letzten Änderung |
-| `changedBy` | `DBRef` | schema | Letzte Änderung durch (Reference to [user](#entity-experte-expert)) |
+| `changedBy` | `DBRef` | schema | Letzte Änderung durch (Reference to [user](#entity-expert)) |
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.OnboardingHistory` |
 
 The `onboardingHistory` entity references:
-- [`user`](#entity-experte-expert) (via `referenceId` or `changedBy`)
-- [`location`](./customer.md#entity-standorte-locations) (via `referenceId`)
+- [`user`](#entity-expert) (via `referenceId` or `changedBy`)
+- [`location`](./customer.md#entity-locations) (via `referenceId`)
 
 ### Sub-entities for onboardingHistory
 
-#### Sub-entity: OnboardingStep
+#### Sub-entity: OnboardingStep {#sub-entity-onboardingstep}
 Definition der einzelnen Schritte, die ein Experte oder Standort während des Onboarding-Prozesses durchlaufen muss.
 
 | Column | Type | Field Type | Description |
@@ -622,14 +622,14 @@ Definition der einzelnen Schritte, die ein Experte oder Standort während des On
 | `assignmentType` | `String` | schema | Art der Zuordnung:<br>• `EMPLOYEE` (Used)<br>• `LOCATION` (Used) |
 | `dateCreated` | `Date` | schema | Creation time |
 | `dateChanged` | `Date` | schema | Time of last change |
-| `createdBy` | `DBRef` | schema | Created by (Reference to [user](#entity-experte-expert)) |
-| `changedBy` | `DBRef` | schema | Changed by (Reference to [user](#entity-experte-expert)) |
+| `createdBy` | `DBRef` | schema | Created by (Reference to [user](#entity-expert)) |
+| `changedBy` | `DBRef` | schema | Changed by (Reference to [user](#entity-expert)) |
 
 The `OnboardingStep` sub-entity is used within:
-- [`onboardingHistory`](#entity-onboarding-verlauf-onboarding-history) (as `step` snapshot)
-- [`onboardingStep`](#entity-onboarding-schritte-onboarding-steps) (as the main entity table)
+- [`onboardingHistory`](#entity-onboarding-history) (as `step` snapshot)
+- [`onboardingStep`](#entity-onboarding-steps) (as the main entity table)
 
-## Entity: Onboarding-Schritte (Onboarding Steps)
+## Entity: Onboarding-Schritte (Onboarding Steps) {#entity-onboarding-steps} {#entity-onboarding-steps}
 Definition der einzelnen Schritte, die ein Experte oder Standort während des Onboarding-Prozesses durchlaufen muss.
 
 ### Table: onboardingStep
@@ -643,16 +643,16 @@ Definition der einzelnen Schritte, die ein Experte oder Standort während des On
 | `mandatory` | `Boolean` | schema | Ob der Schritt verpflichtend ist |
 | `type` | `String` | schema | Art des Schritts:<br>• `CHECK` (Used) |
 | `assignmentType` | `String` | schema | Art der Zuordnung:<br>• `EMPLOYEE` (Used)<br>• `LOCATION` (Used) |
-| `createdBy` | `DBRef` | schema | Erstellt von (Reference to [user](#entity-experte-expert)) |
+| `createdBy` | `DBRef` | schema | Erstellt von (Reference to [user](#entity-expert)) |
 | `dateCreated` | `Date` | schema | Erstellungsdatum |
 | `dateChanged` | `Date` | schema | Änderungsdatum |
-| `changedBy` | `DBRef` | schema | Geändert von (Reference to [user](#entity-experte-expert)) |
+| `changedBy` | `DBRef` | schema | Geändert von (Reference to [user](#entity-expert)) |
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.OnboardingStep` |
 
 The `onboardingStep` entity is referenced by:
-- [`onboardingHistory`](#entity-onboarding-verlauf-onboarding-history) (as a snapshot in `step`)
+- [`onboardingHistory`](#entity-onboarding-history) (as a snapshot in `step`)
 
-## Entity: Login-Benachrichtigungen (Login Notifications)
+## Entity: Login-Benachrichtigungen (Login Notifications) {#entity-login-notifications} {#entity-login-notifications}
 Spezifische Meldungen, die Benutzern beim Einloggen in das System angezeigt werden.
 
 ### Table: loginNotification
@@ -665,15 +665,15 @@ Spezifische Meldungen, die Benutzern beim Einloggen in das System angezeigt werd
 | `dateTo` | `Date` | schema | Gültig bis |
 | `active` | `Boolean` | schema | Status |
 | `dateCreated` | `Date` | inferred | Erstellungsdatum |
-| `createdBy` | `DBRef` | inferred | Erstellt von (Reference to [user](#entity-experte-expert)) |
+| `createdBy` | `DBRef` | inferred | Erstellt von (Reference to [user](#entity-expert)) |
 | `dateChanged` | `Date` | inferred | Letztes Änderungsdatum |
-| `changedBy` | `DBRef` | inferred | Geändert von (Reference to [user](#entity-experte-expert)) |
+| `changedBy` | `DBRef` | inferred | Geändert von (Reference to [user](#entity-expert)) |
 | `_class` | `String` | schema | Laufzeitklassen-Marker: `de.videoclinic.model.LoginNotification` |
 
 The `loginNotification` entity is used for:
 - (Alerts shown to users upon successful system login)
 
-## Entity: Testbenutzer (Test User)
+## Entity: Testbenutzer (Test User) {#entity-test-user} {#entity-test-user}
 Interne Testbenutzer für Systemprüfungen.
 
 ### Table: 1testuser

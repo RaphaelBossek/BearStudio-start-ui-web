@@ -32,4 +32,4 @@ title: 'Customer'
 ## Related Files
 
 - [../translation-inventory.md](../translation-inventory.md) — Full inventory
-- [../../customers/README.md](../../customers/README.md) — Customer domain analysis
+- [../../customer/README.md](../../customer/README.md) — Customer domain analysis

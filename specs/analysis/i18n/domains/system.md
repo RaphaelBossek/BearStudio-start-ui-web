@@ -24,4 +24,4 @@ title: 'System'
 ## Related Files
 
 - [../translation-inventory.md](../translation-inventory.md) — Full inventory
-- [../../system-admin/README.md](../../system-admin/README.md) — System admin domain analysis
+- [../../system/admin/admin-landing.md](../../system/admin/admin-landing.md) — System admin domain analysis
