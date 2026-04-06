@@ -53,10 +53,10 @@ The output must be a Markdown file with the following structure:
         - If the field contains non-repetitive text, classify it as `Freitext` or `Strukturierter Text` (e.g., for progress messages or descriptions).
         - If the field uses systematic classification codes, mark it as `Systematische Kodierung`.
     *   **Complex Fields:** For `Document` or `Array` types that represent a specific nested structure, provide a Markdown link to the corresponding sub-entity definition (e.g., `[SkillRule](#sub-entity-skillrule)`).
-    *   **Internal Linking Principle:** For any column that references another entity, table, or sub-entity (e.g., fields with descriptions like "Reference to ...", "Reference ID to ..."), the agent MUST format the reference as a Markdown link to the corresponding chapter or anchor (e.g., `[user](#entity-experte-expert)`).
+    *   **Internal Linking Principle:** For any column that references another entity, table, or sub-entity (e.g., fields with descriptions like "Reference to ...", "Reference ID to ..."), the agent MUST format the reference as a Markdown link to the corresponding chapter or anchor (e.g., `[user](#entity-expert)`).
         - **Mandatory for DBRef:** All fields of type `DBRef` or `Document/DBRef` MUST include a "Reference to [Target](#Anchor)" link in their description.
-        - **Target Identification:** Identify the correct anchor by using the entity's business-friendly name or the technical table name (e.g., `#entity-experte-expert`, `#sub-entity-address`).
-        - **Language Consistency:** Descriptions for references MUST be in English (e.g., "Reference to [user](#entity-experte-expert)", "Reference ID to [jobId](#entity-dienstleistung-service)").
+        - **Target Identification:** Identify the correct anchor by using the entity's business-friendly name or the technical table name (e.g., `#entity-expert`, `#sub-entity-address`).
+        - **Language Consistency:** Descriptions for references MUST be in English (e.g., "Reference to [user](#entity-expert)", "Reference ID to [jobId](#entity-service)").
         - **Reciprocal Links:** Ensure consistency by using the same linking format across all tables and cross-references.
     *   **Sub-entity Naming:** Use CamelCase for all sub-entity names (e.g., `#### Sub-entity: UserProfile`).
     *   **Snapshot Pattern Recognition:** When a field is of type `Document` or `Array` and contains fields that appear to be copies of another entity (e.g., `_id`, `name`), the agent MUST:
