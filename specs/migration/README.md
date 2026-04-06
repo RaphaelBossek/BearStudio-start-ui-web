@@ -1,3 +1,7 @@
+---
+title: 'Migration'
+---
+
 # Migration Directory
 
 This directory contains data migration guides and documentation.

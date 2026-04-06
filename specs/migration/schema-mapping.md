@@ -1,3 +1,7 @@
+---
+title: 'Schema Mapping'
+---
+
 # Schema Mapping: MongoDB → PostgreSQL
 
 > **Last Updated**: 2026-04-01  

@@ -1,3 +1,7 @@
+---
+title: 'Denormalization Patterns'
+---
+
 # Denormalization Patterns
 
 > **Last Updated**: 2026-04-01  
