@@ -42,11 +42,11 @@ These directories exist only in `specs/analysis/` and have no wireframe equivale
 
 ## Design Tokens
 
-See [design-tokens.md](./components/design-tokens.md) for colors, spacing, typography.
+<!-- TODO: Create design-tokens.md for colors, spacing, typography -->
 
 ## State Colors
 
-See [state-colors.md](./components/state-colors.md) for appointment state color palette.
+<!-- TODO: Create state-colors.md for appointment state color palette -->
 
 ## Correlation with Analysis
 

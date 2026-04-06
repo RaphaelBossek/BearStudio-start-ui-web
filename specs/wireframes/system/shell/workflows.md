@@ -203,5 +203,5 @@ Sidebar navigation in two states. Expanded (240px): logo area 64px, sitemap-driv
 ## Related Documentation
 
 - **Analysis**: [`specs/analysis/system/shell/site-shell.md`](../../../analysis/system/shell/site-shell.md)
-- **Wireframe Plan**: [`specs/analysis/system/shell/wireframes.md`](../../../analysis/system/shell/wireframes.md)
-- **Progress Index**: [`specs/analysis/wireframes-index.md`](../../wireframes-index.md)
+- **Wireframe Plan**: [`specs/planning/create-wireframes.md`](../../../planning/create-wireframes.md)
+- **Progress Index**: [`specs/analysis/wireframes-index.md`](../../../analysis/wireframes-index.md)
