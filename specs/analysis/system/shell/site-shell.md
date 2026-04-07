@@ -25,25 +25,84 @@ This is the **outermost layout container** — all other pages are loaded into t
 
 ---
 
-## 1. Overview
-
-The `site.htmlm` file is the **main application shell** that wraps all other pages in the legacy application. It provides:
-
-- **Global navigation sidebar** (runtime-generated from `{{sitemap}}`)
-- **User dropdown menu** (profile, security, role switch, logout, bug report)
-- **Shared infrastructure dialogs** (loading spinner, upload dialog, role switch modal)
-- **Maintenance mode alert** (toast notification)
-- **Permission/authority checks** (8 role-based variables)
-
-This is the **outermost layout container** — all other pages are loaded into the `#main` content area via the `{{> content}}` template include.
-
----
-
 ## 2. Sitemap Overview
 
 The sitemap is defined in `brownfield/web/src/main/webapp/index.json` under the `site.sitemap` key. It's a runtime-generated navigation structure with **11 main menu items**, each potentially containing submenu items.
 
-### 2.1 Sitemap JSON Structure
+### 2.1 Sitemap Tree View
+
+- **Dashboard** (`/dash.html`)
+  - [Calendar](../planning/dashboard/calendar-view.md)
+  - [Week View](../planning/dashboard/week-view.md)
+  - [Worklog](../accounting/worklog/worklog.md)
+  - [Video Library](../orphan/support-and-video.md)
+
+- **Appointments** (`/appointment.html`)
+  - [Appointment Plan](../planning/appointment/appointment-plan.md)
+  - [Patient Data](../treatment/patient-data/patient-data.md)
+
+- **Shifts** (`/shift.html`)
+  - [Shift Plan](../planning/shift/shift-and-plan.md)
+
+- **Treatments** (`/treatment.html`)
+  - [Treatment Plan](../treatment/treatment-core/treatment-plan.md)
+  - [Treatment Plan History](../treatment/treatment-core/treatment-plan.md)
+
+- **Council** (`/council.html`)
+  - [Council Plan](../planning/council/council-and-plan.md)
+
+- **Consultations** (`/consultation.html`)
+  - [Consultation List](../treatment/consultation/consultation-list.md)
+
+- **Appointment Admin** (`/appointmentAdmin.html`)
+  - [Closed Month](../planning/appointment-admin/appointment-admin.md)
+  - [Questionnaire](../treatment/questionnaire/questionnaire-list.md)
+
+- **Notifications** (`/notification.html`)
+  - [Notification List](../system/notification/notification.md)
+
+- **Customers** (`/customer.html`)
+  - [Onboarding Customer](../user-management/admin/onboarding-flow.md)
+  - [Invoices](../accounting/invoice/invoice-list.md)
+  - [Invoice Receivers](../accounting/invoice-receiver/invoice-receiver.md)
+  - [Customer Users](../customer/customer-core/location-and-users.md)
+  - [Locations](../customer/customer-core/location-and-users.md)
+  - [Rooms](../customer/room/room.md)
+  - [Onboarding Location](../user-management/admin/onboarding-flow.md)
+
+- **Staff** (`/staff.html`)
+  - [Onboarding](../user-management/admin/onboarding-flow.md)
+  - [User Management](../user-management/admin/user-management.md)
+  - [Expert Weekly Assignments](../accounting/worklog/worklog.md)
+
+- **Administration** (`/admin.html`)
+  - [Job IDs](../accounting/admin-job/job-configuration.md)
+  - [Async Job Queue](#) <!-- TODO -->
+  - [Job Price List](#) <!-- TODO -->
+  - [Products](#) <!-- TODO -->
+  - [Skills](../user-management/admin/skill.md)
+  - [Exclusion Criteria](#) <!-- TODO -->
+  - [Export Templates](#) <!-- TODO -->
+  - [Warnings](../treatment/warning/warning-management.md)
+  - [Treatment Categories](../treatment/treatment-core/treatment-and-category.md)
+  - [Equipment](../customer/equipment/equipment.md)
+  - [Onboarding Steps](../user-management/admin/onboarding-flow.md)
+
+- **Systemadmin** (`/sysadmin.html`)
+  - [MOTD](../system/admin-cruds/motd-template.md)
+  - [Login Notification](#) <!-- TODO -->
+  - [Notification Templates](#) <!-- TODO -->
+  - [Location Types](#) <!-- TODO -->
+  - [Storno Groups](#) <!-- TODO -->
+  - [Work Hours](../planning/appointment-support/workhour.md)
+  - [CDR](../planning/appointment-support/cdr-call.md)
+  - [CDR Assignment](../planning/appointment-support/cdr-call.md)
+  - [Log](#) <!-- TODO -->
+  - [Support Categories](#) <!-- TODO -->
+  - [BasisWeb Appointments](#) <!-- TODO -->
+  - [Change Log](#) <!-- TODO -->
+
+### 2.2 Sitemap JSON Structure
 
 ```json
 {
@@ -67,7 +126,7 @@ The sitemap is defined in `brownfield/web/src/main/webapp/index.json` under the 
 }
 ```
 
-### 2.2 Complete Sitemap Structure
+### 2.3 Complete Sitemap Structure
 
 | # | Main Menu Item | URL | Icon | Color | Roles | Rights | Submenu Count |
 |---|----------------|-----|------|-------|-------|--------|---------------|
@@ -84,7 +143,7 @@ The sitemap is defined in `brownfield/web/src/main/webapp/index.json` under the 
 | 11 | Administration | `/admin.html` | `user-cog` | `admin` | LEITER_INTERN, ADMIN_INTERN, ADMIN | — | 11 |
 | 12 | Systemadmin | `/sysadmin.html` | `cogs` | `sysadmin` | LEITER_INTERN, ADMIN_INTERN, ADMIN | — | 13 |
 
-### 2.3 Detailed Sitemap with Submenu Items
+### 2.4 Detailed Sitemap with Submenu Items
 
 #### 1. Dashboard (`/dash.html`)
 - **Icon**: `tachometer`
@@ -238,7 +297,7 @@ The sitemap is defined in `brownfield/web/src/main/webapp/index.json` under the 
   | BasisWeb Appointments | `/basisWebAppointment.html` | `user-headset` | `BasisWeb-Anmeldungen` | — |
   | Change Log | `/changelog.html` | `hour` | `Change-Log` | — |
 
-### 2.4 Role Matrix
+### 2.5 Role Matrix
 
 | Role | Dashboard | Appointments | Shifts | Treatments | Council | Consultations | Appt Admin | Notifications | Customers | Staff | Admin | Sysadmin |
 |------|-----------|--------------|--------|------------|---------|---------------|------------|---------------|-----------|-------|-------|----------|
@@ -249,7 +308,7 @@ The sitemap is defined in `brownfield/web/src/main/webapp/index.json` under the 
 | **KUNDE_ADMIN** | ✓ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ (with rights) | ✓ | ✗ | ✗ | ✗ |
 | **REGISTERED** | ✓ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ |
 
-### 2.5 Rights Matrix
+### 2.6 Rights Matrix
 
 | Right | Description | Modules Using |
 |-------|-------------|---------------|
