@@ -77,12 +77,12 @@ The sitemap is defined in `brownfield/web/src/main/webapp/index.json` under the 
 
 - **Administration** (`/admin.html`)
   - [Job IDs](../accounting/admin-job/job-configuration.md)
-  - [Async Job Queue](#) <!-- TODO -->
-  - [Job Price List](#) <!-- TODO -->
-  - [Products](#) <!-- TODO -->
+  - [Async Job Queue](../mongodb-mapping/system.md#entity-async-job-queue)
+  - [Job Price List](../accounting/config/accounting-config.md#e-job-price-list)
+  - [Products](../accounting/config/accounting-config.md#f-product)
   - [Skills](../user-management/admin/skill.md)
-  - [Exclusion Criteria](#) <!-- TODO -->
-  - [Export Templates](#) <!-- TODO -->
+  - [Exclusion Criteria](../system/config/system-config.md#b-exclusion-criteria)
+  - [Export Templates](../system/templates-files/templates-files.md#2-export-template)
   - [Warnings](../treatment/warning/warning-management.md)
   - [Treatment Categories](../treatment/treatment-core/treatment-and-category.md)
   - [Equipment](../customer/equipment/equipment.md)
@@ -90,17 +90,17 @@ The sitemap is defined in `brownfield/web/src/main/webapp/index.json` under the 
 
 - **Systemadmin** (`/sysadmin.html`)
   - [MOTD](../system/admin-cruds/motd-template.md)
-  - [Login Notification](#) <!-- TODO -->
-  - [Notification Templates](#) <!-- TODO -->
-  - [Location Types](#) <!-- TODO -->
-  - [Storno Groups](#) <!-- TODO -->
+  - [Login Notification](../system/config/system-config.md#i-login-notification)
+  - [Notification Templates](../system/templates-files/templates-files.md#3-notification-template)
+  - [Location Types](../system/config/system-config.md#a-location-type)
+  - [Storno Groups](../accounting/config/accounting-config.md#c-storno-group-cancellation-group)
   - [Work Hours](../planning/appointment-support/workhour.md)
   - [CDR](../planning/appointment-support/cdr-call.md)
   - [CDR Assignment](../planning/appointment-support/cdr-call.md)
-  - [Log](#) <!-- TODO -->
-  - [Support Categories](#) <!-- TODO -->
-  - [BasisWeb Appointments](#) <!-- TODO -->
-  - [Change Log](#) <!-- TODO -->
+  - [Log](../mongodb-mapping/system.md#entity-logs)
+  - [Support Categories](../system/config/system-config.md#d-support-category)
+  - [BasisWeb Appointments](../mongodb-mapping/interfaces.md#entity-basis-web-appointment)
+  - [Change Log](../system/admin/admin-landing.md#8-page-changelog-changeloghtmlm)
 
 ### 2.2 Sitemap JSON Structure
 
