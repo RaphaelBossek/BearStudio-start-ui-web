@@ -188,7 +188,7 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 
 ### 2.4 Detailed Sitemap with Submenu Items
 
-#### 1. Dashboard (`/dash.html`)
+#### 1. Dashboard
 - **Icon**: `tachometer`
 - **Color**: `color-dash`
 - **Permissions**: None (always visible)
@@ -202,7 +202,7 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
   | Worklog | `/expertWorkMonthly.html` | `file-chart-line` | `i18n.Worklog` | — | [worklog.md](../analysis/accounting/worklog/worklog.md) | [worklog.png](../wireframes/accounting/worklog/worklog.png) |
   | Video Library | `https://learn.videoclinic.de/` | `video` | `i18n.VideoLibrary` | — | — | — |
 
-#### 2. Appointments (`/appointment.html`)
+#### 2. Appointments
 - **Icon**: `user-md`
 - **Color**: `color-appointment`
 - **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
@@ -214,7 +214,7 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
   | Appointment Plan | `/appointmentPlan.html` | `calendar-check` | `i18n.appointmentPlan` | — | [appointment-list.md](../analysis/planning/appointment/appointment-list.md) | [appointment-list.png](../wireframes/planning/appointment/appointment-list.png) |
   | Patient Data | `/patientData.html` | `user` | `i18n.PatientDataType` | — | — | — |
 
-#### 3. Shifts (`/shift.html`)
+#### 3. Shifts
 - **Icon**: `user-injured`
 - **Color**: `color-shift`
 - **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
@@ -225,7 +225,7 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
   |------|------------|------|----------|-------------|-------------|-----------|
   | Shift Plan | `/shiftPlan.html` | `calendar-check` | `i18n.shiftPlan` | — | [shift-and-plan.md](../analysis/planning/shift/shift-and-plan.md) | [shift-list.png](../wireframes/planning/shift/shift-list.png), [shift-plan-detail.png](../wireframes/planning/shift/shift-plan-detail.png) |
 
-#### 4. Treatments (`/treatment.html`)
+#### 4. Treatments
 - **Icon**: `people-arrows`
 - **Color**: `color-treatment`
 - **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
@@ -237,7 +237,7 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
   | Treatment Plan | `/treatmentPlan.html` | `calendar-check` | `i18n.treatmentPlan` | — | [treatment-plan.md](../analysis/treatment/treatment-core/treatment-plan.md) | — |
   | Treatment Plan History | `/treatmentPlan.html?history=true` | `calendar` | `i18n.treatmentPlanHistory` | — | — | — |
 
-#### 5. Council (`/council.html`)
+#### 5. Council
 - **Icon**: `user-friends`
 - **Color**: `color-council`
 - **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
@@ -248,7 +248,7 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
   |------|------------|------|----------|-------------|-------------|-----------|
   | Council Plan | `/councilPlan.html` | `calendar-check` | `i18n.councilPlanArea` | — | [council-and-plan.md](../analysis/planning/council/council-and-plan.md) | [council-list.png](../wireframes/planning/council/council-list.png), [council-plan-detail.png](../wireframes/planning/council/council-plan-detail.png) |
 
-#### 6. Consultations (`/consultation.html`)
+#### 6. Consultations
 - **Icon**: `heartbeat`
 - **Color**: `color-consultation`
 - **Roles**: STANDARD, LEITER_INTERN, ADMIN_INTERN, ADMIN
@@ -265,7 +265,7 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
   | Treatment/Warning | [consultation-details-treatment-warning.md](../analysis/treatment/consultation/consultation-details-treatment-warning.md) | [consultation-details-treatment-warning.png](../wireframes/treatment/consultation/consultation-details-treatment-warning.png) |
   | View/Review | [consultation-view-review.md](../analysis/treatment/consultation/consultation-view-review.md) | [consultation-view.png](../wireframes/treatment/consultation/consultation-view.png), [consultation-review.png](../wireframes/treatment/consultation/consultation-review.png) |
 
-#### 7. Appointment Admin (`/appointmentAdmin.html`)
+#### 7. Appointment Admin
 - **Icon**: `calendar`
 - **Color**: `color-appointmentAdmin`
 - **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
@@ -277,7 +277,7 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
   | Closed Month | `/closedMonth.html` | `calendar-exclamation` | `i18n.ClosedMonth` | — | [close-month.md](../analysis/planning/appointment-support/close-month.md) | [close-month.png](../wireframes/planning/appointment-support/close-month.png) |
   | Questionnaire | `/questionaire.html` | `user-headset` | `i18n.questionaire` | — | — | — |
 
-#### 8. Notifications (`/notification.html`)
+#### 8. Notifications
 - **Icon**: `comments`
 - **Color**: `color-notify`
 - **Roles**: None
@@ -289,7 +289,7 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
   |------|------------|------|----------|-------------|-------------|-----------|
   | Trash | (none, ID: `notificationTrash`) | `comment-times` | `i18n.notification.folder.TRASH` | — | [notification.md](../analysis/system/notification/notification.md) | [notification-list.png](../wireframes/system/notification/notification-list.png), [notification-compose.png](../wireframes/system/notification/notification-compose.png) |
 
-#### 9. Customers (`/customer.html`)
+#### 9. Customers
 - **Icon**: `hospital-user`
 - **Color**: `color-customer`
 - **Roles**: LEITER_INTERN, ADMIN_INTERN, KUNDE_ADMIN, ADMIN
@@ -306,7 +306,7 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
   | Rooms | `/room.html` | `building` | `i18n.rooms` | — | [room.md](../analysis/customer/room/room.md) | [room-management.png](../wireframes/customer/room/room-management.png) |
   | Onboarding Location | `/onboardingLocation.html` | `clinic-medical` | `i18n.onboardingLocationArea` | — | — | — |
 
-#### 10. Staff (`/staff.html`)
+#### 10. Staff
 - **Icon**: `user-md`
 - **Color**: `color-user`
 - **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
@@ -319,7 +319,7 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
   | User Management | `/adminUser.html` | `users` | `i18n.user` | — | [user-management.md](../analysis/user-management/admin/user-management.md) | — |
   | Expert Weekly Assignments | `/expertWorkWeeklyAssignments.html` | `tally` | `i18n.expertWorkWeeklyAssignments` | — | — | — |
 
-#### 11. Administration (`/admin.html`)
+#### 11. Administration
 - **Icon**: `user-cog`
 - **Color**: `admin`
 - **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
@@ -340,7 +340,7 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
   | Equipment | `/equipment.html` | `tablet-alt` | `i18n.menu.devices` | — | [equipment.md](../analysis/customer/equipment/equipment.md) | [equipment-management.png](../wireframes/customer/equipment/equipment-management.png) |
   | Onboarding Steps | `/onboardingStep.html` | `layer-group` | `i18n.menu.onboardingStep` | — | — | — |
 
-#### 12. Systemadmin (`/sysadmin.html`)
+#### 12. Systemadmin
 - **Icon**: `cogs`
 - **Color**: `sysadmin`
 - **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
