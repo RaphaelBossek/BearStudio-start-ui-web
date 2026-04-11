@@ -1211,7 +1211,7 @@ Each module has a corresponding `bg-color-{module}` CSS class defined in `_inclu
 </ul>
 ```
 
-### 5.2 Menu Items
+### 6.2 Menu Items
 
 | Menu Item | Icon | Permission Gate | Target/Action | Translation Key |
 |-----------|------|-----------------|---------------|-----------------|
@@ -1223,7 +1223,7 @@ Each module has a corresponding `bg-color-{module}` CSS class defined in `_inclu
 | Bug Report | (from include) | Always visible | Opens bug report dialog | — |
 | Logout | `fa-sign-out` | Always visible | `logout` endpoint | `logout` |
 
-### 5.3 User Display
+### 6.3 User Display
 
 ```html
 <i class="fas fa-fw fa-user" title="{{role}}"></i> 
@@ -1236,9 +1236,9 @@ Each module has a corresponding `bg-color-{module}` CSS class defined in `_inclu
 
 ---
 
-## 6. Shared Infrastructure Dialogs
+## 7. Shared Infrastructure Dialogs
 
-### 6.1 Loading Spinner (`#spinner`)
+### 7.1 Loading Spinner (`#spinner`)
 
 ```html
 <div class="modal fade" role="dialog" id="spinner" tabindex="-1" role="dialog" aria-hidden="true">
@@ -1265,7 +1265,7 @@ Each module has a corresponding `bg-color-{module}` CSS class defined in `_inclu
 
 ---
 
-### 6.2 Role Switch Dialog (`#roleSwitchDlg`)
+### 7.2 Role Switch Dialog (`#roleSwitchDlg`)
 
 ```html
 <div class="modal fade" role="dialog" id="roleSwitchDlg" tabindex="-1" role="dialog" aria-hidden="true">
@@ -1313,7 +1313,7 @@ Each module has a corresponding `bg-color-{module}` CSS class defined in `_inclu
 
 ---
 
-### 6.3 Upload Dialog (`#uploadDlg`)
+### 7.3 Upload Dialog (`#uploadDlg`)
 
 ```html
 <div class="modal fade" role="dialog" id="uploadDlg" tabindex="-1" aria-hidden="true">
@@ -1348,7 +1348,7 @@ Each module has a corresponding `bg-color-{module}` CSS class defined in `_inclu
 
 ---
 
-## 7. Maintenance Mode Alert
+## 8. Maintenance Mode Alert
 
 ```html
 {{#maintenance}}
@@ -1380,7 +1380,7 @@ Each module has a corresponding `bg-color-{module}` CSS class defined in `_inclu
 
 ---
 
-## 8. Full-Text Search
+## 9. Full-Text Search
 
 ```html
 <li class="full">
@@ -1405,7 +1405,7 @@ Each module has a corresponding `bg-color-{module}` CSS class defined in `_inclu
 
 ---
 
-## 9. Click Actions
+## 10. Click Actions
 
 | Action ID | Element | Title/Tooltip | English Translation | Purpose |
 |-----------|---------|---------------|---------------------|---------|
@@ -1416,7 +1416,7 @@ Each module has a corresponding `bg-color-{module}` CSS class defined in `_inclu
 
 ---
 
-## 10. Permissions
+## 11. Permissions
 
 | Permission / Condition | Scope | Description |
 |------------------------|-------|-------------|
@@ -1427,9 +1427,9 @@ Each module has a corresponding `bg-color-{module}` CSS class defined in `_inclu
 
 ---
 
-## 11. Special Components
+## 12. Special Components
 
-### 11.1 Navigation Pattern
+### 12.1 Navigation Pattern
 
 | Component Type | Context | Data Bindings | Notes |
 |----------------|---------|---------------|-------|
@@ -1438,7 +1438,7 @@ Each module has a corresponding `bg-color-{module}` CSS class defined in `_inclu
 | **Search Toggle** | `#globalMenu` | — | Expands search input on click |
 | **Version Display** | `#globalMenu` | `application.version`, `application.buildtime` | Ellipsis overflow for long versions |
 
-### 11.2 Responsive Behavior
+### 12.2 Responsive Behavior
 
 | Breakpoint | Behavior |
 |------------|----------|
@@ -1449,7 +1449,7 @@ Each module has a corresponding `bg-color-{module}` CSS class defined in `_inclu
 
 ---
 
-## 12. Status Visualization
+## 13. Status Visualization
 
 | State | Icon | Color | Meaning |
 |-------|------|-------|---------|
@@ -1460,9 +1460,9 @@ Each module has a corresponding `bg-color-{module}` CSS class defined in `_inclu
 
 ---
 
-## 13. Naming and Translation
+## 14. Naming and Translation
 
-### 13.1 i18n Keys Used
+### 14.1 i18n Keys Used
 
 | Key | German | English | Notes |
 |-----|--------|---------|-------|
@@ -1475,7 +1475,7 @@ Each module has a corresponding `bg-color-{module}` CSS class defined in `_inclu
 | `logout` | Abmelden | Logout | Logout action |
 | `error.maintenance.title` | Wartungsarbeiten | Maintenance | Maintenance toast title |
 
-### 13.2 Hardcoded Strings (German)
+### 14.2 Hardcoded Strings (German)
 
 | String | Location | Suggested Key | English |
 |--------|----------|---------------|---------|
@@ -1493,7 +1493,7 @@ Each module has a corresponding `bg-color-{module}` CSS class defined in `_inclu
 
 ---
 
-## 14. React Migration Summary
+## 15. React Migration Summary
 
 | Shell Component | Legacy Implementation | Modern React Approach | Priority |
 |-----------------|----------------------|----------------------|----------|
@@ -1510,7 +1510,7 @@ Each module has a corresponding `bg-color-{module}` CSS class defined in `_inclu
 
 ---
 
-## 15. Wireframe Mapping
+## 16. Wireframe Mapping
 
 | Wireframe | Description | Status |
 |-----------|-------------|--------|
@@ -1522,7 +1522,7 @@ Each module has a corresponding `bg-color-{module}` CSS class defined in `_inclu
 
 ---
 
-## 16. Related Analysis Documents
+## 17. Related Analysis Documents
 
 | Document | Description |
 |----------|-------------|
@@ -1533,7 +1533,7 @@ Each module has a corresponding `bg-color-{module}` CSS class defined in `_inclu
 
 ---
 
-## 17. Sitemap Extraction Task
+## 18. Sitemap Extraction Task
 
 **TODO**: Extract the complete navigation structure from the legacy codebase:
 
@@ -1551,11 +1551,11 @@ Each module has a corresponding `bg-color-{module}` CSS class defined in `_inclu
 
 ---
 
-## 18. Module Analysis & Wireframe Reference
+## 19. Module Analysis & Wireframe Reference
 
 Per-module breakdown with links to analysis documents and associated wireframes.
 
-### System / Dashboard
+### 19.1 System / Dashboard
 
 **Canonical**: `system/dashboard/`, `planning/dashboard/`
 **Legacy URLs**: `/dash.html`, `/monthView.html`, `/weekView.html`, `/expertWorkMonthly.html`
@@ -1566,7 +1566,7 @@ Per-module breakdown with links to analysis documents and associated wireframes.
 | Week View | `planning/dashboard/week-view.md` | `planning/dashboard/expert-availability.png` |
 | Worklog | `accounting/worklog/worklog.md` | `accounting/worklog/worklog.png` |
 
-### Planning / Appointments
+### 19.2 Planning / Appointments
 
 **Canonical**: `planning/appointment/`
 **Legacy URLs**: `/appointment.html`, `/appointmentPlan.html`, `/patientData.html`
@@ -1577,7 +1577,7 @@ Per-module breakdown with links to analysis documents and associated wireframes.
 | Appointment Details | `planning/appointment/appointment-details-scheduling.md` | `planning/appointment/appointment-details.png` (+ sub-dialogs) |
 | Assign User | `planning/appointment/appointment-assign-user.md` | `planning/appointment/appointment-assign-user.png` |
 
-### Planning / Shifts
+### 19.3 Planning / Shifts
 
 **Canonical**: `planning/shift/`
 **Legacy URLs**: `/shift.html`, `/shiftPlan.html`
@@ -1586,7 +1586,7 @@ Per-module breakdown with links to analysis documents and associated wireframes.
 |---------|-------------|-----------|
 | Shift Plan | `planning/shift/shift-and-plan.md` | `planning/shift/shift-list.png`, `shift-plan-detail.png` |
 
-### Treatment / Treatments
+### 19.4 Treatment / Treatments
 
 **Canonical**: `treatment/treatment-core/`
 **Legacy URLs**: `/treatment.html`, `/treatmentPlan.html`
@@ -1596,7 +1596,7 @@ Per-module breakdown with links to analysis documents and associated wireframes.
 | Treatment Categories | `treatment/treatment-core/treatment-and-category.md` | — |
 | Treatment Plan | `treatment/treatment-core/treatment-plan.md` | — |
 
-### Planning / Council
+### 19.5 Planning / Council
 
 **Canonical**: `planning/council/`
 **Legacy URLs**: `/council.html`, `/councilPlan.html`
@@ -1605,7 +1605,7 @@ Per-module breakdown with links to analysis documents and associated wireframes.
 |---------|-------------|-----------|
 | Council Plan | `planning/council/council-and-plan.md` | `planning/council/council-list.png`, `council-plan-detail.png` |
 
-### Treatment / Consultations
+### 19.6 Treatment / Consultations
 
 **Canonical**: `treatment/consultation/`
 **Legacy URLs**: `/consultation.html`
@@ -1620,7 +1620,7 @@ Per-module breakdown with links to analysis documents and associated wireframes.
 | Treatment/Warning | `treatment/consultation/consultation-details-treatment-warning.md` | `treatment/consultation/consultation-details-treatment-warning.png` |
 | View/Review | `treatment/consultation/consultation-view-review.md` | `treatment/consultation/consultation-view.png`, `consultation-review.png` |
 
-### Planning / Appointment Admin
+### 19.7 Planning / Appointment Admin
 
 **Canonical**: `planning/appointment-admin/`
 **Legacy URLs**: `/appointmentAdmin.html`, `/closedMonth.html`, `/questionaire.html`
@@ -1630,7 +1630,7 @@ Per-module breakdown with links to analysis documents and associated wireframes.
 | Admin Grid | `planning/appointment-admin/appointment-admin.md` | `planning/appointment-admin/inline-consultation.png` (+ dialogs) |
 | Closed Month | `planning/appointment-support/close-month.md` | `planning/appointment-support/close-month.png` |
 
-### System / Notifications
+### 19.8 System / Notifications
 
 **Canonical**: `system/notification/`
 **Legacy URLs**: `/notification.html`
@@ -1639,7 +1639,7 @@ Per-module breakdown with links to analysis documents and associated wireframes.
 |---------|-------------|-----------|
 | Notification List | `system/notification/notification.md` | `system/notification/notification-list.png`, `notification-compose.png` |
 
-### Customer
+### 19.9 Customer
 
 **Canonical**: `customer/`
 **Legacy URLs**: `/customer.html`, `/onboardingCustomer.html`, `/invoice.html`, `/invoiceReceiver.html`, `/room.html`
@@ -1655,7 +1655,7 @@ Per-module breakdown with links to analysis documents and associated wireframes.
 | Invoice Details | `accounting/invoice/invoice-details.md` | `accounting/invoice/invoice-details.png` |
 | Invoice Receiver | `accounting/invoice-receiver/invoice-receiver.md` | `accounting/invoice-receiver/invoice-receiver.png` |
 
-### User Management / Staff
+### 19.10 User Management / Staff
 
 **Canonical**: `user-management/profile/`, `user-management/admin/`
 **Legacy URLs**: `/staff.html`, `/onboarding.html`, `/adminUser.html`
@@ -1672,7 +1672,7 @@ Per-module breakdown with links to analysis documents and associated wireframes.
 | Skill Management | `user-management/admin/skill.md` | — |
 | TOTP Onboarding | `user-management/admin/totp-onboarding.md` | — |
 
-### Accounting / Administration
+### 19.11 Accounting / Administration
 
 **Canonical**: `accounting/admin-job/`, `accounting/config/`, `treatment/warning/`, `user-management/admin/`
 **Legacy URLs**: `/admin.html`
@@ -1683,7 +1683,7 @@ Per-module breakdown with links to analysis documents and associated wireframes.
 | Accounting Config | `accounting/config/accounting-config.md` | `accounting/config/accounting-config.png` |
 | Warning Management | `treatment/warning/warning-management.md` | — |
 
-### System / System Admin
+### 19.12 System / System Admin
 
 **Canonical**: `system/admin/`, `system/admin-cruds/`, `planning/appointment-support/`
 **Legacy URLs**: `/sysadmin.html`
@@ -1695,7 +1695,7 @@ Per-module breakdown with links to analysis documents and associated wireframes.
 | CDR Call List | `planning/appointment-support/cdr-call.md` | `planning/appointment-support/cdr-call-list.png` |
 | CDR Assignment | `planning/appointment-support/workhour.md` | `planning/appointment-support/cdr-assignment-crud.png` |
 
-### System / Shared Components
+### 19.13 System / Shared Components
 
 **Canonical**: `system/includes/`, `system/templates-files/`
 
@@ -1704,21 +1704,6 @@ Per-module breakdown with links to analysis documents and associated wireframes.
 | Shared Components | `system/includes/includes-shared-components.md` | `system/includes/navbar.png`, `loading-states.png`, `quick-filter.png` |
 | Customization | `system/includes/includes-customization.md` | `system/includes/login.png`, `bug-report.png` |
 | Templates & Files | `system/templates-files/templates-files.md` | — |
-
----
-
-## 19. Cross-Reference Index
-
-### By Entity Type
-
-| Entity | Primary Domain | Related Domains |
-|--------|----------------|-----------------|
-| Appointment | `planning/appointment/` | `planning/shift/`, `planning/council/`, `treatment/treatment-core/` |
-| Consultation | `treatment/consultation/` | `treatment/`, `planning/appointment-admin/` |
-| Customer | `customer/` | `user-management/` (customer users) |
-| User/Staff | `user-management/` | `customer/` (assignment) |
-| Invoice | `accounting/invoice/` | `accounting/admin-job/` (job pricing) |
-| CDR Call | `planning/appointment-support/` | `planning/appointment-admin/` (assignment) |
 
 ---
 
