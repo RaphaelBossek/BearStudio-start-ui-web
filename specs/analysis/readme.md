@@ -1624,9 +1624,9 @@ Per-module breakdown with links to analysis documents and associated wireframes.
 
 | Submenu | Analysis Doc | Wireframe |
 |---------|-------------|-----------|
-| Calendar (Month View) | `planning/dashboard/calendar-view.md` | `planning/dashboard/calendar.png` |
-| Week View | `planning/dashboard/week-view.md` | `planning/dashboard/expert-availability.png` |
-| Worklog | `accounting/worklog/worklog.md` | `accounting/worklog/worklog.png` |
+| Calendar (Month View) | [planning/dashboard/calendar-view.md](./planning/dashboard/calendar-view.md) | [planning/dashboard/calendar.png](../wireframes/planning/dashboard/calendar.png) |
+| Week View | [planning/dashboard/week-view.md](./planning/dashboard/week-view.md) | [planning/dashboard/expert-availability.png](../wireframes/planning/dashboard/expert-availability.png) |
+| Worklog | [accounting/worklog/worklog.md](./accounting/worklog/worklog.md) | [accounting/worklog/worklog.png](../wireframes/accounting/worklog/worklog.png) |
 
 ### 18.2 Planning / Appointments
 
@@ -1635,9 +1635,9 @@ Per-module breakdown with links to analysis documents and associated wireframes.
 
 | Feature | Analysis Doc | Wireframe |
 |---------|-------------|-----------|
-| Appointment List | `planning/appointment/appointment-list.md` | `planning/appointment/appointment-list.png` |
-| Appointment Details | `planning/appointment/appointment-details-scheduling.md` | `planning/appointment/appointment-details.png` (+ sub-dialogs) |
-| Assign User | `planning/appointment/appointment-assign-user.md` | `planning/appointment/appointment-assign-user.png` |
+| Appointment List | [planning/appointment/appointment-list.md](./planning/appointment/appointment-list.md) | [planning/appointment/appointment-list.png](../wireframes/planning/appointment/appointment-list.png) |
+| Appointment Details | [planning/appointment/appointment-details-scheduling.md](./planning/appointment/appointment-details-scheduling.md) | [planning/appointment/appointment-details.png](../wireframes/planning/appointment/appointment-details.png) (+ sub-dialogs) |
+| Assign User | [planning/appointment/appointment-assign-user.md](./planning/appointment/appointment-assign-user.md) | [planning/appointment/appointment-assign-user.png](../wireframes/planning/appointment/appointment-assign-user.png) |
 
 ### 18.3 Planning / Shifts
 
@@ -1646,7 +1646,7 @@ Per-module breakdown with links to analysis documents and associated wireframes.
 
 | Feature | Analysis Doc | Wireframe |
 |---------|-------------|-----------|
-| Shift Plan | `planning/shift/shift-and-plan.md` | `planning/shift/shift-list.png`, `shift-plan-detail.png` |
+| Shift Plan | [planning/shift/shift-and-plan.md](./planning/shift/shift-and-plan.md) | [planning/shift/shift-list.png](../wireframes/planning/shift/shift-list.png), [shift-plan-detail.png](../wireframes/planning/shift/shift-plan-detail.png) |
 
 ### 18.4 Treatment / Treatments
 
@@ -1655,8 +1655,8 @@ Per-module breakdown with links to analysis documents and associated wireframes.
 
 | Feature | Analysis Doc | Wireframe |
 |---------|-------------|-----------|
-| Treatment Categories | `treatment/treatment-core/treatment-and-category.md` | — |
-| Treatment Plan | `treatment/treatment-core/treatment-plan.md` | — |
+| Treatment Categories | [treatment/treatment-core/treatment-and-category.md](./treatment/treatment-core/treatment-and-category.md) | — |
+| Treatment Plan | [treatment/treatment-core/treatment-plan.md](./treatment/treatment-core/treatment-plan.md) | — |
 
 ### 18.5 Planning / Council
 
@@ -1665,7 +1665,7 @@ Per-module breakdown with links to analysis documents and associated wireframes.
 
 | Feature | Analysis Doc | Wireframe |
 |---------|-------------|-----------|
-| Council Plan | `planning/council/council-and-plan.md` | `planning/council/council-list.png`, `council-plan-detail.png` |
+| Council Plan | [planning/council/council-and-plan.md](./planning/council/council-and-plan.md) | [planning/council/council-list.png](../wireframes/planning/council/council-list.png), [council-plan-detail.png](../wireframes/planning/council/council-plan-detail.png) |
 
 ### 18.6 Treatment / Consultations
 
@@ -1674,13 +1674,13 @@ Per-module breakdown with links to analysis documents and associated wireframes.
 
 | Feature | Analysis Doc | Wireframe |
 |---------|-------------|-----------|
-| Consultation List | `treatment/consultation/consultation-list.md` | `treatment/consultation/consultation-list.png` |
-| Details Header | `treatment/consultation/consultation-details-header.md` | `treatment/consultation/consultation-details-header.png` |
-| Standard Form | `treatment/consultation/consultation-details-standard.md` | `treatment/consultation/consultation-details-standard.png` |
-| Onboarding Form | `treatment/consultation/consultation-details-onboarding.md` | `treatment/consultation/consultation-details-onboarding.png` |
-| Incarceration Form | `treatment/consultation/consultation-details-incarceration.md` | `treatment/consultation/consultation-details-incarceration.png` |
-| Treatment/Warning | `treatment/consultation/consultation-details-treatment-warning.md` | `treatment/consultation/consultation-details-treatment-warning.png` |
-| View/Review | `treatment/consultation/consultation-view-review.md` | `treatment/consultation/consultation-view.png`, `consultation-review.png` |
+| Consultation List | [treatment/consultation/consultation-list.md](./treatment/consultation/consultation-list.md) | [treatment/consultation/consultation-list.png](../wireframes/treatment/consultation/consultation-list.png) |
+| Details Header | [treatment/consultation/consultation-details-header.md](./treatment/consultation/consultation-details-header.md) | [treatment/consultation/consultation-details-header.png](../wireframes/treatment/consultation/consultation-details-header.png) |
+| Standard Form | [treatment/consultation/consultation-details-standard.md](./treatment/consultation/consultation-details-standard.md) | [treatment/consultation/consultation-details-standard.png](../wireframes/treatment/consultation/consultation-details-standard.png) |
+| Onboarding Form | [treatment/consultation/consultation-details-onboarding.md](./treatment/consultation/consultation-details-onboarding.md) | [treatment/consultation/consultation-details-onboarding.png](../wireframes/treatment/consultation/consultation-details-onboarding.png) |
+| Incarceration Form | [treatment/consultation/consultation-details-incarceration.md](./treatment/consultation/consultation-details-incarceration.md) | [treatment/consultation/consultation-details-incarceration.png](../wireframes/treatment/consultation/consultation-details-incarceration.png) |
+| Treatment/Warning | [treatment/consultation/consultation-details-treatment-warning.md](./treatment/consultation/consultation-details-treatment-warning.md) | [treatment/consultation/consultation-details-treatment-warning.png](../wireframes/treatment/consultation/consultation-details-treatment-warning.png) |
+| View/Review | [treatment/consultation/consultation-view-review.md](./treatment/consultation/consultation-view-review.md) | [treatment/consultation/consultation-view.png](../wireframes/treatment/consultation/consultation-view.png), [consultation-review.png](../wireframes/treatment/consultation/consultation-review.png) |
 
 ### 18.7 Planning / Appointment Admin
 
@@ -1689,8 +1689,8 @@ Per-module breakdown with links to analysis documents and associated wireframes.
 
 | Feature | Analysis Doc | Wireframe |
 |---------|-------------|-----------|
-| Admin Grid | `planning/appointment-admin/appointment-admin.md` | `planning/appointment-admin/inline-consultation.png` (+ dialogs) |
-| Closed Month | `planning/appointment-support/close-month.md` | `planning/appointment-support/close-month.png` |
+| Admin Grid | [planning/appointment-admin/appointment-admin.md](./planning/appointment-admin/appointment-admin.md) | [planning/appointment-admin/inline-consultation.png](../wireframes/planning/appointment-admin/inline-consultation.png) (+ dialogs) |
+| Closed Month | [planning/appointment-support/close-month.md](./planning/appointment-support/close-month.md) | [planning/appointment-support/close-month.png](../wireframes/planning/appointment-support/close-month.png) |
 
 ### 18.8 System / Notifications
 
@@ -1699,7 +1699,7 @@ Per-module breakdown with links to analysis documents and associated wireframes.
 
 | Feature | Analysis Doc | Wireframe |
 |---------|-------------|-----------|
-| Notification List | `system/notification/notification.md` | `system/notification/notification-list.png`, `notification-compose.png` |
+| Notification List | [system/notification/notification.md](./system/notification/notification.md) | [system/notification/notification-list.png](../wireframes/system/notification/notification-list.png), [notification-compose.png](../wireframes/system/notification/notification-compose.png) |
 
 ### 18.9 Customer
 
@@ -1708,14 +1708,14 @@ Per-module breakdown with links to analysis documents and associated wireframes.
 
 | Feature | Analysis Doc | Wireframe |
 |---------|-------------|-----------|
-| Customer List/Detail | `customer/customer-core/customer-list-detail.md` | `customer/customer-core/customer-list.png` |
-| Locations & Users | `customer/customer-core/location-and-users.md` | `customer/customer-core/location-management.png` |
-| Contact Management | `customer/contact/contact.md` | `customer/contact/contact-management.png` |
-| Equipment | `customer/equipment/equipment.md` | `customer/equipment/equipment-management.png` |
-| Room Management | `customer/room/room.md` | `customer/room/room-management.png` |
-| Invoice List | `accounting/invoice/invoice-list.md` | `accounting/invoice/invoice-list.png` |
-| Invoice Details | `accounting/invoice/invoice-details.md` | `accounting/invoice/invoice-details.png` |
-| Invoice Receiver | `accounting/invoice-receiver/invoice-receiver.md` | `accounting/invoice-receiver/invoice-receiver.png` |
+| Customer List/Detail | [customer/customer-core/customer-list-detail.md](./customer/customer-core/customer-list-detail.md) | [customer/customer-core/customer-list.png](../wireframes/customer/customer-core/customer-list.png) |
+| Locations & Users | [customer/customer-core/location-and-users.md](./customer/customer-core/location-and-users.md) | [customer/customer-core/location-management.png](../wireframes/customer/customer-core/location-management.png) |
+| Contact Management | [customer/contact/contact.md](./customer/contact/contact.md) | [customer/contact/contact-management.png](../wireframes/customer/contact/contact-management.png) |
+| Equipment | [customer/equipment/equipment.md](./customer/equipment/equipment.md) | [customer/equipment/equipment-management.png](../wireframes/customer/equipment/equipment-management.png) |
+| Room Management | [customer/room/room.md](./customer/room/room.md) | [customer/room/room-management.png](../wireframes/customer/room/room-management.png) |
+| Invoice List | [accounting/invoice/invoice-list.md](./accounting/invoice/invoice-list.md) | [accounting/invoice/invoice-list.png](../wireframes/accounting/invoice/invoice-list.png) |
+| Invoice Details | [accounting/invoice/invoice-details.md](./accounting/invoice/invoice-details.md) | [accounting/invoice/invoice-details.png](../wireframes/accounting/invoice/invoice-details.png) |
+| Invoice Receiver | [accounting/invoice-receiver/invoice-receiver.md](./accounting/invoice-receiver/invoice-receiver.md) | [accounting/invoice-receiver/invoice-receiver.png](../wireframes/accounting/invoice-receiver/invoice-receiver.png) |
 
 ### 18.10 User Management / Staff
 
@@ -1724,15 +1724,15 @@ Per-module breakdown with links to analysis documents and associated wireframes.
 
 | Feature | Analysis Doc | Wireframe |
 |---------|-------------|-----------|
-| Profile Form | `user-management/profile/profile-form.md` | `user-management/profile/profile-form.png` |
-| Staff List | `user-management/profile/profile-staff.md` | `user-management/profile/profile-staff-list.png` |
-| Profile Dialogs | `user-management/profile/profile-dialogs.md` | `user-management/profile/profile-password-dialog.png`, `profile-signature-pad.png` |
-| Expert Availability | `user-management/profile/profile-expert-availability.md` | `user-management/profile/profile-expert-availability.png` |
-| User Management | `user-management/admin/user-management.md` | — |
-| Onboarding Flow | `user-management/admin/onboarding-flow.md` | — |
-| Group Management | `user-management/admin/group-management.md` | — |
-| Skill Management | `user-management/admin/skill.md` | — |
-| TOTP Onboarding | `user-management/admin/totp-onboarding.md` | — |
+| Profile Form | [user-management/profile/profile-form.md](./user-management/profile/profile-form.md) | [user-management/profile/profile-form.png](../wireframes/user-management/profile/profile-form.png) |
+| Staff List | [user-management/profile/profile-staff.md](./user-management/profile/profile-staff.md) | [user-management/profile/profile-staff-list.png](../wireframes/user-management/profile/profile-staff-list.png) |
+| Profile Dialogs | [user-management/profile/profile-dialogs.md](./user-management/profile/profile-dialogs.md) | [user-management/profile/profile-password-dialog.png](../wireframes/user-management/profile/profile-password-dialog.png), [profile-signature-pad.png](../wireframes/user-management/profile/profile-signature-pad.png) |
+| Expert Availability | [user-management/profile/profile-expert-availability.md](./user-management/profile/profile-expert-availability.md) | [user-management/profile/profile-expert-availability.png](../wireframes/user-management/profile/profile-expert-availability.png) |
+| User Management | [user-management/admin/user-management.md](./user-management/admin/user-management.md) | — |
+| Onboarding Flow | [user-management/admin/onboarding-flow.md](./user-management/admin/onboarding-flow.md) | — |
+| Group Management | [user-management/admin/group-management.md](./user-management/admin/group-management.md) | — |
+| Skill Management | [user-management/admin/skill.md](./user-management/admin/skill.md) | — |
+| TOTP Onboarding | [user-management/admin/totp-onboarding.md](./user-management/admin/totp-onboarding.md) | — |
 
 ### 18.11 Accounting / Administration
 
@@ -1741,9 +1741,9 @@ Per-module breakdown with links to analysis documents and associated wireframes.
 
 | Feature | Analysis Doc | Wireframe |
 |---------|-------------|-----------|
-| Job Configuration | `accounting/admin-job/job-configuration.md` | `accounting/admin-job/job-configuration.png` |
-| Accounting Config | `accounting/config/accounting-config.md` | `accounting/config/accounting-config.png` |
-| Warning Management | `treatment/warning/warning-management.md` | — |
+| Job Configuration | [accounting/admin-job/job-configuration.md](./accounting/admin-job/job-configuration.md) | [accounting/admin-job/job-configuration.png](../wireframes/accounting/admin-job/job-configuration.png) |
+| Accounting Config | [accounting/config/accounting-config.md](./accounting/config/accounting-config.md) | [accounting/config/accounting-config.png](../wireframes/accounting/config/accounting-config.png) |
+| Warning Management | [treatment/warning/warning-management.md](./treatment/warning/warning-management.md) | — |
 
 ### 18.12 System / System Admin
 
@@ -1752,10 +1752,10 @@ Per-module breakdown with links to analysis documents and associated wireframes.
 
 | Feature | Analysis Doc | Wireframe |
 |---------|-------------|-----------|
-| Admin Landing | `system/admin/admin-landing.md` | `system/admin/sysconfig-*.png` |
-| MOTD Template | `system/admin-cruds/motd-template.md` | — |
-| CDR Call List | `planning/appointment-support/cdr-call.md` | `planning/appointment-support/cdr-call-list.png` |
-| CDR Assignment | `planning/appointment-support/workhour.md` | `planning/appointment-support/cdr-assignment-crud.png` |
+| Admin Landing | [system/admin/admin-landing.md](./system/admin/admin-landing.md) | [system/admin/sysconfig-*.png](../wireframes/system/admin/sysconfig-*.png) |
+| MOTD Template | [system/admin-cruds/motd-template.md](./system/admin-cruds/motd-template.md) | — |
+| CDR Call List | [planning/appointment-support/cdr-call.md](./planning/appointment-support/cdr-call.md) | [planning/appointment-support/cdr-call-list.png](../wireframes/planning/appointment-support/cdr-call-list.png) |
+| CDR Assignment | [planning/appointment-support/workhour.md](./planning/appointment-support/workhour.md) | [planning/appointment-support/cdr-assignment-crud.png](../wireframes/planning/appointment-support/cdr-assignment-crud.png) |
 
 ### 18.13 System / Shared Components
 
@@ -1763,9 +1763,9 @@ Per-module breakdown with links to analysis documents and associated wireframes.
 
 | Feature | Analysis Doc | Wireframe |
 |---------|-------------|-----------|
-| Shared Components | `system/includes/includes-shared-components.md` | `system/includes/navbar.png`, `loading-states.png`, `quick-filter.png` |
-| Customization | `system/includes/includes-customization.md` | `system/includes/login.png`, `bug-report.png` |
-| Templates & Files | `system/templates-files/templates-files.md` | — |
+| Shared Components | [system/includes/includes-shared-components.md](./system/includes/includes-shared-components.md) | [system/includes/navbar.png](../wireframes/system/includes/navbar.png), [loading-states.png](../wireframes/system/includes/loading-states.png), [quick-filter.png](../wireframes/system/includes/quick-filter.png) |
+| Customization | [system/includes/includes-customization.md](./system/includes/includes-customization.md) | [system/includes/login.png](../wireframes/system/includes/login.png), [bug-report.png](../wireframes/system/includes/bug-report.png) |
+| Templates & Files | [system/templates-files/templates-files.md](./system/templates-files/templates-files.md) | — |
 
 ---
 
@@ -1773,4 +1773,4 @@ Per-module breakdown with links to analysis documents and associated wireframes.
 
 Each analysis document correlates with wireframes in `specs/wireframes/` using the same domain and file names:
 
-- Analysis: `planning/appointment/appointment-list.md` ↔ Wireframe: `planning/appointment/appointment-list.pen` / `.png`
+- Analysis: [planning/appointment/appointment-list.md](./planning/appointment/appointment-list.md) ↔ Wireframe: [planning/appointment/appointment-list.pen](../wireframes/planning/appointment/appointment-list.pen) / [.png](../wireframes/planning/appointment/appointment-list.png)
