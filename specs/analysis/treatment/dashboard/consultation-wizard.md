@@ -270,6 +270,7 @@ No explicit permission checks are present in the wizard JS/HTML. Access is contr
 1. **COUNCIL appointment type:** When `appointment.type == "COUNCIL" && appointment.jobSupport`, selecting a patient in `cw-start` auto-fills and locks the location field from the patient's location data.
 
 2. **EXTERNAL_BASISWEB routing:** If the resolved location has `patientDataType == "EXTERNAL_BASISWEB"` and the appointment is not in `LOCKEDIN` state, the flow bypasses the consultation wizard entirely and triggers `loadBasisweb` (handled by `basisWebWizard.js`).
+   - **Trigger location:** `consultationWizard.js:213` — `$(document).trigger("loadBasisweb", [appointment, location])`
 
 3. **Input mask:** The book number input mask is dynamic per location. The literal string `"book number mask"` is treated as "no mask" (likely a placeholder/default value in the database).
 

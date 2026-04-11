@@ -8,6 +8,17 @@ title: 'Basisweb Wizard'
 > - `web/src/main/webapp/dash/basisWebWizard.html`
 > - `web/src/main/webapp/dash/basisWebWizard.js`
 
+## Invocation
+
+The `basisWebWizard` is triggered via a jQuery event `loadBasisweb`:
+
+**Trigger location:**
+- `consultationWizard.js:213` — `$(document).trigger("loadBasisweb", [appointment, location])`
+- Condition: `location.patientDataType == "EXTERNAL_BASISWEB"` AND `appointment.state !== "LOCKEDIN"`
+
+**Handler location:**
+- `basisWebWizard.js:205` — `$(document).on("loadBasisweb", (_ev, appointment, location)=>{`
+
 ## Dialog Configuration
 
 | Property     | Value                                                      |
