@@ -192,11 +192,11 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 - **Icon**: `tachometer`
 - **Color**: `color-dash`
 - **Permissions**: None (always visible)
-- **Legacy URLs**: `/dash.html`, `/monthView.html`, `/weekView.html`, `/expertWorkMonthly.html`
+- **Legacy URLs**: `/dash.html`
 - **Submenu**:
   
-  | Item | URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
-  |------|-----|------|----------|-------------|-------------|-----------|
+  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
+  |------|------------|------|----------|-------------|-------------|-----------|
   | Calendar | `/monthView.html` | `calendar-alt` | `i18n.calendar` | — | [calendar-view.md](../analysis/planning/dashboard/calendar-view.md) | [calendar.png](../wireframes/planning/dashboard/calendar.png) |
   | Week View | `/weekView.html` | `calendar-alt` | `i18n.weekView` | EXPERT_WEEK | [week-view.md](../analysis/planning/dashboard/week-view.md) | [expert-availability.png](../wireframes/planning/dashboard/expert-availability.png) |
   | Worklog | `/expertWorkMonthly.html` | `file-chart-line` | `i18n.Worklog` | — | [worklog.md](../analysis/accounting/worklog/worklog.md) | [worklog.png](../wireframes/accounting/worklog/worklog.png) |
@@ -206,11 +206,11 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 - **Icon**: `user-md`
 - **Color**: `color-appointment`
 - **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
-- **Legacy URLs**: `/appointment.html`, `/appointmentPlan.html`, `/patientData.html`
+- **Legacy URLs**: `/appointment.html`
 - **Submenu**:
   
-  | Item | URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
-  |------|-----|------|----------|-------------|-------------|-----------|
+  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
+  |------|------------|------|----------|-------------|-------------|-----------|
   | Appointment Plan | `/appointmentPlan.html` | `calendar-check` | `i18n.appointmentPlan` | — | [appointment-list.md](../analysis/planning/appointment/appointment-list.md) | [appointment-list.png](../wireframes/planning/appointment/appointment-list.png) |
   | Patient Data | `/patientData.html` | `user` | `i18n.PatientDataType` | — | — | — |
 
@@ -218,22 +218,22 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 - **Icon**: `user-injured`
 - **Color**: `color-shift`
 - **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
-- **Legacy URLs**: `/shift.html`, `/shiftPlan.html`
+- **Legacy URLs**: `/shift.html`
 - **Submenu**:
   
-  | Item | URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
-  |------|-----|------|----------|-------------|-------------|-----------|
+  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
+  |------|------------|------|----------|-------------|-------------|-----------|
   | Shift Plan | `/shiftPlan.html` | `calendar-check` | `i18n.shiftPlan` | — | [shift-and-plan.md](../analysis/planning/shift/shift-and-plan.md) | [shift-list.png](../wireframes/planning/shift/shift-list.png), [shift-plan-detail.png](../wireframes/planning/shift/shift-plan-detail.png) |
 
 #### 4. Treatments (`/treatment.html`)
 - **Icon**: `people-arrows`
 - **Color**: `color-treatment`
 - **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
-- **Legacy URLs**: `/treatment.html`, `/treatmentPlan.html`
+- **Legacy URLs**: `/treatment.html`
 - **Submenu**:
   
-  | Item | URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
-  |------|-----|------|----------|-------------|-------------|-----------|
+  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
+  |------|------------|------|----------|-------------|-------------|-----------|
   | Treatment Plan | `/treatmentPlan.html` | `calendar-check` | `i18n.treatmentPlan` | — | [treatment-plan.md](../analysis/treatment/treatment-core/treatment-plan.md) | — |
   | Treatment Plan History | `/treatmentPlan.html?history=true` | `calendar` | `i18n.treatmentPlanHistory` | — | — | — |
 
@@ -241,18 +241,18 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 - **Icon**: `user-friends`
 - **Color**: `color-council`
 - **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
-- **Legacy URLs**: `/council.html`, `/councilPlan.html`
+- **Legacy URLs**: `/council.html`
 - **Submenu**:
   
-  | Item | URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
-  |------|-----|------|----------|-------------|-------------|-----------|
+  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
+  |------|------------|------|----------|-------------|-------------|-----------|
   | Council Plan | `/councilPlan.html` | `calendar-check` | `i18n.councilPlanArea` | — | [council-and-plan.md](../analysis/planning/council/council-and-plan.md) | [council-list.png](../wireframes/planning/council/council-list.png), [council-plan-detail.png](../wireframes/planning/council/council-plan-detail.png) |
 
 #### 6. Consultations (`/consultation.html`)
 - **Icon**: `heartbeat`
 - **Color**: `color-consultation`
 - **Roles**: STANDARD, LEITER_INTERN, ADMIN_INTERN, ADMIN
-- **Legacy URLs**: `/consultation.html`
+- **Legacy URLs**: `/consultation.html` (single-page module)
 - **Submenu**: None (single-page module)
   
   | Feature | Analysis Doc | Wireframe |
@@ -269,11 +269,11 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 - **Icon**: `calendar`
 - **Color**: `color-appointmentAdmin`
 - **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
-- **Legacy URLs**: `/appointmentAdmin.html`, `/closedMonth.html`, `/questionaire.html`
+- **Legacy URLs**: `/appointmentAdmin.html`
 - **Submenu**:
   
-  | Item | URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
-  |------|-----|------|----------|-------------|-------------|-----------|
+  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
+  |------|------------|------|----------|-------------|-------------|-----------|
   | Closed Month | `/closedMonth.html` | `calendar-exclamation` | `i18n.ClosedMonth` | — | [close-month.md](../analysis/planning/appointment-support/close-month.md) | [close-month.png](../wireframes/planning/appointment-support/close-month.png) |
   | Questionnaire | `/questionaire.html` | `user-headset` | `i18n.questionaire` | — | — | — |
 
@@ -285,19 +285,19 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 - **Legacy URLs**: `/notification.html`
 - **Submenu**:
   
-  | Item | URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
-  |------|-----|------|----------|-------------|-------------|-----------|
+  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
+  |------|------------|------|----------|-------------|-------------|-----------|
   | Trash | (none, ID: `notificationTrash`) | `comment-times` | `i18n.notification.folder.TRASH` | — | [notification.md](../analysis/system/notification/notification.md) | [notification-list.png](../wireframes/system/notification/notification-list.png), [notification-compose.png](../wireframes/system/notification/notification-compose.png) |
 
 #### 9. Customers (`/customer.html`)
 - **Icon**: `hospital-user`
 - **Color**: `color-customer`
 - **Roles**: LEITER_INTERN, ADMIN_INTERN, KUNDE_ADMIN, ADMIN
-- **Legacy URLs**: `/customer.html`, `/onboardingCustomer.html`, `/invoice.html`, `/invoiceReceiver.html`, `/room.html`, `/customerUser.html`, `/customerLocation.html`, `/onboardingLocation.html`
+- **Legacy URLs**: `/customer.html`
 - **Submenu**:
   
-  | Item | URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
-  |------|-----|------|----------|-------------|-------------|-----------|
+  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
+  |------|------------|------|----------|-------------|-------------|-----------|
   | Onboarding Customer | `/onboardingCustomer.html` | `hospital-user` | `i18n.onboardingCustomerArea` | — | — | — |
   | Invoices | `/invoice.html` | `file-invoice` | `i18n.invoiceArea` | — | [invoice-list.md](../analysis/accounting/invoice/invoice-list.md) | [invoice-list.png](../wireframes/accounting/invoice/invoice-list.png) |
   | Invoice Receivers | `/invoiceReceiver.html` | `file-invoice` | `i18n.invoice.paymentContact` | — | [invoice-receiver.md](../analysis/accounting/invoice-receiver/invoice-receiver.md) | [invoice-receiver.png](../wireframes/accounting/invoice-receiver/invoice-receiver.png) |
@@ -310,11 +310,11 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 - **Icon**: `user-md`
 - **Color**: `color-user`
 - **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
-- **Legacy URLs**: `/staff.html`, `/onboarding.html`, `/adminUser.html`, `/expertWorkWeeklyAssignments.html`
+- **Legacy URLs**: `/staff.html`
 - **Submenu**:
   
-  | Item | URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
-  |------|-----|------|----------|-------------|-------------|-----------|
+  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
+  |------|------------|------|----------|-------------|-------------|-----------|
   | Onboarding | `/onboarding.html` | `layer-group` | `Onboarding` | — | [onboarding-flow.md](../analysis/user-management/admin/onboarding-flow.md) | — |
   | User Management | `/adminUser.html` | `users` | `i18n.user` | — | [user-management.md](../analysis/user-management/admin/user-management.md) | — |
   | Expert Weekly Assignments | `/expertWorkWeeklyAssignments.html` | `tally` | `i18n.expertWorkWeeklyAssignments` | — | — | — |
@@ -323,11 +323,11 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 - **Icon**: `user-cog`
 - **Color**: `admin`
 - **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
-- **Legacy URLs**: `/admin.html`, `/job.html`, `/asyncJobQueue.html`, `/jobPriceList.html`, `/product.html`, `/skill.html`, `/exclusionCriteria.html`, `/exportTemplate.html`, `/warning.html`, `/treatmentCategory.html`, `/equipment.html`, `/onboardingStep.html`
+- **Legacy URLs**: `/admin.html`
 - **Submenu**:
   
-  | Item | URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
-  |------|-----|------|----------|-------------|-------------|-----------|
+  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
+  |------|------------|------|----------|-------------|-------------|-----------|
   | Job IDs | `/job.html` | `briefcase-medical` | `i18n.action.jobIds` | — | [job-configuration.md](../analysis/accounting/admin-job/job-configuration.md) | [job-configuration.png](../wireframes/accounting/admin-job/job-configuration.png) |
   | Async Job Queue | `/asyncJobQueue.html` | `stream` | `i18n.AsyncJobQueue` | — | — | — |
   | Job Price List | `/jobPriceList.html` | `th-list` | `i18n.jobPriceList` | — | — | — |
@@ -344,11 +344,11 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 - **Icon**: `cogs`
 - **Color**: `sysadmin`
 - **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
-- **Legacy URLs**: `/sysadmin.html`, `/motd.html`, `/loginNotification.html`, `/notificationTemplate.html`, `/locationType.html`, `/stornoGroup.html`, `/workHour.html`, `/CdrCall.html`, `/CdrCallAssignment.html`, `/log.html`, `/supportCategory.html`, `/basisWebAppointment.html`, `/changelog.html`
+- **Legacy URLs**: `/sysadmin.html`
 - **Submenu**:
   
-  | Item | URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
-  |------|-----|------|----------|-------------|-------------|-----------|
+  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
+  |------|------------|------|----------|-------------|-------------|-----------|
   | MOTD | `/motd.html` | `newspaper` | `i18n.motd` | — | [motd-template.md](../analysis/system/admin-cruds/motd-template.md) | — |
   | Login Notification | `/loginNotification.html` | `comment-exclamation` | `i18n.loginNotification` | — | — | — |
   | Notification Templates | `/notificationTemplate.html` | `file-code` | `i18n.notificationTemplate` | — | — | — |
