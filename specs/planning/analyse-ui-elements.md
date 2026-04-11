@@ -46,7 +46,7 @@ interface SitemapItem {
 
 ### 2.2 Complete Sitemap
 
-See `specs/analysis/includes/site-shell.md` Chapter 2 for the complete sitemap structure with:
+See `specs/analysis/readme.md` Chapter 2 for the complete sitemap structure with:
 - All 12 main menu items
 - All 47 submenu items
 - Role and rights permissions
@@ -293,7 +293,7 @@ See Section 4.2 for complete list.
 
 ## 11. Related Documents
 
-- `specs/analysis/includes/site-shell.md` — Detailed application shell analysis
+- `specs/analysis/readme.md` — Analysis domain documentation & application shell analysis
 - `specs/analysis/includes/includes-shared-components.md` — Shared components (navbar, dialogs)
 - `specs/analysis/notifications/notification.md` — Notification system
 - `specs/analysis/dashboard/dashboard-main.md` — Dashboard main view

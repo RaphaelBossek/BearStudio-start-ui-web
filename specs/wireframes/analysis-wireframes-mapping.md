@@ -82,7 +82,7 @@ Legend:
 | `system/config/system-config.md` | `locationType/`, `exclusionCriteria/`, `supportCategory/`, `loginNotification/` | *(no wireframe)* |
 | `system/includes/includes-shared-components.md` | `_include/` | `system/includes/bug-report.pen` (.png), `color-palette.pen` (.png), `loading-states.pen` (.png), `quick-filter.pen` (.png) |
 | `system/includes/includes-customization.md` | `_include/customOverride.js`, `_include/customOverride.i18n.js`, `_include/categories.css`, `_include/instance.css`, `_include/login.js`, `_include/bugReport/` | `system/includes/login.pen` (.png) |
-| `system/includes/site-shell.md` | `site.htmlm`, `index.json` | `system/shell/app-shell-layout.pen` (.png), `global-navigation.pen` (.png), `user-menu.pen` (.png) |
+| `readme.md` (root) | `site.htmlm`, `index.json` | `system/shell/app-shell-layout.pen` (.png), `global-navigation.pen` (.png), `user-menu.pen` (.png) |
 | `system/notification/notification.md` | `notification/index.htmlm`, `notification/index.js`, `notification/messages.i18n.js`, `notification/sendMessage.mustache`, `notification/sendMessage.js` | `system/notification/notification-list.pen` (.png), `notification-compose.pen` (.png), `send-message.pen` (.png) |
 | `system/templates-files/templates-files.md` | `exportTemplate/`, `notificationTemplate/`, `userFile/` | *(no wireframe)* |
 
