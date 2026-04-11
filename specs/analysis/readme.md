@@ -177,6 +177,15 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 | 12 | Systemadmin | `/sysadmin.html` | `cogs` | `sysadmin` | LEITER_INTERN, ADMIN_INTERN, ADMIN | — | 13 |
 | 13 | Global Menu | `#globalMenu` | `user` | — | — | `USERS_CREATE` (Role Switch only) | 7 |
 
+**Shell-Level Permission Gates** (template-level conditions applied outside the sitemap):
+
+| Permission / Condition | Scope | Description |
+|------------------------|-------|-------------|
+| `roleSwitch` (authority: `USERS_CREATE`) | Role switch menu item + dialog | Only users who can create/modify users see the role switch option |
+| `{{#search}}` | Full-text search input | Search feature visibility (always shown in current implementation) |
+| `{{#maintenance}}` | Maintenance toast | Shown when `UserService.isMaintenance` returns true |
+| `{{#roleSwitch}}` | Role switch menu item | Same as `roleSwitch` variable — gated by `USERS_CREATE` permission |
+
 ### 2.4 Detailed Sitemap with Submenu Items
 
 #### 1. Dashboard (`/dash.html`)
@@ -348,6 +357,17 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
   | Role Switch | `#roleSwitchDlg` | `user-tag` | (dynamic role label) | `USERS_CREATE` |
   | Bug Report | (dialog) | (from include) | — | Always visible |
   | Logout | `/logout` | `sign-out` | `logout` | Always visible |
+
+#### Shell-Level Permission Gates
+
+Beyond role-based menu visibility, the following template-level permission conditions control shell UI elements that live outside the sitemap hierarchy:
+
+| Permission / Condition | Scope | Description |
+|------------------------|-------|-------------|
+| `roleSwitch` (authority: `USERS_CREATE`) | Role switch menu item + dialog | Only users who can create/modify users see the role switch option |
+| `{{#search}}` | Full-text search input | Search feature visibility (always shown in current implementation) |
+| `{{#maintenance}}` | Maintenance toast | Shown when `UserService.isMaintenance` returns true |
+| `{{#roleSwitch}}` | Role switch menu item | Same as `roleSwitch` variable — gated by `USERS_CREATE` permission |
 
 ### 2.5 Role Matrix
 
@@ -1469,20 +1489,9 @@ Each module has a corresponding `bg-color-{module}` CSS class defined in `_inclu
 
 ---
 
-## 11. Permissions
+## 11. Special Components
 
-| Permission / Condition | Scope | Description |
-|------------------------|-------|-------------|
-| `roleSwitch` (authority: `USERS_CREATE`) | Role switch menu item + dialog | Only users who can create/modify users see the role switch option |
-| `{{#search}}` | Full-text search input | Search feature visibility (always shown in current implementation) |
-| `{{#maintenance}}` | Maintenance toast | Shown when `UserService.isMaintenance` returns true |
-| `{{#roleSwitch}}` | Role switch menu item | Same as `roleSwitch` variable — gated by `USERS_CREATE` permission |
-
----
-
-## 12. Special Components
-
-### 12.1 Navigation Pattern
+### 11.1 Navigation Pattern
 
 | Component Type | Context | Data Bindings | Notes |
 |----------------|---------|---------------|-------|
@@ -1491,7 +1500,7 @@ Each module has a corresponding `bg-color-{module}` CSS class defined in `_inclu
 | **Search Toggle** | `#globalMenu` | — | Expands search input on click |
 | **Version Display** | `#globalMenu` | `application.version`, `application.buildtime` | Ellipsis overflow for long versions |
 
-### 12.2 Responsive Behavior
+### 11.2 Responsive Behavior
 
 | Breakpoint | Behavior |
 |------------|----------|
@@ -1502,7 +1511,7 @@ Each module has a corresponding `bg-color-{module}` CSS class defined in `_inclu
 
 ---
 
-## 13. Status Visualization
+## 12. Status Visualization
 
 | State | Icon | Color | Meaning |
 |-------|------|-------|---------|
@@ -1513,9 +1522,9 @@ Each module has a corresponding `bg-color-{module}` CSS class defined in `_inclu
 
 ---
 
-## 14. Naming and Translation
+## 13. Naming and Translation
 
-### 14.1 i18n Keys Used
+### 13.1 i18n Keys Used
 
 | Key | German | English | Notes |
 |-----|--------|---------|-------|
@@ -1528,7 +1537,7 @@ Each module has a corresponding `bg-color-{module}` CSS class defined in `_inclu
 | `logout` | Abmelden | Logout | Logout action |
 | `error.maintenance.title` | Wartungsarbeiten | Maintenance | Maintenance toast title |
 
-### 14.2 Hardcoded Strings (German)
+### 13.2 Hardcoded Strings (German)
 
 | String | Location | Suggested Key | English |
 |--------|----------|---------------|---------|
@@ -1546,7 +1555,7 @@ Each module has a corresponding `bg-color-{module}` CSS class defined in `_inclu
 
 ---
 
-## 15. React Migration Summary
+## 14. React Migration Summary
 
 | Shell Component | Legacy Implementation | Modern React Approach | Priority |
 |-----------------|----------------------|----------------------|----------|
@@ -1563,7 +1572,7 @@ Each module has a corresponding `bg-color-{module}` CSS class defined in `_inclu
 
 ---
 
-## 16. Wireframe Mapping
+## 15. Wireframe Mapping
 
 | Wireframe | Description | Status |
 |-----------|-------------|--------|
@@ -1575,7 +1584,7 @@ Each module has a corresponding `bg-color-{module}` CSS class defined in `_inclu
 
 ---
 
-## 17. Related Analysis Documents
+## 16. Related Analysis Documents
 
 | Document | Description |
 |----------|-------------|
@@ -1586,7 +1595,7 @@ Each module has a corresponding `bg-color-{module}` CSS class defined in `_inclu
 
 ---
 
-## 18. Sitemap Extraction Task
+## 17. Sitemap Extraction Task
 
 **TODO**: Extract the complete navigation structure from the legacy codebase:
 
@@ -1604,11 +1613,11 @@ Each module has a corresponding `bg-color-{module}` CSS class defined in `_inclu
 
 ---
 
-## 19. Module Analysis & Wireframe Reference
+## 18. Module Analysis & Wireframe Reference
 
 Per-module breakdown with links to analysis documents and associated wireframes.
 
-### 19.1 System / Dashboard
+### 18.1 System / Dashboard
 
 **Canonical**: `system/dashboard/`, `planning/dashboard/`
 **Legacy URLs**: `/dash.html`, `/monthView.html`, `/weekView.html`, `/expertWorkMonthly.html`
@@ -1619,7 +1628,7 @@ Per-module breakdown with links to analysis documents and associated wireframes.
 | Week View | `planning/dashboard/week-view.md` | `planning/dashboard/expert-availability.png` |
 | Worklog | `accounting/worklog/worklog.md` | `accounting/worklog/worklog.png` |
 
-### 19.2 Planning / Appointments
+### 18.2 Planning / Appointments
 
 **Canonical**: `planning/appointment/`
 **Legacy URLs**: `/appointment.html`, `/appointmentPlan.html`, `/patientData.html`
@@ -1630,7 +1639,7 @@ Per-module breakdown with links to analysis documents and associated wireframes.
 | Appointment Details | `planning/appointment/appointment-details-scheduling.md` | `planning/appointment/appointment-details.png` (+ sub-dialogs) |
 | Assign User | `planning/appointment/appointment-assign-user.md` | `planning/appointment/appointment-assign-user.png` |
 
-### 19.3 Planning / Shifts
+### 18.3 Planning / Shifts
 
 **Canonical**: `planning/shift/`
 **Legacy URLs**: `/shift.html`, `/shiftPlan.html`
@@ -1639,7 +1648,7 @@ Per-module breakdown with links to analysis documents and associated wireframes.
 |---------|-------------|-----------|
 | Shift Plan | `planning/shift/shift-and-plan.md` | `planning/shift/shift-list.png`, `shift-plan-detail.png` |
 
-### 19.4 Treatment / Treatments
+### 18.4 Treatment / Treatments
 
 **Canonical**: `treatment/treatment-core/`
 **Legacy URLs**: `/treatment.html`, `/treatmentPlan.html`
@@ -1649,7 +1658,7 @@ Per-module breakdown with links to analysis documents and associated wireframes.
 | Treatment Categories | `treatment/treatment-core/treatment-and-category.md` | — |
 | Treatment Plan | `treatment/treatment-core/treatment-plan.md` | — |
 
-### 19.5 Planning / Council
+### 18.5 Planning / Council
 
 **Canonical**: `planning/council/`
 **Legacy URLs**: `/council.html`, `/councilPlan.html`
@@ -1658,7 +1667,7 @@ Per-module breakdown with links to analysis documents and associated wireframes.
 |---------|-------------|-----------|
 | Council Plan | `planning/council/council-and-plan.md` | `planning/council/council-list.png`, `council-plan-detail.png` |
 
-### 19.6 Treatment / Consultations
+### 18.6 Treatment / Consultations
 
 **Canonical**: `treatment/consultation/`
 **Legacy URLs**: `/consultation.html`
@@ -1673,7 +1682,7 @@ Per-module breakdown with links to analysis documents and associated wireframes.
 | Treatment/Warning | `treatment/consultation/consultation-details-treatment-warning.md` | `treatment/consultation/consultation-details-treatment-warning.png` |
 | View/Review | `treatment/consultation/consultation-view-review.md` | `treatment/consultation/consultation-view.png`, `consultation-review.png` |
 
-### 19.7 Planning / Appointment Admin
+### 18.7 Planning / Appointment Admin
 
 **Canonical**: `planning/appointment-admin/`
 **Legacy URLs**: `/appointmentAdmin.html`, `/closedMonth.html`, `/questionaire.html`
@@ -1683,7 +1692,7 @@ Per-module breakdown with links to analysis documents and associated wireframes.
 | Admin Grid | `planning/appointment-admin/appointment-admin.md` | `planning/appointment-admin/inline-consultation.png` (+ dialogs) |
 | Closed Month | `planning/appointment-support/close-month.md` | `planning/appointment-support/close-month.png` |
 
-### 19.8 System / Notifications
+### 18.8 System / Notifications
 
 **Canonical**: `system/notification/`
 **Legacy URLs**: `/notification.html`
@@ -1692,7 +1701,7 @@ Per-module breakdown with links to analysis documents and associated wireframes.
 |---------|-------------|-----------|
 | Notification List | `system/notification/notification.md` | `system/notification/notification-list.png`, `notification-compose.png` |
 
-### 19.9 Customer
+### 18.9 Customer
 
 **Canonical**: `customer/`
 **Legacy URLs**: `/customer.html`, `/onboardingCustomer.html`, `/invoice.html`, `/invoiceReceiver.html`, `/room.html`
@@ -1708,7 +1717,7 @@ Per-module breakdown with links to analysis documents and associated wireframes.
 | Invoice Details | `accounting/invoice/invoice-details.md` | `accounting/invoice/invoice-details.png` |
 | Invoice Receiver | `accounting/invoice-receiver/invoice-receiver.md` | `accounting/invoice-receiver/invoice-receiver.png` |
 
-### 19.10 User Management / Staff
+### 18.10 User Management / Staff
 
 **Canonical**: `user-management/profile/`, `user-management/admin/`
 **Legacy URLs**: `/staff.html`, `/onboarding.html`, `/adminUser.html`
@@ -1725,7 +1734,7 @@ Per-module breakdown with links to analysis documents and associated wireframes.
 | Skill Management | `user-management/admin/skill.md` | — |
 | TOTP Onboarding | `user-management/admin/totp-onboarding.md` | — |
 
-### 19.11 Accounting / Administration
+### 18.11 Accounting / Administration
 
 **Canonical**: `accounting/admin-job/`, `accounting/config/`, `treatment/warning/`, `user-management/admin/`
 **Legacy URLs**: `/admin.html`
@@ -1736,7 +1745,7 @@ Per-module breakdown with links to analysis documents and associated wireframes.
 | Accounting Config | `accounting/config/accounting-config.md` | `accounting/config/accounting-config.png` |
 | Warning Management | `treatment/warning/warning-management.md` | — |
 
-### 19.12 System / System Admin
+### 18.12 System / System Admin
 
 **Canonical**: `system/admin/`, `system/admin-cruds/`, `planning/appointment-support/`
 **Legacy URLs**: `/sysadmin.html`
@@ -1748,7 +1757,7 @@ Per-module breakdown with links to analysis documents and associated wireframes.
 | CDR Call List | `planning/appointment-support/cdr-call.md` | `planning/appointment-support/cdr-call-list.png` |
 | CDR Assignment | `planning/appointment-support/workhour.md` | `planning/appointment-support/cdr-assignment-crud.png` |
 
-### 19.13 System / Shared Components
+### 18.13 System / Shared Components
 
 **Canonical**: `system/includes/`, `system/templates-files/`
 
@@ -1760,7 +1769,7 @@ Per-module breakdown with links to analysis documents and associated wireframes.
 
 ---
 
-## 20. Wireframe Correlation
+## 19. Wireframe Correlation
 
 Each analysis document correlates with wireframes in `specs/wireframes/` using the same domain and file names:
 
