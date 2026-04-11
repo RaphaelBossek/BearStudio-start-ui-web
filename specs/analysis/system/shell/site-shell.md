@@ -512,7 +512,7 @@ The main navigation is **runtime-generated** from the server-side sitemap define
      - i18n Key: `i18n.calendar` → `calendar.title`
      - Icon: `fa-calendar-alt`
      - URL: `/monthView.html`
-      - Analysis Doc: [09-calendar-view.md](../../planning/dashboard/calendar-view.md)
+      - Analysis Doc: [calendar-view.md](../../planning/dashboard/calendar-view.md)
   2. **Week View**
      - English: Week View
      - German: Wochenansicht
@@ -520,7 +520,7 @@ The main navigation is **runtime-generated** from the server-side sitemap define
      - Icon: `fa-calendar-alt`
      - URL: `/weekView.html`
       - Rights: `EXPERT_WEEK`
-      - Analysis Doc: [10-week-view.md](../../planning/dashboard/week-view.md)
+      - Analysis Doc: [week-view.md](../../planning/dashboard/week-view.md)
   3. **Worklog**
      - English: Worklog
      - German: Arbeitsprotokoll
@@ -545,7 +545,7 @@ The main navigation is **runtime-generated** from the server-side sitemap define
 - **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
 - **Rights**: None
 - **URL**: `/appointment.html`
-- **Analysis Doc**: [appointment-list.md](../../appointments/appointment-list.md)
+- **Analysis Doc**: [appointment-list.md](../../planning/appointment/appointment-list.md)
 - **Submenu**:
   1. **Appointment Plan**
      - English: Appointment Plan
