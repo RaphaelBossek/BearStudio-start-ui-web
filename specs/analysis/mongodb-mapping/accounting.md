@@ -4,7 +4,7 @@ title: 'Accounting'
 
 # Accounting
 
-[← Back to Index](./README.md)
+[← Back to Index](./readme.md)
 
 This file covers the Accounting category: entities related to billing, customers, pricing, and financial tracking.
 

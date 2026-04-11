@@ -4,7 +4,7 @@ title: 'News'
 
 # News
 
-[← Back to Index](./README.md)
+[← Back to Index](./readme.md)
 
 This file covers the News category: system announcements and user notifications.
 

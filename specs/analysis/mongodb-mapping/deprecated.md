@@ -4,7 +4,7 @@ title: 'Deprecated'
 
 # Deprecated Entities
 
-[← Back to Index](./README.md)
+[← Back to Index](./readme.md)
 
 This file covers tables that are no longer in use or not yet implemented.
 

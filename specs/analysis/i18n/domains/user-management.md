@@ -32,4 +32,4 @@ title: 'User Management'
 
 - [../translation-inventory.md](../translation-inventory.md) — Full inventory
 - [../missing-keys.md](../missing-keys.md) — Gap analysis
-- [../../user-management/README.md](../../user-management/README.md) — User Management domain analysis
+- [../../user-management/readme.md](../../user-management/readme.md) — User Management domain analysis

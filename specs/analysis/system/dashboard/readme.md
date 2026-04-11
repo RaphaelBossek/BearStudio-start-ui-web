@@ -73,10 +73,10 @@ See [`workflows.md`](../../../../wireframes/system/workflows.md) for detailed us
 
 | Domain | Integration | Description |
 |--------|-------------|-------------|
-<!-- removed: | [`appointments/`](../appointments/README.md) | MonthTable grid | Dashboard displays appointment calendar | -->
-<!-- removed: | [`shifts/`](../shifts/README.md) | Shift assignments | Dashboard shows upcoming shifts | -->
-| [`staff/`](../../user-management/README.md) | Expert availability | Profile → Availability → Dashboard grids |
-| [`accounting/`](../../accounting/README.md) | Worklog | Dashboard → Worklog links to accounting |
+<!-- removed: | [`appointments/`](../appointments/readme.md) | MonthTable grid | Dashboard displays appointment calendar | -->
+<!-- removed: | [`shifts/`](../shifts/readme.md) | Shift assignments | Dashboard shows upcoming shifts | -->
+| [`staff/`](../../user-management/readme.md) | Expert availability | Profile → Availability → Dashboard grids |
+| [`accounting/`](../../accounting/readme.md) | Worklog | Dashboard → Worklog links to accounting |
 
 ## Migration Progress
 

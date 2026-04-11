@@ -4,7 +4,7 @@ title: 'System'
 
 # System
 
-[← Back to Index](./README.md)
+[← Back to Index](./readme.md)
 
 This file covers the System category: technical configurations, logs, and system-wide settings.
 

@@ -23,9 +23,9 @@ title: 'Academy'
 ## Notes
 
 - Small domain with only 8 keys
-- Most content in [academy domain](../../academy/README.md)
+- Most content in [academy domain](../../academy/readme.md)
 
 ## Related Files
 
 - [../translation-inventory.md](../translation-inventory.md) — Full inventory
-- [../../academy/README.md](../../academy/README.md) — Academy domain documentation
+- [../../academy/readme.md](../../academy/readme.md) — Academy domain documentation

@@ -4,7 +4,7 @@ title: 'User Management'
 
 # User Management
 
-[← Back to Index](./README.md)
+[← Back to Index](./readme.md)
 
 This file covers the User Management category: management of experts, users, roles, and their associated profiles and sessions.
 
