@@ -53,37 +53,39 @@ The sitemap is defined in `brownfield/web/src/main/webapp/index.json` under the 
 
 ### 2.1 Sitemap Tree View
 
-- **Dashboard** (`/dash.html`)
+The application's main navigation from the legacy `site.htmlm` shell maps to the current canonical analysis structure as follows:
+
+- **Dashboard** (`/dash.html`): Dashboards for calendar, week view, worklog; video library support
   - [Calendar](./planning/dashboard/calendar-view.md)
   - [Week View](./planning/dashboard/week-view.md)
   - [Worklog](./accounting/worklog/worklog.md)
   - [Video Library](./orphan/support-and-video.md)
 
-- **Appointments** (`/appointment.html`)
+- **Appointments** (`/appointment.html`): Appointments, shifts, councils, planning dashboards
   - [Appointment Plan](./planning/appointment/appointment-plan.md)
   - [Patient Data](./treatment/patient-data/patient-data.md)
 
-- **Shifts** (`/shift.html`)
+- **Shifts** (`/shift.html`): Appointments, shifts, councils, planning dashboards
   - [Shift Plan](./planning/shift/shift-and-plan.md)
 
-- **Treatments** (`/treatment.html`)
+- **Treatments** (`/treatment.html`): Consultations, treatments, patient data
   - [Treatment Plan](./treatment/treatment-core/treatment-plan.md)
   - [Treatment Plan History](./treatment/treatment-core/treatment-plan.md)
 
-- **Council** (`/council.html`)
+- **Council** (`/council.html`): Appointments, shifts, councils, planning dashboards
   - [Council Plan](./planning/council/council-and-plan.md)
 
-- **Consultations** (`/consultation.html`)
+- **Consultations** (`/consultation.html`): Consultations, treatments, patient data
   - [Consultation List](./treatment/consultation/consultation-list.md)
 
-- **Appointment Admin** (`/appointmentAdmin.html`)
+- **Appointment Admin** (`/appointmentAdmin.html`): Appointments, shifts, councils, planning dashboards
   - [Closed Month](./planning/appointment-admin/appointment-admin.md)
   - [Questionnaire](./treatment/questionnaire/questionnaire-list.md)
 
-- **Notifications** (`/notification.html`)
+- **Notifications** (`/notification.html`): System config, admin, notifications, shared components
   - [Notification List](./system/notification/notification.md)
 
-- **Customers** (`/customer.html`)
+- **Customers** (`/customer.html`): Customer management, contacts, locations, rooms, equipment
   - [Onboarding Customer](./user-management/admin/onboarding-flow.md)
   - [Invoices](./accounting/invoice/invoice-list.md)
   - [Invoice Receivers](./accounting/invoice-receiver/invoice-receiver.md)
@@ -92,12 +94,12 @@ The sitemap is defined in `brownfield/web/src/main/webapp/index.json` under the 
   - [Rooms](./customer/room/room.md)
   - [Onboarding Location](./user-management/admin/onboarding-flow.md)
 
-- **Staff** (`/staff.html`)
+- **Staff** (`/staff.html`): User profiles, admin, groups, skills, onboarding
   - [Onboarding](./user-management/admin/onboarding-flow.md)
   - [User Management](./user-management/admin/user-management.md)
   - [Expert Weekly Assignments](./accounting/worklog/worklog.md)
 
-- **Administration** (`/admin.html`)
+- **Administration** (`/admin.html`): Invoicing, job configuration, accounting config; user profiles, admin, groups, skills, onboarding; consultations, treatments, patient data
   - [Job IDs](./accounting/admin-job/job-configuration.md)
   - [Async Job Queue](./mongodb-mapping/system.md#entity-async-job-queue)
   - [Job Price List](./accounting/config/accounting-config.md#e-job-price-list)
@@ -110,7 +112,7 @@ The sitemap is defined in `brownfield/web/src/main/webapp/index.json` under the 
   - [Equipment](./customer/equipment/equipment.md)
   - [Onboarding Steps](./user-management/admin/onboarding-flow.md)
 
-- **Systemadmin** (`/sysadmin.html`)
+- **Systemadmin** (`/sysadmin.html`): System config, admin, notifications, shared components; appointments, shifts, councils, planning dashboards
   - [MOTD](./system/admin-cruds/motd-template.md)
   - [Login Notification](./system/config/system-config.md#i-login-notification)
   - [Notification Templates](./system/templates-files/templates-files.md#3-notification-template)
@@ -124,32 +126,7 @@ The sitemap is defined in `brownfield/web/src/main/webapp/index.json` under the 
   - [BasisWeb Appointments](./mongodb-mapping/interfaces.md#entity-basis-web-appointment)
   - [Change Log](./system/admin/admin-landing.md#8-page-changelog-changeloghtmlm)
 
-### 2.2 Application Sitemap (Legacy → Canonical Mapping)
-
-The application's main navigation from the legacy `site.htmlm` shell maps to the current canonical analysis structure as follows:
-
-| # | Legacy Menu Item | Legacy Path | Canonical Path |
-|---|-----------------|-------------|----------------|
-| 1 | Dashboard | `dashboard/` | `system/dashboard/`, `planning/dashboard/` |
-| 2 | Appointments | `appointments/` | `planning/appointment/` |
-| 3 | Shifts | `shifts/` | `planning/shift/` |
-| 4 | Treatments | `treatments/` | `treatment/treatment-core/` |
-| 5 | Council | `council/` | `planning/council/` |
-| 6 | Consultations | `consultations/` | `treatment/consultation/` |
-| 7 | Appointment Admin | `appointment-admin/` | `planning/appointment-admin/` |
-| 8 | Notifications | `notifications/` | `system/notification/` |
-| 9 | Customers | `customers/` | `customer/` |
-| 10 | Staff | `staff/` | `user-management/profile/`, `user-management/admin/` |
-| 11 | Administration | `administration/` | `accounting/admin-job/`, `accounting/config/`, `treatment/warning/`, `user-management/admin/` |
-| 12 | System Admin | `system-admin/` | `system/admin/`, `system/admin-cruds/`, `planning/appointment-support/` |
-
-#### Shared Components & Infrastructure
-
-| Legacy Path | Canonical Path |
-|-------------|----------------|
-| `includes/` | `system/includes/`, `system/templates-files/` |
-
-### 2.3 Sitemap JSON Structure
+### 2.2 Sitemap JSON Structure
 
 ```json
 {
@@ -173,7 +150,7 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 }
 ```
 
-### 2.4 Complete Sitemap Structure
+### 2.3 Rights for Sitemap Structure
 
 | # | Main Menu Item | URL | Icon | Color | Roles | Rights | Submenu Count |
 |---|----------------|-----|------|-------|-------|--------|---------------|
@@ -190,7 +167,7 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 | 11 | Administration | `/admin.html` | `user-cog` | `admin` | LEITER_INTERN, ADMIN_INTERN, ADMIN | — | 11 |
 | 12 | Systemadmin | `/sysadmin.html` | `cogs` | `sysadmin` | LEITER_INTERN, ADMIN_INTERN, ADMIN | — | 13 |
 
-### 2.5 Detailed Sitemap with Submenu Items
+### 2.4 Detailed Sitemap with Submenu Items
 
 #### 1. Dashboard (`/dash.html`)
 - **Icon**: `tachometer`
@@ -344,7 +321,7 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
   | BasisWeb Appointments | `/basisWebAppointment.html` | `user-headset` | `BasisWeb-Anmeldungen` | — |
   | Change Log | `/changelog.html` | `hour` | `Change-Log` | — |
 
-### 2.6 Role Matrix
+### 2.5 Role Matrix
 
 | Role | Dashboard | Appointments | Shifts | Treatments | Council | Consultations | Appt Admin | Notifications | Customers | Staff | Admin | Sysadmin |
 |------|-----------|--------------|--------|------------|---------|---------------|------------|---------------|-----------|-------|-------|----------|
@@ -355,7 +332,7 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 | **KUNDE_ADMIN** | ✓ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ (with rights) | ✓ | ✗ | ✗ | ✗ |
 | **REGISTERED** | ✓ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ |
 
-### 2.7 Rights Matrix
+### 2.6 Rights Matrix
 
 | Right | Description | Modules Using |
 |-------|-------------|---------------|
