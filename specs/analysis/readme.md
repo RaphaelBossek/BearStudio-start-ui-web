@@ -610,7 +610,7 @@ The main navigation is **runtime-generated** from the server-side sitemap define
 - **Roles**: Always visible
 - **Rights**: None
 - **URL**: `/dash.html`
-- **Analysis Doc**: [dashboard-main.md](./dashboard/dashboard-main.md)
+- **Analysis Doc**: [dashboard-main.md](./system/dashboard/dashboard-main.md)
 - **Submenu**:
   1. **Calendar**
      - English: Calendar

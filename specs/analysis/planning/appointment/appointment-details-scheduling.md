@@ -6,6 +6,26 @@ title: 'Appointment Details Scheduling'
 > **Sections extracted here**: State transitions (#appointmentStateDlg), user assignment (autocomplete, suggestions, accept/reject/reserve/override/abort), assignment history, referenced appointments, collision handling, dialog structure, header, tabs, details/edit form, state machines, click actions, server API, state-driven visibility, diagrams
 > **Other domains received**: `treatment/appointment-patient/appointment-details-patient.md` got patient data CRUD (add/edit/remove patient), patient file uploads/downloads, patient data attachments
 
+## Cross-References
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| split | **Sibling** | Same source: `appointment/details.html` + `details.js` | [Appointment Details Patient](../../treatment/appointment-patient/appointment-details-patient.md) | Tab 3 (Patients) extracted to sibling |
+| include | **Included by** | `{{> appointmentDetails}}` | [Appointment List](appointment-list.md) | Inline detail/edit panel |
+| include | **Included by** | `{{> appointmentDetails}}` | [Shift List](../../planning/shift/shift-and-plan.md) | Reused as shift detail panel |
+| include | **Included by** | `{{> appointmentDetails}}` | [Treatment List](../../treatment/treatment-core/treatment-and-category.md) | Reused as treatment detail panel |
+| include | **Included by** | `{{> appointmentDetails}}` | [Council List](../../planning/council/council-and-plan.md) | Reused as council detail panel |
+| include | **Included by** | `{{> appointmentDetails}}` | [Month View](../../planning/dashboard/month-view.md) | Dashboard month view detail |
+| include | **Included by** | `{{> appointmentDetails}}` | [Week View](../../planning/dashboard/week-view.md) | Dashboard week view detail |
+| include | **Included by** | `{{> appointmentDetails}}` | [Calendar View](../../planning/dashboard/calendar-view.md) | Dashboard calendar view detail |
+| event | **Outgoing** | `assignAppointment()` | [Appointment Assign User](appointment-assign-user.md#9-dialog-navigation-flow) | Accept/Override assignment buttons |
+
+> **Split origin:** Both this file and [Appointment Details Patient](../../treatment/appointment-patient/appointment-details-patient.md) were extracted from `appointment/details.html` (635 lines) + `appointment/details.js` (912 lines). This file covers scheduling, state transitions, user assignment (Tabs 1/2/4/5); the sibling covers patient data CRUD (Tab 3).
+>
+> **Include context:** This file's source `appointment/details.html` is embedded as `{{> appointmentDetails}}` in 7 host pages: appointment list, shift list, treatment list, council list, month view, week view, and calendar view.
+
+---
+
 # 02 — Appointment Details Dialog (with Tabs)
 
 > **Source files analysed**

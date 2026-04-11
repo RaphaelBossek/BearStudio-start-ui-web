@@ -13,6 +13,18 @@ title: 'Questionnaire Detail'
 > - `questionaire/details.js` (7 lines) -- Minimal init script
 > - `questionaire/index.htmlm` (lines 55-100) -- Header/counts section (read-only list detail, included here for full data-model coverage)
 
+## Cross-References
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Included by** | `{{> detailQuestionaire}}` | [Dialogs Treatment](../dashboard/dialogs-treatment.md) | QM partial in `#endAppointmentDlg` and `#summarizeAppointmentDlg` |
+| include | **Included by** | `{{> detailQuestionaire}}` | [Consultation Details Header](../consultation/consultation-details-header.md#tab-structure) | QM tab (`#tabQM`) in consultation detail dialog |
+| include | **Included by** | `{{> detailQuestionaire}}` | [Appointment Admin](../../planning/appointment-admin/appointment-admin.md) | QM questionnaire view in admin panel |
+| event | **Incoming** | `filterQm()` | [Consultation Details JS](../consultation/consultation-details-js.md#2-dialog-lifecycle) | Called from `fillDialog()` to apply visibility rules |
+| event | **Incoming** | `filterQm()` | [Dialogs Treatment](../dashboard/dialogs-treatment.md) | Called when opening end-appointment and summarize dialogs |
+
+> **Include context:** This file's source `detailQM.html` is embedded as `{{> detailQuestionaire}}` partial in [Dialogs Treatment](../dashboard/dialogs-treatment.md), [Consultation Details Header](../consultation/consultation-details-header.md), and [Appointment Admin](../../planning/appointment-admin/appointment-admin.md). The `filterQm()` function defined here is called from [Consultation Details JS](../consultation/consultation-details-js.md) and [Dialogs Treatment](../dashboard/dialogs-treatment.md).
+
 ---
 
 ## 1. Block: Questionnaire Details Dialog

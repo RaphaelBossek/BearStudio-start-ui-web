@@ -10,6 +10,21 @@ This analysis covers the **standard user** (`{{#isStandard}}`) blocks and the **
 
 ---
 
+## Event Flow Cross-References
+
+| Direction | Event | Linked Document | Condition |
+|-----------|-------|-----------------|----------|
+| **Outgoing** | `loadConsultation` | [Consultation Wizard](../../treatment/dashboard/consultation-wizard.md#2-dialog-navigation-diagram) | `newPatient` / `startBasisWeb` click on active appointment |
+| **Outgoing** | `ConsultationDetails.open()` | [Consultation Details JS](../../treatment/consultation/consultation-details-js.md#2-dialog-lifecycle) | Consultation row click (editable) or treatment task edit |
+| **Outgoing** | `consultationWithTemplateBtn` click | [Consultation Template](../../treatment/dashboard/consultation-template.md#click-actions) | NavBar "Consultation template" button (always visible) |
+
+> **Downstream chains:**
+> - `loadConsultation` → [Consultation Wizard](../../treatment/dashboard/consultation-wizard.md) → (conditionally) `loadBasisweb` → [BasisWeb Wizard](../../interfaces/dashboard/basisweb-wizard.md)
+> - `ConsultationDetails.open()` → [Consultation Details JS](../../treatment/consultation/consultation-details-js.md)
+> - `consultationWithTemplateBtn` → [Consultation Template](../../treatment/dashboard/consultation-template.md) → `ConsultationDetails.open()` → [Consultation Details JS](../../treatment/consultation/consultation-details-js.md)
+
+---
+
 ## Behavior Diagrams
 
 ### Permission Gating Diagram

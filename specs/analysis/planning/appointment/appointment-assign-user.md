@@ -8,6 +8,18 @@ title: 'Appointment Assign User'
 > - `web/src/main/webapp/appointment/assignUser.html` (48 lines) — Modal dialog template
 > - `web/src/main/webapp/appointment/assignUser.js` (31 lines) — Assignment logic and API calls
 
+## Cross-References
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Included by** | `{{> assignUserDlg}}` | [Appointment List](appointment-list.md) | Collision resolution dialog for doctor assignments |
+| include | **Included by** | `{{> assignUserDlg}}` | [Shift List](../../planning/shift/shift-and-plan.md) | Reused for shift staff assignments |
+| include | **Included by** | `{{> assignUserDlg}}` | [Treatment List](../../treatment/treatment-core/treatment-and-category.md) | Reused for treatment staff assignments |
+| include | **Included by** | `{{> assignUserDlg}}` | [Council List](../../planning/council/council-and-plan.md) | Reused for council staff assignments |
+| event | **Incoming** | `assignAppointment()` | [Appointment Details Scheduling](appointment-details-scheduling.md#7-tab-4--assigned-experts) | Accept/Override buttons call `assignAppointment(id, state)` |
+
+> **Include context:** This file's source `assignUser.html` is embedded as `{{> assignUserDlg}}` partial in 4 host pages: [Appointment List](appointment-list.md), [Shift List](../../planning/shift/shift-and-plan.md), [Treatment List](../../treatment/treatment-core/treatment-and-category.md), and [Council List](../../planning/council/council-and-plan.md). The `assignAppointment()` global function is called from [Appointment Details Scheduling](appointment-details-scheduling.md) when accepting or overriding doctor assignments.
+
 ---
 
 ## 1. Block: Assign User Dialog

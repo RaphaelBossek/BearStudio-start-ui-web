@@ -13,6 +13,20 @@ title: 'Consultation Wizard'
 
 ---
 
+## Event Flow Cross-References
+
+| Direction | Event | Linked Document | Condition |
+|-----------|-------|-----------------|----------|
+| **Incoming** | `loadConsultation` | [Dashboard Main](../../system/dashboard/dashboard-main.md#block-active-appointments-card) | Triggered by `newPatient` / `startBasisWeb` button |
+| **Outgoing** | `loadBasisweb` | [BasisWeb Wizard](../../interfaces/dashboard/basisweb-wizard.md#invocation) | `location.patientDataType == "EXTERNAL_BASISWEB"` && `appointment.state != "LOCKEDIN"` |
+| **Outgoing** | `ConsultationDetails.open()` | [Consultation Details JS](../consultation/consultation-details-js.md#2-dialog-lifecycle) | After `ConsultationService.start` succeeds (step 4 cw-success) |
+
+> **Event chains:**
+> - [Dashboard Main](../../system/dashboard/dashboard-main.md) → `loadConsultation` → **this file** → `loadBasisweb` → [BasisWeb Wizard](../../interfaces/dashboard/basisweb-wizard.md)
+> - [Dashboard Main](../../system/dashboard/dashboard-main.md) → `loadConsultation` → **this file** → `ConsultationDetails.open()` → [Consultation Details JS](../consultation/consultation-details-js.md)
+
+---
+
 ## 1. Dialog Inventory
 
 | Dialog ID | Title (i18n) | Width | Icon | Color | CRUD Buttons | Target |

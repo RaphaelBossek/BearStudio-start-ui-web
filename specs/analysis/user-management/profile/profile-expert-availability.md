@@ -12,6 +12,18 @@ title: 'Profile Expert Availability'
 > - `dash/monthView.htmlm` loads `expertDays.js` (see [11-month-view.md](../../planning/dashboard/month-view.md))
 > - `dash/weekView.htmlm` loads `expertWeek.js` (see [10-week-view.md](../../planning/dashboard/week-view.md))
 
+## Cross-References
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Included by** | `<script src="/profile/expertDays.js">` | [Month View](../../planning/dashboard/month-view.md) | Month availability grid logic for `#expertdaysMonthTable` |
+| include | **Included by** | `<script src="/profile/expertWeek.js">` | [Week View](../../planning/dashboard/week-view.md) | Week availability grid logic for `#expertWeekTable` |
+| include | **Included by** | `<script src="/profile/expertWeek.js">` | [Treatment Plan](../../treatment/treatment-core/treatment-plan.md) | Week grid embedded in treatment plan create dialog |
+| include | **Included by** | `<script src="/profile/expertDays.js">` | [Profile Form](../profile/profile-form.md) | Monthly availability grid in profile |
+| include | **Included by** | `<script src="/profile/expertWeek.js">` | [Profile Form](../profile/profile-form.md) | Weekly availability grid in profile |
+
+> **Include context:** `expertDays.js` is loaded by [Month View](../../planning/dashboard/month-view.md) and [Profile Form](../profile/profile-form.md); `expertWeek.js` is loaded by [Week View](../../planning/dashboard/week-view.md), [Treatment Plan](../../treatment/treatment-core/treatment-plan.md), and [Profile Form](../profile/profile-form.md). Both scripts operate on table elements defined in the host page's HTML.
+
 ---
 
 ## 1. Block: Expert Days (Month Grid) -- `expertDays.js`

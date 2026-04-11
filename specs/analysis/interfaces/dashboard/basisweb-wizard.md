@@ -8,6 +8,19 @@ title: 'Basisweb Wizard'
 > - `web/src/main/webapp/dash/basisWebWizard.html`
 > - `web/src/main/webapp/dash/basisWebWizard.js`
 
+## Event Flow Cross-References
+
+| Direction | Event | Linked Document | Condition |
+|-----------|-------|-----------------|----------|
+| **Incoming** | `loadBasisweb` | [Consultation Wizard](../../treatment/dashboard/consultation-wizard.md#2-dialog-navigation-diagram) | `location.patientDataType == "EXTERNAL_BASISWEB"` && `appointment.state != "LOCKEDIN"` |
+| **Outgoing** | `ConsultationDetails.open()` | [Consultation Details JS](../../treatment/consultation/consultation-details-js.md#2-dialog-lifecycle) | After BasisWeb decryption succeeds (step 6 bww-success) |
+
+> **Event chains:**
+> - [Dashboard Main](../../system/dashboard/dashboard-main.md) → `loadConsultation` → [Consultation Wizard](../../treatment/dashboard/consultation-wizard.md) → `loadBasisweb` → **this file**
+> - **this file** → `ConsultationDetails.open()` → [Consultation Details JS](../../treatment/consultation/consultation-details-js.md)
+
+---
+
 ## Invocation
 
 The `basisWebWizard` is triggered via a jQuery event `loadBasisweb`:

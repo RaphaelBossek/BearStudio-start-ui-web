@@ -7,6 +7,17 @@ title: 'Consultation Template'
 
 # 07 - Consultation Template Dialogs
 
+## Event Flow Cross-References
+
+| Direction | Event | Linked Document | Condition |
+|-----------|-------|-----------------|----------|
+| **Incoming** | `consultationWithTemplateBtn` click | [Dashboard Main](../../system/dashboard/dashboard-main.md#navbar-action-buttons) | NavBar "Consultation template" button (always visible) |
+| **Outgoing** | `ConsultationDetails.open()` | [Consultation Details JS](../consultation/consultation-details-js.md#2-dialog-lifecycle) | After edit or create template, with `consultationTemplate=true` |
+
+> **Event chain:** [Dashboard Main](../../system/dashboard/dashboard-main.md) -> `consultationWithTemplateBtn` click -> **this file** -> `ConsultationDetails.open()` -> [Consultation Details JS](../consultation/consultation-details-js.md)
+
+---
+
 ## Dialog Navigation Diagram
 
 ```

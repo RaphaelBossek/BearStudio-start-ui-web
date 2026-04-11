@@ -10,6 +10,17 @@ title: 'Consultation Details Js'
 >
 > The `.js` file is the compiled output of the `.ts` file. They are functionally identical. Analysis is based on both, with the `.ts` file used as the authoritative source for type information.
 
+## Event Flow Cross-References
+
+| Direction | Event | Linked Document | Condition |
+|-----------|-------|-----------------|----------|
+| **Incoming** | `ConsultationDetails.open()` | [Dashboard Main](../../system/dashboard/dashboard-main.md#block-consultations-table) | Consultation row click (editable) or treatment task edit |
+| **Incoming** | `ConsultationDetails.open()` | [Consultation Wizard](../dashboard/consultation-wizard.md#54-step-4-cw-success--summary--confirm) | After `ConsultationService.start` succeeds |
+| **Incoming** | `ConsultationDetails.open()` | [BasisWeb Wizard](../../interfaces/dashboard/basisweb-wizard.md#step-6-bww-success--summary) | After BasisWeb decryption succeeds |
+| **Incoming** | `ConsultationDetails.open()` | [Consultation Template](../dashboard/consultation-template.md#click-actions) | Edit or create template, `consultationTemplate=true` |
+
+> **Incoming chain:** [Dashboard Main](../../system/dashboard/dashboard-main.md) / [Consultation Wizard](../dashboard/consultation-wizard.md) / [BasisWeb Wizard](../../interfaces/dashboard/basisweb-wizard.md) / [Consultation Template](../dashboard/consultation-template.md) all call `ConsultationDetails.open()` -> **this file**
+
 ---
 
 ## 1. ConsultationDetails Namespace Structure
