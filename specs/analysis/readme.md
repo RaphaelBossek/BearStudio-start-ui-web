@@ -1012,10 +1012,10 @@ The following items are part of the `#globalMenu` (right-side user menu) and are
 |-----------|---------|--------|----------|------|-----------------|---------------|--------------|
 | **Search Toggle** | Full Text Search | Volltextsuche | — | `fa-search` | Always visible | Expands search input | — |
 | **Search Input** | Search | Suchen | `label.search` → `search.placeholder` | Text input | `{{#search}}` (always) | Full-text search across entities | — |
-| **Settings** | Settings | Einstellungen | `administration.settings` → `administration.settings` | `fa-cog` | Always visible | `/profile.html` | `specs/analysis/staff/profile-form.md` |
-| **Security** | Security | Sicherheit | `administration.security` → `administration.security` | `fa-id-card` | Always visible | `/userSecurity.html` | `specs/analysis/staff/profile-dialogs.md` |
-| **Role Switch** | (Dynamic role label) | (Dynamische Rollenbezeichnung) | `role.{ROLE}` (hardcoded) | `fa-user-tag` | `roleSwitch=true` (authority: `USERS_CREATE`) | Opens `#roleSwitchDlg` | `specs/analysis/includes/includes-shared-components.md` |
-| **Bug Report** | Bug Report | Fehlerbericht | — | (from include) | Always visible | Opens bug report dialog | `specs/analysis/includes/includes-shared-components.md` |
+| **Settings** | Settings | Einstellungen | `administration.settings` → `administration.settings` | `fa-cog` | Always visible | `/profile.html` | [profile-form.md](./user-management/profile/profile-form.md) |
+| **Security** | Security | Sicherheit | `administration.security` → `administration.security` | `fa-id-card` | Always visible | `/userSecurity.html` | [profile-dialogs.md](./user-management/profile/profile-dialogs.md) |
+| **Role Switch** | (Dynamic role label) | (Dynamische Rollenbezeichnung) | `role.{ROLE}` (hardcoded) | `fa-user-tag` | `roleSwitch=true` (authority: `USERS_CREATE`) | Opens `#roleSwitchDlg` | [includes-shared-components.md](./system/includes/includes-shared-components.md) |
+| **Bug Report** | Bug Report | Fehlerbericht | — | (from include) | Always visible | Opens bug report dialog | [includes-shared-components.md](./system/includes/includes-shared-components.md) |
 | **Logout** | Logout | Abmelden | `logout` → `logout` | `fa-sign-out` | Always visible | `/logout` endpoint | — |
 | **Version Display** | App Version-Build | App-Version-Buildzeit | `application.version`-`application.buildtime` | — | Always visible | Display only | — |
 
@@ -1087,10 +1087,10 @@ The right-side user menu contains utility functions and user-specific actions:
 |-----------|---------|--------|----------|------|-----------------|---------------|--------------|
 | **Search Toggle** | Full Text Search | Volltextsuche | — | `fa-search` | Always visible | Expands search input | — |
 | **Search Input** | Search | Suchen | `label.search` → `search.placeholder` | Text input | `{{#search}}` (always) | Full-text search across entities | — |
-| **Settings** | Settings | Einstellungen | `administration.settings` → `administration.settings` | `fa-cog` | Always visible | `/profile.html` | `specs/analysis/staff/profile-form.md` |
-| **Security** | Security | Sicherheit | `administration.security` → `administration.security` | `fa-id-card` | Always visible | `/userSecurity.html` | `specs/analysis/staff/profile-dialogs.md` |
-| **Role Switch** | (Dynamic role label) | (Dynamische Rollenbezeichnung) | `role.{ROLE}` (hardcoded) | `fa-user-tag` | `roleSwitch=true` (authority: `USERS_CREATE`) | Opens `#roleSwitchDlg` | `specs/analysis/includes/includes-shared-components.md` |
-| **Bug Report** | Bug Report | Fehlerbericht | — | (from include) | Always visible | Opens bug report dialog | `specs/analysis/includes/includes-shared-components.md` |
+| **Settings** | Settings | Einstellungen | `administration.settings` → `administration.settings` | `fa-cog` | Always visible | `/profile.html` | [profile-form.md](./user-management/profile/profile-form.md) |
+| **Security** | Security | Sicherheit | `administration.security` → `administration.security` | `fa-id-card` | Always visible | `/userSecurity.html` | [profile-dialogs.md](./user-management/profile/profile-dialogs.md) |
+| **Role Switch** | (Dynamic role label) | (Dynamische Rollenbezeichnung) | `role.{ROLE}` (hardcoded) | `fa-user-tag` | `roleSwitch=true` (authority: `USERS_CREATE`) | Opens `#roleSwitchDlg` | [includes-shared-components.md](./system/includes/includes-shared-components.md) |
+| **Bug Report** | Bug Report | Fehlerbericht | — | (from include) | Always visible | Opens bug report dialog | [includes-shared-components.md](./system/includes/includes-shared-components.md) |
 | **Logout** | Logout | Abmelden | `logout` → `logout` | `fa-sign-out` | Always visible | `/logout` endpoint | — |
 | **Version Display** | App Version-Build | App-Version-Buildzeit | `application.version`-`application.buildtime` | — | Always visible | Display only | — |
 
