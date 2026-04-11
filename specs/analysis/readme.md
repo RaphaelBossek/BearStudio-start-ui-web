@@ -192,153 +192,175 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 - **Icon**: `tachometer`
 - **Color**: `color-dash`
 - **Permissions**: None (always visible)
+- **Legacy URLs**: `/dash.html`, `/monthView.html`, `/weekView.html`, `/expertWorkMonthly.html`
 - **Submenu**:
   
-  | Item | URL | Icon | i18n Key | Permissions |
-  |------|-----|------|----------|-------------|
-  | Calendar | `/monthView.html` | `calendar-alt` | `i18n.calendar` | — |
-  | Week View | `/weekView.html` | `calendar-alt` | `i18n.weekView` | EXPERT_WEEK |
-  | Worklog | `/expertWorkMonthly.html` | `file-chart-line` | `i18n.Worklog` | — |
-  | Video Library | `https://learn.videoclinic.de/` | `video` | `i18n.VideoLibrary` | — |
+  | Item | URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
+  |------|-----|------|----------|-------------|-------------|-----------|
+  | Calendar | `/monthView.html` | `calendar-alt` | `i18n.calendar` | — | [calendar-view.md](../analysis/planning/dashboard/calendar-view.md) | [calendar.png](../wireframes/planning/dashboard/calendar.png) |
+  | Week View | `/weekView.html` | `calendar-alt` | `i18n.weekView` | EXPERT_WEEK | [week-view.md](../analysis/planning/dashboard/week-view.md) | [expert-availability.png](../wireframes/planning/dashboard/expert-availability.png) |
+  | Worklog | `/expertWorkMonthly.html` | `file-chart-line` | `i18n.Worklog` | — | [worklog.md](../analysis/accounting/worklog/worklog.md) | [worklog.png](../wireframes/accounting/worklog/worklog.png) |
+  | Video Library | `https://learn.videoclinic.de/` | `video` | `i18n.VideoLibrary` | — | — | — |
 
 #### 2. Appointments (`/appointment.html`)
 - **Icon**: `user-md`
 - **Color**: `color-appointment`
 - **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
+- **Legacy URLs**: `/appointment.html`, `/appointmentPlan.html`, `/patientData.html`
 - **Submenu**:
   
-  | Item | URL | Icon | i18n Key | Permissions |
-  |------|-----|------|----------|-------------|
-  | Appointment Plan | `/appointmentPlan.html` | `calendar-check` | `i18n.appointmentPlan` | — |
-  | Patient Data | `/patientData.html` | `user` | `i18n.PatientDataType` | — |
+  | Item | URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
+  |------|-----|------|----------|-------------|-------------|-----------|
+  | Appointment Plan | `/appointmentPlan.html` | `calendar-check` | `i18n.appointmentPlan` | — | [appointment-list.md](../analysis/planning/appointment/appointment-list.md) | [appointment-list.png](../wireframes/planning/appointment/appointment-list.png) |
+  | Patient Data | `/patientData.html` | `user` | `i18n.PatientDataType` | — | — | — |
 
 #### 3. Shifts (`/shift.html`)
 - **Icon**: `user-injured`
 - **Color**: `color-shift`
 - **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
+- **Legacy URLs**: `/shift.html`, `/shiftPlan.html`
 - **Submenu**:
   
-  | Item | URL | Icon | i18n Key | Permissions |
-  |------|-----|------|----------|-------------|
-  | Shift Plan | `/shiftPlan.html` | `calendar-check` | `i18n.shiftPlan` | — |
+  | Item | URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
+  |------|-----|------|----------|-------------|-------------|-----------|
+  | Shift Plan | `/shiftPlan.html` | `calendar-check` | `i18n.shiftPlan` | — | [shift-and-plan.md](../analysis/planning/shift/shift-and-plan.md) | [shift-list.png](../wireframes/planning/shift/shift-list.png), [shift-plan-detail.png](../wireframes/planning/shift/shift-plan-detail.png) |
 
 #### 4. Treatments (`/treatment.html`)
 - **Icon**: `people-arrows`
 - **Color**: `color-treatment`
 - **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
+- **Legacy URLs**: `/treatment.html`, `/treatmentPlan.html`
 - **Submenu**:
   
-  | Item | URL | Icon | i18n Key | Permissions |
-  |------|-----|------|----------|-------------|
-  | Treatment Plan | `/treatmentPlan.html` | `calendar-check` | `i18n.treatmentPlan` | — |
-  | Treatment Plan History | `/treatmentPlan.html?history=true` | `calendar` | `i18n.treatmentPlanHistory` | — |
+  | Item | URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
+  |------|-----|------|----------|-------------|-------------|-----------|
+  | Treatment Plan | `/treatmentPlan.html` | `calendar-check` | `i18n.treatmentPlan` | — | [treatment-plan.md](../analysis/treatment/treatment-core/treatment-plan.md) | — |
+  | Treatment Plan History | `/treatmentPlan.html?history=true` | `calendar` | `i18n.treatmentPlanHistory` | — | — | — |
 
 #### 5. Council (`/council.html`)
 - **Icon**: `user-friends`
 - **Color**: `color-council`
 - **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
+- **Legacy URLs**: `/council.html`, `/councilPlan.html`
 - **Submenu**:
   
-  | Item | URL | Icon | i18n Key | Permissions |
-  |------|-----|------|----------|-------------|
-  | Council Plan | `/councilPlan.html` | `calendar-check` | `i18n.councilPlanArea` | — |
+  | Item | URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
+  |------|-----|------|----------|-------------|-------------|-----------|
+  | Council Plan | `/councilPlan.html` | `calendar-check` | `i18n.councilPlanArea` | — | [council-and-plan.md](../analysis/planning/council/council-and-plan.md) | [council-list.png](../wireframes/planning/council/council-list.png), [council-plan-detail.png](../wireframes/planning/council/council-plan-detail.png) |
 
 #### 6. Consultations (`/consultation.html`)
 - **Icon**: `heartbeat`
 - **Color**: `color-consultation`
 - **Roles**: STANDARD, LEITER_INTERN, ADMIN_INTERN, ADMIN
+- **Legacy URLs**: `/consultation.html`
 - **Submenu**: None (single-page module)
+  
+  | Feature | Analysis Doc | Wireframe |
+  |---------|-------------|-----------|
+  | Consultation List | [consultation-list.md](../analysis/treatment/consultation/consultation-list.md) | [consultation-list.png](../wireframes/treatment/consultation/consultation-list.png) |
+  | Details Header | [consultation-details-header.md](../analysis/treatment/consultation/consultation-details-header.md) | [consultation-details-header.png](../wireframes/treatment/consultation/consultation-details-header.png) |
+  | Standard Form | [consultation-details-standard.md](../analysis/treatment/consultation/consultation-details-standard.md) | [consultation-details-standard.png](../wireframes/treatment/consultation/consultation-details-standard.png) |
+  | Onboarding Form | [consultation-details-onboarding.md](../analysis/treatment/consultation/consultation-details-onboarding.md) | [consultation-details-onboarding.png](../wireframes/treatment/consultation/consultation-details-onboarding.png) |
+  | Incarceration Form | [consultation-details-incarceration.md](../analysis/treatment/consultation/consultation-details-incarceration.md) | [consultation-details-incarceration.png](../wireframes/treatment/consultation/consultation-details-incarceration.png) |
+  | Treatment/Warning | [consultation-details-treatment-warning.md](../analysis/treatment/consultation/consultation-details-treatment-warning.md) | [consultation-details-treatment-warning.png](../wireframes/treatment/consultation/consultation-details-treatment-warning.png) |
+  | View/Review | [consultation-view-review.md](../analysis/treatment/consultation/consultation-view-review.md) | [consultation-view.png](../wireframes/treatment/consultation/consultation-view.png), [consultation-review.png](../wireframes/treatment/consultation/consultation-review.png) |
 
 #### 7. Appointment Admin (`/appointmentAdmin.html`)
 - **Icon**: `calendar`
 - **Color**: `color-appointmentAdmin`
 - **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
+- **Legacy URLs**: `/appointmentAdmin.html`, `/closedMonth.html`, `/questionaire.html`
 - **Submenu**:
   
-  | Item | URL | Icon | i18n Key | Permissions |
-  |------|-----|------|----------|-------------|
-  | Closed Month | `/closedMonth.html` | `calendar-exclamation` | `i18n.ClosedMonth` | — |
-  | Questionnaire | `/questionaire.html` | `user-headset` | `i18n.questionaire` | — |
+  | Item | URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
+  |------|-----|------|----------|-------------|-------------|-----------|
+  | Closed Month | `/closedMonth.html` | `calendar-exclamation` | `i18n.ClosedMonth` | — | [close-month.md](../analysis/planning/appointment-support/close-month.md) | [close-month.png](../wireframes/planning/appointment-support/close-month.png) |
+  | Questionnaire | `/questionaire.html` | `user-headset` | `i18n.questionaire` | — | — | — |
 
 #### 8. Notifications (`/notification.html`)
 - **Icon**: `comments`
 - **Color**: `color-notify`
 - **Roles**: None
 - **Rights**: NOTIFICATION_READ, SELF_ASSIGNMENT
+- **Legacy URLs**: `/notification.html`
 - **Submenu**:
   
-  | Item | URL | Icon | i18n Key | Permissions |
-  |------|-----|------|----------|-------------|
-  | Trash | (none, ID: `notificationTrash`) | `comment-times` | `i18n.notification.folder.TRASH` | — |
+  | Item | URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
+  |------|-----|------|----------|-------------|-------------|-----------|
+  | Trash | (none, ID: `notificationTrash`) | `comment-times` | `i18n.notification.folder.TRASH` | — | [notification.md](../analysis/system/notification/notification.md) | [notification-list.png](../wireframes/system/notification/notification-list.png), [notification-compose.png](../wireframes/system/notification/notification-compose.png) |
 
 #### 9. Customers (`/customer.html`)
 - **Icon**: `hospital-user`
 - **Color**: `color-customer`
 - **Roles**: LEITER_INTERN, ADMIN_INTERN, KUNDE_ADMIN, ADMIN
+- **Legacy URLs**: `/customer.html`, `/onboardingCustomer.html`, `/invoice.html`, `/invoiceReceiver.html`, `/room.html`, `/customerUser.html`, `/customerLocation.html`, `/onboardingLocation.html`
 - **Submenu**:
   
-  | Item | URL | Icon | i18n Key | Permissions |
-  |------|-----|------|----------|-------------|
-  | Onboarding Customer | `/onboardingCustomer.html` | `hospital-user` | `i18n.onboardingCustomerArea` | — |
-  | Invoices | `/invoice.html` | `file-invoice` | `i18n.invoiceArea` | — |
-  | Invoice Receivers | `/invoiceReceiver.html` | `file-invoice` | `i18n.invoice.paymentContact` | — |
-  | Customer Users | `/customerUser.html` | `user-tie` | `i18n.user` | — |
-  | Locations | `/customerLocation.html` | `clinic-medical` | `i18n.location` | — |
-  | Rooms | `/room.html` | `building` | `i18n.rooms` | — |
-  | Onboarding Location | `/onboardingLocation.html` | `clinic-medical` | `i18n.onboardingLocationArea` | — |
+  | Item | URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
+  |------|-----|------|----------|-------------|-------------|-----------|
+  | Onboarding Customer | `/onboardingCustomer.html` | `hospital-user` | `i18n.onboardingCustomerArea` | — | — | — |
+  | Invoices | `/invoice.html` | `file-invoice` | `i18n.invoiceArea` | — | [invoice-list.md](../analysis/accounting/invoice/invoice-list.md) | [invoice-list.png](../wireframes/accounting/invoice/invoice-list.png) |
+  | Invoice Receivers | `/invoiceReceiver.html` | `file-invoice` | `i18n.invoice.paymentContact` | — | [invoice-receiver.md](../analysis/accounting/invoice-receiver/invoice-receiver.md) | [invoice-receiver.png](../wireframes/accounting/invoice-receiver/invoice-receiver.png) |
+  | Customer Users | `/customerUser.html` | `user-tie` | `i18n.user` | — | — | — |
+  | Locations | `/customerLocation.html` | `clinic-medical` | `i18n.location` | — | [location-and-users.md](../analysis/customer/customer-core/location-and-users.md) | [location-management.png](../wireframes/customer/customer-core/location-management.png) |
+  | Rooms | `/room.html` | `building` | `i18n.rooms` | — | [room.md](../analysis/customer/room/room.md) | [room-management.png](../wireframes/customer/room/room-management.png) |
+  | Onboarding Location | `/onboardingLocation.html` | `clinic-medical` | `i18n.onboardingLocationArea` | — | — | — |
 
 #### 10. Staff (`/staff.html`)
 - **Icon**: `user-md`
 - **Color**: `color-user`
 - **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
+- **Legacy URLs**: `/staff.html`, `/onboarding.html`, `/adminUser.html`, `/expertWorkWeeklyAssignments.html`
 - **Submenu**:
   
-  | Item | URL | Icon | i18n Key | Permissions |
-  |------|-----|------|----------|-------------|
-  | Onboarding | `/onboarding.html` | `layer-group` | `Onboarding` | — |
-  | User Management | `/adminUser.html` | `users` | `i18n.user` | — |
-  | Expert Weekly Assignments | `/expertWorkWeeklyAssignments.html` | `tally` | `i18n.expertWorkWeeklyAssignments` | — |
+  | Item | URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
+  |------|-----|------|----------|-------------|-------------|-----------|
+  | Onboarding | `/onboarding.html` | `layer-group` | `Onboarding` | — | [onboarding-flow.md](../analysis/user-management/admin/onboarding-flow.md) | — |
+  | User Management | `/adminUser.html` | `users` | `i18n.user` | — | [user-management.md](../analysis/user-management/admin/user-management.md) | — |
+  | Expert Weekly Assignments | `/expertWorkWeeklyAssignments.html` | `tally` | `i18n.expertWorkWeeklyAssignments` | — | — | — |
 
 #### 11. Administration (`/admin.html`)
 - **Icon**: `user-cog`
 - **Color**: `admin`
 - **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
+- **Legacy URLs**: `/admin.html`, `/job.html`, `/asyncJobQueue.html`, `/jobPriceList.html`, `/product.html`, `/skill.html`, `/exclusionCriteria.html`, `/exportTemplate.html`, `/warning.html`, `/treatmentCategory.html`, `/equipment.html`, `/onboardingStep.html`
 - **Submenu**:
   
-  | Item | URL | Icon | i18n Key | Permissions |
-  |------|-----|------|----------|-------------|
-  | Job IDs | `/job.html` | `briefcase-medical` | `i18n.action.jobIds` | — |
-  | Async Job Queue | `/asyncJobQueue.html` | `stream` | `i18n.AsyncJobQueue` | — |
-  | Job Price List | `/jobPriceList.html` | `th-list` | `i18n.jobPriceList` | — |
-  | Products | `/product.html` | `shopping-bag` | `i18n.menu.products` | — |
-  | Skills | `/skill.html` | `graduation-cap` | `i18n.skills` | — |
-  | Exclusion Criteria | `/exclusionCriteria.html` | `comment-slash` | `i18n.exclusionCriteria` | — |
-  | Export Templates | `/exportTemplate.html` | `file-export` | `i18n.exportTemplate` | — |
-  | Warnings | `/warning.html` | `exclamation-triangle` | `i18n.consultation.warning` | — |
-  | Treatment Categories | `/treatmentCategory.html` | `triangle` | `i18n.TreatmentCategory` | — |
-  | Equipment | `/equipment.html` | `tablet-alt` | `i18n.menu.devices` | — |
-  | Onboarding Steps | `/onboardingStep.html` | `layer-group` | `i18n.menu.onboardingStep` | — |
+  | Item | URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
+  |------|-----|------|----------|-------------|-------------|-----------|
+  | Job IDs | `/job.html` | `briefcase-medical` | `i18n.action.jobIds` | — | [job-configuration.md](../analysis/accounting/admin-job/job-configuration.md) | [job-configuration.png](../wireframes/accounting/admin-job/job-configuration.png) |
+  | Async Job Queue | `/asyncJobQueue.html` | `stream` | `i18n.AsyncJobQueue` | — | — | — |
+  | Job Price List | `/jobPriceList.html` | `th-list` | `i18n.jobPriceList` | — | — | — |
+  | Products | `/product.html` | `shopping-bag` | `i18n.menu.products` | — | — | — |
+  | Skills | `/skill.html` | `graduation-cap` | `i18n.skills` | — | [skill.md](../analysis/user-management/admin/skill.md) | — |
+  | Exclusion Criteria | `/exclusionCriteria.html` | `comment-slash` | `i18n.exclusionCriteria` | — | — | — |
+  | Export Templates | `/exportTemplate.html` | `file-export` | `i18n.exportTemplate` | — | — | — |
+  | Warnings | `/warning.html` | `exclamation-triangle` | `i18n.consultation.warning` | — | [warning-management.md](../analysis/treatment/warning/warning-management.md) | — |
+  | Treatment Categories | `/treatmentCategory.html` | `triangle` | `i18n.TreatmentCategory` | — | [treatment-and-category.md](../analysis/treatment/treatment-core/treatment-and-category.md) | — |
+  | Equipment | `/equipment.html` | `tablet-alt` | `i18n.menu.devices` | — | [equipment.md](../analysis/customer/equipment/equipment.md) | [equipment-management.png](../wireframes/customer/equipment/equipment-management.png) |
+  | Onboarding Steps | `/onboardingStep.html` | `layer-group` | `i18n.menu.onboardingStep` | — | — | — |
 
 #### 12. Systemadmin (`/sysadmin.html`)
 - **Icon**: `cogs`
 - **Color**: `sysadmin`
 - **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
+- **Legacy URLs**: `/sysadmin.html`, `/motd.html`, `/loginNotification.html`, `/notificationTemplate.html`, `/locationType.html`, `/stornoGroup.html`, `/workHour.html`, `/CdrCall.html`, `/CdrCallAssignment.html`, `/log.html`, `/supportCategory.html`, `/basisWebAppointment.html`, `/changelog.html`
 - **Submenu**:
   
-  | Item | URL | Icon | i18n Key | Permissions |
-  |------|-----|------|----------|-------------|
-  | MOTD | `/motd.html` | `newspaper` | `i18n.motd` | — |
-  | Login Notification | `/loginNotification.html` | `comment-exclamation` | `i18n.loginNotification` | — |
-  | Notification Templates | `/notificationTemplate.html` | `file-code` | `i18n.notificationTemplate` | — |
-  | Location Types | `/locationType.html` | `house` | `i18n.LocationType` | — |
-  | Storno Groups | `/stornoGroup.html` | `funnel-dollar` | `i18n.stornoGroup` | — |
-  | Work Hours | `/workHour.html` | `user-clock` | `i18n.workHours` | — |
-  | CDR | `/CdrCall.html` | `boxes` | `CDR` | — |
-  | CDR Assignment | `/CdrCallAssignment.html` | `arrows-alt-h` | `CDR Assignment` | — |
-  | Log | `/log.html` | `stream` | `Log` | — |
-  | Support Categories | `/supportCategory.html` | `user-headset` | `i18n.supportCategory` | — |
-  | BasisWeb Appointments | `/basisWebAppointment.html` | `user-headset` | `BasisWeb-Anmeldungen` | — |
-  | Change Log | `/changelog.html` | `hour` | `Change-Log` | — |
+  | Item | URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
+  |------|-----|------|----------|-------------|-------------|-----------|
+  | MOTD | `/motd.html` | `newspaper` | `i18n.motd` | — | [motd-template.md](../analysis/system/admin-cruds/motd-template.md) | — |
+  | Login Notification | `/loginNotification.html` | `comment-exclamation` | `i18n.loginNotification` | — | — | — |
+  | Notification Templates | `/notificationTemplate.html` | `file-code` | `i18n.notificationTemplate` | — | — | — |
+  | Location Types | `/locationType.html` | `house` | `i18n.LocationType` | — | — | — |
+  | Storno Groups | `/stornoGroup.html` | `funnel-dollar` | `i18n.stornoGroup` | — | — | — |
+  | Work Hours | `/workHour.html` | `user-clock` | `i18n.workHours` | — | [workhour.md](../analysis/planning/appointment-support/workhour.md) | — |
+  | CDR | `/CdrCall.html` | `boxes` | `CDR` | — | [cdr-call.md](../analysis/planning/appointment-support/cdr-call.md) | [cdr-call-list.png](../wireframes/planning/appointment-support/cdr-call-list.png) |
+  | CDR Assignment | `/CdrCallAssignment.html` | `arrows-alt-h` | `CDR Assignment` | — | — | [cdr-assignment-crud.png](../wireframes/planning/appointment-support/cdr-assignment-crud.png) |
+  | Log | `/log.html` | `stream` | `Log` | — | — | — |
+  | Support Categories | `/supportCategory.html` | `user-headset` | `i18n.supportCategory` | — | — | — |
+  | BasisWeb Appointments | `/basisWebAppointment.html` | `user-headset` | `BasisWeb-Anmeldungen` | — | — | — |
+  | Change Log | `/changelog.html` | `hour` | `Change-Log` | — | — | — |
 
 #### 13. Global Menu (`#globalMenu`)
 - **Icon**: `user`
@@ -1610,162 +1632,6 @@ Each module has a corresponding `bg-color-{module}` CSS class defined in `_inclu
 1. **Create `shell/sitemap.md`** reference file in Starlight docs
 
 **Estimated effort**: 2-4 hours (requires Java code analysis)
-
----
-
-## 18. Module Analysis & Wireframe Reference
-
-Per-module breakdown with links to analysis documents and associated wireframes.
-
-### 18.1 System / Dashboard
-
-**Canonical**: `system/dashboard/`, `planning/dashboard/`
-**Legacy URLs**: `/dash.html`, `/monthView.html`, `/weekView.html`, `/expertWorkMonthly.html`
-
-| Submenu | Analysis Doc | Wireframe |
-|---------|-------------|-----------|
-| Calendar (Month View) | [planning/dashboard/calendar-view.md](./planning/dashboard/calendar-view.md) | [planning/dashboard/calendar.png](../wireframes/planning/dashboard/calendar.png) |
-| Week View | [planning/dashboard/week-view.md](./planning/dashboard/week-view.md) | [planning/dashboard/expert-availability.png](../wireframes/planning/dashboard/expert-availability.png) |
-| Worklog | [accounting/worklog/worklog.md](./accounting/worklog/worklog.md) | [accounting/worklog/worklog.png](../wireframes/accounting/worklog/worklog.png) |
-
-### 18.2 Planning / Appointments
-
-**Canonical**: `planning/appointment/`
-**Legacy URLs**: `/appointment.html`, `/appointmentPlan.html`, `/patientData.html`
-
-| Feature | Analysis Doc | Wireframe |
-|---------|-------------|-----------|
-| Appointment List | [planning/appointment/appointment-list.md](./planning/appointment/appointment-list.md) | [planning/appointment/appointment-list.png](../wireframes/planning/appointment/appointment-list.png) |
-| Appointment Details | [planning/appointment/appointment-details-scheduling.md](./planning/appointment/appointment-details-scheduling.md) | [planning/appointment/appointment-details.png](../wireframes/planning/appointment/appointment-details.png) (+ sub-dialogs) |
-| Assign User | [planning/appointment/appointment-assign-user.md](./planning/appointment/appointment-assign-user.md) | [planning/appointment/appointment-assign-user.png](../wireframes/planning/appointment/appointment-assign-user.png) |
-
-### 18.3 Planning / Shifts
-
-**Canonical**: `planning/shift/`
-**Legacy URLs**: `/shift.html`, `/shiftPlan.html`
-
-| Feature | Analysis Doc | Wireframe |
-|---------|-------------|-----------|
-| Shift Plan | [planning/shift/shift-and-plan.md](./planning/shift/shift-and-plan.md) | [planning/shift/shift-list.png](../wireframes/planning/shift/shift-list.png), [shift-plan-detail.png](../wireframes/planning/shift/shift-plan-detail.png) |
-
-### 18.4 Treatment / Treatments
-
-**Canonical**: `treatment/treatment-core/`
-**Legacy URLs**: `/treatment.html`, `/treatmentPlan.html`
-
-| Feature | Analysis Doc | Wireframe |
-|---------|-------------|-----------|
-| Treatment Categories | [treatment/treatment-core/treatment-and-category.md](./treatment/treatment-core/treatment-and-category.md) | — |
-| Treatment Plan | [treatment/treatment-core/treatment-plan.md](./treatment/treatment-core/treatment-plan.md) | — |
-
-### 18.5 Planning / Council
-
-**Canonical**: `planning/council/`
-**Legacy URLs**: `/council.html`, `/councilPlan.html`
-
-| Feature | Analysis Doc | Wireframe |
-|---------|-------------|-----------|
-| Council Plan | [planning/council/council-and-plan.md](./planning/council/council-and-plan.md) | [planning/council/council-list.png](../wireframes/planning/council/council-list.png), [council-plan-detail.png](../wireframes/planning/council/council-plan-detail.png) |
-
-### 18.6 Treatment / Consultations
-
-**Canonical**: `treatment/consultation/`
-**Legacy URLs**: `/consultation.html`
-
-| Feature | Analysis Doc | Wireframe |
-|---------|-------------|-----------|
-| Consultation List | [treatment/consultation/consultation-list.md](./treatment/consultation/consultation-list.md) | [treatment/consultation/consultation-list.png](../wireframes/treatment/consultation/consultation-list.png) |
-| Details Header | [treatment/consultation/consultation-details-header.md](./treatment/consultation/consultation-details-header.md) | [treatment/consultation/consultation-details-header.png](../wireframes/treatment/consultation/consultation-details-header.png) |
-| Standard Form | [treatment/consultation/consultation-details-standard.md](./treatment/consultation/consultation-details-standard.md) | [treatment/consultation/consultation-details-standard.png](../wireframes/treatment/consultation/consultation-details-standard.png) |
-| Onboarding Form | [treatment/consultation/consultation-details-onboarding.md](./treatment/consultation/consultation-details-onboarding.md) | [treatment/consultation/consultation-details-onboarding.png](../wireframes/treatment/consultation/consultation-details-onboarding.png) |
-| Incarceration Form | [treatment/consultation/consultation-details-incarceration.md](./treatment/consultation/consultation-details-incarceration.md) | [treatment/consultation/consultation-details-incarceration.png](../wireframes/treatment/consultation/consultation-details-incarceration.png) |
-| Treatment/Warning | [treatment/consultation/consultation-details-treatment-warning.md](./treatment/consultation/consultation-details-treatment-warning.md) | [treatment/consultation/consultation-details-treatment-warning.png](../wireframes/treatment/consultation/consultation-details-treatment-warning.png) |
-| View/Review | [treatment/consultation/consultation-view-review.md](./treatment/consultation/consultation-view-review.md) | [treatment/consultation/consultation-view.png](../wireframes/treatment/consultation/consultation-view.png), [consultation-review.png](../wireframes/treatment/consultation/consultation-review.png) |
-
-### 18.7 Planning / Appointment Admin
-
-**Canonical**: `planning/appointment-admin/`
-**Legacy URLs**: `/appointmentAdmin.html`, `/closedMonth.html`, `/questionaire.html`
-
-| Feature | Analysis Doc | Wireframe |
-|---------|-------------|-----------|
-| Admin Grid | [planning/appointment-admin/appointment-admin.md](./planning/appointment-admin/appointment-admin.md) | [planning/appointment-admin/inline-consultation.png](../wireframes/planning/appointment-admin/inline-consultation.png) (+ dialogs) |
-| Closed Month | [planning/appointment-support/close-month.md](./planning/appointment-support/close-month.md) | [planning/appointment-support/close-month.png](../wireframes/planning/appointment-support/close-month.png) |
-
-### 18.8 System / Notifications
-
-**Canonical**: `system/notification/`
-**Legacy URLs**: `/notification.html`
-
-| Feature | Analysis Doc | Wireframe |
-|---------|-------------|-----------|
-| Notification List | [system/notification/notification.md](./system/notification/notification.md) | [system/notification/notification-list.png](../wireframes/system/notification/notification-list.png), [notification-compose.png](../wireframes/system/notification/notification-compose.png) |
-
-### 18.9 Customer
-
-**Canonical**: `customer/`
-**Legacy URLs**: `/customer.html`, `/onboardingCustomer.html`, `/invoice.html`, `/invoiceReceiver.html`, `/room.html`
-
-| Feature | Analysis Doc | Wireframe |
-|---------|-------------|-----------|
-| Customer List/Detail | [customer/customer-core/customer-list-detail.md](./customer/customer-core/customer-list-detail.md) | [customer/customer-core/customer-list.png](../wireframes/customer/customer-core/customer-list.png) |
-| Locations & Users | [customer/customer-core/location-and-users.md](./customer/customer-core/location-and-users.md) | [customer/customer-core/location-management.png](../wireframes/customer/customer-core/location-management.png) |
-| Contact Management | [customer/contact/contact.md](./customer/contact/contact.md) | [customer/contact/contact-management.png](../wireframes/customer/contact/contact-management.png) |
-| Equipment | [customer/equipment/equipment.md](./customer/equipment/equipment.md) | [customer/equipment/equipment-management.png](../wireframes/customer/equipment/equipment-management.png) |
-| Room Management | [customer/room/room.md](./customer/room/room.md) | [customer/room/room-management.png](../wireframes/customer/room/room-management.png) |
-| Invoice List | [accounting/invoice/invoice-list.md](./accounting/invoice/invoice-list.md) | [accounting/invoice/invoice-list.png](../wireframes/accounting/invoice/invoice-list.png) |
-| Invoice Details | [accounting/invoice/invoice-details.md](./accounting/invoice/invoice-details.md) | [accounting/invoice/invoice-details.png](../wireframes/accounting/invoice/invoice-details.png) |
-| Invoice Receiver | [accounting/invoice-receiver/invoice-receiver.md](./accounting/invoice-receiver/invoice-receiver.md) | [accounting/invoice-receiver/invoice-receiver.png](../wireframes/accounting/invoice-receiver/invoice-receiver.png) |
-
-### 18.10 User Management / Staff
-
-**Canonical**: `user-management/profile/`, `user-management/admin/`
-**Legacy URLs**: `/staff.html`, `/onboarding.html`, `/adminUser.html`
-
-| Feature | Analysis Doc | Wireframe |
-|---------|-------------|-----------|
-| Profile Form | [user-management/profile/profile-form.md](./user-management/profile/profile-form.md) | [user-management/profile/profile-form.png](../wireframes/user-management/profile/profile-form.png) |
-| Staff List | [user-management/profile/profile-staff.md](./user-management/profile/profile-staff.md) | [user-management/profile/profile-staff-list.png](../wireframes/user-management/profile/profile-staff-list.png) |
-| Profile Dialogs | [user-management/profile/profile-dialogs.md](./user-management/profile/profile-dialogs.md) | [user-management/profile/profile-password-dialog.png](../wireframes/user-management/profile/profile-password-dialog.png), [profile-signature-pad.png](../wireframes/user-management/profile/profile-signature-pad.png) |
-| Expert Availability | [user-management/profile/profile-expert-availability.md](./user-management/profile/profile-expert-availability.md) | [user-management/profile/profile-expert-availability.png](../wireframes/user-management/profile/profile-expert-availability.png) |
-| User Management | [user-management/admin/user-management.md](./user-management/admin/user-management.md) | — |
-| Onboarding Flow | [user-management/admin/onboarding-flow.md](./user-management/admin/onboarding-flow.md) | — |
-| Group Management | [user-management/admin/group-management.md](./user-management/admin/group-management.md) | — |
-| Skill Management | [user-management/admin/skill.md](./user-management/admin/skill.md) | — |
-| TOTP Onboarding | [user-management/admin/totp-onboarding.md](./user-management/admin/totp-onboarding.md) | — |
-
-### 18.11 Accounting / Administration
-
-**Canonical**: `accounting/admin-job/`, `accounting/config/`, `treatment/warning/`, `user-management/admin/`
-**Legacy URLs**: `/admin.html`
-
-| Feature | Analysis Doc | Wireframe |
-|---------|-------------|-----------|
-| Job Configuration | [accounting/admin-job/job-configuration.md](./accounting/admin-job/job-configuration.md) | [accounting/admin-job/job-configuration.png](../wireframes/accounting/admin-job/job-configuration.png) |
-| Accounting Config | [accounting/config/accounting-config.md](./accounting/config/accounting-config.md) | [accounting/config/accounting-config.png](../wireframes/accounting/config/accounting-config.png) |
-| Warning Management | [treatment/warning/warning-management.md](./treatment/warning/warning-management.md) | — |
-
-### 18.12 System / System Admin
-
-**Canonical**: `system/admin/`, `system/admin-cruds/`, `planning/appointment-support/`
-**Legacy URLs**: `/sysadmin.html`
-
-| Feature | Analysis Doc | Wireframe |
-|---------|-------------|-----------|
-| Admin Landing | [system/admin/admin-landing.md](./system/admin/admin-landing.md) | [system/admin/sysconfig-*.png](../wireframes/system/admin/sysconfig-*.png) |
-| MOTD Template | [system/admin-cruds/motd-template.md](./system/admin-cruds/motd-template.md) | — |
-| CDR Call List | [planning/appointment-support/cdr-call.md](./planning/appointment-support/cdr-call.md) | [planning/appointment-support/cdr-call-list.png](../wireframes/planning/appointment-support/cdr-call-list.png) |
-| CDR Assignment | [planning/appointment-support/workhour.md](./planning/appointment-support/workhour.md) | [planning/appointment-support/cdr-assignment-crud.png](../wireframes/planning/appointment-support/cdr-assignment-crud.png) |
-
-### 18.13 System / Shared Components
-
-**Canonical**: `system/includes/`, `system/templates-files/`
-
-| Feature | Analysis Doc | Wireframe |
-|---------|-------------|-----------|
-| Shared Components | [system/includes/includes-shared-components.md](./system/includes/includes-shared-components.md) | [system/includes/navbar.png](../wireframes/system/includes/navbar.png), [loading-states.png](../wireframes/system/includes/loading-states.png), [quick-filter.png](../wireframes/system/includes/quick-filter.png) |
-| Customization | [system/includes/includes-customization.md](./system/includes/includes-customization.md) | [system/includes/login.png](../wireframes/system/includes/login.png), [bug-report.png](../wireframes/system/includes/bug-report.png) |
-| Templates & Files | [system/templates-files/templates-files.md](./system/templates-files/templates-files.md) | — |
 
 ---
 
