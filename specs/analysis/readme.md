@@ -195,11 +195,11 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 - **Legacy URLs**: `/dash.html`
 - **Submenu**:
   
-  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
-  |------|------------|------|----------|-------------|-------------|-----------|
-  | Calendar | `/monthView.html` | `calendar-alt` | `i18n.calendar` | — | [calendar-view.md](../analysis/planning/dashboard/calendar-view.md) | [calendar.png](../wireframes/planning/dashboard/calendar.png) |
-  | Week View | `/weekView.html` | `calendar-alt` | `i18n.weekView` | EXPERT_WEEK | [week-view.md](../analysis/planning/dashboard/week-view.md) | [expert-availability.png](../wireframes/planning/dashboard/expert-availability.png) |
-  | Worklog | `/expertWorkMonthly.html` | `file-chart-line` | `i18n.Worklog` | — | [worklog.md](../analysis/accounting/worklog/worklog.md) | [worklog.png](../wireframes/accounting/worklog/worklog.png) |
+  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe Doc |
+  |------|------------|------|----------|-------------|-------------|--------------|
+  | Calendar | `/monthView.html` | `calendar-alt` | `i18n.calendar` | — | [calendar-view.md](../analysis/planning/dashboard/calendar-view.md) | [workflows.md](../wireframes/planning/workflows.md) |
+  | Week View | `/weekView.html` | `calendar-alt` | `i18n.weekView` | EXPERT_WEEK | [week-view.md](../analysis/planning/dashboard/week-view.md) | [workflows.md](../wireframes/planning/workflows.md) |
+  | Worklog | `/expertWorkMonthly.html` | `file-chart-line` | `i18n.Worklog` | — | [worklog.md](../analysis/accounting/worklog/worklog.md) | [workflows.md](../wireframes/accounting/workflows.md) |
   | Video Library | `https://learn.videoclinic.de/` | `video` | `i18n.VideoLibrary` | — | — | — |
 
 #### 2. Appointments
@@ -209,9 +209,9 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 - **Legacy URLs**: `/appointment.html`
 - **Submenu**:
   
-  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
-  |------|------------|------|----------|-------------|-------------|-----------|
-  | Appointment Plan | `/appointmentPlan.html` | `calendar-check` | `i18n.appointmentPlan` | — | [appointment-list.md](../analysis/planning/appointment/appointment-list.md) | [appointment-list.png](../wireframes/planning/appointment/appointment-list.png) |
+  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe Doc |
+  |------|------------|------|----------|-------------|-------------|--------------|
+  | Appointment Plan | `/appointmentPlan.html` | `calendar-check` | `i18n.appointmentPlan` | — | [appointment-list.md](../analysis/planning/appointment/appointment-list.md) | [workflows.md](../wireframes/planning/workflows.md) |
   | Patient Data | `/patientData.html` | `user` | `i18n.PatientDataType` | — | — | — |
 
 #### 3. Shifts
@@ -221,9 +221,9 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 - **Legacy URLs**: `/shift.html`
 - **Submenu**:
   
-  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
-  |------|------------|------|----------|-------------|-------------|-----------|
-  | Shift Plan | `/shiftPlan.html` | `calendar-check` | `i18n.shiftPlan` | — | [shift-and-plan.md](../analysis/planning/shift/shift-and-plan.md) | [shift-list.png](../wireframes/planning/shift/shift-list.png), [shift-plan-detail.png](../wireframes/planning/shift/shift-plan-detail.png) |
+  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe Doc |
+  |------|------------|------|----------|-------------|-------------|--------------|
+  | Shift Plan | `/shiftPlan.html` | `calendar-check` | `i18n.shiftPlan` | — | [shift-and-plan.md](../analysis/planning/shift/shift-and-plan.md) | [workflows.md](../wireframes/planning/workflows.md) |
 
 #### 4. Treatments
 - **Icon**: `people-arrows`
@@ -232,8 +232,8 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 - **Legacy URLs**: `/treatment.html`
 - **Submenu**:
   
-  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
-  |------|------------|------|----------|-------------|-------------|-----------|
+  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe Doc |
+  |------|------------|------|----------|-------------|-------------|--------------|
   | Treatment Plan | `/treatmentPlan.html` | `calendar-check` | `i18n.treatmentPlan` | — | [treatment-plan.md](../analysis/treatment/treatment-core/treatment-plan.md) | — |
   | Treatment Plan History | `/treatmentPlan.html?history=true` | `calendar` | `i18n.treatmentPlanHistory` | — | — | — |
 
@@ -244,9 +244,9 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 - **Legacy URLs**: `/council.html`
 - **Submenu**:
   
-  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
-  |------|------------|------|----------|-------------|-------------|-----------|
-  | Council Plan | `/councilPlan.html` | `calendar-check` | `i18n.councilPlanArea` | — | [council-and-plan.md](../analysis/planning/council/council-and-plan.md) | [council-list.png](../wireframes/planning/council/council-list.png), [council-plan-detail.png](../wireframes/planning/council/council-plan-detail.png) |
+  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe Doc |
+  |------|------------|------|----------|-------------|-------------|--------------|
+  | Council Plan | `/councilPlan.html` | `calendar-check` | `i18n.councilPlanArea` | — | [council-and-plan.md](../analysis/planning/council/council-and-plan.md) | [workflows.md](../wireframes/planning/workflows.md) |
 
 #### 6. Consultations
 - **Icon**: `heartbeat`
@@ -255,15 +255,15 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 - **Legacy URLs**: `/consultation.html` (single-page module)
 - **Submenu**: None (single-page module)
   
-  | Feature | Analysis Doc | Wireframe |
-  |---------|-------------|-----------|
-  | Consultation List | [consultation-list.md](../analysis/treatment/consultation/consultation-list.md) | [consultation-list.png](../wireframes/treatment/consultation/consultation-list.png) |
-  | Details Header | [consultation-details-header.md](../analysis/treatment/consultation/consultation-details-header.md) | [consultation-details-header.png](../wireframes/treatment/consultation/consultation-details-header.png) |
-  | Standard Form | [consultation-details-standard.md](../analysis/treatment/consultation/consultation-details-standard.md) | [consultation-details-standard.png](../wireframes/treatment/consultation/consultation-details-standard.png) |
-  | Onboarding Form | [consultation-details-onboarding.md](../analysis/treatment/consultation/consultation-details-onboarding.md) | [consultation-details-onboarding.png](../wireframes/treatment/consultation/consultation-details-onboarding.png) |
-  | Incarceration Form | [consultation-details-incarceration.md](../analysis/treatment/consultation/consultation-details-incarceration.md) | [consultation-details-incarceration.png](../wireframes/treatment/consultation/consultation-details-incarceration.png) |
-  | Treatment/Warning | [consultation-details-treatment-warning.md](../analysis/treatment/consultation/consultation-details-treatment-warning.md) | [consultation-details-treatment-warning.png](../wireframes/treatment/consultation/consultation-details-treatment-warning.png) |
-  | View/Review | [consultation-view-review.md](../analysis/treatment/consultation/consultation-view-review.md) | [consultation-view.png](../wireframes/treatment/consultation/consultation-view.png), [consultation-review.png](../wireframes/treatment/consultation/consultation-review.png) |
+  | Feature | Analysis Doc | Wireframe Doc |
+  |---------|-------------|---------------|
+  | Consultation List | [consultation-list.md](../analysis/treatment/consultation/consultation-list.md) | [workflows.md](../wireframes/treatment/workflows.md) |
+  | Details Header | [consultation-details-header.md](../analysis/treatment/consultation/consultation-details-header.md) | [workflows.md](../wireframes/treatment/workflows.md) |
+  | Standard Form | [consultation-details-standard.md](../analysis/treatment/consultation/consultation-details-standard.md) | [workflows.md](../wireframes/treatment/workflows.md) |
+  | Onboarding Form | [consultation-details-onboarding.md](../analysis/treatment/consultation/consultation-details-onboarding.md) | [workflows.md](../wireframes/treatment/workflows.md) |
+  | Incarceration Form | [consultation-details-incarceration.md](../analysis/treatment/consultation/consultation-details-incarceration.md) | [workflows.md](../wireframes/treatment/workflows.md) |
+  | Treatment/Warning | [consultation-details-treatment-warning.md](../analysis/treatment/consultation/consultation-details-treatment-warning.md) | [workflows.md](../wireframes/treatment/workflows.md) |
+  | View/Review | [consultation-view-review.md](../analysis/treatment/consultation/consultation-view-review.md) | [workflows.md](../wireframes/treatment/workflows.md) |
 
 #### 7. Appointment Admin
 - **Icon**: `calendar`
@@ -272,9 +272,9 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 - **Legacy URLs**: `/appointmentAdmin.html`
 - **Submenu**:
   
-  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
-  |------|------------|------|----------|-------------|-------------|-----------|
-  | Closed Month | `/closedMonth.html` | `calendar-exclamation` | `i18n.ClosedMonth` | — | [close-month.md](../analysis/planning/appointment-support/close-month.md) | [close-month.png](../wireframes/planning/appointment-support/close-month.png) |
+  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe Doc |
+  |------|------------|------|----------|-------------|-------------|--------------|
+  | Closed Month | `/closedMonth.html` | `calendar-exclamation` | `i18n.ClosedMonth` | — | [close-month.md](../analysis/planning/appointment-support/close-month.md) | [workflows.md](../wireframes/planning/workflows.md) |
   | Questionnaire | `/questionaire.html` | `user-headset` | `i18n.questionaire` | — | — | — |
 
 #### 8. Notifications
@@ -285,9 +285,9 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 - **Legacy URLs**: `/notification.html`
 - **Submenu**:
   
-  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
-  |------|------------|------|----------|-------------|-------------|-----------|
-  | Trash | (none, ID: `notificationTrash`) | `comment-times` | `i18n.notification.folder.TRASH` | — | [notification.md](../analysis/system/notification/notification.md) | [notification-list.png](../wireframes/system/notification/notification-list.png), [notification-compose.png](../wireframes/system/notification/notification-compose.png) |
+  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe Doc |
+  |------|------------|------|----------|-------------|-------------|--------------|
+  | Trash | (none, ID: `notificationTrash`) | `comment-times` | `i18n.notification.folder.TRASH` | — | [notification.md](../analysis/system/notification/notification.md) | [workflows.md](../wireframes/system/workflows.md) |
 
 #### 9. Customers
 - **Icon**: `hospital-user`
@@ -296,14 +296,14 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 - **Legacy URLs**: `/customer.html`
 - **Submenu**:
   
-  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
-  |------|------------|------|----------|-------------|-------------|-----------|
+  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe Doc |
+  |------|------------|------|----------|-------------|-------------|--------------|
   | Onboarding Customer | `/onboardingCustomer.html` | `hospital-user` | `i18n.onboardingCustomerArea` | — | — | — |
-  | Invoices | `/invoice.html` | `file-invoice` | `i18n.invoiceArea` | — | [invoice-list.md](../analysis/accounting/invoice/invoice-list.md) | [invoice-list.png](../wireframes/accounting/invoice/invoice-list.png) |
-  | Invoice Receivers | `/invoiceReceiver.html` | `file-invoice` | `i18n.invoice.paymentContact` | — | [invoice-receiver.md](../analysis/accounting/invoice-receiver/invoice-receiver.md) | [invoice-receiver.png](../wireframes/accounting/invoice-receiver/invoice-receiver.png) |
+  | Invoices | `/invoice.html` | `file-invoice` | `i18n.invoiceArea` | — | [invoice-list.md](../analysis/accounting/invoice/invoice-list.md) | [workflows.md](../wireframes/accounting/workflows.md) |
+  | Invoice Receivers | `/invoiceReceiver.html` | `file-invoice` | `i18n.invoice.paymentContact` | — | [invoice-receiver.md](../analysis/accounting/invoice-receiver/invoice-receiver.md) | [workflows.md](../wireframes/accounting/workflows.md) |
   | Customer Users | `/customerUser.html` | `user-tie` | `i18n.user` | — | — | — |
-  | Locations | `/customerLocation.html` | `clinic-medical` | `i18n.location` | — | [location-and-users.md](../analysis/customer/customer-core/location-and-users.md) | [location-management.png](../wireframes/customer/customer-core/location-management.png) |
-  | Rooms | `/room.html` | `building` | `i18n.rooms` | — | [room.md](../analysis/customer/room/room.md) | [room-management.png](../wireframes/customer/room/room-management.png) |
+  | Locations | `/customerLocation.html` | `clinic-medical` | `i18n.location` | — | [location-and-users.md](../analysis/customer/customer-core/location-and-users.md) | [workflows.md](../wireframes/customer/workflows.md) |
+  | Rooms | `/room.html` | `building` | `i18n.rooms` | — | [room.md](../analysis/customer/room/room.md) | [workflows.md](../wireframes/customer/workflows.md) |
   | Onboarding Location | `/onboardingLocation.html` | `clinic-medical` | `i18n.onboardingLocationArea` | — | — | — |
 
 #### 10. Staff
@@ -313,8 +313,8 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 - **Legacy URLs**: `/staff.html`
 - **Submenu**:
   
-  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
-  |------|------------|------|----------|-------------|-------------|-----------|
+  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe Doc |
+  |------|------------|------|----------|-------------|-------------|--------------|
   | Onboarding | `/onboarding.html` | `layer-group` | `Onboarding` | — | [onboarding-flow.md](../analysis/user-management/admin/onboarding-flow.md) | — |
   | User Management | `/adminUser.html` | `users` | `i18n.user` | — | [user-management.md](../analysis/user-management/admin/user-management.md) | — |
   | Expert Weekly Assignments | `/expertWorkWeeklyAssignments.html` | `tally` | `i18n.expertWorkWeeklyAssignments` | — | — | — |
@@ -326,9 +326,9 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 - **Legacy URLs**: `/admin.html`
 - **Submenu**:
   
-  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
-  |------|------------|------|----------|-------------|-------------|-----------|
-  | Job IDs | `/job.html` | `briefcase-medical` | `i18n.action.jobIds` | — | [job-configuration.md](../analysis/accounting/admin-job/job-configuration.md) | [job-configuration.png](../wireframes/accounting/admin-job/job-configuration.png) |
+  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe Doc |
+  |------|------------|------|----------|-------------|-------------|--------------|
+  | Job IDs | `/job.html` | `briefcase-medical` | `i18n.action.jobIds` | — | [job-configuration.md](../analysis/accounting/admin-job/job-configuration.md) | [workflows.md](../wireframes/accounting/workflows.md) |
   | Async Job Queue | `/asyncJobQueue.html` | `stream` | `i18n.AsyncJobQueue` | — | — | — |
   | Job Price List | `/jobPriceList.html` | `th-list` | `i18n.jobPriceList` | — | — | — |
   | Products | `/product.html` | `shopping-bag` | `i18n.menu.products` | — | — | — |
@@ -337,7 +337,7 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
   | Export Templates | `/exportTemplate.html` | `file-export` | `i18n.exportTemplate` | — | — | — |
   | Warnings | `/warning.html` | `exclamation-triangle` | `i18n.consultation.warning` | — | [warning-management.md](../analysis/treatment/warning/warning-management.md) | — |
   | Treatment Categories | `/treatmentCategory.html` | `triangle` | `i18n.TreatmentCategory` | — | [treatment-and-category.md](../analysis/treatment/treatment-core/treatment-and-category.md) | — |
-  | Equipment | `/equipment.html` | `tablet-alt` | `i18n.menu.devices` | — | [equipment.md](../analysis/customer/equipment/equipment.md) | [equipment-management.png](../wireframes/customer/equipment/equipment-management.png) |
+  | Equipment | `/equipment.html` | `tablet-alt` | `i18n.menu.devices` | — | [equipment.md](../analysis/customer/equipment/equipment.md) | [workflows.md](../wireframes/customer/workflows.md) |
   | Onboarding Steps | `/onboardingStep.html` | `layer-group` | `i18n.menu.onboardingStep` | — | — | — |
 
 #### 12. Systemadmin
@@ -347,16 +347,16 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 - **Legacy URLs**: `/sysadmin.html`
 - **Submenu**:
   
-  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe |
-  |------|------------|------|----------|-------------|-------------|-----------|
+  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe Doc |
+  |------|------------|------|----------|-------------|-------------|--------------|
   | MOTD | `/motd.html` | `newspaper` | `i18n.motd` | — | [motd-template.md](../analysis/system/admin-cruds/motd-template.md) | — |
   | Login Notification | `/loginNotification.html` | `comment-exclamation` | `i18n.loginNotification` | — | — | — |
   | Notification Templates | `/notificationTemplate.html` | `file-code` | `i18n.notificationTemplate` | — | — | — |
   | Location Types | `/locationType.html` | `house` | `i18n.LocationType` | — | — | — |
   | Storno Groups | `/stornoGroup.html` | `funnel-dollar` | `i18n.stornoGroup` | — | — | — |
   | Work Hours | `/workHour.html` | `user-clock` | `i18n.workHours` | — | [workhour.md](../analysis/planning/appointment-support/workhour.md) | — |
-  | CDR | `/CdrCall.html` | `boxes` | `CDR` | — | [cdr-call.md](../analysis/planning/appointment-support/cdr-call.md) | [cdr-call-list.png](../wireframes/planning/appointment-support/cdr-call-list.png) |
-  | CDR Assignment | `/CdrCallAssignment.html` | `arrows-alt-h` | `CDR Assignment` | — | — | [cdr-assignment-crud.png](../wireframes/planning/appointment-support/cdr-assignment-crud.png) |
+  | CDR | `/CdrCall.html` | `boxes` | `CDR` | — | [cdr-call.md](../analysis/planning/appointment-support/cdr-call.md) | [workflows.md](../wireframes/planning/workflows.md) |
+  | CDR Assignment | `/CdrCallAssignment.html` | `arrows-alt-h` | `CDR Assignment` | — | — | [workflows.md](../wireframes/planning/workflows.md) |
   | Log | `/log.html` | `stream` | `Log` | — | — | — |
   | Support Categories | `/supportCategory.html` | `user-headset` | `i18n.supportCategory` | — | — | — |
   | BasisWeb Appointments | `/basisWebAppointment.html` | `user-headset` | `BasisWeb-Anmeldungen` | — | — | — |
