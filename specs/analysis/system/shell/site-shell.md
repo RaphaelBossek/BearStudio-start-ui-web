@@ -27,7 +27,7 @@ This is the **outermost layout container** — all other pages are loaded into t
 
 ## 2. Sitemap Overview
 
-The sitemap is defined in `brownfield/web/src/main/webapp/index.json` under the `site.sitemap` key. It's a runtime-generated navigation structure with **11 main menu items**, each potentially containing submenu items.
+The sitemap is defined in `brownfield/web/src/main/webapp/index.json` under the `site.sitemap` key. It's a runtime-generated navigation structure with **12 main menu items**, each potentially containing submenu items.
 
 ### 2.1 Sitemap Tree View
 
@@ -135,8 +135,8 @@ The sitemap is defined in `brownfield/web/src/main/webapp/index.json` under the 
 | 3 | Shifts | `/shift.html` | `user-injured` | `color-shift` | LEITER_INTERN, ADMIN_INTERN, ADMIN | — | 1 |
 | 4 | Treatments | `/treatment.html` | `people-arrows` | `color-treatment` | LEITER_INTERN, ADMIN_INTERN, ADMIN | — | 2 |
 | 5 | Council | `/council.html` | `user-friends` | `color-council` | LEITER_INTERN, ADMIN_INTERN, ADMIN | — | 1 |
-| 6 | Consultations | `/consultation.html` | `heartbeat` | `color-consultation` | STANDARD, LEITER_INTERN, ADMIN | — | 0 |
-| 7 | Appointment Admin | `/appointmentAdmin.html` | `calendar` | `color-appointmentAdmin` | LEITER_INTERN, ADMIN, ADMIN_INTERN | — | 2 |
+| 6 | Consultations | `/consultation.html` | `heartbeat` | `color-consultation` | STANDARD, LEITER_INTERN, ADMIN_INTERN, ADMIN | — | 0 |
+| 7 | Appointment Admin | `/appointmentAdmin.html` | `calendar` | `color-appointmentAdmin` | LEITER_INTERN, ADMIN_INTERN, ADMIN | — | 2 |
 | 8 | Notifications | `/notification.html` | `comments` | `color-notify` | — | NOTIFICATION_READ, SELF_ASSIGNMENT | 1 |
 | 9 | Customers | `/customer.html` | `hospital-user` | `color-customer` | LEITER_INTERN, ADMIN_INTERN, KUNDE_ADMIN, ADMIN | — | 7 |
 | 10 | Staff | `/staff.html` | `user-md` | `color-user` | LEITER_INTERN, ADMIN_INTERN, ADMIN | — | 3 |
@@ -203,13 +203,13 @@ The sitemap is defined in `brownfield/web/src/main/webapp/index.json` under the 
 #### 6. Consultations (`/consultation.html`)
 - **Icon**: `heartbeat`
 - **Color**: `color-consultation`
-- **Roles**: STANDARD, LEITER_INTERN, ADMIN
+- **Roles**: STANDARD, LEITER_INTERN, ADMIN_INTERN, ADMIN
 - **Submenu**: None (single-page module)
 
 #### 7. Appointment Admin (`/appointmentAdmin.html`)
 - **Icon**: `calendar`
 - **Color**: `color-appointmentAdmin`
-- **Roles**: LEITER_INTERN, ADMIN, ADMIN_INTERN
+- **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
 - **Submenu**:
   
   | Item | URL | Icon | i18n Key | Permissions |
@@ -303,7 +303,7 @@ The sitemap is defined in `brownfield/web/src/main/webapp/index.json` under the 
 |------|-----------|--------------|--------|------------|---------|---------------|------------|---------------|-----------|-------|-------|----------|
 | **STANDARD** | ✓ | ✗ | ✗ | ✗ | ✗ | ✓ | ✗ | ✓ (with rights) | ✗ | ✗ | ✗ | ✗ |
 | **LEITER_INTERN** | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ (with rights) | ✓ | ✓ | ✓ | ✓ |
-| **ADMIN_INTERN** | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✓ | ✓ (with rights) | ✓ | ✓ | ✓ | ✓ |
+| **ADMIN_INTERN** | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ (with rights) | ✓ | ✓ | ✓ | ✓ |
 | **ADMIN** | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ (with rights) | ✓ | ✓ | ✓ | ✓ |
 | **KUNDE_ADMIN** | ✓ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ (with rights) | ✓ | ✗ | ✗ | ✗ |
 | **REGISTERED** | ✓ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ |
@@ -320,7 +320,7 @@ The sitemap is defined in `brownfield/web/src/main/webapp/index.json` under the 
 
 ## 3. HTMLM Header Metadata
 
-### 2.1 Field Definitions
+### 3.1 Field Definitions
 
 ```json
 [
@@ -341,7 +341,7 @@ The sitemap is defined in `brownfield/web/src/main/webapp/index.json` under the 
 ]
 ```
 
-### 2.2 Field Type Classification
+### 3.2 Field Type Classification
 
 | Field | Method | Parameters | Type | Purpose |
 |-------|--------|------------|------|---------|
@@ -360,7 +360,7 @@ The sitemap is defined in `brownfield/web/src/main/webapp/index.json` under the 
 | `isAnAdmin` | `serviceCall` | All admin roles | **boolean** | User has any admin role |
 | `isStandard` | `serviceCall` | STANDARD | **boolean** | User has standard role only |
 
-### 2.3 Permission Matrix
+### 3.3 Permission Matrix
 
 | Variable | Role Check | Visible When |
 |----------|------------|--------------|
@@ -376,7 +376,7 @@ The sitemap is defined in `brownfield/web/src/main/webapp/index.json` under the 
 
 ---
 
-## 3. Body Data Attributes
+## 4. Body Data Attributes
 
 ```html
 <body data-service="{{prefix}}/service" 
@@ -390,7 +390,7 @@ The sitemap is defined in `brownfield/web/src/main/webapp/index.json` under the 
       data-customerAdmin="{{isCustomerAdmin}}">
 ```
 
-### 3.1 Attribute Mapping
+### 4.1 Attribute Mapping
 
 | Attribute | Runtime Value | Purpose |
 |-----------|---------------|---------|
@@ -404,7 +404,7 @@ The sitemap is defined in `brownfield/web/src/main/webapp/index.json` under the 
 | `data-customer` | `{{isCustomer}}` | Customer role flag (for RBAC) |
 | `data-customerAdmin` | `{{isCustomerAdmin}}` | Customer admin flag (for RBAC) |
 
-### 3.2 React Migration
+### 4.2 React Migration
 
 These bootstrap attributes map to:
 - **React Query** initial data for notifications
@@ -414,9 +414,9 @@ These bootstrap attributes map to:
 
 ---
 
-## 4. Global Navigation Sidebar (`#globalNav`)
+## 5. Global Navigation Sidebar (`#globalNav`)
 
-### 4.1 Structure Overview
+### 5.1 Structure Overview
 
 ```
 #globalNav (nav, id="globalNav", class="full")
@@ -447,7 +447,7 @@ These bootstrap attributes map to:
     └── Version display
 ```
 
-### 4.2 Logo Section
+### 5.2 Logo Section
 
 ```html
 <span id="logo">
@@ -463,7 +463,7 @@ These bootstrap attributes map to:
 
 **React Migration**: Replace with SVG logo component with responsive sizing. Store in `/public/assets/` or import as React component.
 
-### 4.3 Main Navigation Structure (mainNav)
+### 5.3 Main Navigation Structure (mainNav)
 
 The main navigation is **runtime-generated** from the server-side sitemap defined in `index.json`. Each menu item follows this structure:
 
@@ -491,7 +491,7 @@ The main navigation is **runtime-generated** from the server-side sitemap define
 </li>
 ```
 
-### 4.4 Detailed Main Navigation Items
+### 5.4 Detailed Main Navigation Items
 
 > **Note**: Analysis document references point to existing documentation. Items marked with **TODO** need analysis documents created.
 
@@ -952,7 +952,7 @@ The main navigation is **runtime-generated** from the server-side sitemap define
       - URL: `/changelog.html`
       - Analysis Doc: [admin-landing.md#8-page-changelog-changeloghtmlm](../../system/admin/admin-landing.md#8-page-changelog-changeloghtmlm)
 
-### 4.5 Global Menu (globalMenu)
+### 5.5 Global Menu (globalMenu)
 
 The right-side user menu contains utility functions and user-specific actions:
 
@@ -1014,7 +1014,7 @@ The right-side user menu contains utility functions and user-specific actions:
 </ul>
 ```
 
-### 4.6 Global Menu Items
+### 5.6 Global Menu Items
 
 | Menu Item | English | German | i18n Key | Icon | Permission Gate | Target/Action | Analysis Doc |
 |-----------|---------|--------|----------|------|-----------------|---------------|--------------|
@@ -1027,7 +1027,7 @@ The right-side user menu contains utility functions and user-specific actions:
 | **Logout** | Logout | Abmelden | `logout` → `logout` | `fa-sign-out` | Always visible | `/logout` endpoint | — |
 | **Version Display** | App Version-Build | App-Version-Buildzeit | `application.version`-`application.buildtime` | — | Always visible | Display only | — |
 
-### 4.7 Role Switch Dialog Options
+### 5.7 Role Switch Dialog Options
 
 The role switch dialog contains hardcoded German role labels that need i18n keys:
 
@@ -1041,7 +1041,7 @@ The role switch dialog contains hardcoded German role labels that need i18n keys
 | `ADMIN_KUNDE` | Kunde Admin | `role.ADMIN_KUNDE` | Customer Admin |
 | `ADMIN` | System-Admin | `role.ADMIN` | System Admin |
 
-### 4.8 Sitemap-Driven Navigation
+### 5.8 Sitemap-Driven Navigation
 
 ```mustache
 {{#sitemap}}
@@ -1069,7 +1069,7 @@ The role switch dialog contains hardcoded German role labels that need i18n keys
 {{/sitemap}}
 ```
 
-### 4.3 Sitemap Item Properties
+### 5.9 Sitemap Item Properties
 
 | Property | Type | Mustache Syntax | Description |
 |----------|------|-----------------|-------------|
@@ -1081,7 +1081,7 @@ The role switch dialog contains hardcoded German role labels that need i18n keys
 | `sub[]` | `Array<SitemapItem>` | `{{#sub}}...{{/sub}}` | Nested submenu items (same structure) |
 | `id` | `string` | `id="{{id}}"` | DOM element ID for submenu items |
 
-### 4.4 Extracted Sitemap Structure
+### 5.10 Extracted Sitemap Structure
 
 > **Note**: The actual sitemap is server-generated. Below is the structure extracted from analyzing navigation patterns across all analyzed modules.
 
@@ -1103,7 +1103,7 @@ The role switch dialog contains hardcoded German role labels that need i18n keys
 | Administration | `fa-cog` | `admin` | Users, Groups, Jobs, System Config |
 | Support | `fa-headset` | `support` | Tickets, Video Library |
 
-### 4.5 Color Mapping
+### 5.11 Color Mapping
 
 Each module has a corresponding `bg-color-{module}` CSS class defined in `_include/categories.css`:
 
@@ -1125,9 +1125,9 @@ Each module has a corresponding `bg-color-{module}` CSS class defined in `_inclu
 
 ---
 
-## 5. User Dropdown Menu (`#globalMenu`)
+## 6. User Dropdown Menu (`#globalMenu`)
 
-### 5.1 Structure
+### 6.1 Structure
 
 ```html
 <ul class="nav flex-column" id="globalMenu">
