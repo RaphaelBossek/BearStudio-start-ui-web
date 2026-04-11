@@ -23,21 +23,21 @@ The following directories and files were excluded from this analysis:
 
 The following files are not referenced in `readme.md` and are not cross-referenced by any file that is referenced in `readme.md`:
 
-| File | Path |
-|------|------|
-| [appointment-assign-user.md](../analysis/planning/appointment/appointment-assign-user.md) | `specs/analysis/planning/appointment/` |
-| [appointment-details-patient.md](../analysis/treatment/appointment-patient/appointment-details-patient.md) | `specs/analysis/treatment/appointment-patient/` |
-| [appointment-details-scheduling.md](../analysis/planning/appointment/appointment-details-scheduling.md) | `specs/analysis/planning/appointment/` |
-| [basisweb-wizard.md](../analysis/interfaces/dashboard/basisweb-wizard.md) | `specs/analysis/interfaces/dashboard/` |
-| [consultation-details-js.md](../analysis/treatment/consultation/consultation-details-js.md) | `specs/analysis/treatment/consultation/` |
-| [consultation-template.md](../analysis/treatment/dashboard/consultation-template.md) | `specs/analysis/treatment/dashboard/` |
-| [consultation-wizard.md](../analysis/treatment/dashboard/consultation-wizard.md) | `specs/analysis/treatment/dashboard/` |
-| [profile-expert-availability.md](../analysis/user-management/profile/profile-expert-availability.md) | `specs/analysis/user-management/profile/` |
-| [profile-staff.md](../analysis/user-management/profile/profile-staff.md) | `specs/analysis/user-management/profile/` |
-| [questionnaire-detail.md](../analysis/treatment/questionnaire/questionnaire-detail.md) | `specs/analysis/treatment/questionnaire/` |
-| [shift-dialog.md](../analysis/planning/dashboard/shift-dialog.md) | `specs/analysis/planning/dashboard/` |
-| [totp-onboarding.md](../analysis/user-management/admin/totp-onboarding.md) | `specs/analysis/user-management/admin/` |
-| [wireframes-index.md](../analysis/wireframes-index.md) | `specs/analysis/` |
+| File | Path | Source Files (Brownfield) |
+|------|------|---------------------------|
+| [appointment-assign-user.md](../analysis/planning/appointment/appointment-assign-user.md) | `specs/analysis/planning/appointment/` | `appointment/assignUser.html`, `appointment/assignUser.js` |
+| [appointment-details-patient.md](../analysis/treatment/appointment-patient/appointment-details-patient.md) | `specs/analysis/treatment/appointment-patient/` | `appointment/details.html` (Tab 3 — Patients) |
+| [appointment-details-scheduling.md](../analysis/planning/appointment/appointment-details-scheduling.md) | `specs/analysis/planning/appointment/` | `appointment/details.html`, `appointment/details.js` |
+| [basisweb-wizard.md](../analysis/interfaces/dashboard/basisweb-wizard.md) | `specs/analysis/interfaces/dashboard/` | `dash/basisWebWizard.html`, `dash/basisWebWizard.js` |
+| [consultation-details-js.md](../analysis/treatment/consultation/consultation-details-js.md) | `specs/analysis/treatment/consultation/` | `consultation/details.js`, `consultation/details.ts` |
+| [consultation-template.md](../analysis/treatment/dashboard/consultation-template.md) | `specs/analysis/treatment/dashboard/` | `dash/consultationTemplate.html`, `dash/consultationTemplate.js` |
+| [consultation-wizard.md](../analysis/treatment/dashboard/consultation-wizard.md) | `specs/analysis/treatment/dashboard/` | `dash/consultationWizard.html`, `dash/consultationWizard.js` |
+| [profile-expert-availability.md](../analysis/user-management/profile/profile-expert-availability.md) | `specs/analysis/user-management/profile/` | `profile/expertDays.js`, `profile/expertWeek.js` |
+| [profile-staff.md](../analysis/user-management/profile/profile-staff.md) | `specs/analysis/user-management/profile/` | `profile/staff.htmlm`, `profile/staff.js`, `profile/searchExpert.js` |
+| [questionnaire-detail.md](../analysis/treatment/questionnaire/questionnaire-detail.md) | `specs/analysis/treatment/questionnaire/` | `questionaire/detailQM.html`, `questionaire/details.htmlm`, `questionaire/details.js` |
+| [shift-dialog.md](../analysis/planning/dashboard/shift-dialog.md) | `specs/analysis/planning/dashboard/` | `dash/shiftDlg.mustache`, `dash/shiftDlg.js`, `dash/actionDetailsView.html` |
+| [totp-onboarding.md](../analysis/user-management/admin/totp-onboarding.md) | `specs/analysis/user-management/admin/` | `admin/totpOnboarding.html`, `admin/totpOnboarding.js`, `admin/totp.css`, `admin/userSecurity.htmlm` |
+| [wireframes-index.md](../analysis/wireframes-index.md) | `specs/analysis/` | *(Meta-document — tracks Pencil wireframes, no brownfield source)* |
 
 ## Files Not Referenced in readme.md but Cross-Referenced
 
