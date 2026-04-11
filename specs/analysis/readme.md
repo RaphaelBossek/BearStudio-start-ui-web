@@ -126,6 +126,15 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
   - [BasisWeb Appointments](./mongodb-mapping/interfaces.md#entity-basis-web-appointment)
   - [Change Log](./system/admin/admin-landing.md#8-page-changelog-changeloghtmlm)
 
+- **Global Menu Items** (`#globalMenu`): User utility actions always available in the sidebar
+  - Search Toggle (full-text search)
+  - [Settings / Profile](./user-management/profile/profile-form.md)
+  - [Security](./user-management/profile/profile-dialogs.md)
+  - [Role Switch](./system/includes/includes-shared-components.md) (requires `USERS_CREATE` authority)
+  - [Bug Report](./system/includes/includes-shared-components.md)
+  - Logout
+  - Version Display
+
 ### 2.2 Sitemap JSON Structure
 
 ```json
@@ -166,6 +175,7 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 | 10 | Staff | `/staff.html` | `user-md` | `color-user` | LEITER_INTERN, ADMIN_INTERN, ADMIN | — | 3 |
 | 11 | Administration | `/admin.html` | `user-cog` | `admin` | LEITER_INTERN, ADMIN_INTERN, ADMIN | — | 11 |
 | 12 | Systemadmin | `/sysadmin.html` | `cogs` | `sysadmin` | LEITER_INTERN, ADMIN_INTERN, ADMIN | — | 13 |
+| 13 | Global Menu | `#globalMenu` | `user` | — | — | `USERS_CREATE` (Role Switch only) | 7 |
 
 ### 2.4 Detailed Sitemap with Submenu Items
 
@@ -320,6 +330,24 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
   | Support Categories | `/supportCategory.html` | `user-headset` | `i18n.supportCategory` | — |
   | BasisWeb Appointments | `/basisWebAppointment.html` | `user-headset` | `BasisWeb-Anmeldungen` | — |
   | Change Log | `/changelog.html` | `hour` | `Change-Log` | — |
+
+#### 13. Global Menu (`#globalMenu`)
+- **Icon**: `user`
+- **Color**: — (not sitemap-driven)
+- **Roles**: Always visible (individual items may have permission gates)
+- **Rights**: `USERS_CREATE` (Role Switch only)
+- **URL**: N/A (sidebar user menu)
+- **Items**:
+  
+  | Item | URL | Icon | i18n Key | Permissions |
+  |------|-----|------|----------|-------------|
+  | Search Toggle | — | `search` | — | Always visible |
+  | Search Input | — | (text input) | `label.search` | Always visible |
+  | Settings | `/profile.html` | `cog` | `administration.settings` | Always visible |
+  | Security | `/userSecurity.html` | `id-card` | `administration.security` | Always visible |
+  | Role Switch | `#roleSwitchDlg` | `user-tag` | (dynamic role label) | `USERS_CREATE` |
+  | Bug Report | (dialog) | (from include) | — | Always visible |
+  | Logout | `/logout` | `sign-out` | `logout` | Always visible |
 
 ### 2.5 Role Matrix
 
@@ -974,7 +1002,22 @@ The main navigation is **runtime-generated** from the server-side sitemap define
       - i18n Key**: `Change-Log` (hardcoded, should be `changelog.title`)
       - Icon: `fa-hourglass`
       - URL: `/changelog.html`
-      - Analysis Doc: [admin-landing.md#8-page-changelog-changeloghtmlm](./system/admin/admin-landing.md#8-page-changelog-changeloghtmlm)
+       - Analysis Doc: [admin-landing.md#8-page-changelog-changeloghtmlm](./system/admin/admin-landing.md#8-page-changelog-changeloghtmlm)
+
+#### Global Menu Items
+
+The following items are part of the `#globalMenu` (right-side user menu) and are always available regardless of the active sitemap route:
+
+| Menu Item | English | German | i18n Key | Icon | Permission Gate | Target/Action | Analysis Doc |
+|-----------|---------|--------|----------|------|-----------------|---------------|--------------|
+| **Search Toggle** | Full Text Search | Volltextsuche | — | `fa-search` | Always visible | Expands search input | — |
+| **Search Input** | Search | Suchen | `label.search` → `search.placeholder` | Text input | `{{#search}}` (always) | Full-text search across entities | — |
+| **Settings** | Settings | Einstellungen | `administration.settings` → `administration.settings` | `fa-cog` | Always visible | `/profile.html` | `specs/analysis/staff/profile-form.md` |
+| **Security** | Security | Sicherheit | `administration.security` → `administration.security` | `fa-id-card` | Always visible | `/userSecurity.html` | `specs/analysis/staff/profile-dialogs.md` |
+| **Role Switch** | (Dynamic role label) | (Dynamische Rollenbezeichnung) | `role.{ROLE}` (hardcoded) | `fa-user-tag` | `roleSwitch=true` (authority: `USERS_CREATE`) | Opens `#roleSwitchDlg` | `specs/analysis/includes/includes-shared-components.md` |
+| **Bug Report** | Bug Report | Fehlerbericht | — | (from include) | Always visible | Opens bug report dialog | `specs/analysis/includes/includes-shared-components.md` |
+| **Logout** | Logout | Abmelden | `logout` → `logout` | `fa-sign-out` | Always visible | `/logout` endpoint | — |
+| **Version Display** | App Version-Build | App-Version-Buildzeit | `application.version`-`application.buildtime` | — | Always visible | Display only | — |
 
 ### 5.5 Global Menu (globalMenu)
 
