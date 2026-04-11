@@ -564,29 +564,29 @@ The main navigation is **runtime-generated** from the server-side sitemap define
      - i18n Key: `i18n.calendar` → `calendar.title`
      - Icon: `fa-calendar-alt`
      - URL: `/monthView.html`
-      - Analysis Doc: [calendar-view.md](./planning/dashboard/calendar-view.md)
-  2. **Week View**
+     - Analysis Doc: [calendar-view.md](./planning/dashboard/calendar-view.md)
+  1. **Week View**
      - English: Week View
      - German: Wochenansicht
      - i18n Key: `i18n.weekView` → `weekView.title`
      - Icon: `fa-calendar-alt`
      - URL: `/weekView.html`
-      - Rights: `EXPERT_WEEK`
-      - Analysis Doc: [week-view.md](./planning/dashboard/week-view.md)
-  3. **Worklog**
+     - Rights: `EXPERT_WEEK`
+     - Analysis Doc: [week-view.md](./planning/dashboard/week-view.md)
+  1. **Worklog**
      - English: Worklog
      - German: Arbeitsprotokoll
      - i18n Key: `i18n.Worklog` → `worklog.title`
      - Icon: `fa-file-chart-line`
-      - URL: `/expertWorkMonthly.html`
-      - Analysis Doc: [worklog.md](./accounting/worklog/worklog.md)
-  4. **Video Library**
+     - URL: `/expertWorkMonthly.html`
+     - Analysis Doc: [worklog.md](./accounting/worklog/worklog.md)
+  1. **Video Library**
      - English: Video Library
      - German: Videobibliothek
      - i18n Key: `i18n.VideoLibrary` → `videoLibrary.title`
      - Icon: `fa-video`
-      - URL: `https://learn.videoclinic.de/` (external)
-      - Analysis Doc: [support-and-video.md](./orphan/support-and-video.md)
+     - URL: `https://learn.videoclinic.de/` (external)
+     - Analysis Doc: [support-and-video.md](./orphan/support-and-video.md)
 
 #### 2. Appointments
 - **English**: Appointments
@@ -605,14 +605,14 @@ The main navigation is **runtime-generated** from the server-side sitemap define
      - i18n Key: `i18n.appointmentPlan` → `appointmentPlan.title`
      - Icon: `fa-calendar-check`
      - URL: `/appointmentPlan.html`
-      - Analysis Doc: [appointment-plan.md](./planning/appointment/appointment-plan.md)
-  2. **Patient Data**
+     - Analysis Doc: [appointment-plan.md](./planning/appointment/appointment-plan.md)
+  1. **Patient Data**
      - English: Patient Data
      - German: Patientendaten
      - i18n Key: `i18n.PatientDataType` → `patientData.title`
      - Icon: `fa-user`
      - URL: `/patientData.html`
-      - Analysis Doc: [patient-data.md](./treatment/patient-data/patient-data.md)
+     - Analysis Doc: [patient-data.md](./treatment/patient-data/patient-data.md)
 
 #### 3. Shifts
 - **English**: Shifts
@@ -631,7 +631,7 @@ The main navigation is **runtime-generated** from the server-side sitemap define
      - i18n Key: `i18n.shiftPlan` → `shiftPlan.title`
      - Icon: `fa-calendar-check`
      - URL: `/shiftPlan.html`
-      - Analysis Doc: [shift-and-plan.md](./planning/shift/shift-and-plan.md)
+     - Analysis Doc: [shift-and-plan.md](./planning/shift/shift-and-plan.md)
 
 #### 4. Treatments
 - **English**: Treatments
@@ -650,14 +650,14 @@ The main navigation is **runtime-generated** from the server-side sitemap define
      - i18n Key: `i18n.treatmentPlan` → `treatmentPlan.title`
      - Icon: `fa-calendar-check`
      - URL: `/treatmentPlan.html`
-      - Analysis Doc: [treatment-plan.md](./treatment/treatment-core/treatment-plan.md)
-   2. **Treatment Plan History**
-      - English: Treatment Plan History
-      - German: Therapieplan-Historie
-      - i18n Key: `i18n.treatmentPlanHistory` → `treatmentPlan.history`
-      - Icon: `fa-calendar`
-      - URL: `/treatmentPlan.html?history=true`
-      - Analysis Doc: [treatment-plan.md](./treatment/treatment-core/treatment-plan.md)
+     - Analysis Doc: [treatment-plan.md](./treatment/treatment-core/treatment-plan.md)
+  1. **Treatment Plan History**
+     - English: Treatment Plan History
+     - German: Therapieplan-Historie
+     - i18n Key: `i18n.treatmentPlanHistory` → `treatmentPlan.history`
+     - Icon: `fa-calendar`
+     - URL: `/treatmentPlan.html?history=true`
+     - Analysis Doc: [treatment-plan.md](./treatment/treatment-core/treatment-plan.md)
 
 #### 5. Council
 - **English**: Council
@@ -706,15 +706,15 @@ The main navigation is **runtime-generated** from the server-side sitemap define
      - German: Geschlossener Monat
      - i18n Key: `i18n.ClosedMonth` → `closedMonth.title`
      - Icon: `fa-calendar-exclamation`
-      - URL: `/closedMonth.html`
-      - Analysis Doc: [appointment-admin.md](./planning/appointment-admin/appointment-admin.md)
-  2. **Questionnaire**
+     - URL: `/closedMonth.html`
+     - Analysis Doc: [appointment-admin.md](./planning/appointment-admin/appointment-admin.md)
+  1. **Questionnaire**
      - English: Questionnaire
      - German: Fragebogen
      - i18n Key: `i18n.questionaire` → `questionnaire.title`
      - Icon: `fa-user-headset`
-      - URL: `/questionaire.html`
-      - Analysis Doc: [questionnaire-list.md](./treatment/questionnaire/questionnaire-list.md)
+     - URL: `/questionaire.html`
+     - Analysis Doc: [questionnaire-list.md](./treatment/questionnaire/questionnaire-list.md)
 
 #### 8. Notifications
 - **English**: Notifications
@@ -732,8 +732,8 @@ The main navigation is **runtime-generated** from the server-side sitemap define
      - German: Papierkorb
      - i18n Key: `i18n.notification.folder.TRASH` → `notification.folder.TRASH`
      - Icon: `fa-comment-times`
-      - URL: (none, folder filter within notification list)
-      - Analysis Doc: [notification.md](./system/notification/notification.md)
+     - URL: (none, folder filter within notification list)
+     - Analysis Doc: [notification.md](./system/notification/notification.md)
 
 #### 9. Customers
 - **English**: Customers
@@ -751,50 +751,50 @@ The main navigation is **runtime-generated** from the server-side sitemap define
      - German: Kunden-Onboarding
      - i18n Key: `i18n.onboardingCustomerArea` → `onboarding.customer.title`
      - Icon: `fa-hospital-user`
-      - URL: `/onboardingCustomer.html`
-      - Analysis Doc: [onboarding-flow.md](./user-management/admin/onboarding-flow.md)
-  2. **Invoices**
+     - URL: `/onboardingCustomer.html`
+     - Analysis Doc: [onboarding-flow.md](./user-management/admin/onboarding-flow.md)
+  1. **Invoices**
      - English: Invoices
      - German: Rechnungen
      - i18n Key: `i18n.invoiceArea` → `invoice.plural`
      - Icon: `fa-file-invoice`
-      - URL: `/invoice.html`
-      - Analysis Doc: [invoice-list.md](./accounting/invoice/invoice-list.md)
-  3. **Invoice Receivers**
+     - URL: `/invoice.html`
+     - Analysis Doc: [invoice-list.md](./accounting/invoice/invoice-list.md)
+  1. **Invoice Receivers**
      - English: Invoice Receivers
      - German: Rechnungsempfänger
      - i18n Key: `i18n.invoice.paymentContact` → `invoice.paymentContact`
      - Icon: `fa-file-invoice`
-      - URL: `/invoiceReceiver.html`
-      - Analysis Doc: [invoice-receiver.md](./accounting/invoice-receiver/invoice-receiver.md)
-  4. **Customer Users**
+     - URL: `/invoiceReceiver.html`
+     - Analysis Doc: [invoice-receiver.md](./accounting/invoice-receiver/invoice-receiver.md)
+  1. **Customer Users**
      - English: Users
      - German: Benutzer
      - i18n Key: `i18n.user` → `user.plural`
      - Icon: `fa-user-tie`
-      - URL: `/customerUser.html`
-      - Analysis Doc: [location-and-users.md](./customer/customer-core/location-and-users.md)
-  5. **Locations**
+     - URL: `/customerUser.html`
+     - Analysis Doc: [location-and-users.md](./customer/customer-core/location-and-users.md)
+  1. **Locations**
      - English: Locations
      - German: Standorte
      - i18n Key: `i18n.location` → `location.plural`
      - Icon: `fa-clinic-medical`
-      - URL: `/customerLocation.html`
-      - Analysis Doc: [location-and-users.md](./customer/customer-core/location-and-users.md)
-  6. **Rooms**
+     - URL: `/customerLocation.html`
+     - Analysis Doc: [location-and-users.md](./customer/customer-core/location-and-users.md)
+  1. **Rooms**
      - English: Rooms
      - German: Räume
      - i18n Key: `i18n.rooms` → `room.plural`
      - Icon: `fa-building`
-      - URL: `/room.html`
-      - Analysis Doc: [room.md](./customer/room/room.md)
-  7. **Onboarding Location**
+     - URL: `/room.html`
+     - Analysis Doc: [room.md](./customer/room/room.md)
+  1. **Onboarding Location**
      - English: Onboarding Location
      - German: Standort-Onboarding
      - i18n Key: `i18n.onboardingLocationArea` → `onboarding.location.title`
      - Icon: `fa-clinic-medical`
-      - URL: `/onboardingLocation.html`
-      - Analysis Doc: [onboarding-flow.md](./user-management/admin/onboarding-flow.md)
+     - URL: `/onboardingLocation.html`
+     - Analysis Doc: [onboarding-flow.md](./user-management/admin/onboarding-flow.md)
 
 #### 10. Staff
 - **English**: Staff
@@ -812,22 +812,22 @@ The main navigation is **runtime-generated** from the server-side sitemap define
      - German: Onboarding
      - i18n Key: `Onboarding` (hardcoded, should be `onboarding.title`)
      - Icon: `fa-layer-group`
-      - URL: `/onboarding.html`
-      - Analysis Doc: [onboarding-flow.md](./user-management/admin/onboarding-flow.md)
-  2. **User Management**
+     - URL: `/onboarding.html`
+     - Analysis Doc: [onboarding-flow.md](./user-management/admin/onboarding-flow.md)
+  1. **User Management**
      - English: Users
      - German: Benutzer
      - i18n Key: `i18n.user` → `user.plural`
      - Icon: `fa-users`
-      - URL: `/adminUser.html`
-      - Analysis Doc: [user-management.md](./user-management/admin/user-management.md)
-  3. **Expert Weekly Assignments**
+     - URL: `/adminUser.html`
+     - Analysis Doc: [user-management.md](./user-management/admin/user-management.md)
+  1. **Expert Weekly Assignments**
      - English: Expert Weekly Assignments
      - German: Experten-Wochenzuteilungen
      - i18n Key: `i18n.expertWorkWeeklyAssignments` → `expertWork.weeklyAssignments`
      - Icon: `fa-tally`
-      - URL: `/expertWorkWeeklyAssignments.html`
-      - Analysis Doc: [worklog.md](./accounting/worklog/worklog.md)
+     - URL: `/expertWorkWeeklyAssignments.html`
+     - Analysis Doc: [worklog.md](./accounting/worklog/worklog.md)
 
 #### 11. Administration
 - **English**: Administration
@@ -846,67 +846,67 @@ The main navigation is **runtime-generated** from the server-side sitemap define
      - i18n Key: `i18n.action.jobIds` → `job.action.jobIds`
      - Icon: `fa-briefcase-medical`
      - URL: `/job.html`
-      - Analysis Doc: [job-configuration.md](./accounting/admin-job/job-configuration.md)
-  2. **Async Job Queue**
+     - Analysis Doc: [job-configuration.md](./accounting/admin-job/job-configuration.md)
+  1. **Async Job Queue**
      - English: Async Job Queue
      - German: Asynchrone Warteschlange
      - i18n Key: `i18n.AsyncJobQueue` → `asyncJobQueue.title`
      - Icon: `fa-stream`
      - URL: `/asyncJobQueue.html`
-      - Analysis Doc: [system.md#entity-async-job-queue](./mongodb-mapping/system.md#entity-async-job-queue)
-   3. **Job Price List**
+     - Analysis Doc: [system.md#entity-async-job-queue](./mongodb-mapping/system.md#entity-async-job-queue)
+  1. **Job Price List**
      - English: Job Price List
      - German: Leistungsliste
      - i18n Key: `i18n.jobPriceList` → `jobPriceList.title`
      - Icon: `fa-th-list`
      - URL: `/jobPriceList.html`
-      - Analysis Doc: [accounting-config.md#e-job-price-list](./accounting/config/accounting-config.md#e-job-price-list)
-   4. **Products**
-      - Analysis Doc: [accounting-config.md#f-product](./accounting/config/accounting-config.md#f-product)
-  5. **Skills**
+     - Analysis Doc: [accounting-config.md#e-job-price-list](./accounting/config/accounting-config.md#e-job-price-list)
+  1. **Products**
+     - Analysis Doc: [accounting-config.md#f-product](./accounting/config/accounting-config.md#f-product)
+  1. **Skills**
      - English: Skills
      - German: Fähigkeiten
      - i18n Key: `i18n.skills` → `skills.plural`
      - Icon: `fa-graduation-cap`
-      - URL: `/skill.html`
-      - Analysis Doc: [skill.md](./user-management/admin/skill.md)
-  6. **Exclusion Criteria**
+     - URL: `/skill.html`
+     - Analysis Doc: [skill.md](./user-management/admin/skill.md)
+  1. **Exclusion Criteria**
      - English: Exclusion Criteria
      - German: Ausschlusskriterien
      - i18n Key: `i18n.exclusionCriteria` → `exclusionCriteria.plural`
      - Icon: `fa-comment-slash`
-      - URL: `/exclusionCriteria.html`
-      - Analysis Doc: [system-config.md#b-exclusion-criteria](./system/config/system-config.md#b-exclusion-criteria)
-   7. **Export Templates**
-      - Analysis Doc: [templates-files.md#2-export-template](./system/templates-files/templates-files.md#2-export-template)
-  8. **Warnings**
+     - URL: `/exclusionCriteria.html`
+     - Analysis Doc: [system-config.md#b-exclusion-criteria](./system/config/system-config.md#b-exclusion-criteria)
+  1. **Export Templates**
+     - Analysis Doc: [templates-files.md#2-export-template](./system/templates-files/templates-files.md#2-export-template)
+  1. **Warnings**
      - English: Warnings
      - German: Warnungen
      - i18n Key: `i18n.consultation.warning` → `consultation.warning.plural`
      - Icon: `fa-exclamation-triangle`
-      - URL: `/warning.html`
-      - Analysis Doc: [warning-management.md](./treatment/warning/warning-management.md)
-  9. **Treatment Categories**
+     - URL: `/warning.html`
+     - Analysis Doc: [warning-management.md](./treatment/warning/warning-management.md)
+  1. **Treatment Categories**
      - English: Treatment Categories
      - German: Therapiekategorien
      - i18n Key: `i18n.TreatmentCategory` → `treatmentCategory.plural`
      - Icon: `fa-triangle`
-      - URL: `/treatmentCategory.html`
-      - Analysis Doc: [treatment-and-category.md](./treatment/treatment-core/treatment-and-category.md)
-  10. **Equipment**
-      - English: Equipment
-      - German: Geräte
-      - i18n Key: `i18n.menu.devices` → `menu.devices`
-      - Icon: `fa-tablet-alt`
-      - URL: `/equipment.html`
-      - Analysis Doc: [equipment.md](./customer/equipment/equipment.md)
-  11. **Onboarding Steps**
-      - English: Onboarding Steps
-      - German: Onboarding-Schritte
-      - i18n Key: `i18n.menu.onboardingStep` → `menu.onboardingStep`
-      - Icon: `fa-layer-group`
-      - URL: `/onboardingStep.html`
-      - Analysis Doc: [onboarding-flow.md](./user-management/admin/onboarding-flow.md)
+     - URL: `/treatmentCategory.html`
+     - Analysis Doc: [treatment-and-category.md](./treatment/treatment-core/treatment-and-category.md)
+  1. **Equipment**
+     - English: Equipment
+     - German: Geräte
+     - i18n Key: `i18n.menu.devices` → `menu.devices`
+     - Icon: `fa-tablet-alt`
+     - URL: `/equipment.html`
+     - Analysis Doc: [equipment.md](./customer/equipment/equipment.md)
+  1. **Onboarding Steps**
+     - English: Onboarding Steps
+     - German: Onboarding-Schritte
+     - i18n Key: `i18n.menu.onboardingStep` → `menu.onboardingStep`
+     - Icon: `fa-layer-group`
+     - URL: `/onboardingStep.html`
+     - Analysis Doc: [onboarding-flow.md](./user-management/admin/onboarding-flow.md)
 
 #### 12. Systemadmin
 - **English**: Systemadmin
@@ -923,101 +923,158 @@ The main navigation is **runtime-generated** from the server-side sitemap define
      - English: MOTD (Message of the Day)
      - German: Tagesnachricht
      - i18n Key: `i18n.motd` → `motd.title`
-      - Icon: `fa-newspaper`
-      - URL: `/motd.html`
-      - Analysis Doc: [motd-template.md](./system/admin-cruds/motd-template.md)
-  2. **Login Notification**
+     - Icon: `fa-newspaper`
+     - URL: `/motd.html`
+     - Analysis Doc: [motd-template.md](./system/admin-cruds/motd-template.md)
+  1. **Login Notification**
      - English: Login Notification
      - German: Login-Benachrichtigung
      - i18n Key: `i18n.loginNotification` → `loginNotification.title`
-      - Icon: `fa-comment-exclamation`
-      - URL: `/loginNotification.html`
-      - Analysis Doc: [system-config.md#i-login-notification](./system/config/system-config.md#i-login-notification)
-  3. **Notification Templates**
+     - Icon: `fa-comment-exclamation`
+     - URL: `/loginNotification.html`
+     - Analysis Doc: [system-config.md#i-login-notification](./system/config/system-config.md#i-login-notification)
+  1. **Notification Templates**
      - English: Notification Templates
      - German: Benachrichtigungsvorlagen
      - i18n Key: `i18n.notificationTemplate` → `notificationTemplate.plural`
-      - Icon: `fa-file-code`
-      - URL: `/notificationTemplate.html`
-      - Analysis Doc: [templates-files.md#3-notification-template](./system/templates-files/templates-files.md#3-notification-template)
-  4. **Location Types**
+     - Icon: `fa-file-code`
+     - URL: `/notificationTemplate.html`
+     - Analysis Doc: [templates-files.md#3-notification-template](./system/templates-files/templates-files.md#3-notification-template)
+  1. **Location Types**
      - English: Location Types
      - German: Standorttypen
      - i18n Key: `i18n.LocationType` → `locationType.plural`
-      - Icon: `fa-house`
-      - URL: `/locationType.html`
-      - Analysis Doc: [system-config.md#a-location-type](./system/config/system-config.md#a-location-type)
-  5. **Storno Groups**
+     - Icon: `fa-house`
+     - URL: `/locationType.html`
+     - Analysis Doc: [system-config.md#a-location-type](./system/config/system-config.md#a-location-type)
+  1. **Storno Groups**
      - English: Storno Groups
      - German: Stornogruppen
      - i18n Key: `i18n.stornoGroup` → `stornoGroup.plural`
-      - Icon: `fa-funnel-dollar`
-      - URL: `/stornoGroup.html`
-      - Analysis Doc: [accounting-config.md#c-storno-group-cancellation-group](./accounting/config/accounting-config.md#c-storno-group-cancellation-group)
-  6. **Work Hours**
+     - Icon: `fa-funnel-dollar`
+     - URL: `/stornoGroup.html`
+     - Analysis Doc: [accounting-config.md#c-storno-group-cancellation-group](./accounting/config/accounting-config.md#c-storno-group-cancellation-group)
+  1. **Work Hours**
      - English: Work Hours
      - German: Arbeitszeiten
      - i18n Key: `i18n.workHours` → `workHours.title`
-      - Icon: `fa-user-clock`
-      - URL: `/workHour.html`
-      - Analysis Doc: [workhour.md](./planning/appointment-support/workhour.md)
-  7. **CDR**
+     - Icon: `fa-user-clock`
+     - URL: `/workHour.html`
+     - Analysis Doc: [workhour.md](./planning/appointment-support/workhour.md)
+  1. **CDR**
      - English: CDR (Call Detail Records)
      - German: CDR (Verbindungsdaten)
      - i18n Key**: `CDR` (hardcoded, should be `cdr.title`)
-      - Icon: `fa-boxes`
-      - URL: `/CdrCall.html`
-      - Analysis Doc: [cdr-call.md](./planning/appointment-support/cdr-call.md)
-   8. **CDR Assignment**
-      - English: CDR Assignment
-      - German: CDR-Zuteilung
-      - i18n Key**: `CDR Assignment` (hardcoded, should be `cdr.assignment`)
-      - Icon: `fa-arrows-alt-h`
-      - URL: `/CdrCallAssignment.html`
-      - Analysis Doc: [cdr-call.md](./planning/appointment-support/cdr-call.md)
-   9. **Log**
-      - English: Log
-      - German: Protokoll
-      - i18n Key**: `Log` (hardcoded, should be `log.title`)
-      - Icon: `fa-stream`
-      - URL: `/log.html`
-      - Analysis Doc: [system.md#entity-logs](./mongodb-mapping/system.md#entity-logs)
-   10. **Support Categories**
-      - English: Support Categories
-      - German: Support-Kategorien
-      - i18n Key: `i18n.supportCategory` → `supportCategory.plural`
-      - Icon: `fa-user-headset`
-      - URL: `/supportCategory.html`
-      - Analysis Doc: [system-config.md#d-support-category](./system/config/system-config.md#d-support-category)
-   11. **BasisWeb Appointments**
-      - English: BasisWeb Appointments
-      - German: BasisWeb-Anmeldungen
-      - i18n Key**: `BasisWeb-Anmeldungen` (hardcoded, should be `basisWeb.appointments`)
-      - Icon: `fa-user-headset`
-      - URL: `/basisWebAppointment.html`
-      - Analysis Doc: [interfaces.md#entity-basis-web-appointment](./mongodb-mapping/interfaces.md#entity-basis-web-appointment)
-   12. **Change Log**
-      - English: Change Log
-      - German: Änderungsprotokoll
-      - i18n Key**: `Change-Log` (hardcoded, should be `changelog.title`)
-      - Icon: `fa-hourglass`
-      - URL: `/changelog.html`
-       - Analysis Doc: [admin-landing.md#8-page-changelog-changeloghtmlm](./system/admin/admin-landing.md#8-page-changelog-changeloghtmlm)
+     - Icon: `fa-boxes`
+     - URL: `/CdrCall.html`
+     - Analysis Doc: [cdr-call.md](./planning/appointment-support/cdr-call.md)
+  1. **CDR Assignment**
+     - English: CDR Assignment
+     - German: CDR-Zuteilung
+     - i18n Key**: `CDR Assignment` (hardcoded, should be `cdr.assignment`)
+     - Icon: `fa-arrows-alt-h`
+     - URL: `/CdrCallAssignment.html`
+     - Analysis Doc: [cdr-call.md](./planning/appointment-support/cdr-call.md)
+  1. **Log**
+     - English: Log
+     - German: Protokoll
+     - i18n Key**: `Log` (hardcoded, should be `log.title`)
+     - Icon: `fa-stream`
+     - URL: `/log.html`
+     - Analysis Doc: [system.md#entity-logs](./mongodb-mapping/system.md#entity-logs)
+  1. **Support Categories**
+     - English: Support Categories
+     - German: Support-Kategorien
+     - i18n Key: `i18n.supportCategory` → `supportCategory.plural`
+     - Icon: `fa-user-headset`
+     - URL: `/supportCategory.html`
+     - Analysis Doc: [system-config.md#d-support-category](./system/config/system-config.md#d-support-category)
+  1. **BasisWeb Appointments**
+     - English: BasisWeb Appointments
+     - German: BasisWeb-Anmeldungen
+     - i18n Key**: `BasisWeb-Anmeldungen` (hardcoded, should be `basisWeb.appointments`)
+     - Icon: `fa-user-headset`
+     - URL: `/basisWebAppointment.html`
+     - Analysis Doc: [interfaces.md#entity-basis-web-appointment](./mongodb-mapping/interfaces.md#entity-basis-web-appointment)
+  1. **Change Log**
+     - English: Change Log
+     - German: Änderungsprotokoll
+     - i18n Key**: `Change-Log` (hardcoded, should be `changelog.title`)
+     - Icon: `fa-hourglass`
+     - URL: `/changelog.html`
+     - Analysis Doc: [admin-landing.md#8-page-changelog-changeloghtmlm](./system/admin/admin-landing.md#8-page-changelog-changeloghtmlm)
 
-#### Global Menu Items
-
-The following items are part of the `#globalMenu` (right-side user menu) and are always available regardless of the active sitemap route:
-
-| Menu Item | English | German | i18n Key | Icon | Permission Gate | Target/Action | Analysis Doc |
-|-----------|---------|--------|----------|------|-----------------|---------------|--------------|
-| **Search Toggle** | Full Text Search | Volltextsuche | — | `fa-search` | Always visible | Expands search input | — |
-| **Search Input** | Search | Suchen | `label.search` → `search.placeholder` | Text input | `{{#search}}` (always) | Full-text search across entities | — |
-| **Settings** | Settings | Einstellungen | `administration.settings` → `administration.settings` | `fa-cog` | Always visible | `/profile.html` | [profile-form.md](./user-management/profile/profile-form.md) |
-| **Security** | Security | Sicherheit | `administration.security` → `administration.security` | `fa-id-card` | Always visible | `/userSecurity.html` | [profile-dialogs.md](./user-management/profile/profile-dialogs.md) |
-| **Role Switch** | (Dynamic role label) | (Dynamische Rollenbezeichnung) | `role.{ROLE}` (hardcoded) | `fa-user-tag` | `roleSwitch=true` (authority: `USERS_CREATE`) | Opens `#roleSwitchDlg` | [includes-shared-components.md](./system/includes/includes-shared-components.md) |
-| **Bug Report** | Bug Report | Fehlerbericht | — | (from include) | Always visible | Opens bug report dialog | [includes-shared-components.md](./system/includes/includes-shared-components.md) |
-| **Logout** | Logout | Abmelden | `logout` → `logout` | `fa-sign-out` | Always visible | `/logout` endpoint | — |
-| **Version Display** | App Version-Build | App-Version-Buildzeit | `application.version`-`application.buildtime` | — | Always visible | Display only | — |
+#### 13. Global Menu Items (`#globalMenu`)
+- **English**: Global Menu
+- **German**: Globales Menü
+- **i18n Key**: — (not sitemap-driven, always rendered)
+- **Icon**: `fa-user`
+- **Color**: — (not sitemap-driven)
+- **Roles**: Always visible (individual items may have permission gates)
+- **Rights**: `USERS_CREATE` (Role Switch only)
+- **URL**: N/A (sidebar user menu)
+- **Analysis Doc**: —
+- **Items**:
+  1. **Search Toggle**
+     - English: Full Text Search
+     - German: Volltextsuche
+     - i18n Key: — (icon-only toggle)
+     - Icon: `fa-search`
+     - URL: — (expands search input)
+     - Permissions: Always visible
+  1. **Search Input**
+     - English: Search
+     - German: Suchen
+     - i18n Key: `label.search` → `search.placeholder`
+     - Icon: (text input)
+     - URL: — (full-text search across entities)
+     - Permissions: `{{#search}}` (always)
+  1. **Settings**
+     - English: Settings
+     - German: Einstellungen
+     - i18n Key: `administration.settings` → `administration.settings`
+     - Icon: `fa-cog`
+     - URL: `/profile.html`
+     - Permissions: Always visible
+     - Analysis Doc: [profile-form.md](./user-management/profile/profile-form.md)
+  1. **Security**
+     - English: Security
+     - German: Sicherheit
+     - i18n Key: `administration.security` → `administration.security`
+     - Icon: `fa-id-card`
+     - URL: `/userSecurity.html`
+     - Permissions: Always visible
+     - Analysis Doc: [profile-dialogs.md](./user-management/profile/profile-dialogs.md)
+  1. **Role Switch**
+     - English: (Dynamic role label)
+     - German: (Dynamische Rollenbezeichnung)
+     - i18n Key: `role.{ROLE}` (hardcoded)
+     - Icon: `fa-user-tag`
+     - URL: `#roleSwitchDlg` (opens modal)
+     - Permissions: `roleSwitch=true` (authority: `USERS_CREATE`)
+     - Analysis Doc: [includes-shared-components.md](./system/includes/includes-shared-components.md)
+  1. **Bug Report**
+     - English: Bug Report
+     - German: Fehlerbericht
+     - i18n Key: — (from include)
+     - Icon: (from include)
+     - URL: — (opens bug report dialog)
+     - Permissions: Always visible
+     - Analysis Doc: [includes-shared-components.md](./system/includes/includes-shared-components.md)
+  1. **Logout**
+     - English: Logout
+     - German: Abmelden
+     - i18n Key: `logout` → `logout`
+     - Icon: `fa-sign-out`
+     - URL: `/logout`
+     - Permissions: Always visible
+  1. **Version Display**
+     - English: App Version-Build
+     - German: App-Version-Buildzeit
+     - i18n Key: `application.version`-`application.buildtime`
+     - Icon: —
+     - URL: — (display only)
+     - Permissions: Always visible
 
 ### 5.5 Global Menu (globalMenu)
 
@@ -1081,20 +1138,7 @@ The right-side user menu contains utility functions and user-specific actions:
 </ul>
 ```
 
-### 5.6 Global Menu Items
-
-| Menu Item | English | German | i18n Key | Icon | Permission Gate | Target/Action | Analysis Doc |
-|-----------|---------|--------|----------|------|-----------------|---------------|--------------|
-| **Search Toggle** | Full Text Search | Volltextsuche | — | `fa-search` | Always visible | Expands search input | — |
-| **Search Input** | Search | Suchen | `label.search` → `search.placeholder` | Text input | `{{#search}}` (always) | Full-text search across entities | — |
-| **Settings** | Settings | Einstellungen | `administration.settings` → `administration.settings` | `fa-cog` | Always visible | `/profile.html` | [profile-form.md](./user-management/profile/profile-form.md) |
-| **Security** | Security | Sicherheit | `administration.security` → `administration.security` | `fa-id-card` | Always visible | `/userSecurity.html` | [profile-dialogs.md](./user-management/profile/profile-dialogs.md) |
-| **Role Switch** | (Dynamic role label) | (Dynamische Rollenbezeichnung) | `role.{ROLE}` (hardcoded) | `fa-user-tag` | `roleSwitch=true` (authority: `USERS_CREATE`) | Opens `#roleSwitchDlg` | [includes-shared-components.md](./system/includes/includes-shared-components.md) |
-| **Bug Report** | Bug Report | Fehlerbericht | — | (from include) | Always visible | Opens bug report dialog | [includes-shared-components.md](./system/includes/includes-shared-components.md) |
-| **Logout** | Logout | Abmelden | `logout` → `logout` | `fa-sign-out` | Always visible | `/logout` endpoint | — |
-| **Version Display** | App Version-Build | App-Version-Buildzeit | `application.version`-`application.buildtime` | — | Always visible | Display only | — |
-
-### 5.7 Role Switch Dialog Options
+### 5.6 Role Switch Dialog Options
 
 The role switch dialog contains hardcoded German role labels that need i18n keys:
 
@@ -1108,7 +1152,7 @@ The role switch dialog contains hardcoded German role labels that need i18n keys
 | `ADMIN_KUNDE` | Kunde Admin | `role.ADMIN_KUNDE` | Customer Admin |
 | `ADMIN` | System-Admin | `role.ADMIN` | System Admin |
 
-### 5.8 Sitemap-Driven Navigation
+### 5.7 Sitemap-Driven Navigation
 
 ```mustache
 {{#sitemap}}
@@ -1136,7 +1180,7 @@ The role switch dialog contains hardcoded German role labels that need i18n keys
 {{/sitemap}}
 ```
 
-### 5.9 Sitemap Item Properties
+### 5.8 Sitemap Item Properties
 
 | Property | Type | Mustache Syntax | Description |
 |----------|------|-----------------|-------------|
@@ -1148,29 +1192,7 @@ The role switch dialog contains hardcoded German role labels that need i18n keys
 | `sub[]` | `Array<SitemapItem>` | `{{#sub}}...{{/sub}}` | Nested submenu items (same structure) |
 | `id` | `string` | `id="{{id}}"` | DOM element ID for submenu items |
 
-### 5.10 Extracted Sitemap Structure
-
-> **Note**: The actual sitemap is server-generated. Below is the structure extracted from analyzing navigation patterns across all analyzed modules.
-
-| Main Menu Item | Icon | Color | Submenu Items |
-|----------------|------|-------|---------------|
-| Dashboard | `fa-home` | `dashboard` | (none) |
-| Appointments | `fa-calendar` | `appointment` | List, Calendar, Week View, Month View |
-| Consultations | `fa-heartbeat` | `consultation` | List, Templates, Quick Consultation |
-| Treatments | `fa-stethoscope` | `treatment` | List, Plans, Categories |
-| Shifts | `fa-user-clock` | `shift` | List, Shift Plans |
-| Council | `fa-users` | `council` | List, Council Plans |
-| Patients | `fa-user-injured` | `patient` | List, Quick Filter |
-| Experts/Staff | `fa-user-md` | `staff` | List, Availability, Skills |
-| Customers | `fa-building` | `customer` | List, Locations, Contacts |
-| Rooms | `fa-door-open` | `room` | List, Room Plans |
-| Equipment | `fa-toolbox` | `equipment` | List, Equipment Groups |
-| Invoices | `fa-file-invoice-dollar` | `invoice` | List, Receivers, Worklog |
-| Reports | `fa-chart-bar` | `report` | Various reports |
-| Administration | `fa-cog` | `admin` | Users, Groups, Jobs, System Config |
-| Support | `fa-headset` | `support` | Tickets, Video Library |
-
-### 5.11 Color Mapping
+### 5.9 Color Mapping
 
 Each module has a corresponding `bg-color-{module}` CSS class defined in `_include/categories.css`:
 
@@ -1254,19 +1276,7 @@ Each module has a corresponding `bg-color-{module}` CSS class defined in `_inclu
 </ul>
 ```
 
-### 6.2 Menu Items
-
-| Menu Item | Icon | Permission Gate | Target/Action | Translation Key |
-|-----------|------|-----------------|---------------|-----------------|
-| Search Toggle | `fa-search` | Always visible | Expands search input | — |
-| Search Input | (text input) | `{{#search}}` | Full-text search | `label.search` |
-| Settings | `fa-cog` | Always visible | `profile.html` | `administration.settings` |
-| Security | `fa-id-card` | Always visible | `userSecurity.html` | `administration.security` |
-| Role Switch | `fa-user-tag` | `roleSwitch=true` | Opens `#roleSwitchDlg` | Dynamic role label |
-| Bug Report | (from include) | Always visible | Opens bug report dialog | — |
-| Logout | `fa-sign-out` | Always visible | `logout` endpoint | `logout` |
-
-### 6.3 User Display
+### 6.2 User Display
 
 ```html
 <i class="fas fa-fw fa-user" title="{{role}}"></i> 
@@ -1581,14 +1591,14 @@ Each module has a corresponding `bg-color-{module}` CSS class defined in `_inclu
 **TODO**: Extract the complete navigation structure from the legacy codebase:
 
 1. **Search for sitemap generation** in Java services (likely `NavigationService` or similar)
-2. **Document all menu items** with:
+1. **Document all menu items** with:
    - Main menu label (i18n key)
    - URL path
    - Icon name
    - Color class
    - Permission/role gates
    - Submenu items (same structure)
-3. **Create `shell/sitemap.md`** reference file in Starlight docs
+1. **Create `shell/sitemap.md`** reference file in Starlight docs
 
 **Estimated effort**: 2-4 hours (requires Java code analysis)
 
