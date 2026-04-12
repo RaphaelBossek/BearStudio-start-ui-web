@@ -13,26 +13,6 @@ This directory contains domain-driven analysis documentation for the application
 
 ---
 
-## Directory Structure
-
-| Domain | Subdirectories | Description |
-|--------|---------------|-------------|
-| **[academy/](../academy/readme/)** | — | Support video, video library |
-| **[accounting/](../accounting/readme/)** | `admin-job/`, `config/`, `invoice/`, `invoice-receiver/`, `worklog/` | Invoicing, job configuration, accounting config |
-| **[customer/](../customer/readme/)** | `contact/`, `customer-core/`, `equipment/`, `room/` | Customer management, contacts, locations, rooms, equipment |
-| **[interfaces/](../interfaces/readme/)** | `dashboard/` | BasisWeb wizard integration |
-| **[planning/](../planning/readme/)** | `appointment/`, `appointment-admin/`, `appointment-support/`, `council/`, `dashboard/`, `shift/` | Appointments, shifts, councils, planning dashboards |
-| **[system/](../system/readme/)** | `admin/`, `admin-cruds/`, `config/`, `dashboard/`, `includes/`, `notification/`, `templates-files/` | System config, admin, notifications, shared components |
-| **[treatment/](../treatment/readme/)** | `appointment-patient/`, `consultation/`, `dashboard/`, `medication/`, `patient-data/`, `questionnaire/`, `treatment-core/`, `warning/` | Consultations, treatments, patient data |
-| **[user-management/](../user-management/readme/)** | `admin/`, `dashboard/`, `profile/` | User profiles, admin, groups, skills, onboarding |
-| **[components/](../components/readme/)** | — | Shared reusable components |
-| **[orphan/](../orphan/readme/)** | — | Orphaned content with context |
-| **[i18n/](../i18n/readme/)** | `domains/`, `scripts/` | Internationalization (cross-cutting) |
-| **[mongodb-mapping/](../mongodb-mapping/readme/)** | — | MongoDB-to-Prisma schema mapping (cross-cutting) |
-| **[permissions/](../permissions/readme/)** | — | RBAC matrix and permission gates (cross-cutting) |
-
----
-
 ## 1. Overview
 
 The `site.htmlm` file is the **main application shell** that wraps all other pages in the legacy application. It provides:
@@ -200,6 +180,10 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 - **Rights**: None
 - **URL**: `/dash.html`
 - **Analysis Doc**: [dashboard-main.md](../analysis/system/dashboard/dashboard-main.md)
+  - [basisweb-wizard.md](../analysis/interfaces/dashboard/basisweb-wizard.md) (event flow: `loadBasisweb`)
+  - [consultation-details-js.md](../analysis/treatment/consultation/consultation-details-js.md) (event flow: `ConsultationDetails.open()`)
+  - [consultation-template.md](../analysis/treatment/dashboard/consultation-template.md) (event flow: `consultationWithTemplateBtn` click)
+  - [consultation-wizard.md](../analysis/treatment/dashboard/consultation-wizard.md) (event flow: `loadConsultation` outgoing)
 - **Submenu**:
   
   | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Wireframe Doc |
@@ -219,6 +203,8 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 - **Rights**: None
 - **URL**: `/appointment.html`
 - **Analysis Doc**: [appointment-list.md](../analysis/planning/appointment/appointment-list.md)
+  - [appointment-assign-user.md](../analysis/planning/appointment/appointment-assign-user.md) (include: `{{> assignUserDlg}}`)
+  - [appointment-details-scheduling.md](../analysis/planning/appointment/appointment-details-scheduling.md) (include: `{{> appointmentDetails}}`)
 - **Submenu**:
   
   | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Wireframe Doc |
@@ -236,6 +222,8 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 - **Rights**: None
 - **URL**: `/shift.html`
 - **Analysis Doc**: [shift-and-plan.md](../analysis/planning/shift/shift-and-plan.md)
+  - [appointment-assign-user.md](../analysis/planning/appointment/appointment-assign-user.md)
+  - [appointment-details-scheduling.md](../analysis/planning/appointment/appointment-details-scheduling.md)
 - **Submenu**:
   
   | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Wireframe Doc |
@@ -252,6 +240,8 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 - **Rights**: None
 - **URL**: `/treatment.html`
 - **Analysis Doc**: [treatment-and-category.md](../analysis/treatment/treatment-core/treatment-and-category.md)
+  - [appointment-assign-user.md](../analysis/planning/appointment/appointment-assign-user.md)
+  - [appointment-details-scheduling.md](../analysis/planning/appointment/appointment-details-scheduling.md)
 - **Submenu**:
   
   | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Wireframe Doc |
@@ -269,6 +259,8 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 - **Rights**: None
 - **URL**: `/council.html`
 - **Analysis Doc**: [council-and-plan.md](../analysis/planning/council/council-and-plan.md)
+  - [appointment-assign-user.md](../analysis/planning/appointment/appointment-assign-user.md)
+  - [appointment-details-scheduling.md](../analysis/planning/appointment/appointment-details-scheduling.md)
 - **Submenu**:
   
   | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Wireframe Doc |
@@ -307,6 +299,7 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 - **Rights**: None
 - **URL**: `/appointmentAdmin.html`
 - **Analysis Doc**: [appointment-admin.md](../analysis/planning/appointment-admin/appointment-admin.md)
+  - [questionnaire-detail.md](../analysis/treatment/questionnaire/questionnaire-detail.md)
 - **Submenu**:
   
   | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Wireframe Doc |
