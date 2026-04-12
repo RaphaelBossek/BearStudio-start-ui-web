@@ -10,6 +10,19 @@ title: 'Profile Dialogs'
 
 ---
 
+## Cross-References
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Included by** | `{{> passwordDlg}}` | [Staff Management List](./profile-staff.md#1-htmlm-metadata) | `staff.htmlm` embeds `admin/password.mustache` as Mustache partial; `#sendPasswordMenuBtn` opens password dialog for selected employee |
+| include | **Included by** | `{{> signaturePad}}` | [Staff Management List](./profile-staff.md#1-htmlm-metadata) | `staff.htmlm` embeds `profile/signaturePad.html` as Mustache partial; opened from profile detail panel |
+| include | **Included by** | `{{> passwordDlg}}` | *(personal.htmlm — no analysis file yet)* | `personal.htmlm` also embeds `admin/password.mustache` |
+| include | **Included by** | `{{> signaturePad}}` | *(personal.htmlm — no analysis file yet)* | `personal.htmlm` also embeds `profile/signaturePad.html` |
+
+> **Include context:** The Password Change dialog (`passwordDlg.html`) and Signature Pad dialog (`signaturePad.html`) are embedded as Mustache partials in both [Staff Management List](./profile-staff.md) (`staff.htmlm`) and `personal.htmlm`. The Employee Search dialog is invoked programmatically via the global `searchEmployee()` function. The DocFinder dialog is embedded only in `appointment/index.htmlm`.
+
+---
+
 ## 1. Password Change Dialog
 
 ### 1.1 Dialog Attributes

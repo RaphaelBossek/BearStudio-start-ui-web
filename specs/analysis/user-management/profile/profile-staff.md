@@ -11,6 +11,21 @@ title: 'Profile Staff'
 
 ---
 
+## Cross-References
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Includes** | `{{> onboardingDlg}}` (`onboarding/form.html`) | [Onboarding Flow](../admin/onboarding-flow.md#5-onboarding-dialog-formhtml--formjs) | Mustache partial; `#onboardingMenuBtn` opens dialog for selected employee |
+| event | **Outgoing** | `openOnboarding(id, "EMPLOYEE")` | [Onboarding Flow](../admin/onboarding-flow.md#55-dialog-opensave-flow) | `#onboardingMenuBtn` click calls global function from `form.js` |
+| include | **Includes** | `{{> passwordDlg}}` (`admin/password.mustache`) | [Profile Dialogs](./profile-dialogs.md#1-password-change-dialog) | Mustache partial; `#sendPasswordMenuBtn` opens password dialog for selected employee |
+| include | **Includes** | `{{> signaturePad}}` (`profile/signaturePad.html`) | [Profile Dialogs](./profile-dialogs.md#2-signature-pad-dialog) | Mustache partial; opened from profile detail panel |
+| include | **Includes** | `{{> profile}}` (`profile/userProfile.mustache`) | *(profile-form.md — shared user profile template, no standalone analysis file yet)* | Inline detail panel for employee editing |
+| include | **Includes** | `{{> assignUserDlg}}` (`appointment/assignUser.html`) | [Appointment Assign User](../../planning/appointment/appointment-assign-user.md#1-block-assign-user-dialog) | Assignment dialog for selected user; `#assignmentBtn` opens for selected employee |
+
+> **Include context:** `staff.htmlm` is a host page that embeds six Mustache partials: [Onboarding Flow](../admin/onboarding-flow.md) (`form.html`), [Profile Dialogs](./profile-dialogs.md) (`password.mustache`, `signaturePad.html`), the shared user profile template (`userProfile.mustache`), the assignment dialog (`assignUser.html`), and the navbar. The onboarding dialog is invoked via `openOnboarding(id, "EMPLOYEE")` from `form.js`.
+
+---
+
 ## 1. HTMLM Metadata
 
 ### Header Directives

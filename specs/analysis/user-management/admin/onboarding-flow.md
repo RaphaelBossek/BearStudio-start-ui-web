@@ -9,6 +9,17 @@ title: 'Onboarding Flow'
 
 ---
 
+## Cross-References
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Included by** | `{{> onboardingDlg}}` | [Staff Management List](../profile/profile-staff.md#2-block-staff-list-page-grid) | `staff.htmlm` embeds `onboarding/form.html` as Mustache partial; toolbar button opens dialog for selected employee |
+| event | **Incoming** | `openOnboarding(id, "EMPLOYEE")` | [Staff Management List](../profile/profile-staff.md#9-click-actions-js) | `#onboardingMenuBtn` click on selected row calls `openOnboarding()` defined in `form.js` |
+
+> **Include context:** This file's source `onboarding/form.html` is embedded as `{{> onboardingDlg}}` in the three onboarding list views (`index.htmlm`, `customer.htmlm`, `location.htmlm`) AND in [Staff Management List](../profile/profile-staff.md). The staff page invokes the dialog via `openOnboarding(id, "EMPLOYEE")` for the currently selected employee row.
+
+---
+
 ## 1. Module Overview
 
 The Onboarding module provides three list views that display onboarding progress in a **resource/row grid** (not a standard DataTables list). All three views share the same HTML structure and the same onboarding detail dialog (`form.html`). The only difference between the three views is the **assignment type filter** passed to the backend and the **export filename**.
