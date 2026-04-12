@@ -10,6 +10,22 @@ title: 'Appointment Admin'
 
 ---
 
+## Cross-References
+
+### Source Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Includes** | `{{> closeMonth}}` | [Close Month Dialog](../../appointment-support/close-month.md) | Shared month close/reopen dialog |
+
+### References
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| reference | **References** | QM questionnaire review | [questionnaire-detail](./questionnaire-detail.md) | QM questionnaire detail view for consultation review |
+
+---
+
 ## 1. Page Structure Overview
 
 The module is a single-page admin view composed of:

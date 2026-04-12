@@ -10,6 +10,21 @@ title: 'Includes Shared Components'
 
 ---
 
+## Cross-References
+
+### Source Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Included by** | `_include/` shared components | [Profile Form](../features/user-management/profile-form.md) | User profile form components |
+| include | **Included by** | `_include/` shared components | [Profile Dialogs](../../user-management/profile/profile-dialogs.md) | Profile dialogs shared components |
+| include | **Included by** | `_include/` shared components | [User Management](../features/user-management/user-management.md) | User management shared components |
+| include | **Included by** | `_include/` shared components | [TOTP Onboarding](../features/authentication/totp-onboarding.md) | TOTP onboarding shared components |
+
+> **Include context:** This file documents shared `_include/` components (navbar, siteloader, preloader, quickFilter, jobStatusDlg, notify.js) that are referenced in profile-form, profile-dialogs, user-management, and totp-onboarding specs.
+
+---
+
 ## 1. Navigation Bar (`navbar.mustache`)
 
 ### Template Structure

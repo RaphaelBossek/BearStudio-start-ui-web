@@ -450,3 +450,15 @@ User interactions:
   - Click [Holiday]           --> open holiday dialog
   - Click [Reload]            --> reload data
 ```
+
+---
+
+## Cross-References
+
+### Source Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Includes** | `{{> appointmentDetails}}` | [Appointment Details Scheduling](../../planning/appointment/appointment-details-scheduling.md) | Appointment detail view in month dashboard |
+| include | **Includes** | `{{> shiftDlg}}` | [Shift Dialog](shift-dialog.md) | Shift detail dialog in month dashboard |
+| script | **Loads** | `/profile/expertDays.js` | [Profile Expert Availability](../../user-management/profile/profile-expert-availability.md) | Month-level expert availability grid logic for `#expertdaysMonthTable` |

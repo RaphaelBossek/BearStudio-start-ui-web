@@ -169,6 +169,10 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 ### 2.4 Detailed Sitemap with Submenu Items
 
 > **Note**: Analysis document references point to existing documentation. Items marked with **TODO** need analysis documents created.
+>
+> **Cross-Reference Types in Analysis Doc**: `(include: {{> partial}})` | `(event flow: functionName)` | `(service: Service.method)`
+>
+> See `## Cross-References` section in each analysis document for detailed source-level couplings.
 
 #### 1. Dashboard
 - **English**: Dashboard
@@ -470,6 +474,13 @@ Beyond role-based menu visibility, the following template-level permission condi
 | `SELF_ASSIGNMENT` | Self-assign notifications | Notifications |
 
 ### 2.7 Auxiliary & Cross-Referenced Analysis Documents
+
+> **Standardized Cross-Reference Chapter**: Each analysis document contains a `## Cross-References` section that documents:
+> - **Source Includes**: Mustache partials (`{{> partialName}}`) and script includes from brownfield source
+> - **Service Calls**: Backend service invocations via `Service.method(params)` patterns
+> - **Event Flows**: jQuery events (`$(document).trigger()`) and direct function calls
+>
+> Cross-reference types: `include` | `service` | `event`
 
 These analysis documents describe features, dialogs, sub-flows, and shared components that are not directly represented as main menu items in the sitemap navigation (and thus are absent from Section 2), but are cross-referenced and integrated by other pages:
 

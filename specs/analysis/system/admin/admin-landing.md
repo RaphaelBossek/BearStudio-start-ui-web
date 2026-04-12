@@ -360,7 +360,35 @@ The navigation script registers click handlers for toolbar buttons and uses `Cor
 
 ---
 
-## 13. Key Observations for Rebuild
+## Cross-References
+
+### Source Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Parent** | `sysadmin.htmlm` (parent shell) | [sysconfig-import.md](./sysconfig-import.md) | Sysconfig, Import, Group are sub-views toggled via `sysConfigMenuBtn`, `importMenuBtn`, `groupMenuBtn` |
+| include | **Split to** | `sysconfig.htmlm` + `sysconfig.js` | [sysconfig-import.md](./sysconfig-import.md) | System configuration tabs (5 tabs) extracted to sibling file |
+| include | **Split to** | `import.htmlm` + `import.js` | [sysconfig-import.md](./sysconfig-import.md) | CSV import view extracted to sibling file |
+| include | **Split to** | `group.htmlm` + `group.js` | [sysconfig-import.md](./sysconfig-import.md) | Group management extracted to sibling file |
+| include | **Sibling** | jQuery tree widget | [sysconfig-import.md](./sysconfig-import.md) | `jquery.tree.js` loaded from parent `sysadmin.htmlm` |
+
+### Service Calls
+
+| Service | Method | Parameters | Context |
+|---------|--------|------------|---------|
+| `InfoService` | `getUptime` | `[]` | Uptime display on both admin and sysadmin landing pages |
+| `AdminService` | `getReminderStatus` | `[]` | Reminder status display on sysadmin landing page (Tab 4 of sysconfig) |
+
+### Event Flows
+
+| Type | Direction | Event | Linked Document | Condition |
+|------|-----------|-------|-----------------|----------|
+| event | **Parent→Child** | `sysConfigMenuBtn` click → `Core.switchPage('sysConfig')` | [sysconfig-import.md](./sysconfig-import.md) | Shows sysconfig sub-view (sysadmin only) |
+| event | **Parent→Child** | `importMenuBtn` click → `Core.switchPage('import')` | [sysconfig-import.md](./sysconfig-import.md) | Shows CSV import sub-view (sysadmin only) |
+| event | **Parent→Child** | `groupMenuBtn` click → `Core.switchPage('group')` | [sysconfig-import.md](./sysconfig-import.md) | Shows group management sub-view (sysadmin only) |
+| event | **Nav→Page** | `#userMenuBtn` click → `Core.switchPage('user')` | — | Registered in nav.js but no button in index.htmlm or sysadmin.htmlm header |
+
+### Key Observations for Rebuild
 
 1. **Role-based page split**: The two landing pages should become a single route with conditional rendering based on the user's role (admin vs sysadmin). Sysadmin features should be permission-gated in the UI.
 

@@ -13,7 +13,43 @@ title: 'Support And Video'
 
 ---
 
-## 1. supportTicket Module
+## Cross-References
+
+### Service Calls
+
+| Service | Method | Parameters | Context |
+|---------|--------|------------|---------|
+| `SupportTicketService` | `get`, `getAll` | `[id]`, `[]` | Grid data loading for supportTicket module |
+| `SupportTicketService` | `addComment` | `[id, newComment]` | Reply form in `#viewSupportTicket` dialog |
+| `SupportCategoryService` | `getAllGrouped` | `[]` | Cascading dropdown for category chain (L1→L2→L3) |
+| `VideoService` | `get`, `getAll` | `[id]`, `[]` | Grid data loading for video module |
+| `VideoService` | `autocomplete` | `[query]` | Autocomplete for `data.category` field |
+| `VideoCategoryService` | `autocomplete` | `[query]` | Autocomplete for `data.parentCategory` in videoCategory; category field in video |
+| `VideoCategoryService` | `thumbnail` | `[id, size]` | Category thumbnail URLs in videoLibrary |
+| `VideoCategoryService` | `playVideo` | `[id, format]` | Video playback URLs (video.mp4, pdf.pdf) |
+| `VideoCategoryService` | `addVideo` | `[categoryId, fileName]` | Prepares chunked upload ID in videoCategory |
+| `VideoCategoryService` | `addStream` | `[streamData]` | Adds stream entry in videoCategory dialog |
+| `VideoCategoryService` | `deleteVideo` | `[videoId]` | Removes video from category |
+| `VideoCategoryService` | `uploadFile` | `[uploadId, chunk, total]` | Chunked upload endpoint (3MB chunks) |
+| `VideoLibraryService` | `getLibrary` | `[]` | Returns category tree for videoLibrary browsing |
+| `VideoLibraryService` | `submitWatchTime` | `[videoId, sessionId, position]` | PDF tracking and periodic watch time |
+| `AdminService` | `refreshWatchedVideos` | `[]` | Recalculates watched categories in videoCategory |
+| `JobService` | `autocomplete` | `[query]` | Job assignment autocomplete in videoCategory |
+
+### Source Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Sibling** | `video.js` player library | [User Video History](./user-video-history.md) | Shared player; used by video and videoLibrary modules |
+| include | **Sibling** | `peertube-player.min.js` | [User Video History](./user-video-history.md) | PeerTube integration; loaded by video and videoLibrary |
+| include | **Sibling** | `userVideoHistory/player.js` | [User Video History](./user-video-history.md) | Watch session tracking; loaded by video and videoLibrary |
+| include | **Sibling** | `HugeUploader.js` | [User Video History](./user-video-history.md) | Chunked upload (3MB); videoCategory only |
+
+---
+
+> **Service context:** This file documents 4 modules (supportTicket, video, videoLibrary, videoCategory) that collectively call SupportTicketService, SupportCategoryService, VideoService, VideoCategoryService, VideoLibraryService, AdminService, and JobService. videoCategory acts as the central service hub — it provides autocomplete for video's category field, exposes thumbnail/playVideo endpoints consumed by videoLibrary, and integrates with AdminService (refresh) and JobService (autocomplete). The video and videoLibrary modules both depend on VideoCategoryService and share video.js/PeerTube player libraries via userVideoHistory/player.js.
+
+---
 
 **Service**: `SupportTicketService` (CRUD: `get`, `getAll`, `addComment`)
 **Related Service**: `SupportCategoryService` (`getAllGrouped`)

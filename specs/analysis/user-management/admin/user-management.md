@@ -382,6 +382,43 @@ On `rowSelected` event, the following buttons are enabled and receive the select
 
 ---
 
+## Cross-References
+
+### Source Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Included by** | `{{> totpOnboarding}}` via HTMLM serviceCall | [TOTP Onboarding](./totp-onboarding.md) | Security page loads TOTP 2FA onboarding UI |
+| include | **Includes** | `{{> _include/navbar.mustache}}` | [Includes Shared Components](../../system/includes/includes-shared-components.md) | Standard navigation bar |
+| include | **Includes** | `{{> _include/quickFilter.mustache}}` | [Includes Shared Components](../../system/includes/includes-shared-components.md) | A-Z alphabetical quick filter bar |
+| include | **Includes** | `{{> _include/password.mustache}}` | [TOTP Onboarding](./totp-onboarding.md) | Send password confirmation dialog |
+| include | **Includes** | `{{> profile/userProfile.mustache}}` | [Includes Shared Components](../../system/includes/includes-shared-components.md) | Shared user profile form embedded in detail panel |
+| include | **Includes** | `{{> profile/passwordDlg.html}}` | [Includes Shared Components](../../system/includes/includes-shared-components.md) | Shared change password dialog (admin removes current password field) |
+
+### Service Calls
+
+| Service | Method | Parameters | Linked Document | Context |
+|---------|--------|------------|-----------------|---------|
+| `UserService` | `getAll` | `[filter, limit]` | — | Grid data fetch |
+| `UserService` | `get` | `[id]` | — | Detail panel load |
+| `UserService` | `saveUser` | `[userData]` | — | Detail panel save |
+| `UserService` | `sendPassword` | `[id]` | — | Send password dialog |
+| `UserService` | `changePassword` | `[id, null, pw, confirmPw]` | — | Admin override (no current password) |
+| `UserService` | `getApiKeys` | `[id]` | — | API key dialog open |
+| `UserService` | `saveApiKeys` | `[id, apikeys]` | — | API key dialog save |
+| `UserService` | `clearTotp` | `[id]` | [TOTP Onboarding](./totp-onboarding.md) | 2FA reset action (#twoFactorReset) |
+| `GroupService` | `getAll` | `[]` | — | Group selector population |
+
+### Event Flows
+
+| Type | Direction | Event | Linked Document | Condition |
+|------|-----------|-------|-----------------|----------|
+| event | **Outgoing** | `success` (jQuery) | [TOTP Onboarding](./totp-onboarding.md) | Triggered on `#totpOnboarding` after `UserService.activateTotp`; `userSecurity.js` reloads page |
+
+> **Include context:** This file's source `admin/user.html` is the admin user management page. It includes [TOTP Onboarding](./totp-onboarding.md) via HTMLM serviceCall for the `totpOnboarding` field (security tab), [navbar.mustache](../../system/includes/includes-shared-components.md) for navigation, [quickFilter.mustache](../../system/includes/includes-shared-components.md) for A-Z filtering, and shares the [password dialog](../../system/includes/includes-shared-components.md) with profile pages. The `success` event fires after TOTP activation, signaling `userSecurity.js` to reload.
+
+---
+
 ## Cross-Module References
 
 | Reference | Source | Target | Notes |

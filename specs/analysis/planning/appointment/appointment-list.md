@@ -10,6 +10,17 @@ This analysis covers the **Appointment List** page (`appointment/index.htmlm` + 
 
 ---
 
+## Cross-References
+
+### Source Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Includes** | `{{> appointmentDetails}}` | [Appointment Details Scheduling](appointment-details-scheduling.md) | Inline detail/edit panel for appointment scheduling |
+| include | **Includes** | `{{> assignUserDlg}}` | [Appointment Assign User](appointment-assign-user.md) | Assign user/collision dialog |
+
+---
+
 ## Behavior Diagrams
 
 ### Dialog Navigation Diagram

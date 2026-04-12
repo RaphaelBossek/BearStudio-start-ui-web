@@ -14,6 +14,8 @@ title: 'Profile Expert Availability'
 
 ## Cross-References
 
+### Source Includes
+
 | Type | Direction | Detail | Linked Document | Condition / Context |
 |------|-----------|--------|-----------------|---------------------|
 | include | **Included by** | `<script src="/profile/expertDays.js">` | [Month View](../../planning/dashboard/month-view.md) | Month availability grid logic for `#expertdaysMonthTable` |
@@ -23,6 +25,8 @@ title: 'Profile Expert Availability'
 | include | **Included by** | `<script src="/profile/expertWeek.js">` | [Profile Form](../profile/profile-form.md) | Weekly availability grid in profile |
 
 > **Include context:** `expertDays.js` is loaded by [Month View](../../planning/dashboard/month-view.md) and [Profile Form](../profile/profile-form.md); `expertWeek.js` is loaded by [Week View](../../planning/dashboard/week-view.md), [Treatment Plan](../../treatment/treatment-core/treatment-plan.md), and [Profile Form](../profile/profile-form.md). Both scripts operate on table elements defined in the host page's HTML.
+
+---
 
 ---
 

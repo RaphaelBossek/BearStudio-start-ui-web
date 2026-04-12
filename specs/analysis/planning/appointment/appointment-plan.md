@@ -14,6 +14,37 @@ title: 'Appointment Plan'
 
 ---
 
+## Cross-References
+
+### Source Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Includes** | `{{> closeMonth}}` | [Close Month Dialog](../../appointment-support/close-month.md) | Shared month close/reopen dialog |
+| include | **Included by** | `{{> closeMonth}}` | [Shift Plan](../../shift/shift-and-plan.md) | Shift plan also uses the same closeMonth partial |
+| include | **Includes** | `{{> jobStatusDlg}}` | [Cdr Call List](../../appointment-support/cdr-call.md) | Job status monitor for publishNext/export polling |
+
+### Service Calls
+
+| Service | Method | Parameters | Dialog / Context |
+|---------|--------|------------|------------------|
+| `PlanCollisionService` | `getDoctorAppointmentCollision` | `[data]` | `#detailDlg` - collision warning on save |
+| `JobService` | `autocompleteType` | `[query, filter]` | `#detailDlg` - job area autocomplete (filter: APPOINTMENT) |
+| `UserService` | `findDoctor` | `[query]` | `#detailDlg` - doctor autocomplete |
+| `LocationService` | `autocomplete` | `[query]` | `#detailDlg` - location autocomplete |
+| `ClosedMonthService` | `closeForExpert` | `[year, month]` | `#closeMonthDlg` - close month for experts |
+| `AppointmentPlanService` | `publishNext` | `[date]` | `#selectNextDlg` - generate appointments from plan |
+| `AppointmentPlanService` | `finishStatus` | `[id]` | `#jobStatusDlg` - poll job completion |
+| `UserService` | `saveSetting` | `[key, value]` | Grid column settings persistence |
+
+### Event Flows
+
+| Type | Direction | Event | Linked Document | Condition |
+|------|-----------|-------|-----------------|----------|
+| event | **Incoming** | `publishNext` job done | [Shift Plan](../../shift/shift-and-plan.md) | Shift plan uses same `publishNext` + jobStatus pattern |
+
+---
+
 ## 1. AppointmentPlan Module
 
 ### 1.1 Overview

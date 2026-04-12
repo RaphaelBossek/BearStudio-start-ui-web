@@ -17,6 +17,17 @@ This analysis covers two related pages:
 
 ---
 
+## Cross-References
+
+### Source Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Includes** | `{{> appointmentDetails}}` | [Appointment Details Scheduling](../../planning/appointment/appointment-details-scheduling.md) | Inline detail/edit panel (shared across modules) |
+| include | **Includes** | `{{> assignUserDlg}}` | [Appointment Assign User](../../planning/appointment/appointment-assign-user.md) | Assign user dialog (shared across modules) |
+
+---
+
 ## Part 1: Treatment List Page
 
 ### Behavior Diagrams

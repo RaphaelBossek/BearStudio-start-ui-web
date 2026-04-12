@@ -18,6 +18,61 @@ All three views are template-included sub-views of `sysadmin.htmlm`. The parent 
 
 ---
 
+## Cross-References
+
+### Source Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Split from** | `sysconfig.htmlm` + `sysconfig.js` | (original: `admin/sysadmin-views.md`) | System configuration tabs extracted to this file |
+| include | **Split from** | `import.htmlm` + `import.js` | (original: `admin/sysadmin-views.md`) | CSV import view extracted to this file |
+| include | **Split from** | `group.htmlm` + `group.js` | [group-management.md](./group-management.md) | Group management extracted to sibling file |
+| include | **Sibling** | Other domains: sysconfig + import | [group-management.md](./group-management.md) | Group management file received Group Management sections |
+
+### Service Calls
+
+| Service | Method | Parameters | Linked Document | Context |
+|---------|--------|------------|-----------------|---------|
+| `AdminService` | `updateBasisWeb` | `[]` | — | Load BasisWeb data (Tab 1) |
+| `BasisWebAppointmentService` | `fetch` | `[]` | — | Fetch open registrations (Tab 1) |
+| `BasisWebAppointmentService` | `sync` | `[]` | — | Sync registration list (Tab 1) |
+| `BasisWebDataService` | `fetchBogen` | `[jnummer, uid, jva, false]` | — | Load emergency form (Tab 1) |
+| `BasisWebDataService` | `decryptBogen` | `[jnummer, pin]` | — | Decrypt emergency form (Tab 1) |
+| `BasisWebDataService` | `getSerializedResult` | `[consultationId]` | — | Generate consultation XML (Tab 1) |
+| `AdminService` | `getCacheStats` | `[]` | — | Cache statistics (Tab 2) |
+| `AdminService` | `verifyCaches` | `[]` | — | Verify caches (Tab 2) |
+| `AdminService` | `clearCaches` | `[]` | — | Clear caches (Tab 2) |
+| `ImportService` | `updatePublicHolidays` | `[year]` | — | Load public holidays (Tab 3) |
+| `LocationService` | `otoboSync` | `[]` | — | Otobo location sync (Tab 3) |
+| `AdminService` | `getCashRegister` | `[]` | — | Get cash register info (Tab 3) |
+| `AdminService` | `updateCashRegister` | `[idFormat, count]` | — | Update cash register (Tab 3) |
+| `AdminService` | `loadMissingNotificationTemplates` | `[]` | — | Load missing templates (Tab 3) |
+| `CdrCallService` | `importIncoming` | `[]` | — | Import incoming CDR (Tab 3) |
+| `AdminService` | `fixAttachments` | `[]` | — | Check attachments (Tab 4) |
+| `UserService` | `fixDisplayName` | `[]` | — | Fix display names (Tab 4) |
+| `AdminService` | `fixTimes` | `[startDate, untilDate]` | — | Recalculate appointment times (Tab 4) |
+| `AdminService` | `triggerReminder` | `[]` | — | Manual reminder trigger (Tab 4) |
+| `AdminService` | `moveAppointments` | `[ids[], dateMs]` | — | Move appointments (Tab 5) |
+| `ImportService` | `upload` | `[importType]` | — | CSV file upload (Import view) |
+| `ImportService` | `status` | `[jobId]` | — | Poll upload status (Import view) |
+| `GroupService` | `getRights` | `[]` | [group-management.md](./group-management.md) | Fetch rights on page load |
+| `GroupService` | `getAll` | `[]` | [group-management.md](./group-management.md) | Fetch all groups for tree |
+| `GroupService` | `persist` | `[{name, description, rights[], role}]` | [group-management.md](./group-management.md) | Save group create/update |
+| `GroupService` | `delete` | `[id]` | [group-management.md](./group-management.md) | Delete group |
+| `GroupService` | `regenerate` | `[]` | [group-management.md](./group-management.md) | Refresh auth (button missing) |
+
+### Event Flows
+
+| Type | Direction | Event | Linked Document | Condition |
+|------|-----------|-------|-----------------|----------|
+| event | **Parent→Child** | `sysConfigMenuBtn` click | — | Shows sysconfig view |
+| event | **Parent→Child** | `importMenuBtn` click | — | Shows CSV import view |
+| event | **Parent→Child** | `groupMenuBtn` click | — | Shows group management view |
+
+> **Include context:** This file documents `sysconfig.htmlm` + `sysconfig.js`, `import.htmlm` + `import.js`, and `group.htmlm` + `group.js`. All three are sub-views of `sysadmin.htmlm` (parent shell) toggled via sidebar nav buttons. Group management content was split to [group-management.md](./group-management.md) as a sibling file. The jQuery tree widget (`jquery.tree.js`) is loaded from the parent `sysadmin.htmlm`.
+
+---
+
 ## Navigation Structure Diagram
 
 ```mermaid

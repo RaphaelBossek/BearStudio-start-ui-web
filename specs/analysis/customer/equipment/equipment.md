@@ -284,6 +284,19 @@ PatientData --> (standalone, but references appointment/consultation i18n keys)
 │  │ Dr.Müll  │ 2025-03-15 14h │ WORKING  │ Repair completed  │             │
 │  │ Admin    │ 2025-03-10 09h │ INREPAIR │ Sent for repair   │             │
 │  └──────────┴────────────────┴──────────┴───────────────────┘             │
-│                                            [Cancel] [Save]                │
-└───────────────────────────────────────────────────────────────────────────┘
-```
+└─────────────────────────────────────────────────────────────────────────────┘
+
+---
+
+## Cross-References
+
+### Source Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| split | **Sibling** | Same source: `entity-cruds/room-equipment-contact-medication-patientdata.md` | [Room](../room/room.md) | Common CRUD Pattern, 1. Room |
+| split | **Sibling** | Same source: `entity-cruds/room-equipment-contact-medication-patientdata.md` | [Contact](../contact/contact.md) | Common CRUD Pattern, 3. Contact |
+| split | **Sibling** | Same source: `entity-cruds/room-equipment-contact-medication-patientdata.md` | [Medication](../../treatment/medication/medication.md) | Common CRUD Pattern, 4. Medication |
+| split | **Sibling** | Same source: `entity-cruds/room-equipment-contact-medication-patientdata.md` | [PatientData](../../treatment/patient-data/patient-data.md) | Common CRUD Pattern, 5. PatientData |
+
+> **Split origin:** All five files (Room, Equipment, Contact, Medication, PatientData) were extracted from the same brownfield source `entity-cruds/room-equipment-contact-medication-patientdata.md` and share the Common CRUD Pattern section. This file covers Equipment (section 2).

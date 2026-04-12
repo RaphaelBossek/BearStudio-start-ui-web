@@ -8,6 +8,18 @@ title: 'Templates Files'
 
 ---
 
+## Cross-References
+
+### Source Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| split | **Sibling** | Same source: `utility/worklog-templates-files.md` | [User Video History](../../../academy/video-history/user-video-history.md) | Section 5 extracted to sibling |
+
+> **Split origin:** Both this file and [User Video History](../../../academy/video-history/user-video-history.md) were extracted from `utility/worklog-templates-files.md`. This file covers Export Template (2), Notification Template (3), User File (4), and Shared Patterns (7–8); the sibling covers User Video History (section 5).
+
+---
+
 ## 2. Export Template (`exportTemplate/`)
 
 ### 2.1 Overview

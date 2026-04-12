@@ -487,3 +487,9 @@ Core.initCrud($this, {
   Dialogs: Export Invoice (period), Template Export, Multi-Template, Job Status
   [async: poll job status] for ZIP/template exports
 ```
+
+---
+
+## Cross-References
+
+- [`invoice-details`](./invoice-details.md) — Invoice detail/edit dialog, accessed via View/Edit actions from the list

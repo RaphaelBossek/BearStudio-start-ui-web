@@ -8,6 +8,36 @@ title: 'Worklog'
 
 ---
 
+## Cross-References
+
+### Source Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| split | **Sibling** | Same source: `utility/worklog-templates-files.md` | [Invoice Receiver](../../accounting/invoice-receiver/invoice-receiver.md) | Section 6 (Invoice Receiver) extracted to sibling |
+| split | **Sibling** | Same source: `utility/worklog-templates-files.md` | [Templates Files](../../system/templates-files/templates-files.md) | Sections 2–4 (Export/Notification/User File) extracted to sibling |
+| split | **Sibling** | Same source: `utility/worklog-templates-files.md` | [User Video History](../../orphan/user-video-history.md) | Section 5 (User Video History) extracted to sibling |
+
+### Service Calls
+
+| Service | Method | Parameters | Dialog / Context |
+|---------|--------|------------|------------------|
+| `WorklogService` | `getAll` | `[month, year]` | Worklog List grid load |
+| `WorkExportService` | `generateWeeklyWork` | `[start, end, type]` | Weekly Assignments grid load |
+| `InvoiceService` | `downloadExport` | `/{year}/{month}` | Export XLS via navbar button |
+| `InvoiceService` | `prepareZip` | `[{year, month}]` | ZIP download: queues job, monitors status, downloads result |
+
+### Event Flows
+
+| Type | Direction | Event | Linked Document | Condition |
+|------|-----------|-------|-----------------|-----------|
+| event | **Outgoing** | `InvoiceDetails.open(id, "view")` | [Invoice Details](../../accounting/invoice/invoice-details.md) | Show Invoice row action |
+| event | **Outgoing** | `InvoiceDetails.open(id, "change")` | [Invoice Details](../../accounting/invoice/invoice-details.md) | Edit Invoice row action |
+
+> **Split origin:** This file and [Invoice Receiver](../../accounting/invoice-receiver/invoice-receiver.md), [Templates Files](../../system/templates-files/templates-files.md), and [User Video History](../../orphan/user-video-history.md) were all extracted from `utility/worklog-templates-files.md`. This file covers Worklog List and Weekly Assignments (sections 1, 7, 8).
+
+---
+
 ## 1. Worklog (`worklog/`)
 
 ### 1.1 Overview

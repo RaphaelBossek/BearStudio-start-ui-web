@@ -9,13 +9,16 @@ title: 'Shift Dialog'
 
 ## Cross-References
 
+### Source Includes
+
 | Type | Direction | Detail | Linked Document | Condition / Context |
 |------|-----------|--------|-----------------|---------------------|
 | include | **Included by** | `{{> shiftDlg}}` + `{{> actionDetailsView}}` | [Month View](month-view.md) | Shift detail and action request dialogs in month dashboard |
 | include | **Included by** | `{{> shiftDlg}}` + `{{> actionDetailsView}}` | [Week View](week-view.md) | Shift detail and action request dialogs in week dashboard |
 | include | **Included by** | `{{> actionDetailsView}}` | [Calendar View](calendar-view.md) | Action details partial in calendar dashboard |
+| include | **Included by** | `{{> shiftDlg}}` | [Calendar View](calendar-view.md) | Shift detail dialog (included but not wired from calendar) |
 
-> **Include context:** `shiftDlg.mustache` and `actionDetailsView.html` are embedded as Mustache partials in [Month View](month-view.md), [Week View](week-view.md), and [Calendar View](calendar-view.md). The shift dialog shows appointment/shift details with a Leaflet map; the action details view is a shared partial for the request action sub-dialog.
+> **Include context:** `shiftDlg.mustache` and `actionDetailsView.html` are embedded as Mustache partials in [Month View](month-view.md), [Week View](week-view.md), and [Calendar View](calendar-view.md). The shift dialog shows appointment/shift details with a Leaflet map; the action details view is a shared partial for the request action sub-dialog. Both partials are included in calendar view but not actively wired to calendar events.
 
 ---
 

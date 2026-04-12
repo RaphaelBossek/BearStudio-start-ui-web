@@ -13,6 +13,16 @@ This analysis covers the **Treatment Plan** page (`treatmentPlan/index.htmlm` + 
 
 ---
 
+## Cross-References
+
+### Script Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Includes** | `<script src="/profile/expertWeek.js">` | [Profile Expert Availability](../../user-management/profile/profile-expert-availability.md) | Week availability grid embedded in create dialog |
+
+---
+
 ## Behavior Diagrams
 
 ### Dialog Navigation Diagram

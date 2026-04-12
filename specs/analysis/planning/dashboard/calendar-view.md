@@ -15,6 +15,35 @@ title: 'Calendar View'
 
 ---
 
+## Cross-References
+
+### Source Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Includes** | `{{> sendMessage}}` | [Notification Send Message](../../system/notification/notification.md#cross-references) | Birthday event click opens send-message dialog |
+| include | **Includes** | `{{> appointmentDetails}}` | [Appointment Details Scheduling](../../planning/appointment/appointment-details-scheduling.md) | Appointment detail dialog (included but not wired from calendar) |
+| include | **Includes** | `{{> actionDetailsView}}` | [Shift Dialog](shift-dialog.md) | Action details partial (included but handler commented out) |
+
+### Service Calls
+
+| Service | Method | Parameters | Dialog / Context |
+|---------|--------|------------|------------------|
+| `InfoService` | `getCalendar` | `[startStr, endStr]` | FullCalendar event fetching |
+
+### Event Flows
+
+| Type | Direction | Event | Linked Document | Condition |
+|------|-----------|-------|-----------------|----------|
+| event | **Incoming** | `sendUserMessage({ to, subject, message })` | [Notification Send Message](../../system/notification/notification.md) | Receives BIRTHDAY click event, opens sendMessage dialog |
+| event | **Outgoing** | `sendUserMessage({ to, subject, message })` | [Notification Send Message](../../system/notification/notification.md) | BIRTHDAY calendar event click |
+
+> **Include context:** `calendar.htmlm` includes three Mustache partials: `sendMessage` (for birthday flow), `appointmentDetails` (appointment detail dialog, not wired from calendar), and `actionDetailsView` (action request dialog, handler commented out). Only `sendMessage` is actively triggered.
+>
+> **Event chain:** BIRTHDAY event click -> `sendUserMessage()` -> [Notification Send Message](../../system/notification/notification.md#cross-references)
+
+---
+
 ## 1. Page Structure
 
 ### HTMLM Template Header (Included Templates)

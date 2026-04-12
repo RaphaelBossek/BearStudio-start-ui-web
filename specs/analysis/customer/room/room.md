@@ -11,6 +11,21 @@ title: 'Room'
 
 ---
 
+## Cross-References
+
+### Source Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| split | **Sibling** | Same source: `entity-cruds/room-equipment-contact-medication-patientdata.md` | [Equipment](../equipment/equipment.md) | Common CRUD Pattern, 2. Equipment |
+| split | **Sibling** | Same source: `entity-cruds/room-equipment-contact-medication-patientdata.md` | [Contact](../contact/contact.md) | Common CRUD Pattern, 3. Contact |
+| split | **Sibling** | Same source: `entity-cruds/room-equipment-contact-medication-patientdata.md` | [Medication](../../treatment/medication/medication.md) | Common CRUD Pattern, 4. Medication |
+| split | **Sibling** | Same source: `entity-cruds/room-equipment-contact-medication-patientdata.md` | [PatientData](../../treatment/patient-data/patient-data.md) | Common CRUD Pattern, 5. PatientData |
+
+> **Split origin:** All five files (Room, Equipment, Contact, Medication, PatientData) were extracted from the same brownfield source `entity-cruds/room-equipment-contact-medication-patientdata.md` and share the Common CRUD Pattern section. This file covers Room (section 1).
+
+---
+
 # Entity CRUD Analysis: Room, Equipment, Contact, Medication, PatientData
 
 > **Source**: `~/src/vc/videoclinic-prod/web/src/main/webapp/{room,equipment,contact,medication,patientData}/`

@@ -5,6 +5,18 @@ title: 'Includes Customization'
 # 02 -- Includes: Customization, Login, and Global Overrides
 
 > **Source directory:** `web/src/main/webapp/_include/`
+
+## Cross-References
+
+### Related Documentation
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| topic | **Related to** | TOTP onboarding in login | [Admin TOTP Onboarding](../../../user-management/admin/totp-onboarding.md) | Login TOTP flow vs. admin TOTP device management |
+
+> **Context:** This file's `login.js` documents the **login-time TOTP 2FA onboarding flow** (require.token → QR code → 6-digit verification). The linked [Admin TOTP Onboarding](../../../user-management/admin/totp-onboarding.md) file covers the **user settings TOTP device management UI** (register, verify, reset devices). Both share the same 6-digit split-input widget pattern and `UserService` backend calls.
+
+---
 > **Files analyzed:** `customOverride.js` (157 lines), `customOverride.i18n.js` (96 lines), `categories.css` (160 lines), `instance.css` (3 lines), `login.js` (283 lines), `bugReport/bugReport.html` (~64 lines), `bugReport/bugReport.js` (~120 lines), `bugReport/captureScreen.js` (~342 lines), `bugReport/messages.i18n.js` (2 lines)
 
 ---

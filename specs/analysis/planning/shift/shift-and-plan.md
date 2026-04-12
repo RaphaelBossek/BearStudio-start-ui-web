@@ -12,6 +12,18 @@ Both pages share the same backend `AppointmentService` model (shifts are appoint
 
 ---
 
+## Cross-References
+
+### Source Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Includes** | `{{> appointmentDetails}}` | [Appointment Details Scheduling](../../planning/appointment/appointment-details-scheduling.md) | Inline detail/edit panel for shift scheduling |
+| include | **Includes** | `{{> assignUserDlg}}` | [Appointment Assign User](../../planning/appointment/appointment-assign-user.md) | Assign user/collision dialog |
+| include | **Includes** | `{{> closeMonth}}` | [Close Month Dialog](../../appointment-support/close-month.md) | Shared month close/reopen dialog |
+
+---
+
 ## Behavior Diagrams
 
 ### Shift Plan to Shift Creation Flow

@@ -4,11 +4,34 @@ title: 'Dialogs System'
 
 # 04 - Dashboard Dialogs — System
 
-> **Split from**: `dash/dashboard-dialogs.md`
-> **Sections extracted here**: Dialog 4 (loginNotificationModal)
-> **Other domains received**: Treatment (`04-dialogs-treatment.md` — Dialogs 3, 5, 7, 8), Planning (`04-dialogs-planning.md` — Dialogs 2, 6, 9, 10), User Management (`04-dialogs-user-management.md` — Dialog 1)
+> **Source**: `dash/index.htmlm` (lines 624-896), `dash/dash.js`
 
-> Source: `dash/index.htmlm` (lines 624-896), `dash/dash.js`
+---
+
+## Cross-References
+
+### Source Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| split | **Sibling** | Same source: `dash/index.htmlm` (lines 624-896) | [Dialogs Planning](../../planning/dashboard/dialogs-planning.md) | Planning dialogs extracted from shared source |
+| split | **Sibling** | Same source: `dash/index.htmlm` (lines 624-896) | [Dialogs Treatment](../../treatment/dashboard/dialogs-treatment.md) | Treatment dialogs extracted from shared source |
+| split | **Sibling** | Same source: `dash/index.htmlm` (lines 624-896) | [Dialogs User Management](../../user-management/dashboard/dialogs-user-management.md) | User management dialogs extracted from shared source |
+
+### Service Calls
+
+| Type | Direction | Service | Method | Parameters | Dialog | Context |
+|------|-----------|---------|--------|------------|--------|---------|
+| service | (outbound) | `LoginNotificationService` | `accept` | `[]` | `#loginNotificationModal` | Accept login notification |
+| service | (inbound) | `InfoService` | `getDashInfo` | `[]` | Dashboard load | Check for pending login notifications |
+
+### Event Flows
+
+| Type | Direction | Event | Handler | Context |
+|------|-----------|-------|---------|---------|
+| event | (inbound) | Dashboard load | Shows modal if `loginNotifications.length > 0` | `#loginNotificationModal` |
+
+> **Include context:** This file's source `dash/index.htmlm` (lines 624-896) is shared with [Dialogs Planning](../../planning/dashboard/dialogs-planning.md), [Dialogs Treatment](../../treatment/dashboard/dialogs-treatment.md), and [Dialogs User Management](../../user-management/dashboard/dialogs-user-management.md). Each file documents different dialog sections extracted from the same source.
 
 ---
 

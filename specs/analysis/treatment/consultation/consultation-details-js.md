@@ -10,16 +10,55 @@ title: 'Consultation Details Js'
 >
 > The `.js` file is the compiled output of the `.ts` file. They are functionally identical. Analysis is based on both, with the `.ts` file used as the authoritative source for type information.
 
-## Event Flow Cross-References
+## Cross-References
 
-| Direction | Event | Linked Document | Condition |
-|-----------|-------|-----------------|----------|
-| **Incoming** | `ConsultationDetails.open()` | [Dashboard Main](../../system/dashboard/dashboard-main.md#block-consultations-table) | Consultation row click (editable) or treatment task edit |
-| **Incoming** | `ConsultationDetails.open()` | [Consultation Wizard](../dashboard/consultation-wizard.md#54-step-4-cw-success--summary--confirm) | After `ConsultationService.start` succeeds |
-| **Incoming** | `ConsultationDetails.open()` | [BasisWeb Wizard](../../interfaces/dashboard/basisweb-wizard.md#step-6-bww-success--summary) | After BasisWeb decryption succeeds |
-| **Incoming** | `ConsultationDetails.open()` | [Consultation Template](../dashboard/consultation-template.md#click-actions) | Edit or create template, `consultationTemplate=true` |
+### Source Includes
+
+| Source | Purpose |
+|--------|---------|
+| `details.html` | HTML dialog template; uses `jsForm` plugin for data binding |
+| `detailData*.html` | Fragment templates for form sections (incarceration, treatment, etc.) |
+| `conditionize2` (plugin) | CSS-driven conditional visibility via `data-condition` attributes |
+| `jsForm` (plugin) | Form fill/get/validate data binding |
+| `marked()` | Markdown rendering for ICD-10 and medication descriptions |
+| `Dialog` (shared) | Modal dialog open/close management |
+
+### Service Calls
+
+| Service | Method | Called From | Purpose |
+|---------|--------|-------------|---------|
+| `ConsultationService` | `get` | `open()` | Fetch full consultation by ID |
+| `ConsultationService` | `save` | `save()` | Persist consultation changes (non-template) |
+| `ConsultationService` | `submit` | `submit()` | Finalize/transmit consultation |
+| `ConsultationService` | `getAll` | Search dialog search | Search consultations for copy-from |
+| `ConsultationService` | `prescription` | Medication search dialog | Search medications by name + type |
+| `ConsultationService` | `download` | `download` event | Download PDF |
+| `ConsultationService` | `attachment` | Attachment links | Download attachments |
+| `ExpertConsultationTemplateService` | `save` | `save()`, create template | Save consultation template |
+| `ExpertConsultationTemplateService` | `getAll` | `openSearchDlg` | List all templates |
+| `ExpertConsultationTemplateService` | `get` | `copyConsultation()` | Fetch template for copy |
+| `IcdService` | `search` | ICD-10 search dialog | Search ICD-10 codes |
+| `UserService` | `findCustomer` | Autocomplete | Search patients |
+| `RoomService` | `get` | `#roomInformation` click | Fetch room details |
+| `BasisWebDataService` | `getSerializedResult` | Admin tool click | Serialize BasisWeb data |
+
+### Event Flows
+
+| Type | Direction | Event | Linked Document | Condition |
+|------|-----------|-------|-----------------|----------|
+| event | **Incoming** | `ConsultationDetails.open()` | [Dashboard Main](../../system/dashboard/dashboard-main.md#block-consultations-table) | Consultation row click (editable) or treatment task edit |
+| event | **Incoming** | `ConsultationDetails.open()` | [Consultation Wizard](../dashboard/consultation-wizard.md#54-step-4-cw-success--summary--confirm) | After `ConsultationService.start` succeeds |
+| event | **Incoming** | `ConsultationDetails.open()` | [BasisWeb Wizard](../../interfaces/dashboard/basisweb-wizard.md#step-6-bww-success--summary) | After BasisWeb decryption succeeds |
+| event | **Incoming** | `ConsultationDetails.open()` | [Consultation Template](../dashboard/consultation-template.md#click-actions) | Edit or create template, `consultationTemplate=true` |
+| jQuery | **Outgoing** | `download` event | Internal | Triggers PDF download flow (see Bug #1) |
+| jQuery | **Outgoing** | `saveCloseData` event | Internal | Triggers save + close + reload |
+| jQuery | **Outgoing** | `$(document).reload` | Internal | Page reload after save-close |
+| jQuery | **Outgoing** | `insert` on `.icd10insert` | Internal | ICD-10 code inserted into main form |
+| jQuery | **Outgoing** | `insert` on `.medicationInsert` | Internal | Medication inserted into main form |
 
 > **Incoming chain:** [Dashboard Main](../../system/dashboard/dashboard-main.md) / [Consultation Wizard](../dashboard/consultation-wizard.md) / [BasisWeb Wizard](../../interfaces/dashboard/basisweb-wizard.md) / [Consultation Template](../dashboard/consultation-template.md) all call `ConsultationDetails.open()` -> **this file**
+>
+> **Outgoing chain:** **this file** fires `download` / `saveCloseData` / `insert` events -> internal handlers
 
 ---
 

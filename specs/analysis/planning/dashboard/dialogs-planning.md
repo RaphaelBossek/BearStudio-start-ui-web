@@ -2,16 +2,43 @@
 title: 'Dialogs Planning'
 ---
 
----
----
-
 # 04 - Dashboard Dialogs — Planning
 
-> **Split from**: `dash/dashboard-dialogs.md`
-> **Sections extracted here**: Dialog 2 (endShiftDlg), Dialog 6 (adHocAppointment), Dialog 9 (appointmentsConfirmModal), Dialog 10 (appointmentsDeclineModal)
-> **Other domains received**: Treatment (`04-dialogs-treatment.md` — Dialogs 3, 5, 7, 8), User Management (`04-dialogs-user-management.md` — Dialog 1), System (`04-dialogs-system.md` — Dialog 4)
+> **Source**: `dash/index.htmlm` (lines 624-896), `dash/dash.js`
 
-> Source: `dash/index.htmlm` (lines 624-896), `dash/dash.js`
+---
+
+## Cross-References
+
+### Source Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Included by** | `{{> jobStatusDlg}}` | [Dialogs Treatment](../treatment/dashboard/dialogs-treatment.md) | Job status dialog (PDF download link) |
+| split | **Sibling** | Same source: `dash/index.htmlm` | [Dialogs Treatment](../treatment/dashboard/dialogs-treatment.md) | Shared source for dashboard dialogs |
+| split | **Sibling** | Same source: `dash/index.htmlm` | [Dialogs System](../system/dashboard/dialogs-system.md) | Shared source for dashboard dialogs |
+| split | **Sibling** | Same source: `dash/index.htmlm` | [Dialogs User Management](../user-management/dashboard/dialogs-user-management.md) | Shared source for dashboard dialogs |
+
+### Service Calls
+
+| Type | Direction | Service | Method | Parameters | Dialog | Context |
+|------|-----------|---------|--------|------------|--------|---------|
+| service | **Outgoing** | `AppointmentService` | `done` | `[id, timeStart, timeEnd, qm]` | `#endShiftDlg` | End shift |
+| service | **Outgoing** | `AppointmentService` | `createAdHoc` | `[ap, force]` | `#adHocAppointment` | Create unscheduled appointment |
+| service | **Outgoing** | `AppointmentService` | `agreeAll` | `[ids]` | `#appointmentsConfirmModal` | Accept queued appointments |
+| service | **Outgoing** | `AppointmentService` | `disagreeAll` | `[ids]` | `#appointmentsDeclineModal` | Decline queued appointments |
+
+### Event Flows
+
+| Type | Direction | Event | Linked Document | Condition |
+|------|-----------|-------|-----------------|----------|
+| event | **Outgoing** | `AppointmentDetails.open()` | [Dialogs Treatment](../treatment/dashboard/dialogs-treatment.md) | Ad-hoc success (admin-created appointment) |
+
+---
+
+> **Include context:** This file and [Dialogs Treatment](../treatment/dashboard/dialogs-treatment.md), [Dialogs System](../system/dashboard/dialogs-system.md), and [Dialogs User Management](../user-management/dashboard/dialogs-user-management.md) are siblings split from the same `dash/index.htmlm` source (lines 624-896). Each file documents a distinct set of dialogs from that shared source.
+
+> **Event chain:** `#adHocAppointment` save callback -> `AppointmentDetails.open()` -> [Dialogs Treatment](../treatment/dashboard/dialogs-treatment.md) (consultation details view)
 
 ---
 

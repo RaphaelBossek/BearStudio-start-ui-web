@@ -18,6 +18,37 @@ title: 'Consultation View Review'
 
 ---
 
+## Cross-References
+
+### Source Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Included by** | `{{> consultationViewDetails}}` | [Consultation List](consultation-list.md) | View details dialog rendered in host |
+| include | **Included by** | `{{> consultationReviewDetails}}` | [Consultation List](consultation-list.md) | Review dialog rendered in host |
+
+### Service Calls
+
+| Service | Method | Parameters | Dialog / Context |
+|---------|--------|------------|------------------|
+| `ConsultationService` | `startReporting` | `[id]` | `#consultationDetailsReviewDlg` — initializes review workflow |
+| `ConsultationService` | `saveReporting` | `[id, reporting]` | `#consultationDetailsReviewDlg` — persist review markdown |
+| `ConsultationService` | `verify` | `[id, reporting]` | `#consultationDetailsReviewDlg` — finalize/submit review |
+| `ConsultationService` | `download` | GET endpoint | PDF download for consultation and review |
+
+### Event Flows
+
+| Type | Direction | Event | Linked Document | Condition |
+|------|-----------|-------|-----------------|----------|
+| event | **Incoming** | `ConsultationDetails.open()` | [Consultation Wizard](../dashboard/consultation-wizard.md) | Opens view dialog from consultation row action |
+| event | **Outgoing** | `dialogopen` → `renderConsultationView` | (internal) | Populates dialog content on open |
+
+> **Include context:** This file's dialogs (`viewDetails.html`, `reviewDetails.html`) are embedded as `{{> consultationViewDetails}}` and `{{> consultationReviewDetails}}` partials in the [Consultation List](consultation-list.md) page.
+>
+> **Service chain:** Review dialog calls `ConsultationService.startReporting()` → user edits → `saveReporting()` → `verify()` → reload.
+
+---
+
 ## Block 1: View Details Dialog (`consultationDetailsViewDlg`)
 
 ### Dialog Configuration

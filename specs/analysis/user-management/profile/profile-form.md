@@ -14,6 +14,45 @@ title: 'Profile Form'
 > | `profile/userProfile.mustache` | 1014 | Shared profile form template (tabs, all sections) |
 > | `profile/messages.i18n.js` | 77 | Profile-specific i18n overrides + formatters |
 
+## Cross-References
+
+### Source Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Included by** | `{{> profile}}` | [Profile Staff](./profile-staff.md) | Staff management page embeds this profile form as inline detail panel |
+| include | **Included by** | `<script src="/profile/expertDays.js">` | [Expert Availability](./profile-expert-availability.md) | Monthly availability grid loaded in `profile-expertdays` tab |
+| include | **Included by** | `<script src="/profile/expertWeek.js">` | [Expert Availability](./profile-expert-availability.md) | Weekly availability grid loaded in `profile-expertweek` tab |
+
+### Service Calls
+
+| Service | Method | Parameters | Linked Document | Context |
+|---------|--------|------------|-----------------|---------|
+| `UserService` | `getProfile` | `[]` | — | Load current user profile on page init |
+| `UserService` | `save` | `[data]` | — | Save profile (displayName forced null) |
+| `UserService` | `rotateThumbnail` | `[userId]` | — | Rotate profile picture server-side |
+| `UserService` | `updateThumbnail` | `[fileData, userId]` | — | Upload new profile picture |
+| `UserService` | `checkJobs` | `[userId]` | — | List user's jobs |
+| `UserService` | `removeSite` | `[siteId]` | — | Remove additional address |
+| `UserFileService` | `list` | `[userId]` | — | List user documents |
+| `UserFileService` | `upload` | `[userId, file]` | — | Upload new document |
+| `UserFileService` | `remove` | `[[fileId]]` | — | Remove document |
+| `UserFileService` | `update` | `[fileId, date, type]` | — | Update document metadata |
+| `LocationService` | `checkBayernBoxAccess` | `[username, password]` | — | Verify Securebox credentials |
+| `SkillService` | `autocomplete` | `[query]` | — | Search skills |
+| `ProductService` | `autocomplete` | `[query, filter:EXPERT]` | — | Search products |
+| `CountryService` | `autocomplete` | `[query]` | — | Search countries |
+| `CustomerService` | `autocomplete` | `[query]` | — | Search customers |
+| `ExclusionCriteriaService` | `autocomplete` | `[query]` | — | Search exclusion criteria |
+
+### Event Flows
+
+| Type | Direction | Event | Linked Document | Condition |
+|------|-----------|-------|-----------------|----------|
+| event | **Outgoing** | `UserService.save` | [TOTP Onboarding](../admin/totp-onboarding.md) | TOTP activation/deactivation via `requireTotp` checkbox in Business Data tab |
+
+> **Include context:** This file's source `userProfile.mustache` is shared between two host pages: [Profile Staff](./profile-staff.md) embeds it as `{{> profile}}` for inline employee editing, while [Expert Availability](./profile-expert-availability.md) scripts (`expertDays.js`, `expertWeek.js`) are loaded by the Expert Days and Expert Week tabs in this form. TOTP requirement is managed via `UserService` calls on the Business Data tab.
+
 ---
 
 ## 1. Block: Personal Profile Page (`personal.htmlm`)

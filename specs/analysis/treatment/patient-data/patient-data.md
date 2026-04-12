@@ -16,6 +16,22 @@ title: 'Patient Data'
 
 ---
 
+## Cross-References
+
+### Source Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Included by** | `{{> patientData}}` | [Appointment Details Patient](../../planning/appointment/appointment-details-scheduling.md) | Patient data tab in appointment details |
+| split | **Sibling** | Same source: `room-equipment-contact-medication-patientdata.md` | [Room Entity CRUD](../customer/room/room.md) | Room module extracted to sibling |
+| split | **Sibling** | Same source: `room-equipment-contact-medication-patientdata.md` | [Equipment Entity CRUD](../customer/equipment/equipment.md) | Equipment module extracted to sibling |
+| split | **Sibling** | Same source: `room-equipment-contact-medication-patientdata.md` | [Contact Entity CRUD](../customer/contact/contact.md) | Contact module extracted to sibling |
+| split | **Sibling** | Same source: `room-equipment-contact-medication-patientdata.md` | [Medication Entity CRUD](../medication/medication.md) | Medication module extracted to sibling |
+
+> **Split origin:** This file and its four siblings (Room, Equipment, Contact, Medication) were all extracted from `entity-cruds/room-equipment-contact-medication-patientdata.md`. This file covers PatientData specifically; the siblings cover their respective modules.
+
+---
+
 ## Common CRUD Pattern
 
 All five modules share the same `Core.initCrud()` + `slickerGrid()` architecture:

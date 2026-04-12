@@ -544,21 +544,43 @@ Embedded via `{{>passwordDlg}}` at the bottom of `user.htmlm`.
 
 ---
 
-## Cross-Module References
+## Cross-References
 
-| From | To | Mechanism | Notes |
-|------|-----|-----------|-------|
-| `location.htmlm` | `locationCreate.mustache` | Mustache partial `{{>locationDlg}}` | Location create/edit dialog |
-| `locationCreate.js` | `LocationService` | AJAX/WebSocket | `get`, `getAll`, `getFolders`, `getBackupFolders`, `testUpload` |
-| `locationCreate.js` | `LocationTypeService` | Autocomplete | Location type selector |
-| `locationCreate.js` | `CustomerService` | Autocomplete | Customer selector |
-| `locationCreate.js` | Mapbox API | HTTP GET | Geocoding + tile layer |
-| `user.htmlm` | `admin/password.mustache` | Mustache partial `{{>passwordDlg}}` | Password reset dialog |
-| `user.htmlm` | `profile/profile.js` | Inline `<script>` | Profile form logic (SSN, file upload, etc.) |
-| `user.js` | `UserService` | AJAX/WebSocket | `get`, `getAll`, `saveSetting` |
-| `user.js` | `CustomerService` | Autocomplete | Customer selector in profile |
-| Both pages | `zipCodeLookup.js` | Shared component | `.searchZipCode` class triggers zip-to-city lookup |
-| Both pages | `messages.i18n.js` | Shared i18n | Customer/location/role translations and formatters |
+### Source Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Includes** | `{{> locationDlg}}` | (same file — locationCreate.mustache) | Location create/edit dialog |
+| include | **Includes** | `{{> passwordDlg}}` | [Profile Dialogs](../../user-management/profile/profile-dialogs.md#cross-references) | Password reset dialog |
+| include | **Included by** | `<script src="/profile/profile.js">` | [Profile Form](../../user-management/profile/profile-form.md#cross-references) | Profile form logic (SSN validation, file upload) |
+| include | **Included by** | `<script src="/customer/messages.i18n.js">` | (same file — shared i18n) | Customer/location/role translations |
+| include | **Included by** | `<script src="/customer/zipCodeLookup.js">` | [Customer List Detail](./customer-list-detail.md) | Zip-to-city auto-fill |
+| include | **Includes** | `{{> navbar}}` | (navbar — no analysis file) | Navigation bar |
+
+### Service Calls
+
+| Service | Method | Parameters | Linked Document | Context |
+|---------|--------|------------|-----------------|---------|
+| `LocationService` | `get` | `[id]` | — | Load location for edit |
+| `LocationService` | `getAll` | `[filter, max]` | — | Grid data source |
+| `LocationService` | `getFolders` | `[locationId]` | — | Populate URL path autocomplete |
+| `LocationService` | `getBackupFolders` | `[locationId]` | — | Populate backup URL autocomplete |
+| `LocationService` | `testUpload` | `[locationId, path]` | — | Test file upload |
+| `UserService` | `get` | `[id]` | — | Load user for edit |
+| `UserService` | `getAll` | `[filter, max]` | — | Grid data source |
+| `UserService` | `saveSetting` | `[key, value]` | — | Grid settings persistence |
+| `LocationTypeService` | `autocomplete` | `[query]` | — | Location type selector |
+| `CustomerService` | `autocomplete` | `[query]` | — | Customer selector (location + user) |
+| `ZipCodeService` | `get` | `[term]` | — | Zip code auto-fill |
+| `CountryService` | `autocomplete` | `[query]` | — | Country selector |
+
+---
+
+> **Include context:** `location.htmlm` embeds `locationCreate.mustache` as a Mustache partial for the location dialog. `user.htmlm` embeds `admin/password.mustache` (also documented in [Profile Dialogs](../../user-management/profile/profile-dialogs.md)) and loads `profile/profile.js` (documented in [Profile Form](../../user-management/profile/profile-form.md)). Both pages share `zipCodeLookup.js` for zip code auto-fill and `messages.i18n.js` for translations.
+
+> **Service context:** Location page uses `LocationService` for CRUD + folder operations; User page uses `UserService`. Both use `CustomerService` for customer selection. Address fields on both pages use `ZipCodeService` via `zipCodeLookup.js`.
+
+---
 
 ---
 

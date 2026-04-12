@@ -60,10 +60,62 @@ title: 'Consultation List'
 
 | Script |
 |--------|
-| `/_lib/3rdparty/marked.min.js` (Markdown renderer) |
+| /_lib/3rdparty/marked.min.js` (Markdown renderer) |
 | `/consultation/index.js` |
 | `/consultation/messages.i18n.js` |
 | `/profile/messages.i18n.js` |
+
+---
+
+## Cross-References
+
+### Source Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Includes** | `{{> consultationViewDetails}}` | [Consultation View Review](consultation-view-review.md) | View consultation detail dialog |
+| include | **Includes** | `{{> consultationReviewDetails}}` | [Consultation View Review](consultation-view-review.md) | Review consultation dialog |
+| include | **Included by** | `{{> navBar}}` | [Navbar Shared Component](../../system/includes/includes-navbar.md) | Top navigation bar |
+| include | **Included by** | `{{> siteloader}}` | [Siteloader Shared Component](../../system/includes/includes-siteloader.md) | Site loader/footer includes |
+| include | **Included by** | `{{> jobStatusDlg}}` | [Job Status Dialog](../../system/includes/includes-job-status-dlg.md) | Async job status polling for template exports |
+| include | **Included by** | `<script src="/consultation/index.js">` | (this file's companion script) | Main consultation list behavior |
+| include | **Included by** | `<script src="/consultation/messages.i18n.js">` | (localized strings) | i18n translations for consultation |
+| include | **Included by** | `<script src="/profile/messages.i18n.js">` | (localized strings) | i18n translations for profile |
+
+### Service Calls
+
+| Service | Method | Parameters | Dialog / Context |
+|---------|--------|------------|------------------|
+| `ConsultationService` | `getAll` | `[filter, 100]` | Grid data source, max 100 results |
+| `ConsultationService` | `get` | `[id]` | View consultation detail (CRUD default) |
+| `ConsultationService` | `getReporting` | `[pojo.id]` | Review/reporting dialog |
+| `ConsultationService` | `startExport` | `[exportTemplate.id, data]` | Template export workflow |
+| `ConsultationService` | `done` | `[id, timeStart, timeEnd, qm]` | Download PDF guard (`baseCompleted`) |
+| `UserService` | `saveSetting` | `[key, value]` | Grid settings persistence |
+| `UserService` | `autocomplete` | `[query]` | Doctor filter in offcanvas panel |
+| `LocationService` | `autocomplete` | `[query]` | Location filter autocomplete |
+| `ExportTemplateService` | `autocomplete` | `[query]` | Template export dialog |
+| `CustomerService` | `autocomplete` | `[query]` | Customer field in export dialog |
+| `JobService` | `getAllOptions` | `[]` | Job type option source |
+| `WarningService` | `getAllergies` | `[]` | Allergy warning options |
+| `WarningService` | `getConspicious` | `[]` | Conspicuous warning options |
+| `WarningService` | `getInfections` | `[]` | Infection warning options |
+| `WarningService` | `getOther` | `[]` | Other warning options |
+| `TreatmentCategoryService` | `getAll` | `[]` | Treatment category options |
+
+### Event Flows
+
+| Type | Direction | Event | Linked Document | Condition |
+|------|-----------|-------|-----------------|----------|
+| event | **Outgoing** | `loadGrid` | (self) | Date toolbar change triggers grid reload |
+| event | **Incoming** | `dialogOpen` | [Consultation View Review](consultation-view-review.md) | Opens review dialog via `#consultationDetailsReviewDlg` |
+| event | **Outgoing** | CRUD default | [Consultation View Review](consultation-view-review.md) | Row double-click or edit button |
+
+> **Include context:** This file embeds `consultationViewDetails` and `consultationReviewDetails` as Mustache partials for view and review dialogs. Navbar, siteloader, and jobStatusDlg are standard shared components included by all list pages.
+>
+> **Service chain:** Grid loads via `ConsultationService.getAll(filter, 100)` → row select enables review via `ConsultationService.getReporting(id)` → review dialog opens `dialogOpen` event.
+>
+> **Event chain:** Date selector change (`#year/#month/#day`) → `updateGlobalFilter` → `$(document).trigger("loadGrid")` → grid reloads with filtered data.
 
 ---
 

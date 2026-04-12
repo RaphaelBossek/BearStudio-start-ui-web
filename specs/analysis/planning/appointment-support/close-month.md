@@ -10,6 +10,30 @@ title: 'Close Month'
 
 ---
 
+## Cross-References
+
+### Source Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Included by** | `{{> closeMonth}}` | [Appointment Admin](../../planning/appointment-admin/appointment-admin.md) | Toolbar close month button in navbar |
+| include | **Included by** | `{{> closeMonth}}` | [Appointment Plan](../../planning/appointment/appointment-plan.md) | Toolbar close month button in plan view |
+| include | **Included by** | `{{> closeMonth}}` | [Shift Plan](../../shift/shift-and-plan.md) | Shift plan also embeds closeMonth partial |
+
+### Service Calls
+
+| Service | Method | Parameters | Dialog / Context |
+|---------|--------|------------|------------------|
+| `ClosedMonthService` | `getMonth` | `[year, month]` | `#closeMonthDlg` — check if month is closed |
+| `ClosedMonthService` | `closeForExpert` | `[year, month]` | `#closeMonthDlg` — close month for expert billing |
+| `ClosedMonthService` | `openForExpert` | `[year, month]` | `#closeMonthDlg` — reopen closed month |
+
+---
+
+> **Include context:** This file's source `closeMonth.html` (dialog component) is embedded as `{{> closeMonth}}` partial in three host modules: Appointment Admin, Appointment Plan, and Shift Plan. All three modules display the `#monthClosed` banner when the month is closed for expert billing.
+
+---
+
 ## 1. Overview
 
 The Close Month feature is a shared dialog that allows administrators to lock (close) or unlock (reopen) billing periods for expert worklogs. When a month is closed:

@@ -9,6 +9,18 @@ title: 'System Config'
 > **Sections extracted here**: locationType (A), exclusionCriteria (B), supportCategory (D), loginNotification (I)
 > **Other domains received**: accounting/config/accounting-config.md got jobPriceList (E), product (F), closedMonth (G), stornoGroup (C), expertWorkMonthly (H)
 
+## Cross-References
+
+### Split Relationships
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| split | **Sibling** | Same source: `config-cruds/` | [Accounting Config](../../accounting/config/accounting-config.md) | Extracted from same `config-cruds/` directory |
+
+> **Split origin:** Both this file and [Accounting Config](../../accounting/config/accounting-config.md) were extracted from the same `config-cruds/` directory. This file covers locationType (A), exclusionCriteria (B), supportCategory (D), loginNotification (I); the sibling covers jobPriceList (E), product (F), closedMonth (G), stornoGroup (C), expertWorkMonthly (H).
+
+---
+
 # 01 - Config CRUD Modules (Low-Priority Admin Pages)
 
 > **Source directories** (all under `~/src/vc/videoclinic-prod/web/src/main/webapp/`)

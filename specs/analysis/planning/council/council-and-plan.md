@@ -12,6 +12,47 @@ title: 'Council And Plan'
 
 ---
 
+## Cross-References
+
+### Source Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Included by** | `{{> appointmentDetails}}` | [Appointment Details Scheduling](../appointment/appointment-details-scheduling.md) | Inline detail/edit panel (shared across modules) |
+| include | **Included by** | `{{> assignUserDlg}}` | [Appointment Assign User](../appointment/appointment-assign-user.md) | Assign user dialog (shared across modules) |
+
+### Service Calls
+
+| Service | Method | Parameters | Dialog / Context |
+|---------|--------|------------|------------------|
+| `AppointmentService` | `getMethod` | dynamic dispatch | MonthTable init (`Service`, jobType, params) |
+| `AppointmentService` | `export` | `COUNCIL/{year}/{month}` | Export action (XLS download) |
+| `CouncilPlanService` | `get` | `[id]` | Detail form load |
+| `CouncilPlanService` | `getAll` | `[filter]` | Grid data load |
+| `CouncilPlanService` | `publishNext` | `[targetDate]` | Apply Plan action |
+| `CouncilPlanService` | `getStatus` | `[jobId]` | Progress polling in jobStatusDlg |
+| `CouncilPlanService` | `finishStatus` | `[jobId]` | Close progress dialog |
+| `JobService` | `autocompleteType` | filter `"COUNCIL"` | Job autoselect in council and councilPlan |
+| `JobService` | `autocomplete` | `filter by job` | Job filter in councilPlan grid |
+| `LocationService` | `autocomplete` | `[query]` | Location autoselect in appointment detail |
+| `RoomService` | `autocompleteAvailableRooms` | `[locationId]` | Room autoselect (filtered by location) |
+| `UserService` | `findDoctor` | `[query]` | Preferred doctors in councilPlan; doctor search in council |
+| `UserService` | `findEmployee` | `[query]` | DocFinder dialog in council |
+| `UserService` | `getImage` | `UserService/getImage/{userId}/profile.jpg` | Doctor profile images in assigned tab |
+| `PatientDataService` | `upload` | `multipart/form-data` | Patient data attachments |
+
+### Event Flows
+
+| Type | Direction | Event | Linked Document | Condition |
+|------|-----------|-------|-----------------|----------|
+| event | **Outgoing** | `MonthTable.init("AppointmentService", ...)` | [Appointment Details Scheduling](../appointment/appointment-details-scheduling.md) | Cell click -> open detail dialog |
+| event | **Incoming** | `suggestType` | [Appointment Details Scheduling](../appointment/appointment-details-scheduling.md) | Date/time change triggers price type suggestion |
+| event | **Outgoing** | `AssignmentService.*` actions | [Appointment Assign User](../appointment/appointment-assign-user.md) | Accept/Reserve/Override/Reject/Abort |
+
+---
+
+> **Include context:** This file's source `council/` embeds `appointment/details.html` (via Mustache partial `{{> appointmentDetails}}`) and `appointment/assignUser.html` (via `{{> assignUserDlg}}`) — the same shared templates used by shift and treatment modules. The council module is a filtered view of the appointment system with `jobType="COUNCIL"`. CouncilPlan (`councilPlan/`) is a standalone CRUD that generates council appointments via `CouncilPlanService.publishNext()`.
+
 ## 1. Module Overview
 
 ### 1.1 Council (Filtered Appointment View)

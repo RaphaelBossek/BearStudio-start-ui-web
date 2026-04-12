@@ -13,6 +13,16 @@ title: 'Consultation Details Incarceration'
 
 ---
 
+## Cross-References
+
+### Source Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Included by** | `{{> detailDataIncarceration}}` | [Consultation Details Header](consultation-details-header.md) | Incarceration form in consultation details |
+
+---
+
 ## 1. Block: Incarceration Type
 
 **Section title**: `{{i18n.IncarcerationType}}` -- "Gewahrsamkeits-Typ" / "Custody type"

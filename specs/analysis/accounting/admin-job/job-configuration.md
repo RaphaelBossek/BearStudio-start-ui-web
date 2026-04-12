@@ -15,6 +15,25 @@ title: 'Job Configuration'
 
 ---
 
+## Cross-References
+
+### Service Calls
+
+| Service | Method | Parameters | Dialog / Context |
+|---------|--------|------------|------------------|
+| `JobService` | `getAll` | `[id, limit]` | Grid data load (100-row limit) |
+| `JobService` | `get` | `[id]` | Detail dialog fetch |
+| `JobService` | `getAvailableShift` | `[id]` | Shift job `<option>` list (server-side) |
+| `JobService` | `getAvailableAppointment` | `[id]` | Appointment job `<option>` list (server-side) |
+| `JobService` | `getAvailableCouncil` | `[id]` | Council job `<option>` list (server-side) |
+| `StornoGroupService` | `getAll` | `[id]` | Storno/cancellation group `<option>` list |
+| `UserService` | `saveSetting` | `[key, value]` | Grid column settings persistence |
+| `SkillService` | `autocomplete` | `[query]` | `#skillSelectDlg` skill search |
+
+> **Service context:** Job configuration is the master admin UI for managing job/service definitions. It provides autocomplete lookups for all three job types (APPOINTMENT, SHIFT, COUNCIL) and hosts the skill rule editor used to constrain expert assignment.
+
+---
+
 ## 1. HTMLM Metadata
 
 | Property       | Value                                          |

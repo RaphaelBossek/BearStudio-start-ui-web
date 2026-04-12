@@ -10,13 +10,26 @@ This analysis covers the **standard user** (`{{#isStandard}}`) blocks and the **
 
 ---
 
-## Event Flow Cross-References
+## Cross-References
 
-| Direction | Event | Linked Document | Condition |
-|-----------|-------|-----------------|----------|
-| **Outgoing** | `loadConsultation` | [Consultation Wizard](../../treatment/dashboard/consultation-wizard.md#2-dialog-navigation-diagram) | `newPatient` / `startBasisWeb` click on active appointment |
-| **Outgoing** | `ConsultationDetails.open()` | [Consultation Details JS](../../treatment/consultation/consultation-details-js.md#2-dialog-lifecycle) | Consultation row click (editable) or treatment task edit |
-| **Outgoing** | `consultationWithTemplateBtn` click | [Consultation Template](../../treatment/dashboard/consultation-template.md#click-actions) | NavBar "Consultation template" button (always visible) |
+### Event Flows
+
+| Type | Direction | Event | Linked Document | Condition |
+|------|-----------|-------|-----------------|----------|
+| event | **Outgoing** | `loadConsultation` | [Consultation Wizard](../../treatment/dashboard/consultation-wizard.md#2-dialog-navigation-diagram) | `newPatient` / `startBasisWeb` click on active appointment |
+| event | **Outgoing** | `ConsultationDetails.open()` | [Consultation Details JS](../../treatment/consultation/consultation-details-js.md#2-dialog-lifecycle) | Consultation row click (editable) or treatment task edit |
+| event | **Outgoing** | `consultationWithTemplateBtn` click | [Consultation Template](../../treatment/dashboard/consultation-template.md#click-actions) | NavBar "Consultation template" button (always visible) |
+
+### Service Calls
+
+| Service | Method | Parameters | Context |
+|---------|--------|------------|---------|
+| `AppointmentService` | `activate` | `[appointment.id]` | Start appointment (triggers `reload`) |
+| `ConsultationService` | `remove` | `[pojo.id]` | Delete consultation (triggers `reload`) |
+| `ConsultationService` | `getReporting` | `[pojo.id]` | Open review dialog (`#consultationDetailsReviewDlg`) |
+| `TreatmentService` | `getReport` | `[pojo.treatment.id, pojo.consultationId]` | Edit treatment task (triggers `ConsultationDetails.open()`) |
+| `AppointmentService` | `summarize` | `[id, timeStart, timeEnd, qm]` | End shift with external location (triggers `reload`) |
+| `AppointmentService` | `done` | `[id, timeStart, timeEnd, qm]` | End appointment non-shift (triggers `reload`) |
 
 > **Downstream chains:**
 > - `loadConsultation` → [Consultation Wizard](../../treatment/dashboard/consultation-wizard.md) → (conditionally) `loadBasisweb` → [BasisWeb Wizard](../../interfaces/dashboard/basisweb-wizard.md)

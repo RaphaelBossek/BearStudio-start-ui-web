@@ -122,3 +122,17 @@ Max results selector: 100 (default), 150, 200, 300, 500, >500.
 - `UserService.saveSetting` persists column layout preferences
 - Grid columns are declared with `data-*` attributes on `<span>` elements
 - Filter panels are Bootstrap offcanvas components
+
+---
+
+## Cross-References
+
+| Relation | Path | Notes |
+|----------|------|-------|
+| Parent spec | `specs/analysis/planning/appointment-support/` | Directory for appointment-support specs |
+| Extracted from | `specs/analysis/planning/admin/simple-cruds.md` | Source document for C (Work Hour Templates) and E (Cross-Cutting Patterns) |
+| User Management | `specs/analysis/planning/admin-skill/skill.md` | Related domain — User Management |
+| System / MOTD | `specs/analysis/planning/admin-cruds/motd-template.md` | Related domain — System MOTD + Template |
+| Source HTMLM | `admin/workHour.htmlm` | Work hour template (79 lines) |
+| Source JS | `admin/workHour.js` | Work hour service binding (38 lines) |
+| Service | `WorkHourService.getAll` | List method used by the grid |

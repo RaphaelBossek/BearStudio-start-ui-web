@@ -6,6 +6,18 @@ title: 'Accounting Config'
 > **Sections extracted here**: jobPriceList (E), product (F), closedMonth (G), stornoGroup (C), expertWorkMonthly (H)
 > **Other domains received**: system/config/system-config.md got locationType (A), exclusionCriteria (B), supportCategory (D), loginNotification (I)
 
+## Cross-References
+
+### Split Relationships
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| split | **Sibling** | Same source: `config-cruds/` | [System Config](../../system/config/system-config.md) | Extracted from same `config-cruds/` directory |
+
+> **Split origin:** Both this file and [System Config](../../system/config/system-config.md) were extracted from the same `config-cruds/` directory. This file covers jobPriceList (E), product (F), closedMonth (G), stornoGroup (C), expertWorkMonthly (H); the sibling covers locationType (A), exclusionCriteria (B), supportCategory (D), loginNotification (I).
+
+---
+
 # 01 - Config CRUD Modules (Low-Priority Admin Pages)
 
 > **Source directories** (all under `~/src/vc/videoclinic-prod/web/src/main/webapp/`)
@@ -459,4 +471,41 @@ Separate modal dialog (`#exportStatusDlg`) with:
   Other tabs: Price Lists (job-type prices), Products (8 fields),
   Closed Months [batch: generated] (3 milestones, no add/delete),
   Expert Work Monthly [cond: role=ADMIN|ACCOUNTING] (ZIP export, polling)
+```
+
+---
+
+## Cross-References
+
+### Related Documentation
+
+- **Wireframe**: [`specs/wireframes/accounting/workflows.md#w6-accounting-config`](../../../wireframes/accounting/workflows.md#w6-accounting-config)
+- **Config CRUDs (parent)**: [`specs/analysis/config-cruds/config-cruds.md`](../../config-cruds/config-cruds.md)
+- **System Config (sibling domains)**: [`specs/analysis/system/config/system-config.md`](../../system/config/system-config.md)
+
+### Cross-Module Dependencies
+
+| Module | Referenced Entity | Type | Location |
+|--------|-------------------|------|----------|
+| E. Job Price List | `Job` | Entity | `prices.job.code`, `prices.job.type` |
+| E. Job Price List | `HourlyRoundingType` | Enum | `FULL_HOUR`, `HALF_HOUR` |
+| F. Product | `BillType` | Enum | `MONTH`, `DAILY`, `WEEKDAYS` |
+| F. Product | `ProductTarget` | Enum | `CUSTOMER`, `LOCATION`, `EXPERT`, `EQUIPMENT`, `ANY` |
+| H. Expert Work Monthly | `User` / `Expert` | Entity | `data.doctorName`, `data.employeeType`, `data.user.id` |
+| H. Expert Work Monthly | `Job` | Entity | `worklog.job.expertTitle` |
+| H. Expert Work Monthly | `ClosedMonth` | Concept | Monthly period closing |
+| H. Expert Work Monthly | `Luxon` | Library | `luxon.DateTime.now()` for date calculations |
+
+### Shared UI Components
+
+| Component | Used By |
+|-----------|---------|
+| `slickerGrid` (fullscreen) | All modules |
+| `Formatter.dateTime` | E, G, H |
+| `Formatter.bool` | E, F |
+| `Formatter.currency` | H |
+| `Formatter.month` | H |
+| `Formatter.productTarget` | F (custom) |
+| `Formatter.humantimeDayFormatter` | H (custom) |
+| `UserService.saveSetting` | All modules (grid persistence) |
 ```

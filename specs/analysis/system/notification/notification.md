@@ -18,6 +18,45 @@ title: 'Notification'
 
 ---
 
+## Cross-References
+
+### Source Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Included by** | `{{> sendMessage}}` | [Calendar View](../../planning/dashboard/calendar-view.md) | BIRTHDAY event click opens send-message dialog |
+| include | **Included by** | `{{> sendMessage}}` | [Month View](../../planning/dashboard/month-view.md) | Birthday flow send message |
+| include | **Included by** | `{{> sendMessage}}` | [Week View](../../planning/dashboard/week-view.md) | Birthday flow send message |
+
+### Event Flows
+
+| Type | Direction | Event | Linked Document | Condition |
+|------|-----------|-------|-----------------|----------|
+| event | **Outgoing** | `sendUserMessage({ to, subject, message })` | [Calendar View](../../planning/dashboard/calendar-view.md) | BIRTHDAY calendar event click |
+
+### Service Calls
+
+| Service | Method | Parameters | Dialog / Context |
+|---------|--------|------------|------------------|
+| `NotificationService` | `list` | `[folder, event, unread, limit?, {filter}?]` | Grid load / filter change |
+| `NotificationService` | `get` | `[id]` | Inline detail pane |
+| `NotificationService` | `removeAll` | `[folder]` | Delete All button |
+| `NotificationService` | `move` | `[ids[], "ARCHIVE"]` | Archive button |
+| `NotificationService` | `restore` | `[ids[]]` | Restore button |
+| `NotificationService` | `writeMultimessage` | `[tos[], subject, message]` | Write Multi Message dialog |
+| `NotificationService` | `writeMessage` | `[toUserId, subject, message]` | Send Message partial / Write Single dialog |
+| `UserService` | `list` | `[isCustomer, role]` | Multi-message user list |
+| `UserService` | `findEmployee` | `(search text)` | Recipient autocomplete |
+| `UserService` | `saveSetting` | `[name, settingsJSON]` | Grid column settings |
+
+---
+
+> **Include context:** `sendMessage.mustache` is a shared partial embedded in [Calendar View](../../planning/dashboard/calendar-view.md), [Month View](../../planning/dashboard/month-view.md), and [Week View](../../planning/dashboard/week-view.md) for sending birthday and other notifications.
+>
+> **Event chain:** [Calendar View](../../planning/dashboard/calendar-view.md) -> BIRTHDAY click -> `sendUserMessage()` -> **this file** (sendMessage partial)
+
+---
+
 ## 1. Block: Notification List (Grid)
 
 ### 1.1 HTMLM Header Metadata

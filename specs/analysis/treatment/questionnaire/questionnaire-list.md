@@ -346,3 +346,22 @@ erDiagram
 - `ratingEquipmentStethoskop` (German spelling, English: `stethoscope`)
 
 These should be normalized to correct English spelling in the reimplementation, with migration mappings documented.
+
+---
+
+## Cross-References
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Included by** | `{{> questionaire}}` | [Dialogs Treatment](../dashboard/dialogs-treatment.md) | QM list partial in treatment dashboard dialogs |
+| include | **Included by** | `{{> questionaire}}` | [Appointment Admin](../../planning/appointment-admin/appointment-admin.md) | QM list view in admin panel |
+| service | **Uses** | `QuestionaireService.getAll` | [Questionnaire Detail](questionnaire-detail.md) | List service; `get` used for inline detail panel |
+| service | **Uses** | `UserService.saveSetting` | [Profile Staff](../../user-management/profile/profile-staff.md) | Persists grid column settings per user |
+| event | **Incoming** | `rowSelected` | [Consultation Details JS](../consultation/consultation-details-js.md) | Empty handler; toolbar buttons never enabled on row selection |
+| entity | **References** | `Appointment` | [Appointment Details Patient](appointment-details-patient.md) | FK via `appointmentId` (column 2) |
+| entity | **References** | `Consultation` | [Consultation Details Standard](../consultation/consultation-details-standard.md) | FK via `consultationId` (column 3) |
+| entity | **References** | `Customer` | [Customer List Detail](../../customer/customer-core/customer-list-detail.md) | FK via `customerId` (column 4) |
+| entity | **References** | `Location` | [Location And Users](../../customer/customer-core/location-and-users.md) | FK via `locationId` (column 5) |
+| entity | **References** | `Expert` | [Profile Staff](../../user-management/profile/profile-staff.md) | FK via `expertId` (column 6); expert profile |
+
+> **Include context:** This page is the QM list entry point. Its companion detail dialog is documented in [Questionnaire Detail](questionnaire-detail.md). The `QuestionaireService` is shared with the detail dialog via `getAll` (list) and `get` (inline detail fetch).

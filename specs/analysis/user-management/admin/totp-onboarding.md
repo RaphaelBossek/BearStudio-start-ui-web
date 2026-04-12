@@ -27,6 +27,37 @@ title: 'Totp Onboarding'
 - `totp`: Fetches the user's TOTP token record from `UserService.getToken`. Returns an object with `activated`, `secret`, `agent`, `ip`, `dateUsed` fields.
 - `totpOnboarding`: Loads the partial template for TOTP onboarding UI.
 
+## Cross-References
+
+### Source Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Included by** | `{{> totpOnboarding}}` via HTMLM serviceCall | [User Management Admin](../admin/user-management.md) | TOTP onboarding rendered on security page |
+| include | **Included by** | `{{> totpOnboarding}}` via HTMLM serviceCall | [Includes Shared Components](../../system/includes/includes-shared-components.md) | Security nav links to userSecurity page |
+
+### Service Calls
+
+| Service | Method | Parameters | Linked Document | Context |
+|---------|--------|------------|-----------------|---------|
+| `UserService` | `getToken` | `[]` | — | Fetches TOTP token record on page load |
+| `UserService` | `showToken` | — | — | Serves QR code image at `/get/UserService/showToken` |
+| `UserService` | `registerDevice` | `[]` | — | Creates new TOTP secret from `#addTOTPDevice` click |
+| `UserService` | `checkTotp` | `[token]` | — | Validates 6-digit code from `#submitToken` |
+| `UserService` | `activateTotp` | `[token]` | — | Activates TOTP after valid `checkTotp` response |
+| `UserService` | `prepareResetTotp` | `[]` | — | Prepares server for TOTP deletion |
+| `UserService` | `resetTotp` | `[token]` | — | Removes TOTP after `#resetTOTP` click |
+
+### Event Flows
+
+| Type | Direction | Event | Linked Document | Condition |
+|------|-----------|-------|-----------------|----------|
+| event | **Outgoing** | `success` (jQuery) | [User Management Admin](../admin/user-management.md) | Triggered on `#totpOnboarding` after TOTP activation; `userSecurity.js` reloads page |
+
+> **Include context:** This file documents `admin/totpOnboarding.html` and related scripts (`totpOnboarding.js`, `userSecurity.js`). The template is loaded via HTMLM `serviceCall` as the `totpOnboarding` partial field. The `success` event fires on `#totpOnboarding` after `UserService.activateTotp` completes, signaling `userSecurity.js` to reload the security page. Profile pages ([profile-form.md](../profile/profile-form.md), [profile-staff.md](../profile/profile-staff.md)) link to the security page where this TOTP onboarding is embedded.
+
+---
+
 ## Page States (Conditional Rendering)
 
 The template uses Mustache conditionals to show three distinct states:

@@ -15,6 +15,36 @@ title: 'Consultation Details Standard'
 
 ---
 
+## Cross-References
+
+### Source Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Included by** | `{{> detailDataStandard}}` | [Consultation Details Header](consultation-details-header.md) | Standard consultation form fields; embedded as partial in the main detail dialog |
+| include | **Included by** | `{{> consultationDetails}}` | [Consultation List](consultation-list.md) | The header partial is embedded in the main consultation dialog opened from the list |
+
+### Service Calls
+
+| Service | Method | Parameters | Dialog / Context |
+|---------|--------|------------|------------------|
+| `ConsultationService` | `prescription` | `[searchTerm]` | `#medicationAutoSelect` autocomplete; inserts prescription into `data.standard.prescription` |
+| `IcdService` | `autocomplete` | `[searchTerm]` | `.icd10insert` autocomplete; inserts diagnosis into `data.standard.diagnosis` |
+| `IcdService` | `search` | `[query]` | `#searchIcd10Btn` dialog; ICD-10 code search |
+
+### Event Flows
+
+| Type | Direction | Event | Linked Document | Condition |
+|------|-----------|-------|-----------------|----------|
+| jQuery | **Outgoing** | `insert` on `.icd10insert` | [Consultation Details JS](consultation-details-js.md) | ICD-10 code selected from autocomplete; fires insert event picked up by the main details JS |
+| jQuery | **Outgoing** | `insert` on `.medicationInsert` | [Consultation Details JS](consultation-details-js.md) | Medication selected from autocomplete; fires insert event picked up by the main details JS |
+
+> **Include context:** `detailDataStandard.html` is embedded as `{{> detailDataStandard}}` partial inside the `{{> consultationDetails}}` dialog scaffold (documented in [Consultation Details Header](consultation-details-header.md)), which is opened by [Consultation List](consultation-list.md) via `ConsultationDetails.open()`. This template is one of several `detailData*.html` fragments used by [Consultation Details JS](consultation-details-js.md).
+>
+> **Outgoing chain:** **this file** -> `.icd10insert` / `.medicationInsert` -> `insert` event -> [Consultation Details JS](consultation-details-js.md) -> handles ICD-10/medication insertion into the form
+
+---
+
 ## 1. Block: Medication Anamnesis (col-md-4)
 
 Section title: `{{i18n.AnamnesisType.MEDICATION}}` ("Medication history")

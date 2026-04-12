@@ -266,6 +266,24 @@ invoiceReceiver
 
 ---
 
+## Cross-References
+
+| Reference | Type | Target | Anchor |
+|---|---|---|---|
+| [Wireframe: W4 Invoice Receiver](#wireframe-reference-ascii) | internal-anchor | — | `#w4-invoice-receiver` |
+| [`specs/wireframes/accounting/workflows.md#w4-invoice-receiver`](../../../wireframes/accounting/workflows.md#w4-invoice-receiver) | cross-file | `workflows.md` | `#w4-invoice-receiver` |
+
+### Related Analysis Files
+
+- [`specs/analysis/accounting/invoice/invoice.md`](../invoice/invoice.md) — invoice creation triggered by Invoice Receiver (`createMonthlyInvoice`)
+- [`specs/analysis/utility/worklog-templates-files.md`](../../utility/worklog-templates-files.md) — source file this module was split from
+
+### Related MongoDB Mapping Files
+
+- [`specs/mongodb-mapping/accounting.md`](../mongodb-mapping/accounting.md) — `invoice`, `invoiceComponent`, `product` collections
+
+---
+
 ## Wireframe Reference (ASCII)
 
 > Full wireframe: [`specs/wireframes/accounting/workflows.md#w4-invoice-receiver`](../../../wireframes/accounting/workflows.md#w4-invoice-receiver)

@@ -2,16 +2,41 @@
 title: 'Dialogs Treatment'
 ---
 
----
----
-
 # 04 - Dashboard Dialogs — Treatment
 
-> **Split from**: `dash/dashboard-dialogs.md`
-> **Sections extracted here**: Dialog 3 (endAppointmentDlg), Dialog 5 (summarizeAppointmentDlg), Dialog 7 (consultationIncarcerationCheck), Dialog 8 (consultationIncarceration)
-> **Other domains received**: Planning (`04-dialogs-planning.md` — Dialogs 2, 6, 9, 10), User Management (`04-dialogs-user-management.md` — Dialog 1), System (`04-dialogs-system.md` — Dialog 4)
+> **Source**: `dash/index.htmlm` (lines 624-896), `dash/dash.js`
 
-> Source: `dash/index.htmlm` (lines 624-896), `dash/dash.js`
+---
+
+## Cross-References
+
+### Source Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Included by** | `{{> detailQuestionaire}}` | [Dialogs Planning](../planning/dashboard/dialogs-planning.md) | QM questionnaire partial in planning dialogs |
+| include | **Included by** | `{{> detailQuestionaire}}` | [Dialogs System](../system/dashboard/dialogs-system.md) | QM questionnaire partial in system dialogs |
+| include | **Included by** | `{{> detailQuestionaire}}` | [Dialogs User Management](../user-management/dashboard/dialogs-user-management.md) | QM questionnaire partial in user management dialogs |
+| include | **Includes** | `{{> detailQuestionaire}}` | [Questionnaire Detail](../../questionnaire/questionnaire-detail.md) | QM questionnaire partial (quality management) |
+| include | **Includes** | `{{> jobStatusDlg}}` | [Job Status Dialog](dialogs-system.md) | Job status dialog (PDF download link) |
+
+### Service Calls
+
+| Service | Method | Parameters | Dialog / Context |
+|---------|--------|------------|-------------------|
+| `AppointmentService` | `done` | `[id, timeStart, timeEnd, qm]` | `#endAppointmentDlg` — End appointment |
+| `AppointmentService` | `summarize` | `[data]` | `#summarizeAppointmentDlg` — Summarize external-location appointment |
+| `ConsultationService` | `checkCustomer` | `[bookNumber, code]` | `#consultationIncarcerationCheck` — Verify incarceration book number + code |
+| `ConsultationService` | `prepareCustomer` | `[bookNumber, code, target]` | `#consultationIncarceration` — Retrieve incarceration data + trigger PDF download |
+
+### Event Flows
+
+| Type | Direction | Event | Linked Document | Condition |
+|------|-----------|-------|-----------------|----------|
+| event | **Outgoing** | `dialogopen` | (self) | Sets title icon/text based on appointment type in `#summarizeAppointmentDlg` |
+| event | **Incoming** | `data.dateRetrieved` truthy | (self) | Shows `#previousRetrieval` alert in `#consultationIncarceration` |
+
+> **Include context:** This file's source (`dash/index.htmlm`) embeds `{{> detailQuestionaire}}` partial which is also embedded in three other dialogs files: [Dialogs Planning](../planning/dashboard/dialogs-planning.md), [Dialogs System](../system/dashboard/dialogs-system.md), and [Dialogs User Management](../user-management/dashboard/dialogs-user-management.md).
 
 ---
 

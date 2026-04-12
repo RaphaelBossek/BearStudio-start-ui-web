@@ -13,6 +13,19 @@ title: 'Consultation Details Onboarding'
 
 ---
 
+## Cross-References
+
+### Source Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Included by** | `{{> detailDataOnboarding}}` | [Consultation Details Header](consultation-details-header.md) | Full onboarding form (ONBOARDING type) |
+| include | **Included by** | `{{> detailDataOnboardingShort}}` | [Consultation Details Header](consultation-details-header.md) | Short onboarding form (ONBOARDING_SHORT type) |
+
+> **Include context:** This file's sources `detailDataOnboarding.html` and `detailDataOnboardingShort.html` are embedded as `{{> detailDataOnboarding}}` and `{{> detailDataOnboardingShort}}` partials in [Consultation Details Header](consultation-details-header.md). Both partials are conditionally rendered based on `consultation.type === 'ONBOARDING'` or `'ONBOARDING_SHORT'` respectively.
+
+---
+
 ## 1. Block: Full Onboarding Form (`ONBOARDING`)
 
 This is the comprehensive medical intake form used when a patient is onboarded. It is rendered as a partial inside the consultation details dialog when `consultation.type === 'ONBOARDING'`.

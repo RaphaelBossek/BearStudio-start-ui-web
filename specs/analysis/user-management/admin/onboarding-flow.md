@@ -11,12 +11,31 @@ title: 'Onboarding Flow'
 
 ## Cross-References
 
+### Source Includes
+
 | Type | Direction | Detail | Linked Document | Condition / Context |
 |------|-----------|--------|-----------------|---------------------|
-| include | **Included by** | `{{> onboardingDlg}}` | [Staff Management List](../profile/profile-staff.md#2-block-staff-list-page-grid) | `staff.htmlm` embeds `onboarding/form.html` as Mustache partial; toolbar button opens dialog for selected employee |
-| event | **Incoming** | `openOnboarding(id, "EMPLOYEE")` | [Staff Management List](../profile/profile-staff.md#9-click-actions-js) | `#onboardingMenuBtn` click on selected row calls `openOnboarding()` defined in `form.js` |
+| include | **Included by** | `{{> onboardingDlg}}` | [Staff Management List](../profile/profile-staff.md#cross-references) | `staff.htmlm` embeds `onboarding/form.html` as Mustache partial; toolbar button opens dialog for selected employee |
+
+### Event Flows
+
+| Type | Direction | Event | Linked Document | Condition |
+|------|-----------|-------|-----------------|-----------|
+| event | **Incoming** | `openOnboarding(id, "EMPLOYEE")` | [Staff Management List](../profile/profile-staff.md#cross-references) | `#onboardingMenuBtn` click on selected row calls `openOnboarding()` defined in `form.js` |
+
+### Service Calls
+
+| Service | Method | Parameters | Dialog / Context |
+|---------|--------|------------|------------------|
+| `OnboardingService` | `getData` | `[assignmentType]` | Grid table data load |
+| `OnboardingService` | `get` | `[id, type]` | Dialog open via `openOnboarding()` |
+| `OnboardingService` | `save` | `[data]` | Dialog save |
+| `OnboardingService` | `upload` | `[stepId, onboardingId]` | File upload in dialog |
+| `OnboardingService` | `export` | URL: `/get/.../export/{TYPE}/{filename}` | Export button |
 
 > **Include context:** This file's source `onboarding/form.html` is embedded as `{{> onboardingDlg}}` in the three onboarding list views (`index.htmlm`, `customer.htmlm`, `location.htmlm`) AND in [Staff Management List](../profile/profile-staff.md). The staff page invokes the dialog via `openOnboarding(id, "EMPLOYEE")` for the currently selected employee row.
+
+---
 
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: cross-references
-description: Add bidirectional cross-references between analysis markdown files. Covers event flows (jQuery triggers, function calls), structural dependencies (script includes, Mustache partials), and split-file relationships. Use when spec files are coupled through events, shared templates, or script includes and need navigable links between them.
+description: Add standardized cross-references between analysis markdown files. Covers source includes (Mustache partials, script includes), service calls (backend invocations), event flows (jQuery triggers, function calls), and split-file relationships. Use when spec files are coupled through events, shared templates, or script includes and need navigable links between them.
 argument-hint: [source-file] [target-file] [coupling-type]
 user-invocable: true
 allowed-tools: Read, Write, Edit, Glob, Grep
@@ -10,11 +10,12 @@ allowed-tools: Read, Write, Edit, Glob, Grep
 
 ## Role
 
-You maintain navigable, bidirectional links between analysis/spec markdown files that are coupled through any of three mechanisms:
+You maintain navigable, bidirectional links between analysis/spec markdown files that document the same brownfield application. Files are coupled through:
 
-1. **Event flows** — `$(document).trigger()` / `.on()` patterns, or direct function calls across namespaces (e.g. `ConsultationDetails.open()`)
-2. **Script/partial includes** — Mustache partials (`{{> partialName}}`), `<script src="...">` includes, or template embeds that pull one brownfield source into another
-3. **Split-file relationships** — when a single brownfield source (e.g. `appointment/details.html`) was split into multiple analysis files covering different aspects (e.g. scheduling vs. patient tabs)
+1. **Source Includes** — Mustache partials (`{{> partialName}}`), `<script src="...">` includes, or template embeds that pull one brownfield source into another
+2. **Service Calls** — Backend service invocations via `Service.method(params)` patterns in JavaScript
+3. **Event Flows** — jQuery events (`$(document).trigger()` / `.on()`) or direct namespace function calls (e.g. `ConsultationDetails.open()`)
+4. **Split-file Relationships** — when a single brownfield source was split into multiple analysis files covering different aspects
 
 The goal is to let readers jump back and forth between related spec files without grep-ing the codebase.
 
@@ -23,53 +24,63 @@ The goal is to let readers jump back and forth between related spec files withou
 - A spec file documents a UI that fires an event or calls a function defined in another spec file
 - A spec file's brownfield source is included as a Mustache partial or script tag in another spec file's brownfield source
 - A spec file was split from the same brownfield source as another spec file
+- A spec file makes backend service calls that should be documented
 - You need to make any of these relationships explicit and navigable
 
-## Section Format
+## Standardized Section Format
 
-Add a `## Cross-References` section to each participating file. Place it **early in the document** — after the title/frontmatter and source-file references, but **before** the first content section.
+Add a `## Cross-References` section to each analysis file. Place it **early in the document** — after the title/frontmatter and source-file references, but **before** the first content section.
 
-### Required Table
+### Required Structure
 
 ```markdown
 ## Cross-References
 
+### Source Includes
+
 | Type | Direction | Detail | Linked Document | Condition / Context |
 |------|-----------|--------|-----------------|---------------------|
-| event | **Outgoing** | `loadConsultation` | [Consultation Wizard](path#anchor) | `newPatient` click |
+| include | **Includes** | `{{> partialName}}` | [Document](path#anchor) | What the partial provides |
+| include | **Included by** | `{{> partialName}}` | [Host Document](path#anchor) | Where it's embedded |
+
+### Service Calls
+
+| Service | Method | Parameters | Dialog / Context |
+|---------|--------|------------|------------------|
+| `AppointmentService` | `done` | `[id, timeStart, timeEnd, qm]` | `#endAppointmentDlg` |
+| `ConsultationService` | `checkCustomer` | `[bookNumber, code]` | `#consultationIncarcerationCheck` |
+
+### Event Flows
+
+| Type | Direction | Event | Linked Document | Condition |
+|------|-----------|-------|-----------------|----------|
 | event | **Incoming** | `ConsultationDetails.open()` | [Dashboard Main](path#anchor) | Consultation row click |
-| include | **Included by** | `{{> assignUserDlg}}` | [Appointment List](path#anchor) | Mustache partial |
-| include | **Includes** | `<script src="expertDays.js">` | [Expert Availability](path#anchor) | Script include |
-| split | **Sibling** | Same source: `appointment/details.html` | [Appointment Details Patient](path#anchor) | Tab 3 extracted |
-```
+| event | **Outgoing** | `loadBasisweb` | [BasisWeb Wizard](path#anchor) | Conditional on patient type |
+
+---
+
+### Type Column Values
 
 The **Type** column classifies the coupling:
-- `event` — document-level events, direct function calls across files
 - `include` — Mustache partial includes (`{{> name}}`), script includes (`<script src="...">`), template embeds
+- `service` — Backend service invocations via `Service.method(params)` patterns
+- `event` — jQuery events or direct function calls across files
 - `split` — two analysis files covering different parts of the same brownfield source
 
-The **Direction** column uses these values:
+### Direction Column Values
+
 - For `event`: **Incoming** / **Outgoing**
 - For `include`: **Included by** (this file's source is pulled into another) / **Includes** (this file's source pulls in another)
 - For `split`: **Sibling** (peer relationship — both directions get the same type)
 
 ### Required Chain/Context Summary
 
-Below the table, add a blockquote summarising the relationship:
+Below the tables, add a blockquote summarising the relationship:
 
-For event flows:
 ```markdown
-> **Event chain:** [File A](path) -> `event1` -> **this file** -> `event2` -> [File C](path)
-```
+> **Include context:** This file's source `detailQM.html` is embedded as `{{> detailQuestionaire}}` partial in [Dialogs Treatment](path), [Consultation Details Header](path), and [Appointment Admin](path).
 
-For includes:
-```markdown
-> **Include context:** This file's source `assignUser.html` is embedded as `{{> assignUserDlg}}` in [Appointment List](path), [Shift List](path), [Treatment List](path), and [Council List](path).
-```
-
-For splits:
-```markdown
-> **Split origin:** Both this file and [Appointment Details Patient](path) were extracted from `appointment/details.html`. This file covers scheduling (Tabs 1/2/4/5); the sibling covers patient data (Tab 3).
+> **Event chain:** [Dashboard Main](path) -> `loadConsultation` -> **this file** -> `loadBasisweb` -> [BasisWeb Wizard](path)
 ```
 
 ### Close with a horizontal rule
@@ -103,18 +114,23 @@ Target the **most relevant section anchor** in the linked file. Use GitHub-compa
 
 The **Condition / Context** column must explain:
 - For events: *when* the event fires (guard expressions, user actions)
-- For includes: *which partial/script name* and *what it provides* (e.g. "Collision resolution dialog for doctor assignments")
-- For splits: *which portion* of the original source each sibling covers
+- For includes: *which partial/script name* and *what it provides*
+- For services: *which dialog or context* uses this call
 
 ### 4. Standardized section name
 
 Always use exactly `## Cross-References` as the heading. This makes it searchable with grep across the spec tree.
 
-**Migration note:** Files with the older `## Event Flow Cross-References` heading should be updated to `## Cross-References` when touched. The table gains a new `Type` column.
+**Migration note:** Files with the older `## Event Flow Cross-References` heading should be updated to `## Cross-References` with the new table format including the Type column.
 
-### 5. One table per file, multiple rows
+### 5. Subsection organization
 
-If a file has multiple cross-references of different types, list them all in the same table. Group by type: `event` rows first, then `include`, then `split`.
+Use three optional subsections depending on what the file contains:
+1. **Source Includes** — for Mustache partials and script includes
+2. **Service Calls** — for backend service invocations
+3. **Event Flows** — for jQuery events and function calls
+
+If a file has multiple cross-reference types, use all relevant subsections. Group by type.
 
 ### 6. Chain/context summary covers the full picture
 
@@ -145,13 +161,14 @@ For split files, always state the original brownfield source filename and what e
 ### Step 1: Identify coupling type
 
 Read all files mentioned by the user. For each file, classify the coupling:
+- **Source Include**: Mustache `{{> partial}}`, `<script src="...">` tags, template includes in HTMLM headers
+- **Service Call**: `Core.conn.execute("Service", "method", [params])` or similar backend invocation patterns
 - **Event**: `$(document).trigger()`, `.on()`, direct namespace function calls (e.g. `ConsultationDetails.open()`)
-- **Include**: Mustache `{{> partial}}`, `<script src="...">` tags, template includes in HTMLM headers
 - **Split**: "Split from" / "Sections extracted" notes at the top of analysis files
 
 ### Step 2: Identify all participating files
 
-For includes, search for the partial/script name across all analysis files to find every host that embeds it. For events, trace the full call chain. For splits, find all analysis files mentioning the same brownfield source.
+For includes, search for the partial/script name across all analysis files to find every host that embeds it. For services, trace the JS files for service calls. For events, trace the full call chain. For splits, find all analysis files mentioning the same brownfield source.
 
 ### Step 3: Compute relative paths
 
@@ -174,23 +191,49 @@ For each relative path link, verify the target file exists. Report any broken li
 
 ## Examples
 
-### Example 1: Event flow (function call)
+### Example 1: Dialog with source includes and service calls
 
 ```markdown
 ## Cross-References
+
+### Source Includes
 
 | Type | Direction | Detail | Linked Document | Condition / Context |
 |------|-----------|--------|-----------------|---------------------|
-| event | **Incoming** | `ConsultationDetails.open()` | [Dashboard Main](../../system/dashboard/dashboard-main.md#block-consultations-table) | Consultation row click (editable) |
-| event | **Incoming** | `ConsultationDetails.open()` | [Consultation Wizard](../dashboard/consultation-wizard.md#54-step-4-cw-success--summary--confirm) | After `ConsultationService.start` succeeds |
+| include | **Includes** | `{{> detailQuestionaire}}` | [Questionnaire Detail](../../treatment/questionnaire/questionnaire-detail.md) | QM questionnaire partial |
 
-> **Incoming calls:** [Dashboard Main](path), [Consultation Wizard](path), [BasisWeb Wizard](path), and [Consultation Template](path) all call `ConsultationDetails.open()` -> **this file**
-```
+### Service Calls
 
-### Example 2: Mustache partial include
+| Service | Method | Parameters | Dialog | Context |
+|---------|--------|------------|--------|---------|
+| `AppointmentService` | `done` | `[id, timeStart, timeEnd, qm]` | `#endAppointmentDlg` | End appointment |
+| `ConsultationService` | `checkCustomer` | `[bookNumber, code]` | `#consultationIncarcerationCheck` | Verify incarceration |
+
+---
+
+### Example 2: Event flow with incoming and outgoing events
 
 ```markdown
 ## Cross-References
+
+### Event Flows
+
+| Type | Direction | Event | Linked Document | Condition |
+|------|-----------|-------|-----------------|----------|
+| event | **Incoming** | `ConsultationDetails.open()` | [Dashboard Main](../../system/dashboard/dashboard-main.md#block-consultations-table) | Consultation row click |
+| event | **Outgoing** | `loadBasisweb` | [BasisWeb Wizard](../../interfaces/dashboard/basisweb-wizard.md#invocation) | `location.patientDataType == "EXTERNAL_BASISWEB"` |
+
+> **Event chain:** [Dashboard Main](../../system/dashboard/dashboard-main.md) -> `loadConsultation` -> **this file** -> `loadBasisweb` -> [BasisWeb Wizard](../../interfaces/dashboard/basisweb-wizard.md)
+
+---
+```
+
+### Example 3: Shared component with multiple hosts
+
+```markdown
+## Cross-References
+
+### Source Includes
 
 | Type | Direction | Detail | Linked Document | Condition / Context |
 |------|-----------|--------|-----------------|---------------------|
@@ -200,29 +243,40 @@ For each relative path link, verify the target file exists. Report any broken li
 | include | **Included by** | `{{> assignUserDlg}}` | [Council List](../../planning/council/council-and-plan.md) | Reused for council assignments |
 
 > **Include context:** This file's source `assignUser.html` is embedded as `{{> assignUserDlg}}` partial in 4 host pages: appointment list, shift list, treatment list, and council list.
+
+---
 ```
 
-### Example 3: Split-file relationship
+### Example 4: Split-file relationship
 
 ```markdown
 ## Cross-References
+
+### Source Includes
 
 | Type | Direction | Detail | Linked Document | Condition / Context |
 |------|-----------|--------|-----------------|---------------------|
 | split | **Sibling** | Same source: `appointment/details.html` + `details.js` | [Appointment Details Patient](../../treatment/appointment-patient/appointment-details-patient.md) | Tab 3 (Patients) extracted to sibling |
 
-> **Split origin:** Both this file and [Appointment Details Patient](path) were extracted from `appointment/details.html`. This file covers scheduling (Tabs 1/2/4/5); the sibling covers patient data (Tab 3).
+> **Split origin:** Both this file and [Appointment Details Patient](../../treatment/appointment-patient/appointment-details-patient.md) were extracted from `appointment/details.html`. This file covers scheduling (Tabs 1/2/4/5); the sibling covers patient data (Tab 3).
+
+---
 ```
 
-### Example 4: Script include
+### Example 5: Script include for availability grid
 
 ```markdown
 ## Cross-References
+
+### Source Includes
 
 | Type | Direction | Detail | Linked Document | Condition / Context |
 |------|-----------|--------|-----------------|---------------------|
 | include | **Included by** | `<script src="/profile/expertDays.js">` | [Month View](../../planning/dashboard/month-view.md) | Month availability grid logic |
 | include | **Included by** | `<script src="/profile/expertWeek.js">` | [Week View](../../planning/dashboard/week-view.md) | Week availability grid logic |
+| include | **Included by** | `<script src="/profile/expertWeek.js">` | [Treatment Plan](../../treatment/treatment-core/treatment-plan.md) | Week grid in create dialog |
 
-> **Include context:** `expertDays.js` is loaded by month view; `expertWeek.js` is loaded by week view and treatment plan. Both operate on table elements defined in the host page's HTML.
+> **Include context:** `expertDays.js` is loaded by month view; `expertWeek.js` is loaded by week view and treatment plan. Both scripts operate on table elements defined in the host page's HTML.
+
+---
 ```

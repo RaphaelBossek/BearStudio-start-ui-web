@@ -14,6 +14,48 @@ title: 'Invoice Details'
 
 ---
 
+## Cross-References
+
+### Source Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Included by** | `{{> invoiceDlg}}` | [Invoice List](./invoice-list.md) | Invoice list page embeds this dialog via Mustache partial for view/edit mode |
+
+### Service Calls
+
+| Service | Method | Parameters | Dialog / Context |
+|---------|--------|------------|------------------|
+| `InvoiceService` | `save` | `[data]` | `#invoiceDlg` — saves invoice and opens print dialog |
+| `InvoiceService` | `get` | `[id]` | `#invoiceDlg` — loads invoice for view/edit |
+| `InvoiceService` | `remove` | `[id]` | `#printInvoiceDlg` — delete invoice |
+| `InvoiceService` | `paid` | `[id, date, comment]` | `#printInvoiceDlg` — mark invoice as paid |
+| `InvoiceService` | `storno` | `[id, reason]` | `#printInvoiceDlg` — cancel invoice |
+| `InvoiceService` | `prepareMail` | `[id]` | `#emailDialog` — pre-fill email data |
+| `InvoiceService` | `sendEmail` | `[data]` | `#emailDialog` — send invoice email |
+| `InvoiceService` | `prepare` | `[receiverId, month, year]` | `#createInvoiceDlg` — prepare monthly invoice |
+| `InvoiceService` | `checkMonthClosed` | `[ids, month, year]` | `#createInvoiceDlg` — verify appointments closed |
+| `InvoiceService` | `upload` | `file + [invoiceId]` | `#invoiceFiles` — upload attachment |
+| `InvoiceService` | `removeFile` | `[invoiceId, attachmentId]` | `#invoiceFiles` — delete attachment |
+| `InvoiceService` | `download` | `[id, true, filename]` | `#printInvoiceDlg` — download PDF |
+| `ProductService` | `autocomplete` | `filter: "CUSTOMER"` | Position row product lookup |
+| `InvoiceReceiverService` | `autocomplete` | `query` | `#createInvoiceDlg` receiver selection |
+
+### Event Flows
+
+| Type | Direction | Event | Linked Document | Condition |
+|------|-----------|-------|-----------------|----------|
+| event | **Incoming** | `InvoiceDetails.open(mode, entry)` | [Invoice List](./invoice-list.md) | Row double-click or toolbar button opens detail dialog |
+| event | **Outgoing** | Opens `#printInvoiceDlg` | [Print Preview](#) | OK button after save |
+| event | **Outgoing** | Opens `#emailDialog` | [Email Dialog](#) | Send email button |
+| event | **Outgoing** | Opens `#createInvoiceDlg` | [Create Invoice Dialog](#) | Create monthly invoice flow |
+
+> **Include context:** This file's source `invoiceDetails.html` is embedded as `{{> invoiceDlg}}` partial in [Invoice List](./invoice-list.md). The dialog is opened in view, change, or create mode via `InvoiceDetails.open()`.
+
+> **Event chain:** [Invoice List](./invoice-list.md) -> `InvoiceDetails.open()` -> **this file** -> (save) -> [Print Preview](#) -> `InvoiceService.sendEmail` / `InvoiceService.download`
+
+---
+
 ## 1. Dialog: Invoice Detail (`#invoiceDlg`)
 
 | Attribute | Value |

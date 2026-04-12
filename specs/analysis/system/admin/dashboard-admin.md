@@ -358,6 +358,22 @@ Note: `isAdmin` is not defined as an explicit `"method":"authority"` field in th
 
 ---
 
+## Cross-References
+
+### Service Calls
+
+| Service | Method | Parameters | Dialog / Context |
+|---------|--------|------------|------------------|
+| `CdrCallService` | `activeCalls` | `[]` | Refresh button in Active Calls card; fills `#activeCalls` jsForm |
+| `AppointmentService` | `adjustUser` | `[pojo.id, "ACCEPTED" / "RESERVED" / "REJECTED"]` | Accept/Reserve/Reject buttons in Appointment Requests card |
+| `AppointmentDetails` | `open` | `pojo.id` | Edit button in Unfilled Schedules card |
+| `InfoService` | `getNumbers` | `dateString` | Date input change in Employee Stats dialog |
+| `sendUserMessage` | — | Pre-filled `data-subject` + `data-message` | Message icon on Birthday card row |
+
+> **Service context:** Admin dashboard fires service calls for call monitoring (`CdrCallService`), appointment management (`AppointmentService`, `AppointmentDetails`), and employee statistics (`InfoService`). Birthday messaging uses the shared `sendUserMessage` action documented in [Notification Send Message](../../notification/notification.md#cross-references).
+
+---
+
 ## Hardcoded German Strings (require i18n keys)
 
 | Location | German (HARDCODED) | English Translation | Suggested i18n Key |

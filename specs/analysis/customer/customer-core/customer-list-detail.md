@@ -16,6 +16,29 @@ title: 'Customer List Detail'
 
 ---
 
+## Cross-References
+
+### Source Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Includes** | `{{> _include/navbar.mustache}}` | [Includes Shared Components](../../system/includes/includes-shared-components.md#1-navigation-bar-navbarmustache) | Standard navigation bar with toolbar buttons |
+
+### Service Calls
+
+| Service | Method | Parameters | Dialog / Context |
+|---------|--------|------------|------------------|
+| `CustomerService` | `getAll` | `[{}]` | Grid data source |
+| `CustomerService` | `get` | `[id]` | Detail dialog load |
+| `JobService` | `getAllOptions` | `[]` | Discount job `<select>` options |
+| `JobPriceListService` | `autocomplete` | `[term]` | Price list autocomplete insert |
+| `UserService` | `saveSetting` | `[key, value]` | Grid column settings persistence |
+| `ZipCodeService` | `get` | `[term]` | Zip code autocomplete lookup |
+
+> **Include context:** This file's source `customer/index.htmlm` includes [navbar.mustache](../../system/includes/includes-shared-components.md#1-navigation-bar-navbarmustache) for standard navigation. The page uses `CustomerService` for CRUD operations, `JobService` for discount job options, `JobPriceListService` for billing price lists, and `ZipCodeService` for address auto-fill on the Private tab.
+
+---
+
 ## 1. Block Title & Visualization
 
 | Attribute | Value |

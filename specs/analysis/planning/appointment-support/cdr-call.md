@@ -6,6 +6,45 @@ title: 'Cdr Call'
 > **Sections extracted here**: CdrCall module (grid, detail form, toolbar, export, reset, upload, analyze), CdrCallAssignment module (grid, detail form, assign action), cross-module references, translation tables
 > **Other domains received**: `planning/appointment-support/appointment-plan.md` got AppointmentPlan + Close Month Dialog sections
 
+---
+
+## Cross-References
+
+### Source Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Included by** | `{{> jobStatusDlg}}` | [Appointment Plan](../../planning/appointment/appointment-plan.md) | Job status monitor for publishNext/export polling |
+| include | **Included by** | `{{> closeMonth}}` | [Close Month Dialog](./close-month.md) | Month close/reopen shared dialog |
+
+### Service Calls
+
+| Service | Method | Parameters | Dialog / Context |
+|---------|--------|------------|------------------|
+| `CdrCallService` | `generateExport` | `[year, month, isCsv]` | Export XLS/CSV via jobStatusDlg |
+| `CdrCallService` | `downloadExport` | `[jobId, filename]` | Download generated export file |
+| `CdrCallService` | `resetCalls` | `[ids]` | Reset selected calls with confirmation |
+| `CdrCallService` | `analyzeOpenCalls` | `[]` | Analyze open/unassigned calls |
+| `CdrCallService` | `upload` | `[]` | Upload CDR CSV import |
+| `CdrCallService` | `assignCalls` | `[null, null]` | Trigger call assignment from CdrCallAssignment |
+| `UserInfoService` | `autocomplete` | `[query]` | User lookup in CdrCallAssignment detail form |
+| `UserService` | `saveSetting` | `[key, value]` | Grid column settings persistence |
+
+### Event Flows
+
+| Type | Direction | Event | Linked Document | Condition |
+|------|-----------|-------|-----------------|----------|
+| event | **Outgoing** | `jobStatusDlg` polling | [Appointment Plan](../../planning/appointment/appointment-plan.md) | Both modules use job status dialog for long-running jobs |
+| event | **Incoming** | `jobStatusDlg` completion | [Appointment Plan](../../planning/appointment/appointment-plan.md) | Reload grid after job completes |
+
+---
+
+> **Split origin:** Both [Appointment Plan](../../planning/appointment/appointment-plan.md) and this file were extracted from `appointment-support/plan-cdr.md`. This file covers CdrCall + CdrCallAssignment modules; the sibling covers AppointmentPlan + Close Month Dialog.
+
+> **Include context:** `jobStatusDlg` is shared between CdrCall and AppointmentPlan for monitoring export/assignment jobs. `closeMonth` partial is shared with AppointmentPlan for billing period management.
+
+---
+
 ## 3. CdrCall Module
 
 ### 3.1 Overview

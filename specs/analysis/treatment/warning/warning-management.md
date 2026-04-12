@@ -14,6 +14,26 @@ title: 'Warning Management'
 
 ---
 
+## Cross-References
+
+### Source Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Included by** | `/warning/messages.i18n.js` | [Consultation View Review](../consultation/consultation-view-review.md) | Imports `Formatter.warningType` and `i18n.warningType()` for rendering warning type labels |
+| include | **Included by** | `/warning/messages.i18n.js` | [Consultation Details Header](../consultation/consultation-details-header.md) | Imports `Formatter.warningType` for warning display in consultation details |
+
+### Service Calls
+
+| Service | Method | Parameters | Dialog / Context |
+|---------|--------|------------|------------------|
+| `WarningService` | `getAll` | `[]` | `#warningGrid` | Initial grid load |
+| `WarningService` | `get` | `[id]` | `#warningDialog` | Edit existing warning |
+
+> **Include context:** `warning/messages.i18n.js` (defining `Formatter.warningType` and `i18n.warningType()`) is imported by consultation view and detail files to render warning type labels in patient consultation records.
+
+---
+
 ## 1. Page Header / Toolbar
 
 | HTMLM Variable | Value |

@@ -12,12 +12,28 @@ title: 'Profile Dialogs'
 
 ## Cross-References
 
+### Source Includes
+
 | Type | Direction | Detail | Linked Document | Condition / Context |
 |------|-----------|--------|-----------------|---------------------|
-| include | **Included by** | `{{> passwordDlg}}` | [Staff Management List](./profile-staff.md#1-htmlm-metadata) | `staff.htmlm` embeds `admin/password.mustache` as Mustache partial; `#sendPasswordMenuBtn` opens password dialog for selected employee |
-| include | **Included by** | `{{> signaturePad}}` | [Staff Management List](./profile-staff.md#1-htmlm-metadata) | `staff.htmlm` embeds `profile/signaturePad.html` as Mustache partial; opened from profile detail panel |
+| include | **Included by** | `{{> passwordDlg}}` | [Staff Management List](./profile-staff.md#cross-references) | `staff.htmlm` embeds `admin/password.mustache` as Mustache partial; `#sendPasswordMenuBtn` opens password dialog for selected employee |
+| include | **Included by** | `{{> signaturePad}}` | [Staff Management List](./profile-staff.md#cross-references) | `staff.htmlm` embeds `profile/signaturePad.html` as Mustache partial; opened from profile detail panel |
 | include | **Included by** | `{{> passwordDlg}}` | *(personal.htmlm — no analysis file yet)* | `personal.htmlm` also embeds `admin/password.mustache` |
 | include | **Included by** | `{{> signaturePad}}` | *(personal.htmlm — no analysis file yet)* | `personal.htmlm` also embeds `profile/signaturePad.html` |
+| include | **Included by** | `{{> searchEmployee}}` | [Shared Components](../../system/includes/includes-shared-components.md#cross-references) | Global employee search dialog included across modules |
+
+### Service Calls
+
+| Service | Method | Parameters | Dialog / Context |
+|---------|--------|------------|------------------|
+| `BadCredentialService` | `getPasswordValidationConfiguration` | `[]` | Password Change Dialog — fetch enabled password rules |
+| `BadCredentialService` | `hasBadCredentials` | `[password]` | Password Change Dialog — check commonly-used password |
+| `UserService` | `changePassword` | `[null, current, password, confirmPassword]` | Password Change Dialog |
+| `UserService` | `updateSignature` | `[userId, [base64Image]]` | Signature Pad Dialog |
+| `UserService` | `findEmployee` | Search text + filter | Employee Search Dialog, DocFinder Dialog |
+| `UserService` | `getImage` | `[userId]/profile.jpg` | Employee Search Dialog — fetch employee profile image |
+
+---
 
 > **Include context:** The Password Change dialog (`passwordDlg.html`) and Signature Pad dialog (`signaturePad.html`) are embedded as Mustache partials in both [Staff Management List](./profile-staff.md) (`staff.htmlm`) and `personal.htmlm`. The Employee Search dialog is invoked programmatically via the global `searchEmployee()` function. The DocFinder dialog is embedded only in `appointment/index.htmlm`.
 

@@ -15,6 +15,19 @@ title: 'Consultation Details Treatment Warning'
 
 ---
 
+## Cross-References
+
+### Source Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Included by** | `{{> detailDataTreatment}}` | [Consultation Details Header](consultation-details-header.md#tabTreatment) | Treatment form in consultation details |
+| include | **Included by** | `{{> detailDataWarning}}` | [Consultation Details Header](consultation-details-header.md#tabWarning) | Warning form in consultation details |
+
+> **Include context:** This file's sources `detailDataTreatment.html` (97 lines) and `detailDataWarning.html` (76 lines) are embedded as `{{> detailDataTreatment}}` and `{{> detailDataWarning}}` partials in [Consultation Details Header](consultation-details-header.md) under tabs `#tabTreatment` and `#tabWarning` respectively.
+
+---
+
 ## 1. Block: Treatment Form (`detailDataTreatment.html`)
 
 The Treatment form is rendered inside `#tabTreatment` as a Mustache partial (`{{> detailDataTreatment}}`). It is a continuous vertical form composed entirely of `<textarea>` fields organised into labelled sections. There are **no required fields** (none carry `class="mandatory"`). One collection/repeater exists for therapy history entries.

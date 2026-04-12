@@ -4,11 +4,33 @@ title: 'Dialogs User Management'
 
 # 04 - Dashboard Dialogs — User Management
 
-> **Split from**: `dash/dashboard-dialogs.md`
-> **Sections extracted here**: Dialog 1 (userStatsDetails)
-> **Other domains received**: Treatment (`04-dialogs-treatment.md` — Dialogs 3, 5, 7, 8), Planning (`04-dialogs-planning.md` — Dialogs 2, 6, 9, 10), System (`04-dialogs-system.md` — Dialog 4)
+> **Source**: `dash/index.htmlm` (lines 624-896), `dash/dash.js`
 
-> Source: `dash/index.htmlm` (lines 624-896), `dash/dash.js`
+---
+
+## Cross-References
+
+### Source Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| split | **Sibling** | Same source: `dash/index.htmlm` | [Dialogs Planning](../../planning/dashboard/dialogs-planning.md) | Shared source for dashboard dialogs |
+| split | **Sibling** | Same source: `dash/index.htmlm` | [Dialogs Treatment](../../treatment/dashboard/dialogs-treatment.md) | Shared source for dashboard dialogs |
+| split | **Sibling** | Same source: `dash/index.htmlm` | [Dialogs System](../../system/dashboard/dialogs-system.md) | Shared source for dashboard dialogs |
+
+### Service Calls
+
+| Type | Direction | Service | Method | Parameters | Dialog | Context |
+|------|-----------|---------|--------|------------|--------|---------|
+| service | **Outgoing** | `InfoService` | `getNumbers` | `[dateValue]` | `#userStatsDetails` | Fetch employee availability counts |
+
+### Event Flows
+
+| Type | Direction | Event | Linked Document | Condition |
+|------|-----------|-------|-----------------|----------|
+| event | **Outgoing** | `#employeeDateInput` change | [Dialogs Planning](../planning/dashboard/dialogs-planning.md) | Triggers `InfoService.getNumbers(dateValue)` |
+
+> **Include context:** This file and [Dialogs Planning](../planning/dashboard/dialogs-planning.md), [Dialogs Treatment](../treatment/dashboard/dialogs-treatment.md), and [Dialogs System](../system/dashboard/dialogs-system.md) are siblings split from the same `dash/index.htmlm` source (lines 624-896). Each file documents a distinct set of dialogs from that shared source.
 
 ---
 

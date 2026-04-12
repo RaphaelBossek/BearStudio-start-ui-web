@@ -11,6 +11,25 @@ title: 'Dashboard Selfservice'
 
 ---
 
+## Cross-References
+
+### Service Calls
+
+| Service | Method | Parameters | Dialog / Context |
+|---------|--------|------------|------------------|
+| `InfoService` | `getDashInfo` | `[-1]` | Page load — populates all `data.*` collections |
+| `InfoService` | `getAvailableActions` | `[-1]` | After main data loads — fills `#availableActions` |
+| `InfoService` | `userBusy` | `[appointment]` | Conflict check before requesting available action |
+| `AppointmentService` | `request` | `[pojo.id]` | Available action row — request appointment |
+| `AppointmentService` | `agreeAll` | `[ids]` | `#appointmentsConfirmModal` — bulk accept |
+| `AppointmentService` | `disagreeAll` | `[ids]` | `#appointmentsDeclineModal` — bulk decline |
+| `AppointmentService` | `cancel` | `[pojo.id]` | Waiting action row — cancel request |
+| `TreatmentService` | `getReport` | `[pojo.id, pojo.lastReport.id]` | Treatment row — view report |
+
+> **Include context:** This file documents the self-service section (lines 305–484) of the shared dashboard source `index.htmlm` and its `dash.js` handler. Sibling sections are [Dashboard Main](./dashboard-main.md) and [Dashboard Admin](../admin/dashboard-admin.md). The shared dialogs (confirm/decline modals) are documented in [Dialogs System](./dialogs-system.md).
+
+---
+
 ## Permission Gating Diagram
 
 ```mermaid

@@ -8,16 +8,28 @@ title: 'Basisweb Wizard'
 > - `web/src/main/webapp/dash/basisWebWizard.html`
 > - `web/src/main/webapp/dash/basisWebWizard.js`
 
-## Event Flow Cross-References
+## Cross-References
 
-| Direction | Event | Linked Document | Condition |
-|-----------|-------|-----------------|----------|
-| **Incoming** | `loadBasisweb` | [Consultation Wizard](../../treatment/dashboard/consultation-wizard.md#2-dialog-navigation-diagram) | `location.patientDataType == "EXTERNAL_BASISWEB"` && `appointment.state != "LOCKEDIN"` |
-| **Outgoing** | `ConsultationDetails.open()` | [Consultation Details JS](../../treatment/consultation/consultation-details-js.md#2-dialog-lifecycle) | After BasisWeb decryption succeeds (step 6 bww-success) |
+### Service Calls
 
-> **Event chains:**
-> - [Dashboard Main](../../system/dashboard/dashboard-main.md) → `loadConsultation` → [Consultation Wizard](../../treatment/dashboard/consultation-wizard.md) → `loadBasisweb` → **this file**
-> - **this file** → `ConsultationDetails.open()` → [Consultation Details JS](../../treatment/consultation/consultation-details-js.md)
+| Service | Method | Parameters | Context |
+|---------|--------|------------|---------|
+| `ConsultationService` | `findBasisWeb` | `[jnumber, appointmentId, locationId]` | Step 1: JNumber search |
+| `ConsultationService` | `refreshBasisWebAppointments` | `[jnumber, appointmentId, locationId]` | Step 1: Reload button |
+| `ConsultationService` | `prepare` | `[appointmentId, location, identifier, anmeldungId, false]` | Step 3: Start async fetch |
+| `ConsultationService` | `prepareStatus` | `[pid]` | Step 3: Poll every 500ms |
+| `ConsultationService` | `prepareResult` | `[pid]` | Step 3: Fetch result after polling |
+| `ConsultationService` | `start` | `[appointmentId, location, null, jnumber/identifier, pin, type]` | Step 2 (fallback) and Step 5 (normal) |
+| `JobService` | `get` | `[jobId]` | Step 1: Fetch job capabilities |
+
+### Event Flows
+
+| Type | Direction | Event | Linked Document | Condition |
+|------|-----------|-------|-----------------|----------|
+| event | **Incoming** | `loadBasisweb` | [Consultation Wizard](../../treatment/dashboard/consultation-wizard.md#2-dialog-navigation-diagram) | `location.patientDataType == "EXTERNAL_BASISWEB"` && `appointment.state != "LOCKEDIN"` |
+| event | **Outgoing** | `ConsultationDetails.open()` | [Consultation Details JS](../../treatment/consultation/consultation-details-js.md#2-dialog-lifecycle) | After BasisWeb decryption succeeds (step 6 bww-success) |
+
+> **Event chain:** [Dashboard Main](../../system/dashboard/dashboard-main.md) -> `loadConsultation` -> [Consultation Wizard](../../treatment/dashboard/consultation-wizard.md) -> `loadBasisweb` -> **this file** -> `ConsultationDetails.open()` -> [Consultation Details JS](../../treatment/consultation/consultation-details-js.md)
 
 ---
 

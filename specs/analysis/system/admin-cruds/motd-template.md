@@ -350,3 +350,15 @@ Side-by-side two-column layout (no grid, no detail dialog):
 | `markdownedit`| Textarea with markdown editing support              |
 | `form-select` | Dropdown select                                     |
 | `form-check form-switch` | Toggle switch (Bootstrap)                |
+
+---
+
+## Cross-References
+
+| File | Relationship | Notes |
+|------|--------------|-------|
+| `specs/analysis/system/admin-cruds/simple-cruds.md` | **Split from** | Parent file; Sections B (MOTD), D (Template Editor), E (Cross-Cutting) extracted here |
+| `specs/analysis/system/admin-cruds/admin-skill/skill.md` | **Sibling domain** | User Management domain; shares Skill type enum with MOTD `priority` |
+| `specs/analysis/system/admin-cruds/admin-workhour/workhour.md` | **Sibling domain** | Accounting/Work Hours domain |
+| `specs/analysis/system/admin-cruds/simple-cruds.md#section-e` | **Implements** | Cross-cutting patterns: `Core.initCrud`, `slickerGrid`, `jsForm`, formatters, form input types |
+| `_lib/3rdparty/marked.min.js` | **External dependency** | Markdown parser used in Template Editor; should be replaced with `react-markdown` in React rebuild |

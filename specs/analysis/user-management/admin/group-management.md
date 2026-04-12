@@ -147,6 +147,35 @@ The JS defines a static `Groups.roles` object mapping role names to base permiss
 
 ---
 
+## Cross-References
+
+### Source Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Extracted from** | `group.htmlm` + `group.js` split from admin view | [admin/sysadmin-views.md](./sysadmin-views.md) | Original source for group management tree and detail panel |
+| include | **Related** | System Configuration and CSV Import sections | [sysconfig-import.md](../../system/admin-system/sysconfig-import.md) | Other domains received from group-management split |
+
+### Service Calls
+
+| Service | Method | Parameters | Linked Document | Context |
+|---------|--------|------------|-----------------|---------|
+| `GroupService` | `getRights` | `[]` | — | Fetches all available rights on page load |
+| `GroupService` | `getAll` | `[]` | — | Fetches all groups flat, organized client-side by role |
+| `GroupService` | `persist` | `[{name, description, rights[], role}]` | — | Saves group create/update |
+| `GroupService` | `delete` | `[id]` | — | Deletes group after confirmation |
+| `GroupService` | `regenerate` | `[]` | — | Refresh auth (referenced but button missing) |
+
+### Event Flows
+
+| Type | Direction | Event | Linked Document | Condition |
+|------|-----------|-------|-----------------|----------|
+| event | **Outgoing** | Page reload | [admin/sysadmin-views.md](./sysadmin-views.md) | After save/delete success, tree widget reloads |
+
+> **Include context:** This file documents `group.htmlm` and `group.js` which were split from `admin/sysadmin-views.md`. The jQuery tree widget (`jquery.tree.js`) is loaded from the parent `sysadmin.htmlm`. The `sysconfig-import.md` received System Configuration and CSV Import sections that were also split from the original admin views document.
+
+---
+
 # Translation Table (Group View)
 
 ## i18n References Used

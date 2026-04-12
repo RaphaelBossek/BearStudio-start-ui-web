@@ -186,3 +186,12 @@ PatientData --> (standalone, but references appointment/consultation i18n keys)
 | PatientData | "Datei" | File table header |
 | PatientData | "Datei hochladen" | Upload dialog title |
 | PatientData | "Action" | Nav button label |
+
+---
+
+## Cross-References
+
+- [`patient-data.md`](../patient-data/patient-data.md) — Shares the `Core.initCrud()` + `slickerGrid()` pattern; PatientData is another standalone reference data module
+- [`contact.md`](../contact/contact.md) — Shares the Common CRUD Pattern with object autocomplete and offcanvas filter panel
+- [`room.md`](../room/room.md) — Shares the Common CRUD Pattern with FullCalendar integration and tabbed detail dialogs
+- [`equipment.md`](../equipment/equipment.md) — Shares the Common CRUD Pattern with cascading filters and collection tables

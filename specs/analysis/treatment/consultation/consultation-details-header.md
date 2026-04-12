@@ -11,6 +11,18 @@ title: 'Consultation Details Header'
 
 ---
 
+## Cross-References
+
+### Source Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Included by** | `{{> consultationDetails}}` | [Consultation List](consultation-list.md) | Main consultation detail dialog |
+| include | **Includes** | `{{> detailDataStandard}}` | [Consultation Details Standard](consultation-details-standard.md) | Standard consultation form fields fragment; Tab 3 (`#tabStandard`) |
+| include | **Includes** | `{{> detailQuestionaire}}` | [Questionnaire Detail](../questionnaire/questionnaire-detail.md) | QM tab (`#tabQM`) in consultation detail dialog |
+
+---
+
 ## 1. Consultation Details Dialog (`#consultationDetailsDlg`)
 
 The primary detail dialog for viewing and editing a single consultation record. This is a large, multi-tab form dialog that adapts its visible tabs based on the selected consultation type.

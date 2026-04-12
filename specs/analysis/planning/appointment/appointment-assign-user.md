@@ -10,6 +10,8 @@ title: 'Appointment Assign User'
 
 ## Cross-References
 
+### Source Includes
+
 | Type | Direction | Detail | Linked Document | Condition / Context |
 |------|-----------|--------|-----------------|---------------------|
 | include | **Included by** | `{{> assignUserDlg}}` | [Appointment List](appointment-list.md) | Collision resolution dialog for doctor assignments |
@@ -17,9 +19,23 @@ title: 'Appointment Assign User'
 | include | **Included by** | `{{> assignUserDlg}}` | [Treatment List](../../treatment/treatment-core/treatment-and-category.md) | Reused for treatment staff assignments |
 | include | **Included by** | `{{> assignUserDlg}}` | [Council List](../../planning/council/council-and-plan.md) | Reused for council staff assignments |
 | include | **Included by** | `{{> assignUserDlg}}` | [Staff Management List](../../user-management/profile/profile-staff.md#1-htmlm-metadata) | Reused for staff employee assignments; `#assignmentBtn` opens dialog |
-| event | **Incoming** | `assignAppointment()` | [Appointment Details Scheduling](appointment-details-scheduling.md#7-tab-4--assigned-experts) | Accept/Override buttons call `assignAppointment(id, state)` |
+
+### Service Calls
+
+| Service | Method | Parameters | Dialog / Context |
+|---------|--------|------------|------------------|
+| `AppointmentService` | `getDuplicateEvents` | `[assignmentId]` | `assignAppointment()` — checks for scheduling conflicts before opening dialog |
+| `AppointmentService` | `setAssignments` | `[assignments]` | On dialog Save, or directly if no conflicts |
+
+### Event Flows
+
+| Type | Direction | Event | Linked Document | Condition |
+|------|-----------|-------|-----------------|----------|
+| event | **Incoming** | `assignAppointment(id, state, cb)` | [Appointment Details Scheduling](appointment-details-scheduling.md#-7-tab-4--assigned-experts) | Accept/Override buttons call `assignAppointment(id, state)` |
 
 > **Include context:** This file's source `assignUser.html` is embedded as `{{> assignUserDlg}}` partial in 5 host pages: [Appointment List](appointment-list.md), [Shift List](../../planning/shift/shift-and-plan.md), [Treatment List](../../treatment/treatment-core/treatment-and-category.md), [Council List](../../planning/council/council-and-plan.md), and [Staff Management List](../../user-management/profile/profile-staff.md). The `assignAppointment()` global function is called from [Appointment Details Scheduling](appointment-details-scheduling.md) when accepting or overriding doctor assignments.
+
+> **Event chain:** [Appointment Details Scheduling](appointment-details-scheduling.md) -> `assignAppointment(id, state, cb)` -> **this file** -> (if duplicates) opens dialog -> `AppointmentService.setAssignments()` -> callback
 
 ---
 
