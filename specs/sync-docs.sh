@@ -349,6 +349,7 @@ SIDEBAR_HEADER
 cat >> "$sidebar_content" << 'DASHBOARD'
             { label: 'Dashboard', collapsed: true,
               items: [
+                { label: 'Dashboard', slug: 'analysis/system/dashboard/dashboard-main' },
                 { label: 'Calendar View', slug: 'analysis/planning/dashboard/calendar-view' },
                 { label: 'Week View', slug: 'analysis/planning/dashboard/week-view' },
                 { label: 'Worklog', slug: 'analysis/accounting/worklog/worklog' },
