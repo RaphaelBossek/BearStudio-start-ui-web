@@ -81,7 +81,6 @@ fix_frontmatter "${project_dir}/specs/wireframes"
 fix_frontmatter "${project_dir}/specs/domains"
 fix_frontmatter "${project_dir}/specs/decisions"
 fix_frontmatter "${project_dir}/specs/planning"
-fix_frontmatter "${project_dir}/specs/migration"
 
 # Clean existing content directories (with retry for robustness)
 clean_dir() {
@@ -103,7 +102,6 @@ clean_dir "${content_dir}/wireframes"
 clean_dir "${content_dir}/domains"
 clean_dir "${content_dir}/decisions"
 clean_dir "${content_dir}/planning"
-clean_dir "${content_dir}/migration"
 
 # Copy spec directories to docs content
 cp -rf "${project_dir}/specs/analysis" "${content_dir}/analysis"
@@ -111,7 +109,6 @@ cp -rf "${project_dir}/specs/wireframes" "${content_dir}/wireframes"
 cp -rf "${project_dir}/specs/domains" "${content_dir}/domains"
 cp -rf "${project_dir}/specs/decisions" "${content_dir}/decisions"
 cp -rf "${project_dir}/specs/planning" "${content_dir}/planning"
-cp -rf "${project_dir}/specs/migration" "${content_dir}/migration"
 
 # Mirror PNG/image files from specs/ to docs/public/assets/specs/
 # Starlight serves static assets from public/, so images must be there.
@@ -188,7 +185,7 @@ IMGPERL_EOF
 # Collect all markdown files and pass to the image rewriter
 echo "Rewriting image links to /assets/specs/ paths..."
 find "${content_dir}/analysis" "${content_dir}/wireframes" "${content_dir}/domains" \
-     "${content_dir}/decisions" "${content_dir}/planning" "${content_dir}/migration" \
+     "${content_dir}/decisions" "${content_dir}/planning" \
      -type f \( -name "*.md" -o -name "*.mdx" \) 2>/dev/null | \
   xargs perl "$_img_rewriter" "$content_dir" "${project_dir}/specs"
 rm -f "$_img_rewriter"
@@ -298,7 +295,6 @@ fix_links "${content_dir}/wireframes"
 fix_links "${content_dir}/domains"
 fix_links "${content_dir}/decisions"
 fix_links "${content_dir}/planning"
-fix_links "${content_dir}/migration"
 
 # Clean up temp perl script
 rm -f "$_perl_rewriter"
@@ -337,19 +333,155 @@ generate_flat_sidebar() {
   echo "${indent}{ label: '${label}', autogenerate: { directory: '${dir}' } },"
 }
 
-# Build the new sidebar array content
+# Build the new sidebar array content based on section 2.4 structure
 sidebar_content=$(mktemp)
 indent="        "
 sub_indent="            "
 
-cat > "$sidebar_content" << SIDEBAR_HEADER
+cat > "$sidebar_content" << 'SIDEBAR_HEADER'
         { label: 'Introduction', slug: '' },
         {
           label: 'Analysis', collapsed: true,
           items: [
+            { label: 'Analysis Domain', slug: 'analysis/readme' },
 SIDEBAR_HEADER
 
-generate_sidebar_items "analysis" "$sub_indent" >> "$sidebar_content"
+cat >> "$sidebar_content" << 'DASHBOARD'
+            { label: 'Dashboard', collapsed: true,
+              items: [
+                { label: 'Calendar View', slug: 'analysis/planning/dashboard/calendar-view' },
+                { label: 'Week View', slug: 'analysis/planning/dashboard/week-view' },
+                { label: 'Worklog', slug: 'analysis/accounting/worklog/worklog' },
+                { label: 'Video Library', slug: 'analysis/orphan/support-and-video' },
+              ],
+            },
+DASHBOARD
+
+cat >> "$sidebar_content" << 'APPOINTMENTS'
+            { label: 'Appointments', collapsed: true,
+              items: [
+                { label: 'Appointment Plan', slug: 'analysis/planning/appointment/appointment-plan' },
+                { label: 'Patient Data', slug: 'analysis/treatment/patient-data/patient-data' },
+              ],
+            },
+APPOINTMENTS
+
+cat >> "$sidebar_content" << 'SHIFTS'
+            { label: 'Shifts', collapsed: true,
+              items: [
+                { label: 'Shift Plan', slug: 'analysis/planning/shift/shift-and-plan' },
+              ],
+            },
+SHIFTS
+
+cat >> "$sidebar_content" << 'TREATMENTS'
+            { label: 'Treatments', collapsed: true,
+              items: [
+                { label: 'Treatment Plan', slug: 'analysis/treatment/treatment-core/treatment-plan' },
+                { label: 'Treatment Plan History', slug: 'analysis/treatment/treatment-core/treatment-plan' },
+              ],
+            },
+TREATMENTS
+
+cat >> "$sidebar_content" << 'COUNCIL'
+            { label: 'Council', collapsed: true,
+              items: [
+                { label: 'Council Plan', slug: 'analysis/planning/council/council-and-plan' },
+              ],
+            },
+COUNCIL
+
+cat >> "$sidebar_content" << 'CONSULTATIONS'
+            { label: 'Consultations', collapsed: true,
+              items: [
+                { label: 'Consultation List', slug: 'analysis/treatment/consultation/consultation-list' },
+                { label: 'Details Header', slug: 'analysis/treatment/consultation/consultation-details-header' },
+                { label: 'Standard Form', slug: 'analysis/treatment/consultation/consultation-details-standard' },
+                { label: 'Onboarding Form', slug: 'analysis/treatment/consultation/consultation-details-onboarding' },
+                { label: 'Incarceration Form', slug: 'analysis/treatment/consultation/consultation-details-incarceration' },
+                { label: 'Treatment / Warning', slug: 'analysis/treatment/consultation/consultation-details-treatment-warning' },
+                { label: 'View / Review', slug: 'analysis/treatment/consultation/consultation-view-review' },
+              ],
+            },
+CONSULTATIONS
+
+cat >> "$sidebar_content" << 'APPT_ADMIN'
+            { label: 'Appointment Admin', collapsed: true,
+              items: [
+                { label: 'Closed Month', slug: 'analysis/planning/appointment-support/close-month' },
+                { label: 'Questionnaire', slug: 'analysis/treatment/questionnaire/questionnaire-list' },
+              ],
+            },
+APPT_ADMIN
+
+cat >> "$sidebar_content" << 'NOTIFICATIONS'
+            { label: 'Notifications', collapsed: true,
+              items: [
+                { label: 'Trash', slug: 'analysis/system/notification/notification' },
+              ],
+            },
+NOTIFICATIONS
+
+cat >> "$sidebar_content" << 'CUSTOMERS'
+            { label: 'Customers', collapsed: true,
+              items: [
+                { label: 'Onboarding Customer', slug: 'analysis/user-management/admin/onboarding-flow' },
+                { label: 'Invoices', slug: 'analysis/accounting/invoice/invoice-list' },
+                { label: 'Invoice Receivers', slug: 'analysis/accounting/invoice-receiver/invoice-receiver' },
+                { label: 'Customer Users', slug: 'analysis/customer/customer-core/location-and-users' },
+                { label: 'Locations', slug: 'analysis/customer/customer-core/location-and-users' },
+                { label: 'Rooms', slug: 'analysis/customer/room/room' },
+                { label: 'Onboarding Location', slug: 'analysis/user-management/admin/onboarding-flow' },
+              ],
+            },
+CUSTOMERS
+
+cat >> "$sidebar_content" << 'STAFF'
+            { label: 'Staff', collapsed: true,
+              items: [
+                { label: 'Onboarding', slug: 'analysis/user-management/admin/onboarding-flow' },
+                { label: 'User Management', slug: 'analysis/user-management/admin/user-management' },
+                { label: 'Expert Weekly Assignments', slug: 'analysis/accounting/worklog/worklog' },
+              ],
+            },
+STAFF
+
+cat >> "$sidebar_content" << 'ADMIN'
+            { label: 'Administration', collapsed: true,
+              items: [
+                { label: 'Job IDs', slug: 'analysis/accounting/admin-job/job-configuration' },
+                { label: 'Async Job Queue', slug: 'analysis/mongodb-mapping/system' },
+                { label: 'Job Price List', slug: 'analysis/accounting/config/accounting-config' },
+                { label: 'Products', slug: 'analysis/accounting/config/accounting-config' },
+                { label: 'Skills', slug: 'analysis/user-management/admin/skill' },
+                { label: 'Exclusion Criteria', slug: 'analysis/system/config/system-config' },
+                { label: 'Export Templates', slug: 'analysis/system/templates-files/templates-files' },
+                { label: 'Warnings', slug: 'analysis/treatment/warning/warning-management' },
+                { label: 'Treatment Categories', slug: 'analysis/treatment/treatment-core/treatment-and-category' },
+                { label: 'Equipment', slug: 'analysis/customer/equipment/equipment' },
+                { label: 'Onboarding Steps', slug: 'analysis/user-management/admin/onboarding-flow' },
+              ],
+            },
+ADMIN
+
+cat >> "$sidebar_content" << 'SYSADMIN'
+            { label: 'Systemadmin', collapsed: true,
+              items: [
+                { label: 'MOTD', slug: 'analysis/system/admin-cruds/motd-template' },
+                { label: 'Login Notification', slug: 'analysis/system/config/system-config' },
+                { label: 'Notification Templates', slug: 'analysis/system/templates-files/templates-files' },
+                { label: 'Location Types', slug: 'analysis/system/config/system-config' },
+                { label: 'Storno Groups', slug: 'analysis/accounting/config/accounting-config' },
+                { label: 'Work Hours', slug: 'analysis/planning/appointment-support/workhour' },
+                { label: 'CDR', slug: 'analysis/planning/appointment-support/cdr-call' },
+                { label: 'CDR Assignment', slug: 'analysis/planning/appointment-support/cdr-call' },
+                { label: 'Log', slug: 'analysis/mongodb-mapping/system' },
+                { label: 'Support Categories', slug: 'analysis/system/config/system-config' },
+                { label: 'BasisWeb Appointments', slug: 'analysis/mongodb-mapping/interfaces' },
+                { label: 'Change Log', slug: 'analysis/system/admin/admin-landing' },
+              ],
+            },
+SYSADMIN
 
 cat >> "$sidebar_content" << 'MID1'
           ],
@@ -385,7 +517,6 @@ cat >> "$sidebar_content" << 'FOOTER'
           ],
         },
         { label: 'Planning', autogenerate: { directory: 'planning' } },
-        { label: 'Migration', autogenerate: { directory: 'migration' } },
         { label: 'Billing & Invoicing', autogenerate: { directory: 'billing' } },
         { label: 'Sharing', autogenerate: { directory: 'sharing' } },
         { label: 'KIS Integration', autogenerate: { directory: 'integrations/kis' } },
