@@ -186,12 +186,12 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
   - [consultation-wizard.md](../analysis/treatment/dashboard/consultation-wizard.md) (event flow: `loadConsultation` outgoing)
 - **Submenu**:
   
-  | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Wireframe Doc |
-  |------|---------|--------|-----|------|----------|--------------|-------------|--------------|
-  | Calendar | Calendar | Kalender | `/monthView.html` | `fa-calendar-alt` | `i18n.calendar` → `calendar.title` | — | [calendar-view.md](../analysis/planning/dashboard/calendar-view.md), [month-view.md](../analysis/planning/dashboard/month-view.md) | [workflows.md](../wireframes/planning/workflows.md) |
-  | Week View | Week View | Wochenansicht | `/weekView.html` | `fa-calendar-alt` | `i18n.weekView` → `weekView.title` | `EXPERT_WEEK` | [week-view.md](../analysis/planning/dashboard/week-view.md) | [workflows.md](../wireframes/planning/workflows.md) |
-  | Worklog | Worklog | Arbeitsprotokoll | `/expertWorkMonthly.html` | `fa-file-chart-line` | `i18n.Worklog` → `worklog.title` | — | [worklog.md](../analysis/accounting/worklog/worklog.md) | [workflows.md](../wireframes/accounting/workflows.md) |
-  | Video Library | Video Library | Videobibliothek | `https://learn.videoclinic.de/` | `fa-video` | `i18n.VideoLibrary` → `videoLibrary.title` | — | [support-and-video.md](../analysis/orphan/support-and-video.md) | — |
+  | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Wireframe Doc | Data Dictionary |
+  |------|---------|--------|-----|------|----------|--------------|-------------|--------------|-----------------|
+  | Calendar | Calendar | Kalender | `/monthView.html` | `fa-calendar-alt` | `i18n.calendar` → `calendar.title` | — | [calendar-view.md](../analysis/planning/dashboard/calendar-view.md), [month-view.md](../analysis/planning/dashboard/month-view.md) | [workflows.md](../wireframes/planning/workflows.md) | [data-dictionary-planning.md](../analysis/planning/data-dictionary-planning.md) |
+  | Week View | Week View | Wochenansicht | `/weekView.html` | `fa-calendar-alt` | `i18n.weekView` → `weekView.title` | `EXPERT_WEEK` | [week-view.md](../analysis/planning/dashboard/week-view.md) | [workflows.md](../wireframes/planning/workflows.md) | [data-dictionary-planning.md](../analysis/planning/data-dictionary-planning.md) |
+  | Worklog | Worklog | Arbeitsprotokoll | `/expertWorkMonthly.html` | `fa-file-chart-line` | `i18n.Worklog` → `worklog.title` | — | [worklog.md](../analysis/accounting/worklog/worklog.md) | [workflows.md](../wireframes/accounting/workflows.md) | [data-dictionary-accounting.md](../analysis/accounting/data-dictionary-accounting.md) |
+  | Video Library | Video Library | Videobibliothek | `https://learn.videoclinic.de/` | `fa-video` | `i18n.VideoLibrary` → `videoLibrary.title` | — | [support-and-video.md](../analysis/orphan/support-and-video.md) | — | [data-dictionary-academy.md](../analysis/academy/data-dictionary-academy.md) |
 
 #### 2. Appointments
 - **English**: Appointments
@@ -207,10 +207,10 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
   - [appointment-details-scheduling.md](../analysis/planning/appointment/appointment-details-scheduling.md) (include: `{{> appointmentDetails}}`)
 - **Submenu**:
   
-  | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Wireframe Doc |
-  |------|---------|--------|-----|------|----------|--------------|-------------|--------------|
-  | Appointment Plan | Appointment Plan | Terminplan | `/appointmentPlan.html` | `fa-calendar-check` | `i18n.appointmentPlan` → `appointmentPlan.title` | — | [appointment-list.md](../analysis/planning/appointment/appointment-list.md), [appointment-details-scheduling.md](../analysis/planning/appointment/appointment-details-scheduling.md) | [workflows.md](../wireframes/planning/workflows.md) |
-  | Patient Data | Patient Data | Patientendaten | `/patientData.html` | `fa-user` | `i18n.PatientDataType` → `patientData.title` | — | [patient-data.md](../analysis/treatment/patient-data/patient-data.md) | — |
+  | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Wireframe Doc | Data Dictionary |
+  |------|---------|--------|-----|------|----------|--------------|-------------|--------------|-----------------|
+  | Appointment Plan | Appointment Plan | Terminplan | `/appointmentPlan.html` | `fa-calendar-check` | `i18n.appointmentPlan` → `appointmentPlan.title` | — | [appointment-list.md](../analysis/planning/appointment/appointment-list.md), [appointment-details-scheduling.md](../analysis/planning/appointment/appointment-details-scheduling.md) | [workflows.md](../wireframes/planning/workflows.md) | [data-dictionary-planning.md](../analysis/planning/data-dictionary-planning.md) |
+  | Patient Data | Patient Data | Patientendaten | `/patientData.html` | `fa-user` | `i18n.PatientDataType` → `patientData.title` | — | [patient-data.md](../analysis/treatment/patient-data/patient-data.md) | — | [data-dictionary-treatment.md](../analysis/treatment/data-dictionary-treatment.md) |
 
 #### 3. Shifts
 - **English**: Shifts
@@ -226,9 +226,9 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
   - [appointment-details-scheduling.md](../analysis/planning/appointment/appointment-details-scheduling.md)
 - **Submenu**:
   
-  | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Wireframe Doc |
-  |------|---------|--------|-----|------|----------|--------------|-------------|--------------|
-  | Shift Plan | Shift Plan | Dienstplan | `/shiftPlan.html` | `fa-calendar-check` | `i18n.shiftPlan` → `shiftPlan.title` | — | [shift-and-plan.md](../analysis/planning/shift/shift-and-plan.md) | [workflows.md](../wireframes/planning/workflows.md) |
+  | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Wireframe Doc | Data Dictionary |
+  |------|---------|--------|-----|------|----------|--------------|-------------|--------------|-----------------|
+  | Shift Plan | Shift Plan | Dienstplan | `/shiftPlan.html` | `fa-calendar-check` | `i18n.shiftPlan` → `shiftPlan.title` | — | [shift-and-plan.md](../analysis/planning/shift/shift-and-plan.md) | [workflows.md](../wireframes/planning/workflows.md) | [data-dictionary-planning.md](../analysis/planning/data-dictionary-planning.md) |
 
 #### 4. Treatments
 - **English**: Treatments
@@ -244,10 +244,10 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
   - [appointment-details-scheduling.md](../analysis/planning/appointment/appointment-details-scheduling.md)
 - **Submenu**:
   
-  | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Wireframe Doc |
-  |------|---------|--------|-----|------|----------|--------------|-------------|--------------|
-  | Treatment Plan | Treatment Plan | Therapieplan | `/treatmentPlan.html` | `fa-calendar-check` | `i18n.treatmentPlan` → `treatmentPlan.title` | — | [treatment-plan.md](../analysis/treatment/treatment-core/treatment-plan.md) | — |
-  | Treatment Plan History | Treatment Plan History | Therapieplan-Historie | `/treatmentPlan.html?history=true` | `fa-calendar` | `i18n.treatmentPlanHistory` → `treatmentPlan.history` | — | [treatment-plan.md](../analysis/treatment/treatment-core/treatment-plan.md) | — |
+  | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Wireframe Doc | Data Dictionary |
+  |------|---------|--------|-----|------|----------|--------------|-------------|--------------|-----------------|
+  | Treatment Plan | Treatment Plan | Therapieplan | `/treatmentPlan.html` | `fa-calendar-check` | `i18n.treatmentPlan` → `treatmentPlan.title` | — | [treatment-plan.md](../analysis/treatment/treatment-core/treatment-plan.md) | — | [data-dictionary-treatment.md](../analysis/treatment/data-dictionary-treatment.md) |
+  | Treatment Plan History | Treatment Plan History | Therapieplan-Historie | `/treatmentPlan.html?history=true` | `fa-calendar` | `i18n.treatmentPlanHistory` → `treatmentPlan.history` | — | [treatment-plan.md](../analysis/treatment/treatment-core/treatment-plan.md) | — | [data-dictionary-treatment.md](../analysis/treatment/data-dictionary-treatment.md) |
 
 #### 5. Council
 - **English**: Council
@@ -263,9 +263,9 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
   - [appointment-details-scheduling.md](../analysis/planning/appointment/appointment-details-scheduling.md)
 - **Submenu**:
   
-  | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Wireframe Doc |
-  |------|---------|--------|-----|------|----------|--------------|-------------|--------------|
-  | Council Plan | Council Plan | Besprechungsplan | `/councilPlan.html` | `fa-calendar-check` | `i18n.councilPlanArea` → `councilPlan.title` | — | [council-and-plan.md](../analysis/planning/council/council-and-plan.md) | [workflows.md](../wireframes/planning/workflows.md) |
+  | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Wireframe Doc | Data Dictionary |
+  |------|---------|--------|-----|------|----------|--------------|-------------|--------------|-----------------|
+  | Council Plan | Council Plan | Besprechungsplan | `/councilPlan.html` | `fa-calendar-check` | `i18n.councilPlanArea` → `councilPlan.title` | — | [council-and-plan.md](../analysis/planning/council/council-and-plan.md) | [workflows.md](../wireframes/planning/workflows.md) | [data-dictionary-planning.md](../analysis/planning/data-dictionary-planning.md) |
 
 #### 6. Consultations
 - **English**: Consultations
@@ -279,15 +279,15 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 - **Analysis Doc**: [consultation-list.md](../analysis/treatment/consultation/consultation-list.md)
 - **Submenu**: None (single-page module)
   
-  | Feature | Analysis Doc | Wireframe Doc |
-  |---------|-------------|---------------|
-  | Consultation List | [consultation-list.md](../analysis/treatment/consultation/consultation-list.md) | [workflows.md](../wireframes/treatment/workflows.md) |
-  | Details Header | [consultation-details-header.md](../analysis/treatment/consultation/consultation-details-header.md) | [workflows.md](../wireframes/treatment/workflows.md) |
-  | Standard Form | [consultation-details-standard.md](../analysis/treatment/consultation/consultation-details-standard.md) | [workflows.md](../wireframes/treatment/workflows.md) |
-  | Onboarding Form | [consultation-details-onboarding.md](../analysis/treatment/consultation/consultation-details-onboarding.md) | [workflows.md](../wireframes/treatment/workflows.md) |
-  | Incarceration Form | [consultation-details-incarceration.md](../analysis/treatment/consultation/consultation-details-incarceration.md) | [workflows.md](../wireframes/treatment/workflows.md) |
-  | Treatment/Warning | [consultation-details-treatment-warning.md](../analysis/treatment/consultation/consultation-details-treatment-warning.md) | [workflows.md](../wireframes/treatment/workflows.md) |
-  | View/Review | [consultation-view-review.md](../analysis/treatment/consultation/consultation-view-review.md) | [workflows.md](../wireframes/treatment/workflows.md) |
+  | Feature | Analysis Doc | Wireframe Doc | Data Dictionary |
+  |---------|-------------|---------------|-----------------|
+  | Consultation List | [consultation-list.md](../analysis/treatment/consultation/consultation-list.md) | [workflows.md](../wireframes/treatment/workflows.md) | [data-dictionary-treatment.md](../analysis/treatment/data-dictionary-treatment.md) |
+  | Details Header | [consultation-details-header.md](../analysis/treatment/consultation/consultation-details-header.md) | [workflows.md](../wireframes/treatment/workflows.md) | [data-dictionary-treatment.md](../analysis/treatment/data-dictionary-treatment.md) |
+  | Standard Form | [consultation-details-standard.md](../analysis/treatment/consultation/consultation-details-standard.md) | [workflows.md](../wireframes/treatment/workflows.md) | [data-dictionary-treatment.md](../analysis/treatment/data-dictionary-treatment.md) |
+  | Onboarding Form | [consultation-details-onboarding.md](../analysis/treatment/consultation/consultation-details-onboarding.md) | [workflows.md](../wireframes/treatment/workflows.md) | [data-dictionary-treatment.md](../analysis/treatment/data-dictionary-treatment.md) |
+  | Incarceration Form | [consultation-details-incarceration.md](../analysis/treatment/consultation/consultation-details-incarceration.md) | [workflows.md](../wireframes/treatment/workflows.md) | [data-dictionary-treatment.md](../analysis/treatment/data-dictionary-treatment.md) |
+  | Treatment/Warning | [consultation-details-treatment-warning.md](../analysis/treatment/consultation/consultation-details-treatment-warning.md) | [workflows.md](../wireframes/treatment/workflows.md) | [data-dictionary-treatment.md](../analysis/treatment/data-dictionary-treatment.md) |
+  | View/Review | [consultation-view-review.md](../analysis/treatment/consultation/consultation-view-review.md) | [workflows.md](../wireframes/treatment/workflows.md) | [data-dictionary-treatment.md](../analysis/treatment/data-dictionary-treatment.md) |
 
 #### 7. Appointment Admin
 - **English**: Appointment Admin
@@ -302,10 +302,10 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
   - [questionnaire-detail.md](../analysis/treatment/questionnaire/questionnaire-detail.md)
 - **Submenu**:
   
-  | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Wireframe Doc |
-  |------|---------|--------|-----|------|----------|--------------|-------------|--------------|
-  | Closed Month | Closed Month | Geschlossener Monat | `/closedMonth.html` | `fa-calendar-exclamation` | `i18n.ClosedMonth` → `closedMonth.title` | — | [close-month.md](../analysis/planning/appointment-support/close-month.md) | [workflows.md](../wireframes/planning/workflows.md) |
-  | Questionnaire | Questionnaire | Fragebogen | `/questionaire.html` | `fa-user-headset` | `i18n.questionaire` → `questionnaire.title` | — | [questionnaire-list.md](../analysis/treatment/questionnaire/questionnaire-list.md), [questionnaire-detail.md](../analysis/treatment/questionnaire/questionnaire-detail.md) | — |
+  | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Wireframe Doc | Data Dictionary |
+  |------|---------|--------|-----|------|----------|--------------|-------------|--------------|-----------------|
+  | Closed Month | Closed Month | Geschlossener Monat | `/closedMonth.html` | `fa-calendar-exclamation` | `i18n.ClosedMonth` → `closedMonth.title` | — | [close-month.md](../analysis/planning/appointment-support/close-month.md) | [workflows.md](../wireframes/planning/workflows.md) | [data-dictionary-planning.md](../analysis/planning/data-dictionary-planning.md) |
+  | Questionnaire | Questionnaire | Fragebogen | `/questionaire.html` | `fa-user-headset` | `i18n.questionaire` → `questionnaire.title` | — | [questionnaire-list.md](../analysis/treatment/questionnaire/questionnaire-list.md), [questionnaire-detail.md](../analysis/treatment/questionnaire/questionnaire-detail.md) | — | [data-dictionary-treatment.md](../analysis/treatment/data-dictionary-treatment.md) |
 
 #### 8. Notifications
 - **English**: Notifications
@@ -319,9 +319,9 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 - **Analysis Doc**: [notification.md](../analysis/system/notification/notification.md)
 - **Submenu**:
   
-  | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Wireframe Doc |
-  |------|---------|--------|-----|------|----------|--------------|-------------|--------------|
-  | Trash | Trash | Papierkorb | (none, filter) | `fa-comment-times` | `i18n.notification.folder.TRASH` → `notification.folder.TRASH` | — | [notification.md](../analysis/system/notification/notification.md) | [workflows.md](../wireframes/system/workflows.md) |
+  | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Wireframe Doc | Data Dictionary |
+  |------|---------|--------|-----|------|----------|--------------|-------------|--------------|-----------------|
+  | Trash | Trash | Papierkorb | (none, filter) | `fa-comment-times` | `i18n.notification.folder.TRASH` → `notification.folder.TRASH` | — | [notification.md](../analysis/system/notification/notification.md) | [workflows.md](../wireframes/system/workflows.md) | [data-dictionary-system.md](../analysis/system/data-dictionary-system.md) |
 
 #### 9. Customers
 - **English**: Customers
@@ -335,15 +335,15 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 - **Analysis Doc**: [customer-list-detail.md](../analysis/customer/customer-core/customer-list-detail.md)
 - **Submenu**:
   
-  | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Wireframe Doc |
-  |------|---------|--------|-----|------|----------|--------------|-------------|--------------|
-  | Onboarding Customer | Onboarding Customer | Kunden-Onboarding | `/onboardingCustomer.html` | `fa-hospital-user` | `i18n.onboardingCustomerArea` → `onboarding.customer.title` | — | [onboarding-flow.md](../analysis/user-management/admin/onboarding-flow.md) | — |
-  | Invoices | Invoices | Rechnungen | `/invoice.html` | `fa-file-invoice` | `i18n.invoiceArea` → `invoice.plural` | — | [invoice-list.md](../analysis/accounting/invoice/invoice-list.md), [invoice-details.md](../analysis/accounting/invoice/invoice-details.md) | [workflows.md](../wireframes/accounting/workflows.md) |
-  | Invoice Receivers | Invoice Receivers | Rechnungsempfänger | `/invoiceReceiver.html` | `fa-file-invoice` | `i18n.invoice.paymentContact` → `invoice.paymentContact` | — | [invoice-receiver.md](../analysis/accounting/invoice-receiver/invoice-receiver.md) | [workflows.md](../wireframes/accounting/workflows.md) |
-  | Customer Users | Users | Benutzer | `/customerUser.html` | `fa-user-tie` | `i18n.user` → `user.plural` | — | [location-and-users.md](../analysis/customer/customer-core/location-and-users.md) | — |
-  | Locations | Locations | Standorte | `/customerLocation.html` | `fa-clinic-medical` | `i18n.location` → `location.plural` | — | [location-and-users.md](../analysis/customer/customer-core/location-and-users.md) | [workflows.md](../wireframes/customer/workflows.md) |
-  | Rooms | Rooms | Räume | `/room.html` | `fa-building` | `i18n.rooms` → `room.plural` | — | [room.md](../analysis/customer/room/room.md) | [workflows.md](../wireframes/customer/workflows.md) |
-  | Onboarding Location | Onboarding Location | Standort-Onboarding | `/onboardingLocation.html` | `fa-clinic-medical` | `i18n.onboardingLocationArea` → `onboarding.location.title` | — | [onboarding-flow.md](../analysis/user-management/admin/onboarding-flow.md) | — |
+  | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Wireframe Doc | Data Dictionary |
+  |------|---------|--------|-----|------|----------|--------------|-------------|--------------|-----------------|
+  | Onboarding Customer | Onboarding Customer | Kunden-Onboarding | `/onboardingCustomer.html` | `fa-hospital-user` | `i18n.onboardingCustomerArea` → `onboarding.customer.title` | — | [onboarding-flow.md](../analysis/user-management/admin/onboarding-flow.md) | — | [data-dictionary-user-management.md](../analysis/user-management/data-dictionary-user-management.md) |
+  | Invoices | Invoices | Rechnungen | `/invoice.html` | `fa-file-invoice` | `i18n.invoiceArea` → `invoice.plural` | — | [invoice-list.md](../analysis/accounting/invoice/invoice-list.md), [invoice-details.md](../analysis/accounting/invoice/invoice-details.md) | [workflows.md](../wireframes/accounting/workflows.md) | [data-dictionary-accounting.md](../analysis/accounting/data-dictionary-accounting.md) |
+  | Invoice Receivers | Invoice Receivers | Rechnungsempfänger | `/invoiceReceiver.html` | `fa-file-invoice` | `i18n.invoice.paymentContact` → `invoice.paymentContact` | — | [invoice-receiver.md](../analysis/accounting/invoice-receiver/invoice-receiver.md) | [workflows.md](../wireframes/accounting/workflows.md) | [data-dictionary-accounting.md](../analysis/accounting/data-dictionary-accounting.md) |
+  | Customer Users | Users | Benutzer | `/customerUser.html` | `fa-user-tie` | `i18n.user` → `user.plural` | — | [location-and-users.md](../analysis/customer/customer-core/location-and-users.md) | — | [data-dictionary-customer.md](../analysis/customer/data-dictionary-customer.md) |
+  | Locations | Locations | Standorte | `/customerLocation.html` | `fa-clinic-medical` | `i18n.location` → `location.plural` | — | [location-and-users.md](../analysis/customer/customer-core/location-and-users.md) | [workflows.md](../wireframes/customer/workflows.md) | [data-dictionary-customer.md](../analysis/customer/data-dictionary-customer.md) |
+  | Rooms | Rooms | Räume | `/room.html` | `fa-building` | `i18n.rooms` → `room.plural` | — | [room.md](../analysis/customer/room/room.md) | [workflows.md](../wireframes/customer/workflows.md) | [data-dictionary-customer.md](../analysis/customer/data-dictionary-customer.md) |
+  | Onboarding Location | Onboarding Location | Standort-Onboarding | `/onboardingLocation.html` | `fa-clinic-medical` | `i18n.onboardingLocationArea` → `onboarding.location.title` | — | [onboarding-flow.md](../analysis/user-management/admin/onboarding-flow.md) | — | [data-dictionary-user-management.md](../analysis/user-management/data-dictionary-user-management.md) |
 
 #### 10. Staff
 - **English**: Staff
@@ -357,11 +357,11 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 - **Analysis Doc**: [staff-list.md](../analysis/staff/staff-list.md)
 - **Submenu**:
   
-  | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Wireframe Doc |
-  |------|---------|--------|-----|------|----------|--------------|-------------|--------------|
-  | Onboarding | Onboarding | Onboarding | `/onboarding.html` | `fa-layer-group` | `Onboarding` → `onboarding.title` | — | [onboarding-flow.md](../analysis/user-management/admin/onboarding-flow.md) | — |
-  | User Management | Users | Benutzer | `/adminUser.html` | `fa-users` | `i18n.user` → `user.plural` | — | [user-management.md](../analysis/user-management/admin/user-management.md) | — |
-  | Expert Weekly Assignments | Expert Weekly Assignments | Experten-Wochenzuteilungen | `/expertWorkWeeklyAssignments.html` | `fa-tally` | `i18n.expertWorkWeeklyAssignments` → `expertWork.weeklyAssignments` | — | [worklog.md](../analysis/accounting/worklog/worklog.md) | — |
+  | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Wireframe Doc | Data Dictionary |
+  |------|---------|--------|-----|------|----------|--------------|-------------|--------------|-----------------|
+  | Onboarding | Onboarding | Onboarding | `/onboarding.html` | `fa-layer-group` | `Onboarding` → `onboarding.title` | — | [onboarding-flow.md](../analysis/user-management/admin/onboarding-flow.md) | — | [data-dictionary-user-management.md](../analysis/user-management/data-dictionary-user-management.md) |
+  | User Management | Users | Benutzer | `/adminUser.html` | `fa-users` | `i18n.user` → `user.plural` | — | [user-management.md](../analysis/user-management/admin/user-management.md) | — | [data-dictionary-user-management.md](../analysis/user-management/data-dictionary-user-management.md) |
+  | Expert Weekly Assignments | Expert Weekly Assignments | Experten-Wochenzuteilungen | `/expertWorkWeeklyAssignments.html` | `fa-tally` | `i18n.expertWorkWeeklyAssignments` → `expertWork.weeklyAssignments` | — | [worklog.md](../analysis/accounting/worklog/worklog.md) | — | [data-dictionary-accounting.md](../analysis/accounting/data-dictionary-accounting.md) |
 
 #### 11. Administration
 - **English**: Administration
@@ -375,19 +375,19 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 - **Analysis Doc**: [admin-landing.md](../analysis/admin/admin-landing.md)
 - **Submenu**:
   
-  | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Wireframe Doc |
-  |------|---------|--------|-----|------|----------|--------------|-------------|--------------|
-  | Job IDs | Job IDs | Leistungsnummern | `/job.html` | `fa-briefcase-medical` | `i18n.action.jobIds` → `job.action.jobIds` | — | [job-configuration.md](../analysis/accounting/admin-job/job-configuration.md) | [workflows.md](../wireframes/accounting/workflows.md) |
-  | Async Job Queue | Async Job Queue | Asynchrone Warteschlange | `/asyncJobQueue.html` | `fa-stream` | `i18n.AsyncJobQueue` → `asyncJobQueue.title` | — | [system.md#entity-async-job-queue](../analysis/mongodb-mapping/system.md#entity-async-job-queue) | — |
-  | Job Price List | Job Price List | Leistungsliste | `/jobPriceList.html` | `fa-th-list` | `i18n.jobPriceList` → `jobPriceList.title` | — | [accounting-config.md#e-job-price-list](../analysis/accounting/config/accounting-config.md#e-job-price-list) | — |
-  | Products | Products | Produkte | `/product.html` | `fa-shopping-bag` | `i18n.menu.products` → `menu.products` | — | [accounting-config.md#f-product](../analysis/accounting/config/accounting-config.md#f-product) | — |
-  | Skills | Skills | Fähigkeiten | `/skill.html` | `fa-graduation-cap` | `i18n.skills` → `skills.plural` | — | [skill.md](../analysis/user-management/admin/skill.md) | — |
-  | Exclusion Criteria | Exclusion Criteria | Ausschlusskriterien | `/exclusionCriteria.html` | `fa-comment-slash` | `i18n.exclusionCriteria` → `exclusionCriteria.plural` | — | [system-config.md#b-exclusion-criteria](../analysis/system/config/system-config.md#b-exclusion-criteria) | — |
-  | Export Templates | Export Templates | Exportvorlagen | `/exportTemplate.html` | `fa-file-export` | `i18n.exportTemplate` → `exportTemplate.title` | — | [templates-files.md#2-export-template](../analysis/system/templates-files/templates-files.md#2-export-template) | — |
-  | Warnings | Warnings | Warnungen | `/warning.html` | `fa-exclamation-triangle` | `i18n.consultation.warning` → `consultation.warning.plural` | — | [warning-management.md](../analysis/treatment/warning/warning-management.md) | — |
-  | Treatment Categories | Treatment Categories | Therapiekategorien | `/treatmentCategory.html` | `fa-triangle` | `i18n.TreatmentCategory` → `treatmentCategory.plural` | — | [treatment-and-category.md](../analysis/treatment/treatment-core/treatment-and-category.md) | — |
-  | Equipment | Equipment | Geräte | `/equipment.html` | `fa-tablet-alt` | `i18n.menu.devices` → `menu.devices` | — | [equipment.md](../analysis/customer/equipment/equipment.md) | [workflows.md](../wireframes/customer/workflows.md) |
-  | Onboarding Steps | Onboarding Steps | Onboarding-Schritte | `/onboardingStep.html` | `fa-layer-group` | `i18n.menu.onboardingStep` → `menu.onboardingStep` | — | [onboarding-flow.md](../analysis/user-management/admin/onboarding-flow.md) | — |
+  | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Wireframe Doc | Data Dictionary |
+  |------|---------|--------|-----|------|----------|--------------|-------------|--------------|-----------------|
+  | Job IDs | Job IDs | Leistungsnummern | `/job.html` | `fa-briefcase-medical` | `i18n.action.jobIds` → `job.action.jobIds` | — | [job-configuration.md](../analysis/accounting/admin-job/job-configuration.md) | [workflows.md](../wireframes/accounting/workflows.md) | [data-dictionary-accounting.md](../analysis/accounting/data-dictionary-accounting.md) |
+  | Async Job Queue | Async Job Queue | Asynchrone Warteschlange | `/asyncJobQueue.html` | `fa-stream` | `i18n.AsyncJobQueue` → `asyncJobQueue.title` | — | [system.md#entity-async-job-queue](../analysis/mongodb-mapping/system.md#entity-async-job-queue) | — | [data-dictionary-system.md](../analysis/system/data-dictionary-system.md) |
+  | Job Price List | Job Price List | Leistungsliste | `/jobPriceList.html` | `fa-th-list` | `i18n.jobPriceList` → `jobPriceList.title` | — | [accounting-config.md#e-job-price-list](../analysis/accounting/config/accounting-config.md#e-job-price-list) | — | [data-dictionary-accounting.md](../analysis/accounting/data-dictionary-accounting.md) |
+  | Products | Products | Produkte | `/product.html` | `fa-shopping-bag` | `i18n.menu.products` → `menu.products` | — | [accounting-config.md#f-product](../analysis/accounting/config/accounting-config.md#f-product) | — | [data-dictionary-accounting.md](../analysis/accounting/data-dictionary-accounting.md) |
+  | Skills | Skills | Fähigkeiten | `/skill.html` | `fa-graduation-cap` | `i18n.skills` → `skills.plural` | — | [skill.md](../analysis/user-management/admin/skill.md) | — | [data-dictionary-user-management.md](../analysis/user-management/data-dictionary-user-management.md) |
+  | Exclusion Criteria | Exclusion Criteria | Ausschlusskriterien | `/exclusionCriteria.html` | `fa-comment-slash` | `i18n.exclusionCriteria` → `exclusionCriteria.plural` | — | [system-config.md#b-exclusion-criteria](../analysis/system/config/system-config.md#b-exclusion-criteria) | — | [data-dictionary-system.md](../analysis/system/data-dictionary-system.md) |
+  | Export Templates | Export Templates | Exportvorlagen | `/exportTemplate.html` | `fa-file-export` | `i18n.exportTemplate` → `exportTemplate.title` | — | [templates-files.md#2-export-template](../analysis/system/templates-files/templates-files.md#2-export-template) | — | [data-dictionary-system.md](../analysis/system/data-dictionary-system.md) |
+  | Warnings | Warnings | Warnungen | `/warning.html` | `fa-exclamation-triangle` | `i18n.consultation.warning` → `consultation.warning.plural` | — | [warning-management.md](../analysis/treatment/warning/warning-management.md) | — | [data-dictionary-treatment.md](../analysis/treatment/data-dictionary-treatment.md) |
+  | Treatment Categories | Treatment Categories | Therapiekategorien | `/treatmentCategory.html` | `fa-triangle` | `i18n.TreatmentCategory` → `treatmentCategory.plural` | — | [treatment-and-category.md](../analysis/treatment/treatment-core/treatment-and-category.md) | — | [data-dictionary-treatment.md](../analysis/treatment/data-dictionary-treatment.md) |
+  | Equipment | Equipment | Geräte | `/equipment.html` | `fa-tablet-alt` | `i18n.menu.devices` → `menu.devices` | — | [equipment.md](../analysis/customer/equipment/equipment.md) | [workflows.md](../wireframes/customer/workflows.md) | [data-dictionary-customer.md](../analysis/customer/data-dictionary-customer.md) |
+  | Onboarding Steps | Onboarding Steps | Onboarding-Schritte | `/onboardingStep.html` | `fa-layer-group` | `i18n.menu.onboardingStep` → `menu.onboardingStep` | — | [onboarding-flow.md](../analysis/user-management/admin/onboarding-flow.md) | — | [data-dictionary-user-management.md](../analysis/user-management/data-dictionary-user-management.md) |
 
 #### 12. Systemadmin
 - **English**: Systemadmin
@@ -401,20 +401,20 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 - **Analysis Doc**: [admin-landing.md](../analysis/system/admin/admin-landing.md)
 - **Submenu**:
   
-  | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Wireframe Doc |
-  |------|---------|--------|-----|------|----------|--------------|-------------|--------------|
-  | MOTD | MOTD | Tagesnachricht | `/motd.html` | `fa-newspaper` | `i18n.motd` → `motd.title` | — | [motd-template.md](../analysis/system/admin-cruds/motd-template.md) | — |
-  | Login Notification | Login Notification | Login-Benachrichtigung | `/loginNotification.html` | `fa-comment-exclamation` | `i18n.loginNotification` → `loginNotification.title` | — | [system-config.md#i-login-notification](../analysis/system/config/system-config.md#i-login-notification) | — |
-  | Notification Templates | Notification Templates | Benachrichtigungsvorlagen | `/notificationTemplate.html` | `fa-file-code` | `i18n.notificationTemplate` → `notificationTemplate.plural` | — | [templates-files.md#3-notification-template](../analysis/system/templates-files/templates-files.md#3-notification-template) | — |
-  | Location Types | Location Types | Standorttypen | `/locationType.html` | `fa-house` | `i18n.LocationType` → `locationType.plural` | — | [system-config.md#a-location-type](../analysis/system/config/system-config.md#a-location-type) | — |
-  | Storno Groups | Storno Groups | Stornogruppen | `/stornoGroup.html` | `fa-funnel-dollar` | `i18n.stornoGroup` → `stornoGroup.plural` | — | [accounting-config.md#c-storno-group-cancellation-group](../analysis/accounting/config/accounting-config.md#c-storno-group-cancellation-group) | — |
-  | Work Hours | Work Hours | Arbeitszeiten | `/workHour.html` | `fa-user-clock` | `i18n.workHours` → `workHours.title` | — | [workhour.md](../analysis/planning/appointment-support/workhour.md) | — |
-  | CDR | CDR | CDR (Verbindungsdaten) | `/CdrCall.html` | `fa-boxes` | `CDR` → `cdr.title` | — | [cdr-call.md](../analysis/planning/appointment-support/cdr-call.md) | [workflows.md](../wireframes/planning/workflows.md) |
-  | CDR Assignment | CDR Assignment | CDR-Zuteilung | `/CdrCallAssignment.html` | `fa-arrows-alt-h` | `CDR Assignment` → `cdr.assignment` | — | [cdr-call.md](../analysis/planning/appointment-support/cdr-call.md) | [workflows.md](../wireframes/planning/workflows.md) |
-  | Log | Log | Protokoll | `/log.html` | `fa-stream` | `Log` → `log.title` | — | [system.md#entity-logs](../analysis/mongodb-mapping/system.md#entity-logs) | — |
-  | Support Categories | Support Categories | Support-Kategorien | `/supportCategory.html` | `fa-user-headset` | `i18n.supportCategory` → `supportCategory.plural` | — | [system-config.md#d-support-category](../analysis/system/config/system-config.md#d-support-category) | — |
-  | BasisWeb Appointments | BasisWeb Appointments | BasisWeb-Anmeldungen | `/basisWebAppointment.html` | `fa-user-headset` | `BasisWeb-Anmeldungen` → `basisWeb.appointments` | — | [interfaces.md#entity-basis-web-appointment](../analysis/mongodb-mapping/interfaces.md#entity-basis-web-appointment) | — |
-  | Change Log | Change Log | Änderungsprotokoll | `/changelog.html` | `fa-hourglass` | `Change-Log` → `changelog.title` | — | [admin-landing.md#8-page-changelog-changeloghtmlm](../analysis/system/admin/admin-landing.md#8-page-changelog-changeloghtmlm) | — |
+  | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Wireframe Doc | Data Dictionary |
+  |------|---------|--------|-----|------|----------|--------------|-------------|--------------|-----------------|
+  | MOTD | MOTD | Tagesnachricht | `/motd.html` | `fa-newspaper` | `i18n.motd` → `motd.title` | — | [motd-template.md](../analysis/system/admin-cruds/motd-template.md) | — | [data-dictionary-system.md](../analysis/system/data-dictionary-system.md) |
+  | Login Notification | Login Notification | Login-Benachrichtigung | `/loginNotification.html` | `fa-comment-exclamation` | `i18n.loginNotification` → `loginNotification.title` | — | [system-config.md#i-login-notification](../analysis/system/config/system-config.md#i-login-notification) | — | [data-dictionary-system.md](../analysis/system/data-dictionary-system.md) |
+  | Notification Templates | Notification Templates | Benachrichtigungsvorlagen | `/notificationTemplate.html` | `fa-file-code` | `i18n.notificationTemplate` → `notificationTemplate.plural` | — | [templates-files.md#3-notification-template](../analysis/system/templates-files/templates-files.md#3-notification-template) | — | [data-dictionary-system.md](../analysis/system/data-dictionary-system.md) |
+  | Location Types | Location Types | Standorttypen | `/locationType.html` | `fa-house` | `i18n.LocationType` → `locationType.plural` | — | [system-config.md#a-location-type](../analysis/system/config/system-config.md#a-location-type) | — | [data-dictionary-system.md](../analysis/system/data-dictionary-system.md) |
+  | Storno Groups | Storno Groups | Stornogruppen | `/stornoGroup.html` | `fa-funnel-dollar` | `i18n.stornoGroup` → `stornoGroup.plural` | — | [accounting-config.md#c-storno-group-cancellation-group](../analysis/accounting/config/accounting-config.md#c-storno-group-cancellation-group) | — | [data-dictionary-accounting.md](../analysis/accounting/data-dictionary-accounting.md) |
+  | Work Hours | Work Hours | Arbeitszeiten | `/workHour.html` | `fa-user-clock` | `i18n.workHours` → `workHours.title` | — | [workhour.md](../analysis/planning/appointment-support/workhour.md) | — | [data-dictionary-planning.md](../analysis/planning/data-dictionary-planning.md) |
+  | CDR | CDR | CDR (Verbindungsdaten) | `/CdrCall.html` | `fa-boxes` | `CDR` → `cdr.title` | — | [cdr-call.md](../analysis/planning/appointment-support/cdr-call.md) | [workflows.md](../wireframes/planning/workflows.md) | [data-dictionary-planning.md](../analysis/planning/data-dictionary-planning.md) |
+  | CDR Assignment | CDR Assignment | CDR-Zuteilung | `/CdrCallAssignment.html` | `fa-arrows-alt-h` | `CDR Assignment` → `cdr.assignment` | — | [cdr-call.md](../analysis/planning/appointment-support/cdr-call.md) | [workflows.md](../wireframes/planning/workflows.md) | [data-dictionary-planning.md](../analysis/planning/data-dictionary-planning.md) |
+  | Log | Log | Protokoll | `/log.html` | `fa-stream` | `Log` → `log.title` | — | [system.md#entity-logs](../analysis/mongodb-mapping/system.md#entity-logs) | — | [data-dictionary-system.md](../analysis/system/data-dictionary-system.md) |
+  | Support Categories | Support Categories | Support-Kategorien | `/supportCategory.html` | `fa-user-headset` | `i18n.supportCategory` → `supportCategory.plural` | — | [system-config.md#d-support-category](../analysis/system/config/system-config.md#d-support-category) | — | [data-dictionary-system.md](../analysis/system/data-dictionary-system.md) |
+  | BasisWeb Appointments | BasisWeb Appointments | BasisWeb-Anmeldungen | `/basisWebAppointment.html` | `fa-user-headset` | `BasisWeb-Anmeldungen` → `basisWeb.appointments` | — | [interfaces.md#entity-basis-web-appointment](../analysis/mongodb-mapping/interfaces.md#entity-basis-web-appointment) | — | [data-dictionary-interfaces.md](../analysis/interfaces/data-dictionary-interfaces.md) |
+  | Change Log | Change Log | Änderungsprotokoll | `/changelog.html` | `fa-hourglass` | `Change-Log` → `changelog.title` | — | [admin-landing.md#8-page-changelog-changeloghtmlm](../analysis/system/admin/admin-landing.md#8-page-changelog-changeloghtmlm) | — | [data-dictionary-system.md](../analysis/system/data-dictionary-system.md) |
 
 #### 13. Global Menu (`#globalMenu`)
 - **English**: Global Menu
@@ -428,16 +428,16 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 - **Analysis Doc**: —
 - **Items**:
   
-  | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc |
-  |------|---------|--------|-----|------|----------|--------------|-------------|
-  | Search Toggle | Full Text Search | Volltextsuche | — | `fa-search` | — | Always visible | — |
-  | Search Input | Search | Suchen | — | (text input) | `label.search` → `search.placeholder` | `{{#search}}` | — |
-  | Settings | Settings | Einstellungen | `/profile.html` | `fa-cog` | `administration.settings` → `administration.settings` | Always visible | [profile-form.md](../analysis/user-management/profile/profile-form.md), [profile-expert-availability.md](../analysis/user-management/profile/profile-expert-availability.md), [profile-staff.md](../analysis/user-management/profile/profile-staff.md), [totp-onboarding.md](../analysis/user-management/admin/totp-onboarding.md) |
-  | Security | Security | Sicherheit | `/userSecurity.html` | `fa-id-card` | `administration.security` → `administration.security` | Always visible | [profile-dialogs.md](../analysis/user-management/profile/profile-dialogs.md) |
-  | Role Switch | (Dynamic role label) | (Dynamische Rollenbezeichnung) | `#roleSwitchDlg` | `fa-user-tag` | `role.{ROLE}` | `roleSwitch=true` (authority: `USERS_CREATE`) | [includes-shared-components.md](../analysis/system/includes/includes-shared-components.md) |
-  | Bug Report | Bug Report | Fehlerbericht | — | (from include) | — | Always visible | [includes-shared-components.md](../analysis/system/includes/includes-shared-components.md) |
-  | Logout | Logout | Abmelden | `/logout` | `fa-sign-out` | `logout` → `logout` | Always visible | — |
-  | Version Display | App Version-Build | App-Version-Buildzeit | — | — | `application.version`-`application.buildtime` | Always visible | — |
+  | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Data Dictionary |
+  |------|---------|--------|-----|------|----------|--------------|-------------|-----------------|
+  | Search Toggle | Full Text Search | Volltextsuche | — | `fa-search` | — | Always visible | — | — |
+  | Search Input | Search | Suchen | — | (text input) | `label.search` → `search.placeholder` | `{{#search}}` | — | — |
+  | Settings | Settings | Einstellungen | `/profile.html` | `fa-cog` | `administration.settings` → `administration.settings` | Always visible | [profile-form.md](../analysis/user-management/profile/profile-form.md), [profile-expert-availability.md](../analysis/user-management/profile/profile-expert-availability.md), [profile-staff.md](../analysis/user-management/profile/profile-staff.md), [totp-onboarding.md](../analysis/user-management/admin/totp-onboarding.md) | [data-dictionary-user-management.md](../analysis/user-management/data-dictionary-user-management.md) |
+  | Security | Security | Sicherheit | `/userSecurity.html` | `fa-id-card` | `administration.security` → `administration.security` | Always visible | [profile-dialogs.md](../analysis/user-management/profile/profile-dialogs.md) | [data-dictionary-user-management.md](../analysis/user-management/data-dictionary-user-management.md) |
+  | Role Switch | (Dynamic role label) | (Dynamische Rollenbezeichnung) | `#roleSwitchDlg` | `fa-user-tag` | `role.{ROLE}` | `roleSwitch=true` (authority: `USERS_CREATE`) | [includes-shared-components.md](../analysis/system/includes/includes-shared-components.md) | [data-dictionary-system.md](../analysis/system/data-dictionary-system.md) |
+  | Bug Report | Bug Report | Fehlerbericht | — | (from include) | — | Always visible | [includes-shared-components.md](../analysis/system/includes/includes-shared-components.md) | [data-dictionary-system.md](../analysis/system/data-dictionary-system.md) |
+  | Logout | Logout | Abmelden | `/logout` | `fa-sign-out` | `logout` → `logout` | Always visible | — | — |
+  | Version Display | App Version-Build | App-Version-Buildzeit | — | — | `application.version`-`application.buildtime` | Always visible | — | — |
 
 #### Shell-Level Permission Gates
 
