@@ -188,77 +188,103 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 
 ### 2.4 Detailed Sitemap with Submenu Items
 
+> **Note**: Analysis document references point to existing documentation. Items marked with **TODO** need analysis documents created.
+
 #### 1. Dashboard
+- **English**: Dashboard
+- **German**: Dashboard
 - **i18n Key**: `Dashboard` (hardcoded, should be `menu.dashboard`)
-- **Icon**: `tachometer`
+- **Icon**: `fa-tachometer`
 - **Color**: `color-dash`
-- **Permissions**: None (always visible)
-- **Legacy URLs**: `/dash.html`
+- **Roles**: Always visible
+- **Rights**: None
+- **URL**: `/dash.html`
+- **Analysis Doc**: [dashboard-main.md](../analysis/system/dashboard/dashboard-main.md)
 - **Submenu**:
   
-  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe Doc |
-  |------|------------|------|----------|-------------|-------------|--------------|
-  | Calendar | `/monthView.html` | `calendar-alt` | `i18n.calendar` | — | [calendar-view.md](../analysis/planning/dashboard/calendar-view.md), [month-view.md](../analysis/planning/dashboard/month-view.md) | [workflows.md](../wireframes/planning/workflows.md) |
-  | Week View | `/weekView.html` | `calendar-alt` | `i18n.weekView` | EXPERT_WEEK | [week-view.md](../analysis/planning/dashboard/week-view.md) | [workflows.md](../wireframes/planning/workflows.md) |
-  | Worklog | `/expertWorkMonthly.html` | `file-chart-line` | `i18n.Worklog` | — | [worklog.md](../analysis/accounting/worklog/worklog.md) | [workflows.md](../wireframes/accounting/workflows.md) |
-  | Video Library | `https://learn.videoclinic.de/` | `video` | `i18n.VideoLibrary` | — | — | — |
+  | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Wireframe Doc |
+  |------|---------|--------|-----|------|----------|--------------|-------------|--------------|
+  | Calendar | Calendar | Kalender | `/monthView.html` | `fa-calendar-alt` | `i18n.calendar` → `calendar.title` | — | [calendar-view.md](../analysis/planning/dashboard/calendar-view.md), [month-view.md](../analysis/planning/dashboard/month-view.md) | [workflows.md](../wireframes/planning/workflows.md) |
+  | Week View | Week View | Wochenansicht | `/weekView.html` | `fa-calendar-alt` | `i18n.weekView` → `weekView.title` | `EXPERT_WEEK` | [week-view.md](../analysis/planning/dashboard/week-view.md) | [workflows.md](../wireframes/planning/workflows.md) |
+  | Worklog | Worklog | Arbeitsprotokoll | `/expertWorkMonthly.html` | `fa-file-chart-line` | `i18n.Worklog` → `worklog.title` | — | [worklog.md](../analysis/accounting/worklog/worklog.md) | [workflows.md](../wireframes/accounting/workflows.md) |
+  | Video Library | Video Library | Videobibliothek | `https://learn.videoclinic.de/` | `fa-video` | `i18n.VideoLibrary` → `videoLibrary.title` | — | [support-and-video.md](../analysis/orphan/support-and-video.md) | — |
 
 #### 2. Appointments
+- **English**: Appointments
+- **German**: Termine
 - **i18n Key**: `i18n.AppointmentType.APPOINTMENT` → `appointment.type.APPOINTMENT`
-- **Icon**: `user-md`
+- **Icon**: `fa-user-md`
 - **Color**: `color-appointment`
 - **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
-- **Legacy URLs**: `/appointment.html`
+- **Rights**: None
+- **URL**: `/appointment.html`
+- **Analysis Doc**: [appointment-list.md](../analysis/planning/appointment/appointment-list.md)
 - **Submenu**:
   
-  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe Doc |
-  |------|------------|------|----------|-------------|-------------|--------------|
-  | Appointment Plan | `/appointmentPlan.html` | `calendar-check` | `i18n.appointmentPlan` | — | [appointment-list.md](../analysis/planning/appointment/appointment-list.md), [appointment-details-scheduling.md](../analysis/planning/appointment/appointment-details-scheduling.md) | [workflows.md](../wireframes/planning/workflows.md) |
-  | Patient Data | `/patientData.html` | `user` | `i18n.PatientDataType` | — | — | — |
+  | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Wireframe Doc |
+  |------|---------|--------|-----|------|----------|--------------|-------------|--------------|
+  | Appointment Plan | Appointment Plan | Terminplan | `/appointmentPlan.html` | `fa-calendar-check` | `i18n.appointmentPlan` → `appointmentPlan.title` | — | [appointment-list.md](../analysis/planning/appointment/appointment-list.md), [appointment-details-scheduling.md](../analysis/planning/appointment/appointment-details-scheduling.md) | [workflows.md](../wireframes/planning/workflows.md) |
+  | Patient Data | Patient Data | Patientendaten | `/patientData.html` | `fa-user` | `i18n.PatientDataType` → `patientData.title` | — | [patient-data.md](../analysis/treatment/patient-data/patient-data.md) | — |
 
 #### 3. Shifts
+- **English**: Shifts
+- **German**: Dienste
 - **i18n Key**: `i18n.AppointmentType.SHIFT` → `appointment.type.SHIFT`
-- **Icon**: `user-injured`
+- **Icon**: `fa-user-injured`
 - **Color**: `color-shift`
 - **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
-- **Legacy URLs**: `/shift.html`
+- **Rights**: None
+- **URL**: `/shift.html`
+- **Analysis Doc**: [shift-and-plan.md](../analysis/planning/shift/shift-and-plan.md)
 - **Submenu**:
   
-  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe Doc |
-  |------|------------|------|----------|-------------|-------------|--------------|
-  | Shift Plan | `/shiftPlan.html` | `calendar-check` | `i18n.shiftPlan` | — | [shift-and-plan.md](../analysis/planning/shift/shift-and-plan.md) | [workflows.md](../wireframes/planning/workflows.md) |
+  | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Wireframe Doc |
+  |------|---------|--------|-----|------|----------|--------------|-------------|--------------|
+  | Shift Plan | Shift Plan | Dienstplan | `/shiftPlan.html` | `fa-calendar-check` | `i18n.shiftPlan` → `shiftPlan.title` | — | [shift-and-plan.md](../analysis/planning/shift/shift-and-plan.md) | [workflows.md](../wireframes/planning/workflows.md) |
 
 #### 4. Treatments
+- **English**: Treatments
+- **German**: Therapien
 - **i18n Key**: `i18n.Treatment` → `treatment.title`
-- **Icon**: `people-arrows`
+- **Icon**: `fa-people-arrows`
 - **Color**: `color-treatment`
 - **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
-- **Legacy URLs**: `/treatment.html`
+- **Rights**: None
+- **URL**: `/treatment.html`
+- **Analysis Doc**: [treatment-and-category.md](../analysis/treatment/treatment-core/treatment-and-category.md)
 - **Submenu**:
   
-  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe Doc |
-  |------|------------|------|----------|-------------|-------------|--------------|
-  | Treatment Plan | `/treatmentPlan.html` | `calendar-check` | `i18n.treatmentPlan` | — | [treatment-plan.md](../analysis/treatment/treatment-core/treatment-plan.md) | — |
-  | Treatment Plan History | `/treatmentPlan.html?history=true` | `calendar` | `i18n.treatmentPlanHistory` | — | — | — |
+  | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Wireframe Doc |
+  |------|---------|--------|-----|------|----------|--------------|-------------|--------------|
+  | Treatment Plan | Treatment Plan | Therapieplan | `/treatmentPlan.html` | `fa-calendar-check` | `i18n.treatmentPlan` → `treatmentPlan.title` | — | [treatment-plan.md](../analysis/treatment/treatment-core/treatment-plan.md) | — |
+  | Treatment Plan History | Treatment Plan History | Therapieplan-Historie | `/treatmentPlan.html?history=true` | `fa-calendar` | `i18n.treatmentPlanHistory` → `treatmentPlan.history` | — | [treatment-plan.md](../analysis/treatment/treatment-core/treatment-plan.md) | — |
 
 #### 5. Council
+- **English**: Council
+- **German**: Besprechung
 - **i18n Key**: `i18n.AppointmentType.COUNCIL` → `appointment.type.COUNCIL`
-- **Icon**: `user-friends`
+- **Icon**: `fa-user-friends`
 - **Color**: `color-council`
 - **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
-- **Legacy URLs**: `/council.html`
+- **Rights**: None
+- **URL**: `/council.html`
+- **Analysis Doc**: [council-and-plan.md](../analysis/planning/council/council-and-plan.md)
 - **Submenu**:
   
-  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe Doc |
-  |------|------------|------|----------|-------------|-------------|--------------|
-  | Council Plan | `/councilPlan.html` | `calendar-check` | `i18n.councilPlanArea` | — | [council-and-plan.md](../analysis/planning/council/council-and-plan.md) | [workflows.md](../wireframes/planning/workflows.md) |
+  | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Wireframe Doc |
+  |------|---------|--------|-----|------|----------|--------------|-------------|--------------|
+  | Council Plan | Council Plan | Besprechungsplan | `/councilPlan.html` | `fa-calendar-check` | `i18n.councilPlanArea` → `councilPlan.title` | — | [council-and-plan.md](../analysis/planning/council/council-and-plan.md) | [workflows.md](../wireframes/planning/workflows.md) |
 
 #### 6. Consultations
+- **English**: Consultations
+- **German**: Konsultationen
 - **i18n Key**: `i18n.consultation` → `consultation.title`
-- **Icon**: `heartbeat`
+- **Icon**: `fa-heartbeat`
 - **Color**: `color-consultation`
 - **Roles**: STANDARD, LEITER_INTERN, ADMIN_INTERN, ADMIN
-- **Legacy URLs**: `/consultation.html` (single-page module)
+- **Rights**: None
+- **URL**: `/consultation.html`
+- **Analysis Doc**: [consultation-list.md](../analysis/treatment/consultation/consultation-list.md)
 - **Submenu**: None (single-page module)
   
   | Feature | Analysis Doc | Wireframe Doc |
@@ -272,125 +298,153 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
   | View/Review | [consultation-view-review.md](../analysis/treatment/consultation/consultation-view-review.md) | [workflows.md](../wireframes/treatment/workflows.md) |
 
 #### 7. Appointment Admin
+- **English**: Appointment Admin
+- **German**: Terminverwaltung
 - **i18n Key**: `i18n.appointmentAdminArea` → `appointment.admin.title`
-- **Icon**: `calendar`
+- **Icon**: `fa-calendar`
 - **Color**: `color-appointmentAdmin`
 - **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
-- **Legacy URLs**: `/appointmentAdmin.html`
+- **Rights**: None
+- **URL**: `/appointmentAdmin.html`
+- **Analysis Doc**: [appointment-admin.md](../analysis/planning/appointment-admin/appointment-admin.md)
 - **Submenu**:
   
-  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe Doc |
-  |------|------------|------|----------|-------------|-------------|--------------|
-  | Closed Month | `/closedMonth.html` | `calendar-exclamation` | `i18n.ClosedMonth` | — | [close-month.md](../analysis/planning/appointment-support/close-month.md) | [workflows.md](../wireframes/planning/workflows.md) |
-  | Questionnaire | `/questionaire.html` | `user-headset` | `i18n.questionaire` | — | [questionnaire-list.md](../analysis/treatment/questionnaire/questionnaire-list.md), [questionnaire-detail.md](../analysis/treatment/questionnaire/questionnaire-detail.md) | — |
+  | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Wireframe Doc |
+  |------|---------|--------|-----|------|----------|--------------|-------------|--------------|
+  | Closed Month | Closed Month | Geschlossener Monat | `/closedMonth.html` | `fa-calendar-exclamation` | `i18n.ClosedMonth` → `closedMonth.title` | — | [close-month.md](../analysis/planning/appointment-support/close-month.md) | [workflows.md](../wireframes/planning/workflows.md) |
+  | Questionnaire | Questionnaire | Fragebogen | `/questionaire.html` | `fa-user-headset` | `i18n.questionaire` → `questionnaire.title` | — | [questionnaire-list.md](../analysis/treatment/questionnaire/questionnaire-list.md), [questionnaire-detail.md](../analysis/treatment/questionnaire/questionnaire-detail.md) | — |
 
 #### 8. Notifications
+- **English**: Notifications
+- **German**: Mitteilungen
 - **i18n Key**: `i18n.notification` → `notification.title`
-- **Icon**: `comments`
+- **Icon**: `fa-comments`
 - **Color**: `color-notify`
 - **Roles**: None
-- **Rights**: NOTIFICATION_READ, SELF_ASSIGNMENT
-- **Legacy URLs**: `/notification.html`
+- **Rights**: `NOTIFICATION_READ`, `SELF_ASSIGNMENT`
+- **URL**: `/notification.html`
+- **Analysis Doc**: [notification.md](../analysis/system/notification/notification.md)
 - **Submenu**:
   
-  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe Doc |
-  |------|------------|------|----------|-------------|-------------|--------------|
-  | Trash | (none, ID: `notificationTrash`) | `comment-times` | `i18n.notification.folder.TRASH` | — | [notification.md](../analysis/system/notification/notification.md) | [workflows.md](../wireframes/system/workflows.md) |
+  | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Wireframe Doc |
+  |------|---------|--------|-----|------|----------|--------------|-------------|--------------|
+  | Trash | Trash | Papierkorb | (none, filter) | `fa-comment-times` | `i18n.notification.folder.TRASH` → `notification.folder.TRASH` | — | [notification.md](../analysis/system/notification/notification.md) | [workflows.md](../wireframes/system/workflows.md) |
 
 #### 9. Customers
+- **English**: Customers
+- **German**: Kunden
 - **i18n Key**: `i18n.notification.customers` → `customer.plural`
-- **Icon**: `hospital-user`
+- **Icon**: `fa-hospital-user`
 - **Color**: `color-customer`
 - **Roles**: LEITER_INTERN, ADMIN_INTERN, KUNDE_ADMIN, ADMIN
-- **Legacy URLs**: `/customer.html`
+- **Rights**: None
+- **URL**: `/customer.html`
+- **Analysis Doc**: [customer-list-detail.md](../analysis/customer/customer-core/customer-list-detail.md)
 - **Submenu**:
   
-  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe Doc |
-  |------|------------|------|----------|-------------|-------------|--------------|
-  | Onboarding Customer | `/onboardingCustomer.html` | `hospital-user` | `i18n.onboardingCustomerArea` | — | — | — |
-  | Invoices | `/invoice.html` | `file-invoice` | `i18n.invoiceArea` | — | [invoice-list.md](../analysis/accounting/invoice/invoice-list.md), [invoice-details.md](../analysis/accounting/invoice/invoice-details.md) | [workflows.md](../wireframes/accounting/workflows.md) |
-  | Invoice Receivers | `/invoiceReceiver.html` | `file-invoice` | `i18n.invoice.paymentContact` | — | [invoice-receiver.md](../analysis/accounting/invoice-receiver/invoice-receiver.md) | [workflows.md](../wireframes/accounting/workflows.md) |
-  | Customer Users | `/customerUser.html` | `user-tie` | `i18n.user` | — | — | — |
-  | Locations | `/customerLocation.html` | `clinic-medical` | `i18n.location` | — | [location-and-users.md](../analysis/customer/customer-core/location-and-users.md) | [workflows.md](../wireframes/customer/workflows.md) |
-  | Rooms | `/room.html` | `building` | `i18n.rooms` | — | [room.md](../analysis/customer/room/room.md) | [workflows.md](../wireframes/customer/workflows.md) |
-  | Onboarding Location | `/onboardingLocation.html` | `clinic-medical` | `i18n.onboardingLocationArea` | — | — | — |
+  | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Wireframe Doc |
+  |------|---------|--------|-----|------|----------|--------------|-------------|--------------|
+  | Onboarding Customer | Onboarding Customer | Kunden-Onboarding | `/onboardingCustomer.html` | `fa-hospital-user` | `i18n.onboardingCustomerArea` → `onboarding.customer.title` | — | [onboarding-flow.md](../analysis/user-management/admin/onboarding-flow.md) | — |
+  | Invoices | Invoices | Rechnungen | `/invoice.html` | `fa-file-invoice` | `i18n.invoiceArea` → `invoice.plural` | — | [invoice-list.md](../analysis/accounting/invoice/invoice-list.md), [invoice-details.md](../analysis/accounting/invoice/invoice-details.md) | [workflows.md](../wireframes/accounting/workflows.md) |
+  | Invoice Receivers | Invoice Receivers | Rechnungsempfänger | `/invoiceReceiver.html` | `fa-file-invoice` | `i18n.invoice.paymentContact` → `invoice.paymentContact` | — | [invoice-receiver.md](../analysis/accounting/invoice-receiver/invoice-receiver.md) | [workflows.md](../wireframes/accounting/workflows.md) |
+  | Customer Users | Users | Benutzer | `/customerUser.html` | `fa-user-tie` | `i18n.user` → `user.plural` | — | [location-and-users.md](../analysis/customer/customer-core/location-and-users.md) | — |
+  | Locations | Locations | Standorte | `/customerLocation.html` | `fa-clinic-medical` | `i18n.location` → `location.plural` | — | [location-and-users.md](../analysis/customer/customer-core/location-and-users.md) | [workflows.md](../wireframes/customer/workflows.md) |
+  | Rooms | Rooms | Räume | `/room.html` | `fa-building` | `i18n.rooms` → `room.plural` | — | [room.md](../analysis/customer/room/room.md) | [workflows.md](../wireframes/customer/workflows.md) |
+  | Onboarding Location | Onboarding Location | Standort-Onboarding | `/onboardingLocation.html` | `fa-clinic-medical` | `i18n.onboardingLocationArea` → `onboarding.location.title` | — | [onboarding-flow.md](../analysis/user-management/admin/onboarding-flow.md) | — |
 
 #### 10. Staff
+- **English**: Staff
+- **German**: Mitarbeiter
 - **i18n Key**: `i18n.employee.dialogtitle` → `employee.title`
-- **Icon**: `user-md`
+- **Icon**: `fa-user-md`
 - **Color**: `color-user`
 - **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
-- **Legacy URLs**: `/staff.html`
+- **Rights**: None
+- **URL**: `/staff.html`
+- **Analysis Doc**: [staff-list.md](../analysis/staff/staff-list.md)
 - **Submenu**:
   
-  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe Doc |
-  |------|------------|------|----------|-------------|-------------|--------------|
-  | Onboarding | `/onboarding.html` | `layer-group` | `Onboarding` | — | [onboarding-flow.md](../analysis/user-management/admin/onboarding-flow.md) | — |
-  | User Management | `/adminUser.html` | `users` | `i18n.user` | — | [user-management.md](../analysis/user-management/admin/user-management.md) | — |
-  | Expert Weekly Assignments | `/expertWorkWeeklyAssignments.html` | `tally` | `i18n.expertWorkWeeklyAssignments` | — | — | — |
+  | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Wireframe Doc |
+  |------|---------|--------|-----|------|----------|--------------|-------------|--------------|
+  | Onboarding | Onboarding | Onboarding | `/onboarding.html` | `fa-layer-group` | `Onboarding` → `onboarding.title` | — | [onboarding-flow.md](../analysis/user-management/admin/onboarding-flow.md) | — |
+  | User Management | Users | Benutzer | `/adminUser.html` | `fa-users` | `i18n.user` → `user.plural` | — | [user-management.md](../analysis/user-management/admin/user-management.md) | — |
+  | Expert Weekly Assignments | Expert Weekly Assignments | Experten-Wochenzuteilungen | `/expertWorkWeeklyAssignments.html` | `fa-tally` | `i18n.expertWorkWeeklyAssignments` → `expertWork.weeklyAssignments` | — | [worklog.md](../analysis/accounting/worklog/worklog.md) | — |
 
 #### 11. Administration
+- **English**: Administration
+- **German**: Administration
 - **i18n Key**: `Administration` (hardcoded, should be `administration.title`)
-- **Icon**: `user-cog`
+- **Icon**: `fa-user-cog`
 - **Color**: `admin`
 - **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
-- **Legacy URLs**: `/admin.html`
+- **Rights**: None
+- **URL**: `/admin.html`
+- **Analysis Doc**: [admin-landing.md](../analysis/admin/admin-landing.md)
 - **Submenu**:
   
-  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe Doc |
-  |------|------------|------|----------|-------------|-------------|--------------|
-  | Job IDs | `/job.html` | `briefcase-medical` | `i18n.action.jobIds` | — | [job-configuration.md](../analysis/accounting/admin-job/job-configuration.md) | [workflows.md](../wireframes/accounting/workflows.md) |
-  | Async Job Queue | `/asyncJobQueue.html` | `stream` | `i18n.AsyncJobQueue` | — | — | — |
-  | Job Price List | `/jobPriceList.html` | `th-list` | `i18n.jobPriceList` | — | — | — |
-  | Products | `/product.html` | `shopping-bag` | `i18n.menu.products` | — | — | — |
-  | Skills | `/skill.html` | `graduation-cap` | `i18n.skills` | — | [skill.md](../analysis/user-management/admin/skill.md) | — |
-  | Exclusion Criteria | `/exclusionCriteria.html` | `comment-slash` | `i18n.exclusionCriteria` | — | — | — |
-  | Export Templates | `/exportTemplate.html` | `file-export` | `i18n.exportTemplate` | — | — | — |
-  | Warnings | `/warning.html` | `exclamation-triangle` | `i18n.consultation.warning` | — | [warning-management.md](../analysis/treatment/warning/warning-management.md) | — |
-  | Treatment Categories | `/treatmentCategory.html` | `triangle` | `i18n.TreatmentCategory` | — | [treatment-and-category.md](../analysis/treatment/treatment-core/treatment-and-category.md) | — |
-  | Equipment | `/equipment.html` | `tablet-alt` | `i18n.menu.devices` | — | [equipment.md](../analysis/customer/equipment/equipment.md) | [workflows.md](../wireframes/customer/workflows.md) |
-  | Onboarding Steps | `/onboardingStep.html` | `layer-group` | `i18n.menu.onboardingStep` | — | — | — |
+  | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Wireframe Doc |
+  |------|---------|--------|-----|------|----------|--------------|-------------|--------------|
+  | Job IDs | Job IDs | Leistungsnummern | `/job.html` | `fa-briefcase-medical` | `i18n.action.jobIds` → `job.action.jobIds` | — | [job-configuration.md](../analysis/accounting/admin-job/job-configuration.md) | [workflows.md](../wireframes/accounting/workflows.md) |
+  | Async Job Queue | Async Job Queue | Asynchrone Warteschlange | `/asyncJobQueue.html` | `fa-stream` | `i18n.AsyncJobQueue` → `asyncJobQueue.title` | — | [system.md#entity-async-job-queue](../analysis/mongodb-mapping/system.md#entity-async-job-queue) | — |
+  | Job Price List | Job Price List | Leistungsliste | `/jobPriceList.html` | `fa-th-list` | `i18n.jobPriceList` → `jobPriceList.title` | — | [accounting-config.md#e-job-price-list](../analysis/accounting/config/accounting-config.md#e-job-price-list) | — |
+  | Products | Products | Produkte | `/product.html` | `fa-shopping-bag` | `i18n.menu.products` → `menu.products` | — | [accounting-config.md#f-product](../analysis/accounting/config/accounting-config.md#f-product) | — |
+  | Skills | Skills | Fähigkeiten | `/skill.html` | `fa-graduation-cap` | `i18n.skills` → `skills.plural` | — | [skill.md](../analysis/user-management/admin/skill.md) | — |
+  | Exclusion Criteria | Exclusion Criteria | Ausschlusskriterien | `/exclusionCriteria.html` | `fa-comment-slash` | `i18n.exclusionCriteria` → `exclusionCriteria.plural` | — | [system-config.md#b-exclusion-criteria](../analysis/system/config/system-config.md#b-exclusion-criteria) | — |
+  | Export Templates | Export Templates | Exportvorlagen | `/exportTemplate.html` | `fa-file-export` | `i18n.exportTemplate` → `exportTemplate.title` | — | [templates-files.md#2-export-template](../analysis/system/templates-files/templates-files.md#2-export-template) | — |
+  | Warnings | Warnings | Warnungen | `/warning.html` | `fa-exclamation-triangle` | `i18n.consultation.warning` → `consultation.warning.plural` | — | [warning-management.md](../analysis/treatment/warning/warning-management.md) | — |
+  | Treatment Categories | Treatment Categories | Therapiekategorien | `/treatmentCategory.html` | `fa-triangle` | `i18n.TreatmentCategory` → `treatmentCategory.plural` | — | [treatment-and-category.md](../analysis/treatment/treatment-core/treatment-and-category.md) | — |
+  | Equipment | Equipment | Geräte | `/equipment.html` | `fa-tablet-alt` | `i18n.menu.devices` → `menu.devices` | — | [equipment.md](../analysis/customer/equipment/equipment.md) | [workflows.md](../wireframes/customer/workflows.md) |
+  | Onboarding Steps | Onboarding Steps | Onboarding-Schritte | `/onboardingStep.html` | `fa-layer-group` | `i18n.menu.onboardingStep` → `menu.onboardingStep` | — | [onboarding-flow.md](../analysis/user-management/admin/onboarding-flow.md) | — |
 
 #### 12. Systemadmin
+- **English**: Systemadmin
+- **German**: Systemadministration
 - **i18n Key**: `Systemadmin` (hardcoded, should be `system.admin.title`)
-- **Icon**: `cogs`
+- **Icon**: `fa-cogs`
 - **Color**: `sysadmin`
 - **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
-- **Legacy URLs**: `/sysadmin.html`
+- **Rights**: None
+- **URL**: `/sysadmin.html`
+- **Analysis Doc**: [admin-landing.md](../analysis/system/admin/admin-landing.md)
 - **Submenu**:
   
-  | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe Doc |
-  |------|------------|------|----------|-------------|-------------|--------------|
-  | MOTD | `/motd.html` | `newspaper` | `i18n.motd` | — | [motd-template.md](../analysis/system/admin-cruds/motd-template.md) | — |
-  | Login Notification | `/loginNotification.html` | `comment-exclamation` | `i18n.loginNotification` | — | — | — |
-  | Notification Templates | `/notificationTemplate.html` | `file-code` | `i18n.notificationTemplate` | — | — | — |
-  | Location Types | `/locationType.html` | `house` | `i18n.LocationType` | — | — | — |
-  | Storno Groups | `/stornoGroup.html` | `funnel-dollar` | `i18n.stornoGroup` | — | — | — |
-  | Work Hours | `/workHour.html` | `user-clock` | `i18n.workHours` | — | [workhour.md](../analysis/planning/appointment-support/workhour.md) | — |
-  | CDR | `/CdrCall.html` | `boxes` | `CDR` | — | [cdr-call.md](../analysis/planning/appointment-support/cdr-call.md) | [workflows.md](../wireframes/planning/workflows.md) |
-  | CDR Assignment | `/CdrCallAssignment.html` | `arrows-alt-h` | `CDR Assignment` | — | — | [workflows.md](../wireframes/planning/workflows.md) |
-  | Log | `/log.html` | `stream` | `Log` | — | — | — |
-  | Support Categories | `/supportCategory.html` | `user-headset` | `i18n.supportCategory` | — | — | — |
-  | BasisWeb Appointments | `/basisWebAppointment.html` | `user-headset` | `BasisWeb-Anmeldungen` | — | — | — |
-  | Change Log | `/changelog.html` | `hour` | `Change-Log` | — | — | — |
+  | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Wireframe Doc |
+  |------|---------|--------|-----|------|----------|--------------|-------------|--------------|
+  | MOTD | MOTD | Tagesnachricht | `/motd.html` | `fa-newspaper` | `i18n.motd` → `motd.title` | — | [motd-template.md](../analysis/system/admin-cruds/motd-template.md) | — |
+  | Login Notification | Login Notification | Login-Benachrichtigung | `/loginNotification.html` | `fa-comment-exclamation` | `i18n.loginNotification` → `loginNotification.title` | — | [system-config.md#i-login-notification](../analysis/system/config/system-config.md#i-login-notification) | — |
+  | Notification Templates | Notification Templates | Benachrichtigungsvorlagen | `/notificationTemplate.html` | `fa-file-code` | `i18n.notificationTemplate` → `notificationTemplate.plural` | — | [templates-files.md#3-notification-template](../analysis/system/templates-files/templates-files.md#3-notification-template) | — |
+  | Location Types | Location Types | Standorttypen | `/locationType.html` | `fa-house` | `i18n.LocationType` → `locationType.plural` | — | [system-config.md#a-location-type](../analysis/system/config/system-config.md#a-location-type) | — |
+  | Storno Groups | Storno Groups | Stornogruppen | `/stornoGroup.html` | `fa-funnel-dollar` | `i18n.stornoGroup` → `stornoGroup.plural` | — | [accounting-config.md#c-storno-group-cancellation-group](../analysis/accounting/config/accounting-config.md#c-storno-group-cancellation-group) | — |
+  | Work Hours | Work Hours | Arbeitszeiten | `/workHour.html` | `fa-user-clock` | `i18n.workHours` → `workHours.title` | — | [workhour.md](../analysis/planning/appointment-support/workhour.md) | — |
+  | CDR | CDR | CDR (Verbindungsdaten) | `/CdrCall.html` | `fa-boxes` | `CDR` → `cdr.title` | — | [cdr-call.md](../analysis/planning/appointment-support/cdr-call.md) | [workflows.md](../wireframes/planning/workflows.md) |
+  | CDR Assignment | CDR Assignment | CDR-Zuteilung | `/CdrCallAssignment.html` | `fa-arrows-alt-h` | `CDR Assignment` → `cdr.assignment` | — | [cdr-call.md](../analysis/planning/appointment-support/cdr-call.md) | [workflows.md](../wireframes/planning/workflows.md) |
+  | Log | Log | Protokoll | `/log.html` | `fa-stream` | `Log` → `log.title` | — | [system.md#entity-logs](../analysis/mongodb-mapping/system.md#entity-logs) | — |
+  | Support Categories | Support Categories | Support-Kategorien | `/supportCategory.html` | `fa-user-headset` | `i18n.supportCategory` → `supportCategory.plural` | — | [system-config.md#d-support-category](../analysis/system/config/system-config.md#d-support-category) | — |
+  | BasisWeb Appointments | BasisWeb Appointments | BasisWeb-Anmeldungen | `/basisWebAppointment.html` | `fa-user-headset` | `BasisWeb-Anmeldungen` → `basisWeb.appointments` | — | [interfaces.md#entity-basis-web-appointment](../analysis/mongodb-mapping/interfaces.md#entity-basis-web-appointment) | — |
+  | Change Log | Change Log | Änderungsprotokoll | `/changelog.html` | `fa-hourglass` | `Change-Log` → `changelog.title` | — | [admin-landing.md#8-page-changelog-changeloghtmlm](../analysis/system/admin/admin-landing.md#8-page-changelog-changeloghtmlm) | — |
 
 #### 13. Global Menu (`#globalMenu`)
-- **Icon**: `user`
+- **English**: Global Menu
+- **German**: Globales Menü
+- **i18n Key**: — (not sitemap-driven, always rendered)
+- **Icon**: `fa-user`
 - **Color**: — (not sitemap-driven)
 - **Roles**: Always visible (individual items may have permission gates)
 - **Rights**: `USERS_CREATE` (Role Switch only)
 - **URL**: N/A (sidebar user menu)
+- **Analysis Doc**: —
 - **Items**:
   
-  | Item | URL | Icon | i18n Key | Permissions |
-  |------|-----|------|----------|-------------|
-  | Search Toggle | — | `search` | — | Always visible |
-  | Search Input | — | (text input) | `label.search` | Always visible |
-  | Settings | `/profile.html` | `cog` | `administration.settings` | Always visible |
-  | Security | `/userSecurity.html` | `id-card` | `administration.security` | Always visible |
-  | Role Switch | `#roleSwitchDlg` | `user-tag` | (dynamic role label) | `USERS_CREATE` |
-  | Bug Report | (dialog) | (from include) | — | Always visible |
-  | Logout | `/logout` | `sign-out` | `logout` | Always visible |
+  | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc |
+  |------|---------|--------|-----|------|----------|--------------|-------------|
+  | Search Toggle | Full Text Search | Volltextsuche | — | `fa-search` | — | Always visible | — |
+  | Search Input | Search | Suchen | — | (text input) | `label.search` → `search.placeholder` | `{{#search}}` | — |
+  | Settings | Settings | Einstellungen | `/profile.html` | `fa-cog` | `administration.settings` → `administration.settings` | Always visible | [profile-form.md](../analysis/user-management/profile/profile-form.md), [profile-expert-availability.md](../analysis/user-management/profile/profile-expert-availability.md), [profile-staff.md](../analysis/user-management/profile/profile-staff.md), [totp-onboarding.md](../analysis/user-management/admin/totp-onboarding.md) |
+  | Security | Security | Sicherheit | `/userSecurity.html` | `fa-id-card` | `administration.security` → `administration.security` | Always visible | [profile-dialogs.md](../analysis/user-management/profile/profile-dialogs.md) |
+  | Role Switch | (Dynamic role label) | (Dynamische Rollenbezeichnung) | `#roleSwitchDlg` | `fa-user-tag` | `role.{ROLE}` | `roleSwitch=true` (authority: `USERS_CREATE`) | [includes-shared-components.md](../analysis/system/includes/includes-shared-components.md) |
+  | Bug Report | Bug Report | Fehlerbericht | — | (from include) | — | Always visible | [includes-shared-components.md](../analysis/system/includes/includes-shared-components.md) |
+  | Logout | Logout | Abmelden | `/logout` | `fa-sign-out` | `logout` → `logout` | Always visible | — |
+  | Version Display | App Version-Build | App-Version-Buildzeit | — | — | `application.version`-`application.buildtime` | Always visible | — |
 
 #### Shell-Level Permission Gates
 
@@ -597,540 +651,7 @@ The main navigation is **runtime-generated** from the server-side sitemap define
 </li>
 ```
 
-### 5.4 Detailed Main Navigation Items
-
-> **Note**: Analysis document references point to existing documentation. Items marked with **TODO** need analysis documents created.
-
-#### 1. Dashboard
-- **English**: Dashboard
-- **German**: Dashboard
-- **i18n Key**: `Dashboard` (hardcoded, should be `menu.dashboard`)
-- **Icon**: `fa-tachometer`
-- **Color**: `color-dash`
-- **Roles**: Always visible
-- **Rights**: None
-- **URL**: `/dash.html`
-- **Analysis Doc**: [dashboard-main.md](./system/dashboard/dashboard-main.md)
-- **Submenu**:
-  1. **Calendar**
-     - English: Calendar
-     - German: Kalender
-     - i18n Key: `i18n.calendar` → `calendar.title`
-     - Icon: `fa-calendar-alt`
-     - URL: `/monthView.html`
-     - Analysis Doc: [calendar-view.md](./planning/dashboard/calendar-view.md)
-  1. **Week View**
-     - English: Week View
-     - German: Wochenansicht
-     - i18n Key: `i18n.weekView` → `weekView.title`
-     - Icon: `fa-calendar-alt`
-     - URL: `/weekView.html`
-     - Rights: `EXPERT_WEEK`
-     - Analysis Doc: [week-view.md](./planning/dashboard/week-view.md)
-  1. **Worklog**
-     - English: Worklog
-     - German: Arbeitsprotokoll
-     - i18n Key: `i18n.Worklog` → `worklog.title`
-     - Icon: `fa-file-chart-line`
-     - URL: `/expertWorkMonthly.html`
-     - Analysis Doc: [worklog.md](./accounting/worklog/worklog.md)
-  1. **Video Library**
-     - English: Video Library
-     - German: Videobibliothek
-     - i18n Key: `i18n.VideoLibrary` → `videoLibrary.title`
-     - Icon: `fa-video`
-     - URL: `https://learn.videoclinic.de/` (external)
-     - Analysis Doc: [support-and-video.md](./orphan/support-and-video.md)
-
-#### 2. Appointments
-- **English**: Appointments
-- **German**: Termine
-- **i18n Key**: `i18n.AppointmentType.APPOINTMENT` → `appointment.type.APPOINTMENT`
-- **Icon**: `fa-user-md`
-- **Color**: `color-appointment`
-- **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
-- **Rights**: None
-- **URL**: `/appointment.html`
-- **Analysis Doc**: [appointment-list.md](./planning/appointment/appointment-list.md)
-- **Submenu**:
-  1. **Appointment Plan**
-     - English: Appointment Plan
-     - German: Terminplan
-     - i18n Key: `i18n.appointmentPlan` → `appointmentPlan.title`
-     - Icon: `fa-calendar-check`
-     - URL: `/appointmentPlan.html`
-     - Analysis Doc: [appointment-plan.md](./planning/appointment/appointment-plan.md)
-  1. **Patient Data**
-     - English: Patient Data
-     - German: Patientendaten
-     - i18n Key: `i18n.PatientDataType` → `patientData.title`
-     - Icon: `fa-user`
-     - URL: `/patientData.html`
-     - Analysis Doc: [patient-data.md](./treatment/patient-data/patient-data.md)
-
-#### 3. Shifts
-- **English**: Shifts
-- **German**: Dienste
-- **i18n Key**: `i18n.AppointmentType.SHIFT` → `appointment.type.SHIFT`
-- **Icon**: `fa-user-injured`
-- **Color**: `color-shift`
-- **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
-- **Rights**: None
-- **URL**: `/shift.html`
-- **Analysis Doc**: [shift-and-plan.md](./planning/shift/shift-and-plan.md)
-- **Submenu**:
-  1. **Shift Plan**
-     - English: Shift Plan
-     - German: Dienstplan
-     - i18n Key: `i18n.shiftPlan` → `shiftPlan.title`
-     - Icon: `fa-calendar-check`
-     - URL: `/shiftPlan.html`
-     - Analysis Doc: [shift-and-plan.md](./planning/shift/shift-and-plan.md)
-
-#### 4. Treatments
-- **English**: Treatments
-- **German**: Therapien
-- **i18n Key**: `i18n.Treatment` → `treatment.title`
-- **Icon**: `fa-people-arrows`
-- **Color**: `color-treatment`
-- **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
-- **Rights**: None
-- **URL**: `/treatment.html`
-- **Analysis Doc**: [treatment-and-category.md](./treatment/treatment-core/treatment-and-category.md)
-- **Submenu**:
-  1. **Treatment Plan**
-     - English: Treatment Plan
-     - German: Therapieplan
-     - i18n Key: `i18n.treatmentPlan` → `treatmentPlan.title`
-     - Icon: `fa-calendar-check`
-     - URL: `/treatmentPlan.html`
-     - Analysis Doc: [treatment-plan.md](./treatment/treatment-core/treatment-plan.md)
-  1. **Treatment Plan History**
-     - English: Treatment Plan History
-     - German: Therapieplan-Historie
-     - i18n Key: `i18n.treatmentPlanHistory` → `treatmentPlan.history`
-     - Icon: `fa-calendar`
-     - URL: `/treatmentPlan.html?history=true`
-     - Analysis Doc: [treatment-plan.md](./treatment/treatment-core/treatment-plan.md)
-
-#### 5. Council
-- **English**: Council
-- **German**: Besprechung
-- **i18n Key**: `i18n.AppointmentType.COUNCIL` → `appointment.type.COUNCIL`
-- **Icon**: `fa-user-friends`
-- **Color**: `color-council`
-- **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
-- **Rights**: None
-- **URL**: `/council.html`
-- **Analysis Doc**: [council-and-plan.md](./planning/council/council-and-plan.md)
-- **Submenu**:
-  1. **Council Plan**
-     - English: Council Plan
-     - German: Besprechungsplan
-     - i18n Key: `i18n.councilPlanArea` → `councilPlan.title`
-     - Icon: `fa-calendar-check`
-     - URL: `/councilPlan.html`
-     - Analysis Doc: [council-and-plan.md](./planning/council/council-and-plan.md)
-
-#### 6. Consultations
-- **English**: Consultations
-- **German**: Konsultationen
-- **i18n Key**: `i18n.consultation` → `consultation.title`
-- **Icon**: `fa-heartbeat`
-- **Color**: `color-consultation`
-- **Roles**: STANDARD, LEITER_INTERN, ADMIN
-- **Rights**: None
-- **URL**: `/consultation.html`
-- **Analysis Doc**: [consultation-list.md](./treatment/consultation/consultation-list.md)
-- **Submenu**: None (single-page module)
-
-#### 7. Appointment Admin
-- **English**: Appointment Admin
-- **German**: Terminverwaltung
-- **i18n Key**: `i18n.appointmentAdminArea` → `appointment.admin.title`
-- **Icon**: `fa-calendar`
-- **Color**: `color-appointmentAdmin`
-- **Roles**: LEITER_INTERN, ADMIN, ADMIN_INTERN
-- **Rights**: None
-- **URL**: `/appointmentAdmin.html`
-- **Analysis Doc**: [appointment-admin.md](./planning/appointment-admin/appointment-admin.md)
-- **Submenu**:
-  1. **Closed Month**
-     - English: Closed Month
-     - German: Geschlossener Monat
-     - i18n Key: `i18n.ClosedMonth` → `closedMonth.title`
-     - Icon: `fa-calendar-exclamation`
-     - URL: `/closedMonth.html`
-     - Analysis Doc: [appointment-admin.md](./planning/appointment-admin/appointment-admin.md)
-  1. **Questionnaire**
-     - English: Questionnaire
-     - German: Fragebogen
-     - i18n Key: `i18n.questionaire` → `questionnaire.title`
-     - Icon: `fa-user-headset`
-     - URL: `/questionaire.html`
-     - Analysis Doc: [questionnaire-list.md](./treatment/questionnaire/questionnaire-list.md)
-
-#### 8. Notifications
-- **English**: Notifications
-- **German**: Mitteilungen
-- **i18n Key**: `i18n.notification` → `notification.title`
-- **Icon**: `fa-comments`
-- **Color**: `color-notify`
-- **Roles**: None
-- **Rights**: NOTIFICATION_READ, SELF_ASSIGNMENT
-- **URL**: `/notification.html`
-- **Analysis Doc**: [notification.md](./system/notification/notification.md)
-- **Submenu**:
-  1. **Trash**
-     - English: Trash
-     - German: Papierkorb
-     - i18n Key: `i18n.notification.folder.TRASH` → `notification.folder.TRASH`
-     - Icon: `fa-comment-times`
-     - URL: (none, folder filter within notification list)
-     - Analysis Doc: [notification.md](./system/notification/notification.md)
-
-#### 9. Customers
-- **English**: Customers
-- **German**: Kunden
-- **i18n Key**: `i18n.notification.customers` → `customer.plural`
-- **Icon**: `fa-hospital-user`
-- **Color**: `color-customer`
-- **Roles**: LEITER_INTERN, ADMIN_INTERN, KUNDE_ADMIN, ADMIN
-- **Rights**: None
-- **URL**: `/customer.html`
-- **Analysis Doc**: [customer-list-detail.md](./customer/customer-core/customer-list-detail.md)
-- **Submenu**:
-  1. **Onboarding Customer**
-     - English: Onboarding Customer
-     - German: Kunden-Onboarding
-     - i18n Key: `i18n.onboardingCustomerArea` → `onboarding.customer.title`
-     - Icon: `fa-hospital-user`
-     - URL: `/onboardingCustomer.html`
-     - Analysis Doc: [onboarding-flow.md](./user-management/admin/onboarding-flow.md)
-  1. **Invoices**
-     - English: Invoices
-     - German: Rechnungen
-     - i18n Key: `i18n.invoiceArea` → `invoice.plural`
-     - Icon: `fa-file-invoice`
-     - URL: `/invoice.html`
-     - Analysis Doc: [invoice-list.md](./accounting/invoice/invoice-list.md)
-  1. **Invoice Receivers**
-     - English: Invoice Receivers
-     - German: Rechnungsempfänger
-     - i18n Key: `i18n.invoice.paymentContact` → `invoice.paymentContact`
-     - Icon: `fa-file-invoice`
-     - URL: `/invoiceReceiver.html`
-     - Analysis Doc: [invoice-receiver.md](./accounting/invoice-receiver/invoice-receiver.md)
-  1. **Customer Users**
-     - English: Users
-     - German: Benutzer
-     - i18n Key: `i18n.user` → `user.plural`
-     - Icon: `fa-user-tie`
-     - URL: `/customerUser.html`
-     - Analysis Doc: [location-and-users.md](./customer/customer-core/location-and-users.md)
-  1. **Locations**
-     - English: Locations
-     - German: Standorte
-     - i18n Key: `i18n.location` → `location.plural`
-     - Icon: `fa-clinic-medical`
-     - URL: `/customerLocation.html`
-     - Analysis Doc: [location-and-users.md](./customer/customer-core/location-and-users.md)
-  1. **Rooms**
-     - English: Rooms
-     - German: Räume
-     - i18n Key: `i18n.rooms` → `room.plural`
-     - Icon: `fa-building`
-     - URL: `/room.html`
-     - Analysis Doc: [room.md](./customer/room/room.md)
-  1. **Onboarding Location**
-     - English: Onboarding Location
-     - German: Standort-Onboarding
-     - i18n Key: `i18n.onboardingLocationArea` → `onboarding.location.title`
-     - Icon: `fa-clinic-medical`
-     - URL: `/onboardingLocation.html`
-     - Analysis Doc: [onboarding-flow.md](./user-management/admin/onboarding-flow.md)
-
-#### 10. Staff
-- **English**: Staff
-- **German**: Mitarbeiter
-- **i18n Key**: `i18n.employee.dialogtitle` → `employee.title`
-- **Icon**: `fa-user-md`
-- **Color**: `color-user`
-- **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
-- **Rights**: None
-- **URL**: `/staff.html`
-- **Analysis Doc**: [staff-list.md](./staff/staff-list.md)
-- **Submenu**:
-  1. **Onboarding**
-     - English: Onboarding
-     - German: Onboarding
-     - i18n Key: `Onboarding` (hardcoded, should be `onboarding.title`)
-     - Icon: `fa-layer-group`
-     - URL: `/onboarding.html`
-     - Analysis Doc: [onboarding-flow.md](./user-management/admin/onboarding-flow.md)
-  1. **User Management**
-     - English: Users
-     - German: Benutzer
-     - i18n Key: `i18n.user` → `user.plural`
-     - Icon: `fa-users`
-     - URL: `/adminUser.html`
-     - Analysis Doc: [user-management.md](./user-management/admin/user-management.md)
-  1. **Expert Weekly Assignments**
-     - English: Expert Weekly Assignments
-     - German: Experten-Wochenzuteilungen
-     - i18n Key: `i18n.expertWorkWeeklyAssignments` → `expertWork.weeklyAssignments`
-     - Icon: `fa-tally`
-     - URL: `/expertWorkWeeklyAssignments.html`
-     - Analysis Doc: [worklog.md](./accounting/worklog/worklog.md)
-
-#### 11. Administration
-- **English**: Administration
-- **German**: Administration
-- **i18n Key**: `Administration` (hardcoded, should be `administration.title`)
-- **Icon**: `fa-user-cog`
-- **Color**: `admin`
-- **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
-- **Rights**: None
-- **URL**: `/admin.html`
-- **Analysis Doc**: [admin-landing.md](./admin/admin-landing.md)
-- **Submenu**:
-  1. **Job IDs**
-     - English: Job IDs
-     - German: Leistungsnummern
-     - i18n Key: `i18n.action.jobIds` → `job.action.jobIds`
-     - Icon: `fa-briefcase-medical`
-     - URL: `/job.html`
-     - Analysis Doc: [job-configuration.md](./accounting/admin-job/job-configuration.md)
-  1. **Async Job Queue**
-     - English: Async Job Queue
-     - German: Asynchrone Warteschlange
-     - i18n Key: `i18n.AsyncJobQueue` → `asyncJobQueue.title`
-     - Icon: `fa-stream`
-     - URL: `/asyncJobQueue.html`
-     - Analysis Doc: [system.md#entity-async-job-queue](./mongodb-mapping/system.md#entity-async-job-queue)
-  1. **Job Price List**
-     - English: Job Price List
-     - German: Leistungsliste
-     - i18n Key: `i18n.jobPriceList` → `jobPriceList.title`
-     - Icon: `fa-th-list`
-     - URL: `/jobPriceList.html`
-     - Analysis Doc: [accounting-config.md#e-job-price-list](./accounting/config/accounting-config.md#e-job-price-list)
-  1. **Products**
-     - Analysis Doc: [accounting-config.md#f-product](./accounting/config/accounting-config.md#f-product)
-  1. **Skills**
-     - English: Skills
-     - German: Fähigkeiten
-     - i18n Key: `i18n.skills` → `skills.plural`
-     - Icon: `fa-graduation-cap`
-     - URL: `/skill.html`
-     - Analysis Doc: [skill.md](./user-management/admin/skill.md)
-  1. **Exclusion Criteria**
-     - English: Exclusion Criteria
-     - German: Ausschlusskriterien
-     - i18n Key: `i18n.exclusionCriteria` → `exclusionCriteria.plural`
-     - Icon: `fa-comment-slash`
-     - URL: `/exclusionCriteria.html`
-     - Analysis Doc: [system-config.md#b-exclusion-criteria](./system/config/system-config.md#b-exclusion-criteria)
-  1. **Export Templates**
-     - Analysis Doc: [templates-files.md#2-export-template](./system/templates-files/templates-files.md#2-export-template)
-  1. **Warnings**
-     - English: Warnings
-     - German: Warnungen
-     - i18n Key: `i18n.consultation.warning` → `consultation.warning.plural`
-     - Icon: `fa-exclamation-triangle`
-     - URL: `/warning.html`
-     - Analysis Doc: [warning-management.md](./treatment/warning/warning-management.md)
-  1. **Treatment Categories**
-     - English: Treatment Categories
-     - German: Therapiekategorien
-     - i18n Key: `i18n.TreatmentCategory` → `treatmentCategory.plural`
-     - Icon: `fa-triangle`
-     - URL: `/treatmentCategory.html`
-     - Analysis Doc: [treatment-and-category.md](./treatment/treatment-core/treatment-and-category.md)
-  1. **Equipment**
-     - English: Equipment
-     - German: Geräte
-     - i18n Key: `i18n.menu.devices` → `menu.devices`
-     - Icon: `fa-tablet-alt`
-     - URL: `/equipment.html`
-     - Analysis Doc: [equipment.md](./customer/equipment/equipment.md)
-  1. **Onboarding Steps**
-     - English: Onboarding Steps
-     - German: Onboarding-Schritte
-     - i18n Key: `i18n.menu.onboardingStep` → `menu.onboardingStep`
-     - Icon: `fa-layer-group`
-     - URL: `/onboardingStep.html`
-     - Analysis Doc: [onboarding-flow.md](./user-management/admin/onboarding-flow.md)
-
-#### 12. Systemadmin
-- **English**: Systemadmin
-- **German**: Systemadministration
-- **i18n Key**: `Systemadmin` (hardcoded, should be `system.admin.title`)
-- **Icon**: `fa-cogs`
-- **Color**: `sysadmin`
-- **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
-- **Rights**: None
-- **URL**: `/sysadmin.html`
-- **Analysis Doc**: [admin-landing.md](./system/admin/admin-landing.md)
-- **Submenu**:
-  1. **MOTD**
-     - English: MOTD (Message of the Day)
-     - German: Tagesnachricht
-     - i18n Key: `i18n.motd` → `motd.title`
-     - Icon: `fa-newspaper`
-     - URL: `/motd.html`
-     - Analysis Doc: [motd-template.md](./system/admin-cruds/motd-template.md)
-  1. **Login Notification**
-     - English: Login Notification
-     - German: Login-Benachrichtigung
-     - i18n Key: `i18n.loginNotification` → `loginNotification.title`
-     - Icon: `fa-comment-exclamation`
-     - URL: `/loginNotification.html`
-     - Analysis Doc: [system-config.md#i-login-notification](./system/config/system-config.md#i-login-notification)
-  1. **Notification Templates**
-     - English: Notification Templates
-     - German: Benachrichtigungsvorlagen
-     - i18n Key: `i18n.notificationTemplate` → `notificationTemplate.plural`
-     - Icon: `fa-file-code`
-     - URL: `/notificationTemplate.html`
-     - Analysis Doc: [templates-files.md#3-notification-template](./system/templates-files/templates-files.md#3-notification-template)
-  1. **Location Types**
-     - English: Location Types
-     - German: Standorttypen
-     - i18n Key: `i18n.LocationType` → `locationType.plural`
-     - Icon: `fa-house`
-     - URL: `/locationType.html`
-     - Analysis Doc: [system-config.md#a-location-type](./system/config/system-config.md#a-location-type)
-  1. **Storno Groups**
-     - English: Storno Groups
-     - German: Stornogruppen
-     - i18n Key: `i18n.stornoGroup` → `stornoGroup.plural`
-     - Icon: `fa-funnel-dollar`
-     - URL: `/stornoGroup.html`
-     - Analysis Doc: [accounting-config.md#c-storno-group-cancellation-group](./accounting/config/accounting-config.md#c-storno-group-cancellation-group)
-  1. **Work Hours**
-     - English: Work Hours
-     - German: Arbeitszeiten
-     - i18n Key: `i18n.workHours` → `workHours.title`
-     - Icon: `fa-user-clock`
-     - URL: `/workHour.html`
-     - Analysis Doc: [workhour.md](./planning/appointment-support/workhour.md)
-  1. **CDR**
-     - English: CDR (Call Detail Records)
-     - German: CDR (Verbindungsdaten)
-     - i18n Key**: `CDR` (hardcoded, should be `cdr.title`)
-     - Icon: `fa-boxes`
-     - URL: `/CdrCall.html`
-     - Analysis Doc: [cdr-call.md](./planning/appointment-support/cdr-call.md)
-  1. **CDR Assignment**
-     - English: CDR Assignment
-     - German: CDR-Zuteilung
-     - i18n Key**: `CDR Assignment` (hardcoded, should be `cdr.assignment`)
-     - Icon: `fa-arrows-alt-h`
-     - URL: `/CdrCallAssignment.html`
-     - Analysis Doc: [cdr-call.md](./planning/appointment-support/cdr-call.md)
-  1. **Log**
-     - English: Log
-     - German: Protokoll
-     - i18n Key**: `Log` (hardcoded, should be `log.title`)
-     - Icon: `fa-stream`
-     - URL: `/log.html`
-     - Analysis Doc: [system.md#entity-logs](./mongodb-mapping/system.md#entity-logs)
-  1. **Support Categories**
-     - English: Support Categories
-     - German: Support-Kategorien
-     - i18n Key: `i18n.supportCategory` → `supportCategory.plural`
-     - Icon: `fa-user-headset`
-     - URL: `/supportCategory.html`
-     - Analysis Doc: [system-config.md#d-support-category](./system/config/system-config.md#d-support-category)
-  1. **BasisWeb Appointments**
-     - English: BasisWeb Appointments
-     - German: BasisWeb-Anmeldungen
-     - i18n Key**: `BasisWeb-Anmeldungen` (hardcoded, should be `basisWeb.appointments`)
-     - Icon: `fa-user-headset`
-     - URL: `/basisWebAppointment.html`
-     - Analysis Doc: [interfaces.md#entity-basis-web-appointment](./mongodb-mapping/interfaces.md#entity-basis-web-appointment)
-  1. **Change Log**
-     - English: Change Log
-     - German: Änderungsprotokoll
-     - i18n Key**: `Change-Log` (hardcoded, should be `changelog.title`)
-     - Icon: `fa-hourglass`
-     - URL: `/changelog.html`
-     - Analysis Doc: [admin-landing.md#8-page-changelog-changeloghtmlm](./system/admin/admin-landing.md#8-page-changelog-changeloghtmlm)
-
-#### 13. Global Menu Items (`#globalMenu`)
-- **English**: Global Menu
-- **German**: Globales Menü
-- **i18n Key**: — (not sitemap-driven, always rendered)
-- **Icon**: `fa-user`
-- **Color**: — (not sitemap-driven)
-- **Roles**: Always visible (individual items may have permission gates)
-- **Rights**: `USERS_CREATE` (Role Switch only)
-- **URL**: N/A (sidebar user menu)
-- **Analysis Doc**: —
-- **Items**:
-  1. **Search Toggle**
-     - English: Full Text Search
-     - German: Volltextsuche
-     - i18n Key: — (icon-only toggle)
-     - Icon: `fa-search`
-     - URL: — (expands search input)
-     - Permissions: Always visible
-  1. **Search Input**
-     - English: Search
-     - German: Suchen
-     - i18n Key: `label.search` → `search.placeholder`
-     - Icon: (text input)
-     - URL: — (full-text search across entities)
-     - Permissions: `{{#search}}` (always)
-  1. **Settings**
-     - English: Settings
-     - German: Einstellungen
-     - i18n Key: `administration.settings` → `administration.settings`
-     - Icon: `fa-cog`
-     - URL: `/profile.html`
-     - Permissions: Always visible
-     - Analysis Doc: [profile-form.md](./user-management/profile/profile-form.md), [profile-expert-availability.md](./user-management/profile/profile-expert-availability.md), [profile-staff.md](./user-management/profile/profile-staff.md), [totp-onboarding.md](./user-management/admin/totp-onboarding.md)
-  1. **Security**
-     - English: Security
-     - German: Sicherheit
-     - i18n Key: `administration.security` → `administration.security`
-     - Icon: `fa-id-card`
-     - URL: `/userSecurity.html`
-     - Permissions: Always visible
-     - Analysis Doc: [profile-dialogs.md](./user-management/profile/profile-dialogs.md)
-  1. **Role Switch**
-     - English: (Dynamic role label)
-     - German: (Dynamische Rollenbezeichnung)
-     - i18n Key: `role.{ROLE}` (hardcoded)
-     - Icon: `fa-user-tag`
-     - URL: `#roleSwitchDlg` (opens modal)
-     - Permissions: `roleSwitch=true` (authority: `USERS_CREATE`)
-     - Analysis Doc: [includes-shared-components.md](./system/includes/includes-shared-components.md)
-  1. **Bug Report**
-     - English: Bug Report
-     - German: Fehlerbericht
-     - i18n Key: — (from include)
-     - Icon: (from include)
-     - URL: — (opens bug report dialog)
-     - Permissions: Always visible
-     - Analysis Doc: [includes-shared-components.md](./system/includes/includes-shared-components.md)
-  1. **Logout**
-     - English: Logout
-     - German: Abmelden
-     - i18n Key: `logout` → `logout`
-     - Icon: `fa-sign-out`
-     - URL: `/logout`
-     - Permissions: Always visible
-  1. **Version Display**
-     - English: App Version-Build
-     - German: App-Version-Buildzeit
-     - i18n Key: `application.version`-`application.buildtime`
-     - Icon: —
-     - URL: — (display only)
-     - Permissions: Always visible
-
-### 5.5 Global Menu (globalMenu)
+### 5.4 Global Menu (globalMenu)
 
 The right-side user menu contains utility functions and user-specific actions:
 
@@ -1192,7 +713,7 @@ The right-side user menu contains utility functions and user-specific actions:
 </ul>
 ```
 
-### 5.6 Role Switch Dialog Options
+### 5.5 Role Switch Dialog Options
 
 The role switch dialog contains hardcoded German role labels that need i18n keys:
 
@@ -1206,7 +727,7 @@ The role switch dialog contains hardcoded German role labels that need i18n keys
 | `ADMIN_KUNDE` | Kunde Admin | `role.ADMIN_KUNDE` | Customer Admin |
 | `ADMIN` | System-Admin | `role.ADMIN` | System Admin |
 
-### 5.7 Sitemap-Driven Navigation
+### 5.6 Sitemap-Driven Navigation
 
 ```mustache
 {{#sitemap}}
@@ -1234,7 +755,7 @@ The role switch dialog contains hardcoded German role labels that need i18n keys
 {{/sitemap}}
 ```
 
-### 5.8 Sitemap Item Properties
+### 5.7 Sitemap Item Properties
 
 | Property | Type | Mustache Syntax | Description |
 |----------|------|-----------------|-------------|
@@ -1246,7 +767,7 @@ The role switch dialog contains hardcoded German role labels that need i18n keys
 | `sub[]` | `Array<SitemapItem>` | `{{#sub}}...{{/sub}}` | Nested submenu items (same structure) |
 | `id` | `string` | `id="{{id}}"` | DOM element ID for submenu items |
 
-### 5.9 Color Mapping
+### 5.8 Color Mapping
 
 Each module has a corresponding `bg-color-{module}` CSS class defined in `_include/categories.css`:
 
