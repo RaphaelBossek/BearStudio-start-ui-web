@@ -2,6 +2,10 @@
 title: 'Appointment Details Scheduling'
 ---
 
+# Appointment Details Dialog (with Tabs)
+
+---
+
 ## Cross-References
 
 ### Source Includes
@@ -51,55 +55,6 @@ title: 'Appointment Details Scheduling'
 |------|---------|
 | `web/src/main/webapp/appointment/details.html` | Appointment details dialog HTML template |
 | `web/src/main/webapp/appointment/details.js` | Appointment details behavior and AJAX interactions |
-
----
-
-## Cross-References
-
-### Source Includes
-
-| Type | Direction | Detail | Linked Document | Condition / Context |
-|------|-----------|--------|-----------------|---------------------|
-| split | **Sibling** | Same source: `appointment/details.html` + `details.js` | [Appointment Details Patient](../../treatment/appointment-patient/appointment-details-patient.md) | Tab 3 (Patients) extracted to sibling |
-| include | **Included by** | `{{> appointmentDetails}}` | [Appointment List](appointment-list.md) | Inline detail/edit panel |
-| include | **Included by** | `{{> appointmentDetails}}` | [Shift List](../../planning/shift/shift-and-plan.md) | Reused as shift detail panel |
-| include | **Included by** | `{{> appointmentDetails}}` | [Treatment List](../../treatment/treatment-core/treatment-and-category.md) | Reused as treatment detail panel |
-| include | **Included by** | `{{> appointmentDetails}}` | [Council List](../../planning/council/council-and-plan.md) | Reused as council detail panel |
-| include | **Included by** | `{{> appointmentDetails}}` | [Month View](../../planning/dashboard/month-view.md) | Dashboard month view detail |
-| include | **Included by** | `{{> appointmentDetails}}` | [Week View](../../planning/dashboard/week-view.md) | Dashboard week view detail |
-| include | **Included by** | `{{> appointmentDetails}}` | [Calendar View](../../planning/dashboard/calendar-view.md) | Dashboard calendar view detail |
-
-### Service Calls
-
-| Service | Method | Parameters | Dialog / Context |
-|---------|--------|------------|------------------|
-| `AppointmentService` | `save` | `[data]` | Dialog save button |
-| `AppointmentService` | `setState` | `[id, status, date, time]` | State transition dialog |
-| `AppointmentService` | `remove` | `[[id]]` | Admin delete button |
-| `AppointmentService` | `addUser` | `[appointmentId, userId, force]` | Assign autocomplete / suggestion add |
-| `AppointmentService` | `delUser` | `[assignmentId]` | Delete employee button |
-| `AppointmentService` | `adjustUser` | `[assignmentId, state]` | Accept/Reserve/Reject/Abort buttons |
-| `AppointmentService` | `sendReminder` | `[assignmentId]` | Send reminder button |
-| `AppointmentService` | `getAssignmentsByAppointmentId` | `[appointmentId]` | Assignment history dialog |
-| `AppointmentService` | `getSuggestions` | `[appointmentId, limit]` | Suggestions tab load |
-| `AppointmentService` | `createReference` | `[appointmentId, location]` | Add reference autocomplete |
-| `AppointmentService` | `saveReference` | `[data, parentAppointmentId]` | Reference dialog save |
-| `AppointmentService` | `delReference` | `[referenceId]` | Delete reference button |
-| `LocationService` | `autocomplete` | `(query)` | Location field |
-| `RoomService` | `autocompleteAvailableRooms` | `(query)` | Room field |
-| `JobService` | `autocompleteType` | `(query, filter)` | Job field (main dialog) |
-| `JobService` | `autocomplete` | `(query)` | Job field (reference dialog) |
-| `UserService` | `findDoctor` | `(query)` | Assigned tab autocomplete |
-
-### Event Flows
-
-| Type | Direction | Event | Linked Document | Condition |
-|------|-----------|-------|-----------------|----------|
-| event | **Outgoing** | `assignAppointment(id, state, cb)` | [Appointment Assign User](appointment-assign-user.md#cross-references) | Accept/Override assignment buttons trigger collision check |
-
----
-
-# 02 — Appointment Details Dialog (with Tabs)
 
 ---
 
@@ -268,7 +223,7 @@ When `data.date` or `data.timeStart` changes AND `data.priceType` is empty:
 
 ---
 
-## 7. Tab 4 — Assigned (Experts)
+## 6. Tab 4 — Assigned (Experts)
 
 ### Toolbar (`employeeActions`)
 
@@ -316,7 +271,7 @@ When `data.date` or `data.timeStart` changes AND `data.priceType` is empty:
 
 ---
 
-## 8. Tab 5 — Suggestions (Add Expert)
+## 7. Tab 5 — Suggestions (Add Expert)
 
 ### Filter
 
@@ -355,7 +310,7 @@ In `postAddCollection` for suggestions, each suggestion row is checked against t
 
 ---
 
-## 9. Appointment State Machine
+## 8. Appointment State Machine
 
 ### States
 
@@ -454,7 +409,7 @@ stateDiagram-v2
 
 ---
 
-## 10. State Transition Dialog (`appointmentStateDlg`)
+## 9. State Transition Dialog (`appointmentStateDlg`)
 
 | Field | Name | Type | Notes |
 |---|---|---|---|
@@ -465,7 +420,7 @@ stateDiagram-v2
 
 ---
 
-## 11. Click Actions Table
+## 10. Click Actions Table
 
 | Action | Trigger | Confirmation | Server Call | Post-Action |
 |---|---|---|---|---|
@@ -498,7 +453,7 @@ stateDiagram-v2
 
 ---
 
-## 12. Server API Calls
+## 11. Server API Calls
 
 | Service | Method | Parameters | Trigger | Returns |
 |---|---|---|---|---|
@@ -528,7 +483,7 @@ stateDiagram-v2
 
 ---
 
-## 13. State-Driven Visibility
+## 12. State-Driven Visibility
 
 ### Appointment Type Visibility
 
@@ -563,7 +518,7 @@ stateDiagram-v2
 
 ---
 
-## 14. Assignment Add — Collision Handling
+## 13. Assignment Add — Collision Handling
 
 When adding a user via `#assignDoc` autocomplete, the `addUser` call may fail with specific error codes:
 
@@ -578,7 +533,7 @@ If user confirms, re-calls `AppointmentService.addUser` with `force=true`.
 
 ---
 
-## 15. Translation Table
+## 14. Translation Table
 
 | i18n Key | DE (source) | EN (provided) | Flag |
 |---|---|---|---|
@@ -689,7 +644,7 @@ If user confirms, re-calls `AppointmentService.addUser` with `force=true`.
 
 ---
 
-## 16. Mermaid Diagrams
+## 15. Mermaid Diagrams
 
 ### Tab Navigation Flow
 
