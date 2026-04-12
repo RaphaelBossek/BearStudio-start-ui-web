@@ -2,20 +2,16 @@
 title: 'Consultation Details Treatment Warning'
 ---
 
----
----
-
-# 06 — Consultation Details: Treatment & Warning Sub-forms
-
-> **Source files analysed**
-> - `consultation/detailDataTreatment.html` (97 lines) — Treatment / therapy data form
-> - `consultation/detailDataWarning.html` (76 lines) — Warning / alert data form
-> - `consultation/index.htmlm` — HTMLM header (option sources)
-> - `consultation/details.html` — parent shell (tab inclusion at lines 441-451)
-
----
-
 ## Cross-References
+
+### Source Files
+
+| File | Purpose |
+|------|---------|
+| `web/src/main/webapp/consultation/detailDataTreatment.html` | Treatment / therapy data form |
+| `web/src/main/webapp/consultation/detailDataWarning.html` | Warning / alert data form |
+| `web/src/main/webapp/consultation/index.htmlm` | HTMLM header (option sources) |
+| `web/src/main/webapp/consultation/details.html` | Parent shell (tab inclusion at lines 441-451) |
 
 ### Source Includes
 
@@ -25,6 +21,10 @@ title: 'Consultation Details Treatment Warning'
 | include | **Included by** | `{{> detailDataWarning}}` | [Consultation Details Header](consultation-details-header.md#tabWarning) | Warning form in consultation details |
 
 > **Include context:** This file's sources `detailDataTreatment.html` (97 lines) and `detailDataWarning.html` (76 lines) are embedded as `{{> detailDataTreatment}}` and `{{> detailDataWarning}}` partials in [Consultation Details Header](consultation-details-header.md) under tabs `#tabTreatment` and `#tabWarning` respectively.
+
+---
+
+# 06 — Consultation Details: Treatment & Warning Sub-forms
 
 ---
 

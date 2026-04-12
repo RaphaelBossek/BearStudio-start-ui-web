@@ -8,6 +8,20 @@ title: 'Includes Customization'
 
 ## Cross-References
 
+### Source Files
+
+| File | Purpose |
+|------|---------|
+| `web/src/main/webapp/js/customOverride.js` | Global utilities (notification polling, session timeout, app detection) |
+| `web/src/main/webapp/js/customOverride.i18n.js` | Formatter registry and i18n key overrides |
+| `web/src/main/webapp/css/categories.css` | Entity/state/calendar color system |
+| `web/src/main/webapp/css/instance.css` | Per-instance branding placeholder |
+| `web/src/main/webapp/login.js` | Authentication flow (login, TOTP, password reset) |
+| `web/src/main/webapp/bugReport/bugReport.html` | Bug report dialog template |
+| `web/src/main/webapp/bugReport/bugReport.js` | Bug report submission logic |
+| `web/src/main/webapp/bugReport/captureScreen.js` | Canvas-based screenshot capture and annotation |
+| `web/src/main/webapp/bugReport/messages.i18n.js` | Bug report i18n strings |
+
 ### Related Documentation
 
 | Type | Direction | Detail | Linked Document | Condition / Context |
@@ -15,9 +29,6 @@ title: 'Includes Customization'
 | topic | **Related to** | TOTP onboarding in login | [Admin TOTP Onboarding](../../../user-management/admin/totp-onboarding.md) | Login TOTP flow vs. admin TOTP device management |
 
 > **Context:** This file's `login.js` documents the **login-time TOTP 2FA onboarding flow** (require.token → QR code → 6-digit verification). The linked [Admin TOTP Onboarding](../../../user-management/admin/totp-onboarding.md) file covers the **user settings TOTP device management UI** (register, verify, reset devices). Both share the same 6-digit split-input widget pattern and `UserService` backend calls.
-
----
-> **Files analyzed:** `customOverride.js` (157 lines), `customOverride.i18n.js` (96 lines), `categories.css` (160 lines), `instance.css` (3 lines), `login.js` (283 lines), `bugReport/bugReport.html` (~64 lines), `bugReport/bugReport.js` (~120 lines), `bugReport/captureScreen.js` (~342 lines), `bugReport/messages.i18n.js` (2 lines)
 
 ---
 

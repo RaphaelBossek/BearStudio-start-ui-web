@@ -45,13 +45,61 @@ title: 'Appointment Details Scheduling'
 |------|-----------|-------|-----------------|----------|
 | event | **Outgoing** | `assignAppointment(id, state, cb)` | [Appointment Assign User](appointment-assign-user.md#cross-references) | Accept/Override assignment buttons trigger collision check |
 
+### Source Files
+
+| File | Purpose |
+|------|---------|
+| `web/src/main/webapp/appointment/details.html` | Appointment details dialog HTML template |
+| `web/src/main/webapp/appointment/details.js` | Appointment details behavior and AJAX interactions |
+
+---
+
+## Cross-References
+
+### Source Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| split | **Sibling** | Same source: `appointment/details.html` + `details.js` | [Appointment Details Patient](../../treatment/appointment-patient/appointment-details-patient.md) | Tab 3 (Patients) extracted to sibling |
+| include | **Included by** | `{{> appointmentDetails}}` | [Appointment List](appointment-list.md) | Inline detail/edit panel |
+| include | **Included by** | `{{> appointmentDetails}}` | [Shift List](../../planning/shift/shift-and-plan.md) | Reused as shift detail panel |
+| include | **Included by** | `{{> appointmentDetails}}` | [Treatment List](../../treatment/treatment-core/treatment-and-category.md) | Reused as treatment detail panel |
+| include | **Included by** | `{{> appointmentDetails}}` | [Council List](../../planning/council/council-and-plan.md) | Reused as council detail panel |
+| include | **Included by** | `{{> appointmentDetails}}` | [Month View](../../planning/dashboard/month-view.md) | Dashboard month view detail |
+| include | **Included by** | `{{> appointmentDetails}}` | [Week View](../../planning/dashboard/week-view.md) | Dashboard week view detail |
+| include | **Included by** | `{{> appointmentDetails}}` | [Calendar View](../../planning/dashboard/calendar-view.md) | Dashboard calendar view detail |
+
+### Service Calls
+
+| Service | Method | Parameters | Dialog / Context |
+|---------|--------|------------|------------------|
+| `AppointmentService` | `save` | `[data]` | Dialog save button |
+| `AppointmentService` | `setState` | `[id, status, date, time]` | State transition dialog |
+| `AppointmentService` | `remove` | `[[id]]` | Admin delete button |
+| `AppointmentService` | `addUser` | `[appointmentId, userId, force]` | Assign autocomplete / suggestion add |
+| `AppointmentService` | `delUser` | `[assignmentId]` | Delete employee button |
+| `AppointmentService` | `adjustUser` | `[assignmentId, state]` | Accept/Reserve/Reject/Abort buttons |
+| `AppointmentService` | `sendReminder` | `[assignmentId]` | Send reminder button |
+| `AppointmentService` | `getAssignmentsByAppointmentId` | `[appointmentId]` | Assignment history dialog |
+| `AppointmentService` | `getSuggestions` | `[appointmentId, limit]` | Suggestions tab load |
+| `AppointmentService` | `createReference` | `[appointmentId, location]` | Add reference autocomplete |
+| `AppointmentService` | `saveReference` | `[data, parentAppointmentId]` | Reference dialog save |
+| `AppointmentService` | `delReference` | `[referenceId]` | Delete reference button |
+| `LocationService` | `autocomplete` | `(query)` | Location field |
+| `RoomService` | `autocompleteAvailableRooms` | `(query)` | Room field |
+| `JobService` | `autocompleteType` | `(query, filter)` | Job field (main dialog) |
+| `JobService` | `autocomplete` | `(query)` | Job field (reference dialog) |
+| `UserService` | `findDoctor` | `(query)` | Assigned tab autocomplete |
+
+### Event Flows
+
+| Type | Direction | Event | Linked Document | Condition |
+|------|-----------|-------|-----------------|----------|
+| event | **Outgoing** | `assignAppointment(id, state, cb)` | [Appointment Assign User](appointment-assign-user.md#cross-references) | Accept/Override assignment buttons trigger collision check |
+
 ---
 
 # 02 — Appointment Details Dialog (with Tabs)
-
-> **Source files analysed**
-> - `web/src/main/webapp/appointment/details.html` (635 lines)
-> - `web/src/main/webapp/appointment/details.js` (912 lines)
 
 ---
 
