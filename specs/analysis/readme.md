@@ -198,7 +198,7 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
   
   | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe Doc |
   |------|------------|------|----------|-------------|-------------|--------------|
-  | Calendar | `/monthView.html` | `calendar-alt` | `i18n.calendar` | — | [calendar-view.md](../analysis/planning/dashboard/calendar-view.md) | [workflows.md](../wireframes/planning/workflows.md) |
+  | Calendar | `/monthView.html` | `calendar-alt` | `i18n.calendar` | — | [calendar-view.md](../analysis/planning/dashboard/calendar-view.md), [month-view.md](../analysis/planning/dashboard/month-view.md) | [workflows.md](../wireframes/planning/workflows.md) |
   | Week View | `/weekView.html` | `calendar-alt` | `i18n.weekView` | EXPERT_WEEK | [week-view.md](../analysis/planning/dashboard/week-view.md) | [workflows.md](../wireframes/planning/workflows.md) |
   | Worklog | `/expertWorkMonthly.html` | `file-chart-line` | `i18n.Worklog` | — | [worklog.md](../analysis/accounting/worklog/worklog.md) | [workflows.md](../wireframes/accounting/workflows.md) |
   | Video Library | `https://learn.videoclinic.de/` | `video` | `i18n.VideoLibrary` | — | — | — |
@@ -213,7 +213,7 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
   
   | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe Doc |
   |------|------------|------|----------|-------------|-------------|--------------|
-  | Appointment Plan | `/appointmentPlan.html` | `calendar-check` | `i18n.appointmentPlan` | — | [appointment-list.md](../analysis/planning/appointment/appointment-list.md) | [workflows.md](../wireframes/planning/workflows.md) |
+  | Appointment Plan | `/appointmentPlan.html` | `calendar-check` | `i18n.appointmentPlan` | — | [appointment-list.md](../analysis/planning/appointment/appointment-list.md), [appointment-details-scheduling.md](../analysis/planning/appointment/appointment-details-scheduling.md) | [workflows.md](../wireframes/planning/workflows.md) |
   | Patient Data | `/patientData.html` | `user` | `i18n.PatientDataType` | — | — | — |
 
 #### 3. Shifts
@@ -282,7 +282,7 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
   | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe Doc |
   |------|------------|------|----------|-------------|-------------|--------------|
   | Closed Month | `/closedMonth.html` | `calendar-exclamation` | `i18n.ClosedMonth` | — | [close-month.md](../analysis/planning/appointment-support/close-month.md) | [workflows.md](../wireframes/planning/workflows.md) |
-  | Questionnaire | `/questionaire.html` | `user-headset` | `i18n.questionaire` | — | — | — |
+  | Questionnaire | `/questionaire.html` | `user-headset` | `i18n.questionaire` | — | [questionnaire-list.md](../analysis/treatment/questionnaire/questionnaire-list.md), [questionnaire-detail.md](../analysis/treatment/questionnaire/questionnaire-detail.md) | — |
 
 #### 8. Notifications
 - **i18n Key**: `i18n.notification` → `notification.title`
@@ -308,7 +308,7 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
   | Item | Legacy URL | Icon | i18n Key | Permissions | Analysis Doc | Wireframe Doc |
   |------|------------|------|----------|-------------|-------------|--------------|
   | Onboarding Customer | `/onboardingCustomer.html` | `hospital-user` | `i18n.onboardingCustomerArea` | — | — | — |
-  | Invoices | `/invoice.html` | `file-invoice` | `i18n.invoiceArea` | — | [invoice-list.md](../analysis/accounting/invoice/invoice-list.md) | [workflows.md](../wireframes/accounting/workflows.md) |
+  | Invoices | `/invoice.html` | `file-invoice` | `i18n.invoiceArea` | — | [invoice-list.md](../analysis/accounting/invoice/invoice-list.md), [invoice-details.md](../analysis/accounting/invoice/invoice-details.md) | [workflows.md](../wireframes/accounting/workflows.md) |
   | Invoice Receivers | `/invoiceReceiver.html` | `file-invoice` | `i18n.invoice.paymentContact` | — | [invoice-receiver.md](../analysis/accounting/invoice-receiver/invoice-receiver.md) | [workflows.md](../wireframes/accounting/workflows.md) |
   | Customer Users | `/customerUser.html` | `user-tie` | `i18n.user` | — | — | — |
   | Locations | `/customerLocation.html` | `clinic-medical` | `i18n.location` | — | [location-and-users.md](../analysis/customer/customer-core/location-and-users.md) | [workflows.md](../wireframes/customer/workflows.md) |
@@ -1090,7 +1090,7 @@ The main navigation is **runtime-generated** from the server-side sitemap define
      - Icon: `fa-cog`
      - URL: `/profile.html`
      - Permissions: Always visible
-     - Analysis Doc: [profile-form.md](./user-management/profile/profile-form.md)
+     - Analysis Doc: [profile-form.md](./user-management/profile/profile-form.md), [profile-expert-availability.md](./user-management/profile/profile-expert-availability.md), [profile-staff.md](./user-management/profile/profile-staff.md), [totp-onboarding.md](./user-management/admin/totp-onboarding.md)
   1. **Security**
      - English: Security
      - German: Sicherheit
