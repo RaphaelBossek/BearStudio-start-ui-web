@@ -7,9 +7,6 @@ title: 'Council And Plan'
 
 # Council & Council Plan -- Legacy UI Analysis
 
-> **Source**: `videoclinic-prod/web/src/main/webapp/council/` (3 files, ~235 lines) and `councilPlan/` (3 files, ~399 lines)
-> **Analysed**: 2026-03-22
-
 ---
 
 ## Cross-References

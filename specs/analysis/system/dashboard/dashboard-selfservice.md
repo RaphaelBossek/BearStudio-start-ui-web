@@ -4,11 +4,6 @@ title: 'Dashboard Selfservice'
 
 # Dashboard Self-Service Sections Analysis
 
-**Source**: `videoclinic-prod/web/src/main/webapp/dash/index.htmlm` (lines 305-484)
-**JS Handler**: `videoclinic-prod/web/src/main/webapp/dash/dash.js`
-**Permission gate**: `{{#selfService}}` -> `SELF_ASSIGNMENT` authority
-**Parent gate**: `{{#isStandard}}` (standard user role, not admin)
-
 ---
 
 ## Cross-References

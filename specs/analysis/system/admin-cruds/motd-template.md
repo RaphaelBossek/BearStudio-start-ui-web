@@ -2,15 +2,7 @@
 title: 'Motd Template'
 ---
 
-# 04 - MOTD & Template Editor
-
-> **Split from**: `admin/simple-cruds.md`
-> **Sections extracted here**: B (Message of the Day), D (Template Editor), relevant parts of E (Cross-Cutting Patterns)
-> **Other domains received**: User Management (`admin-skill/skill.md` — Skill), Accounting (`admin-workhour/workhour.md` — Work Hours)
-
-> **Source files** (all under `admin/`)
-> - `motd.htmlm` (204 lines) + `motd.js` (203 lines) — Message of the Day management
-> - `template.htmlm` (44 lines) + `template.js` (12 lines) — Template editor (markdown + template)
+# MOTD & Template Editor
 
 ---
 
@@ -357,8 +349,6 @@ Side-by-side two-column layout (no grid, no detail dialog):
 
 | File | Relationship | Notes |
 |------|--------------|-------|
-| `specs/analysis/system/admin-cruds/simple-cruds.md` | **Split from** | Parent file; Sections B (MOTD), D (Template Editor), E (Cross-Cutting) extracted here |
 | `specs/analysis/system/admin-cruds/admin-skill/skill.md` | **Sibling domain** | User Management domain; shares Skill type enum with MOTD `priority` |
 | `specs/analysis/system/admin-cruds/admin-workhour/workhour.md` | **Sibling domain** | Accounting/Work Hours domain |
-| `specs/analysis/system/admin-cruds/simple-cruds.md#section-e` | **Implements** | Cross-cutting patterns: `Core.initCrud`, `slickerGrid`, `jsForm`, formatters, form input types |
 | `_lib/3rdparty/marked.min.js` | **External dependency** | Markdown parser used in Template Editor; should be replaced with `react-markdown` in React rebuild |

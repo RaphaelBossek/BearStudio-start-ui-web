@@ -2,12 +2,6 @@
 title: 'Cdr Call'
 ---
 
-> **Split from**: `appointment-support/plan-cdr.md`
-> **Sections extracted here**: CdrCall module (grid, detail form, toolbar, export, reset, upload, analyze), CdrCallAssignment module (grid, detail form, assign action), cross-module references, translation tables
-> **Other domains received**: `planning/appointment-support/appointment-plan.md` got AppointmentPlan + Close Month Dialog sections
-
----
-
 ## Cross-References
 
 ### Source Includes

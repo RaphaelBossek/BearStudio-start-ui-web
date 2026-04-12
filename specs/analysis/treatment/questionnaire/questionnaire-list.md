@@ -5,13 +5,7 @@ title: 'Questionnaire List'
 ---
 ---
 
-# 01 - Questionnaire List Page with Inline Detail
-
-> **Source files**
-> - `questionaire/index.htmlm` (219 lines) — page entry point with HTMLM header, grid, and inline detail panel
-> - `questionaire/index.js` (60 lines) — list page logic
->
-> **Note**: The legacy codebase uses the misspelling "questionaire" (single 'n') throughout file paths, service names, and i18n keys.
+# Questionnaire List Page with Inline Detail
 
 ---
 

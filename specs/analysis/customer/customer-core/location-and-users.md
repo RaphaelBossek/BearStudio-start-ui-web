@@ -7,18 +7,55 @@ title: 'Location And Users'
 
 # Customer Location & User Management Pages — Legacy UI Analysis
 
-> **Source files analyzed:**
-> - `web/src/main/webapp/customer/location.htmlm` (77 lines)
-> - `web/src/main/webapp/customer/location.js` (48 lines)
-> - `web/src/main/webapp/customer/locationCreate.mustache` (254 lines)
-> - `web/src/main/webapp/customer/locationCreate.js` (172 lines)
-> - `web/src/main/webapp/customer/user.htmlm` (155 lines)
-> - `web/src/main/webapp/customer/user.js` (82 lines)
-> - `web/src/main/webapp/customer/zipCodeLookup.js` (69 lines)
-> - `web/src/main/webapp/admin/password.mustache` (12 lines)
-> - `web/src/main/webapp/admin/password.js` (5 lines)
-> - `web/src/main/webapp/customer/messages.i18n.js` (63 lines)
-> - `web/src/main/webapp/profile/profile.js` (referenced for user detail)
+## Cross-References
+
+### Source Files
+
+| File | Purpose |
+|------|---------|
+| `web/src/main/webapp/customer/location.htmlm` | Location list page |
+| `web/src/main/webapp/customer/location.js` | Location page behavior |
+| `web/src/main/webapp/customer/locationCreate.mustache` | Location create/edit dialog template |
+| `web/src/main/webapp/customer/locationCreate.js` | Location dialog behavior |
+| `web/src/main/webapp/customer/user.htmlm` | Customer user list page |
+| `web/src/main/webapp/customer/user.js` | Customer user page behavior |
+| `web/src/main/webapp/customer/zipCodeLookup.js` | Zip code auto-fill logic |
+| `web/src/main/webapp/admin/password.mustache` | Password reset dialog |
+| `web/src/main/webapp/admin/password.js` | Password dialog behavior |
+| `web/src/main/webapp/customer/messages.i18n.js` | Customer/location translations |
+| `web/src/main/webapp/profile/profile.js` | Shared profile form logic |
+
+### Source Includes
+
+| Type | Direction | Detail | Linked Document | Condition / Context |
+|------|-----------|--------|-----------------|---------------------|
+| include | **Includes** | `{{> locationDlg}}` | (same file — locationCreate.mustache) | Location create/edit dialog |
+| include | **Includes** | `{{> passwordDlg}}` | [Profile Dialogs](../../user-management/profile/profile-dialogs.md#cross-references) | Password reset dialog |
+| include | **Included by** | `<script src="/profile/profile.js">` | [Profile Form](../../user-management/profile/profile-form.md#cross-references) | Profile form logic (SSN validation, file upload) |
+| include | **Included by** | `<script src="/customer/messages.i18n.js">` | (same file — shared i18n) | Customer/location/role translations |
+| include | **Included by** | `<script src="/customer/zipCodeLookup.js">` | [Customer List Detail](./customer-list-detail.md) | Zip-to-city auto-fill |
+| include | **Includes** | `{{> navbar}}` | (navbar — no analysis file) | Navigation bar |
+
+### Service Calls
+
+| Service | Method | Parameters | Linked Document | Context |
+|---------|--------|------------|-----------------|---------|
+| `LocationService` | `get` | `[id]` | — | Load location for edit |
+| `LocationService` | `getAll` | `[filter, max]` | — | Grid data source |
+| `LocationService` | `getFolders` | `[locationId]` | — | Populate URL path autocomplete |
+| `LocationService` | `getBackupFolders` | `[locationId]` | — | Populate backup URL autocomplete |
+| `LocationService` | `testUpload` | `[locationId, path]` | — | Test file upload |
+| `UserService` | `get` | `[id]` | — | Load user for edit |
+| `UserService` | `getAll` | `[filter, max]` | — | Grid data source |
+| `UserService` | `saveSetting` | `[key, value]` | — | Grid settings persistence |
+| `LocationTypeService` | `autocomplete` | `[query]` | — | Location type selector |
+| `CustomerService` | `autocomplete` | `[query]` | — | Customer selector (location + user) |
+| `ZipCodeService` | `get` | `[term]` | — | Zip code auto-fill |
+| `CountryService` | `autocomplete` | `[query]` | — | Country selector |
+
+> **Include context:** `location.htmlm` embeds `locationCreate.mustache` as a Mustache partial for the location dialog. `user.htmlm` embeds `admin/password.mustache` (also documented in [Profile Dialogs](../../user-management/profile/profile-dialogs.md)) and loads `profile/profile.js` (documented in [Profile Form](../../user-management/profile/profile-form.md)). Both pages share `zipCodeLookup.js` for zip code auto-fill and `messages.i18n.js` for translations.
+>
+> **Service context:** Location page uses `LocationService` for CRUD + folder operations; User page uses `UserService`. Both use `CustomerService` for customer selection. Address fields on both pages use `ZipCodeService` via `zipCodeLookup.js`.
 
 ---
 
@@ -541,46 +578,6 @@ Embedded via `{{>passwordDlg}}` at the bottom of `user.htmlm`.
 - Uploads to `UserService.updateThumbnail`
 - Image displayed in card at `/get/UserService/getImage/{userId}/thumbnail.jpg`
 - Rotate functionality via `#rotatePic` (calls `UserService.rotateThumbnail`)
-
----
-
-## Cross-References
-
-### Source Includes
-
-| Type | Direction | Detail | Linked Document | Condition / Context |
-|------|-----------|--------|-----------------|---------------------|
-| include | **Includes** | `{{> locationDlg}}` | (same file — locationCreate.mustache) | Location create/edit dialog |
-| include | **Includes** | `{{> passwordDlg}}` | [Profile Dialogs](../../user-management/profile/profile-dialogs.md#cross-references) | Password reset dialog |
-| include | **Included by** | `<script src="/profile/profile.js">` | [Profile Form](../../user-management/profile/profile-form.md#cross-references) | Profile form logic (SSN validation, file upload) |
-| include | **Included by** | `<script src="/customer/messages.i18n.js">` | (same file — shared i18n) | Customer/location/role translations |
-| include | **Included by** | `<script src="/customer/zipCodeLookup.js">` | [Customer List Detail](./customer-list-detail.md) | Zip-to-city auto-fill |
-| include | **Includes** | `{{> navbar}}` | (navbar — no analysis file) | Navigation bar |
-
-### Service Calls
-
-| Service | Method | Parameters | Linked Document | Context |
-|---------|--------|------------|-----------------|---------|
-| `LocationService` | `get` | `[id]` | — | Load location for edit |
-| `LocationService` | `getAll` | `[filter, max]` | — | Grid data source |
-| `LocationService` | `getFolders` | `[locationId]` | — | Populate URL path autocomplete |
-| `LocationService` | `getBackupFolders` | `[locationId]` | — | Populate backup URL autocomplete |
-| `LocationService` | `testUpload` | `[locationId, path]` | — | Test file upload |
-| `UserService` | `get` | `[id]` | — | Load user for edit |
-| `UserService` | `getAll` | `[filter, max]` | — | Grid data source |
-| `UserService` | `saveSetting` | `[key, value]` | — | Grid settings persistence |
-| `LocationTypeService` | `autocomplete` | `[query]` | — | Location type selector |
-| `CustomerService` | `autocomplete` | `[query]` | — | Customer selector (location + user) |
-| `ZipCodeService` | `get` | `[term]` | — | Zip code auto-fill |
-| `CountryService` | `autocomplete` | `[query]` | — | Country selector |
-
----
-
-> **Include context:** `location.htmlm` embeds `locationCreate.mustache` as a Mustache partial for the location dialog. `user.htmlm` embeds `admin/password.mustache` (also documented in [Profile Dialogs](../../user-management/profile/profile-dialogs.md)) and loads `profile/profile.js` (documented in [Profile Form](../../user-management/profile/profile-form.md)). Both pages share `zipCodeLookup.js` for zip code auto-fill and `messages.i18n.js` for translations.
-
-> **Service context:** Location page uses `LocationService` for CRUD + folder operations; User page uses `UserService`. Both use `CustomerService` for customer selection. Address fields on both pages use `ZipCodeService` via `zipCodeLookup.js`.
-
----
 
 ---
 

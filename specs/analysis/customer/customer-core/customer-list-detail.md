@@ -2,9 +2,6 @@
 title: 'Customer List Detail'
 ---
 
----
----
-
 # Customer List & Detail Page — Legacy UI Analysis
 
 > **Source files analyzed:**
@@ -17,6 +14,16 @@ title: 'Customer List Detail'
 ---
 
 ## Cross-References
+
+### Source Files
+
+| File | Purpose |
+|------|---------|
+| `web/src/main/webapp/customer/index.htmlm` | Customer list page template |
+| `web/src/main/webapp/customer/index.js` | Customer page behavior |
+| `web/src/main/webapp/customer/messages.i18n.js` | Translations |
+| `web/src/main/webapp/contact/messages.i18n.js` | Contact translations |
+| `web/src/main/webapp/customer/zipCodeLookup.js` | Zip code auto-fill logic |
 
 ### Source Includes
 

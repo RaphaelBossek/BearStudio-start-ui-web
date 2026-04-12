@@ -2,15 +2,9 @@
 title: 'Profile Expert Availability'
 ---
 
-# 04 - Expert Availability Grid Logic
+# Expert Availability Grid Logic
 
-> **Source files**
-> - `web/src/main/webapp/profile/expertDays.js` (421 lines) -- Month-level expert availability grid
-> - `web/src/main/webapp/profile/expertWeek.js` (236 lines) -- Week-level expert availability grid
->
-> **Loaded by**
-> - `dash/monthView.htmlm` loads `expertDays.js` (see [11-month-view.md](../../planning/dashboard/month-view.md))
-> - `dash/weekView.htmlm` loads `expertWeek.js` (see [10-week-view.md](../../planning/dashboard/week-view.md))
+---
 
 ## Cross-References
 

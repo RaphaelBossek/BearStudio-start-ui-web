@@ -4,9 +4,6 @@ title: 'Onboarding Flow'
 
 # Onboarding Module -- Legacy UI Analysis
 
-> **Source**: `videoclinic-prod/web/src/main/webapp/onboarding/`
-> **Analysis date**: 2026-03-22
-
 ---
 
 ## Cross-References

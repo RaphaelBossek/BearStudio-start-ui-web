@@ -2,19 +2,22 @@
 title: 'Invoice Details'
 ---
 
-# 02 — Invoice Details Dialog, Email Dialog & Print Template
-
-> **Source files analysed**
-> - `web/src/main/webapp/invoice/invoiceDetails.html` (287 lines)
-> - `web/src/main/webapp/invoice/invoiceDetails.js` (649 lines)
-> - `web/src/main/webapp/invoice/invoiceDlg.js` (252 lines)
-> - `web/src/main/webapp/invoice/emailDialog.js` (75 lines)
-> - `web/src/main/webapp/invoice/tpl/print.mustache` (120 lines)
-> - `web/src/main/webapp/invoice/messages.i18n.js` (102 lines)
+# Invoice Details Dialog, Email Dialog & Print Template
 
 ---
 
 ## Cross-References
+
+### Source Files
+
+| File | Purpose |
+|------|---------|
+| `web/src/main/webapp/invoice/invoiceDetails.html` | Invoice detail page template |
+| `web/src/main/webapp/invoice/invoiceDetails.js` | Invoice detail page behavior |
+| `web/src/main/webapp/invoice/invoiceDlg.js` | Invoice dialog logic |
+| `web/src/main/webapp/invoice/emailDialog.js` | Email dialog logic |
+| `web/src/main/webapp/invoice/tpl/print.mustache` | Print template |
+| `web/src/main/webapp/invoice/messages.i18n.js` | Translations |
 
 ### Source Includes
 

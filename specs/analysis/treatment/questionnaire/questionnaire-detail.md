@@ -5,13 +5,9 @@ title: 'Questionnaire Detail'
 ---
 ---
 
-# 02 - Questionnaire Detail Dialog
+# Questionnaire Detail Dialog
 
-> **Source files analysed**
-> - `questionaire/details.htmlm` (9 lines) -- Dialog wrapper
-> - `questionaire/detailQM.html` (360 lines) -- Full questionnaire form (also included in dashboard via `{{> detailQuestionaire}}`)
-> - `questionaire/details.js` (7 lines) -- Minimal init script
-> - `questionaire/index.htmlm` (lines 55-100) -- Header/counts section (read-only list detail, included here for full data-model coverage)
+---
 
 ## Cross-References
 

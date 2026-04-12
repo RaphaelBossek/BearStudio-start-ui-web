@@ -5,13 +5,7 @@ title: 'Calendar View'
 ---
 ---
 
-# 09 - Calendar View
-
-> **Source files analysed**
-> - `videoclinic-prod/web/src/main/webapp/dash/calendar.htmlm`
-> - `videoclinic-prod/web/src/main/webapp/dash/calendar.js`
-> - `videoclinic-prod/web/src/main/webapp/dash/dash.css`
-> - `videoclinic-prod/web/src/main/webapp/dash/messages.i18n.js`
+# Calendar View
 
 ---
 

@@ -4,10 +4,23 @@ title: 'Week View'
 
 # Analysis: Expert Week View
 
-> **Source files**
-> - `web/src/main/webapp/dash/weekView.htmlm`
-> - `web/src/main/webapp/dash/weekView.js`
-> - `web/src/main/webapp/profile/expertWeek.js` (referenced but not readable; behavior inferred from integration points)
+## Cross-References
+
+### Source Files
+
+| File | Purpose |
+|------|---------|
+| `web/src/main/webapp/dash/weekView.htmlm` | Page template with table structure, navbar, and slot cells |
+| `web/src/main/webapp/dash/weekView.js` | Page-specific behavior: button handlers, load guard, loader initialization |
+| `web/src/main/webapp/profile/expertWeek.js` | Core data model: tri-state slot logic, fillDayData, row update events |
+
+### Related Specifications
+
+| File | Relationship |
+|------|--------------|
+| [appointment-details-scheduling.md](../../planning/appointment/appointment-details-scheduling.md) | Appointment popovers display details from appointment data loaded via `fillDayData` |
+| [profile-expert-availability.md](../../user-management/profile/profile-expert-availability.md) | Shared expert availability model; `expertWeek.js` uses same data patterns |
+| [shift-dialog.md](./shift-dialog.md) | Shift appointments (`ap.type === 'SHIFT'`) displayed with `fa-user-injured` icon in week view |
 
 ---
 
@@ -308,23 +321,3 @@ Column Header Click (slotchange)
 
 Hour Label Click
   --> Toggle all slots in that hour row (handled by expertWeek.js)
-
----
-
-## Cross-References
-
-### Source Files
-
-| File | Purpose |
-|------|---------|
-| `web/src/main/webapp/dash/weekView.htmlm` | Page template with table structure, navbar, and slot cells |
-| `web/src/main/webapp/dash/weekView.js` | Page-specific behavior: button handlers, load guard, loader initialization |
-| `web/src/main/webapp/profile/expertWeek.js` | Core data model: tri-state slot logic, fillDayData, row update events |
-
-### Related Specifications
-
-| File | Relationship |
-|------|--------------|
-| `appointment-details-scheduling.md` | Appointment popovers display details from appointment data loaded via `fillDayData` |
-| `profile-expert-availability.md` | Shared expert availability model; `expertWeek.js` uses same data patterns |
-| `shift-dialog.md` | Shift appointments (`ap.type === 'SHIFT'`) displayed with `fa-user-injured` icon in week view |

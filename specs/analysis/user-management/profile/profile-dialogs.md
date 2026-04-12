@@ -2,11 +2,7 @@
 title: 'Profile Dialogs'
 ---
 
-# 03 - Profile Supporting Dialogs
-
-> **Source module**: `webapp/profile/`
-> **Analysis date**: 2026-03-21
-> **Scope**: Password Change, Signature Pad, Employee Search, DocFinder
+# Profile Supporting Dialogs
 
 ---
 

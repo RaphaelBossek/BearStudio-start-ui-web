@@ -2,19 +2,7 @@
 title: 'Sysconfig Import'
 ---
 
-> **Split from**: `admin/sysadmin-views.md`
-> **Sections extracted here**: Navigation Structure, System Configuration (sysconfig), CSV Import
-> **Other domains received**: `user-management/admin-group/group-management.md` got Group Management sections
-
 # Sysadmin Sub-Views: Sysconfig, Import, Group
-
-> **Sources**:
-> - `videoclinic-prod/web/src/main/webapp/admin/sysconfig.htmlm` (172 lines) + `sysconfig.js` (184 lines)
-> - `videoclinic-prod/web/src/main/webapp/admin/import.htmlm` (24 lines) + `import.js` (58 lines)
-> - `videoclinic-prod/web/src/main/webapp/admin/group.htmlm` (27 lines) + `group.js` (167 lines)
-> - **Parent shell**: `videoclinic-prod/web/src/main/webapp/admin/sysadmin.htmlm`
-
-All three views are template-included sub-views of `sysadmin.htmlm`. The parent page defines a sidebar nav with three buttons: **Sysconfig** (`sysConfigMenuBtn`), **CSV-Import** (`importMenuBtn`), and **Groups** (`groupMenuBtn`). Each sub-view is a `<div class="view" style="display:none">` toggled by the nav system.
 
 ---
 

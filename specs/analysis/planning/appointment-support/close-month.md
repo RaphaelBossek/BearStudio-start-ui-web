@@ -4,10 +4,6 @@ title: 'Close Month'
 
 # Close Month Module Analysis
 
-> **Source**: Shared dialog/component used by `appointmentAdmin/index.htmlm`, `appointmentPlan/index.htmlm`, `shiftPlan/index.htmlm`
-> **Lines**: ~50 (dialog component)
-> **Role**: Billing period lock/unlock workflow for expert worklogs. Prevents modifications to closed months and enables monthly billing exports.
-
 ---
 
 ## Cross-References

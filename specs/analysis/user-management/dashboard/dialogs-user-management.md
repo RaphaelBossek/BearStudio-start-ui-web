@@ -2,9 +2,7 @@
 title: 'Dialogs User Management'
 ---
 
-# 04 - Dashboard Dialogs — User Management
-
-> **Source**: `dash/index.htmlm` (lines 624-896), `dash/dash.js`
+# Dashboard Dialogs — User Management
 
 ---
 

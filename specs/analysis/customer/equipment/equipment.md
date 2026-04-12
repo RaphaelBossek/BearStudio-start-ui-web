@@ -2,20 +2,6 @@
 title: 'Equipment'
 ---
 
-> **Split from**: `entity-cruds/room-equipment-contact-medication-patientdata.md`
-> **Sections extracted here**: Common CRUD Pattern, 2. Equipment, Cross-Module Summary
-> **Other domains received**: `customer/room/room.md` (Common CRUD Pattern, 1. Room, Cross-Module Summary), `customer/contact/contact.md` (Common CRUD Pattern, 3. Contact, Cross-Module Summary), `treatment/medication/medication.md` (Common CRUD Pattern, 4. Medication, Cross-Module Summary), `treatment/patient-data/patient-data.md` (Common CRUD Pattern, 5. PatientData, Cross-Module Summary)
-
----
-
-# Entity CRUD Analysis: Room, Equipment, Contact, Medication, PatientData
-
-> **Source**: `~/src/vc/videoclinic-prod/web/src/main/webapp/{room,equipment,contact,medication,patientData}/`
-> **Date**: 2026-03-22
-> **Purpose**: Legacy UI analysis for modern React+Shadcn rebuild
-
----
-
 ## Common CRUD Pattern
 
 All five modules share the same `Core.initCrud()` + `slickerGrid()` architecture:

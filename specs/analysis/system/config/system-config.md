@@ -5,10 +5,6 @@ title: 'System Config'
 ---
 ---
 
-> **Split from**: `config-cruds/config-cruds.md`
-> **Sections extracted here**: locationType (A), exclusionCriteria (B), supportCategory (D), loginNotification (I)
-> **Other domains received**: accounting/config/accounting-config.md got jobPriceList (E), product (F), closedMonth (G), stornoGroup (C), expertWorkMonthly (H)
-
 ## Cross-References
 
 ### Split Relationships
@@ -21,7 +17,7 @@ title: 'System Config'
 
 ---
 
-# 01 - Config CRUD Modules (Low-Priority Admin Pages)
+# Config CRUD Modules (Low-Priority Admin Pages)
 
 > **Source directories** (all under `~/src/vc/videoclinic-prod/web/src/main/webapp/`)
 > - `locationType/` (3 files) -- Location type config

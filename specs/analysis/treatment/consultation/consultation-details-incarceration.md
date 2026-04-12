@@ -5,11 +5,7 @@ title: 'Consultation Details Incarceration'
 ---
 ---
 
-# 05 - Incarceration Consultation Detail Data Form
-
-> **Source**: `videoclinic-prod/web/src/main/webapp/consultation/detailDataIncarceration.html` (386 lines)
-> **Consultation type**: `INCARCERATION` (Gewahrsamstauglichkeit / Incarceration-suitability)
-> **Purpose**: Partial HTML template embedded within the consultation detail view when `ConsultationType == INCARCERATION`. Contains the medical assessment fields specific to incarceration/custody suitability evaluations.
+# Incarceration Consultation Detail Data Form
 
 ---
 

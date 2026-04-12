@@ -5,12 +5,6 @@ title: 'Invoice Receiver'
 ---
 ---
 
-> **Split from**: `utility/worklog-templates-files.md`
-> **Sections extracted here**: 6. Invoice Receiver (6.1–6.11), 7. Summary of Cross-Module Dependencies (invoiceReceiver entry), 8. Shared Patterns Across All Modules
-> **Other domains received**: `accounting/worklog/worklog.md` got sections 1 (Worklog) + cross-module (worklog entry); `system/templates-files/templates-files.md` got sections 2 (Export Template), 3 (Notification Template), 4 (User File) + cross-module entries; `academy/video-history/user-video-history.md` got section 5 (User Video History) + cross-module entry
-
----
-
 ## 6. Invoice Receiver (`invoiceReceiver/`)
 
 ### 6.1 Overview

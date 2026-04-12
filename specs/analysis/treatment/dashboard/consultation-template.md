@@ -2,7 +2,7 @@
 title: 'Consultation Template'
 ---
 
-# 07 - Consultation Template Dialogs
+# Consultation Template Dialogs
 
 ## Cross-References
 

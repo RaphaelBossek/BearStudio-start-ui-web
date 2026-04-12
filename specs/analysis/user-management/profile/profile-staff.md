@@ -4,11 +4,6 @@ title: 'Profile Staff'
 
 # Staff Management List Page Analysis
 
-> **Source files analysed**
-> - `web/src/main/webapp/profile/staff.htmlm` (399 lines)
-> - `web/src/main/webapp/profile/staff.js` (295 lines)
-> - `web/src/main/webapp/profile/searchExpert.js` (116 lines)
-
 ---
 
 ## Cross-References

@@ -4,10 +4,6 @@ title: 'Consultation Wizard'
 
 # Consultation Wizard — Legacy UI Analysis
 
-> Source files:
-> - `dash/consultationWizard.html`
-> - `dash/consultationWizard.js`
-
 ---
 
 ## Cross-References

@@ -2,12 +2,6 @@
 title: 'User Video History'
 ---
 
-> **Split from**: `utility/worklog-templates-files.md`
-> **Sections extracted here**: 5. User Video History (5.1–5.6), 7. Summary of Cross-Module Dependencies (userVideoHistory entry), 8. Shared Patterns Across All Modules
-> **Other domains received**: `accounting/worklog/worklog.md` got section 1 (Worklog); `accounting/invoice-receiver/invoice-receiver.md` got section 6 (Invoice Receiver); `system/templates-files/templates-files.md` got sections 2 (Export Template), 3 (Notification Template), 4 (User File)
-
----
-
 ## Cross-References
 
 ### Source Includes

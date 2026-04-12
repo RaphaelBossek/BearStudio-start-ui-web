@@ -2,13 +2,9 @@
 title: 'Consultation Details Js'
 ---
 
-# 08 — Consultation Details: JavaScript Behavior and State Management
+# Consultation Details: JavaScript Behavior and State Management
 
-> **Source files analyzed:**
-> - `/videoclinic-prod/web/src/main/webapp/consultation/details.js` (1066 lines)
-> - `/videoclinic-prod/web/src/main/webapp/consultation/details.ts` (1192 lines)
->
-> The `.js` file is the compiled output of the `.ts` file. They are functionally identical. Analysis is based on both, with the `.ts` file used as the authoritative source for type information.
+---
 
 ## Cross-References
 

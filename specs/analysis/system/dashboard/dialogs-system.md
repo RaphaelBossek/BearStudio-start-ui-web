@@ -2,9 +2,7 @@
 title: 'Dialogs System'
 ---
 
-# 04 - Dashboard Dialogs — System
-
-> **Source**: `dash/index.htmlm` (lines 624-896), `dash/dash.js`
+# Dashboard Dialogs — System
 
 ---
 

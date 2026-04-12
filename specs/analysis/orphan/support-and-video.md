@@ -7,10 +7,6 @@ title: 'Support And Video'
 
 # Legacy UI Analysis: Support Ticket, Video, Video Library, Video Category
 
-> **Source**: `~/src/vc/videoclinic-prod/web/src/main/webapp/`
-> **Date**: 2026-03-22
-> **Modules**: supportTicket (3 files, ~155 lines), video (3 files, ~114 lines), videoLibrary (5 files + 2 images, ~358 lines), videoCategory (4 files, ~460 lines)
-
 ---
 
 ## Cross-References

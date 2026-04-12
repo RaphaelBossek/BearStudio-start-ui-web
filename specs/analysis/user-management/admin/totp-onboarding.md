@@ -2,20 +2,11 @@
 title: 'Totp Onboarding'
 ---
 
-# 06 - Admin TOTP 2FA Onboarding
+# Admin TOTP 2FA Onboarding
+
+---
 
 ## Source Files
-
-| File | Lines | Purpose |
-|---|---|---|
-| `admin/userSecurity.htmlm` | 15 | Security page wrapper; embeds TOTP onboarding via Mustache partial |
-| `admin/totpOnboarding.html` | 171 | TOTP 2FA setup UI: QR code display, 6-digit input, authenticator app modal |
-| `admin/totpOnboarding.js` | 112 | TOTP logic: keyup handler, paste distribution, verification, reset |
-| `admin/totp.css` | 53 | Styling for authenticator app recommendation grid and modal |
-| `admin/totpmessages.i18n.js` | 0 | Empty file (no translations defined) |
-| `admin/userSecurity.js` | 5 | Minimal: listens for `success` event and reloads page |
-
-## HTMLM Header Metadata
 
 ```json
 [

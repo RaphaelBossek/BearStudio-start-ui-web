@@ -4,11 +4,16 @@ title: 'Basisweb Wizard'
 
 # BasisWeb Wizard (`#basisWebWizard`) — Analysis
 
-> **Source files:**
-> - `web/src/main/webapp/dash/basisWebWizard.html`
-> - `web/src/main/webapp/dash/basisWebWizard.js`
+---
 
 ## Cross-References
+
+### Source Files
+
+| File | Purpose |
+|------|---------|
+| `web/src/main/webapp/dash/basisWebWizard.html` | BasisWeb wizard template |
+| `web/src/main/webapp/dash/basisWebWizard.js` | BasisWeb wizard behavior |
 
 ### Service Calls
 

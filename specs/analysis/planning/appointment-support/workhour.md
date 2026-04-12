@@ -5,14 +5,7 @@ title: 'Workhour'
 ---
 ---
 
-# 04 - Work Hour Templates
-
-> **Split from**: `admin/simple-cruds.md`
-> **Sections extracted here**: C (Work Hour Templates), relevant parts of E (Cross-Cutting Patterns)
-> **Other domains received**: User Management (`admin-skill/skill.md` — Skill), System (`admin-cruds/motd-template.md` — MOTD + Template)
-
-> **Source files** (all under `admin/`)
-> - `workHour.htmlm` (79 lines) + `workHour.js` (38 lines) — Work hour templates
+# Work Hour Templates
 
 ---
 
@@ -130,7 +123,6 @@ Max results selector: 100 (default), 150, 200, 300, 500, >500.
 | Relation | Path | Notes |
 |----------|------|-------|
 | Parent spec | `specs/analysis/planning/appointment-support/` | Directory for appointment-support specs |
-| Extracted from | `specs/analysis/planning/admin/simple-cruds.md` | Source document for C (Work Hour Templates) and E (Cross-Cutting Patterns) |
 | User Management | `specs/analysis/planning/admin-skill/skill.md` | Related domain — User Management |
 | System / MOTD | `specs/analysis/planning/admin-cruds/motd-template.md` | Related domain — System MOTD + Template |
 | Source HTMLM | `admin/workHour.htmlm` | Work hour template (79 lines) |

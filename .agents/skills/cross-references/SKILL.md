@@ -36,6 +36,14 @@ Add a `## Cross-References` section to each analysis file. Place it **early in t
 ```markdown
 ## Cross-References
 
+### Source Files
+
+| File | Purpose |
+|------|---------|
+| `web/src/main/webapp/consultation/index.htmlm` | Page template |
+| `web/src/main/webapp/consultation/index.js` | Page behavior |
+| `web/src/main/webapp/consultation/messages.i18n.js` | Translations |
+
 ### Source Includes
 
 | Type | Direction | Detail | Linked Document | Condition / Context |
@@ -125,10 +133,11 @@ Always use exactly `## Cross-References` as the heading. This makes it searchabl
 
 ### 5. Subsection organization
 
-Use three optional subsections depending on what the file contains:
-1. **Source Includes** — for Mustache partials and script includes
-2. **Service Calls** — for backend service invocations
-3. **Event Flows** — for jQuery events and function calls
+Use four optional subsections depending on what the file contains:
+1. **Source Files** — for brownfield source files analyzed (web/src/main/webapp/*); DO NOT remove this information, move it to this subsection instead of keeping blockquotes
+2. **Source Includes** — for Mustache partials and script includes
+3. **Service Calls** — for backend service invocations
+4. **Event Flows** — for jQuery events and function calls
 
 If a file has multiple cross-reference types, use all relevant subsections. Group by type.
 
@@ -139,6 +148,32 @@ The summary should give readers enough context to understand the full relationsh
 ### 7. Preserve existing content
 
 Never remove or reorder existing sections when adding cross-references. Insert the new section in the designated position (after title/source, before first content section) and leave everything else untouched.
+
+### 7b. Convert Source Files blockquotes to Cross-References subsection
+
+When a file has a blockquote like:
+```markdown
+> **Source**: `~/src/vc/videoclinic-prod/web/src/main/webapp/{room,equipment,contact,medication,patientData}/`
+> **Files analyzed**: `index.htmlm` (302 lines), `index.js` (180 lines)
+```
+
+Convert it to a **Source Files** subsection within **Cross-References** and remove the blockquote:
+
+```markdown
+## Cross-References
+
+### Source Files
+
+| File | Purpose |
+|------|---------|
+| `web/src/main/webapp/room/index.htmlm` | Room list page |
+| `web/src/main/webapp/room/index.js` | Room page behavior |
+...
+
+---
+```
+
+The Source Files subsection documents which brownfield source files were analyzed to produce this document. This information was previously kept in blockquotes but should now be centralized in the Cross-References section.
 
 ### 8. Conditional branches in chains
 

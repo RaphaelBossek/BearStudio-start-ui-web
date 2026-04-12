@@ -5,11 +5,7 @@ title: 'Group Management'
 ---
 ---
 
-> **Split from**: `admin/sysadmin-views.md`
-> **Sections extracted here**: Group Management (tree, detail panel, rights, service calls)
-> **Other domains received**: `system/admin-system/sysconfig-import.md` got System Configuration and CSV Import sections
-
-# 3. Group Management (`group.htmlm` + `group.js`)
+# Group Management (`group.htmlm` + `group.js`)
 
 **Container**: `<div id="group" class="view">`
 **Header**: `<h3>` with text `{{i18n.action.groups}}`

@@ -2,21 +2,18 @@
 title: 'Skill'
 ---
 
----
----
-
-# 04 - Skill Management
-
-> **Split from**: `admin/simple-cruds.md`
-> **Sections extracted here**: A (Skill Management), relevant parts of E (Cross-Cutting Patterns)
-> **Other domains received**: System (`admin-cruds/motd-template.md` — MOTD + Template), Accounting (`admin-workhour/workhour.md` — Work Hours)
-
-> **Source files** (all under `admin/`)
-> - `skill.htmlm` (98 lines) + `skill.js` (63 lines) — Skill management
+# Skill Management
 
 ---
 
 ## Cross-References
+
+### Source Files
+
+| File | Purpose |
+|------|---------|
+| `web/src/main/webapp/admin/skill.htmlm` | Skill management template |
+| `web/src/main/webapp/admin/skill.js` | Skill management behavior |
 
 ### Source Includes
 

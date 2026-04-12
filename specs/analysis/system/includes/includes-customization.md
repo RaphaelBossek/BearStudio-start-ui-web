@@ -2,9 +2,9 @@
 title: 'Includes Customization'
 ---
 
-# 02 -- Includes: Customization, Login, and Global Overrides
+# Includes: Customization, Login, and Global Overrides
 
-> **Source directory:** `web/src/main/webapp/_include/`
+---
 
 ## Cross-References
 

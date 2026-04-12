@@ -4,10 +4,6 @@ title: 'Includes Shared Components'
 
 # Shared UI Components (`_include` Directory) -- Legacy Analysis
 
-> **Scope**: All shared/reusable components from `web/src/main/webapp/_include/`
-> **Source**: Java/Mustache legacy app
-> **Target**: React 19 + Shadcn/ui + TanStack Router + Tailwind CSS 4
-
 ---
 
 ## Cross-References

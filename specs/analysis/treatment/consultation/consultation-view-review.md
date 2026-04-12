@@ -2,7 +2,7 @@
 title: 'Consultation View Review'
 ---
 
-# 07 - Consultation View (Read-only) & Review Dialog
+# Consultation View (Read-only) & Review Dialog
 
 ## Source Files
 

@@ -5,13 +5,7 @@ title: 'Consultation Details Standard'
 ---
 ---
 
-# 03 - Standard Consultation Detail Data Form
-
-**Source**: `videoclinic-prod/web/src/main/webapp/consultation/detailDataStandard.html` (317 lines)
-
-**Context**: This is a partial HTML template included inside the consultation details dialog. It renders the form fields specific to consultation type `STANDARD`. The form is divided into five major blocks: Medication Anamnesis, Anamnesis Collection, Patient Report Collection, Diagnosis (ICD-10) Collection, Prescription (Medication) Collection, Work Incapacity Collection, and Procedere Report.
-
-**Visibility gate**: Three outer `<div>` wrappers carry class `incarceration-hide`, meaning the Medication Anamnesis + Anamnesis + Patient Report row (lines 1-96), the Prescription block (lines 148-288), and the Work Incapacity + Procedere block (lines 290-318) are hidden when the consultation is in incarceration mode.
+# Standard Consultation Detail Data Form
 
 ---
 

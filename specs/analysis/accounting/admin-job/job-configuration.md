@@ -2,10 +2,7 @@
 title: 'Job Configuration'
 ---
 
----
----
-
-# 03 - Job/Service Configuration (Admin)
+# Job/Service Configuration (Admin)
 
 > **Source files**
 > - `admin/job.htmlm` (837 lines) -- Job list + tabbed detail dialog (largest file in admin)
@@ -16,6 +13,16 @@ title: 'Job Configuration'
 ---
 
 ## Cross-References
+
+### Source Files
+
+| File | Purpose |
+|------|---------|
+| `web/src/main/webapp/admin/job.htmlm` | Job list + tabbed detail dialog |
+| `web/src/main/webapp/admin/job.js` | Job management logic, price-point handling, skill selection |
+| `web/src/main/webapp/admin/jquery.colorpicker.css` | Color picker widget CSS |
+| `web/src/main/webapp/admin/jquery.colorpicker.js` | Color picker widget JS |
+| `web/src/main/webapp/admin/messages.i18n.js` | Translations |
 
 ### Service Calls
 

@@ -4,10 +4,6 @@ title: 'Appointment Admin'
 
 # Appointment Admin Module Analysis
 
-> **Source**: `appointmentAdmin/index.htmlm` + `appointmentAdmin/index.js` + `appointmentAdmin/messages.i18n.js`
-> **Lines**: ~1,881 (HTMLM ~1,146 + JS ~732 + i18n ~6)
-> **Role**: Administrative billing/operations view for appointments (not scheduling). Provides grid overview, detail editing, billing calculation, multiple export formats, consultation management, CDR call assignment, QM questionnaire review, and month-close workflow.
-
 ---
 
 ## Cross-References

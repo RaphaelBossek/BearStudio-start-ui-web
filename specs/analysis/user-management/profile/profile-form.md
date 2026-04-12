@@ -4,15 +4,7 @@ title: 'Profile Form'
 
 # Profile Form & Personal Profile Page -- UI Analysis
 
-> **Source files analysed**
->
-> | File | Lines | Role |
-> |------|-------|------|
-> | `profile/personal.htmlm` | 31 | Personal profile page entry point (HTMLM metadata) |
-> | `profile/personal.js` | 58 | Personal page init + save handler |
-> | `profile/profile.js` | 385 | Shared profile form logic (image upload, files, skills, signature, schedule) |
-> | `profile/userProfile.mustache` | 1014 | Shared profile form template (tabs, all sections) |
-> | `profile/messages.i18n.js` | 77 | Profile-specific i18n overrides + formatters |
+---
 
 ## Cross-References
 

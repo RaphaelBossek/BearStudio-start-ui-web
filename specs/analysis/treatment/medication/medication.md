@@ -2,17 +2,37 @@
 title: 'Medication'
 ---
 
-> **Split from**: `entity-cruds/room-equipment-contact-medication-patientdata.md`
-> **Sections extracted here**: Common CRUD Pattern, 4. Medication, Cross-Module Summary
-> **Other domains received**: `customer/room/room.md` (Common CRUD Pattern, 1. Room, Cross-Module Summary), `customer/equipment/equipment.md` (Common CRUD Pattern, 2. Equipment, Cross-Module Summary), `customer/contact/contact.md` (Common CRUD Pattern, 3. Contact, Cross-Module Summary), `treatment/patient-data/patient-data.md` (Common CRUD Pattern, 5. PatientData, Cross-Module Summary)
-
----
-
 # Entity CRUD Analysis: Room, Equipment, Contact, Medication, PatientData
 
-> **Source**: `~/src/vc/videoclinic-prod/web/src/main/webapp/{room,equipment,contact,medication,patientData}/`
-> **Date**: 2026-03-22
-> **Purpose**: Legacy UI analysis for modern React+Shadcn rebuild
+## Cross-References
+
+### Source Files
+
+| File | Purpose |
+|------|---------|
+| `web/src/main/webapp/room/index.htmlm` | Room list page |
+| `web/src/main/webapp/room/index.js` | Room page behavior |
+| `web/src/main/webapp/room/messages.i18n.js` | Room translations |
+| `web/src/main/webapp/equipment/index.htmlm` | Equipment list page |
+| `web/src/main/webapp/equipment/index.js` | Equipment page behavior |
+| `web/src/main/webapp/equipment/messages.i18n.js` | Equipment translations |
+| `web/src/main/webapp/contact/index.htmlm` | Contact list page |
+| `web/src/main/webapp/contact/index.js` | Contact page behavior |
+| `web/src/main/webapp/contact/messages.i18n.js` | Contact translations |
+| `web/src/main/webapp/medication/index.htmlm` | Medication list page |
+| `web/src/main/webapp/medication/index.js` | Medication page behavior |
+| `web/src/main/webapp/patientData/index.htmlm` | PatientData list page |
+| `web/src/main/webapp/patientData/index.js` | PatientData page behavior |
+| `web/src/main/webapp/patientData/messages.i18n.js` | PatientData translations |
+
+### Related Specifications
+
+| File | Relationship |
+|------|--------------|
+| [`room.md`](../../../customer/room/room.md) | Shares the Common CRUD Pattern with FullCalendar integration and tabbed detail dialogs |
+| [`equipment.md`](../../../customer/equipment/equipment.md) | Shares the Common CRUD Pattern with cascading filters and collection tables |
+| [`contact.md`](../../../customer/contact/contact.md) | Shares the Common CRUD Pattern with object autocomplete and offcanvas filter panel |
+| [`patient-data.md`](../patient-data/patient-data.md) | Shares the `Core.initCrud()` + `slickerGrid()` pattern; PatientData is another standalone reference data module |
 
 ---
 
@@ -186,12 +206,3 @@ PatientData --> (standalone, but references appointment/consultation i18n keys)
 | PatientData | "Datei" | File table header |
 | PatientData | "Datei hochladen" | Upload dialog title |
 | PatientData | "Action" | Nav button label |
-
----
-
-## Cross-References
-
-- [`patient-data.md`](../patient-data/patient-data.md) — Shares the `Core.initCrud()` + `slickerGrid()` pattern; PatientData is another standalone reference data module
-- [`contact.md`](../contact/contact.md) — Shares the Common CRUD Pattern with object autocomplete and offcanvas filter panel
-- [`room.md`](../room/room.md) — Shares the Common CRUD Pattern with FullCalendar integration and tabbed detail dialogs
-- [`equipment.md`](../equipment/equipment.md) — Shares the Common CRUD Pattern with cascading filters and collection tables

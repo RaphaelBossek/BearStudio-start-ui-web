@@ -5,9 +5,7 @@ title: 'Consultation Details Header'
 ---
 ---
 
-# 02 - Consultation Details Dialog: Header, Tabs, and Scaffold
-
-> Source: `consultation/details.html` (778 lines), `consultation/details.js`, `consultation/details.ts`
+# Consultation Details Dialog: Header, Tabs, and Scaffold
 
 ---
 

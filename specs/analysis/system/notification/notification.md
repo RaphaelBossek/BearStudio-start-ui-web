@@ -4,18 +4,6 @@ title: 'Notification'
 
 # Notification Module -- Legacy UI Analysis
 
-> **Source files analysed**
->
-> | File | Lines | Role |
-> |------|------:|------|
-> | `notification/index.htmlm` | 139 | List page -- grid, detail pane, two compose dialogs |
-> | `notification/index.js` | 288 | List page logic (CRUD, folder nav, multi-message) |
-> | `notification/messages.i18n.js` | 28 | i18n overrides + custom formatters |
-> | `notification/sendMessage.mustache` | 17 | Dashboard-embedded "send message" partial |
-> | `notification/sendMessage.js` | 63 | Send-message dialog logic (prefill, autocomplete) |
-> | `ApplicationResources.properties` | -- | German translations |
-> | `ApplicationResources_en.properties` | -- | English translations |
-
 ---
 
 ## Cross-References

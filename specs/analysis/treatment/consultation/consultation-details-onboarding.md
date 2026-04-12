@@ -5,11 +5,7 @@ title: 'Consultation Details Onboarding'
 ---
 ---
 
-# 04 - Consultation Details: Onboarding Forms (Full + Short)
-
-> **Source files analysed**
-> - `consultation/detailDataOnboarding.html` (276 lines) -- Full onboarding form (type `ONBOARDING`)
-> - `consultation/detailDataOnboardingShort.html` (79 lines) -- Short onboarding form (type `ONBOARDING_SHORT`)
+# Consultation Details: Onboarding Forms (Full + Short)
 
 ---
 

@@ -2,9 +2,7 @@
 title: 'Dialogs Treatment'
 ---
 
-# 04 - Dashboard Dialogs — Treatment
-
-> **Source**: `dash/index.htmlm` (lines 624-896), `dash/dash.js`
+# Dashboard Dialogs — Treatment
 
 ---
 

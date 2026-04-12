@@ -4,9 +4,7 @@ title: 'Appointment Assign User'
 
 # Appointment Assign User / Collision Dialog — Legacy UI Analysis
 
-> **Source files analyzed:**
-> - `web/src/main/webapp/appointment/assignUser.html` (48 lines) — Modal dialog template
-> - `web/src/main/webapp/appointment/assignUser.js` (31 lines) — Assignment logic and API calls
+---
 
 ## Cross-References
 
