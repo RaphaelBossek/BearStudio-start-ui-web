@@ -45,12 +45,6 @@ title: 'Appointment Details Scheduling'
 |------|-----------|-------|-----------------|----------|
 | event | **Outgoing** | `assignAppointment(id, state, cb)` | [Appointment Assign User](appointment-assign-user.md#cross-references) | Accept/Override assignment buttons trigger collision check |
 
-> **Split origin:** Both this file and [Appointment Details Patient](../../treatment/appointment-patient/appointment-details-patient.md) were extracted from `appointment/details.html` (635 lines) + `appointment/details.js` (912 lines). This file covers scheduling, state transitions, user assignment (Tabs 1/2/4/5); the sibling covers patient data CRUD (Tab 3).
->
-> **Include context:** This file's source `appointment/details.html` is embedded as `{{> appointmentDetails}}` in 7 host pages: appointment list, shift list, treatment list, council list, month view, week view, and calendar view.
->
-> **Event chain:** [Appointment Details Scheduling](appointment-details-scheduling.md) -> `assignAppointment(id, state, cb)` -> [Appointment Assign User](appointment-assign-user.md) -> `AppointmentService.getDuplicateEvents()` -> (if duplicates) opens collision dialog -> `AppointmentService.setAssignments()`
-
 ---
 
 # 02 — Appointment Details Dialog (with Tabs)

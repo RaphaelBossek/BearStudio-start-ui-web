@@ -12,8 +12,6 @@ title: 'User Video History'
 | split | **Sibling** | Same source: `utility/worklog-templates-files.md` | [Invoice Receiver](../../accounting/invoice-receiver/invoice-receiver.md) | Section 6 (Invoice Receiver) extracted to sibling |
 | split | **Sibling** | Same source: `utility/worklog-templates-files.md` | [Templates Files](../../system/templates-files/templates-files.md) | Sections 2–4 (Export/Notification/User File) extracted to sibling |
 
-> **Split origin:** This file and [Worklog](../../accounting/worklog/worklog.md), [Invoice Receiver](../../accounting/invoice-receiver/invoice-receiver.md), and [Templates Files](../../system/templates-files/templates-files.md) were all extracted from `utility/worklog-templates-files.md`. This file covers User Video History (sections 5, 7, 8).
-
 ### Source Includes
 
 | Type | Direction | Detail | Linked Document | Condition / Context |
@@ -22,10 +20,6 @@ title: 'User Video History'
 | include | **Sibling** | `peertube-player.min.js` | [Support And Video](./support-and-video.md) | PeerTube integration loaded by video and videoLibrary |
 | include | **Sibling** | `userVideoHistory/player.js` | [Support And Video](./support-and-video.md) | Watch tracking script included by video and videoLibrary |
 | include | **Sibling** | `HugeUploader.js` | [Support And Video](./support-and-video.md) | Chunked upload (3MB chunks); used by videoCategory module |
-
----
-
-> **Include context:** `video.js`, `peertube-player.min.js`, and `userVideoHistory/player.js` are shared libraries loaded by both the video/videoLibrary modules (documented in [Support And Video](./support-and-video.md)) and this file's user video history tracking. HugeUploader.js is used for chunked video uploads in the videoCategory module.
 
 ---
 

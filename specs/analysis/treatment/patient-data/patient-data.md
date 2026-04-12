@@ -18,8 +18,6 @@ title: 'Patient Data'
 | split | **Sibling** | Same source: `room-equipment-contact-medication-patientdata.md` | [Contact Entity CRUD](../customer/contact/contact.md) | Contact module extracted to sibling |
 | split | **Sibling** | Same source: `room-equipment-contact-medication-patientdata.md` | [Medication Entity CRUD](../medication/medication.md) | Medication module extracted to sibling |
 
-> **Split origin:** This file and its four siblings (Room, Equipment, Contact, Medication) were all extracted from `entity-cruds/room-equipment-contact-medication-patientdata.md`. This file covers PatientData specifically; the siblings cover their respective modules.
-
 ---
 
 ## Common CRUD Pattern

@@ -13,8 +13,6 @@ title: 'Contact'
 | split | **Sibling** | Same source: `entity-cruds/room-equipment-contact-medication-patientdata.md` | [Medication](../../treatment/medication/medication.md) | Common CRUD Pattern, 4. Medication |
 | split | **Sibling** | Same source: `entity-cruds/room-equipment-contact-medication-patientdata.md` | [PatientData](../../treatment/patient-data/patient-data.md) | Common CRUD Pattern, 5. PatientData |
 
-> **Split origin:** All five files (Room, Equipment, Contact, Medication, PatientData) were extracted from the same brownfield source `entity-cruds/room-equipment-contact-medication-patientdata.md` and share the Common CRUD Pattern section. This file covers Contact (section 3).
-
 ---
 
 ## Common CRUD Pattern

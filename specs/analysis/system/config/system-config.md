@@ -13,8 +13,6 @@ title: 'System Config'
 |------|-----------|--------|-----------------|---------------------|
 | split | **Sibling** | Same source: `config-cruds/` | [Accounting Config](../../accounting/config/accounting-config.md) | Extracted from same `config-cruds/` directory |
 
-> **Split origin:** Both this file and [Accounting Config](../../accounting/config/accounting-config.md) were extracted from the same `config-cruds/` directory. This file covers locationType (A), exclusionCriteria (B), supportCategory (D), loginNotification (I); the sibling covers jobPriceList (E), product (F), closedMonth (G), stornoGroup (C), expertWorkMonthly (H).
-
 ---
 
 # Config CRUD Modules (Low-Priority Admin Pages)

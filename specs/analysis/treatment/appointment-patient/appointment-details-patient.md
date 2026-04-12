@@ -8,8 +8,6 @@ title: 'Appointment Details Patient'
 |------|-----------|--------|-----------------|---------------------|
 | split | **Sibling** | Same source: `appointment/details.html` + `details.js` | [Appointment Details Scheduling](../../planning/appointment/appointment-details-scheduling.md) | Tabs 1/2/4/5 (Scheduling, state, assignments) extracted to sibling |
 
-> **Split origin:** Both this file and [Appointment Details Scheduling](../../planning/appointment/appointment-details-scheduling.md) were extracted from `appointment/details.html` (635 lines) + `appointment/details.js` (912 lines). This file covers patient data CRUD (Tab 3); the sibling covers scheduling, state transitions, user assignment (Tabs 1/2/4/5).
-
 ---
 
 ## 6. Tab 3 — Patients

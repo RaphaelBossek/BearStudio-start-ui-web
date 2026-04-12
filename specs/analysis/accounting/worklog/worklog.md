@@ -28,8 +28,6 @@ title: 'Worklog'
 | event | **Outgoing** | `InvoiceDetails.open(id, "view")` | [Invoice Details](../../accounting/invoice/invoice-details.md) | Show Invoice row action |
 | event | **Outgoing** | `InvoiceDetails.open(id, "change")` | [Invoice Details](../../accounting/invoice/invoice-details.md) | Edit Invoice row action |
 
-> **Split origin:** This file and [Invoice Receiver](../../accounting/invoice-receiver/invoice-receiver.md), [Templates Files](../../system/templates-files/templates-files.md), and [User Video History](../../orphan/user-video-history.md) were all extracted from `utility/worklog-templates-files.md`. This file covers Worklog List and Weekly Assignments (sections 1, 7, 8).
-
 ---
 
 ## 1. Worklog (`worklog/`)

@@ -21,8 +21,6 @@ title: 'Skill'
 |------|-----------|--------|-----------------|---------------------|
 | split | **Sibling** | Same source: `admin/simple-cruds.md` | [Simple CRUDs](../simple-cruds.md) | Split sibling — Skill Management (A) and Cross-Cutting Patterns (E) extracted here |
 
-> **Split origin:** This file and [Simple CRUDs](../simple-cruds.md) share the same brownfield source `admin/simple-cruds.md`. This file covers Skill Management (section A) and Cross-Cutting Patterns (section E); other sections of the source were split into separate analysis files.
-
 ---
 
 ## A. Skill Management
