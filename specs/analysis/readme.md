@@ -35,37 +35,37 @@ The sitemap is defined in `brownfield/web/src/main/webapp/index.json` under the 
 
 The application's main navigation from the legacy `site.htmlm` shell maps to the current canonical analysis structure as follows:
 
-- **Dashboard** (`/dash.html`): Dashboards for calendar, week view, worklog; video library support
+- **Dashboard**: Dashboards for calendar, week view, worklog; video library support
   - [Calendar](./planning/dashboard/calendar-view.md)
   - [Week View](./planning/dashboard/week-view.md)
   - [Worklog](./accounting/worklog/worklog.md)
   - [Video Library](./orphan/support-and-video.md)
 
-- **Appointments** (`/appointment.html`): Appointments, shifts, councils, planning dashboards
+- **Appointments**: Appointments, shifts, councils, planning dashboards
   - [Appointment Plan](./planning/appointment/appointment-plan.md)
   - [Patient Data](./treatment/patient-data/patient-data.md)
 
-- **Shifts** (`/shift.html`): Appointments, shifts, councils, planning dashboards
+- **Shifts**: Appointments, shifts, councils, planning dashboards
   - [Shift Plan](./planning/shift/shift-and-plan.md)
 
-- **Treatments** (`/treatment.html`): Consultations, treatments, patient data
+- **Treatments**: Consultations, treatments, patient data
   - [Treatment Plan](./treatment/treatment-core/treatment-plan.md)
   - [Treatment Plan History](./treatment/treatment-core/treatment-plan.md)
 
-- **Council** (`/council.html`): Appointments, shifts, councils, planning dashboards
+- **Council**: Appointments, shifts, councils, planning dashboards
   - [Council Plan](./planning/council/council-and-plan.md)
 
-- **Consultations** (`/consultation.html`): Consultations, treatments, patient data
+- **Consultations**: Consultations, treatments, patient data
   - [Consultation List](./treatment/consultation/consultation-list.md)
 
-- **Appointment Admin** (`/appointmentAdmin.html`): Appointments, shifts, councils, planning dashboards
+- **Appointment Admin**: Appointments, shifts, councils, planning dashboards
   - [Closed Month](./planning/appointment-admin/appointment-admin.md)
   - [Questionnaire](./treatment/questionnaire/questionnaire-list.md)
 
-- **Notifications** (`/notification.html`): System config, admin, notifications, shared components
+- **Notifications**: System config, admin, notifications, shared components
   - [Notification List](./system/notification/notification.md)
 
-- **Customers** (`/customer.html`): Customer management, contacts, locations, rooms, equipment
+- **Customers**: Customer management, contacts, locations, rooms, equipment
   - [Onboarding Customer](./user-management/admin/onboarding-flow.md)
   - [Invoices](./accounting/invoice/invoice-list.md)
   - [Invoice Receivers](./accounting/invoice-receiver/invoice-receiver.md)
@@ -74,12 +74,12 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
   - [Rooms](./customer/room/room.md)
   - [Onboarding Location](./user-management/admin/onboarding-flow.md)
 
-- **Staff** (`/staff.html`): User profiles, admin, groups, skills, onboarding
+- **Staff**: User profiles, admin, groups, skills, onboarding
   - [Onboarding](./user-management/admin/onboarding-flow.md)
   - [User Management](./user-management/admin/user-management.md)
   - [Expert Weekly Assignments](./accounting/worklog/worklog.md)
 
-- **Administration** (`/admin.html`): Invoicing, job configuration, accounting config; user profiles, admin, groups, skills, onboarding; consultations, treatments, patient data
+- **Administration**: Invoicing, job configuration, accounting config; user profiles, admin, groups, skills, onboarding; consultations, treatments, patient data
   - [Job IDs](./accounting/admin-job/job-configuration.md)
   - [Async Job Queue](./mongodb-mapping/system.md#entity-async-job-queue)
   - [Job Price List](./accounting/config/accounting-config.md#e-job-price-list)
@@ -92,7 +92,7 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
   - [Equipment](./customer/equipment/equipment.md)
   - [Onboarding Steps](./user-management/admin/onboarding-flow.md)
 
-- **Systemadmin** (`/sysadmin.html`): System config, admin, notifications, shared components; appointments, shifts, councils, planning dashboards
+- **Systemadmin**: System config, admin, notifications, shared components; appointments, shifts, councils, planning dashboards
   - [MOTD](./system/admin-cruds/motd-template.md)
   - [Login Notification](./system/config/system-config.md#i-login-notification)
   - [Notification Templates](./system/templates-files/templates-files.md#3-notification-template)
@@ -106,7 +106,7 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
   - [BasisWeb Appointments](./mongodb-mapping/interfaces.md#entity-basis-web-appointment)
   - [Change Log](./system/admin/admin-landing.md#8-page-changelog-changeloghtmlm)
 
-- **Global Menu Items** (`#globalMenu`): User utility actions always available in the sidebar
+- **Global Menu Items**: User utility actions always available in the sidebar
   - Search Toggle (full-text search)
   - [Settings / Profile](./user-management/profile/profile-form.md)
   - [Security](./user-management/profile/profile-dialogs.md)
