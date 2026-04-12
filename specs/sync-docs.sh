@@ -361,6 +361,7 @@ DASHBOARD
 cat >> "$sidebar_content" << 'APPOINTMENTS'
             { label: 'Appointments', collapsed: true,
               items: [
+                { label: 'Appointments', slug: 'analysis/planning/appointment/appointment-plan' },
                 { label: 'Appointment Plan', slug: 'analysis/planning/appointment/appointment-plan' },
                 { label: 'Patient Data', slug: 'analysis/treatment/patient-data/patient-data' },
               ],
@@ -370,6 +371,7 @@ APPOINTMENTS
 cat >> "$sidebar_content" << 'SHIFTS'
             { label: 'Shifts', collapsed: true,
               items: [
+                { label: 'Shifts', slug: 'analysis/planning/shift/shift-and-plan' },
                 { label: 'Shift Plan', slug: 'analysis/planning/shift/shift-and-plan' },
               ],
             },
@@ -378,6 +380,7 @@ SHIFTS
 cat >> "$sidebar_content" << 'TREATMENTS'
             { label: 'Treatments', collapsed: true,
               items: [
+                { label: 'Treatments', slug: 'analysis/treatment/treatment-core/treatment-plan' },
                 { label: 'Treatment Plan', slug: 'analysis/treatment/treatment-core/treatment-plan' },
                 { label: 'Treatment Plan History', slug: 'analysis/treatment/treatment-core/treatment-plan' },
               ],
@@ -387,6 +390,7 @@ TREATMENTS
 cat >> "$sidebar_content" << 'COUNCIL'
             { label: 'Council', collapsed: true,
               items: [
+                { label: 'Council', slug: 'analysis/planning/council/council-and-plan' },
                 { label: 'Council Plan', slug: 'analysis/planning/council/council-and-plan' },
               ],
             },
@@ -395,6 +399,7 @@ COUNCIL
 cat >> "$sidebar_content" << 'CONSULTATIONS'
             { label: 'Consultations', collapsed: true,
               items: [
+                { label: 'Consultations', slug: 'analysis/treatment/consultation/consultation-list' },
                 { label: 'Consultation List', slug: 'analysis/treatment/consultation/consultation-list' },
                 { label: 'Details Header', slug: 'analysis/treatment/consultation/consultation-details-header' },
                 { label: 'Standard Form', slug: 'analysis/treatment/consultation/consultation-details-standard' },
@@ -409,6 +414,7 @@ CONSULTATIONS
 cat >> "$sidebar_content" << 'APPT_ADMIN'
             { label: 'Appointment Admin', collapsed: true,
               items: [
+                { label: 'Appointment Admin', slug: 'analysis/planning/appointment-support/close-month' },
                 { label: 'Closed Month', slug: 'analysis/planning/appointment-support/close-month' },
                 { label: 'Questionnaire', slug: 'analysis/treatment/questionnaire/questionnaire-list' },
               ],
@@ -418,6 +424,7 @@ APPT_ADMIN
 cat >> "$sidebar_content" << 'NOTIFICATIONS'
             { label: 'Notifications', collapsed: true,
               items: [
+                { label: 'Notifications', slug: 'analysis/system/notification/notification' },
                 { label: 'Trash', slug: 'analysis/system/notification/notification' },
               ],
             },
@@ -426,6 +433,7 @@ NOTIFICATIONS
 cat >> "$sidebar_content" << 'CUSTOMERS'
             { label: 'Customers', collapsed: true,
               items: [
+                { label: 'Customers', slug: 'analysis/customer/customer-core/location-and-users' },
                 { label: 'Onboarding Customer', slug: 'analysis/user-management/admin/onboarding-flow' },
                 { label: 'Invoices', slug: 'analysis/accounting/invoice/invoice-list' },
                 { label: 'Invoice Receivers', slug: 'analysis/accounting/invoice-receiver/invoice-receiver' },
@@ -440,6 +448,7 @@ CUSTOMERS
 cat >> "$sidebar_content" << 'STAFF'
             { label: 'Staff', collapsed: true,
               items: [
+                { label: 'Staff', slug: 'analysis/user-management/admin/onboarding-flow' },
                 { label: 'Onboarding', slug: 'analysis/user-management/admin/onboarding-flow' },
                 { label: 'User Management', slug: 'analysis/user-management/admin/user-management' },
                 { label: 'Expert Weekly Assignments', slug: 'analysis/accounting/worklog/worklog' },
@@ -450,6 +459,7 @@ STAFF
 cat >> "$sidebar_content" << 'ADMIN'
             { label: 'Administration', collapsed: true,
               items: [
+                { label: 'Administration', slug: 'analysis/accounting/admin-job/job-configuration' },
                 { label: 'Job IDs', slug: 'analysis/accounting/admin-job/job-configuration' },
                 { label: 'Async Job Queue', slug: 'analysis/mongodb-mapping/system' },
                 { label: 'Job Price List', slug: 'analysis/accounting/config/accounting-config' },
@@ -468,6 +478,7 @@ ADMIN
 cat >> "$sidebar_content" << 'SYSADMIN'
             { label: 'Systemadmin', collapsed: true,
               items: [
+                { label: 'Systemadmin', slug: 'analysis/system/admin/admin-landing' },
                 { label: 'MOTD', slug: 'analysis/system/admin-cruds/motd-template' },
                 { label: 'Login Notification', slug: 'analysis/system/config/system-config' },
                 { label: 'Notification Templates', slug: 'analysis/system/templates-files/templates-files' },
