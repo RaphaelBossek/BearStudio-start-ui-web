@@ -270,6 +270,10 @@ function rewriteFileCrossReferences(filePath, dryRun = false) {
         normalizedLinkPath = normalizedLinkPath.slice(3);
       }
     }
+    // Also strip leading "analysis/" if present (from links like ../analysis/...)
+    if (normalizedLinkPath.startsWith('analysis/')) {
+      normalizedLinkPath = normalizedLinkPath.slice('analysis/'.length);
+    }
 
     // Check if this link points to a remapped file
     if (PATH_MAPPING[normalizedLinkPath]) {
