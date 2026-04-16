@@ -36,82 +36,82 @@ The sitemap is defined in `brownfield/web/src/main/webapp/index.json` under the 
 The application's main navigation from the legacy `site.htmlm` shell maps to the current canonical analysis structure as follows:
 
 - **Dashboard**: Dashboards for calendar, week view, worklog; video library support
-  - [Calendar](01-dashboard/calendar-view.md)
-  - [Week View](01-dashboard/week-view.md)
-  - [Worklog](01-dashboard/worklog.md)
-  - [Video Library](01-dashboard/video-library.md)
+  - [Calendar](./planning/dashboard/calendar-view.md)
+  - [Week View](./planning/dashboard/week-view.md)
+  - [Worklog](./accounting/worklog/worklog.md)
+  - [Video Library](./orphan/support-and-video.md)
 
 - **Appointments**: Appointments, shifts, councils, planning dashboards
-  - [Appointment Plan](02-appointments/appointment-plan.md)
-  - [Patient Data](02-appointments/patient-data.md)
+  - [Appointment Plan](./planning/appointment/appointment-plan.md)
+  - [Patient Data](./treatment/patient-data/patient-data.md)
 
 - **Shifts**: Appointments, shifts, councils, planning dashboards
-  - [Shift Plan](03-shifts/shift-and-plan.md)
+  - [Shift Plan](./planning/shift/shift-and-plan.md)
 
 - **Treatments**: Consultations, treatments, patient data
-  - [Treatment Plan](04-treatments/treatment-plan.md)
-  - [Treatment Plan History](04-treatments/treatment-plan.md)
+  - [Treatment Plan](./treatment/treatment-core/treatment-plan.md)
+  - [Treatment Plan History](./treatment/treatment-core/treatment-plan.md)
 
 - **Council**: Appointments, shifts, councils, planning dashboards
-  - [Council Plan](05-council/council-and-plan.md)
+  - [Council Plan](./planning/council/council-and-plan.md)
 
 - **Consultations**: Consultations, treatments, patient data
-  - [Consultation List](06-consultations/consultation-list.md)
+  - [Consultation List](./treatment/consultation/consultation-list.md)
 
 - **Appointment Admin**: Appointments, shifts, councils, planning dashboards
-  - [Closed Month](07-appointment-admin/appointment-admin.md)
-  - [Questionnaire](07-appointment-admin/questionnaire-list.md)
+  - [Closed Month](./planning/appointment-admin/appointment-admin.md)
+  - [Questionnaire](./treatment/questionnaire/questionnaire-list.md)
 
 - **Notifications**: System config, admin, notifications, shared components
-  - [Notification List](08-notifications/notification.md)
+  - [Notification List](./system/notification/notification.md)
 
 - **Customers**: Customer management, contacts, locations, rooms, equipment
-  - [Onboarding Customer](09-customers/onboarding-customer.md)
-  - [Invoices](09-customers/invoice-list.md)
-  - [Invoice Receivers](09-customers/invoice-receiver.md)
-  - [Customer Users](09-customers/locations.md)
-  - [Locations](09-customers/locations.md)
-  - [Rooms](09-customers/rooms.md)
-  - [Onboarding Location](09-customers/onboarding-customer.md)
+  - [Onboarding Customer](./user-management/admin/onboarding-flow.md)
+  - [Invoices](./accounting/invoice/invoice-list.md)
+  - [Invoice Receivers](./accounting/invoice-receiver/invoice-receiver.md)
+  - [Customer Users](./customer/customer-core/location-and-users.md)
+  - [Locations](./customer/customer-core/location-and-users.md)
+  - [Rooms](./customer/room/room.md)
+  - [Onboarding Location](./user-management/admin/onboarding-flow.md)
 
 - **Staff**: User profiles, admin, groups, skills, onboarding
-  - [Onboarding](09-customers/onboarding-customer.md)
-  - [User Management](10-staff/user-management.md)
-  - [Expert Weekly Assignments](01-dashboard/worklog.md)
+  - [Onboarding](./user-management/admin/onboarding-flow.md)
+  - [User Management](./user-management/admin/user-management.md)
+  - [Expert Weekly Assignments](./accounting/worklog/worklog.md)
 
 - **Administration**: Invoicing, job configuration, accounting config; user profiles, admin, groups, skills, onboarding; consultations, treatments, patient data
-  - [Job IDs](11-administration/job-ids.md)
-  - [Async Job Queue](_mongodb-mapping/system.md#entity-async-job-queue)
-  - [Job Price List](11-administration/job-price-list.md#e-job-price-list)
-  - [Products](11-administration/job-price-list.md#f-product)
-  - [Skills](11-administration/skills.md)
-  - [Exclusion Criteria](11-administration/exclusion-criteria.md#b-exclusion-criteria)
-  - [Export Templates](11-administration/export-templates.md#2-export-template)
-  - [Warnings](11-administration/warnings.md)
-  - [Treatment Categories](04-treatments/treatment-and-category.md)
-  - [Equipment](11-administration/equipment.md)
-  - [Onboarding Steps](09-customers/onboarding-customer.md)
+  - [Job IDs](./accounting/admin-job/job-configuration.md)
+  - [Async Job Queue](./mongodb-mapping/system.md#entity-async-job-queue)
+  - [Job Price List](./accounting/config/accounting-config.md#e-job-price-list)
+  - [Products](./accounting/config/accounting-config.md#f-product)
+  - [Skills](./user-management/admin/skill.md)
+  - [Exclusion Criteria](./system/config/system-config.md#b-exclusion-criteria)
+  - [Export Templates](./system/templates-files/templates-files.md#2-export-template)
+  - [Warnings](./treatment/warning/warning-management.md)
+  - [Treatment Categories](./treatment/treatment-core/treatment-and-category.md)
+  - [Equipment](./customer/equipment/equipment.md)
+  - [Onboarding Steps](./user-management/admin/onboarding-flow.md)
 
 - **Systemadmin**: System config, admin, notifications, shared components; appointments, shifts, councils, planning dashboards
-  - [MOTD](12-systemadmin/motd.md)
-  - [Login Notification](11-administration/exclusion-criteria.md#i-login-notification)
-  - [Notification Templates](11-administration/export-templates.md#3-notification-template)
-  - [Location Types](11-administration/exclusion-criteria.md#a-location-type)
-  - [Storno Groups](11-administration/job-price-list.md#c-storno-group-cancellation-group)
-  - [Work Hours](12-systemadmin/work-hours.md)
-  - [CDR](12-systemadmin/cdr.md)
-  - [CDR Assignment](12-systemadmin/cdr.md)
-  - [Log](_mongodb-mapping/system.md#entity-logs)
-  - [Support Categories](11-administration/exclusion-criteria.md#d-support-category)
-  - [BasisWeb Appointments](_mongodb-mapping/interfaces.md#entity-basis-web-appointment)
-  - [Change Log](12-systemadmin/change-log.md#8-page-changelog-changeloghtmlm)
+  - [MOTD](./system/admin-cruds/motd-template.md)
+  - [Login Notification](./system/config/system-config.md#i-login-notification)
+  - [Notification Templates](./system/templates-files/templates-files.md#3-notification-template)
+  - [Location Types](./system/config/system-config.md#a-location-type)
+  - [Storno Groups](./accounting/config/accounting-config.md#c-storno-group-cancellation-group)
+  - [Work Hours](./planning/appointment-support/workhour.md)
+  - [CDR](./planning/appointment-support/cdr-call.md)
+  - [CDR Assignment](./planning/appointment-support/cdr-call.md)
+  - [Log](./mongodb-mapping/system.md#entity-logs)
+  - [Support Categories](./system/config/system-config.md#d-support-category)
+  - [BasisWeb Appointments](./mongodb-mapping/interfaces.md#entity-basis-web-appointment)
+  - [Change Log](./system/admin/admin-landing.md#8-page-changelog-changeloghtmlm)
 
 - **Global Menu Items**: User utility actions always available in the sidebar
   - Search Toggle (full-text search)
-  - [Settings / Profile](_shared-components/profile-form.md)
-  - [Security](_shared-components/profile-dialogs.md)
-  - [Role Switch](_shared-components/includes-shared-components.md) (requires `USERS_CREATE` authority)
-  - [Bug Report](_shared-components/includes-shared-components.md)
+  - [Settings / Profile](./user-management/profile/profile-form.md)
+  - [Security](./user-management/profile/profile-dialogs.md)
+  - [Role Switch](./system/includes/includes-shared-components.md) (requires `USERS_CREATE` authority)
+  - [Bug Report](./system/includes/includes-shared-components.md)
   - Logout
   - Version Display
 
@@ -486,31 +486,31 @@ These analysis documents describe features, dialogs, sub-flows, and shared compo
 
 | Auxiliary File | Data Dictionary | Cross-Referenced By & Usage Context |
 |---------------|-----------------|-------------------------------------|
-| [totp-onboarding.md](_shared-components/totp-onboarding.md) | [data-dictionary-user-management.md](_data-dictionaries/data-dictionary-user-management.md) | [includes-customization.md](_shared-components/includes-customization.md) (TOTP onboarding flow in login), [user-management.md](10-staff/user-management.md) (actions/switches), [includes-shared-components.md](_shared-components/includes-shared-components.md), [profile-form.md](_shared-components/profile-form.md), [profile-staff.md](_shared-components/profile-staff.md) |
-| [appointment-assign-user.md](_shared-components/appointment-assign-user.md) | — | [appointment-list.md](02-appointments/appointment-list.md) (include: `{{> assignUserDlg}}`), [shift-and-plan.md](03-shifts/shift-and-plan.md), [treatment-and-category.md](04-treatments/treatment-and-category.md), [council-and-plan.md](05-council/council-and-plan.md) |
-| [appointment-details-patient.md](_shared-components/appointment-details-patient.md) | — | [appointment-details-scheduling.md](_shared-components/appointment-details-scheduling.md) (split sibling: same source `appointment/details.html`) |
-| [appointment-details-scheduling.md](_shared-components/appointment-details-scheduling.md) | — | [appointment-list.md](02-appointments/appointment-list.md) (include: `{{> appointmentDetails}}`), [shift-and-plan.md](03-shifts/shift-and-plan.md), [treatment-and-category.md](04-treatments/treatment-and-category.md), [council-and-plan.md](05-council/council-and-plan.md), [month-view.md](01-dashboard/month-view.md), [week-view.md](01-dashboard/week-view.md), [calendar-view.md](01-dashboard/calendar-view.md) |
-| [basisweb-wizard.md](_interfaces/basisweb-wizard.md) | — | [dashboard-main.md](01-dashboard/dashboard-main.md) (event flow: `loadBasisweb`), [consultation-wizard.md](01-dashboard/consultation-wizard.md) |
-| [consultation-details-js.md](_shared-components/consultation-details-js.md) | — | [dashboard-main.md](01-dashboard/dashboard-main.md) (event flow: `ConsultationDetails.open()`), [consultation-wizard.md](01-dashboard/consultation-wizard.md), [basisweb-wizard.md](_interfaces/basisweb-wizard.md), [consultation-template.md](01-dashboard/consultation-template.md) |
-| [consultation-template.md](01-dashboard/consultation-template.md) | — | [dashboard-main.md](01-dashboard/dashboard-main.md) (event flow: `consultationWithTemplateBtn` click) |
-| [consultation-wizard.md](01-dashboard/consultation-wizard.md) | — | [dashboard-main.md](01-dashboard/dashboard-main.md) (event flow: `loadConsultation` outgoing) |
-| [contact.md](_shared-components/contact.md) | [data-dictionary-customer.md](_data-dictionaries/data-dictionary-customer.md) | [medication.md](_shared-components/medication.md), [patient-data.md](02-appointments/patient-data.md), [room.md](09-customers/rooms.md), [equipment.md](11-administration/equipment.md) |
-| [dashboard-admin.md](12-systemadmin/dashboard-admin.md) | [data-dictionary-system.md](_data-dictionaries/data-dictionary-system.md) | [system/dashboard/readme.md](_shared-components/readme.md) |
-| [dashboard-selfservice.md](01-dashboard/dashboard-selfservice.md) | [data-dictionary-system.md](_data-dictionaries/data-dictionary-system.md) | [system/dashboard/readme.md](_shared-components/readme.md) |
-| [dialogs-planning.md](01-dashboard/dialogs-planning.md) | [data-dictionary-planning.md](_data-dictionaries/data-dictionary-planning.md) | [dialogs-treatment.md](_shared-components/dialogs-treatment.md), [dialogs-system.md](_shared-components/dialogs-system.md), [dialogs-user-management.md](_shared-components/dialogs-user-management.md) |
-| [dialogs-system.md](_shared-components/dialogs-system.md) | [data-dictionary-system.md](_data-dictionaries/data-dictionary-system.md) | [dialogs-planning.md](01-dashboard/dialogs-planning.md), [dialogs-treatment.md](_shared-components/dialogs-treatment.md), [dialogs-user-management.md](_shared-components/dialogs-user-management.md), [system/dashboard/readme.md](_shared-components/readme.md) |
-| [dialogs-treatment.md](_shared-components/dialogs-treatment.md) | [data-dictionary-treatment.md](_data-dictionaries/data-dictionary-treatment.md) | [dialogs-planning.md](01-dashboard/dialogs-planning.md), [dialogs-system.md](_shared-components/dialogs-system.md), [dialogs-user-management.md](_shared-components/dialogs-user-management.md) |
-| [dialogs-user-management.md](_shared-components/dialogs-user-management.md) | [data-dictionary-user-management.md](_data-dictionaries/data-dictionary-user-management.md) | [dialogs-planning.md](01-dashboard/dialogs-planning.md), [dialogs-treatment.md](_shared-components/dialogs-treatment.md), [dialogs-system.md](_shared-components/dialogs-system.md) |
-| [group-management.md](_shared-components/group-management.md) | — | [sysconfig-import.md](_shared-components/sysconfig-import.md) |
-| [invoice-details.md](09-customers/invoice-details.md) | [data-dictionary-accounting.md](_data-dictionaries/data-dictionary-accounting.md) | — |
-| [medication.md](_shared-components/medication.md) | — | [patient-data.md](02-appointments/patient-data.md), [contact.md](_shared-components/contact.md), [room.md](09-customers/rooms.md), [equipment.md](11-administration/equipment.md) |
-| [month-view.md](01-dashboard/month-view.md) | [data-dictionary-planning.md](_data-dictionaries/data-dictionary-planning.md) | [profile-expert-availability.md](_shared-components/profile-expert-availability.md) |
-| [profile-expert-availability.md](_shared-components/profile-expert-availability.md) | — | [month-view.md](01-dashboard/month-view.md), [week-view.md](01-dashboard/week-view.md), [treatment-plan.md](04-treatments/treatment-plan.md), [profile-form.md](_shared-components/profile-form.md) |
-| [profile-staff.md](_shared-components/profile-staff.md) | — | [onboarding-flow.md](09-customers/onboarding-customer.md), [profile-dialogs.md](_shared-components/profile-dialogs.md), [appointment-assign-user.md](_shared-components/appointment-assign-user.md) |
-| [questionnaire-detail.md](07-appointment-admin/questionnaire-detail.md) | — | [dialogs-treatment.md](_shared-components/dialogs-treatment.md), [consultation-details-header.md](06-consultations/consultation-details-header.md), [appointment-admin.md](07-appointment-admin/appointment-admin.md) |
-| [shift-dialog.md](01-dashboard/shift-dialog.md) | — | [month-view.md](01-dashboard/month-view.md) (include: `{{> shiftDlg}}`), [week-view.md](01-dashboard/week-view.md), [calendar-view.md](01-dashboard/calendar-view.md) |
-| [sysconfig-import.md](_shared-components/sysconfig-import.md) | [data-dictionary-system.md](_data-dictionaries/data-dictionary-system.md) | [group-management.md](_shared-components/group-management.md) |
-| [user-video-history.md](_shared-components/user-video-history.md) | [data-dictionary-academy.md](_data-dictionaries/data-dictionary-academy.md) | [templates-files.md](11-administration/export-templates.md), [worklog.md](01-dashboard/worklog.md), [invoice-receiver.md](09-customers/invoice-receiver.md) |
+| [totp-onboarding.md](./user-management/admin/totp-onboarding.md) | [data-dictionary-user-management.md](./user-management/data-dictionary-user-management.md) | [includes-customization.md](./system/includes/includes-customization.md) (TOTP onboarding flow in login), [user-management.md](./user-management/admin/user-management.md) (actions/switches), [includes-shared-components.md](./system/includes/includes-shared-components.md), [profile-form.md](./user-management/profile/profile-form.md), [profile-staff.md](./user-management/profile/profile-staff.md) |
+| [appointment-assign-user.md](./planning/appointment/appointment-assign-user.md) | — | [appointment-list.md](./planning/appointment/appointment-list.md) (include: `{{> assignUserDlg}}`), [shift-and-plan.md](./planning/shift/shift-and-plan.md), [treatment-and-category.md](./treatment/treatment-core/treatment-and-category.md), [council-and-plan.md](./planning/council/council-and-plan.md) |
+| [appointment-details-patient.md](./treatment/appointment-patient/appointment-details-patient.md) | — | [appointment-details-scheduling.md](./planning/appointment/appointment-details-scheduling.md) (split sibling: same source `appointment/details.html`) |
+| [appointment-details-scheduling.md](./planning/appointment/appointment-details-scheduling.md) | — | [appointment-list.md](./planning/appointment/appointment-list.md) (include: `{{> appointmentDetails}}`), [shift-and-plan.md](./planning/shift/shift-and-plan.md), [treatment-and-category.md](./treatment/treatment-core/treatment-and-category.md), [council-and-plan.md](./planning/council/council-and-plan.md), [month-view.md](./planning/dashboard/month-view.md), [week-view.md](./planning/dashboard/week-view.md), [calendar-view.md](./planning/dashboard/calendar-view.md) |
+| [basisweb-wizard.md](./interfaces/dashboard/basisweb-wizard.md) | — | [dashboard-main.md](./system/dashboard/dashboard-main.md) (event flow: `loadBasisweb`), [consultation-wizard.md](./treatment/dashboard/consultation-wizard.md) |
+| [consultation-details-js.md](./treatment/consultation/consultation-details-js.md) | — | [dashboard-main.md](./system/dashboard/dashboard-main.md) (event flow: `ConsultationDetails.open()`), [consultation-wizard.md](./treatment/dashboard/consultation-wizard.md), [basisweb-wizard.md](./interfaces/dashboard/basisweb-wizard.md), [consultation-template.md](./treatment/dashboard/consultation-template.md) |
+| [consultation-template.md](./treatment/dashboard/consultation-template.md) | — | [dashboard-main.md](./system/dashboard/dashboard-main.md) (event flow: `consultationWithTemplateBtn` click) |
+| [consultation-wizard.md](./treatment/dashboard/consultation-wizard.md) | — | [dashboard-main.md](./system/dashboard/dashboard-main.md) (event flow: `loadConsultation` outgoing) |
+| [contact.md](./customer/contact/contact.md) | [data-dictionary-customer.md](./customer/data-dictionary-customer.md) | [medication.md](./treatment/medication/medication.md), [patient-data.md](./treatment/patient-data/patient-data.md), [room.md](./customer/room/room.md), [equipment.md](./customer/equipment/equipment.md) |
+| [dashboard-admin.md](./system/admin/dashboard-admin.md) | [data-dictionary-system.md](./system/data-dictionary-system.md) | [system/dashboard/readme.md](./system/dashboard/readme.md) |
+| [dashboard-selfservice.md](./system/dashboard/dashboard-selfservice.md) | [data-dictionary-system.md](./system/data-dictionary-system.md) | [system/dashboard/readme.md](./system/dashboard/readme.md) |
+| [dialogs-planning.md](./planning/dashboard/dialogs-planning.md) | [data-dictionary-planning.md](./planning/data-dictionary-planning.md) | [dialogs-treatment.md](./treatment/dashboard/dialogs-treatment.md), [dialogs-system.md](./system/dashboard/dialogs-system.md), [dialogs-user-management.md](./user-management/dashboard/dialogs-user-management.md) |
+| [dialogs-system.md](./system/dashboard/dialogs-system.md) | [data-dictionary-system.md](./system/data-dictionary-system.md) | [dialogs-planning.md](./planning/dashboard/dialogs-planning.md), [dialogs-treatment.md](./treatment/dashboard/dialogs-treatment.md), [dialogs-user-management.md](./user-management/dashboard/dialogs-user-management.md), [system/dashboard/readme.md](./system/dashboard/readme.md) |
+| [dialogs-treatment.md](./treatment/dashboard/dialogs-treatment.md) | [data-dictionary-treatment.md](./treatment/data-dictionary-treatment.md) | [dialogs-planning.md](./planning/dashboard/dialogs-planning.md), [dialogs-system.md](./system/dashboard/dialogs-system.md), [dialogs-user-management.md](./user-management/dashboard/dialogs-user-management.md) |
+| [dialogs-user-management.md](./user-management/dashboard/dialogs-user-management.md) | [data-dictionary-user-management.md](./user-management/data-dictionary-user-management.md) | [dialogs-planning.md](./planning/dashboard/dialogs-planning.md), [dialogs-treatment.md](./treatment/dashboard/dialogs-treatment.md), [dialogs-system.md](./system/dashboard/dialogs-system.md) |
+| [group-management.md](./user-management/admin/group-management.md) | — | [sysconfig-import.md](./system/admin/sysconfig-import.md) |
+| [invoice-details.md](./accounting/invoice/invoice-details.md) | [data-dictionary-accounting.md](./accounting/data-dictionary-accounting.md) | — |
+| [medication.md](./treatment/medication/medication.md) | — | [patient-data.md](./treatment/patient-data/patient-data.md), [contact.md](./customer/contact/contact.md), [room.md](./customer/room/room.md), [equipment.md](./customer/equipment/equipment.md) |
+| [month-view.md](./planning/dashboard/month-view.md) | [data-dictionary-planning.md](./planning/data-dictionary-planning.md) | [profile-expert-availability.md](./user-management/profile/profile-expert-availability.md) |
+| [profile-expert-availability.md](./user-management/profile/profile-expert-availability.md) | — | [month-view.md](./planning/dashboard/month-view.md), [week-view.md](./planning/dashboard/week-view.md), [treatment-plan.md](./treatment/treatment-core/treatment-plan.md), [profile-form.md](./user-management/profile/profile-form.md) |
+| [profile-staff.md](./user-management/profile/profile-staff.md) | — | [onboarding-flow.md](./user-management/admin/onboarding-flow.md), [profile-dialogs.md](./user-management/profile/profile-dialogs.md), [appointment-assign-user.md](./planning/appointment/appointment-assign-user.md) |
+| [questionnaire-detail.md](./treatment/questionnaire/questionnaire-detail.md) | — | [dialogs-treatment.md](./treatment/dashboard/dialogs-treatment.md), [consultation-details-header.md](./treatment/consultation/consultation-details-header.md), [appointment-admin.md](./planning/appointment-admin/appointment-admin.md) |
+| [shift-dialog.md](./planning/dashboard/shift-dialog.md) | — | [month-view.md](./planning/dashboard/month-view.md) (include: `{{> shiftDlg}}`), [week-view.md](./planning/dashboard/week-view.md), [calendar-view.md](./planning/dashboard/calendar-view.md) |
+| [sysconfig-import.md](./system/admin/sysconfig-import.md) | [data-dictionary-system.md](./system/data-dictionary-system.md) | [group-management.md](./user-management/admin/group-management.md) |
+| [user-video-history.md](./orphan/user-video-history.md) | [data-dictionary-academy.md](./academy/data-dictionary-academy.md) | [templates-files.md](./system/templates-files/templates-files.md), [worklog.md](./accounting/worklog/worklog.md), [invoice-receiver.md](./accounting/invoice-receiver/invoice-receiver.md) |
 
 ---
 
@@ -1197,4 +1197,4 @@ Each module has a corresponding `bg-color-{module}` CSS class defined in `_inclu
 
 Each analysis document correlates with wireframes in `specs/wireframes/` using the same domain and file names:
 
-- Analysis: [planning/appointment/appointment-list.md](02-appointments/appointment-list.md) ↔ Wireframe: [planning/appointment/appointment-list.pen](../wireframes/planning/appointment/appointment-list.pen) / [.png](../wireframes/planning/appointment/appointment-list.png)
+- Analysis: [planning/appointment/appointment-list.md](./planning/appointment/appointment-list.md) ↔ Wireframe: [planning/appointment/appointment-list.pen](../wireframes/planning/appointment/appointment-list.pen) / [.png](../wireframes/planning/appointment/appointment-list.png)

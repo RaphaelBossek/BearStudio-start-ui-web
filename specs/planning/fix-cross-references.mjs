@@ -261,8 +261,15 @@ function rewriteFileCrossReferences(filePath, dryRun = false) {
   const linkPattern = /\[([^\]]+)\]\(([^)]+\.md)(#[^)]*)?\)/g;
 
   content = content.replace(linkPattern, (match, linkText, linkPath, anchor) => {
-    // Normalize the link path
-    const normalizedLinkPath = linkPath.replace(/^\.\//, '').replace(/^\.\.\//, '');
+    // Normalize the link path - strip ALL leading ../ and ./
+    let normalizedLinkPath = linkPath;
+    while (normalizedLinkPath.startsWith('../') || normalizedLinkPath.startsWith('./')) {
+      if (normalizedLinkPath.startsWith('./')) {
+        normalizedLinkPath = normalizedLinkPath.slice(2);
+      } else if (normalizedLinkPath.startsWith('../')) {
+        normalizedLinkPath = normalizedLinkPath.slice(3);
+      }
+    }
 
     // Check if this link points to a remapped file
     if (PATH_MAPPING[normalizedLinkPath]) {
