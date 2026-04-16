@@ -182,54 +182,6 @@ const PATH_MAPPING = {
 };
 
 // ============================================================================
-// CONTENT EXTRACTION FILES (source files that get processed differently)
-// These files' content is extracted into multiple targets, so the original
-// file location changes. We need to handle links to these specially.
-// ============================================================================
-const CONTENT_EXTRACTION_SOURCES = {
-  'accounting/config/accounting-config.md': [
-    '11-administration/job-price-list.md',
-    '11-administration/products.md',
-    '12-systemadmin/storno-groups.md',
-  ],
-  'system/config/system-config.md': [
-    '11-administration/exclusion-criteria.md',
-    '12-systemadmin/login-notification.md',
-    '12-systemadmin/notification-templates.md',
-    '12-systemadmin/location-types.md',
-    '12-systemadmin/support-categories.md',
-  ],
-  'system/templates-files/templates-files.md': [
-    '11-administration/export-templates.md',
-    '12-systemadmin/notification-templates.md',
-  ],
-  'mongodb-mapping/system.md': ['11-administration/async-job-queue.md', '12-systemadmin/log.md'],
-  'mongodb-mapping/interfaces.md': ['12-systemadmin/basisweb-appointments.md'],
-  'treatment/treatment-core/treatment-and-category.md': [
-    '04-treatments/treatment-and-category.md',
-    '11-administration/treatment-categories.md',
-  ],
-  'user-management/admin/onboarding-flow.md': [
-    '09-customers/onboarding-customer.md',
-    '09-customers/onboarding-location.md',
-    '10-staff/onboarding.md',
-    '11-administration/onboarding-steps.md',
-  ],
-  'accounting/worklog/worklog.md': [
-    '01-dashboard/worklog.md',
-    '10-staff/expert-weekly-assignments.md',
-  ],
-  'planning/appointment-support/cdr-call.md': [
-    '12-systemadmin/cdr.md',
-    '12-systemadmin/cdr-assignment.md',
-  ],
-  'customer/customer-core/location-and-users.md': [
-    '09-customers/locations.md',
-    '09-customers/customer-users.md',
-  ],
-};
-
-// ============================================================================
 // MAIN FUNCTIONS
 // ============================================================================
 
@@ -256,8 +208,8 @@ function calculateNewRelativePath(fromFile, toFile) {
     relPath = `./${relPath}`;
   }
 
-  // Remove .md extension for markdown links
-  const targetBasename = basename(toPath).replace(/\.md$/, '');
+  // Get the target basename (preserving .md extension for markdown links)
+  const targetBasename = basename(toPath);
   const targetDir = dirname(toPath);
   const finalRelPath = relative(fromDir, targetDir);
 
@@ -327,23 +279,6 @@ function rewriteFileCrossReferences(filePath, dryRun = false) {
       });
 
       return `[${linkText}](${newRelPath}${anchor || ''})`;
-    }
-
-    // Handle content extraction sources - links to these need special handling
-    for (const [srcFile, targetFiles] of Object.entries(CONTENT_EXTRACTION_SOURCES)) {
-      if (normalizedLinkPath === srcFile || normalizedLinkPath.endsWith(srcFile)) {
-        // This file is a content extraction source
-        // Check if any of the target files are the intended target
-        for (const targetFile of targetFiles) {
-          const newRelPath = calculateNewRelativePath(fileRelDir, targetFile);
-          replacements.push({
-            from: srcFile,
-            to: targetFile,
-            newRelPath,
-            note: 'content-extraction-source',
-          });
-        }
-      }
     }
 
     return match; // No change
