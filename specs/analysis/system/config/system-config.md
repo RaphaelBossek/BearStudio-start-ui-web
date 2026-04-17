@@ -11,7 +11,7 @@ title: 'System Config'
 
 | Type | Direction | Detail | Linked Document | Condition / Context |
 |------|-----------|--------|-----------------|---------------------|
-| split | **Sibling** | Same source: `config-cruds/` | [Accounting Config](../11-administration/job-price-list.md) | Extracted from same `config-cruds/` directory |
+| split | **Sibling** | Same source: `config-cruds/` | [Accounting Config](../_content-extraction/accounting-config.md) | Extracted from same `config-cruds/` directory |
 
 ---
 

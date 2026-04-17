@@ -82,11 +82,11 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 - **Administration**: Invoicing, job configuration, accounting config; user profiles, admin, groups, skills, onboarding; consultations, treatments, patient data
   - [Job IDs](11-administration/job-ids.md)
   - [Async Job Queue](_mongodb-mapping/system.md#entity-async-job-queue)
-  - [Job Price List](11-administration/job-price-list.md#e-job-price-list)
-  - [Products](11-administration/job-price-list.md#f-product)
+  - [Job Price List](_content-extraction/accounting-config.md#e-job-price-list)
+  - [Products](_content-extraction/accounting-config.md#f-product)
   - [Skills](11-administration/skills.md)
-  - [Exclusion Criteria](11-administration/exclusion-criteria.md#b-exclusion-criteria)
-  - [Export Templates](11-administration/export-templates.md#2-export-template)
+  - [Exclusion Criteria](_content-extraction/system-config.md#b-exclusion-criteria)
+  - [Export Templates](_content-extraction/templates-files.md#2-export-template)
   - [Warnings](11-administration/warnings.md)
   - [Treatment Categories](04-treatments/treatment-and-category.md)
   - [Equipment](11-administration/equipment.md)
@@ -94,15 +94,15 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 
 - **Systemadmin**: System config, admin, notifications, shared components; appointments, shifts, councils, planning dashboards
   - [MOTD](12-systemadmin/motd.md)
-  - [Login Notification](11-administration/exclusion-criteria.md#i-login-notification)
-  - [Notification Templates](11-administration/export-templates.md#3-notification-template)
-  - [Location Types](11-administration/exclusion-criteria.md#a-location-type)
-  - [Storno Groups](11-administration/job-price-list.md#c-storno-group-cancellation-group)
+  - [Login Notification](_content-extraction/system-config.md#i-login-notification)
+  - [Notification Templates](_content-extraction/templates-files.md#3-notification-template)
+  - [Location Types](_content-extraction/system-config.md#a-location-type)
+  - [Storno Groups](_content-extraction/accounting-config.md#c-storno-group-cancellation-group)
   - [Work Hours](12-systemadmin/work-hours.md)
   - [CDR](12-systemadmin/cdr.md)
   - [CDR Assignment](12-systemadmin/cdr.md)
   - [Log](_mongodb-mapping/system.md#entity-logs)
-  - [Support Categories](11-administration/exclusion-criteria.md#d-support-category)
+  - [Support Categories](_content-extraction/system-config.md#d-support-category)
   - [BasisWeb Appointments](_mongodb-mapping/interfaces.md#entity-basis-web-appointment)
   - [Change Log](12-systemadmin/change-log.md#8-page-changelog-changeloghtmlm)
 
@@ -376,18 +376,18 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 - **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
 - **Rights**: None
 - **URL**: `/admin.html`
-- **Analysis Doc**: [admin-landing.md](./11-administration/admin-landing.md)
+- **Analysis Doc**: [change-log.md](12-systemadmin/change-log.md)
 - **Submenu**:
   
   | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Wireframe Doc | Data Dictionary |
   |------|---------|--------|-----|------|----------|--------------|-------------|--------------|-----------------|
   | Job IDs | Job IDs | Leistungsnummern | `/job.html` | `fa-briefcase-medical` | `i18n.action.jobIds` → `job.action.jobIds` | — | [job-configuration.md](11-administration/job-ids.md) | [workflows.md](../wireframes/accounting/workflows.md) | [data-dictionary-accounting.md](_data-dictionaries/data-dictionary-accounting.md) |
   | Async Job Queue | Async Job Queue | Asynchrone Warteschlange | `/asyncJobQueue.html` | `fa-stream` | `i18n.AsyncJobQueue` → `asyncJobQueue.title` | — | [system.md#entity-async-job-queue](_mongodb-mapping/system.md#entity-async-job-queue) | — | [data-dictionary-system.md](_data-dictionaries/data-dictionary-system.md) |
-  | Job Price List | Job Price List | Leistungsliste | `/jobPriceList.html` | `fa-th-list` | `i18n.jobPriceList` → `jobPriceList.title` | — | [accounting-config.md#e-job-price-list](11-administration/job-price-list.md#e-job-price-list) | — | [data-dictionary-accounting.md](_data-dictionaries/data-dictionary-accounting.md) |
-  | Products | Products | Produkte | `/product.html` | `fa-shopping-bag` | `i18n.menu.products` → `menu.products` | — | [accounting-config.md#f-product](11-administration/job-price-list.md#f-product) | — | [data-dictionary-accounting.md](_data-dictionaries/data-dictionary-accounting.md) |
+  | Job Price List | Job Price List | Leistungsliste | `/jobPriceList.html` | `fa-th-list` | `i18n.jobPriceList` → `jobPriceList.title` | — | [accounting-config.md#e-job-price-list](_content-extraction/accounting-config.md#e-job-price-list) | — | [data-dictionary-accounting.md](_data-dictionaries/data-dictionary-accounting.md) |
+  | Products | Products | Produkte | `/product.html` | `fa-shopping-bag` | `i18n.menu.products` → `menu.products` | — | [accounting-config.md#f-product](_content-extraction/accounting-config.md#f-product) | — | [data-dictionary-accounting.md](_data-dictionaries/data-dictionary-accounting.md) |
   | Skills | Skills | Fähigkeiten | `/skill.html` | `fa-graduation-cap` | `i18n.skills` → `skills.plural` | — | [skill.md](11-administration/skills.md) | — | [data-dictionary-user-management.md](_data-dictionaries/data-dictionary-user-management.md) |
-  | Exclusion Criteria | Exclusion Criteria | Ausschlusskriterien | `/exclusionCriteria.html` | `fa-comment-slash` | `i18n.exclusionCriteria` → `exclusionCriteria.plural` | — | [system-config.md#b-exclusion-criteria](11-administration/exclusion-criteria.md#b-exclusion-criteria) | — | [data-dictionary-system.md](_data-dictionaries/data-dictionary-system.md) |
-  | Export Templates | Export Templates | Exportvorlagen | `/exportTemplate.html` | `fa-file-export` | `i18n.exportTemplate` → `exportTemplate.title` | — | [templates-files.md#2-export-template](11-administration/export-templates.md#2-export-template) | — | [data-dictionary-system.md](_data-dictionaries/data-dictionary-system.md) |
+  | Exclusion Criteria | Exclusion Criteria | Ausschlusskriterien | `/exclusionCriteria.html` | `fa-comment-slash` | `i18n.exclusionCriteria` → `exclusionCriteria.plural` | — | [system-config.md#b-exclusion-criteria](_content-extraction/system-config.md#b-exclusion-criteria) | — | [data-dictionary-system.md](_data-dictionaries/data-dictionary-system.md) |
+  | Export Templates | Export Templates | Exportvorlagen | `/exportTemplate.html` | `fa-file-export` | `i18n.exportTemplate` → `exportTemplate.title` | — | [templates-files.md#2-export-template](_content-extraction/templates-files.md#2-export-template) | — | [data-dictionary-system.md](_data-dictionaries/data-dictionary-system.md) |
   | Warnings | Warnings | Warnungen | `/warning.html` | `fa-exclamation-triangle` | `i18n.consultation.warning` → `consultation.warning.plural` | — | [warning-management.md](11-administration/warnings.md) | — | [data-dictionary-treatment.md](_data-dictionaries/data-dictionary-treatment.md) |
   | Treatment Categories | Treatment Categories | Therapiekategorien | `/treatmentCategory.html` | `fa-triangle` | `i18n.TreatmentCategory` → `treatmentCategory.plural` | — | [treatment-and-category.md](04-treatments/treatment-and-category.md) | — | [data-dictionary-treatment.md](_data-dictionaries/data-dictionary-treatment.md) |
   | Equipment | Equipment | Geräte | `/equipment.html` | `fa-tablet-alt` | `i18n.menu.devices` → `menu.devices` | — | [equipment.md](11-administration/equipment.md) | [workflows.md](../wireframes/customer/workflows.md) | [data-dictionary-customer.md](_data-dictionaries/data-dictionary-customer.md) |
@@ -402,23 +402,23 @@ The application's main navigation from the legacy `site.htmlm` shell maps to the
 - **Roles**: LEITER_INTERN, ADMIN_INTERN, ADMIN
 - **Rights**: None
 - **URL**: `/sysadmin.html`
-- **Analysis Doc**: [admin-landing.md](12-systemadmin/change-log.md)
+- **Analysis Doc**: [change-log.md](12-systemadmin/change-log.md)
 - **Submenu**:
   
   | Item | English | German | URL | Icon | i18n Key | Roles/Rights | Analysis Doc | Wireframe Doc | Data Dictionary |
   |------|---------|--------|-----|------|----------|--------------|-------------|--------------|-----------------|
   | MOTD | MOTD | Tagesnachricht | `/motd.html` | `fa-newspaper` | `i18n.motd` → `motd.title` | — | [motd-template.md](12-systemadmin/motd.md) | — | [data-dictionary-system.md](_data-dictionaries/data-dictionary-system.md) |
-  | Login Notification | Login Notification | Login-Benachrichtigung | `/loginNotification.html` | `fa-comment-exclamation` | `i18n.loginNotification` → `loginNotification.title` | — | [system-config.md#i-login-notification](11-administration/exclusion-criteria.md#i-login-notification) | — | [data-dictionary-system.md](_data-dictionaries/data-dictionary-system.md) |
-  | Notification Templates | Notification Templates | Benachrichtigungsvorlagen | `/notificationTemplate.html` | `fa-file-code` | `i18n.notificationTemplate` → `notificationTemplate.plural` | — | [templates-files.md#3-notification-template](11-administration/export-templates.md#3-notification-template) | — | [data-dictionary-system.md](_data-dictionaries/data-dictionary-system.md) |
-  | Location Types | Location Types | Standorttypen | `/locationType.html` | `fa-house` | `i18n.LocationType` → `locationType.plural` | — | [system-config.md#a-location-type](11-administration/exclusion-criteria.md#a-location-type) | — | [data-dictionary-system.md](_data-dictionaries/data-dictionary-system.md) |
-  | Storno Groups | Storno Groups | Stornogruppen | `/stornoGroup.html` | `fa-funnel-dollar` | `i18n.stornoGroup` → `stornoGroup.plural` | — | [accounting-config.md#c-storno-group-cancellation-group](11-administration/job-price-list.md#c-storno-group-cancellation-group) | — | [data-dictionary-accounting.md](_data-dictionaries/data-dictionary-accounting.md) |
+  | Login Notification | Login Notification | Login-Benachrichtigung | `/loginNotification.html` | `fa-comment-exclamation` | `i18n.loginNotification` → `loginNotification.title` | — | [system-config.md#i-login-notification](_content-extraction/system-config.md#i-login-notification) | — | [data-dictionary-system.md](_data-dictionaries/data-dictionary-system.md) |
+  | Notification Templates | Notification Templates | Benachrichtigungsvorlagen | `/notificationTemplate.html` | `fa-file-code` | `i18n.notificationTemplate` → `notificationTemplate.plural` | — | [templates-files.md#3-notification-template](_content-extraction/templates-files.md#3-notification-template) | — | [data-dictionary-system.md](_data-dictionaries/data-dictionary-system.md) |
+  | Location Types | Location Types | Standorttypen | `/locationType.html` | `fa-house` | `i18n.LocationType` → `locationType.plural` | — | [system-config.md#a-location-type](_content-extraction/system-config.md#a-location-type) | — | [data-dictionary-system.md](_data-dictionaries/data-dictionary-system.md) |
+  | Storno Groups | Storno Groups | Stornogruppen | `/stornoGroup.html` | `fa-funnel-dollar` | `i18n.stornoGroup` → `stornoGroup.plural` | — | [accounting-config.md#c-storno-group-cancellation-group](_content-extraction/accounting-config.md#c-storno-group-cancellation-group) | — | [data-dictionary-accounting.md](_data-dictionaries/data-dictionary-accounting.md) |
   | Work Hours | Work Hours | Arbeitszeiten | `/workHour.html` | `fa-user-clock` | `i18n.workHours` → `workHours.title` | — | [workhour.md](12-systemadmin/work-hours.md) | — | [data-dictionary-planning.md](_data-dictionaries/data-dictionary-planning.md) |
   | CDR | CDR | CDR (Verbindungsdaten) | `/CdrCall.html` | `fa-boxes` | `CDR` → `cdr.title` | — | [cdr-call.md](12-systemadmin/cdr.md) | [workflows.md](../wireframes/planning/workflows.md) | [data-dictionary-planning.md](_data-dictionaries/data-dictionary-planning.md) |
   | CDR Assignment | CDR Assignment | CDR-Zuteilung | `/CdrCallAssignment.html` | `fa-arrows-alt-h` | `CDR Assignment` → `cdr.assignment` | — | [cdr-call.md](12-systemadmin/cdr.md) | [workflows.md](../wireframes/planning/workflows.md) | [data-dictionary-planning.md](_data-dictionaries/data-dictionary-planning.md) |
   | Log | Log | Protokoll | `/log.html` | `fa-stream` | `Log` → `log.title` | — | [system.md#entity-logs](_mongodb-mapping/system.md#entity-logs) | — | [data-dictionary-system.md](_data-dictionaries/data-dictionary-system.md) |
-  | Support Categories | Support Categories | Support-Kategorien | `/supportCategory.html` | `fa-user-headset` | `i18n.supportCategory` → `supportCategory.plural` | — | [system-config.md#d-support-category](11-administration/exclusion-criteria.md#d-support-category) | — | [data-dictionary-system.md](_data-dictionaries/data-dictionary-system.md) |
+  | Support Categories | Support Categories | Support-Kategorien | `/supportCategory.html` | `fa-user-headset` | `i18n.supportCategory` → `supportCategory.plural` | — | [system-config.md#d-support-category](_content-extraction/system-config.md#d-support-category) | — | [data-dictionary-system.md](_data-dictionaries/data-dictionary-system.md) |
   | BasisWeb Appointments | BasisWeb Appointments | BasisWeb-Anmeldungen | `/basisWebAppointment.html` | `fa-user-headset` | `BasisWeb-Anmeldungen` → `basisWeb.appointments` | — | [interfaces.md#entity-basis-web-appointment](_mongodb-mapping/interfaces.md#entity-basis-web-appointment) | — | [data-dictionary-interfaces.md](_data-dictionaries/data-dictionary-interfaces.md) |
-  | Change Log | Change Log | Änderungsprotokoll | `/changelog.html` | `fa-hourglass` | `Change-Log` → `changelog.title` | — | [admin-landing.md#8-page-changelog-changeloghtmlm](12-systemadmin/change-log.md#8-page-changelog-changeloghtmlm) | — | [data-dictionary-system.md](_data-dictionaries/data-dictionary-system.md) |
+  | Change Log | Change Log | Änderungsprotokoll | `/changelog.html` | `fa-hourglass` | `Change-Log` → `changelog.title` | — | [change-log.md#8-page-changelog-changeloghtmlm](12-systemadmin/change-log.md#8-page-changelog-changeloghtmlm) | — | [data-dictionary-system.md](_data-dictionaries/data-dictionary-system.md) |
 
 #### 13. Global Menu (`#globalMenu`)
 - **English**: Global Menu
@@ -510,7 +510,7 @@ These analysis documents describe features, dialogs, sub-flows, and shared compo
 | [questionnaire-detail.md](07-appointment-admin/questionnaire-detail.md) | — | [dialogs-treatment.md](_shared-components/dialogs-treatment.md), [consultation-details-header.md](06-consultations/consultation-details-header.md), [appointment-admin.md](07-appointment-admin/appointment-admin.md) |
 | [shift-dialog.md](01-dashboard/shift-dialog.md) | — | [month-view.md](01-dashboard/month-view.md) (include: `{{> shiftDlg}}`), [week-view.md](01-dashboard/week-view.md), [calendar-view.md](01-dashboard/calendar-view.md) |
 | [sysconfig-import.md](_shared-components/sysconfig-import.md) | [data-dictionary-system.md](_data-dictionaries/data-dictionary-system.md) | [group-management.md](_shared-components/group-management.md) |
-| [user-video-history.md](_shared-components/user-video-history.md) | [data-dictionary-academy.md](_data-dictionaries/data-dictionary-academy.md) | [templates-files.md](11-administration/export-templates.md), [worklog.md](01-dashboard/worklog.md), [invoice-receiver.md](09-customers/invoice-receiver.md) |
+| [user-video-history.md](_shared-components/user-video-history.md) | [data-dictionary-academy.md](_data-dictionaries/data-dictionary-academy.md) | [templates-files.md](_content-extraction/templates-files.md), [worklog.md](01-dashboard/worklog.md), [invoice-receiver.md](09-customers/invoice-receiver.md) |
 
 ---
 

@@ -75,7 +75,7 @@ Legend:
 | `system/dashboard/dashboard-main.md` | `dash/index.htmlm`, `dash/dash.js` | `system/dashboard/dashboard-standard.pen` (.png) |
 | `system/dashboard/dashboard-admin.md` | `dash/index.htmlm` (lines 487–618), `dash/dash.js` | `system/dashboard/dashboard-admin.pen` (.png) |
 | `system/dashboard/dialogs-system.md` | `dash/index.htmlm` (lines 624–896), `dash/dash.js` | `system/dashboard/login-notification.pen` (.png) |
-| `system/admin-system/admin-landing.md` | `admin/index.htmlm`, `admin/sysadmin.htmlm`, `admin/nav.js`, `admin/changelog.htmlm`, `admin/group.htmlm`, `admin/sysconfig.htmlm`, `admin/import.htmlm`, `admin/messages.i18n.js` | `system/admin/sysconfig-basis-web.pen` (.png), `sysconfig-cache.pen` (.png), `sysconfig-data-cleanup.pen` (.png), `sysconfig-data-update.pen` (.png), `sysconfig-training.pen` (.png) |
+| `system/admin-system/change-log.md` | `admin/index.htmlm`, `admin/sysadmin.htmlm`, `admin/nav.js`, `admin/changelog.htmlm`, `admin/group.htmlm`, `admin/sysconfig.htmlm`, `admin/import.htmlm`, `admin/messages.i18n.js` | `system/admin/sysconfig-basis-web.pen` (.png), `sysconfig-cache.pen` (.png), `sysconfig-data-cleanup.pen` (.png), `sysconfig-data-update.pen` (.png), `sysconfig-training.pen` (.png) |
 | `system/admin-system/sysconfig-import.md` | `admin/sysconfig.htmlm`, `admin/sysconfig.js`, `admin/import.htmlm`, `admin/import.js`, `admin/group.htmlm`, `admin/group.js`, `admin/sysadmin.htmlm` | `system/admin/sysconfig-data-update.pen` (.png) |
 | `system/admin-cruds/motd-template.md` | `admin/motd.htmlm`, `admin/motd.js`, `admin/template.htmlm`, `admin/template.js` | *(no wireframe)* |
 | `system/cdr-call/cdr-call.md` | `cdrCall/`, `cdrCallAssignment/` | *(no wireframe)* |

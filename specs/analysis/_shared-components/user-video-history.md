@@ -10,7 +10,7 @@ title: 'User Video History'
 |------|-----------|--------|-----------------|---------------------|
 | split | **Sibling** | Same source: `utility/worklog-templates-files.md` | [Worklog](01-dashboard/worklog.md) | Section 1 (Worklog) extracted to sibling |
 | split | **Sibling** | Same source: `utility/worklog-templates-files.md` | [Invoice Receiver](09-customers/invoice-receiver.md) | Section 6 (Invoice Receiver) extracted to sibling |
-| split | **Sibling** | Same source: `utility/worklog-templates-files.md` | [Templates Files](11-administration/export-templates.md) | Sections 2–4 (Export/Notification/User File) extracted to sibling |
+| split | **Sibling** | Same source: `utility/worklog-templates-files.md` | [Templates Files](_content-extraction/templates-files.md) | Sections 2–4 (Export/Notification/User File) extracted to sibling |
 
 ### Source Includes
 

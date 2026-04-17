@@ -8,7 +8,7 @@ title: 'Accounting Config'
 
 | Type | Direction | Detail | Linked Document | Condition / Context |
 |------|-----------|--------|-----------------|---------------------|
-| split | **Sibling** | Same source: `config-cruds/` | [System Config](../11-administration/exclusion-criteria.md) | Extracted from same `config-cruds/` directory |
+| split | **Sibling** | Same source: `config-cruds/` | [System Config](../_content-extraction/system-config.md) | Extracted from same `config-cruds/` directory |
 
 ---
 
@@ -475,7 +475,7 @@ Separate modal dialog (`#exportStatusDlg`) with:
 
 - **Wireframe**: [`specs/wireframes/accounting/workflows.md#w6-accounting-config`](../../../wireframes/accounting/workflows.md#w6-accounting-config)
 - **Config CRUDs (parent)**: [`specs/analysis/config-cruds/config-cruds.md`](../../config-cruds/config-cruds.md)
-- **System Config (sibling domains)**: [`specs/analysis/system/config/system-config.md`](../11-administration/exclusion-criteria.md)
+- **System Config (sibling domains)**: [`specs/analysis/system/config/system-config.md`](../_content-extraction/system-config.md)
 
 ### Cross-Module Dependencies
 
