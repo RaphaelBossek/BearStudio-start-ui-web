@@ -10,14 +10,14 @@ title: 'Data Dictionary Index'
 
 | Domain | File | Status | Complexity |
 |:---|:---|:---|:---|
-| Treatment | [`../treatment/data-dictionary-treatment/`](../treatment/data-dictionary-treatment/) | Done | Very High |
-| Planning | [`../planning/data-dictionary-planning/`](../planning/data-dictionary-planning/) | Done | Very High |
-| User Management | [`../user-management/data-dictionary-user-management/`](../user-management/data-dictionary-user-management/) | Done | High |
-| Accounting | [`../accounting/data-dictionary-accounting/`](../accounting/data-dictionary-accounting/) | Done | High |
-| Customer | [`../customer/data-dictionary-customer/`](../customer/data-dictionary-customer/) | Done | Medium |
-| System | [`../system/data-dictionary-system/`](../system/data-dictionary-system/) | Done | Medium |
-| Academy | [`../academy/data-dictionary-academy/`](../academy/data-dictionary-academy/) | Done | Low-Medium |
-| Interfaces | [`../interfaces/data-dictionary-interfaces/`](../interfaces/data-dictionary-interfaces/) | Done | Low |
+| Treatment | [`_data-dictionaries/data-dictionary-treatment.md`](_data-dictionaries/data-dictionary-treatment.md) | Done | Very High |
+| Planning | [`_data-dictionaries/data-dictionary-planning.md`](_data-dictionaries/data-dictionary-planning.md) | Done | Very High |
+| User Management | [`_data-dictionaries/data-dictionary-user-management.md`](_data-dictionaries/data-dictionary-user-management.md) | Done | High |
+| Accounting | [`_data-dictionaries/data-dictionary-accounting.md`](_data-dictionaries/data-dictionary-accounting.md) | Done | High |
+| Customer | [`_data-dictionaries/data-dictionary-customer.md`](_data-dictionaries/data-dictionary-customer.md) | Done | Medium |
+| System | [`_data-dictionaries/data-dictionary-system.md`](_data-dictionaries/data-dictionary-system.md) | Done | Medium |
+| Academy | [`_data-dictionaries/data-dictionary-academy.md`](_data-dictionaries/data-dictionary-academy.md) | Done | Low-Medium |
+| Interfaces | [`_data-dictionaries/data-dictionary-interfaces.md`](_data-dictionaries/data-dictionary-interfaces.md) | Done | Low |
 
 ## Summary Counts
 
@@ -61,7 +61,7 @@ Several enums are shared across multiple domains. They are defined centrally but
 
 Certain sub-entities are reused as **denormalized snapshots** across multiple domains. They are embedded documents rather than separate collections. 
 
-Refer to `specs/mongodb-mapping/readme` ("Shared Sub-Entities Reference") for the full architecture.
+Refer to `_mongodb-mapping/mongodb-mapping/readme.md` ("Shared Sub-Entities Reference") for the full architecture.
 
 | Sub-entity | Source Collection | Embedded Fields | Domains |
 |:---|:---|:---|:---|
