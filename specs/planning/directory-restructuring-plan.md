@@ -95,14 +95,16 @@ specs/analysis/
 
 ## Target Structure (Sitemap 2.4 Hierarchy)
 
+Each tree entry below includes the README link text where that entry is directly referenced in chapter 2.4.
+
 ```
 specs/analysis/
 ├── 01-dashboard/
-│   ├── calendar-view.md
-│   ├── week-view.md
-│   ├── month-view.md
-│   ├── dialogs-planning.md
-│   ├── shift-dialog.md
+│   ├── calendar-view.md  # README link text: Calendar
+│   ├── week-view.md  # README link text: Week View
+│   ├── month-view.md  # README link text: Calendar / month view
+│   ├── dialogs-planning.md  # README link text: Dashboard support dialogs
+│   ├── shift-dialog.md  # README link text: Shift Dialog
 │   ├── worklog.md                    # (from accounting/worklog/)
 │   ├── video-library.md             # (from orphan/support-and-video.md)
 │   ├── dashboard-main.md            # (from system/dashboard/)
@@ -144,7 +146,7 @@ specs/analysis/
 │   ├── appointment-admin.md          # Main page analysis (from planning/appointment-admin/)
 │   ├── closed-month.md               # (from planning/appointment-support/)
 │   ├── questionnaire-list.md         # (from treatment/questionnaire/)
-│   ├── questionnaire-detail.md
+│   ├── questionnaire-detail.md  # README link text: Questionnaire
 │   └── data-dictionary-planning.md   # Shared
 │
 ├── 08-notifications/
@@ -155,8 +157,8 @@ specs/analysis/
 │   ├── customer-list-detail.md       # (from customer/customer-core/)
 │   ├── onboarding-customer.md        # (from user-management/admin/)
 │   ├── invoices.md                  # (from accounting/invoice/)
-│   ├── invoice-list.md
-│   ├── invoice-details.md
+│   ├── invoice-list.md  # README link text: Invoices
+│   ├── invoice-details.md  # README link text: Invoices
 │   ├── invoice-receiver.md          # (from accounting/invoice-receiver/)
 │   ├── customer-users.md             # (from customer/customer-core/)
 │   ├── locations.md                  # (from customer/customer-core/)
@@ -166,7 +168,7 @@ specs/analysis/
 │
 ├── 10-staff/
 │   ├── onboarding.md                 # (from user-management/admin/)
-│   ├── user-management.md
+│   ├── user-management.md  # README link text: User Management
 │   ├── expert-weekly-assignments.md  # (from accounting/worklog/)
 │   └── data-dictionary-user-management.md  # Shared
 │
@@ -193,7 +195,7 @@ specs/analysis/
 │   ├── storno-groups.md              # (from accounting/config/)
 │   ├── work-hours.md                 # (from planning/appointment-support/)
 │   ├── cdr.md                        # (from planning/appointment-support/)
-│   ├── cdr-assignment.md
+│   ├── cdr-assignment.md  # README link text: CDR Assignment
 │   ├── log.md                        # (from mongodb-mapping/system.md)
 │   ├── support-categories.md         # (from system/config/)
 │   ├── basisweb-appointments.md      # (from mongodb-mapping/interfaces.md)
@@ -202,16 +204,16 @@ specs/analysis/
 │
 ├── _shared-components/
 │   ├── appointment-assign-user.md    # (from planning/appointment/)
-│   ├── appointment-details-scheduling.md
+│   ├── appointment-details-scheduling.md  # README link text: internal/shared reference
 │   ├── appointment-details-patient.md  # (from treatment/appointment-patient/)
-│   ├── consultation-details-js.md
+│   ├── consultation-details-js.md  # README link text: internal/shared reference
 │   ├── dialogs-treatment.md          # (from treatment/dashboard/)
 │   ├── dialogs-system.md             # (from system/dashboard/)
 │   ├── dialogs-user-management.md    # (from user-management/dashboard/)
 │   ├── medication.md                 # (from treatment/medication/)
 │   ├── contact.md                    # (from customer/contact/)
 │   ├── profile-expert-availability.md  # (from user-management/profile/)
-│   ├── profile-staff.md
+│   ├── profile-staff.md  # README link text: internal/shared reference
 │   ├── totp-onboarding.md           # (from user-management/admin/)
 │   ├── group-management.md           # (from user-management/admin/)
 │   ├── sysconfig-import.md           # (from system/admin/)
@@ -223,14 +225,14 @@ specs/analysis/
 │   └── readme.md                     # (from system/dashboard/)
 │
 ├── _data-dictionaries/
-│   ├── data-dictionary-academy.md
-│   ├── data-dictionary-accounting.md
-│   ├── data-dictionary-customer.md
-│   ├── data-dictionary-interfaces.md
-│   ├── data-dictionary-planning.md
-│   ├── data-dictionary-system.md
-│   ├── data-dictionary-treatment.md
-│   └── data-dictionary-user-management.md
+│   ├── data-dictionary-academy.md  # README link text: data dictionary
+│   ├── data-dictionary-accounting.md  # README link text: data dictionary
+│   ├── data-dictionary-customer.md  # README link text: data dictionary
+│   ├── data-dictionary-interfaces.md  # README link text: data dictionary
+│   ├── data-dictionary-planning.md  # README link text: data dictionary
+│   ├── data-dictionary-system.md  # README link text: data dictionary
+│   ├── data-dictionary-treatment.md  # README link text: data dictionary
+│   └── data-dictionary-user-management.md  # README link text: data dictionary
 │
 ├── _mongodb-mapping/
 │   ├── system.md                     # (Async Job Queue, Log entities)
@@ -244,9 +246,9 @@ specs/analysis/
 │   ├── external-data.md
 │   ├── news.md
 │   ├── planning.md
-│   ├── readme.md
+│   ├── readme.md  # README link text: internal/shared reference
 │   ├── treatment.md
-│   └── user-management.md
+│   └── user-management.md  # README link text: User Management
 │
 ├── _i18n/
 │   ├── domains/
@@ -255,19 +257,19 @@ specs/analysis/
 │   │   ├── customer.md
 │   │   ├── interfaces.md
 │   │   ├── planning.md
-│   │   ├── readme.md
+│   │   ├── readme.md  # README link text: internal/shared reference
 │   │   ├── system.md
 │   │   ├── treatment.md
-│   │   └── user-management.md
+│   │   └── user-management.md  # README link text: User Management
 │   ├── hardcoded-strings.md
 │   ├── missing-keys.md
-│   ├── readme.md
+│   ├── readme.md  # README link text: internal/shared reference
 │   ├── translation-guide.md
 │   └── translation-inventory.md
 │
 ├── _interfaces/
 │   ├── basisweb-wizard.md            # (from interfaces/dashboard/)
-│   └── data-dictionary-interfaces.md
+│   └── data-dictionary-interfaces.md  # README link text: data dictionary
 │
 ├── _orphan/
 │   └── (empty - all files moved to their sitemap locations)
@@ -634,10 +636,10 @@ _i18n/
 │   ├── customer.md
 │   ├── interfaces.md
 │   ├── planning.md
-│   ├── readme.md
+│   ├── readme.md  # README link text: internal/shared reference
 │   ├── system.md
 │   ├── treatment.md
-│   └── user-management.md
+│   └── user-management.md  # README link text: User Management
 ├── hardcoded-strings.md
 ├── missing-keys.md
 ├── readme.md
