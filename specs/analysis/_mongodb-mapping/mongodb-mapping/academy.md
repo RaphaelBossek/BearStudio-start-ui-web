@@ -4,7 +4,7 @@ title: 'Academy'
 
 # Academy (Training)
 
-[← Back to Index](./readme.md)
+[← Back to Index]\1../../readme.md\3
 
 This file covers the Academy category: educational resources and training materials for users.
 

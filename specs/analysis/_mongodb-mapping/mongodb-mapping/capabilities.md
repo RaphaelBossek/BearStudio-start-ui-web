@@ -4,7 +4,7 @@ title: 'Capabilities'
 
 # Capabilities
 
-[← Back to Index](./readme.md)
+[← Back to Index]\1../../readme.md\3
 
 This file covers the Capabilities category, which defines expert skills and required qualifications for services.
 

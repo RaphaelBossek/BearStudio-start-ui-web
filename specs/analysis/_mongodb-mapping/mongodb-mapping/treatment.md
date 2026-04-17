@@ -4,7 +4,7 @@ title: 'Treatment'
 
 # Treatment
 
-[← Back to Index](./readme.md)
+[← Back to Index]\1../../readme.md\3
 
 This file covers the Treatment category: core medical data, consultations, treatments, and patient information.
 

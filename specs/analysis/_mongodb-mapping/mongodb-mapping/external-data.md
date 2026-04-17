@@ -4,7 +4,7 @@ title: 'External Data'
 
 # External Data
 
-[← Back to Index](./readme.md)
+[← Back to Index]\1../../readme.md\3
 
 This file covers the External Data category: reference data including medical classifications, medications, and telephony logs.
 

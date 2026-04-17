@@ -4,7 +4,7 @@ title: 'Customer'
 
 # Customer
 
-[← Back to Index](./readme.md)
+[← Back to Index]\1../../readme.md\3
 
 This file covers the Customer category: entities related to customers, locations, sites, rooms, equipment, and location snapshots.
 

@@ -568,7 +568,7 @@ MOTD grid with 7 columns (ID, Subject, Start Date, Enabled, Sort, Priority, Crea
 
 16-column CDR grid with Year/Month/Day filter toolbar. 8 action buttons: Add, Edit, Delete, Export XLS, Export CSV, Reset Calls, Upload CSV, Analyze Open. Pagination at bottom.
 
-![CDR Call List](../planning/appointment-support/cdr-call-list.png)
+![CDR Call List]\1cdr-call-list.png\3
 
 ---
 
@@ -576,7 +576,7 @@ MOTD grid with 7 columns (ID, Subject, Start Date, Enabled, Sort, Priority, Crea
 
 800px detail drawer with 3 sections (Call Information, Parties, Technical/Routing) showing 18 key fields including type, dates, calling/called numbers, routing IDs, and technical metadata.
 
-![CDR Call Detail](../planning/appointment-support/cdr-call-detail.png)
+![CDR Call Detail]\1cdr-call-detail.png\3
 
 ---
 

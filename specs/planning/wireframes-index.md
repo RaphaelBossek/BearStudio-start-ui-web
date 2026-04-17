@@ -330,16 +330,16 @@ Each domain has a `workflows.md` file with embedded wireframe screenshots and Me
 
 | Domain | Workflows File | Areas Covered |
 |:---|:---|:---|
-| Planning | [`planning/workflows.md`](../wireframes/planning/workflows.md) | Appointment lifecycle, Self-service dashboard, Calendar view, Expert availability, Shift detail, Ad-hoc appointment, End shift, **Appointment Admin (billing/consultations/exports)**, **CDR Call tracking**, **Shift Plan management**, **Council Plan management** |
-| System (Sysconfig) | [`system/admin/workflows.md`](../wireframes/system/admin/workflows.md) | Sysconfig tab navigation, BasisWeb sync, Cache management, Data update, Data cleanup, Training |
-| System (All) | [`system/workflows.md`](../wireframes/system/workflows.md) | Dashboard, Notification, Includes, MOTD management, CDR calls, System config CRUDs, Templates & files, Login notification lifecycle |
-| System (Shell) | [`system/shell/workflows.md`](../wireframes/system/shell/workflows.md) | App shell layout, Global navigation, User menu |
-| Treatment (Dashboard/QM) | [`treatment/workflows.md`](../wireframes/treatment/workflows.md) | Consultation wizard, Location wizard, Templates, Summarize, End appointment, Incarceration, Questionnaires |
-| Treatment (Consultation) | [`treatment/consultation/workflows.md`](../wireframes/treatment/consultation/workflows.md) | Consultation lifecycle, Detail tabs, Standard/Onboarding/Incarceration forms, Review, ICD-10 search, Export |
-| Customer | [`customer/workflows.md`](../wireframes/customer/workflows.md) | Customer CRUD, Location management, Contact management, Room planning, Equipment lifecycle |
-| Academy | [`academy/workflows.md`](../wireframes/academy/workflows.md) | Support tickets, Video library, Video management, Video categories |
-| Accounting | [`accounting/workflows.md`](../wireframes/accounting/workflows.md) | Invoice list/details, Invoice receiver, Worklog, Job configuration, Accounting config |
-| User Management | [`user-management/workflows.md`](../wireframes/user-management/workflows.md) | Profile form, Staff list, Expert search, Assignments, Signature pad, Expert availability |
+| Planning | [`planning/workflows.md`]\101-dashboard/workflows-planning.md\3 | Appointment lifecycle, Self-service dashboard, Calendar view, Expert availability, Shift detail, Ad-hoc appointment, End shift, **Appointment Admin (billing/consultations/exports)**, **CDR Call tracking**, **Shift Plan management**, **Council Plan management** |
+| System (Sysconfig) | [`system/admin/workflows.md`]\111-administration/workflows-admin.md\3 | Sysconfig tab navigation, BasisWeb sync, Cache management, Data update, Data cleanup, Training |
+| System (All) | [`system/workflows.md`]\112-systemadmin/workflows-system.md\3 | Dashboard, Notification, Includes, MOTD management, CDR calls, System config CRUDs, Templates & files, Login notification lifecycle |
+| System (Shell) | [`system/shell/workflows.md`]\112-systemadmin/workflows-shell.md\3 | App shell layout, Global navigation, User menu |
+| Treatment (Dashboard/QM) | [`treatment/workflows.md`]\104-treatments/workflows-treatment.md\3 | Consultation wizard, Location wizard, Templates, Summarize, End appointment, Incarceration, Questionnaires |
+| Treatment (Consultation) | [`treatment/consultation/workflows.md`]\106-consultations/workflows-consultation.md\3 | Consultation lifecycle, Detail tabs, Standard/Onboarding/Incarceration forms, Review, ICD-10 search, Export |
+| Customer | [`customer/workflows.md`]\109-customers/workflows-customer.md\3 | Customer CRUD, Location management, Contact management, Room planning, Equipment lifecycle |
+| Academy | [`academy/workflows.md`]\101-dashboard/workflows-academy.md\3 | Support tickets, Video library, Video management, Video categories |
+| Accounting | [`accounting/workflows.md`]\111-administration/workflows-accounting.md\3 | Invoice list/details, Invoice receiver, Worklog, Job configuration, Accounting config |
+| User Management | [`user-management/workflows.md`]\110-staff/workflows-user-management.md\3 | Profile form, Staff list, Expert search, Assignments, Signature pad, Expert availability |
 
 
 ## Completion Log

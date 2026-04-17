@@ -4,7 +4,7 @@ title: 'Planning'
 
 # Planning
 
-[← Back to Index](./readme.md)
+[← Back to Index]\1../../readme.md\3
 
 This file covers the Planning category: definition of consultation schedules, shifts, and expert availability.
 

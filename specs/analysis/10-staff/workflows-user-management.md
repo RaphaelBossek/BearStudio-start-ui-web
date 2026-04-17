@@ -952,22 +952,22 @@ Date picker input. Stats collection table with icon-labeled columns: department 
 
 1440px page with 8-column grid (title, category, start/end dates, timeWatched, completed, lastWatched, actions).
 
-![Video History List](../orphan/video-history-list.png)
+![Video History List]\1../_shared-components/user-video-history-video-history-list.png\3
 
 ### W31b: Video History Detail
 
 600px dialog with video combobox search, date fields, and timeWatched input.
 
-![Video History Detail](../orphan/video-history-detail.png)
+![Video History Detail]\1../_shared-components/user-video-history-video-history-detail.png\3
 
 ### W32: Work Hour List
 
 1440px page with 4-column grid (code, hours, priority, description).
 
-![Work Hour List](../planning/appointment-support/workhour-list.png)
+![Work Hour List]\1../02-appointments/workhour-list.png\3
 
 ### W32b: Work Hour Detail
 
 600px dialog with code input, hours numeric field, priority, and description textarea.
 
-![Work Hour Detail](../planning/appointment-support/workhour-detail.png)
+![Work Hour Detail]\1../02-appointments/workhour-detail.png\3
