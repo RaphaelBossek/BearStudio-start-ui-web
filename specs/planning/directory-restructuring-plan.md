@@ -2,13 +2,43 @@
 
 **Date**: 2026-04-16
 **Based on**: Chapter 2.4 "Detailed Sitemap with Submenu Items" from `specs/analysis/readme.md`
-**Status**: DRAFT v4 - Awaiting Approval (Consistency Issues Fixed)
+**Status**: DRAFT v5 - Awaiting Approval (Link Text Added)
 
 ---
 
 ## Overview
 
 This plan defines the target directory structure for `specs/analysis/` based on the sitemap navigation hierarchy in chapter 2.4. The restructure aligns documentation files with their corresponding menu items in the application navigation.
+
+---
+
+## Approval Scope and Link Text Index
+
+This plan is the approval artifact. The implementation script is the execution artifact.
+
+The restructure must also update the README navigation link text in `specs/analysis/readme.md` so the documented sitemap, file structure, and cross-links remain aligned after the move.
+
+| Link text | Source path | Target path | Notes |
+|-----------|-------------|-------------|-------|
+| Dashboard | `system/dashboard/dashboard-main.md` | `01-dashboard/dashboard-main.md` | Main menu item |
+| Calendar | `planning/dashboard/calendar-view.md` | `01-dashboard/calendar-view.md` | Dashboard submenu |
+| Week View | `planning/dashboard/week-view.md` | `01-dashboard/week-view.md` | Dashboard submenu |
+| Worklog | `accounting/worklog/worklog.md` | `01-dashboard/worklog.md` | Dashboard submenu |
+| Video Library | `orphan/support-and-video.md` | `01-dashboard/video-library.md` | External URL entry |
+| Appointments | `planning/appointment/appointment-list.md` | `02-appointments/appointment-list.md` | Main menu item |
+| Appointment Plan | `planning/appointment/appointment-plan.md` | `02-appointments/appointment-plan.md` | Submenu item |
+| Patient Data | `treatment/patient-data/patient-data.md` | `02-appointments/patient-data.md` | Submenu item |
+| Shifts | `planning/shift/shift-and-plan.md` | `03-shifts/shift-and-plan.md` | Main menu item |
+| Treatments | `treatment/treatment-core/treatment-and-category.md` | `04-treatments/treatment-and-category.md` | Main menu item |
+| Council | `planning/council/council-and-plan.md` | `05-council/council-and-plan.md` | Main menu item |
+| Consultations | `treatment/consultation/consultation-list.md` | `06-consultations/consultation-list.md` | Main menu item |
+| Appointment Admin | `planning/appointment-admin/appointment-admin.md` | `07-appointment-admin/appointment-admin.md` | Main menu item |
+| Notifications | `system/notification/notification.md` | `08-notifications/notification.md` | Main menu item |
+| Customers | `customer/customer-core/customer-list-detail.md` | `09-customers/customer-list-detail.md` | Main menu item |
+| Staff | `staff/staff-list.md` | `10-staff/staff-list.md` | Main menu item |
+| Administration | `admin/admin-landing.md` | `11-administration/admin-landing.md` | Main menu item |
+| Systemadmin | `system/admin/admin-landing.md` | `12-systemadmin/change-log.md` | Main menu item |
+| Global Menu | N/A | N/A | UI shell, not a file move |
 
 ---
 
@@ -65,14 +95,16 @@ specs/analysis/
 
 ## Target Structure (Sitemap 2.4 Hierarchy)
 
+Each tree entry below includes the README link text where that entry is directly referenced in chapter 2.4.
+
 ```
 specs/analysis/
 ├── 01-dashboard/
-│   ├── calendar-view.md
-│   ├── week-view.md
-│   ├── month-view.md
-│   ├── dialogs-planning.md
-│   ├── shift-dialog.md
+│   ├── calendar-view.md  # README link text: Calendar
+│   ├── week-view.md  # README link text: Week View
+│   ├── month-view.md  # README link text: Calendar / month view
+│   ├── dialogs-planning.md  # README link text: Dashboard support dialogs
+│   ├── shift-dialog.md  # README link text: Shift Dialog
 │   ├── worklog.md                    # (from accounting/worklog/)
 │   ├── video-library.md             # (from orphan/support-and-video.md)
 │   ├── dashboard-main.md            # (from system/dashboard/)
@@ -114,7 +146,7 @@ specs/analysis/
 │   ├── appointment-admin.md          # Main page analysis (from planning/appointment-admin/)
 │   ├── closed-month.md               # (from planning/appointment-support/)
 │   ├── questionnaire-list.md         # (from treatment/questionnaire/)
-│   ├── questionnaire-detail.md
+│   ├── questionnaire-detail.md  # README link text: Questionnaire
 │   └── data-dictionary-planning.md   # Shared
 │
 ├── 08-notifications/
@@ -125,8 +157,8 @@ specs/analysis/
 │   ├── customer-list-detail.md       # (from customer/customer-core/)
 │   ├── onboarding-customer.md        # (from user-management/admin/)
 │   ├── invoices.md                  # (from accounting/invoice/)
-│   ├── invoice-list.md
-│   ├── invoice-details.md
+│   ├── invoice-list.md  # README link text: Invoices
+│   ├── invoice-details.md  # README link text: Invoices
 │   ├── invoice-receiver.md          # (from accounting/invoice-receiver/)
 │   ├── customer-users.md             # (from customer/customer-core/)
 │   ├── locations.md                  # (from customer/customer-core/)
@@ -136,7 +168,7 @@ specs/analysis/
 │
 ├── 10-staff/
 │   ├── onboarding.md                 # (from user-management/admin/)
-│   ├── user-management.md
+│   ├── user-management.md  # README link text: User Management
 │   ├── expert-weekly-assignments.md  # (from accounting/worklog/)
 │   └── data-dictionary-user-management.md  # Shared
 │
@@ -163,7 +195,7 @@ specs/analysis/
 │   ├── storno-groups.md              # (from accounting/config/)
 │   ├── work-hours.md                 # (from planning/appointment-support/)
 │   ├── cdr.md                        # (from planning/appointment-support/)
-│   ├── cdr-assignment.md
+│   ├── cdr-assignment.md  # README link text: CDR Assignment
 │   ├── log.md                        # (from mongodb-mapping/system.md)
 │   ├── support-categories.md         # (from system/config/)
 │   ├── basisweb-appointments.md      # (from mongodb-mapping/interfaces.md)
@@ -172,16 +204,16 @@ specs/analysis/
 │
 ├── _shared-components/
 │   ├── appointment-assign-user.md    # (from planning/appointment/)
-│   ├── appointment-details-scheduling.md
+│   ├── appointment-details-scheduling.md  # README link text: internal/shared reference
 │   ├── appointment-details-patient.md  # (from treatment/appointment-patient/)
-│   ├── consultation-details-js.md
+│   ├── consultation-details-js.md  # README link text: internal/shared reference
 │   ├── dialogs-treatment.md          # (from treatment/dashboard/)
 │   ├── dialogs-system.md             # (from system/dashboard/)
 │   ├── dialogs-user-management.md    # (from user-management/dashboard/)
 │   ├── medication.md                 # (from treatment/medication/)
 │   ├── contact.md                    # (from customer/contact/)
 │   ├── profile-expert-availability.md  # (from user-management/profile/)
-│   ├── profile-staff.md
+│   ├── profile-staff.md  # README link text: internal/shared reference
 │   ├── totp-onboarding.md           # (from user-management/admin/)
 │   ├── group-management.md           # (from user-management/admin/)
 │   ├── sysconfig-import.md           # (from system/admin/)
@@ -193,14 +225,14 @@ specs/analysis/
 │   └── readme.md                     # (from system/dashboard/)
 │
 ├── _data-dictionaries/
-│   ├── data-dictionary-academy.md
-│   ├── data-dictionary-accounting.md
-│   ├── data-dictionary-customer.md
-│   ├── data-dictionary-interfaces.md
-│   ├── data-dictionary-planning.md
-│   ├── data-dictionary-system.md
-│   ├── data-dictionary-treatment.md
-│   └── data-dictionary-user-management.md
+│   ├── data-dictionary-academy.md  # README link text: data dictionary
+│   ├── data-dictionary-accounting.md  # README link text: data dictionary
+│   ├── data-dictionary-customer.md  # README link text: data dictionary
+│   ├── data-dictionary-interfaces.md  # README link text: data dictionary
+│   ├── data-dictionary-planning.md  # README link text: data dictionary
+│   ├── data-dictionary-system.md  # README link text: data dictionary
+│   ├── data-dictionary-treatment.md  # README link text: data dictionary
+│   └── data-dictionary-user-management.md  # README link text: data dictionary
 │
 ├── _mongodb-mapping/
 │   ├── system.md                     # (Async Job Queue, Log entities)
@@ -214,9 +246,9 @@ specs/analysis/
 │   ├── external-data.md
 │   ├── news.md
 │   ├── planning.md
-│   ├── readme.md
+│   ├── readme.md  # README link text: internal/shared reference
 │   ├── treatment.md
-│   └── user-management.md
+│   └── user-management.md  # README link text: User Management
 │
 ├── _i18n/
 │   ├── domains/
@@ -225,19 +257,19 @@ specs/analysis/
 │   │   ├── customer.md
 │   │   ├── interfaces.md
 │   │   ├── planning.md
-│   │   ├── readme.md
+│   │   ├── readme.md  # README link text: internal/shared reference
 │   │   ├── system.md
 │   │   ├── treatment.md
-│   │   └── user-management.md
+│   │   └── user-management.md  # README link text: User Management
 │   ├── hardcoded-strings.md
 │   ├── missing-keys.md
-│   ├── readme.md
+│   ├── readme.md  # README link text: internal/shared reference
 │   ├── translation-guide.md
 │   └── translation-inventory.md
 │
 ├── _interfaces/
 │   ├── basisweb-wizard.md            # (from interfaces/dashboard/)
-│   └── data-dictionary-interfaces.md
+│   └── data-dictionary-interfaces.md  # README link text: data dictionary
 │
 ├── _orphan/
 │   └── (empty - all files moved to their sitemap locations)
@@ -604,10 +636,10 @@ _i18n/
 │   ├── customer.md
 │   ├── interfaces.md
 │   ├── planning.md
-│   ├── readme.md
+│   ├── readme.md  # README link text: internal/shared reference
 │   ├── system.md
 │   ├── treatment.md
-│   └── user-management.md
+│   └── user-management.md  # README link text: User Management
 ├── hardcoded-strings.md
 ├── missing-keys.md
 ├── readme.md
@@ -643,6 +675,8 @@ The following files remain at the root level and are NOT restructured:
 ---
 
 ## Implementation Script (FIXED)
+
+> The script is responsible for both moving files and rewriting README cross-links. README updates are not a manual follow-up; they are part of execution.
 
 ```bash
 #!/bin/bash
@@ -896,9 +930,9 @@ echo "Restructuring complete!"
 echo "Backup location: $BACKUP_DIR"
 
 # ============================================================================
-# STEP 21: Fix Cross-References
+# STEP 21: Fix Cross-References and README Links
 # ============================================================================
-echo "Fixing cross-references..."
+echo "Fixing cross-references and README links..."
 node "$(dirname "$0")/fix-cross-references.mjs"
 
 echo "Done!"
@@ -907,6 +941,8 @@ echo "Done!"
 ---
 
 ## Cross-Reference Handling
+
+The implementation script rewrites both internal file links and README navigation references. The README link text and the filesystem structure must stay synchronized.
 
 ### Problem
 
@@ -1005,11 +1041,11 @@ After restructuring, the source files remain in place but are now **orphaned** (
 
 ## Pre-Execution Checklist
 
-- [ ] Review and approve this plan
+- [ ] Review and approve this plan (including the link-text table)
 - [ ] Ensure git working tree is clean or backed up
 - [ ] Run script in a test environment first
 - [ ] Verify all files are moved correctly after execution
-- [ ] **Run cross-reference fix script** (`node fix-cross-references.mjs --dry-run` first to preview)
+- [ ] **Run cross-reference fix script** (`node fix-cross-references.mjs --dry-run` first to preview; validates README link text rewrites)
 - [ ] Update any symlinks or references in other documentation
 - [ ] Verify all cross-references are correct after fix
 
