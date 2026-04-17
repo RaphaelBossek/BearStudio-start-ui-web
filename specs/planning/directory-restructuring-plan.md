@@ -2,13 +2,43 @@
 
 **Date**: 2026-04-16
 **Based on**: Chapter 2.4 "Detailed Sitemap with Submenu Items" from `specs/analysis/readme.md`
-**Status**: DRAFT v4 - Awaiting Approval (Consistency Issues Fixed)
+**Status**: DRAFT v5 - Awaiting Approval (Link Text Added)
 
 ---
 
 ## Overview
 
 This plan defines the target directory structure for `specs/analysis/` based on the sitemap navigation hierarchy in chapter 2.4. The restructure aligns documentation files with their corresponding menu items in the application navigation.
+
+---
+
+## Approval Scope and Link Text Index
+
+This plan is the approval artifact. The implementation script is the execution artifact.
+
+The restructure must also update the README navigation link text in `specs/analysis/readme.md` so the documented sitemap, file structure, and cross-links remain aligned after the move.
+
+| Link text | Source path | Target path | Notes |
+|-----------|-------------|-------------|-------|
+| Dashboard | `system/dashboard/dashboard-main.md` | `01-dashboard/dashboard-main.md` | Main menu item |
+| Calendar | `planning/dashboard/calendar-view.md` | `01-dashboard/calendar-view.md` | Dashboard submenu |
+| Week View | `planning/dashboard/week-view.md` | `01-dashboard/week-view.md` | Dashboard submenu |
+| Worklog | `accounting/worklog/worklog.md` | `01-dashboard/worklog.md` | Dashboard submenu |
+| Video Library | `orphan/support-and-video.md` | `01-dashboard/video-library.md` | External URL entry |
+| Appointments | `planning/appointment/appointment-list.md` | `02-appointments/appointment-list.md` | Main menu item |
+| Appointment Plan | `planning/appointment/appointment-plan.md` | `02-appointments/appointment-plan.md` | Submenu item |
+| Patient Data | `treatment/patient-data/patient-data.md` | `02-appointments/patient-data.md` | Submenu item |
+| Shifts | `planning/shift/shift-and-plan.md` | `03-shifts/shift-and-plan.md` | Main menu item |
+| Treatments | `treatment/treatment-core/treatment-and-category.md` | `04-treatments/treatment-and-category.md` | Main menu item |
+| Council | `planning/council/council-and-plan.md` | `05-council/council-and-plan.md` | Main menu item |
+| Consultations | `treatment/consultation/consultation-list.md` | `06-consultations/consultation-list.md` | Main menu item |
+| Appointment Admin | `planning/appointment-admin/appointment-admin.md` | `07-appointment-admin/appointment-admin.md` | Main menu item |
+| Notifications | `system/notification/notification.md` | `08-notifications/notification.md` | Main menu item |
+| Customers | `customer/customer-core/customer-list-detail.md` | `09-customers/customer-list-detail.md` | Main menu item |
+| Staff | `staff/staff-list.md` | `10-staff/staff-list.md` | Main menu item |
+| Administration | `admin/admin-landing.md` | `11-administration/admin-landing.md` | Main menu item |
+| Systemadmin | `system/admin/admin-landing.md` | `12-systemadmin/change-log.md` | Main menu item |
+| Global Menu | N/A | N/A | UI shell, not a file move |
 
 ---
 
@@ -644,6 +674,8 @@ The following files remain at the root level and are NOT restructured:
 
 ## Implementation Script (FIXED)
 
+> The script is responsible for both moving files and rewriting README cross-links. README updates are not a manual follow-up; they are part of execution.
+
 ```bash
 #!/bin/bash
 # specs/planning/restructuring-script.sh
@@ -896,9 +928,9 @@ echo "Restructuring complete!"
 echo "Backup location: $BACKUP_DIR"
 
 # ============================================================================
-# STEP 21: Fix Cross-References
+# STEP 21: Fix Cross-References and README Links
 # ============================================================================
-echo "Fixing cross-references..."
+echo "Fixing cross-references and README links..."
 node "$(dirname "$0")/fix-cross-references.mjs"
 
 echo "Done!"
@@ -907,6 +939,8 @@ echo "Done!"
 ---
 
 ## Cross-Reference Handling
+
+The implementation script rewrites both internal file links and README navigation references. The README link text and the filesystem structure must stay synchronized.
 
 ### Problem
 
@@ -1005,11 +1039,11 @@ After restructuring, the source files remain in place but are now **orphaned** (
 
 ## Pre-Execution Checklist
 
-- [ ] Review and approve this plan
+- [ ] Review and approve this plan (including the link-text table)
 - [ ] Ensure git working tree is clean or backed up
 - [ ] Run script in a test environment first
 - [ ] Verify all files are moved correctly after execution
-- [ ] **Run cross-reference fix script** (`node fix-cross-references.mjs --dry-run` first to preview)
+- [ ] **Run cross-reference fix script** (`node fix-cross-references.mjs --dry-run` first to preview; validates README link text rewrites)
 - [ ] Update any symlinks or references in other documentation
 - [ ] Verify all cross-references are correct after fix
 
